@@ -63,7 +63,7 @@ RSpec.describe "LLM::Ollama" do
   # end
 
   context "with successful completion", :success do
-    let(:completion) { ollama.complete(LLM::Message.new("user", "Hello!")) }
+    let(:completion) { ollama.complete("Hello!", :user) }
 
     it "returns a completion" do
       expect(completion).to be_a(LLM::Response::Completion)

@@ -25,9 +25,13 @@ module LLM
       Response::Embedding.new(res.body, self)
     end
 
-    def complete(message, **params)
+    ##
+    # @param prompt (see LLM::Provider#complete)
+    # @param role (see LLM::Provider#complete)
+    # @return (see LLM::Provider#complete)
+    def complete(prompt, role = :user, **params)
       req = Net::HTTP::Post.new ["/v1", "chat", "completions"].join("/")
-      messages = [*(params.delete(:messages) || []), message]
+      messages = [*(params.delete(:messages) || []), Message.new(role, transform_prompt(prompt))]
       params = DEFAULT_PARAMS.merge(params)
       body = {messages: messages.map(&:to_h)}.merge!(params)
       req = preflight(req, body)

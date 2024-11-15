@@ -78,7 +78,7 @@ RSpec.describe "LLM::OpenAI" do
   end
 
   context "with successful completion", :success do
-    let(:completion) { openai.complete(LLM::Message.new("user", "Hello!")) }
+    let(:completion) { openai.complete("Hello!", :user) }
 
     it "returns a completion" do
       expect(completion).to be_a(LLM::Response::Completion)
@@ -105,7 +105,7 @@ RSpec.describe "LLM::OpenAI" do
   end
 
   context "with an unauthorized error", :unauthorized do
-    let(:completion) { openai.complete(LLM::Message.new("user", "Hello!")) }
+    let(:completion) { openai.complete(LLM::Message.new("Hello!", :user)) }
 
     it "raises an error" do
       expect { completion }.to raise_error(LLM::Error::Unauthorized)
@@ -119,7 +119,7 @@ RSpec.describe "LLM::OpenAI" do
   end
 
   context "with a bad request", :bad_request do
-    subject(:completion) { openai.complete(LLM::Message.new("user", URI("/path/to/nowhere.bin"))) }
+    subject(:completion) { openai.complete(URI("/path/to/nowhere.bin"), :user) }
 
     it "raises an error" do
       expect { completion }.to raise_error(LLM::Error::BadResponse)

@@ -29,7 +29,7 @@ module LLM
     def chat(prompt, role = :user, **params)
       tap do
         prompt = transform_prompt(prompt)
-        completion = @provider.complete(Message.new(role, prompt), **params)
+        completion = @provider.complete(prompt, role, **params)
         @thread.concat [Message.new(role.to_s, prompt), completion.choices.first]
       end
     end
