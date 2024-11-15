@@ -16,13 +16,11 @@ module LLM
     attr_reader :thread
 
     ##
-    # @param [Array<LLM::Message>] thread
-    #  An array of messages that form the conversation history
     # @param [LLM::Provider] provider
     #  A provider
-    def initialize(provider, thread)
+    def initialize(provider)
       @provider = provider
-      @thread = thread
+      @thread = []
     end
 
     ##
@@ -30,11 +28,16 @@ module LLM
     # @return [LLM::Conversation]
     def chat(prompt, role = :user, **params)
       tap do
-        bot = @provider.chat(prompt, role, **params.merge(messages: @thread))
-        # The last two elements of the thread include the
-        # last input prompt, and the response from the LLM
-        @thread.concat(bot.thread[-2..])
+        prompt = transform_prompt(prompt)
+        completion = @provider.complete(Message.new(role, prompt), **params)
+        @thread.concat [ Message.new(role.to_s, prompt), completion.choices.first ]
       end
+    end
+
+    private
+
+    def transform_prompt(...)
+      @provider.transform_prompt(...)
     end
   end
 end
