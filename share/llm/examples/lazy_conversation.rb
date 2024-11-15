@@ -10,7 +10,7 @@ bot.chat "What is the frog's diet?"
 
 ##
 # At this point a single request is made to the provider
-# See 'LLM::LazyThread#each' for more details
+# See 'LLM::MessageQueue' for more details
 bot.messages.each do |message|
   print "[#{message.role}] ", message.content, "\n"
 end

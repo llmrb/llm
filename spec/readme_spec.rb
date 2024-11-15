@@ -38,7 +38,7 @@ RSpec.describe "The README examples" do
     end
 
     it "emits output" do
-      expect(expected_conversation).to eq(actual_conversation)
+      expect(actual_conversation).to eq(expected_conversation)
     end
   end
 

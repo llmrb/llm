@@ -4,7 +4,9 @@ A lightweight Ruby library for interacting with multiple LLM providers
 
 ## Examples
 
-### LazyConversation
+### Completion API
+
+#### LazyConversation
 
 The
 [`LLM::Provider#chat`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat-instance_method)
@@ -29,7 +31,7 @@ bot.chat "What is the frog's diet?"
 
 ##
 # At this point a single request is made to the provider
-# See 'LLM::LazyThread#each' for more details
+# See 'LLM::MessageQueue' for more details
 bot.messages.each do |message|
   print "[#{message.role}] ", message.content, "\n"
 end
@@ -49,7 +51,7 @@ end
 #   - Primarily insectivorous, feeding on insects like crickets and moths.
 ```
 
-### Conversation
+#### Conversation
 
 The
 [`LLM::Provider#chat`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
