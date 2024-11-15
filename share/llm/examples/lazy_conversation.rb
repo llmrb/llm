@@ -2,11 +2,15 @@
 require "llm"
 
 llm = LLM.openai(ENV["key"])
-bot = llm.chat! URI("https://upload.wikimedia.org/wikipedia/commons/b/be/Red_eyed_tree_frog_edit2.jpg")
-bot.chat "keep the answer concise", :system
+bot = llm.chat "keep the answer concise", :system
+bot.chat URI("https://upload.wikimedia.org/wikipedia/commons/b/be/Red_eyed_tree_frog_edit2.jpg")
 bot.chat "What is the frog's name?"
 bot.chat "What is the frog's habitat?"
 bot.chat "What is the frog's diet?"
+
+##
+# At this point a single request is made to the provider
+# See 'LLM::LazyThread#each' for more details
 bot.thread.each do |message|
   print "[#{message.role}] ", message.content, "\n"
 end
