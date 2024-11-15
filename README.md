@@ -30,7 +30,7 @@ bot.chat "What is the frog's diet?"
 ##
 # At this point a single request is made to the provider
 # See 'LLM::LazyThread#each' for more details
-bot.thread.each do |message|
+bot.messages.each do |message|
   print "[#{message.role}] ", message.content, "\n"
 end
 
@@ -68,7 +68,7 @@ bot = llm.chat! "be a helpful assistant", :system
 bot.chat "keep the answers short and sweet", :system
 bot.chat "help me choose a good book"
 bot.chat "books of poetry"
-bot.thread.each do |message|
+bot.messages.each do |message|
   print "[#{message.role}] ", message.content, "\n"
 end
 

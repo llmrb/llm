@@ -1,7 +1,9 @@
 module LLM
+  require_relative "message_queue"
+
   ##
   # {LLM::LazyConversation LLM::LazyConversation} provides a
-  # conversation object that allows input prompts to be stacked
+  # conversation object that allows input prompts to be queued
   # and only sent to the LLM when a response is needed.
   #
   # @example
@@ -9,27 +11,27 @@ module LLM
   #   bot = llm.chat!("What is the capital of France?")
   #   bot.chat("What should we eat in Paris?")
   #   bot.chat("What is the weather like in Paris?")
-  #   bot.thread.each do |message|
+  #   bot.messages.each do |message|
   #     # A single request is made at this point
   #   end
   class LazyConversation
     ##
-    # @return [LLM::LazyThread]
-    attr_reader :thread
+    # @return [LLM::MessageQueue]
+    attr_reader :messages
 
     ##
     # @param [LLM::Provider] provider
     #  A provider
     def initialize(provider)
       @provider = provider
-      @thread = LLM::LazyThread.new(provider)
+      @messages = LLM::MessageQueue.new(provider)
     end
 
     ##
     # @param prompt (see LLM::Provider#prompt)
     # @return [LLM::Conversation]
     def chat(prompt, role = :user, **params)
-      tap { @thread << [transform_prompt(prompt), role, params] }
+      tap { @messages << [transform_prompt(prompt), role, params] }
     end
 
     private
