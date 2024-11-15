@@ -18,7 +18,8 @@ class LLM::Gemini
         choices: raw["candidates"].map do
           LLM::Message.new(
             _1.dig("content", "role"),
-            _1.dig("content", "parts", 0, "text")
+            _1.dig("content", "parts", 0, "text"),
+            {completion: self}
           )
         end,
         prompt_tokens: raw.dig("usageMetadata", "promptTokenCount"),

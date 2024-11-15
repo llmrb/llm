@@ -82,6 +82,7 @@ RSpec.describe "LLM::Gemini" do
 
   context "with successful completion", :success do
     let(:completion) { gemini.complete(LLM::Message.new("user", "Hello!")) }
+    let(:choice) { completion.choices[0] }
 
     it "returns a completion" do
       expect(completion).to be_a(LLM::Response::Completion)
@@ -108,6 +109,10 @@ RSpec.describe "LLM::Gemini" do
         completion_tokens: 10,
         total_tokens: 12
       )
+    end
+
+    it "stores the completion as context" do
+      expect(choice.context[:completion]).to eq(completion)
     end
   end
 

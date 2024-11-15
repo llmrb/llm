@@ -64,6 +64,7 @@ RSpec.describe "LLM::Ollama" do
 
   context "with successful completion", :success do
     let(:completion) { ollama.complete("Hello!", :user) }
+    let(:choice) { completion.choices[0] }
 
     it "returns a completion" do
       expect(completion).to be_a(LLM::Response::Completion)
@@ -86,6 +87,10 @@ RSpec.describe "LLM::Ollama" do
         completion_tokens: 298,
         total_tokens: 324
       )
+    end
+
+    it "stores the completion as context" do
+      expect(choice.context[:completion]).to eq(completion)
     end
   end
 

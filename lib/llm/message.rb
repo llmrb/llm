@@ -2,13 +2,31 @@
 
 module LLM
   class Message
-    attr_accessor :role, :content
+    ##
+    # @return [Symbol]
+    attr_reader :role
 
-    def initialize(role, content)
+    ##
+    # @return [String]
+    attr_reader :content
+
+    ##
+    # @return [Hash]
+    attr_reader :context
+
+    ##
+    # @param [Symbol] role
+    # @param [String] content
+    # @param [Hash] context
+    # @return [LLM::Message]
+    def initialize(role, content, context = {})
       @role = role
       @content = content
+      @context = context
     end
 
+    ##
+    # @return [Hash]
     def to_h
       {role:, content:}
     end

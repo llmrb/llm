@@ -51,6 +51,7 @@ RSpec.describe "LLM::Anthropic" do
   context "with successful completion", :success do
     let(:message) { ["Hello, world", :user] }
     let(:completion) { anthropic.complete(*message) }
+    let(:choice) { completion.choices[0] }
 
     it "returns a completion" do
       expect(completion).to be_a(LLM::Response::Completion)
@@ -73,6 +74,10 @@ RSpec.describe "LLM::Anthropic" do
         completion_tokens: 503,
         total_tokens: 2598
       )
+    end
+
+    it "stores the completion as context" do
+      expect(choice.context[:completion]).to eq(completion)
     end
   end
 

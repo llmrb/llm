@@ -79,6 +79,7 @@ RSpec.describe "LLM::OpenAI" do
 
   context "with successful completion", :success do
     let(:completion) { openai.complete("Hello!", :user) }
+    let(:choice) { completion.choices[0] }
 
     it "returns a completion" do
       expect(completion).to be_a(LLM::Response::Completion)
@@ -101,6 +102,10 @@ RSpec.describe "LLM::OpenAI" do
         completion_tokens: 9,
         total_tokens: 18
       )
+    end
+
+    it "stores the completion as context" do
+      expect(choice.context[:completion]).to eq(completion)
     end
   end
 

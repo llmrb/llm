@@ -13,7 +13,7 @@ method returns a
 object
 that can maintain a "lazy" conversation where input prompts are sent to the
 provider only when needed. Once a conversation is initiated it will maintain a
-thread of messages that provide the LLM with a certain amount of extra context
+thread of messages that provide the LLM with a certain amount of extra information
 that can be re-used within the conversation:
 
 ```ruby
