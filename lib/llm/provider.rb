@@ -30,6 +30,16 @@ module LLM
     end
 
     ##
+    # @param [String] input
+    #  The input to embed
+    # @raise [NotImplementedError]
+    #  When the method is not implemented by a subclass
+    # @return [LLM::Response::Embedding]
+    def embed(input, **params)
+      raise NotImplementedError
+    end
+
+    ##
     # Completes a given prompt using the LLM
     # @param [String] prompt
     #  The input prompt to be completed
