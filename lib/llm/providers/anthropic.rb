@@ -17,6 +17,9 @@ module LLM
       super(secret, host: HOST, **)
     end
 
+    ##
+    # @param input (see LLM::Provider#embed)
+    # @return (see LLM::Provider#embed)
     def embed(input, **params)
       req = Net::HTTP::Post.new ["api.voyageai.com/v1", "embeddings"].join("/")
       body = {input:, model: "voyage-2"}.merge!(params)

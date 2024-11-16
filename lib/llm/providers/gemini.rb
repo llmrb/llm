@@ -17,6 +17,9 @@ module LLM
       super(secret, host: HOST, **)
     end
 
+    ##
+    # @param input (see LLM::Provider#embed)
+    # @return (see LLM::Provider#embed)
     def embed(input, **params)
       path = ["/v1beta/models", "text-embedding-004"].join("/")
       req = Net::HTTP::Post.new [path, "embedContent"].join(":")
