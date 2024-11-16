@@ -19,7 +19,10 @@ class LLM::OpenAI
       {
         model: raw["model"],
         choices: raw["choices"].map do
-          LLM::Message.new(*_1["message"].values_at("role", "content"), {completion: self})
+          mesg = _1["message"]
+          logprobs = _1["logprobs"]
+          role, content = mesg.values_at("role", "content")
+          LLM::Message.new(role, content, {completion: self, logprobs:})
         end,
         prompt_tokens: raw.dig("usage", "prompt_tokens"),
         completion_tokens: raw.dig("usage", "completion_tokens"),

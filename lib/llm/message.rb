@@ -26,6 +26,13 @@ module LLM
     end
 
     ##
+    # @return [OpenStruct]
+    def logprobs
+      return nil unless context.key?(:logprobs)
+      OpenStruct.from_hash(context[:logprobs])
+    end
+
+    ##
     # @return [Hash]
     def to_h
       {role:, content:}
