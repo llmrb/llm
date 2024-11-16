@@ -32,7 +32,7 @@ module LLM
       tap do
         prompt = transform_prompt(prompt)
         completion = @provider.complete(prompt, role, **params)
-        @thread.concat [Message.new(role.to_s, prompt), completion.choices[0]]
+        @messages.concat [Message.new(role.to_s, prompt), completion.choices[0]]
       end
     end
 
