@@ -4,6 +4,25 @@ A lightweight Ruby library for interacting with multiple LLM providers
 
 ## Examples
 
+### Providers
+
+#### Introduction
+
+All providers inherit from [`LLM::Provider`](https://0x1eef.github.io/x/llm/LLM/Provider.html).
+They share a common interface and set of functionality between them. They can be
+instantiated with an API key and an (optional) set of options via the
+[the singleton methods of LLM](https://0x1eef.github.io/x/llm/LLM.html).
+For example:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+llm = LLM.openai("yourapikey", <options>)
+llm = LLM.anthropic("yourapikey", <options>)
+llm = LLM.ollama(nil, <options>)
+# etc ...
+```
+
 ### Completion API
 
 #### LazyConversation
