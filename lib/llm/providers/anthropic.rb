@@ -29,6 +29,7 @@ module LLM
     end
 
     ##
+    # @see https://docs.anthropic.com/en/api/messages Anthropic docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)

@@ -30,6 +30,7 @@ module LLM
     end
 
     ##
+    # @see https://ai.google.dev/api/generate-content#v1beta.models.generateContent Gemini docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)

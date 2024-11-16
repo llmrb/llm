@@ -29,6 +29,7 @@ module LLM
     end
 
     ##
+    # @see https://platform.openai.com/docs/api-reference/chat/create OpenAI docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
