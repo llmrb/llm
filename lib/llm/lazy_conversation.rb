@@ -8,9 +8,9 @@ module LLM
   #
   # @example
   #   llm = LLM.openai(key)
-  #   bot = llm.chat!("What is the capital of France?")
-  #   bot.chat("What should we eat in Paris?")
-  #   bot.chat("What is the weather like in Paris?")
+  #   bot = llm.chat("Be a helpful weather assistant", :system)
+  #   bot.chat("What's the weather like in Rio?")
+  #   bot.chat("What's the weather like in Algiers?")
   #   bot.messages.each do |message|
   #     # A single request is made at this point
   #   end
