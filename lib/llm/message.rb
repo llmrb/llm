@@ -12,24 +12,24 @@ module LLM
 
     ##
     # @return [Hash]
-    attr_reader :context
+    attr_reader :extra
 
     ##
     # @param [Symbol] role
     # @param [String] content
-    # @param [Hash] context
+    # @param [Hash] extra
     # @return [LLM::Message]
-    def initialize(role, content, context = {})
+    def initialize(role, content, extra = {})
       @role = role
       @content = content
-      @context = context
+      @extra = extra
     end
 
     ##
     # @return [OpenStruct]
     def logprobs
-      return nil unless context.key?(:logprobs)
-      OpenStruct.from_hash(context[:logprobs])
+      return nil unless extra.key?(:logprobs)
+      OpenStruct.from_hash(extra[:logprobs])
     end
 
     ##

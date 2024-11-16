@@ -77,7 +77,7 @@ RSpec.describe "LLM::Anthropic" do
     end
 
     it "stores the completion as context" do
-      expect(choice.context[:completion]).to eq(completion)
+      expect(choice.extra[:completion]).to eq(completion)
     end
   end
 
