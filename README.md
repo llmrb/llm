@@ -14,7 +14,7 @@ method returns a
 [`LLM::LazyConversation`](https://0x1eef.github.io/x/llm/LLM/LazyConversation.html)
 object
 that can maintain a "lazy" conversation where input prompts are sent to the
-provider only when needed. Once a conversation is initiated it will maintain a
+provider only when neccessary. Once a conversation is initiated it will maintain a
 thread of messages that provide the LLM with a certain amount of extra information
 that can be re-used within the conversation:
 
@@ -28,11 +28,10 @@ bot.chat URI("https://upload.wikimedia.org/wikipedia/commons/b/be/Red_eyed_tree_
 bot.chat "What is the frog's name?"
 bot.chat "What is the frog's habitat?"
 bot.chat "What is the frog's diet?"
-
-##
-# At this point a single request is made to the provider
-# See 'LLM::MessageQueue' for more details
 bot.messages.each do |message|
+  ##
+  # At this point a single request is made to the provider
+  # See 'LLM::MessageQueue' for more details
   print "[#{message.role}] ", message.content, "\n"
 end
 
