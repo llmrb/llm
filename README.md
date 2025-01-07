@@ -6,7 +6,7 @@ A lightweight Ruby library for interacting with multiple LLM providers
 
 ### Providers
 
-#### Introduction
+#### LLM::Provider
 
 All providers inherit from [`LLM::Provider`](https://0x1eef.github.io/x/llm/LLM/Provider.html).
 They share a common interface and set of functionality between them. They can be
@@ -25,7 +25,7 @@ llm = LLM.ollama(nil, <options>)
 
 ### Completion API
 
-#### LazyConversation
+#### LLM::LazyConversation
 
 The
 [`LLM::Provider#chat`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat-instance_method)
@@ -69,7 +69,7 @@ end
 #   - Primarily insectivorous, feeding on insects like crickets and moths.
 ```
 
-#### Conversation
+#### LLM::Conversation
 
 The
 [`LLM::Provider#chat`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
