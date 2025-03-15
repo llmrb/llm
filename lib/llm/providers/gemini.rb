@@ -39,7 +39,7 @@ module LLM
       path = ["/v1beta/models", params.delete(:model)].join("/")
       req = Net::HTTP::Post.new [path, "generateContent"].join(":")
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, transform_prompt(prompt))]
-      body = { contents: [{ parts: messages.map { _1.to_h[:content] } }] }
+      body = {contents: [{parts: messages.map { _1.to_h[:content] }}]}
       req = preflight(req, body)
       res = request(@http, req)
       Response::Completion.new(res.body, self).extend(response_parser)

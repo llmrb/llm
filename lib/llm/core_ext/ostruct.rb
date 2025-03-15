@@ -14,15 +14,21 @@ class OpenStruct
     def from_hash(hash_obj)
       visited_object = {}
       hash_obj.each do |key, value|
-        visited_object[key] = if Hash === value
-                                from_hash(value)
-                              elsif Array === value
-                                value.map { |v| Hash === v ? from_hash(v) : v }
-                              else
-                                value
-                              end
+        visited_object[key] = walk(value)
       end
       OpenStruct.new(visited_object)
+    end
+
+    private
+
+    def walk(value)
+      if Hash === value
+        from_hash(value)
+      elsif Array === value
+        value.map { |v| (Hash === v) ? from_hash(v) : v }
+      else
+        value
+      end
     end
   end
   extend FromHash
