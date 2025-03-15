@@ -17,7 +17,7 @@ module LLM
     private
 
     def parsed
-      @parsed ||= @provider.parse_embedding(raw)
+      @parsed ||= parse_embedding(raw)
     end
   end
 end
