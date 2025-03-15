@@ -25,7 +25,7 @@ module LLM
       body = {input:, model: "text-embedding-3-small"}.merge!(params)
       req = preflight(req, body)
       res = request @http, req
-      Response::Embedding.new(res.body, self)
+      Response::Embedding.new(res.body, self).extend(response_parser)
     end
 
     ##
