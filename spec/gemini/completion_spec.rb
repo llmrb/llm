@@ -2,7 +2,7 @@
 
 require "webmock/rspec"
 
-RSpec.describe "LLM::Gemini" do
+RSpec.describe "LLM::Gemini: completions" do
   subject(:gemini) { LLM.gemini("") }
 
   before(:each, :success) do

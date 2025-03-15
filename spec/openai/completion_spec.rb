@@ -2,7 +2,7 @@
 
 require "webmock/rspec"
 
-RSpec.describe "LLM::OpenAI" do
+RSpec.describe "LLM::OpenAI: completions" do
   subject(:openai) { LLM.openai("") }
 
   before(:each, :success) do
