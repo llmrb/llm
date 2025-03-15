@@ -20,16 +20,22 @@ RSpec.describe "The README examples" do
 
     let(:expected_conversation) do
       [
-        "[system] keep the answer concise",
-        '[user] [{:type=>:image_url, :image_url=>{:url=>"https://upload.wikimedia.org/wikipedia/commons/b/be/Red_eyed_tree_frog_edit2.jpg"}}]',
-        "[user] What is the frog's name?",
-        "[user] What is the frog's habitat?",
-        "[user] What is the frog's diet?",
-        "[assistant] The frog in the image is likely a **Red-Eyed Tree Frog**.",
-        "",
-        "**Habitat:** Typically found in tropical rainforests near water bodies like ponds and streams.",
-        "",
-        "**Diet:** Primarily eats insects, including crickets, moths, and other small invertebrates.\n"
+        "[system] You are a friendly chatbot. Sometimes, you like to tell a joke.",
+        "But the joke must be based on the given inputs.",
+        "I will provide you a set of messages. Reply to all of them.",
+        "A message is considered unanswered if there is no corresponding assistant response.",
+
+        "[user] What color is the sky?",
+        "[user] What color is an orange?",
+        "[user] I like Ruby",
+
+        "[assistant] The sky is typically blue during the day, but it can have beautiful",
+        "hues of pink, orange, and purple during sunset! As for an orange,",
+        "it's typically orange in color - funny how that works, right?",
+        "I love Ruby too! Did you know that a Ruby is not only a beautiful",
+        "gemstone, but it's also a programming language that's both elegant",
+        "and powerful! Speaking of colors, why did the orange stop?",
+        "Because it ran out of juice!"
       ].map(&:strip)
     end
 
@@ -38,7 +44,7 @@ RSpec.describe "The README examples" do
     end
 
     it "emits output" do
-      expect(actual_conversation).to eq(expected_conversation)
+      expect(join(actual_conversation)).to eq(join(expected_conversation))
     end
   end
 
@@ -48,5 +54,9 @@ RSpec.describe "The README examples" do
 
   def readme_example(example)
     File.join(Dir.getwd, "share", "llm", "examples", example)
+  end
+
+  def join(lines)
+    lines.reject(&:empty?).join("\n")
   end
 end
