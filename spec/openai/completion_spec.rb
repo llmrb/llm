@@ -10,7 +10,7 @@ RSpec.describe "LLM::OpenAI" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 200,
-        body: fixture("ok_completion.json"),
+        body: fixture("openai/completions/ok_completion.json"),
         headers: {"Content-Type" => "application/json"}
       )
   end
@@ -20,7 +20,7 @@ RSpec.describe "LLM::OpenAI" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 401,
-        body: fixture("unauthorized_completion.json"),
+        body: fixture("openai/completions/unauthorized_completion.json"),
         headers: {"Content-Type" => "application/json"}
       )
   end
@@ -30,7 +30,7 @@ RSpec.describe "LLM::OpenAI" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 400,
-        body: fixture("badrequest_completion.json")
+        body: fixture("openai/completions/badrequest_completion.json")
       )
   end
 
@@ -95,13 +95,5 @@ RSpec.describe "LLM::OpenAI" do
     rescue LLM::Error => ex
       expect(ex.response).to be_instance_of(Net::HTTPBadRequest)
     end
-  end
-
-  def fixture(file)
-    File.read File.join(fixtures, file)
-  end
-
-  def fixtures
-    File.join(__dir__, "..", "fixtures", "responses", "openai", "completions")
   end
 end
