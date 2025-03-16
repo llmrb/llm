@@ -37,5 +37,19 @@ module LLM
     def to_h
       {role:, content:}
     end
+
+    ##
+    # @param [Object] other
+    #  The other object to compare
+    # @return [Boolean]
+    #  Returns true when the "other" object has the same role and content
+    def ==(other)
+      if other.respond_to?(:to_h)
+        to_h == other.to_h
+      else
+        false
+      end
+    end
+    alias_method :eql?, :==
   end
 end
