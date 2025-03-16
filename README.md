@@ -8,107 +8,94 @@ A lightweight Ruby library for interacting with multiple LLM providers
 
 #### LLM::Provider
 
-All providers inherit from [`LLM::Provider`](https://0x1eef.github.io/x/llm/LLM/Provider.html).
-They share a common interface and set of functionality between them. They can be
-instantiated with an API key and an (optional) set of options via the
-[the singleton methods of LLM](https://0x1eef.github.io/x/llm/LLM.html).
-For example:
+All providers inherit from [`LLM::Provider`](https://0x1eef.github.io/x/llm/LLM/Provider.html) &ndash;
+they share a common interface and set of functionality. Each provider can be instantiated
+using an API key (if required) and an optional set of configuration options via
+[the singleton methods of LLM](https://0x1eef.github.io/x/llm/LLM.html). For example:
 
 ```ruby
-#!/usr/bin/env ruby
 require "llm"
-llm = LLM.openai("yourapikey", <options>)
-llm = LLM.anthropic("yourapikey", <options>)
-llm = LLM.ollama(nil, <options>)
-# etc ...
+llm = LLM.openai("yourapikey")
+llm = LLM.anthropic("yourapikey")
+llm = LLM.ollama(nil)
 ```
 
-### Completion API
+### Completions
 
-#### LLM::LazyConversation
+#### Conversation
 
 The
 [`LLM::Provider#chat`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat-instance_method)
 method returns a
 [`LLM::LazyConversation`](https://0x1eef.github.io/x/llm/LLM/LazyConversation.html)
-object
-that can maintain a "lazy" conversation where input prompts are sent to the
-provider only when neccessary. Once a conversation is initiated it will maintain a
-thread of messages that provide the LLM with a certain amount of extra information
-that can be re-used within the conversation:
+object, and it allows for a "lazy" conversation where messages are batched and
+sent to the provider only when necessary. The non-lazy counterpart is available via
+[`LLM::Provider#chat!`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method).
+Both lazy and non-lazy conversations maintain a message thread that can be reused 
+as context throughout the conversation:
 
 ```ruby
-#!/usr/bin/env ruby
 require "llm"
+llm = LLM.openai(ENV["KEY"])
+bot = llm.chat(<<~SYSTEM, :system)
+You are a friendly chatbot. Sometimes, you like to tell a joke.
+But the joke must be based on the given inputs.
 
-llm = LLM.openai("yourapikey")
-bot = llm.chat "keep the answer concise", :system
-bot.chat URI("https://upload.wikimedia.org/wikipedia/commons/b/be/Red_eyed_tree_frog_edit2.jpg")
-bot.chat "What is the frog's name?"
-bot.chat "What is the frog's habitat?"
-bot.chat "What is the frog's diet?"
+I will provide you a set of messages. Reply to all of them.
+A message is considered unanswered if there is no corresponding assistant response.
+SYSTEM
+bot.chat "What color is the sky?"
+bot.chat "What color is an orange?"
+bot.chat "I like Ruby"
 bot.messages.each do |message|
-  ##
   # At this point a single request is made to the provider
   # See 'LLM::MessageQueue' for more details
   print "[#{message.role}] ", message.content, "\n"
 end
 
 ##
-# [system] keep the answer concise
-# [user] [{:type=>:image_url, :image_url=>{:url=>"https://upload.wikimedia.org/wikipedia/commons/b/be/Red_eyed_tree_frog_edit2.jpg"}}]
-# [user] What is the frog's name?
-# [user] What is the frog's habitat?
-# [user] What is the frog's diet?
-# [assistant] The frog in the image is likely a Red-eyed Tree Frog.
+# [system] You are a friendly chatbot. Sometimes, you like to tell a joke.
+#          But the joke must be based on the given inputs.
+#          I will provide you a set of messages. Reply to all of them.
+#          A message is considered unanswered if there is no corresponding assistant response.
 #
-#  #### Habitat:
-#  - Typically found in tropical rainforests, especially in Central America.
+# [user] What color is the sky?
+# [user] What color is an orange?
+# [user] I like Ruby
 #
-#  #### Diet:
-#   - Primarily insectivorous, feeding on insects like crickets and moths.
+# [assistant] The sky is typically blue during the day, but it can have beautiful
+#             hues of pink, orange, and purple during sunset! As for an orange,
+#             it is usually orange in color—funny how that works, right?
+#             I love Ruby too! Did you know that a Ruby is not only a beautiful
+#             gemstone but also a programming language? So, you could say it's both
+#             precious and powerful! Speaking of colors, why did the orange stop?
+#             Because it ran out of juice! 🍊😂
 ```
 
-#### LLM::Conversation
+### Embeddings
+
+#### Text
 
 The
-[`LLM::Provider#chat`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
-method returns a
-[`LLM::Conversation`](https://0x1eef.github.io/x/llm/LLM/Conversation.html)
-object that can maintain a conversation with a LLM provider but unlike
-[`LLM::LazyConversation`](https://0x1eef.github.io/x/llm/LLM/LazyConversation.html)
-each call to `chat!` / `chat` corresponds to a HTTP request to the provider:
+[`LLM::Provider#embed`](https://0x1eef.github.io/x/llm/LLM/Provider.html#embed-instance_method)
+method generates a vector representation of a given piece of text.
+Embeddings capture the semantic meaning of text, and they are
+commonly used in tasks such as text similarity comparison (e.g., finding related documents),
+semantic search in vector databases, and the clustering and classification
+of text-based data:
 
 ```ruby
-#!/usr/bin/env ruby
 require "llm"
-
-llm = LLM.openai("yourapikey")
-bot = llm.chat! "be a helpful assistant", :system
-bot.chat "keep the answers short and sweet", :system
-bot.chat "help me choose a good book"
-bot.chat "books of poetry"
-bot.messages.each do |message|
-  print "[#{message.role}] ", message.content, "\n"
-end
+llm = LLM.openai(ENV["KEY"])
+res = llm.embed("Hello, world!")
+print res.class, "\n"
+print res.embeddings.size, "\n"
+print res.embeddings[0].size, "\n"
 
 ##
-# [system] be a helpful assistant
-# [assistant] Of course! How can I assist you today?
-# [system] keep the answers short and sweet
-# [assistant] Got it! What do you need help with?
-# [user] help me choose a good book
-# [assistant] Sure! What genre are you interested in?
-# [user] books of poetry
-# [assistant] Here are a few great poetry collections:
-#
-# 1. **"The Sun and Her Flowers" by Rupi Kaur**
-# 2. **"The Carrying" by Ada Limón**
-# 3. **"Milk and Honey" by Rupi Kaur**
-# 4. **"Ariel" by Sylvia Plath**
-# 5. **"The Poetry of Pablo Neruda"**
-#
-# Happy reading!
+# LLM::Response::Embedding
+# 1
+# 1536
 ```
 
 ## Providers
