@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LLM
   ##
   # {LLM::MessageQueue LLM::MessageQueue} provides an Enumerable
