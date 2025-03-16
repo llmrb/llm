@@ -1,6 +1,8 @@
 ## About
 
-A lightweight Ruby library for interacting with multiple LLM providers
+llm.rb is a lightweight Ruby library that provides a common interface
+and set of functionality for multple Large Language Models (LLMs). It
+is designed to be simple, flexible, and easy to use.
 
 ## Examples
 
@@ -31,7 +33,7 @@ method returns a
 object, and it allows for a "lazy" conversation where messages are batched and
 sent to the provider only when necessary. The non-lazy counterpart is available via
 [`LLM::Provider#chat!`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method).
-Both lazy and non-lazy conversations maintain a message thread that can be reused 
+Both lazy and non-lazy conversations maintain a message thread that can be reused
 as context throughout the conversation:
 
 ```ruby
