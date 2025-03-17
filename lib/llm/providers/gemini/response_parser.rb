@@ -4,6 +4,7 @@ class LLM::Gemini
   module ResponseParser
     def parse_embedding(raw)
       {
+        model: "text-embedding-004",
         embeddings: raw.dig("embedding", "values")
       }
     end
