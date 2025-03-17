@@ -18,6 +18,7 @@ using an API key (if required) and an optional set of configuration options via
 ```ruby
 require "llm"
 llm = LLM.openai("yourapikey")
+llm = LLM.gemini("yourapikey")
 llm = LLM.anthropic("yourapikey")
 llm = LLM.ollama(nil)
 ```
