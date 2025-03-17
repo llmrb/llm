@@ -26,7 +26,7 @@ module LLM
       body = {content: {parts: [{text: input}]}}
       req = preflight(req, body)
       res = request @http, req
-      Response::Embedding.new(res.body, self)
+      Response::Embedding.new(res.body, self).extend(response_parser)
     end
 
     ##
