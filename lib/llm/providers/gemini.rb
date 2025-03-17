@@ -38,14 +38,12 @@ module LLM
       params = DEFAULT_PARAMS.merge(params)
       path = ["/v1beta/models", params.delete(:model)].join("/")
       req = Net::HTTP::Post.new [path, "generateContent"].join(":")
-      messages = [*(params.delete(:messages) || []), LLM::Message.new(role, transform_prompt(prompt))]
-      body = {contents: [{parts: messages.map { _1.to_h[:content] }}]}
+      messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
+      body = {contents: [{parts: messages.map(&:content)}]}
       req = preflight(req, body)
       res = request(@http, req)
       Response::Completion.new(res.body, self).extend(response_parser)
     end
-
-    private
 
     def transform_prompt(prompt)
       if LLM::File === prompt
@@ -60,6 +58,8 @@ module LLM
         {text: prompt}
       end
     end
+
+    private
 
     def auth(req)
       req.path.replace [req.path, URI.encode_www_form(key: @secret)].join("?")
