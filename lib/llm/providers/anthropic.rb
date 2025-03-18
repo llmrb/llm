@@ -51,8 +51,8 @@ module LLM
     def format_prompt(prompt)
       if URI === prompt
         [{
-           type: :image,
-           source: { type: :base64, media_type: prompt.content_type, data: [prompt.to_s].pack("m0") }
+          type: :image,
+          source: {type: :base64, media_type: prompt.content_type, data: [prompt.to_s].pack("m0")}
         }]
       else
         prompt

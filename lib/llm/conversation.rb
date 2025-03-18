@@ -30,8 +30,8 @@ module LLM
     # @return [LLM::Conversation]
     def chat(prompt, role = :user, **params)
       tap do
-        completion = @provider.complete(prompt, role, **params)
-        @messages.concat [Message.new(role.to_s, prompt), completion.choices[0]]
+        completion = @provider.complete(prompt, role, **params.merge(messages:))
+        @messages.concat [Message.new(role, prompt), completion.choices[0]]
       end
     end
   end
