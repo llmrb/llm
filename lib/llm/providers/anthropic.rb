@@ -9,7 +9,7 @@ module LLM
     require_relative "anthropic/response_parser"
 
     HOST = "api.anthropic.com"
-    DEFAULT_PARAMS = {model: "claude-3-5-sonnet-20240620"}.freeze
+    DEFAULT_PARAMS = {max_tokens: 1024, model: "claude-3-5-sonnet-20240620"}.freeze
 
     ##
     # @param secret (see LLM::Provider#initialize)
@@ -24,7 +24,7 @@ module LLM
       req = Net::HTTP::Post.new ["api.voyageai.com/v1", "embeddings"].join("/")
       body = {input:, model: "voyage-2"}.merge!(params)
       req = preflight(req, body)
-      res = request @http, req
+      res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
     end
 
@@ -52,7 +52,7 @@ module LLM
       if URI === prompt
         [{
           type: :image,
-          source: {type: :base64, media_type: prompt.content_type, data: [prompt.to_s].pack("m0")}
+          source: {type: :base64, media_type: LLM::File(prompt.to_s).mime_type, data: [prompt.to_s].pack("m0")}
         }]
       else
         prompt
@@ -60,6 +60,7 @@ module LLM
     end
 
     def auth(req)
+      req["anthropic-version"] = "2023-06-01"
       req["x-api-key"] = @secret
     end
 
