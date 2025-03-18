@@ -1,7 +1,9 @@
 PATH
   remote: .
   specs:
-    LLM (0.1.0)
+    llm.rb (0.1.0)
+      json
+      net-http (~> 0.6.0)
 
 GEM
   remote: https://rubygems.org/
@@ -20,6 +22,8 @@ GEM
       rexml
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
+    net-http (0.6.0)
+      uri
     parallel (1.26.3)
     parser (3.3.5.0)
       ast (~> 2.4.1)
@@ -74,6 +78,7 @@ GEM
       rubocop-performance (~> 1.21.0)
     test-cmd.rb (0.12.4)
     unicode-display_width (2.6.0)
+    uri (1.0.3)
     webmock (3.24.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -86,8 +91,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  LLM!
   kramdown (~> 2.4)
+  llm.rb!
   rake (~> 13.0)
   rspec (~> 3.0)
   standard (~> 1.40)
