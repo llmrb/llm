@@ -25,7 +25,7 @@ module LLM
       body = {input:, model: "voyage-2"}.merge!(params)
       req = preflight(req, body)
       res = request @http, req
-      Response::Embedding.new(res.body, self)
+      Response::Embedding.new(res).extend(response_parser)
     end
 
     ##
@@ -39,8 +39,8 @@ module LLM
       params = DEFAULT_PARAMS.merge(params)
       body = {messages: messages.map(&:to_h)}.merge!(params)
       req = preflight(req, body)
-      res = request @http, req
-      Response::Completion.new(res.body, self).extend(response_parser)
+      res = request(@http, req)
+      Response::Completion.new(res).extend(response_parser)
     end
 
     private

@@ -2,29 +2,27 @@
 
 class LLM::Anthropic
   module ResponseParser
-    def parse_embedding(raw)
+    def parse_embedding(body)
       {
-        model: raw["model"],
-        embeddings: raw.dig("data").map do |data|
-          data["embedding"]
-        end,
-        total_tokens: raw.dig("usage", "total_tokens")
+        model: body["model"],
+        embeddings: body["data"].map { _1["embedding"] },
+        total_tokens: body.dig("usage", "total_tokens")
       }
     end
 
     ##
-    # @param [Hash] raw
-    #  The raw response from the LLM provider
+    # @param [Hash] body
+    #  The response body from the LLM provider
     # @return [Hash]
-    def parse_completion(raw)
+    def parse_completion(body)
       {
-        model: raw["model"],
-        choices: raw["content"].map do
+        model: body["model"],
+        choices: body["content"].map do
           # TODO: don't hardcode role
           LLM::Message.new("assistant", _1["text"], {completion: self})
         end,
-        prompt_tokens: raw.dig("usage", "input_tokens"),
-        completion_tokens: raw.dig("usage", "output_tokens")
+        prompt_tokens: body.dig("usage", "input_tokens"),
+        completion_tokens: body.dig("usage", "output_tokens")
       }
     end
   end

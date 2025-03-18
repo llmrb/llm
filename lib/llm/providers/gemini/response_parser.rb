@@ -2,29 +2,29 @@
 
 class LLM::Gemini
   module ResponseParser
-    def parse_embedding(raw)
+    def parse_embedding(body)
       {
         model: "text-embedding-004",
-        embeddings: raw.dig("embedding", "values")
+        embeddings: body.dig("embedding", "values")
       }
     end
 
     ##
-    # @param [Hash] raw
-    #  The raw response from the LLM provider
+    # @param [Hash] body
+    #  The response body from the LLM provider
     # @return [Hash]
-    def parse_completion(raw)
+    def parse_completion(body)
       {
-        model: raw["modelVersion"],
-        choices: raw["candidates"].map do
+        model: body["modelVersion"],
+        choices: body["candidates"].map do
           LLM::Message.new(
             _1.dig("content", "role"),
             _1.dig("content", "parts", 0, "text"),
             {completion: self}
           )
         end,
-        prompt_tokens: raw.dig("usageMetadata", "promptTokenCount"),
-        completion_tokens: raw.dig("usageMetadata", "candidatesTokenCount")
+        prompt_tokens: body.dig("usageMetadata", "promptTokenCount"),
+        completion_tokens: body.dig("usageMetadata", "candidatesTokenCount")
       }
     end
   end

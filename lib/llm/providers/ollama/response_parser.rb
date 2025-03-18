@@ -3,15 +3,15 @@
 class LLM::Ollama
   module ResponseParser
     ##
-    # @param [Hash] raw
-    #  The raw response from the LLM provider
+    # @param [Hash] body
+    #  The response body from the LLM provider
     # @return [Hash]
-    def parse_completion(raw)
+    def parse_completion(body)
       {
-        model: raw["model"],
-        choices: [LLM::Message.new(*raw["message"].values_at("role", "content"), {completion: self})],
-        prompt_tokens: raw.dig("prompt_eval_count"),
-        completion_tokens: raw.dig("eval_count")
+        model: body["model"],
+        choices: [LLM::Message.new(*body["message"].values_at("role", "content"), {completion: self})],
+        prompt_tokens: body.dig("prompt_eval_count"),
+        completion_tokens: body.dig("eval_count")
       }
     end
   end

@@ -11,7 +11,7 @@ module LLM
 
     ##
     # @return [Array<LLM::Message>]
-    #  Returns an array of messages
+    #   Returns an array of messages
     def choices
       parsed[:choices]
     end
@@ -34,9 +34,7 @@ module LLM
     # @return [Integer]
     #   Returns the total count of tokens
     def total_tokens
-      @provider.respond_to?(:completion_total_tokens) ?
-        parsed[:total_tokens] :
-        prompt_tokens + completion_tokens
+      prompt_tokens + completion_tokens
     end
 
     private
@@ -46,7 +44,7 @@ module LLM
     # @return [Hash]
     #   Returns the parsed completion response from the provider
     def parsed
-      @parsed ||= parse_completion(raw)
+      @parsed ||= parse_completion(body)
     end
   end
 end
