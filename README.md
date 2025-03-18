@@ -32,10 +32,10 @@ The
 method returns a
 [LLM::LazyConversation](https://0x1eef.github.io/x/llm/LLM/LazyConversation.html)
 object, and it allows for a "lazy" conversation where messages are batched and
-sent to the provider only when necessary. The non-lazy counterpart is available via
-[LLM::Provider#chat!](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method).
-Both lazy and non-lazy conversations maintain a message thread that can be reused
-as context throughout the conversation:
+sent to the provider only when necessary. The non-lazy counterpart is available via the
+[LLM::Provider#chat!](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
+method. Both lazy and non-lazy conversations maintain a message thread that can
+be reused as context throughout the conversation:
 
 ```ruby
 require "llm"
@@ -87,7 +87,7 @@ object. Generally a
 object is used to reference an image on the web, and an
 [LLM::File](https://0x1eef.github.io/x/llm/LLM/File.html)
 object is used to reference a file on the local filesystem.
-The following list shows the types of prompts that each 
+The following list shows the types of prompts that each
 provider accepts:
 
 * OpenAI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => &nbsp; String, URI
