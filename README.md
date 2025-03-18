@@ -10,7 +10,7 @@ is designed to be simple, flexible, and easy to use.
 
 #### LLM::Provider
 
-All providers inherit from [`LLM::Provider`](https://0x1eef.github.io/x/llm/LLM/Provider.html) &ndash;
+All providers inherit from [LLM::Provider](https://0x1eef.github.io/x/llm/LLM/Provider.html) &ndash;
 they share a common interface and set of functionality. Each provider can be instantiated
 using an API key (if required) and an optional set of configuration options via
 [the singleton methods of LLM](https://0x1eef.github.io/x/llm/LLM.html). For example:
@@ -28,12 +28,12 @@ llm = LLM.ollama(nil)
 #### Conversation
 
 The
-[`LLM::Provider#chat`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat-instance_method)
+[LLM::Provider#chat](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat-instance_method)
 method returns a
-[`LLM::LazyConversation`](https://0x1eef.github.io/x/llm/LLM/LazyConversation.html)
+[LLM::LazyConversation](https://0x1eef.github.io/x/llm/LLM/LazyConversation.html)
 object, and it allows for a "lazy" conversation where messages are batched and
 sent to the provider only when necessary. The non-lazy counterpart is available via
-[`LLM::Provider#chat!`](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method).
+[LLM::Provider#chat!](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method).
 Both lazy and non-lazy conversations maintain a message thread that can be reused
 as context throughout the conversation:
 
@@ -74,6 +74,26 @@ end
 #             precious and powerful! Speaking of colors, why did the orange stop?
 #             Because it ran out of juice! 🍊😂
 ```
+
+#### Prompts
+
+Both lazy and non-lazy conversations accept text as a prompt.
+Depending on the provider, they may also accept a
+[URI](https://docs.ruby-lang.org/en/master/URI.html)
+or
+[LLM::File](https://0x1eef.github.io/x/llm/LLM/File.html)
+object. Generally a
+[URI](https://docs.ruby-lang.org/en/master/URI.html)
+object is used to reference an image on the web, and an
+[LLM::File](https://0x1eef.github.io/x/llm/LLM/File.html)
+object is used to reference a file on the local filesystem.
+The following list shows the types of prompts that each 
+provider accepts:
+
+* OpenAI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => &nbsp; String, URI
+* Gemini &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => &nbsp; String, LLM::File
+* Anthropic &nbsp; => &nbsp; String, URI
+* Ollama &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => &nbsp; String, URI
 
 ### Embeddings
 

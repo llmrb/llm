@@ -35,7 +35,7 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       req = Net::HTTP::Post.new ["/v1", "chat", "completions"].join("/")
-      messages = [*(params.delete(:messages) || []), Message.new(role, transform_prompt(prompt))]
+      messages = [*(params.delete(:messages) || []), Message.new(role, format_prompt(prompt))]
       params = DEFAULT_PARAMS.merge(params)
       body = {messages: messages.map(&:to_h)}.merge!(params)
       req = preflight(req, body)
@@ -43,18 +43,18 @@ module LLM
       Response::Completion.new(res.body, self).extend(response_parser)
     end
 
+    private
+
     ##
-    # @param prompt (see LLM::Provider#transform_prompt)
-    # @return (see LLM::Provider#transform_prompt)
-    def transform_prompt(prompt)
+    # @param prompt (see LLM::Provider#format_prompt)
+    # @return (see LLM::Provider#format_prompt)
+    def format_prompt(prompt)
       if URI === prompt
         [{type: :image_url, image_url: {url: prompt.to_s}}]
       else
         prompt
       end
     end
-
-    private
 
     def auth(req)
       req["Authorization"] = "Bearer #{@secret}"

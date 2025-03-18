@@ -72,17 +72,17 @@ module LLM
       Conversation.new(self).chat(prompt, role, **params)
     end
 
+    private
+
     ##
-    # Transforms the prompt before sending it
-    # @param [String, URI, Object] prompt
-    #  The prompt to transform
-    # @return [Object]
-    #  The transformed prompt
-    def transform_prompt(prompt)
+    # Formats the prompt before sending it to the LLM
+    # @param [String, URI, LLM::File] prompt
+    #  The prompt to format
+    # @return [String, Hash]
+    #  The formatted prompt
+    def format_prompt(prompt)
       prompt
     end
-
-    private
 
     ##
     # Prepares a request for authentication
