@@ -30,7 +30,7 @@ end
 #
 # [assistant] The sky is typically blue during the day, but it can have beautiful
 #             hues of pink, orange, and purple during sunset! As for an orange,
-#             it is usually orange in color—funny how that works, right?#
+#             it is usually orange in color—funny how that works, right?
 #             I love Ruby too! Did you know that a Ruby is not only a beautiful
 #             gemstone but also a programming language? So, you could say it's both
 #             precious and powerful! Speaking of colors, why did the orange stop?

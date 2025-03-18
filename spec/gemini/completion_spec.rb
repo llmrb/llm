@@ -2,7 +2,7 @@
 
 require "webmock/rspec"
 
-RSpec.describe "LLM::Gemini" do
+RSpec.describe "LLM::Gemini: completions" do
   subject(:gemini) { LLM.gemini("") }
 
   before(:each, :success) do
@@ -10,46 +10,7 @@ RSpec.describe "LLM::Gemini" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 200,
-        body: '{
-          "candidates": [
-            {
-              "content": {
-                "parts": [
-                  {
-                    "text": "Hello! How can I help you today? \n"
-                  }
-                ],
-                "role": "model"
-              },
-              "finishReason": "STOP",
-              "index": 0,
-              "safetyRatings": [
-                {
-                  "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                  "probability": "NEGLIGIBLE"
-                },
-                {
-                  "category": "HARM_CATEGORY_HATE_SPEECH",
-                  "probability": "NEGLIGIBLE"
-                },
-                {
-                  "category": "HARM_CATEGORY_HARASSMENT",
-                  "probability": "NEGLIGIBLE"
-                },
-                {
-                  "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-                  "probability": "NEGLIGIBLE"
-                }
-              ]
-            }
-          ],
-          "usageMetadata": {
-            "promptTokenCount": 2,
-            "candidatesTokenCount": 10,
-            "totalTokenCount": 12
-          },
-          "modelVersion": "gemini-1.5-flash-001"
-        }',
+        body: fixture("gemini/completions/ok_completion.json"),
         headers: {"Content-Type" => "application/json"}
       )
   end
@@ -59,72 +20,59 @@ RSpec.describe "LLM::Gemini" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 400,
-        body: '{
-          "error": {
-            "code": 400,
-            "message": "API key not valid. Please pass a valid API key.",
-            "status": "INVALID_ARGUMENT",
-            "details": [
-              {
-                "@type": "type.googleapis.com/google.rpc.ErrorInfo",
-                "reason": "API_KEY_INVALID",
-                "domain": "googleapis.com",
-                "metadata": {
-                  "service": "generativelanguage.googleapis.com"
-                }
-              }
-            ]
-          }
-        }',
+        body: fixture("gemini/completions/unauthorized_completion.json"),
         headers: {"Content-Type" => "application/json"}
       )
   end
 
-  context "with successful completion", :success do
-    let(:completion) { gemini.complete(LLM::Message.new("user", "Hello!")) }
-    let(:choice) { completion.choices[0] }
+  context "when given a successful response", :success do
+    subject(:response) { gemini.complete(LLM::Message.new("user", "Hello!")) }
 
     it "returns a completion" do
-      expect(completion).to be_a(LLM::Response::Completion)
+      expect(response).to be_a(LLM::Response::Completion)
     end
 
-    it "has model" do
-      expect(completion.model).to eq("gemini-1.5-flash-001")
+    it "returns a model" do
+      expect(response.model).to eq("gemini-1.5-flash-001")
     end
 
-    it "has choices" do
-      expect(completion).to be_a(LLM::Response::Completion).and have_attributes(
-        choices: [
-          have_attributes(
-            role: "model",
-            content: "Hello! How can I help you today? \n"
-          )
-        ]
-      )
-    end
-
-    it "has token usage" do
-      expect(completion).to have_attributes(
+    it "includes token usage" do
+      expect(response).to have_attributes(
         prompt_tokens: 2,
         completion_tokens: 10,
         total_tokens: 12
       )
     end
 
-    it "stores the completion as context" do
-      expect(choice.extra[:completion]).to eq(completion)
+    context "with a choice" do
+      subject(:choice) { response.choices[0] }
+
+      it "has choices" do
+        expect(response).to be_a(LLM::Response::Completion).and have_attributes(
+          choices: [
+            have_attributes(
+              role: "model",
+              content: "Hello! How can I help you today? \n"
+            )
+          ]
+        )
+      end
+
+      it "includes the response" do
+        expect(choice.extra[:completion]).to eq(response)
+      end
     end
   end
 
-  context "with an unauthorized error", :unauthorized do
-    let(:completion) { gemini.complete(LLM::Message.new("user", "Hello!")) }
+  context "when given an unauthorized response", :unauthorized do
+    subject(:response) { gemini.complete(LLM::Message.new("user", "Hello!")) }
 
     it "raises an error" do
-      expect { completion }.to raise_error(LLM::Error::Unauthorized)
+      expect { response }.to raise_error(LLM::Error::Unauthorized)
     end
 
     it "includes a response" do
-      completion
+      response
     rescue LLM::Error::Unauthorized => ex
       expect(ex.response).to be_kind_of(Net::HTTPResponse)
     end

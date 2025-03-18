@@ -2,7 +2,7 @@
 
 require "webmock/rspec"
 
-RSpec.describe "LLM::OpenAI" do
+RSpec.describe "LLM::OpenAI: completions" do
   subject(:openai) { LLM.openai("") }
 
   before(:each, :success) do
@@ -10,36 +10,7 @@ RSpec.describe "LLM::OpenAI" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 200,
-        body: '{
-          "id": "chatcmpl-AFIwpAMVniQWeOJZDYZ1IZpcf8zQa",
-          "object": "chat.completion",
-          "created": 1728211119,
-          "model": "gpt-4o-mini-2024-07-18",
-          "choices": [
-            {
-              "index": 0,
-              "message": {
-                "role": "assistant",
-                "content": "Hello! How can I assist you today?",
-                "refusal": null
-              },
-              "logprobs": null,
-              "finish_reason": "stop"
-            }
-          ],
-          "usage": {
-            "prompt_tokens": 9,
-            "completion_tokens": 9,
-            "total_tokens": 18,
-            "prompt_tokens_details": {
-              "cached_tokens": 0
-            },
-            "completion_tokens_details": {
-              "reasoning_tokens": 0
-            }
-          },
-          "system_fingerprint": "fp_f85bea6784"
-        }',
+        body: fixture("openai/completions/ok_completion.json"),
         headers: {"Content-Type" => "application/json"}
       )
   end
@@ -49,14 +20,7 @@ RSpec.describe "LLM::OpenAI" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 401,
-        body: '{
-          "error": {
-            "message": "Incorrect API key provided: sk-6WQZM***************************************t6ea. You can find your API key a t https://platform.openai.com/account/api-keys.",
-            "type": "invalid_request_error",
-            "param": null,
-            "code": "invalid_api_key"
-          }
-          }',
+        body: fixture("openai/completions/unauthorized_completion.json"),
         headers: {"Content-Type" => "application/json"}
       )
   end
@@ -66,72 +30,68 @@ RSpec.describe "LLM::OpenAI" do
       .with(headers: {"Content-Type" => "application/json"})
       .to_return(
         status: 400,
-        body: {
-          error: {
-            message: "Failed to download image from /path/to/nowhere.bin. Image URL is invalid.",
-            type: "invalid_request_error",
-            param: nil,
-            code: "invalid_image_url"
-          }
-        }.to_json
+        body: fixture("openai/completions/badrequest_completion.json")
       )
   end
 
-  context "with successful completion", :success do
-    let(:completion) { openai.complete("Hello!", :user) }
-    let(:choice) { completion.choices[0] }
+  context "when given a successful response", :success do
+    subject(:response) { openai.complete("Hello!", :user) }
 
     it "returns a completion" do
-      expect(completion).to be_a(LLM::Response::Completion)
+      expect(response).to be_a(LLM::Response::Completion)
     end
 
-    it "has model" do
-      expect(completion.model).to eq("gpt-4o-mini-2024-07-18")
+    it "returns a model" do
+      expect(response.model).to eq("gpt-4o-mini-2024-07-18")
     end
 
-    it "has choices" do
-      expect(completion.choices.first).to have_attributes(
-        role: "assistant",
-        content: "Hello! How can I assist you today?"
-      )
-    end
-
-    it "has token usage" do
-      expect(completion).to have_attributes(
+    it "includes token usage" do
+      expect(response).to have_attributes(
         prompt_tokens: 9,
         completion_tokens: 9,
         total_tokens: 18
       )
     end
 
-    it "stores the completion as context" do
-      expect(choice.extra[:completion]).to eq(completion)
+    context "with a choice" do
+      subject(:choice) { response.choices[0] }
+
+      it "has choices" do
+        expect(choice).to have_attributes(
+          role: "assistant",
+          content: "Hello! How can I assist you today?"
+        )
+      end
+
+      it "includes the response" do
+        expect(choice.extra[:completion]).to eq(response)
+      end
     end
   end
 
-  context "with an unauthorized error", :unauthorized do
-    let(:completion) { openai.complete(LLM::Message.new("Hello!", :user)) }
+  context "when given an unauthorized response", :unauthorized do
+    subject(:response) { openai.complete(LLM::Message.new("Hello!", :user)) }
 
     it "raises an error" do
-      expect { completion }.to raise_error(LLM::Error::Unauthorized)
+      expect { response }.to raise_error(LLM::Error::Unauthorized)
     end
 
-    it "includes a response" do
-      completion
+    it "includes the response" do
+      response
     rescue LLM::Error::Unauthorized => ex
       expect(ex.response).to be_kind_of(Net::HTTPResponse)
     end
   end
 
-  context "with a bad request", :bad_request do
-    subject(:completion) { openai.complete(URI("/path/to/nowhere.bin"), :user) }
+  context "when given a 'bad request' response", :bad_request do
+    subject(:response) { openai.complete(URI("/foobar.exe"), :user) }
 
     it "raises an error" do
-      expect { completion }.to raise_error(LLM::Error::BadResponse)
+      expect { response }.to raise_error(LLM::Error::BadResponse)
     end
 
-    it "includees a response" do
-      completion
+    it "includes the response" do
+      response
     rescue LLM::Error => ex
       expect(ex.response).to be_instance_of(Net::HTTPBadRequest)
     end
