@@ -14,12 +14,17 @@ RSpec.configure do |config|
   end
 
   config.include Module.new {
-    def fixture(file)
-      File.read File.join(fixtures, file)
+    def request_fixture(file)
+      File.read File.join(fixtures, "requests", file)
     end
 
+    def response_fixture(file)
+      File.read File.join(fixtures, "responses", file)
+    end
+    alias_method :fixture, :response_fixture
+
     def fixtures
-      File.join(__dir__, "fixtures", "responses")
+      File.join(__dir__, "fixtures")
     end
   }
 end

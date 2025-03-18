@@ -7,6 +7,8 @@ module LLM
   class Ollama < Provider
     require_relative "ollama/error_handler"
     require_relative "ollama/response_parser"
+    require_relative "ollama/format"
+    include Format
 
     HOST = "localhost"
     DEFAULT_PARAMS = {model: "llama3.2", stream: false}.freeze
@@ -24,7 +26,7 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       req = Net::HTTP::Post.new ["/api", "chat"].join("/")
-      messages = [*(params.delete(:messages) || []), LLM::Message.new(role, format_prompt(prompt))]
+      messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       params = DEFAULT_PARAMS.merge(params)
       body = {messages: messages.map(&:to_h)}.merge!(params)
       req = preflight(req, body)

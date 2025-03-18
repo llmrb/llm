@@ -7,6 +7,8 @@ module LLM
   class OpenAI < Provider
     require_relative "openai/error_handler"
     require_relative "openai/response_parser"
+    require_relative "openai/format"
+    include Format
 
     HOST = "api.openai.com"
     DEFAULT_PARAMS = {model: "gpt-4o-mini"}.freeze
@@ -35,26 +37,15 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       req = Net::HTTP::Post.new ["/v1", "chat", "completions"].join("/")
-      messages = [*(params.delete(:messages) || []), Message.new(role, format_prompt(prompt))]
+      messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       params = DEFAULT_PARAMS.merge(params)
-      body = {messages: messages.map(&:to_h)}.merge!(params)
+      body = {messages: format(messages)}.merge!(params)
       req = preflight(req, body)
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
     private
-
-    ##
-    # @param prompt (see LLM::Provider#format_prompt)
-    # @return (see LLM::Provider#format_prompt)
-    def format_prompt(prompt)
-      if URI === prompt
-        [{type: :image_url, image_url: {url: prompt.to_s}}]
-      else
-        prompt
-      end
-    end
 
     def auth(req)
       req["Authorization"] = "Bearer #{@secret}"

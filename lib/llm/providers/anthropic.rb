@@ -7,6 +7,8 @@ module LLM
   class Anthropic < Provider
     require_relative "anthropic/error_handler"
     require_relative "anthropic/response_parser"
+    require_relative "anthropic/format"
+    include Format
 
     HOST = "api.anthropic.com"
     DEFAULT_PARAMS = {max_tokens: 1024, model: "claude-3-5-sonnet-20240620"}.freeze
@@ -35,29 +37,15 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       req = Net::HTTP::Post.new ["/v1", "messages"].join("/")
-      messages = [*(params.delete(:messages) || []), Message.new(role, format_prompt(prompt))]
+      messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       params = DEFAULT_PARAMS.merge(params)
-      body = {messages: messages.map(&:to_h)}.merge!(params)
+      body = {messages: format(messages)}.merge!(params)
       req = preflight(req, body)
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
     private
-
-    ##
-    # @param prompt (see LLM::Provider#format_prompt)
-    # @return (see LLM::Provider#format_prompt)
-    def format_prompt(prompt)
-      if URI === prompt
-        [{
-          type: :image,
-          source: {type: :base64, media_type: LLM::File(prompt.to_s).mime_type, data: [prompt.to_s].pack("m0")}
-        }]
-      else
-        prompt
-      end
-    end
 
     def auth(req)
       req["anthropic-version"] = "2023-06-01"
