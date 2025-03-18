@@ -9,21 +9,16 @@ module LLM
     ##
     # @return [Hash]
     #  Returns the response body
-    attr_reader :raw
+    attr_reader :body
 
     ##
-    # @return [LLM::Provider]
-    #  Returns the provider
-    attr_reader :provider
-
-    ##
-    # @param [String] raw
-    #  Response body
-    # @param [LLM::Provider] provider
-    #  A provider
-    def initialize(raw, provider)
-      @raw = JSON.parse(raw)
-      @provider = provider
+    # @param [Net::HTTPResponse] res
+    #  HTTP response
+    # @return [LLM::Response]
+    #  Returns an instance of LLM::Response
+    def initialize(res)
+      @res = res
+      @body = JSON.parse(res.body)
     end
   end
 end

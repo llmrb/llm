@@ -25,7 +25,7 @@ module LLM
       body = {input:, model: "text-embedding-3-small"}.merge!(params)
       req = preflight(req, body)
       res = request @http, req
-      Response::Embedding.new(res.body, self).extend(response_parser)
+      Response::Embedding.new(res).extend(response_parser)
     end
 
     ##
@@ -40,7 +40,7 @@ module LLM
       body = {messages: messages.map(&:to_h)}.merge!(params)
       req = preflight(req, body)
       res = request(@http, req)
-      Response::Completion.new(res.body, self).extend(response_parser)
+      Response::Completion.new(res).extend(response_parser)
     end
 
     private

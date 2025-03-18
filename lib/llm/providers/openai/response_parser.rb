@@ -2,33 +2,33 @@
 
 class LLM::OpenAI
   module ResponseParser
-    def parse_embedding(raw)
+    def parse_embedding(body)
       {
-        model: raw["model"],
-        embeddings: raw.dig("data").map do |data|
+        model: body["model"],
+        embeddings: body.dig("data").map do |data|
           data["embedding"]
         end,
-        prompt_tokens: raw.dig("usage", "prompt_tokens"),
-        total_tokens: raw.dig("usage", "total_tokens")
+        prompt_tokens: body.dig("usage", "prompt_tokens"),
+        total_tokens: body.dig("usage", "total_tokens")
       }
     end
 
     ##
-    # @param [Hash] raw
-    #  The raw response from the LLM provider
+    # @param [Hash] body
+    #  The response body from the LLM provider
     # @return [Hash]
-    def parse_completion(raw)
+    def parse_completion(body)
       {
-        model: raw["model"],
-        choices: raw["choices"].map do
+        model: body["model"],
+        choices: body["choices"].map do
           mesg = _1["message"]
           logprobs = _1["logprobs"]
           role, content = mesg.values_at("role", "content")
           LLM::Message.new(role, content, {completion: self, logprobs:})
         end,
-        prompt_tokens: raw.dig("usage", "prompt_tokens"),
-        completion_tokens: raw.dig("usage", "completion_tokens"),
-        total_tokens: raw.dig("usage", "total_tokens")
+        prompt_tokens: body.dig("usage", "prompt_tokens"),
+        completion_tokens: body.dig("usage", "completion_tokens"),
+        total_tokens: body.dig("usage", "total_tokens")
       }
     end
   end
