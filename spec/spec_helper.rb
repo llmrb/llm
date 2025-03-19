@@ -15,11 +15,13 @@ RSpec.configure do |config|
 
   config.include Module.new {
     def request_fixture(file)
-      File.read File.join(fixtures, "requests", file)
+      path = File.join(fixtures, "requests", file)
+      File.read(path).chomp
     end
 
     def response_fixture(file)
-      File.read File.join(fixtures, "responses", file)
+      path = File.join(fixtures, "responses", file)
+      File.read(path).chomp
     end
     alias_method :fixture, :response_fixture
 
