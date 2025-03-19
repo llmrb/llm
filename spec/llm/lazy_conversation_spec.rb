@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-require "webmock/rspec"
+require "setup"
 
 RSpec.describe LLM::LazyConversation do
   context "with gemini" do

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
-
 RSpec.describe LLM::Conversation do
   shared_examples "a multi-turn conversation" do
     context "when given a thread of messages" do

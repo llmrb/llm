@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "webmock/rspec"
+require "setup"
 
 RSpec.describe "LLM::OpenAI: completions" do
   subject(:openai) { LLM.openai("") }
