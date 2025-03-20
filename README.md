@@ -36,14 +36,15 @@ method returns a
 object, and it allows for a "lazy" conversation where messages are batched and
 sent to the provider only when necessary. The non-lazy counterpart is available via the
 [LLM::Provider#chat!](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
-method. 
+method.
 
 Both lazy and non-lazy conversations maintain a message thread that can
 be reused as context throughout a conversation. For the sake of brevity the system
 prompt is loaded from
 [a file](./share/llm/prompts/system.txt)
-in the following example, all other prompts are "user" prompts, and a single request 
-is made to the provider when iterating over the messages belonging to a lazy conversation:
+in the following example &ndash; all other prompts are "user" prompts &ndash;
+and a single request is made to the provider when iterating over the messages
+belonging to a lazy conversation:
 
 ```ruby
 #!/usr/bin/env ruby
