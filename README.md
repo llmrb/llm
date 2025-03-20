@@ -63,8 +63,7 @@ bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 # [user] What color is an orange?
 # [user] I like Ruby
 #
-# [assistant] The sky is typically blue during the day, but it can have beautiful
-#             hues of pink, orange, and purple during sunset! As for an orange,
+# [assistant] The sky is typically blue during the day. As for an orange,
 #             it is usually orange in color—funny how that works, right?
 #             I love Ruby too! Speaking of colors, why did the orange stop?
 #             Because it ran out of juice! 🍊😂
