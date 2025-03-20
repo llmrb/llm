@@ -75,16 +75,6 @@ module LLM
     private
 
     ##
-    # Formats the prompt before sending it to the LLM
-    # @param [String, URI, LLM::File] prompt
-    #  The prompt to format
-    # @return [String, Hash]
-    #  The formatted prompt
-    def format_prompt(prompt)
-      prompt
-    end
-
-    ##
     # Prepares a request for authentication
     # @param [Net::HTTP::Request] req
     #  The request to prepare for authentication

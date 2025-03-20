@@ -36,17 +36,6 @@ module LLM
 
     private
 
-    ##
-    # @param prompt (see LLM::Provider#format_prompt)
-    # @return (see LLM::Provider#format_prompt)
-    def format_prompt(prompt)
-      if URI === prompt
-        [{type: :image_url, image_url: {url: prompt.to_s}}]
-      else
-        prompt
-      end
-    end
-
     def auth(req)
       req["Authorization"] = "Bearer #{@secret}"
     end
