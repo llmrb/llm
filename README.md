@@ -1,6 +1,6 @@
 ## About
 
-llm.rb is a lightweight Ruby library that provides a common interface
+llm.rb is a lightweight library that provides a common interface
 and set of functionality for multple Large Language Models (LLMs). It
 is designed to be simple, flexible, and easy to use.
 
@@ -16,7 +16,9 @@ using an API key (if required) and an optional set of configuration options via
 [the singleton methods of LLM](https://0x1eef.github.io/x/llm/LLM.html). For example:
 
 ```ruby
+#!/usr/bin/env ruby
 require "llm"
+
 llm = LLM.openai("yourapikey")
 llm = LLM.gemini("yourapikey")
 llm = LLM.anthropic("yourapikey")
@@ -35,26 +37,21 @@ object, and it allows for a "lazy" conversation where messages are batched and
 sent to the provider only when necessary. The non-lazy counterpart is available via the
 [LLM::Provider#chat!](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
 method. Both lazy and non-lazy conversations maintain a message thread that can
-be reused as context throughout the conversation:
+be reused as context throughout a conversation. For the sake of brevity the system
+prompt is loaded from
+[a file](./share/llm/prompts/system.txt)
+in the following example:
 
 ```ruby
+#!/usr/bin/env ruby
 require "llm"
-llm = LLM.openai(ENV["KEY"])
-bot = llm.chat(<<~SYSTEM, :system)
-You are a friendly chatbot. Sometimes, you like to tell a joke.
-But the joke must be based on the given inputs.
 
-I will provide you a set of messages. Reply to all of them.
-A message is considered unanswered if there is no corresponding assistant response.
-SYSTEM
+llm = LLM.openai(ENV["KEY"])
+bot = llm.chat File.read("./share/llm/prompts/system.txt"), :system
 bot.chat "What color is the sky?"
 bot.chat "What color is an orange?"
 bot.chat "I like Ruby"
-bot.messages.each do |message|
-  # At this point a single request is made to the provider
-  # See 'LLM::MessageQueue' for more details
-  print "[#{message.role}] ", message.content, "\n"
-end
+bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
 # [system] You are a friendly chatbot. Sometimes, you like to tell a joke.
@@ -69,9 +66,7 @@ end
 # [assistant] The sky is typically blue during the day, but it can have beautiful
 #             hues of pink, orange, and purple during sunset! As for an orange,
 #             it is usually orange in color—funny how that works, right?
-#             I love Ruby too! Did you know that a Ruby is not only a beautiful
-#             gemstone but also a programming language? So, you could say it's both
-#             precious and powerful! Speaking of colors, why did the orange stop?
+#             I love Ruby too! Speaking of colors, why did the orange stop?
 #             Because it ran out of juice! 🍊😂
 ```
 
@@ -108,7 +103,9 @@ semantic search in vector databases, and the clustering and classification
 of text-based data:
 
 ```ruby
+#!/usr/bin/env ruby
 require "llm"
+
 llm = LLM.openai(ENV["KEY"])
 res = llm.embed("Hello, world!")
 print res.class, "\n"
