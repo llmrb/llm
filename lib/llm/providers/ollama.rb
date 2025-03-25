@@ -11,7 +11,6 @@ module LLM
     include Format
 
     HOST = "localhost"
-    DEFAULT_PARAMS = {model: "llama3.2", stream: false}.freeze
 
     ##
     # @param secret (see LLM::Provider#initialize)
@@ -25,10 +24,11 @@ module LLM
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
-      req = Net::HTTP::Post.new("/api/chat", headers)
+      params   = {model: "llama3.2", stream: false}.merge!(params)
+      req      = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      req.body = JSON.dump({messages: messages.map(&:to_h)}.merge!(DEFAULT_PARAMS.merge(params)))
-      res = request(@http, req)
+      req.body = JSON.dump({messages: messages.map(&:to_h)}.merge!(params))
+      res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 

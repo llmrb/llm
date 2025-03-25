@@ -11,7 +11,6 @@ module LLM
     include Format
 
     HOST = "generativelanguage.googleapis.com"
-    DEFAULT_PARAMS = {model: "gemini-1.5-flash"}.freeze
 
     ##
     # @param secret (see LLM::Provider#initialize)
@@ -24,7 +23,7 @@ module LLM
     # @return (see LLM::Provider#embed)
     def embed(input, **params)
       path = ["/v1beta/models/text-embedding-004", "embedContent?key=#{@secret}"].join(":")
-      req = Net::HTTP::Post.new(path , headers)
+      req = Net::HTTP::Post.new(path, headers)
       req.body = JSON.dump({content: {parts: [{text: input}]}})
       res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
@@ -36,12 +35,12 @@ module LLM
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
-      params = DEFAULT_PARAMS.merge(params)
-      path = ["/v1beta/models/#{params.delete(:model)}", "generateContent?key=#{@secret}"].join(":")
-      req = Net::HTTP::Post.new(path, headers)
+      params   = {model: "gemini-1.5-flash"}.merge!(params)
+      path     = ["/v1beta/models/#{params.delete(:model)}", "generateContent?key=#{@secret}"].join(":")
+      req      = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       req.body = JSON.dump({contents: format(messages)})
-      res = request(@http, req)
+      res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 

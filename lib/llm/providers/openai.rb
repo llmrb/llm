@@ -11,7 +11,6 @@ module LLM
     include Format
 
     HOST = "api.openai.com"
-    DEFAULT_PARAMS = {model: "gpt-4o-mini"}.freeze
 
     ##
     # @param secret (see LLM::Provider#initialize)
@@ -35,10 +34,11 @@ module LLM
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
-      req = Net::HTTP::Post.new("/v1/chat/completions", headers)
+      params   = {model: "gpt-4o-mini"}.merge!(params)
+      req      = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      req.body = JSON.dump({messages: format(messages)}.merge!(DEFAULT_PARAMS.merge(params)))
-      res = request(@http, req)
+      req.body = JSON.dump({messages: format(messages)}.merge!(params))
+      res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
