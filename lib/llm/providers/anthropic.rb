@@ -23,9 +23,8 @@ module LLM
     # @param input (see LLM::Provider#embed)
     # @return (see LLM::Provider#embed)
     def embed(input, **params)
-      req = Net::HTTP::Post.new ["api.voyageai.com/v1", "embeddings"].join("/")
-      body = {input:, model: "voyage-2"}.merge!(params)
-      req = preflight(req, body)
+      req = Net::HTTP::Post.new("/api.voyageai.com/v1/embeddings", headers)
+      req.body = JSON.dump({input:, model: "voyage-2"}.merge!(params))
       res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
     end
@@ -36,20 +35,21 @@ module LLM
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
-      req = Net::HTTP::Post.new ["/v1", "messages"].join("/")
+      req = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      params = DEFAULT_PARAMS.merge(params)
-      body = {messages: format(messages)}.merge!(params)
-      req = preflight(req, body)
+      req.body = JSON.dump({messages: format(messages)}.merge!(DEFAULT_PARAMS.merge(params)))
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
     private
 
-    def auth(req)
-      req["anthropic-version"] = "2023-06-01"
-      req["x-api-key"] = @secret
+    def headers
+      {
+        "Content-Type" => "application/json",
+        "x-api-key" => @secret,
+        "anthropic-version" => "2023-06-01"
+      }
     end
 
     def response_parser

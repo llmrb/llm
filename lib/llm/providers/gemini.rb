@@ -23,11 +23,10 @@ module LLM
     # @param input (see LLM::Provider#embed)
     # @return (see LLM::Provider#embed)
     def embed(input, **params)
-      path = ["/v1beta/models", "text-embedding-004"].join("/")
-      req = Net::HTTP::Post.new [path, "embedContent"].join(":")
-      body = {content: {parts: [{text: input}]}}
-      req = preflight(req, body)
-      res = request @http, req
+      path = ["/v1beta/models/text-embedding-004", "embedContent?key=#{@secret}"].join(":")
+      req = Net::HTTP::Post.new(path , headers)
+      req.body = JSON.dump({content: {parts: [{text: input}]}})
+      res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
     end
 
@@ -38,19 +37,20 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       params = DEFAULT_PARAMS.merge(params)
-      path = ["/v1beta/models", params.delete(:model)].join("/")
-      req = Net::HTTP::Post.new [path, "generateContent"].join(":")
+      path = ["/v1beta/models/#{params.delete(:model)}", "generateContent?key=#{@secret}"].join(":")
+      req = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      body = {contents: format(messages)}
-      req = preflight(req, body)
+      req.body = JSON.dump({contents: format(messages)})
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
     private
 
-    def auth(req)
-      req.path.replace [req.path, URI.encode_www_form(key: @secret)].join("?")
+    def headers
+      {
+        "Content-Type" => "application/json"
+      }
     end
 
     def response_parser

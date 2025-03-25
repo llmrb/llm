@@ -23,10 +23,9 @@ module LLM
     # @param input (see LLM::Provider#embed)
     # @return (see LLM::Provider#embed)
     def embed(input, **params)
-      req = Net::HTTP::Post.new ["/v1", "embeddings"].join("/")
-      body = {input:, model: "text-embedding-3-small"}.merge!(params)
-      req = preflight(req, body)
-      res = request @http, req
+      req = Net::HTTP::Post.new("/v1/embeddings", headers)
+      req.body = JSON.dump({input:, model: "text-embedding-3-small"}.merge!(params))
+      res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
     end
 
@@ -36,19 +35,20 @@ module LLM
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
-      req = Net::HTTP::Post.new ["/v1", "chat", "completions"].join("/")
+      req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      params = DEFAULT_PARAMS.merge(params)
-      body = {messages: format(messages)}.merge!(params)
-      req = preflight(req, body)
+      req.body = JSON.dump({messages: format(messages)}.merge!(DEFAULT_PARAMS.merge(params)))
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
     private
 
-    def auth(req)
-      req["Authorization"] = "Bearer #{@secret}"
+    def headers
+      {
+        "Content-Type" => "application/json",
+        "Authorization" => "Bearer #{@secret}"
+      }
     end
 
     def response_parser

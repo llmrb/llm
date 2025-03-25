@@ -75,12 +75,10 @@ module LLM
     private
 
     ##
-    # Prepares a request for authentication
-    # @param [Net::HTTP::Request] req
-    #  The request to prepare for authentication
+    # The headers to include with a request
     # @raise [NotImplementedError]
     #  (see LLM::Provider#complete)
-    def auth(req)
+    def headers
       raise NotImplementedError
     end
 
@@ -100,15 +98,6 @@ module LLM
     #  (see LLM::Provider#complete)
     def error_handler
       raise NotImplementedError
-    end
-
-    ##
-    # Prepares a request before sending it
-    def preflight(req, body)
-      req.content_type = "application/json"
-      req.body = JSON.generate(body)
-      auth(req)
-      req
     end
   end
 end
