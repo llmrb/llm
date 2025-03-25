@@ -11,7 +11,6 @@ module LLM
     include Format
 
     HOST = "localhost"
-    DEFAULT_PARAMS = {model: "llama3.2", stream: false}.freeze
 
     ##
     # @param secret (see LLM::Provider#initialize)
@@ -25,19 +24,21 @@ module LLM
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
-      req = Net::HTTP::Post.new ["/api", "chat"].join("/")
+      params   = {model: "llama3.2", stream: false}.merge!(params)
+      req      = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      params = DEFAULT_PARAMS.merge(params)
-      body = {messages: messages.map(&:to_h)}.merge!(params)
-      req = preflight(req, body)
-      res = request(@http, req)
+      req.body = JSON.dump({messages: messages.map(&:to_h)}.merge!(params))
+      res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
     private
 
-    def auth(req)
-      req["Authorization"] = "Bearer #{@secret}"
+    def headers
+      {
+        "Content-Type" => "application/json",
+        "Authorization" => "Bearer #{@secret}"
+      }
     end
 
     def response_parser

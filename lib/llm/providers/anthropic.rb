@@ -11,7 +11,6 @@ module LLM
     include Format
 
     HOST = "api.anthropic.com"
-    DEFAULT_PARAMS = {max_tokens: 1024, model: "claude-3-5-sonnet-20240620"}.freeze
 
     ##
     # @param secret (see LLM::Provider#initialize)
@@ -23,9 +22,8 @@ module LLM
     # @param input (see LLM::Provider#embed)
     # @return (see LLM::Provider#embed)
     def embed(input, **params)
-      req = Net::HTTP::Post.new ["api.voyageai.com/v1", "embeddings"].join("/")
-      body = {input:, model: "voyage-2"}.merge!(params)
-      req = preflight(req, body)
+      req = Net::HTTP::Post.new("/api.voyageai.com/v1/embeddings", headers)
+      req.body = JSON.dump({input:, model: "voyage-2"}.merge!(params))
       res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
     end
@@ -36,20 +34,22 @@ module LLM
     # @param role (see LLM::Provider#complete)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
-      req = Net::HTTP::Post.new ["/v1", "messages"].join("/")
+      params   = {max_tokens: 1024, model: "claude-3-5-sonnet-20240620"}.merge!(params)
+      req      = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      params = DEFAULT_PARAMS.merge(params)
-      body = {messages: format(messages)}.merge!(params)
-      req = preflight(req, body)
-      res = request(@http, req)
+      req.body = JSON.dump({messages: format(messages)}.merge!(params))
+      res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
     private
 
-    def auth(req)
-      req["anthropic-version"] = "2023-06-01"
-      req["x-api-key"] = @secret
+    def headers
+      {
+        "Content-Type" => "application/json",
+        "x-api-key" => @secret,
+        "anthropic-version" => "2023-06-01"
+      }
     end
 
     def response_parser
