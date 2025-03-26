@@ -3,25 +3,13 @@
 require "setup"
 
 RSpec.describe LLM::LazyConversation do
-  context "with gemini" do
-    let(:provider) { LLM.gemini("") }
+  context "with gemini",
+          vcr: {cassette_name: "gemini/lazy_conversation/successful_response"} do
+    let(:provider) { LLM.gemini(ENV["LLM_SECRET"] || "TOKEN") }
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
       subject(:message) { conversation.messages.to_a[-1] }
-
-      before do
-        stub_request(:post, "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=")
-          .with(
-            headers: {"Content-Type" => "application/json"},
-            body: request_fixture("gemini/completions/ok_completion.json")
-          )
-          .to_return(
-            status: 200,
-            body: response_fixture("gemini/completions/ok_completion.json"),
-            headers: {"Content-Type" => "application/json"}
-          )
-      end
 
       before do
         conversation.chat "Hello"
@@ -32,31 +20,19 @@ RSpec.describe LLM::LazyConversation do
       it "maintains a conversation" do
         expect(message).to have_attributes(
           role: "model",
-          content: "Hello! How can I help you today? \n"
+          content: "I am doing well, thank you for asking!  How are you today?\n"
         )
       end
     end
   end
 
-  context "with openai" do
-    let(:provider) { LLM.openai("") }
+  context "with openai",
+          vcr: {cassette_name: "openai/lazy_conversation/successful_response"} do
+    let(:provider) { LLM.openai(ENV["LLM_SECRET"]) }
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
       subject(:message) { conversation.messages.to_a[-1] }
-
-      before do
-        stub_request(:post, "https://api.openai.com/v1/chat/completions")
-          .with(
-            headers: {"Content-Type" => "application/json"},
-            body: request_fixture("openai/completions/ok_completion.json")
-          )
-          .to_return(
-            status: 200,
-            body: response_fixture("openai/completions/ok_completion.json"),
-            headers: {"Content-Type" => "application/json"}
-          )
-      end
 
       before do
         conversation.chat "Hello"
@@ -67,7 +43,7 @@ RSpec.describe LLM::LazyConversation do
       it "maintains a conversation" do
         expect(message).to have_attributes(
           role: "assistant",
-          content: "Hello! How can I assist you today?"
+          content: "I'm just a computer program, so I don't have feelings, but I'm here and ready to help! What’s your question?"
         )
       end
     end

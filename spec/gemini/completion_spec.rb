@@ -3,44 +3,26 @@
 require "setup"
 
 RSpec.describe "LLM::Gemini: completions" do
-  subject(:gemini) { LLM.gemini("") }
+  subject(:gemini) { LLM.gemini(token) }
 
-  before(:each, :success) do
-    stub_request(:post, "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 200,
-        body: fixture("gemini/completions/ok_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
-
-  before(:each, :unauthorized) do
-    stub_request(:post, "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 400,
-        body: fixture("gemini/completions/unauthorized_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
-
-  context "when given a successful response", :success do
-    subject(:response) { gemini.complete(LLM::Message.new("user", "Hello!")) }
+  context "when given a successful response",
+          vcr: {cassette_name: "gemini/completions/successful_response"} do
+    subject(:response) { gemini.complete("Hello!", :user) }
+    let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
     it "returns a completion" do
       expect(response).to be_a(LLM::Response::Completion)
     end
 
     it "returns a model" do
-      expect(response.model).to eq("gemini-1.5-flash-001")
+      expect(response.model).to eq("gemini-1.5-flash")
     end
 
     it "includes token usage" do
       expect(response).to have_attributes(
         prompt_tokens: 2,
-        completion_tokens: 10,
-        total_tokens: 12
+        completion_tokens: 11,
+        total_tokens: 13
       )
     end
 
@@ -52,7 +34,7 @@ RSpec.describe "LLM::Gemini: completions" do
           choices: [
             have_attributes(
               role: "model",
-              content: "Hello! How can I help you today? \n"
+              content: "Hello there! How can I help you today?\n"
             )
           ]
         )
@@ -64,8 +46,10 @@ RSpec.describe "LLM::Gemini: completions" do
     end
   end
 
-  context "when given an unauthorized response", :unauthorized do
-    subject(:response) { gemini.complete(LLM::Message.new("user", "Hello!")) }
+  context "when given an unauthorized response",
+          vcr: {cassette_name: "gemini/completions/unauthorized_response"} do
+    subject(:response) { gemini.complete("Hello!", :user) }
+    let(:token) { "BADTOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)

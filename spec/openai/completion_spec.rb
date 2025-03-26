@@ -3,17 +3,7 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI: completions" do
-  subject(:openai) { LLM.openai("") }
-
-  before(:each, :success) do
-    stub_request(:post, "https://api.openai.com/v1/chat/completions")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 200,
-        body: fixture("openai/completions/ok_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
+  subject(:openai) { LLM.openai(ENV["LLM_SECRET"]) }
 
   before(:each, :unauthorized) do
     stub_request(:post, "https://api.openai.com/v1/chat/completions")
@@ -34,7 +24,8 @@ RSpec.describe "LLM::OpenAI: completions" do
       )
   end
 
-  context "when given a successful response", :success do
+  context "when given a successful response",
+          vcr: {cassette_name: "openai/completions/successful_response"} do
     subject(:response) { openai.complete("Hello!", :user) }
 
     it "returns a completion" do
@@ -48,8 +39,8 @@ RSpec.describe "LLM::OpenAI: completions" do
     it "includes token usage" do
       expect(response).to have_attributes(
         prompt_tokens: 9,
-        completion_tokens: 9,
-        total_tokens: 18
+        completion_tokens: 10,
+        total_tokens: 19
       )
     end
 
