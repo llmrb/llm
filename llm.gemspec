@@ -37,4 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "kramdown", "~> 2.4"
   spec.add_development_dependency "webrick", "~> 1.8"
   spec.add_development_dependency "test-cmd.rb", "~> 0.12.0"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "standard", "~> 1.40"
 end
