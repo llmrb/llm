@@ -72,6 +72,14 @@ module LLM
       Conversation.new(self).chat(prompt, role, **params)
     end
 
+    ##
+    # @return [String]
+    #  The role of the assistant in the conversation.
+    #  Usually "assistant" or "model"
+    def assistant_role
+      raise NotImplementedError
+    end
+
     private
 
     ##

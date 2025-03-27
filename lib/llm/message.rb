@@ -20,7 +20,7 @@ module LLM
     # @param [Hash] extra
     # @return [LLM::Message]
     def initialize(role, content, extra = {})
-      @role = role
+      @role = role.to_s
       @content = content
       @extra = extra
     end
