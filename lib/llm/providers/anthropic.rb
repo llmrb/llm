@@ -19,13 +19,17 @@ module LLM
     end
 
     ##
+    # Provides an embedding via VoyageAI per
+    # [Anthropic's recommendation](https://docs.anthropic.com/en/docs/build-with-claude/embeddings)
     # @param input (see LLM::Provider#embed)
+    # @param [String] token
+    #  Valid token for the VoyageAI API
+    # @param [Hash] params
+    #  Additional parameters to pass to the API
     # @return (see LLM::Provider#embed)
-    def embed(input, **params)
-      req = Net::HTTP::Post.new("/api.voyageai.com/v1/embeddings", headers)
-      req.body = JSON.dump({input:, model: "voyage-2"}.merge!(params))
-      res = request(@http, req)
-      Response::Embedding.new(res).extend(response_parser)
+    def embed(input, token:, **params)
+      llm = LLM.voyageai(token)
+      llm.embed(input, **params)
     end
 
     ##
