@@ -42,6 +42,21 @@ RSpec.describe "LLM::OpenAI: completions" do
     end
   end
 
+  context "when given a 'bad request' response",
+          vcr: {cassette_name: "openai/completions/bad_request"} do
+    subject(:response) { openai.complete(URI("/foobar.exe"), :user) }
+
+    it "raises an error" do
+      expect { response }.to raise_error(LLM::Error::BadResponse)
+    end
+
+    it "includes the response" do
+      response
+    rescue LLM::Error => ex
+      expect(ex.response).to be_instance_of(Net::HTTPBadRequest)
+    end
+  end
+
   context "when given an unauthorized response",
           vcr: {cassette_name: "openai/completions/unauthorized_response"} do
     subject(:response) { openai.complete(LLM::Message.new("Hello!", :user)) }
@@ -55,21 +70,6 @@ RSpec.describe "LLM::OpenAI: completions" do
       response
     rescue LLM::Error::Unauthorized => ex
       expect(ex.response).to be_kind_of(Net::HTTPResponse)
-    end
-  end
-
-  context "when given a 'bad request' response",
-          vcr: {cassette_name: "openai/completions/bad_request"} do
-    subject(:response) { openai.complete(URI("/foobar.exe"), :user) }
-
-    it "raises an error" do
-      expect { response }.to raise_error(LLM::Error::BadResponse)
-    end
-
-    it "includes the response" do
-      response
-    rescue LLM::Error => ex
-      expect(ex.response).to be_instance_of(Net::HTTPBadRequest)
     end
   end
 end
