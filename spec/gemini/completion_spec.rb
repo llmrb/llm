@@ -4,11 +4,11 @@ require "setup"
 
 RSpec.describe "LLM::Gemini: completions" do
   subject(:gemini) { LLM.gemini(token) }
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "gemini/completions/successful_response"} do
     subject(:response) { gemini.complete("Hello!", :user) }
-    let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
     it "returns a completion" do
       expect(response).to be_a(LLM::Response::Completion)

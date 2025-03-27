@@ -3,7 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI: embeddings" do
-  let(:gemini) { LLM.gemini(ENV["LLM_SECRET"] || "TOKEN") }
+  let(:gemini) { LLM.gemini(token) }
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "gemini/embeddings/successful_response"} do
