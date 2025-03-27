@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Hello"}],"max_tokens":1024,"model":"claude-3-5-sonnet-20240620"}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - BADTOKEN
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 27 Mar 2025 03:05:27 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '86'
+      Connection:
+      - keep-alive
+      X-Should-Retry:
+      - 'false'
+      Request-Id:
+      - req_01PFAo45mbciYU4LSF276rvp
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 926baa89290b621f-GRU
+    body:
+      encoding: UTF-8
+      string: '{"type":"error","error":{"type":"authentication_error","message":"invalid
+        x-api-key"}}'
+  recorded_at: Thu, 27 Mar 2025 03:05:22 GMT
+recorded_with: VCR 6.3.1

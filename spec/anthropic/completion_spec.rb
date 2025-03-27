@@ -3,17 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::Anthropic: completions" do
-  subject(:anthropic) { LLM.anthropic(ENV["LLM_SECRET"]) }
-
-  before(:each, :unauthorized) do
-    stub_request(:post, "https://api.anthropic.com/v1/messages")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 403,
-        body: fixture("anthropic/completions/unauthorized_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
+  subject(:anthropic) { LLM.anthropic(token) }
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "anthropic/completions/successful_response"} do
@@ -51,8 +42,10 @@ RSpec.describe "LLM::Anthropic: completions" do
     end
   end
 
-  context "when given an unauthorized response", :unauthorized do
+  context "when given an unauthorized response",
+          vcr: {cassette_name: "anthropic/completions/unauthorized_response"} do
     subject(:response) { anthropic.complete("Hello", :user) }
+    let(:token) { "BADTOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)

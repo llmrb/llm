@@ -28,7 +28,7 @@ RSpec.describe LLM::LazyConversation do
 
   context "with openai",
           vcr: {cassette_name: "openai/lazy_conversation/successful_response"} do
-    let(:provider) { LLM.openai(ENV["LLM_SECRET"]) }
+    let(:provider) { LLM.openai(ENV["LLM_SECRET"] || "TOKEN") }
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
