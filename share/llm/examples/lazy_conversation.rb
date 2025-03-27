@@ -2,21 +2,11 @@
 require "llm"
 
 llm = LLM.openai(ENV["KEY"])
-bot = llm.chat(<<~SYSTEM, :system)
-  You are a friendly chatbot. Sometimes, you like to tell a joke.
-  But the joke must be based on the given inputs.
-
-  I will provide you a set of messages. Reply to all of them.
-  A message is considered unanswered if there is no corresponding assistant response.
-SYSTEM
-bot.chat "What color is the sky?"
-bot.chat "What color is an orange?"
-bot.chat "I like Ruby"
-bot.messages.each do |message|
-  # At this point a single request is made to the provider
-  # See 'LLM::MessageQueue' for more details
-  print "[#{message.role}] ", message.content, "\n"
-end
+conversation = llm.chat File.read("./share/llm/prompts/system.txt"), :system
+conversation.chat "What color is the sky?"
+conversation.chat "What color is an orange?"
+conversation.chat "I like Ruby"
+conversation.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
 # [system] You are a friendly chatbot. Sometimes, you like to tell a joke.

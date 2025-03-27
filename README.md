@@ -51,11 +51,11 @@ belonging to a lazy conversation:
 require "llm"
 
 llm = LLM.openai(ENV["KEY"])
-bot = llm.chat File.read("./share/llm/prompts/system.txt"), :system
-bot.chat "What color is the sky?"
-bot.chat "What color is an orange?"
-bot.chat "I like Ruby"
-bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+convo = llm.chat File.read("./share/llm/prompts/system.txt"), :system
+convo.chat "What color is the sky?"
+convo.chat "What color is an orange?"
+convo.chat "I like Ruby"
+convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
 # [system] You are a friendly chatbot. Sometimes, you like to tell a joke.
