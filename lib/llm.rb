@@ -41,9 +41,9 @@ module LLM
   ##
   # @param host (see LLM::Ollama#initialize)
   # @return (see LLM::Ollama#initialize)
-  def ollama(secret)
+  def ollama(secret, **)
     require_relative "llm/providers/ollama" unless defined?(LLM::Ollama)
-    LLM::Ollama.new(secret)
+    LLM::Ollama.new(secret, **)
   end
 
   ##
