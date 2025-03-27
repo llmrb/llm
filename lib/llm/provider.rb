@@ -30,7 +30,7 @@ module LLM
     end
 
     ##
-    # @param [String] input
+    # @param [String, Array<String>] input
     #  The input to embed
     # @raise [NotImplementedError]
     #  When the method is not implemented by a subclass

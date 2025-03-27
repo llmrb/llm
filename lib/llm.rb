@@ -18,7 +18,16 @@ module LLM
   # @return (see LLM::Anthropic#initialize)
   def anthropic(secret, **)
     require_relative "llm/providers/anthropic" unless defined?(LLM::Anthropic)
+    require_relative "llm/providers/voyageai" unless defined?(LLM::VoyageAI)
     LLM::Anthropic.new(secret, **)
+  end
+
+  ##
+  # @param secret (see LLM::VoyageAI#initialize)
+  # @return (see LLM::VoyageAI#initialize)
+  def voyageai(secret, **)
+    require_relative "llm/providers/voyageai" unless defined?(LLM::VoyageAI)
+    LLM::VoyageAI.new(secret, **)
   end
 
   ##

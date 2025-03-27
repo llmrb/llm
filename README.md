@@ -110,14 +110,14 @@ of text-based data:
 require "llm"
 
 llm = LLM.openai(ENV["KEY"])
-res = llm.embed("Hello, world!")
+res = llm.embed(["programming is fun", "ruby is a programming language"])
 print res.class, "\n"
 print res.embeddings.size, "\n"
 print res.embeddings[0].size, "\n"
 
 ##
 # LLM::Response::Embedding
-# 1
+# 2
 # 1536
 ```
 
