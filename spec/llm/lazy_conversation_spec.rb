@@ -20,7 +20,7 @@ RSpec.describe LLM::LazyConversation do
       end
 
       it "maintains a conversation" do
-        expect(message).to have_attributes(
+        is_expected.to have_attributes(
           role: "model",
           content: "I am doing well, thank you for asking!  How are you today?\n"
         )
@@ -31,7 +31,7 @@ RSpec.describe LLM::LazyConversation do
           subject(:message) { conversation.recent_message }
 
           it "returns the most recent assistant message" do
-            expect(message).to have_attributes(
+            is_expected.to have_attributes(
               role: "model",
               content: "I am doing well, thank you for asking!  How are you today?\n"
             )
@@ -42,7 +42,7 @@ RSpec.describe LLM::LazyConversation do
           subject(:message) { conversation.recent_message(role: "user") }
 
           it "returns the most recent user message" do
-            expect(message).to have_attributes(
+            is_expected.to have_attributes(
               role: "user",
               content: "How are you?"
             )
@@ -67,7 +67,7 @@ RSpec.describe LLM::LazyConversation do
       end
 
       it "maintains a conversation" do
-        expect(message).to have_attributes(
+        is_expected.to have_attributes(
           role: "assistant",
           content: "I'm just a computer program, so I don't have feelings, but I'm here and ready to help! What’s your question?"
         )
@@ -78,7 +78,7 @@ RSpec.describe LLM::LazyConversation do
           subject(:message) { conversation.recent_message }
 
           it "returns the most recent assistant message" do
-            expect(message).to have_attributes(
+            is_expected.to have_attributes(
               role: "assistant",
               content: "I'm just a computer program, so I don't have feelings, but I'm here and ready to help! What’s your question?"
             )
@@ -89,7 +89,7 @@ RSpec.describe LLM::LazyConversation do
           subject(:message) { conversation.recent_message(role: "user") }
 
           it "returns the most recent user message" do
-            expect(message).to have_attributes(
+            is_expected.to have_attributes(
               role: "user",
               content: "How are you?"
             )
@@ -126,7 +126,7 @@ RSpec.describe LLM::LazyConversation do
       end
 
       it "maintains a conversation" do
-        expect(message).to have_attributes(
+        is_expected.to have_attributes(
           role: "assistant",
           content: "Hello! How are you today?"
         )
