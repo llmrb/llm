@@ -3,26 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI: completions" do
-  subject(:openai) { LLM.openai(ENV["LLM_SECRET"]) }
-
-  before(:each, :unauthorized) do
-    stub_request(:post, "https://api.openai.com/v1/chat/completions")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 401,
-        body: fixture("openai/completions/unauthorized_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
-
-  before(:each, :bad_request) do
-    stub_request(:post, "https://api.openai.com/v1/chat/completions")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 400,
-        body: fixture("openai/completions/badrequest_completion.json")
-      )
-  end
+  subject(:openai) { LLM.openai(token) }
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "openai/completions/successful_response"} do
@@ -60,8 +42,10 @@ RSpec.describe "LLM::OpenAI: completions" do
     end
   end
 
-  context "when given an unauthorized response", :unauthorized do
+  context "when given an unauthorized response",
+          vcr: {cassette_name: "openai/completions/unauthorized_response"} do
     subject(:response) { openai.complete(LLM::Message.new("Hello!", :user)) }
+    let(:token) { "BADTOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)
@@ -74,7 +58,8 @@ RSpec.describe "LLM::OpenAI: completions" do
     end
   end
 
-  context "when given a 'bad request' response", :bad_request do
+  context "when given a 'bad request' response",
+          vcr: {cassette_name: "openai/completions/bad_request"} do
     subject(:response) { openai.complete(URI("/foobar.exe"), :user) }
 
     it "raises an error" do

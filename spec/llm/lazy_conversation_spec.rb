@@ -3,9 +3,11 @@
 require "setup"
 
 RSpec.describe LLM::LazyConversation do
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+
   context "with gemini",
           vcr: {cassette_name: "gemini/lazy_conversation/successful_response"} do
-    let(:provider) { LLM.gemini(ENV["LLM_SECRET"] || "TOKEN") }
+    let(:provider) { LLM.gemini(token) }
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
@@ -28,7 +30,7 @@ RSpec.describe LLM::LazyConversation do
 
   context "with openai",
           vcr: {cassette_name: "openai/lazy_conversation/successful_response"} do
-    let(:provider) { LLM.openai(ENV["LLM_SECRET"] || "TOKEN") }
+    let(:provider) { LLM.openai(token) }
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
