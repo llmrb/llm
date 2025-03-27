@@ -21,13 +21,9 @@ WebMock.stub_request(:post, "https://api.openai.com/v1/chat/completions")
             "index" => 0,
             "message" => {
               "role" => "assistant",
-              "content" => "The sky is typically blue during the day, but it can have beautiful\n" \
-                           "hues of pink, orange, and purple during sunset! As for an orange,\n" \
-                           "it's typically orange in color - funny how that works, right?\n" \
-                           "I love Ruby too! Did you know that a Ruby is not only a beautiful\n" \
-                           "gemstone, but it's also a programming language that's both elegant\n" \
-                           "and powerful! Speaking of colors, why did the orange stop?\n" \
-                           "Because it ran out of juice!",
+              "content" => "The answer to 5 + 15 is 20.\n" \
+                           "The answer to (5 + 15) * 2 is 40.\n" \
+                           "The answer to ((5 + 15) * 2) / 10 is 4.",
               "refusal" => nil
             },
             "logprobs" => nil,

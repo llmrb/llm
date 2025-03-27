@@ -52,25 +52,25 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 convo = llm.chat File.read("./share/llm/prompts/system.txt"), :system
-convo.chat "What color is the sky?"
-convo.chat "What color is an orange?"
-convo.chat "I like Ruby"
+convo.chat "Tell me the answer to 5 + 15"
+convo.chat "Tell me the answer to (5 + 15) * 2"
+convo.chat "Tell me the answer to ((5 + 15) * 2) / 10"
 convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
-# [system] You are a friendly chatbot. Sometimes, you like to tell a joke.
-#          But the joke must be based on the given inputs.
+# [system] You are my math assistant.
+#          I will provide you with (simple) equations.
+#          You will provide answers in the format "The answer to <equation> is <answer>".
 #          I will provide you a set of messages. Reply to all of them.
 #          A message is considered unanswered if there is no corresponding assistant response.
 #
-# [user] What color is the sky?
-# [user] What color is an orange?
-# [user] I like Ruby
+# [user] Tell me the answer to 5 + 15
+# [user] Tell me the answer to (5 + 15) * 2
+# [user] Tell me the answer to ((5 + 15) * 2) / 10
 #
-# [assistant] The sky is typically blue during the day. As for an orange,
-#             it is usually orange in color—funny how that works, right?
-#             I love Ruby too! Speaking of colors, why did the orange stop?
-#             Because it ran out of juice! 🍊😂
+# [assistant] The answer to 5 + 15 is 20.
+#             The answer to (5 + 15) * 2 is 40.
+#             The answer to ((5 + 15) * 2) / 10 is 4.
 ```
 
 #### Prompts
