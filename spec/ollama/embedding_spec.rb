@@ -3,13 +3,22 @@
 require "setup"
 
 RSpec.describe "LLM::Ollama: embeddings" do
-  let(:ollama) { LLM.ollama("") }
+  let(:ollama) { LLM.ollama(nil, host: "eel.home.network") }
 
-  context "when given a successful response", :success do
-    subject(:response) { ollama.embed("Hello, world") }
+  context "when given a successful response",
+          vcr: {cassette_name: "ollama/embeddings/successful_response"} do
+    subject(:response) { ollama.embed(["This is a paragraph", "This is another one"]) }
 
-    it "raises NotImplementedError" do
-      expect { response }.to raise_error(NotImplementedError)
+    it "returns an embedding" do
+      expect(response).to be_instance_of(LLM::Response::Embedding)
+    end
+
+    it "returns a model" do
+      expect(response.model).to eq("llama3.2")
+    end
+
+    it "has embeddings" do
+      expect(response.embeddings.size).to eq(2)
     end
   end
 end
