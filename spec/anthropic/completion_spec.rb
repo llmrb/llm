@@ -3,29 +3,11 @@
 require "setup"
 
 RSpec.describe "LLM::Anthropic: completions" do
-  subject(:anthropic) { LLM.anthropic("") }
+  subject(:anthropic) { LLM.anthropic(token) }
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
-  before(:each, :success) do
-    stub_request(:post, "https://api.anthropic.com/v1/messages")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 200,
-        body: fixture("anthropic/completions/ok_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
-
-  before(:each, :unauthorized) do
-    stub_request(:post, "https://api.anthropic.com/v1/messages")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 403,
-        body: fixture("anthropic/completions/unauthorized_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
-
-  context "when given a successful response", :success do
+  context "when given a successful response",
+          vcr: {cassette_name: "anthropic/completions/successful_response"} do
     subject(:response) { anthropic.complete("Hello, world", :user) }
 
     it "returns a completion" do
@@ -38,9 +20,9 @@ RSpec.describe "LLM::Anthropic: completions" do
 
     it "includes token usage" do
       expect(response).to have_attributes(
-        prompt_tokens: 2095,
-        completion_tokens: 503,
-        total_tokens: 2598
+        prompt_tokens: 10,
+        completion_tokens: 30,
+        total_tokens: 40
       )
     end
 
@@ -50,7 +32,7 @@ RSpec.describe "LLM::Anthropic: completions" do
       it "has choices" do
         expect(choice).to have_attributes(
           role: "assistant",
-          content: "Hi! My name is Claude."
+          content: "Hello! How can I assist you today? Feel free to ask me any questions or let me know if you need help with anything."
         )
       end
 
@@ -60,8 +42,10 @@ RSpec.describe "LLM::Anthropic: completions" do
     end
   end
 
-  context "when given an unauthorized response", :unauthorized do
+  context "when given an unauthorized response",
+          vcr: {cassette_name: "anthropic/completions/unauthorized_response"} do
     subject(:response) { anthropic.complete("Hello", :user) }
+    let(:token) { "BADTOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)

@@ -20,7 +20,7 @@ class LLM::Anthropic
     #  Raises a subclass of {LLM::Error LLM::Error}
     def raise_error!
       case res
-      when Net::HTTPForbidden
+      when Net::HTTPUnauthorized
         raise LLM::Error::Unauthorized.new { _1.response = res }, "Authentication error"
       when Net::HTTPTooManyRequests
         raise LLM::Error::RateLimit.new { _1.response = res }, "Too many requests"

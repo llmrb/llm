@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"image_url","image_url":{"url":"/foobar.exe"}}]}],"model":"gpt-4o-mini"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 27 Mar 2025 03:12:41 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '191'
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      Openai-Processing-Ms:
+      - '39'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Input-Images:
+      - '50000'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Input-Images:
+      - '49999'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '199232'
+      X-Ratelimit-Reset-Input-Images:
+      - 1ms
+      X-Ratelimit-Reset-Requests:
+      - 8.64s
+      X-Ratelimit-Reset-Tokens:
+      - 230ms
+      X-Request-Id:
+      - req_7ef770407c83bbd2784416c8bf3ab1cb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=syfEWmOnpUfuh6fBuLykVEoeMevQ1b5wb6Fv6V4SK1Q-1743045161-1.0.1.1-svnJug4xlu2JgP7ABG6sycxdvdpIaNX_4NuVtoy9M1JXe9m4PnKXDSOX.tuYPQwHFIGqJRqTKgCEYdItm57i9M7kdv7WPbP3YuNzjXbaTUE;
+        path=/; expires=Thu, 27-Mar-25 03:42:41 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=XInTKr1wy1xD1MGmwfOZ32jsDchgCpNo.l5VLDlZy1Y-1743045161570-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 926bb520e9a4ae5d-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "error": {
+            "message": "Failed to download image from /foobar.exe. Image URL is invalid.",
+            "type": "invalid_request_error",
+            "param": null,
+            "code": "invalid_image_url"
+          }
+        }
+  recorded_at: Thu, 27 Mar 2025 03:12:36 GMT
+recorded_with: VCR 6.3.1

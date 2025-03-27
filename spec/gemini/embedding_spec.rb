@@ -3,19 +3,11 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI: embeddings" do
-  let(:gemini) { LLM.gemini("") }
+  let(:gemini) { LLM.gemini(token) }
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
-  before(:each, :success) do
-    stub_request(:post, "https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent?key=")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 200,
-        body: fixture("gemini/embeddings/hello_world_embedding.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
-
-  context "when given a successful response", :success do
+  context "when given a successful response",
+          vcr: {cassette_name: "gemini/embeddings/successful_response"} do
     subject(:response) { gemini.embed("Hello, world") }
 
     it "returns an embedding" do

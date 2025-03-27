@@ -40,4 +40,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "standard", "~> 1.40"
+  spec.add_development_dependency "vcr", "~> 6.0"
 end
