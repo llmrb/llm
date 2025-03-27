@@ -46,6 +46,12 @@ module LLM
       Response::Completion.new(res).extend(response_parser)
     end
 
+    ##
+    # @return (see LLM::Provider#assistant_role)
+    def assistant_role
+      "assistant"
+    end
+
     private
 
     def headers

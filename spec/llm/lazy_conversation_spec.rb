@@ -25,6 +25,30 @@ RSpec.describe LLM::LazyConversation do
           content: "I am doing well, thank you for asking!  How are you today?\n"
         )
       end
+
+      context "#recent_message" do
+        context "when filtered by the assistant role" do
+          subject(:message) { conversation.recent_message }
+
+          it "returns the most recent assistant message" do
+            expect(message).to have_attributes(
+              role: "model",
+              content: "I am doing well, thank you for asking!  How are you today?\n"
+            )
+          end
+        end
+
+        context "when filtered by the user role" do
+          subject(:message) { conversation.recent_message(role: "user") }
+
+          it "returns the most recent user message" do
+            expect(message).to have_attributes(
+              role: "user",
+              content: "How are you?"
+            )
+          end
+        end
+      end
     end
   end
 
@@ -47,6 +71,30 @@ RSpec.describe LLM::LazyConversation do
           role: "assistant",
           content: "I'm just a computer program, so I don't have feelings, but I'm here and ready to help! What’s your question?"
         )
+      end
+
+      context "#recent_message" do
+        context "when filtered by the assistant role" do
+          subject(:message) { conversation.recent_message }
+
+          it "returns the most recent assistant message" do
+            expect(message).to have_attributes(
+              role: "assistant",
+              content: "I'm just a computer program, so I don't have feelings, but I'm here and ready to help! What’s your question?"
+            )
+          end
+        end
+
+        context "when filtered by the user role" do
+          subject(:message) { conversation.recent_message(role: "user") }
+
+          it "returns the most recent user message" do
+            expect(message).to have_attributes(
+              role: "user",
+              content: "How are you?"
+            )
+          end
+        end
       end
     end
   end

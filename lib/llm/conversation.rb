@@ -34,5 +34,16 @@ module LLM
         @messages.concat [Message.new(role, prompt), completion.choices[0]]
       end
     end
+
+    ##
+    # @param [#to_s] role
+    #  The role of the last message.
+    #  Defaults to the LLM's assistant role (eg "assistant" or "model")
+    # @return [LLM::Message]
+    #  The last message for the given role
+    def last_message(role: @provider.assistant_role)
+      messages.reverse_each.find { _1.role == role.to_s }
+    end
+    alias_method :recent_message, :last_message
   end
 end
