@@ -113,6 +113,7 @@ The chunks of text may also carry metadata that can be used to further filter
 and contextualize the search results. This technique is popularly known as
 retrieval-augmented generation (RAG). Embeddings can also be used for
 other purposes as well &ndash; RAG is just one of the most popular use-cases.
+
 Let's take a look at an example that generates a couple of vectors
 for two chunks of text:
 
@@ -150,7 +151,9 @@ A complete API reference is available at [0x1eef.github.io/x/llm](https://0x1eef
 
 ## Install
 
-LLM has not been published to RubyGems.org yet. Stay tuned
+llm.rb can be installed via rubygems.org:
+
+	gem install llm.rb
 
 ## License
 
