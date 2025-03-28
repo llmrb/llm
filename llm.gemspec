@@ -25,12 +25,13 @@ Gem::Specification.new do |spec|
     "README.md", "LICENSE.txt",
     "lib/*.rb", "lib/**/*.rb",
     "spec/*.rb", "spec/**/*.rb",
-    "llm.gemspec"
+    "share/llm/models/*.yml", "llm.gemspec"
   ]
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "net-http", "~> 0.6.0"
   spec.add_runtime_dependency "json"
+  spec.add_runtime_dependency "yaml"
 
   spec.add_development_dependency "webmock", "~> 3.24.0"
   spec.add_development_dependency "yard", "~> 0.9.37"
