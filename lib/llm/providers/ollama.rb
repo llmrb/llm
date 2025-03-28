@@ -19,6 +19,17 @@ module LLM
     end
 
     ##
+    # @param input (see LLM::Provider#embed)
+    # @return (see LLM::Provider#embed)
+    def embed(input, **params)
+      params   = {model: "llama3.2"}.merge!(params)
+      req      = Net::HTTP::Post.new("/v1/embeddings", headers)
+      req.body = JSON.dump({input:}.merge!(params))
+      res      = request(@http, req)
+      Response::Embedding.new(res).extend(response_parser)
+    end
+
+    ##
     # @see https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion Ollama docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)

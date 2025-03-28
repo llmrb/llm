@@ -6,6 +6,19 @@ class LLM::Ollama
     # @param [Hash] body
     #  The response body from the LLM provider
     # @return [Hash]
+    def parse_embedding(body)
+      {
+        model: body["model"],
+        embeddings: body["data"].map { _1["embedding"] },
+        prompt_tokens: body.dig("usage", "prompt_tokens"),
+        total_tokens: body.dig("usage", "total_tokens")
+      }
+    end
+
+    ##
+    # @param [Hash] body
+    #  The response body from the LLM provider
+    # @return [Hash]
     def parse_completion(body)
       {
         model: body["model"],

@@ -5,8 +5,10 @@ http_interactions:
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
-      string: '{"contents":[{"role":"user","parts":[{"text":"Hello"}]},{"role":"user","parts":[{"text":"I
-        have a question"}]},{"role":"user","parts":[{"text":"How are you?"}]}]}'
+      string: '{"contents":[{"role":"user","parts":[{"text":"Keep your answers short
+        and concise, provide three answers to the three questions"}]},{"role":"user","parts":[{"text":"What
+        is 3+2 ?"}]},{"role":"user","parts":[{"text":"What is 5+5 ?"}]},{"role":"user","parts":[{"text":"What
+        is 5+7 ?"}]}]}'
     headers:
       Content-Type:
       - application/json
@@ -28,7 +30,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Thu, 27 Mar 2025 02:41:19 GMT
+      - Fri, 28 Mar 2025 02:22:21 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -38,7 +40,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1209
+      - gfet4t7; dur=1290
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -52,33 +54,33 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "I am doing well, thank you for asking!  How are you today?\n"
+                    "text": "5\n10\n12\n"
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.0094695213963003726
+              "avgLogprobs": -0.047533076256513596
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 9,
-            "candidatesTokenCount": 17,
-            "totalTokenCount": 26,
+            "promptTokenCount": 35,
+            "candidatesTokenCount": 8,
+            "totalTokenCount": 43,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 9
+                "tokenCount": 35
               }
             ],
             "candidatesTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 17
+                "tokenCount": 8
               }
             ]
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Thu, 27 Mar 2025 02:41:14 GMT
+  recorded_at: Fri, 28 Mar 2025 02:22:20 GMT
 recorded_with: VCR 6.3.1
