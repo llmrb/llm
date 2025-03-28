@@ -99,11 +99,22 @@ provider accepts:
 
 The
 [`LLM::Provider#embed`](https://0x1eef.github.io/x/llm/LLM/Provider.html#embed-instance_method)
-method generates a vector representation of a given piece of text.
-Embeddings capture the semantic meaning of text, and they are
-commonly used in tasks such as text similarity comparison (e.g., finding related documents),
-semantic search in vector databases, and the clustering and classification
-of text-based data:
+method generates a vector representation of one or more chunks
+of text. Embeddings capture the semantic meaning of text &ndash;
+a common use-case for them is to store chunks of text in a
+vector database, and then to query the database for *semantically
+similar* text. These chunks of similar text can then support the
+generation of a prompt that is used to query a large language model,
+which will go on to generate a response.
+
+For example, a user query might find similar text that adds important
+context to the prompt that informs the large language model in how to respond.
+The chunks of text may also carry metadata that can be used to further filter
+and contextualize the search results. This technique is popularly known as
+retrieval-augmented generation (RAG). Embeddings can also be used for
+other purposes as well &ndash; RAG is just one of the most popular use-cases.
+Let's take a look at an example that generates a couple of vectors
+for two chunks of text:
 
 ```ruby
 #!/usr/bin/env ruby
