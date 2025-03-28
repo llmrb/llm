@@ -99,25 +99,13 @@ RSpec.describe LLM::LazyConversation do
     end
   end
 
-  context "with ollama" do
-    let(:provider) { LLM.ollama("") }
+  context "with ollama",
+          vcr: {cassette_name: "ollama/lazy_conversation/successful_response"} do
+    let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
       subject(:message) { conversation.messages.to_a[-1] }
-
-      before do
-        stub_request(:post, "http://localhost:11434/api/chat")
-          .with(
-            headers: {"Content-Type" => "application/json"},
-            body: request_fixture("ollama/completions/ok_completion.json")
-          )
-          .to_return(
-            status: 200,
-            body: response_fixture("ollama/completions/ok_completion.json"),
-            headers: {"Content-Type" => "application/json"}
-          )
-      end
 
       before do
         conversation.chat "Hello"
@@ -128,8 +116,36 @@ RSpec.describe LLM::LazyConversation do
       it "maintains a conversation" do
         is_expected.to have_attributes(
           role: "assistant",
-          content: "Hello! How are you today?"
+          content: "Hello! I'm just a computer program, so I don't have feelings or emotions " \
+                   "like humans do. I'm functioning properly and ready to help with any questions " \
+                   "or topics you'd like to discuss. How can I assist you today?"
         )
+      end
+
+      context "#recent_message" do
+        context "when filtered by the assistant role" do
+          subject(:message) { conversation.recent_message }
+
+          it "returns the most recent assistant message" do
+            is_expected.to have_attributes(
+              role: "assistant",
+              content: "Hello! I'm just a computer program, so I don't have feelings or emotions " \
+                       "like humans do. I'm functioning properly and ready to help with any questions " \
+                       "or topics you'd like to discuss. How can I assist you today?"
+            )
+          end
+        end
+
+        context "when filtered by the user role" do
+          subject(:message) { conversation.recent_message(role: "user") }
+
+          it "returns the most recent user message" do
+            is_expected.to have_attributes(
+              role: "user",
+              content: "How are you?"
+            )
+          end
+        end
       end
     end
   end
