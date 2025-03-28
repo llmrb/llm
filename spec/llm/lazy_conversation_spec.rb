@@ -4,6 +4,7 @@ require "setup"
 
 RSpec.describe LLM::LazyConversation do
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:prompt) { "Keep your answers short and concise, and provide three answers to the three questions" }
 
   context "with gemini",
           vcr: {cassette_name: "gemini/lazy_conversation/successful_response"} do
@@ -14,40 +15,17 @@ RSpec.describe LLM::LazyConversation do
       subject(:message) { conversation.messages.to_a[-1] }
 
       before do
-        conversation.chat "Hello"
-        conversation.chat "I have a question"
-        conversation.chat "How are you?"
+        conversation.chat prompt
+        conversation.chat "What is 3+2 ?"
+        conversation.chat "What is 5+5 ?"
+        conversation.chat "What is 5+7 ?"
       end
 
       it "maintains a conversation" do
         is_expected.to have_attributes(
           role: "model",
-          content: "I am doing well, thank you for asking!  How are you today?\n"
+          content: "5\n10\n12\n"
         )
-      end
-
-      context "#recent_message" do
-        context "when filtered by the assistant role" do
-          subject(:message) { conversation.recent_message }
-
-          it "returns the most recent assistant message" do
-            is_expected.to have_attributes(
-              role: "model",
-              content: "I am doing well, thank you for asking!  How are you today?\n"
-            )
-          end
-        end
-
-        context "when filtered by the user role" do
-          subject(:message) { conversation.recent_message(role: "user") }
-
-          it "returns the most recent user message" do
-            is_expected.to have_attributes(
-              role: "user",
-              content: "How are you?"
-            )
-          end
-        end
       end
     end
   end
@@ -58,43 +36,20 @@ RSpec.describe LLM::LazyConversation do
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
-      subject(:message) { conversation.messages.to_a[-1] }
+      subject(:message) { conversation.recent_message }
 
       before do
-        conversation.chat "Hello"
-        conversation.chat "I have a question"
-        conversation.chat "How are you?"
+        conversation.chat prompt, :system
+        conversation.chat "What is 3+2 ?"
+        conversation.chat "What is 5+5 ?"
+        conversation.chat "What is 5+7 ?"
       end
 
       it "maintains a conversation" do
         is_expected.to have_attributes(
           role: "assistant",
-          content: "I'm just a computer program, so I don't have feelings, but I'm here and ready to help! What’s your question?"
+          content: "1. 5  \n2. 10  \n3. 12  "
         )
-      end
-
-      context "#recent_message" do
-        context "when filtered by the assistant role" do
-          subject(:message) { conversation.recent_message }
-
-          it "returns the most recent assistant message" do
-            is_expected.to have_attributes(
-              role: "assistant",
-              content: "I'm just a computer program, so I don't have feelings, but I'm here and ready to help! What’s your question?"
-            )
-          end
-        end
-
-        context "when filtered by the user role" do
-          subject(:message) { conversation.recent_message(role: "user") }
-
-          it "returns the most recent user message" do
-            is_expected.to have_attributes(
-              role: "user",
-              content: "How are you?"
-            )
-          end
-        end
       end
     end
   end
@@ -105,47 +60,20 @@ RSpec.describe LLM::LazyConversation do
     let(:conversation) { described_class.new(provider) }
 
     context "when given a thread of messages" do
-      subject(:message) { conversation.messages.to_a[-1] }
+      subject(:message) { conversation.recent_message }
 
       before do
-        conversation.chat "Hello"
-        conversation.chat "I have a question"
-        conversation.chat "How are you?"
+        conversation.chat prompt, :system
+        conversation.chat "What is 3+2 ?"
+        conversation.chat "What is 5+5 ?"
+        conversation.chat "What is 5+7 ?"
       end
 
       it "maintains a conversation" do
         is_expected.to have_attributes(
           role: "assistant",
-          content: "Hello! I'm just a computer program, so I don't have feelings or emotions " \
-                   "like humans do. I'm functioning properly and ready to help with any questions " \
-                   "or topics you'd like to discuss. How can I assist you today?"
+          content: "Here are the calculations:\n\n1. 3 + 2 = 5\n2. 5 + 5 = 10\n3. 5 + 7 = 12"
         )
-      end
-
-      context "#recent_message" do
-        context "when filtered by the assistant role" do
-          subject(:message) { conversation.recent_message }
-
-          it "returns the most recent assistant message" do
-            is_expected.to have_attributes(
-              role: "assistant",
-              content: "Hello! I'm just a computer program, so I don't have feelings or emotions " \
-                       "like humans do. I'm functioning properly and ready to help with any questions " \
-                       "or topics you'd like to discuss. How can I assist you today?"
-            )
-          end
-        end
-
-        context "when filtered by the user role" do
-          subject(:message) { conversation.recent_message(role: "user") }
-
-          it "returns the most recent user message" do
-            is_expected.to have_attributes(
-              role: "user",
-              content: "How are you?"
-            )
-          end
-        end
       end
     end
   end

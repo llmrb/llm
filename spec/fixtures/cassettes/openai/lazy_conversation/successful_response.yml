@@ -5,8 +5,10 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Hello"},{"role":"user","content":"I
-        have a question"},{"role":"user","content":"How are you?"}],"model":"gpt-4o-mini"}'
+      string: '{"messages":[{"role":"system","content":"Keep your answers short and
+        concise, and provide three answers to the three questions"},{"role":"user","content":"What
+        is 3+2 ?"},{"role":"user","content":"What is 5+5 ?"},{"role":"user","content":"What
+        is 5+7 ?"}],"model":"gpt-4o-mini"}'
     headers:
       Content-Type:
       - application/json
@@ -24,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 27 Mar 2025 02:46:18 GMT
+      - Fri, 28 Mar 2025 02:24:49 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,7 +38,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '546'
+      - '380'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -46,34 +48,69 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '9999'
       X-Ratelimit-Remaining-Tokens:
-      - '199987'
+      - '199963'
       X-Ratelimit-Reset-Requests:
       - 8.64s
       X-Ratelimit-Reset-Tokens:
-      - 3ms
+      - 10ms
       X-Request-Id:
-      - req_164f513afbb62b94bf32b56ee4725e81
+      - req_25dfe596109f955cb6825f350302cb4f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=zIEUvi5oazkfzVKNGUxeun0gFO2LNk4JGkJHIo7vL68-1743043578-1.0.1.1-ePgRB1.VBR41iICSZUIl3FFUS6ipHFRQ0mXUZe3kTKzESqXghtcJ3ueeYUM8vNBeM5Xs1eawPkmk.Uq5H2eoUv9Wb4yxrj0FSrUARYBYoeg;
-        path=/; expires=Thu, 27-Mar-25 03:16:18 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=oVOUoB7DptuLUM1B_asot4l.9mvDrruEgrimW2QkhS4-1743128689-1.0.1.1-QcHmHa7y8bsngPk_QVBpSiYpxR.KSuX.IhdRaa9ZZb5D6xUxZ014G.DcdSMeFMMcC904QkF7MgAyExA_nb5vE9qT6FTKr_xqwqSsQm0KM80;
+        path=/; expires=Fri, 28-Mar-25 02:54:49 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=65P_x6kPSjXKwNmflKBHdBsSKP1YoY1OumYDH8SQtTw-1743043578049-0.0.1.1-604800000;
+      - _cfuvid=cRw0KVy3MI_fVKJBfg_4vI9ltXXFjC3OIOqJZOP9RoM-1743128689455-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 926b8e74eee957e6-GRU
+      - 9273ac61a8188779-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1CRlhZMXVmeFRMR1p5aUlreVoxbjUwRFFsTnZCUyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTc0MzA0MzU3NywKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiSSdtIGp1c3QgYSBjb21wdXRlciBwcm9ncmFtLCBzbyBJIGRvbid0IGhhdmUgZmVlbGluZ3MsIGJ1dCBJJ20gaGVyZSBhbmQgcmVhZHkgdG8gaGVscCEgV2hhdOKAmXMgeW91ciBxdWVzdGlvbj8iLAogICAgICAgICJyZWZ1c2FsIjogbnVsbCwKICAgICAgICAiYW5ub3RhdGlvbnMiOiBbXQogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiAyNCwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDI2LAogICAgInRvdGFsX3Rva2VucyI6IDUwLAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic2VydmljZV90aWVyIjogImRlZmF1bHQiLAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfODZkMDI5MDQxMSIKfQo=
-  recorded_at: Thu, 27 Mar 2025 02:46:12 GMT
+      string: |
+        {
+          "id": "chatcmpl-BFtgn1FzYPTpQs4ocHUGozhJACD79",
+          "object": "chat.completion",
+          "created": 1743128689,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "1. 5  \n2. 10  \n3. 12  ",
+                "refusal": null,
+                "annotations": []
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 55,
+            "completion_tokens": 16,
+            "total_tokens": 71,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "service_tier": "default",
+          "system_fingerprint": "fp_b376dfbbd5"
+        }
+  recorded_at: Fri, 28 Mar 2025 02:24:48 GMT
 recorded_with: VCR 6.3.1

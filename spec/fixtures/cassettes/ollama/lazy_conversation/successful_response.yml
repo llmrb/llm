@@ -5,8 +5,10 @@ http_interactions:
     uri: http://eel.home.network:11434/api/chat
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Hello"},{"role":"user","content":"I
-        have a question"},{"role":"user","content":"How are you?"}],"model":"llama3.2","stream":false}'
+      string: '{"messages":[{"role":"system","content":"Keep your answers short and
+        concise, and provide three answers to the three questions"},{"role":"user","content":"What
+        is 3+2 ?"},{"role":"user","content":"What is 5+5 ?"},{"role":"user","content":"What
+        is 5+7 ?"}],"model":"llama3.2","stream":false}'
     headers:
       Content-Type:
       - application/json
@@ -26,14 +28,12 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 28 Mar 2025 01:56:13 GMT
+      - Fri, 28 Mar 2025 02:23:19 GMT
       Content-Length:
-      - '506'
+      - '367'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-03-28T01:56:13.875462684Z","message":{"role":"assistant","content":"Hello!
-        I''m just a computer program, so I don''t have feelings or emotions like humans
-        do. I''m functioning properly and ready to help with any questions or topics
-        you''d like to discuss. How can I assist you today?"},"done_reason":"stop","done":true,"total_duration":1429445637,"load_duration":1043197279,"prompt_eval_count":36,"prompt_eval_duration":92892458,"eval_count":48,"eval_duration":291820918}'
-  recorded_at: Fri, 28 Mar 2025 01:56:13 GMT
+      string: '{"model":"llama3.2","created_at":"2025-03-28T02:23:19.417218911Z","message":{"role":"assistant","content":"Here
+        are the calculations:\n\n1. 3 + 2 = 5\n2. 5 + 5 = 10\n3. 5 + 7 = 12"},"done_reason":"stop","done":true,"total_duration":1384448788,"load_duration":1049379740,"prompt_eval_count":61,"prompt_eval_duration":96535446,"eval_count":38,"eval_duration":237498600}'
+  recorded_at: Fri, 28 Mar 2025 02:23:18 GMT
 recorded_with: VCR 6.3.1
