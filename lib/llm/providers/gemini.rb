@@ -50,6 +50,12 @@ module LLM
       "model"
     end
 
+    ##
+    # @return (see LLM::Provider#models)
+    def models
+      @models ||= load_models!("gemini")
+    end
+
     private
 
     def headers

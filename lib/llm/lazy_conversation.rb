@@ -24,8 +24,9 @@ module LLM
     ##
     # @param [LLM::Provider] provider
     #  A provider
-    def initialize(provider)
+    def initialize(provider, params = {})
       @provider = provider
+      @params = params
       @messages = LLM::MessageQueue.new(provider)
     end
 
@@ -33,7 +34,7 @@ module LLM
     # @param prompt (see LLM::Provider#prompt)
     # @return [LLM::Conversation]
     def chat(prompt, role = :user, **params)
-      tap { @messages << [prompt, role, params] }
+      tap { @messages << [prompt, role, @params.merge(params)] }
     end
 
     ##

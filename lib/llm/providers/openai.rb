@@ -48,6 +48,10 @@ module LLM
       "assistant"
     end
 
+    def models
+      @models ||= load_models!("openai")
+    end
+
     private
 
     def headers
