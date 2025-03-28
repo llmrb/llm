@@ -30,12 +30,12 @@ RSpec.describe LLM::LazyConversation do
     end
   end
 
-  context "with openai",
-          vcr: {cassette_name: "openai/lazy_conversation/successful_response"} do
+  context "with openai"  do
     let(:provider) { LLM.openai(token) }
     let(:conversation) { described_class.new(provider) }
 
-    context "when given a thread of messages" do
+    context "when given a thread of messages",
+            vcr: {cassette_name: "openai/lazy_conversation/successful_response"} do
       subject(:message) { conversation.recent_message }
 
       before do
@@ -50,6 +50,18 @@ RSpec.describe LLM::LazyConversation do
           role: "assistant",
           content: "1. 5  \n2. 10  \n3. 12  "
         )
+      end
+    end
+
+    context "when given a specific model",
+            vcr: {cassette_name: "openai/lazy_conversation/successful_response_o3_mini"} do
+      let(:conversation) { described_class.new(provider, model: provider.models["o3-mini"]) }
+
+      it "maintains the model throughout a conversation" do
+        conversation.chat(prompt, :system)
+        expect(conversation.recent_message.extra[:completion].model).to eq("o3-mini-2025-01-31")
+        conversation.chat("What is 5+5?")
+        expect(conversation.recent_message.extra[:completion].model).to eq("o3-mini-2025-01-31")
       end
     end
   end

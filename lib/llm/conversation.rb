@@ -20,8 +20,9 @@ module LLM
     ##
     # @param [LLM::Provider] provider
     #  A provider
-    def initialize(provider)
+    def initialize(provider, params = {})
       @provider = provider
+      @params = params
       @messages = []
     end
 
@@ -30,7 +31,7 @@ module LLM
     # @return [LLM::Conversation]
     def chat(prompt, role = :user, **params)
       tap do
-        completion = @provider.complete(prompt, role, **params.merge(messages:))
+        completion = @provider.complete(prompt, role, **@params.merge(params.merge(messages:)))
         @messages.concat [Message.new(role, prompt), completion.choices[0]]
       end
     end

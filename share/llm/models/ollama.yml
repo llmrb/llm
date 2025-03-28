@@ -1,0 +1,130 @@
+---
+gemma3:1b:
+  name: Gemma
+  parameters: 1B
+  description: Lightweight version of Google's Gemma 3 language model, suitable for
+    low-resource environments
+  to_param: gemma3:1b
+gemma3:
+  name: Gemma
+  parameters: 4B
+  description: Balanced Gemma 3 model providing good accuracy with reasonable size
+  to_param: gemma3
+gemma3:12b:
+  name: Gemma
+  parameters: 12B
+  description: Larger Gemma 3 model offering improved reasoning and generation abilities
+  to_param: gemma3:12b
+gemma3:27b:
+  name: Gemma
+  parameters: 27B
+  description: High-end Gemma 3 model focused on top-tier performance and accuracy
+  to_param: gemma3:27b
+qwq:
+  name: QwQ
+  parameters: 32B
+  description: Large-scale model with high parameter count for complex tasks and
+    high-quality generation
+  to_param: qwq
+deepseek-r1:
+  name: DeepSeek-R1
+  parameters: 7B
+  description: Compact DeepSeek model optimized for research and experimentation
+  to_param: deepseek-r1
+deepseek-r1:671b:
+  name: DeepSeek-R1
+  parameters: 671B
+  description: Massive-scale DeepSeek model focused on advanced AI reasoning and
+    capabilities
+  to_param: deepseek-r1:671b
+llama3.3:
+  name: Llama
+  parameters: 70B
+  description: Latest large Llama model designed for high-end performance in reasoning
+    and language tasks
+  to_param: llama3.3
+llama3.2:
+  name: Llama
+  parameters: 3B
+  description: Small but capable version of Llama 3.2 for lightweight applications
+  to_param: llama3.2
+llama3.2:1b:
+  name: Llama
+  parameters: 1B
+  description: Tiny version of Llama 3.2, extremely lightweight and fast
+  to_param: llama3.2:1b
+llama3.2-vision:
+  name: Llama Vision
+  parameters: 11B
+  description: Multimodal Llama 3.2 model with vision capabilities (images + text)
+  to_param: llama3.2-vision
+llama3.2-vision:90b:
+  name: Llama Vision
+  parameters: 90B
+  description: Large-scale vision-capable Llama model for advanced multimodal tasks
+  to_param: llama3.2-vision:90b
+llama3.1:
+  name: Llama
+  parameters: 8B
+  description: General-purpose Llama model designed for good accuracy and performance
+    balance
+  to_param: llama3.1
+llama3.1:405b:
+  name: Llama
+  parameters: 405B
+  description: Extremely large-scale version of Llama 3.1, suitable for advanced
+    tasks
+  to_param: llama3.1:405b
+phi4:
+  name: Phi
+  parameters: 14B
+  description: Phi 4 is known for compact size and competitive performance in general
+    tasks
+  to_param: phi4
+phi4-mini:
+  name: Phi Mini
+  parameters: 3.8B
+  description: Lightweight variant of Phi 4 ideal for quick inference on constrained
+    systems
+  to_param: phi4-mini
+mistral:
+  name: Mistral
+  parameters: 7B
+  description: Popular and versatile open model for general language tasks
+  to_param: mistral
+moondream:
+  name: Moondream
+  parameters: 1.4B
+  description: Compact vision-enabled model with strong general performance
+  to_param: moondream
+neural-chat:
+  name: Neural Chat
+  parameters: 7B
+  description: Chat-focused model fine-tuned for natural conversations
+  to_param: neural-chat
+starling-lm:
+  name: Starling
+  parameters: 7B
+  description: Model focused on instruction-following and conversational performance
+  to_param: starling-lm
+codellama:
+  name: Code Llama
+  parameters: 7B
+  description: Llama model variant fine-tuned specifically for code understanding
+    and generation
+  to_param: codellama
+llama2-uncensored:
+  name: Llama 2 Uncensored
+  parameters: 7B
+  description: Unfiltered version of Llama 2 for unrestricted language modeling
+  to_param: llama2-uncensored
+llava:
+  name: LLaVA
+  parameters: 7B
+  description: Multimodal model combining vision and language understanding
+  to_param: llava
+granite3.2:
+  name: Granite
+  parameters: 8B
+  description: IBM’s Granite model for enterprise-grade language applications
+  to_param: granite3.2

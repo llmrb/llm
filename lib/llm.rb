@@ -6,6 +6,7 @@ module LLM
   require_relative "llm/message"
   require_relative "llm/response"
   require_relative "llm/file"
+  require_relative "llm/model"
   require_relative "llm/provider"
   require_relative "llm/conversation"
   require_relative "llm/lazy_conversation"

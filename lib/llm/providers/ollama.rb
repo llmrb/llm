@@ -49,6 +49,12 @@ module LLM
       "assistant"
     end
 
+    ##
+    # @return (see LLM::Provider#models)
+    def models
+      @models ||= load_models!("ollama")
+    end
+
     private
 
     def headers
