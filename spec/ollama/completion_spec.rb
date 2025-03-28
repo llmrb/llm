@@ -3,19 +3,10 @@
 require "setup"
 
 RSpec.describe "LLM::Ollama: completions" do
-  subject(:ollama) { LLM.ollama("") }
+  let(:ollama) { LLM.ollama(nil, host: "eel.home.network") }
 
-  before(:each, :success) do
-    stub_request(:post, "localhost:11434/api/chat")
-      .with(headers: {"Content-Type" => "application/json"})
-      .to_return(
-        status: 200,
-        body: fixture("ollama/completions/ok_completion.json"),
-        headers: {"Content-Type" => "application/json"}
-      )
-  end
-
-  context "when given a successful response", :success do
+  context "when given a successful response",
+          vcr: {cassette_name: "ollama/completions/successful_response"} do
     subject(:response) { ollama.complete("Hello!", :user) }
 
     it "returns a completion" do
@@ -28,9 +19,9 @@ RSpec.describe "LLM::Ollama: completions" do
 
     it "includes token usage" do
       expect(response).to have_attributes(
-        prompt_tokens: 26,
-        completion_tokens: 298,
-        total_tokens: 324
+        prompt_tokens: 27,
+        completion_tokens: 26,
+        total_tokens: 53
       )
     end
 
@@ -40,7 +31,7 @@ RSpec.describe "LLM::Ollama: completions" do
       it "has choices" do
         expect(choice).to have_attributes(
           role: "assistant",
-          content: "Hello! How are you today?"
+          content: "Hello! It's nice to meet you. Is there something I can help you with, or would you like to chat?"
         )
       end
 
