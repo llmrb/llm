@@ -133,6 +133,26 @@ print res.embeddings[0].size, "\n"
 # 1536
 ```
 
+### LLM
+
+#### Timeouts
+
+When running the ollama provider locally it might take a while for
+the language model to reply &ndash; depending on hardware and the
+size of the model. The following example demonstrates how to wait
+a longer period of time for a response through the use of the
+`timeout` configuration option with the `qwq` model. The following
+example waits up to 15 minutes for a response:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.ollama(nil, {model: "qwq", timeout: 60*15})
+llm.chat "What is the meaning of life, the universe, and everything?"
+llm.last_message.tap { print "[assistant] ", _1.content, "\n" }
+```
+
 ## Providers
 
 - [x] [Anthropic](https://www.anthropic.com/)
