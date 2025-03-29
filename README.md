@@ -148,11 +148,38 @@ example waits up to 15 minutes for a response:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.ollama(nil, {model: "qwq", timeout: 60*15})
-llm.chat "What is the meaning of life, the universe, and everything?"
+llm = LLM.ollama(nil, timeout: 60*15)
+llm.chat "What is the meaning of life ?", model: "qwq"
 llm.last_message.tap { print "[assistant] ", _1.content, "\n" }
 ```
 
+#### Models
+
+Generally each Large Language Model provides multiple models to choose
+from, and each model has its own set of capabilities and limitations.
+The following example demonstrates how to query the list of models
+through the
+[LLM::Provider#models](http://0x1eef.github.io/x/llm/LLM/Provider.html#models-instance_method)
+method &ndash; the example happens to use the ollama but this can be
+done for any provider:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+##
+# List models
+llm = LLM.ollama(nil)
+llm.models.each { print "#{_2.name}: #{_2.description}", "\n" }
+
+##
+# Select a model
+llm.chat "Hello, world!", model: llm.models["qwq"]
+
+##
+# This also works
+llm.chat "Hello, world!", model: "qwq"
+```
 ## Providers
 
 - [x] [Anthropic](https://www.anthropic.com/)

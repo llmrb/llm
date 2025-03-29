@@ -77,7 +77,7 @@ class LLM::Provider
 
   ##
   # @return [String]
-  #  The role of the assistant in the conversation.
+  #  Returns the role of the assistant in the conversation.
   #  Usually "assistant" or "model"
   def assistant_role
     raise NotImplementedError
@@ -85,7 +85,7 @@ class LLM::Provider
 
   ##
   # @return [Hash<String, LLM::Model>]
-  #  A hash of available models
+  #  Returns a hash of available models
   def models
     raise NotImplementedError
   end
