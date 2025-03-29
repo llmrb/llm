@@ -160,8 +160,8 @@ from, and each model has its own set of capabilities and limitations.
 The following example demonstrates how to query the list of models
 through the
 [LLM::Provider#models](http://0x1eef.github.io/x/llm/LLM/Provider.html#models-instance_method)
-method &ndash; the example happens to use the ollama but this can be
-done for any provider:
+method &ndash; the example happens to use the ollama provider but
+this can be done for any provider:
 
 ```ruby
 #!/usr/bin/env ruby
