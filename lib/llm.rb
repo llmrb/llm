@@ -17,41 +17,41 @@ module LLM
   ##
   # @param secret (see LLM::Anthropic#initialize)
   # @return (see LLM::Anthropic#initialize)
-  def anthropic(secret, **)
+  def anthropic(secret, options = {})
     require_relative "llm/providers/anthropic" unless defined?(LLM::Anthropic)
     require_relative "llm/providers/voyageai" unless defined?(LLM::VoyageAI)
-    LLM::Anthropic.new(secret, **)
+    LLM::Anthropic.new(secret, **options)
   end
 
   ##
   # @param secret (see LLM::VoyageAI#initialize)
   # @return (see LLM::VoyageAI#initialize)
-  def voyageai(secret, **)
+  def voyageai(secret, options = {})
     require_relative "llm/providers/voyageai" unless defined?(LLM::VoyageAI)
-    LLM::VoyageAI.new(secret, **)
+    LLM::VoyageAI.new(secret, **options)
   end
 
   ##
   # @param secret (see LLM::Gemini#initialize)
   # @return (see LLM::Gemini#initialize)
-  def gemini(secret, **)
+  def gemini(secret, options = {})
     require_relative "llm/providers/gemini" unless defined?(LLM::Gemini)
-    LLM::Gemini.new(secret, **)
+    LLM::Gemini.new(secret, **options)
   end
 
   ##
   # @param host (see LLM::Ollama#initialize)
   # @return (see LLM::Ollama#initialize)
-  def ollama(secret, **)
+  def ollama(secret, options = {})
     require_relative "llm/providers/ollama" unless defined?(LLM::Ollama)
-    LLM::Ollama.new(secret, **)
+    LLM::Ollama.new(secret, **options)
   end
 
   ##
   # @param secret (see LLM::OpenAI#initialize)
   # @return (see LLM::OpenAI#initialize)
-  def openai(secret, **)
+  def openai(secret, options = {})
     require_relative "llm/providers/openai" unless defined?(LLM::OpenAI)
-    LLM::OpenAI.new(secret, **)
+    LLM::OpenAI.new(secret, **options)
   end
 end

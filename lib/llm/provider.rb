@@ -14,10 +14,13 @@ class LLM::Provider
   #  The host address of the LLM provider
   # @param [Integer] port
   #  The port number
-  def initialize(secret, host:, port: 443, ssl: true)
+  # @param [Integer] timeout
+  #  The number of seconds to wait for a response
+  def initialize(secret, host:, port: 443, timeout: 60, ssl: true)
     @secret = secret
     @http = Net::HTTP.new(host, port).tap do |http|
       http.use_ssl = ssl
+      http.read_timeout = timeout
     end
   end
 
