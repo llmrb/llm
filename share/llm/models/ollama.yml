@@ -20,12 +20,14 @@ gemma3:27b:
   parameters: 27B
   description: High-end Gemma 3 model focused on top-tier performance and accuracy
   to_param: gemma3:27b
+
 qwq:
   name: QwQ
   parameters: 32B
   description: Large-scale model with high parameter count for complex tasks and
     high-quality generation
   to_param: qwq
+
 deepseek-r1:
   name: DeepSeek-R1
   parameters: 7B
@@ -37,6 +39,22 @@ deepseek-r1:671b:
   description: Massive-scale DeepSeek model focused on advanced AI reasoning and
     capabilities
   to_param: deepseek-r1:671b
+deepseek-coder:
+  name: DeepSeek-Coder
+  parameters: 1.3B
+  description: Lightweight code generation model trained on 2T tokens of code and natural language
+  to_param: deepseek-coder
+deepseek-coder:6.7b:
+  name: DeepSeek-Coder
+  parameters: 6.7B
+  description: Mid-sized DeepSeek-Coder model offering a strong balance between speed and capability for code-related tasks
+  to_param: deepseek-coder:6.7b
+deepseek-coder:33b:
+  name: DeepSeek-Coder
+  parameters: 33B
+  description: Large DeepSeek-Coder model with high performance for code generation, understanding, and multilingual coding tasks
+  to_param: deepseek-coder:33b
+
 llama3.3:
   name: Llama
   parameters: 70B
@@ -72,9 +90,9 @@ llama3.1:
 llama3.1:405b:
   name: Llama
   parameters: 405B
-  description: Extremely large-scale version of Llama 3.1, suitable for advanced
-    tasks
+  description: Extremely large-scale version of Llama 3.1, suitable for advanced tasks
   to_param: llama3.1:405b
+
 phi4:
   name: Phi
   parameters: 14B
@@ -84,45 +102,52 @@ phi4:
 phi4-mini:
   name: Phi Mini
   parameters: 3.8B
-  description: Lightweight variant of Phi 4 ideal for quick inference on constrained
-    systems
+  description: Lightweight variant of Phi 4 ideal for quick inference on constrained systems
   to_param: phi4-mini
+
 mistral:
   name: Mistral
   parameters: 7B
   description: Popular and versatile open model for general language tasks
   to_param: mistral
+
 moondream:
   name: Moondream
   parameters: 1.4B
   description: Compact vision-enabled model with strong general performance
   to_param: moondream
+
 neural-chat:
   name: Neural Chat
   parameters: 7B
   description: Chat-focused model fine-tuned for natural conversations
   to_param: neural-chat
+
 starling-lm:
   name: Starling
   parameters: 7B
   description: Model focused on instruction-following and conversational performance
   to_param: starling-lm
+
 codellama:
   name: Code Llama
   parameters: 7B
   description: Llama model variant fine-tuned specifically for code understanding
     and generation
   to_param: codellama
+
 llama2-uncensored:
   name: Llama 2 Uncensored
   parameters: 7B
   description: Unfiltered version of Llama 2 for unrestricted language modeling
   to_param: llama2-uncensored
+
 llava:
   name: LLaVA
   parameters: 7B
   description: Multimodal model combining vision and language understanding
   to_param: llava
+
 granite3.2:
   name: Granite
   parameters: 8B
