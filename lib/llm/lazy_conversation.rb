@@ -38,6 +38,10 @@ module LLM
     end
 
     ##
+    # @note
+    #  The `read_response` and `recent_message` methods are aliases of
+    #  the `last_message` method, and you can choose the name that best
+    #  fits your context or code style.
     # @param [#to_s] role
     #  The role of the last message.
     #  Defaults to the LLM's assistant role (eg "assistant" or "model")
@@ -47,5 +51,6 @@ module LLM
       messages.reverse_each.find { _1.role == role.to_s }
     end
     alias_method :recent_message, :last_message
+    alias_method :read_response, :last_message
   end
 end
