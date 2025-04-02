@@ -31,8 +31,8 @@ llm = LLM.ollama(nil)
 
 The
 [LLM::Provider#chat](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat-instance_method)
-method returns a
-[LLM::LazyConversation](https://0x1eef.github.io/x/llm/LLM/LazyConversation.html)
+method returns a lazy-variant of a
+[LLM::Conversation](https://0x1eef.github.io/x/llm/LLM/Conversation.html)
 object, and it allows for a "lazy" conversation where messages are batched and
 sent to the provider only when necessary. The non-lazy counterpart is available via the
 [LLM::Provider#chat!](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
