@@ -7,7 +7,13 @@ class LLM::Ollama
     #  The messages to format
     # @return [Array<Hash>]
     def format(messages)
-      messages.map { {role: _1.role, content: format_content(_1.content)} }
+      messages.map do
+        if Hash === _1
+          {role: _1[:role], content: format_content(_1[:content])}
+        else
+          {role: _1.role, content: format_content(_1.content)}
+        end
+      end
     end
 
     private

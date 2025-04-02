@@ -44,10 +44,20 @@ class LLM::Provider
 
   ##
   # Completes a given prompt using the LLM
+  # @example
+  #   llm = LLM.openai(ENV["KEY"])
+  #   context = [
+  #     {role: "system", content: "Answer all of my questions"},
+  #     {role: "system", content: "Your name is Pablo, you are 25 years old and you are my amigo"},
+  #   ]
+  #   res = llm.complete "What is your name and what age are you?", :user, messages: context
+  #   print "[#{res.choices[0].role}]", res.choices[0].content, "\n"
   # @param [String] prompt
   #  The input prompt to be completed
   # @param [Symbol] role
   #  The role of the prompt (e.g. :user, :system)
+  # @param [Array<Hash, LLM::Message>] messages
+  #  The messages to include in the completion
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
   # @return [LLM::Response::Completion]

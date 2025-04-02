@@ -46,6 +46,27 @@ RSpec.describe "LLM::Gemini: completions" do
     end
   end
 
+  context "when given a thread of messages",
+          vcr: {cassette_name: "gemini/completions/successful_response_thread"} do
+    subject(:response) do
+      gemini.complete "What is your name? What age are you?", :user, messages: [
+        {role: "user", content: "Answer all of my questions"},
+        {role: "user", content: "Your name is Pablo, you are 25 years old and you are my amigo"}
+      ]
+    end
+
+    it "has choices" do
+      expect(response).to have_attributes(
+        choices: [
+          have_attributes(
+            role: "model",
+            content: "My name is Pablo, and I am 25 years old.  ¡Amigo!\n"
+          )
+        ]
+      )
+    end
+  end
+
   context "when given an unauthorized response",
           vcr: {cassette_name: "gemini/completions/unauthorized_response"} do
     subject(:response) { gemini.complete("Hello!", :user) }

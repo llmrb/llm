@@ -42,6 +42,27 @@ RSpec.describe "LLM::OpenAI: completions" do
     end
   end
 
+  context "when given a thread of messages",
+          vcr: {cassette_name: "openai/completions/successful_response_thread"} do
+    subject(:response) do
+      openai.complete "What is your name? What age are you?", :user, messages: [
+        {role: "system", content: "Answer all of my questions"},
+        {role: "system", content: "Your name is Pablo, you are 25 years old and you are my amigo"}
+      ]
+    end
+
+    it "has choices" do
+      expect(response).to have_attributes(
+        choices: [
+          have_attributes(
+            role: "assistant",
+            content: "My name is Pablo, and I'm 25 years old! How can I help you today, amigo?"
+          )
+        ]
+      )
+    end
+  end
+
   context "when given a 'bad request' response",
           vcr: {cassette_name: "openai/completions/bad_request"} do
     subject(:response) { openai.complete(URI("/foobar.exe"), :user) }
