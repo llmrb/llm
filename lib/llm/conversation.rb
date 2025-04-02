@@ -3,14 +3,14 @@
 module LLM
   ##
   # {LLM::Conversation LLM::Conversation} provides a conversation
-  # object that maintains a thread of messages that act as the
-  # context of the conversation.
-  #
+  # object that maintains a thread of messages that acts as context
+  # throughout the conversation.
   # @example
-  #   llm = LLM.openai(key)
-  #   bot = llm.chat("What is the capital of France?")
-  #   bot.chat("What should we eat in Paris?")
-  #   bot.chat("What is the weather like in Paris?")
+  #   llm = LLM.openai(ENV["KEY"])
+  #   convo = llm.chat("You are my climate expert", :system)
+  #   convo.chat("What's the climate like in Rio de Janerio?", :user)
+  #   convo.chat("What's the climate like in Algiers?", :user)
+  #   convo.chat("What's the climate like in Tokyo?", :user)
   #   p bot.messages.map { [_1.role, _1.content] }
   class Conversation
     ##

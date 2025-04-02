@@ -7,13 +7,13 @@ module LLM
   # {LLM::LazyConversation LLM::LazyConversation} provides a
   # conversation object that allows input prompts to be queued
   # and only sent to the LLM when a response is needed.
-  #
   # @example
-  #   llm = LLM.openai(key)
-  #   bot = llm.chat("Be a helpful weather assistant", :system)
-  #   bot.chat("What's the weather like in Rio?")
-  #   bot.chat("What's the weather like in Algiers?")
-  #   bot.messages.each do |message|
+  #   llm = LLM.openai(ENV["KEY"])
+  #   convo = llm.chat("You are my climate expert", :system)
+  #   convo.chat("What's the climate like in Rio de Janerio?", :user)
+  #   convo.chat("What's the climate like in Algiers?", :user)
+  #   convo.chat("What's the climate like in Tokyo?", :user)
+  #   convo.messages.each do |message|
   #     # A single request is made at this point
   #   end
   class LazyConversation
