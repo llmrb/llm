@@ -35,9 +35,9 @@ module LLM
     def chat(prompt, role = :user, **params)
       tap do
         if lazy?
-          @messages << [prompt, role, @params.merge(params)]
+          @messages << [LLM::Message.new(role, prompt), @params.merge(params)]
         else
-          completion = @provider.complete(prompt, role, **@params.merge(params.merge(messages:)))
+          completion = complete(prompt, role, params)
           @messages.concat [Message.new(role, prompt), completion.choices[0]]
         end
       end
@@ -75,6 +75,16 @@ module LLM
     #  Returns true if the conversation is lazy
     def lazy?
       @lazy
+    end
+
+    private
+
+    def complete(prompt, role, params)
+      @provider.complete(
+        prompt,
+          role,
+          **@params.merge(params.merge(messages:))
+      )
     end
   end
 end

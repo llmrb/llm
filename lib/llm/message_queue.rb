@@ -13,7 +13,8 @@ module LLM
     # @return [LLM::MessageQueue]
     def initialize(provider)
       @provider = provider
-      @messages = []
+      @pending = []
+      @completed = []
     end
 
     ##
@@ -22,26 +23,32 @@ module LLM
     # @raise (see LLM::Provider#complete)
     # @return [void]
     def each
-      @messages = complete! unless @messages.grep(LLM::Message).size == @messages.size
-      @messages.each { yield(_1) }
+      complete! unless @pending.empty?
+      @completed.each { yield(_1) }
     end
 
     ##
-    # @param message [Object]
-    #  A message to add to the conversation thread
+    # @param [[LLM::Message, Hash]] item
+    #  A message and its parameters
     # @return [void]
-    def <<(message)
-      @messages << message
+    def <<(item)
+      @pending << item
+      self
     end
     alias_method :push, :<<
 
     private
 
     def complete!
-      prompt, role, params = @messages[-1]
-      rest = @messages[0..-2].map { (Array === _1) ? LLM::Message.new(_1[1], _1[0]) : _1 }
-      comp = @provider.complete(prompt, role, **params.merge(messages: rest)).choices.last
-      [*rest, LLM::Message.new(role, prompt), comp]
+      message, params = @pending[-1]
+      messages = @pending[0..-2].map { _1[0] }
+      completion = @provider.complete(
+        message.content,
+        message.role,
+        **params.merge(messages:)
+      )
+      @completed.concat([*messages, message, completion.choices[0]])
+      @pending.clear
     end
   end
 end
