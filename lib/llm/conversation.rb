@@ -20,9 +20,12 @@ module LLM
     ##
     # @param [LLM::Provider] provider
     #  A provider
+    # @param [Hash] params
+    #  The parameters to maintain throughout the conversation
     def initialize(provider, params = {})
       @provider = provider
       @params = params
+      @lazy = false
       @messages = []
     end
 
@@ -31,8 +34,12 @@ module LLM
     # @return [LLM::Conversation]
     def chat(prompt, role = :user, **params)
       tap do
-        completion = @provider.complete(prompt, role, **@params.merge(params.merge(messages:)))
-        @messages.concat [Message.new(role, prompt), completion.choices[0]]
+        if lazy?
+          @messages << [LLM::Message.new(role, prompt), @params.merge(params)]
+        else
+          completion = complete(prompt, role, params)
+          @messages.concat [Message.new(role, prompt), completion.choices[0]]
+        end
       end
     end
 
@@ -51,5 +58,33 @@ module LLM
     end
     alias_method :recent_message, :last_message
     alias_method :read_response, :last_message
+
+    ##
+    # Enables lazy mode for the conversation.
+    # @return [LLM::Conversation]
+    def lazy
+      tap do
+        next if lazy?
+        @lazy = true
+        @messages = LLM::MessageQueue.new(@provider)
+      end
+    end
+
+    ##
+    # @return [Boolean]
+    #  Returns true if the conversation is lazy
+    def lazy?
+      @lazy
+    end
+
+    private
+
+    def complete(prompt, role, params)
+      @provider.complete(
+        prompt,
+          role,
+          **@params.merge(params.merge(messages:))
+      )
+    end
   end
 end

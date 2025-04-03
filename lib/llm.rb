@@ -9,7 +9,7 @@ module LLM
   require_relative "llm/model"
   require_relative "llm/provider"
   require_relative "llm/conversation"
-  require_relative "llm/lazy_conversation"
+  require_relative "llm/message_queue"
   require_relative "llm/core_ext/ostruct"
 
   module_function

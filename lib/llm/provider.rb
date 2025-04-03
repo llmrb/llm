@@ -2,7 +2,18 @@
 
 ##
 # The Provider class represents an abstract class for
-# LLM (Language Model) providers
+# LLM (Language Model) providers.
+#
+# @note
+#  This class is not meant to be instantiated directly.
+#  Instead, use one of the subclasses that implement
+#  the methods defined here.
+#
+# @abstract
+# @see LLM::Provider::OpenAI
+# @see LLM::Provider::Anthropic
+# @see LLM::Provider::Gemini
+# @see LLM::Provider::Ollama
 class LLM::Provider
   require_relative "http_client"
   include LLM::HTTPClient
@@ -67,16 +78,22 @@ class LLM::Provider
 
   ##
   # Starts a new lazy conversation
+  # @note
+  #  This method creates a lazy variant of a
+  #  {LLM::Conversation LLM::Conversation} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
   # @return [LLM::LazyConversation]
   def chat(prompt, role = :user, **params)
-    LLM::LazyConversation.new(self, params).chat(prompt, role)
+    LLM::Conversation.new(self, params).lazy.chat(prompt, role)
   end
 
   ##
   # Starts a new conversation
+  # @note
+  #  This method creates a non-lazy variant of a
+  #  {LLM::Conversation LLM::Conversation} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
