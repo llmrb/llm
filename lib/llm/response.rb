@@ -5,6 +5,7 @@ module LLM
     require "json"
     require_relative "response/completion"
     require_relative "response/embedding"
+    require_relative "response/vision"
 
     ##
     # @return [Hash]

@@ -18,6 +18,16 @@ module LLM
       super(secret, host: HOST, **)
     end
 
+    %w[generation edit variation].each do |action|
+      define_method :"vision_#{action}" do |prompt, **params|
+        req = Net::HTTP::Post.new ["/v1", "images", "#{action}s"].join("/")
+        body = {prompt:, model: "dall-e-3", n: 1}.merge!(params)
+        req = preflight(req, body)
+        res = request @http, req
+        Response::Vision.new(res.body, self).extend(response_parser)
+      end
+    end
+
     ##
     # @param input (see LLM::Provider#embed)
     # @return (see LLM::Provider#embed)
