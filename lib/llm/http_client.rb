@@ -21,9 +21,10 @@ module LLM
     #  When there is a network error at the operating system level
     def request(http, req)
       res = http.request(req)
-      res.tap(&:value)
-    rescue Net::HTTPClientException
-      error_handler.new(res).raise_error!
+      case res
+      when Net::HTTPOK then res
+      else error_handler.new(res).raise_error!
+      end
     end
   end
 end

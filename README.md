@@ -25,15 +25,15 @@ llm = LLM.anthropic("yourapikey")
 llm = LLM.ollama(nil)
 ```
 
-### Completions
+### Conversations
 
-#### Conversation
+#### Completions
 
 The
 [LLM::Provider#chat](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat-instance_method)
 method returns a lazy-variant of a
 [LLM::Conversation](https://0x1eef.github.io/x/llm/LLM/Conversation.html)
-object, and it allows for a "lazy" conversation where messages are batched and
+object, and it allows for a "lazy" conversation where messages are buffered and
 sent to the provider only when necessary. The non-lazy counterpart is available via the
 [LLM::Provider#chat!](https://0x1eef.github.io/x/llm/LLM/Provider.html#chat!-instance_method)
 method.
@@ -55,6 +55,50 @@ convo = llm.chat File.read("./share/llm/prompts/system.txt"), :system
 convo.chat "Tell me the answer to 5 + 15"
 convo.chat "Tell me the answer to (5 + 15) * 2"
 convo.chat "Tell me the answer to ((5 + 15) * 2) / 10"
+convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+
+##
+# [system] You are my math assistant.
+#          I will provide you with (simple) equations.
+#          You will provide answers in the format "The answer to <equation> is <answer>".
+#          I will provide you a set of messages. Reply to all of them.
+#          A message is considered unanswered if there is no corresponding assistant response.
+#
+# [user] Tell me the answer to 5 + 15
+# [user] Tell me the answer to (5 + 15) * 2
+# [user] Tell me the answer to ((5 + 15) * 2) / 10
+#
+# [assistant] The answer to 5 + 15 is 20.
+#             The answer to (5 + 15) * 2 is 40.
+#             The answer to ((5 + 15) * 2) / 10 is 4.
+```
+
+#### Responses
+
+The responses API is a recent addition
+[provided by OpenAI](https://platform.openai.com/docs/guides/conversation-state?api-mode=responses)
+that lets a client store message state on their servers &ndash; and in turn
+a client can avoid maintaining state manually as well as avoid sending
+the entire conversation with each request that is made. This means less
+bandwidth being used and less time spent waiting for a response.
+
+Although it is primarily supported by OpenAI at the moment, we might see
+other providers support it in the future. And you might be happy to learn,
+[llm.rb supports the responses API as well](https://0x1eef.github.io/x/llm/LLM/OpenAI/Responses.html).
+The following example demonstrates how to start a conversation with the responses API
+from OpenAI, and it is implemented to take full advantage of the responses API.
+The example is similar to the previous example, but it uses the responses API
+instead of the chat completions API:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(ENV["KEY"])
+convo = llm.respond File.read("./share/llm/prompts/system.txt"), :developer
+convo.respond "Tell me the answer to 5 + 15"
+convo.respond "Tell me the answer to (5 + 15) * 2"
+convo.respond "Tell me the answer to ((5 + 15) * 2) / 10"
 convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
@@ -180,6 +224,7 @@ llm.chat "Hello, world!", model: llm.models["qwq"]
 # This also works
 llm.chat "Hello, world!", model: "qwq"
 ```
+
 ## Providers
 
 - [x] [Anthropic](https://www.anthropic.com/)
@@ -192,9 +237,12 @@ llm.chat "Hello, world!", model: "qwq"
 - [ ] Replicate
 - [ ] Mistral AI
 
-## Documentation
+## See also
 
-A complete API reference is available at [0x1eef.github.io/x/llm](https://0x1eef.github.io/x/llm)
+The README tries to provide a high-level overview of the library. For everything
+else there's the API reference. It covers classes and methods that the README glances
+over or doesn't cover at all. The API reference is available at
+[0x1eef.github.io/x/llm](https://0x1eef.github.io/x/llm).
 
 ## Install
 

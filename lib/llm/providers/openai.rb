@@ -5,9 +5,10 @@ module LLM
   # The OpenAI class implements a provider for
   # [OpenAI](https://platform.openai.com/)
   class OpenAI < Provider
+    require_relative "openai/format"
     require_relative "openai/error_handler"
     require_relative "openai/response_parser"
-    require_relative "openai/format"
+    require_relative "openai/responses"
     include Format
 
     HOST = "api.openai.com"
@@ -40,6 +41,13 @@ module LLM
       req.body = JSON.dump({messages: format(messages)}.merge!(params))
       res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
+    end
+
+    ##
+    # Provides an interface to OpenAI's response API
+    # @see https://platform.openai.com/docs/api-reference/responses/create OpenAI docs
+    def responses
+      LLM::OpenAI::Responses.new(self)
     end
 
     ##

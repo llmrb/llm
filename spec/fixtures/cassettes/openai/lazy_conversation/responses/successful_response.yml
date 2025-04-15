@@ -1,0 +1,122 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"input":[{"role":"developer","content":"Keep your answers short and
+        concise, and provide three answers to the three questions"},{"role":"user","content":"What
+        is 3+2 ?"},{"role":"user","content":"What is 5+5 ?"},{"role":"user","content":"What
+        is 5+7 ?"}],"model":"gpt-4o-mini"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 16 Apr 2025 12:50:33 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      X-Request-Id:
+      - req_ceaae0239f2823181dd33ddaddd66f7c
+      Openai-Processing-Ms:
+      - '2700'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=Tozpy5J2cwAL4MvRYwhy9npf8RoQf5lYLCGtEiUQ_.c-1744807833-1.0.1.1-T6tHjut91ncDPP_smpfp8QpqRvsbHqdobz80og7nZiPkL9wdx_8MP6QUXvYWEUHEq0J0L4r8zUXSMu3LqyBrS9ruf7cC.fWVM3uSolNu4Zs;
+        path=/; expires=Wed, 16-Apr-25 13:20:33 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=JfuS3tkelijNl5M4_d8WFRG4UafM1PW5RlP56R2ia10-1744807833599-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9313cf0dc94ae16e-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "resp_67ffa796d2748192a496e5dff7a6d3fc0631522db40406b0",
+          "object": "response",
+          "created_at": 1744807830,
+          "status": "completed",
+          "error": null,
+          "incomplete_details": null,
+          "instructions": null,
+          "max_output_tokens": null,
+          "model": "gpt-4o-mini-2024-07-18",
+          "output": [
+            {
+              "id": "msg_67ffa799133c8192b0e0de3d3139ddcb0631522db40406b0",
+              "type": "message",
+              "status": "completed",
+              "content": [
+                {
+                  "type": "output_text",
+                  "annotations": [],
+                  "text": "1. 3 + 2 = 5  \n2. 5 + 5 = 10  \n3. 5 + 7 = 12"
+                }
+              ],
+              "role": "assistant"
+            }
+          ],
+          "parallel_tool_calls": true,
+          "previous_response_id": null,
+          "reasoning": {
+            "effort": null,
+            "summary": null
+          },
+          "store": true,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            }
+          },
+          "tool_choice": "auto",
+          "tools": [],
+          "top_p": 1.0,
+          "truncation": "disabled",
+          "usage": {
+            "input_tokens": 55,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 33,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 88
+          },
+          "user": null,
+          "metadata": {}
+        }
+  recorded_at: Wed, 16 Apr 2025 12:50:16 GMT
+recorded_with: VCR 6.3.1

@@ -20,7 +20,7 @@ class LLM::Gemini
           LLM::Message.new(
             _1.dig("content", "role"),
             _1.dig("content", "parts", 0, "text"),
-            {completion: self}
+            {response: self}
           )
         end,
         prompt_tokens: body.dig("usageMetadata", "promptTokenCount"),

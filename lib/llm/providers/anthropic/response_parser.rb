@@ -19,7 +19,7 @@ class LLM::Anthropic
         model: body["model"],
         choices: body["content"].map do
           # TODO: don't hardcode role
-          LLM::Message.new("assistant", _1["text"], {completion: self})
+          LLM::Message.new("assistant", _1["text"], {response: self})
         end,
         prompt_tokens: body.dig("usage", "input_tokens"),
         completion_tokens: body.dig("usage", "output_tokens")
