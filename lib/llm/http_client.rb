@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module LLM
+  ##
+  # @private
   module HTTPClient
     require "net/http"
     ##

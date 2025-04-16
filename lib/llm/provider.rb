@@ -44,6 +44,7 @@ class LLM::Provider
   end
 
   ##
+  # Provides an embedding
   # @param [String, Array<String>] input
   #  The input to embed
   # @raise [NotImplementedError]
@@ -54,21 +55,21 @@ class LLM::Provider
   end
 
   ##
-  # Completes a given prompt using the LLM
+  # Provides an interface to the chat completions API
   # @example
   #   llm = LLM.openai(ENV["KEY"])
-  #   context = [
+  #   messages = [
   #     {role: "system", content: "Answer all of my questions"},
-  #     {role: "system", content: "Your name is Pablo, you are 25 years old and you are my amigo"},
+  #     {role: "system", content: "Your name is Pablo, and you are 25 years old"},
   #   ]
-  #   res = llm.complete "What is your name and what age are you?", :user, messages: context
+  #   res = llm.complete("What is your name and what age are you?", :user, messages:)
   #   print "[#{res.choices[0].role}]", res.choices[0].content, "\n"
   # @param [String] prompt
   #  The input prompt to be completed
   # @param [Symbol] role
   #  The role of the prompt (e.g. :user, :system)
-  # @param [Array<Hash, LLM::Message>] messages
-  #  The messages to include in the completion
+  # @param [Hash] params
+  #  The completion parameters
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
   # @return [LLM::Response::Completion]
@@ -83,6 +84,8 @@ class LLM::Provider
   #  {LLM::Conversation LLM::Conversation} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
+  # @param [Hash] params
+  #  The completion parameters to maintain throughout a conversation
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Conversation]
   def chat(prompt, role = :user, **params)

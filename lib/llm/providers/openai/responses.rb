@@ -5,15 +5,15 @@ class LLM::OpenAI
   # The {LLM::OpenAI::Responses LLM::OpenAI::Responses} class provides a responses
   # object for interacting with [OpenAI's response API](https://platform.openai.com/docs/guides/conversation-state?api-mode=responses).
   # @example
-  # llm = LLM.openai(ENV["SECRET"])
-  # res = llm.responses.create "Your task is to help me with math", :developer
-  # res = llm.responses.create "5 + 5  = ?", :user, previous_response_id: res.id
-  # res = llm.responses.create "5 + 7  = ?", :user, previous_response_id: res.id
-  # res = llm.responses.create "5 + 10 = ?", :user, previous_response_id: res.id
+  #   llm = LLM.openai(ENV["KEY"])
+  #   res1 = llm.responses.create "Your task is to help me with math", :developer
+  #   res2 = llm.responses.create "5 + 5  = ?", :user, previous_response_id: res1.id
+  #   [res1,res2].each { llm.responses.delete(_1) }
   class Responses
     include Format
 
     ##
+    # Returns a new Responses object
     # @param provider [LLM::Provider]
     # @return [LLM::OpenAI::Responses]
     def initialize(provider)
@@ -25,6 +25,8 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/responses/create OpenAI docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @param [Hash] params Response params
+    # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::Output]
     def create(prompt, role = :user, **params)
       params   = {model: "gpt-4o-mini"}.merge!(params)
@@ -38,8 +40,8 @@ class LLM::OpenAI
     ##
     # Get a response
     # @see https://platform.openai.com/docs/api-reference/responses/get OpenAI docs
-    # @param [#id, #to_s] A response
-    # @raise [LLM::BadResponse] when the request fails
+    # @param [#id, #to_s] response Response ID
+    # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::Output]
     def get(response, **params)
       response_id = response.respond_to?(:id) ? response.id : response
@@ -52,8 +54,8 @@ class LLM::OpenAI
     ##
     # Deletes a response
     # @see https://platform.openai.com/docs/api-reference/responses/delete OpenAI docs
-    # @param [#id, #to_s] A response
-    # @raise [LLM::BadResponse] when the request fails
+    # @param [#id, #to_s] response Response ID
+    # @raise (see LLM::HTTPClient#request)
     # @return [OpenStruct] Response body
     def delete(response)
       response_id = response.respond_to?(:id) ? response.id : response

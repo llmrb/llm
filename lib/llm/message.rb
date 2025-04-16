@@ -4,17 +4,21 @@ module LLM
   class Message
     ##
     # @return [Symbol]
+    #  The role of the message
     attr_reader :role
 
     ##
     # @return [String]
+    #  The content of the message
     attr_reader :content
 
     ##
     # @return [Hash]
+    #  Extra context associated with the message
     attr_reader :extra
 
     ##
+    # Returns a new message
     # @param [Symbol] role
     # @param [String] content
     # @param [Hash] extra
@@ -26,23 +30,25 @@ module LLM
     end
 
     ##
-    # @return [OpenStruct]
+    # Returns logprobs if available, otherwise nil
+    # @return [OpenStruct, nil]
     def logprobs
       return nil unless extra.key?(:logprobs)
       OpenStruct.from_hash(extra[:logprobs])
     end
 
     ##
+    # Returns a hash representation of the message
     # @return [Hash]
     def to_h
       {role:, content:}
     end
 
     ##
+    # Returns true when two objects have the same role and content
     # @param [Object] other
     #  The other object to compare
     # @return [Boolean]
-    #  Returns true when the "other" object has the same role and content
     def ==(other)
       if other.respond_to?(:to_h)
         to_h == other.to_h
@@ -53,6 +59,7 @@ module LLM
     alias_method :eql?, :==
 
     ##
+    # Returns a string representation of the message
     # @return [String]
     def inspect
       "#<#{self.class.name}:0x#{object_id.to_s(16)} " \

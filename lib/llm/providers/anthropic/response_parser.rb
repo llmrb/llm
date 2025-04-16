@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LLM::Anthropic
+  ##
+  # @private
   module ResponseParser
     def parse_embedding(body)
       {

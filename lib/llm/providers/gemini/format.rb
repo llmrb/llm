@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LLM::Gemini
+  ##
+  # @private
   module Format
     ##
     # @param [Array<LLM::Message>] messages

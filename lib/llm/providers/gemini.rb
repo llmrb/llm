@@ -19,7 +19,9 @@ module LLM
     end
 
     ##
+    # Provides an embedding
     # @param input (see LLM::Provider#embed)
+    # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#embed)
     def embed(input, **params)
       path = ["/v1beta/models/text-embedding-004", "embedContent?key=#{@secret}"].join(":")
@@ -30,9 +32,12 @@ module LLM
     end
 
     ##
+    # Provides an interface to the chat completions API
     # @see https://ai.google.dev/api/generate-content#v1beta.models.generateContent Gemini docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @example (see LLM::Provider#complete)
+    # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       params   = {model: "gemini-1.5-flash"}.merge!(params)

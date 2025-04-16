@@ -26,6 +26,7 @@ module LLM
     #  Valid token for the VoyageAI API
     # @param [Hash] params
     #  Additional parameters to pass to the API
+    # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#embed)
     def embed(input, token:, **params)
       llm = LLM.voyageai(token)
@@ -33,9 +34,12 @@ module LLM
     end
 
     ##
+    # Provides an interface to the chat completions API
     # @see https://docs.anthropic.com/en/api/messages Anthropic docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @example (see LLM::Provider#complete)
+    # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       params   = {max_tokens: 1024, model: "claude-3-5-sonnet-20240620"}.merge!(params)

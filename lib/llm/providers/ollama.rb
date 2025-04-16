@@ -19,7 +19,9 @@ module LLM
     end
 
     ##
+    # Provides an embedding
     # @param input (see LLM::Provider#embed)
+    # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#embed)
     def embed(input, **params)
       params   = {model: "llama3.2"}.merge!(params)
@@ -30,9 +32,12 @@ module LLM
     end
 
     ##
+    # Provides an interface to the chat completions API
     # @see https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion Ollama docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @example (see LLM::Provider#complete)
+    # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, **params)
       params   = {model: "llama3.2", stream: false}.merge!(params)

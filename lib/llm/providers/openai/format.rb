@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LLM::OpenAI
+  ##
+  # @private
   module Format
     ##
     # @param [Array<LLM::Message>] messages

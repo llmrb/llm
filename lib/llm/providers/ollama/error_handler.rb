@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LLM::Ollama
+  ##
+  # @private
   class ErrorHandler
     ##
     # @return [Net::HTTPResponse]
