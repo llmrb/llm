@@ -22,7 +22,7 @@ class LLM::Ollama
     def parse_completion(body)
       {
         model: body["model"],
-        choices: [LLM::Message.new(*body["message"].values_at("role", "content"), {completion: self})],
+        choices: [LLM::Message.new(*body["message"].values_at("role", "content"), {response: self})],
         prompt_tokens: body.dig("prompt_eval_count"),
         completion_tokens: body.dig("eval_count")
       }

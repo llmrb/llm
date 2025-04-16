@@ -51,5 +51,12 @@ module LLM
       end
     end
     alias_method :eql?, :==
+
+    ##
+    # @return [String]
+    def inspect
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
+      "role=#{role.inspect} content=#{content.inspect}>"
+    end
   end
 end

@@ -77,20 +77,20 @@ class LLM::Provider
   end
 
   ##
-  # Starts a new lazy conversation
+  # Starts a new lazy conversation powered by the chat completions API
   # @note
   #  This method creates a lazy variant of a
   #  {LLM::Conversation LLM::Conversation} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
-  # @return [LLM::LazyConversation]
+  # @return [LLM::Conversation]
   def chat(prompt, role = :user, **params)
     LLM::Conversation.new(self, params).lazy.chat(prompt, role)
   end
 
   ##
-  # Starts a new conversation
+  # Starts a new conversation powered by the chat completions API
   # @note
   #  This method creates a non-lazy variant of a
   #  {LLM::Conversation LLM::Conversation} object.
@@ -100,6 +100,43 @@ class LLM::Provider
   # @return [LLM::Conversation]
   def chat!(prompt, role = :user, **params)
     LLM::Conversation.new(self, params).chat(prompt, role)
+  end
+
+  ##
+  # Starts a new lazy conversation powered by the responses API
+  # @note
+  #  This method creates a lazy variant of a
+  #  {LLM::Conversation LLM::Conversation} object.
+  # @param prompt (see LLM::Provider#complete)
+  # @param role (see LLM::Provider#complete)
+  # @raise (see LLM::Provider#complete)
+  # @return [LLM::Conversation]
+  def respond(prompt, role = :user, **params)
+    LLM::Conversation.new(self, params).lazy.respond(prompt, role)
+  end
+
+  ##
+  # Starts a new conversation powered by the responses API
+  # @note
+  #  This method creates a non-lazy variant of a
+  #  {LLM::Conversation LLM::Conversation} object.
+  # @param prompt (see LLM::Provider#complete)
+  # @param role (see LLM::Provider#complete)
+  # @raise (see LLM::Provider#complete)
+  # @return [LLM::Conversation]
+  def respond!(prompt, role = :user, **params)
+    LLM::Conversation.new(self, params).respond(prompt, role)
+  end
+
+  ##
+  # @note
+  # Compared to the chat completions API, the responses API
+  # can require less bandwidth on each turn, maintain state
+  # server-side, and produce faster responses.
+  # @return [LLM::OpenAI::Responses]
+  #  Returns an interface to the responses API
+  def responses
+    raise NotImplementedError
   end
 
   ##

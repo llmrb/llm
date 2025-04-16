@@ -36,7 +36,7 @@ RSpec.describe "LLM::Ollama: completions" do
       end
 
       it "includes the response" do
-        expect(choice.extra[:completion]).to eq(response)
+        expect(choice.extra[:response]).to eq(response)
       end
     end
   end

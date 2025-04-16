@@ -5,12 +5,18 @@ module LLM
   # {LLM::Conversation LLM::Conversation} provides a conversation
   # object that maintains a thread of messages that acts as context
   # throughout the conversation.
+  #
+  # A conversation can use the chat completions API that most LLM
+  # providers support (see {LLM::Conversation#chat LLM::Conversation#chat})
+  # or the responses API that a select few LLM providers support (see
+  # {LLM::Converation#respond LLM::Converation#respond}).
+  #
   # @example
   #   llm = LLM.openai(ENV["KEY"])
   #   convo = llm.chat("You are my climate expert", :system)
-  #   convo.chat("What's the climate like in Rio de Janerio?", :user)
-  #   convo.chat("What's the climate like in Algiers?", :user)
-  #   convo.chat("What's the climate like in Tokyo?", :user)
+  #   convo.chat("What is the climate like in Rio de Janerio?", :user)
+  #   convo.chat("What is the climate like in Algiers?", :user)
+  #   convo.chat("What is the climate like in Tokyo?", :user)
   #   p bot.messages.map { [_1.role, _1.content] }
   class Conversation
     ##
@@ -30,16 +36,37 @@ module LLM
     end
 
     ##
+    # Maintain a conversation via the chat completions API
     # @param prompt (see LLM::Provider#prompt)
+    # @param role (see LLM::Provider#prompt)
+    # @param params (see LLM::Provider#prompt)
     # @return [LLM::Conversation]
     def chat(prompt, role = :user, **params)
-      tap do
-        if lazy?
-          @messages << [LLM::Message.new(role, prompt), @params.merge(params)]
-        else
-          completion = complete(prompt, role, params)
-          @messages.concat [Message.new(role, prompt), completion.choices[0]]
-        end
+      if lazy?
+        @messages << [LLM::Message.new(role, prompt), @params.merge(params), :complete]
+        self
+      else
+        completion = complete!(prompt, role, params)
+        @messages.concat [Message.new(role, prompt), completion.choices[0]]
+        self
+      end
+    end
+
+    ##
+    # Maintain a conversation via the responses API
+    # @note Not all LLM providers support this API
+    # @param prompt (see LLM::Provider#prompt)
+    # @param role (see LLM::Provider#prompt)
+    # @param params (see LLM::Provider#prompt)
+    # @return [LLM::Conversation]
+    def respond(prompt, role = :user, **params)
+      if lazy?
+        @messages << [LLM::Message.new(role, prompt), @params.merge(params), :respond]
+        self
+      else
+        @response = respond!(prompt, role, params)
+        @messages.concat [Message.new(role, prompt), @response.outputs[0]]
+        self
       end
     end
 
@@ -66,7 +93,7 @@ module LLM
       tap do
         next if lazy?
         @lazy = true
-        @messages = LLM::MessageQueue.new(@provider)
+        @messages = LLM::Buffer.new(@provider)
       end
     end
 
@@ -77,13 +104,27 @@ module LLM
       @lazy
     end
 
+    def inspect
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
+      "@provider=#{@provider.class}, @params=#{@params.inspect}, " \
+      "@messages=#{@messages.inspect}, @lazy=#{@lazy.inspect}>"
+    end
+
     private
 
-    def complete(prompt, role, params)
+    def respond!(prompt, role, params)
+      @provider.responses.create(
+        prompt,
+        role,
+        **@params.merge(params.merge(@response ? {previous_response_id: @response.id} : {}))
+      )
+    end
+
+    def complete!(prompt, role, params)
       @provider.complete(
         prompt,
-          role,
-          **@params.merge(params.merge(messages:))
+        role,
+        **@params.merge(params.merge(messages:))
       )
     end
   end
