@@ -3,18 +3,18 @@
 module LLM
   class Message
     ##
+    # Returns the role of the message
     # @return [Symbol]
-    #  The role of the message
     attr_reader :role
 
     ##
+    # Returns the content of the message
     # @return [String]
-    #  The content of the message
     attr_reader :content
 
     ##
+    # Returns extra context associated with the message
     # @return [Hash]
-    #  Extra context associated with the message
     attr_reader :extra
 
     ##
