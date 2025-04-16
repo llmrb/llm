@@ -84,7 +84,7 @@ class LLM::Provider
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
-  # @return [LLM::LazyConversation]
+  # @return [LLM::Conversation]
   def chat(prompt, role = :user, **params)
     LLM::Conversation.new(self, params).lazy.chat(prompt, role)
   end
@@ -110,7 +110,7 @@ class LLM::Provider
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
-  # @return [LLM::LazyConversation]
+  # @return [LLM::Conversation]
   def respond(prompt, role = :user, **params)
     LLM::Conversation.new(self, params).lazy.respond(prompt, role)
   end
