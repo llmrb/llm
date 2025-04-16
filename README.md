@@ -139,7 +139,7 @@ print res.embeddings[0].size, "\n"
 The README tries to provide a high-level overview of the library. For everything
 else there's the API reference. It covers classes and methods that the README glances
 over or doesn't cover at all. The API reference is available at
-[0x1eef.github.io/x/llm](https://0x1eef.github.io/x/llm).
+[0x1eef.github.io/x/llm.rb](https://0x1eef.github.io/x/llm.rb).
 
 
 ## Install
