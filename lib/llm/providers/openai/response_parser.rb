@@ -37,6 +37,10 @@ class LLM::OpenAI
       }
     end
 
+    ##
+    # @param [Hash] body
+    #  The response body from the LLM provider
+    # @return [Hash]
     def parse_output_response(body)
       {
         id: body["id"],

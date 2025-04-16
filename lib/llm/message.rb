@@ -30,14 +30,6 @@ module LLM
     end
 
     ##
-    # Returns logprobs if available, otherwise nil
-    # @return [OpenStruct, nil]
-    def logprobs
-      return nil unless extra.key?(:logprobs)
-      OpenStruct.from_hash(extra[:logprobs])
-    end
-
-    ##
     # Returns a hash representation of the message
     # @return [Hash]
     def to_h
