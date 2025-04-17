@@ -9,6 +9,7 @@ module LLM
     require_relative "openai/error_handler"
     require_relative "openai/response_parser"
     require_relative "openai/responses"
+    require_relative "openai/images"
     include Format
 
     HOST = "api.openai.com"
@@ -51,8 +52,17 @@ module LLM
     ##
     # Provides an interface to OpenAI's response API
     # @see https://platform.openai.com/docs/api-reference/responses/create OpenAI docs
+    # @return [LLM::OpenAI::Responses]
     def responses
       LLM::OpenAI::Responses.new(self)
+    end
+
+    ##
+    # Provides an interface to OpenAI's image generation API
+    # @see https://platform.openai.com/docs/api-reference/images/create OpenAI docs
+    # @return [LLM::OpenAI::Images]
+    def images
+      LLM::OpenAI::Images.new(self)
     end
 
     ##

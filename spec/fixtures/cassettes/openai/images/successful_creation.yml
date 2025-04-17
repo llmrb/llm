@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/images/generations
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"A dog on a rocket to the moon","n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 18 Apr 2025 16:09:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      X-Request-Id:
+      - req_74a613c345358e6bf0814e0b44ea312f
+      Openai-Processing-Ms:
+      - '10919'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=hhDRQX_gB2d5v1453MiAUF_pWpIycJTNJA8U.Y_Jqtg-1744992598-1.0.1.1-uOTi47nludd0spHd6ICFW2ej8I1kLPnJVehGlixsepyt2wxZsZbkIvRiZIpwuUOU6ewUJqGKJ_WBSGEhSz7K5hSsEaXPA.LVDnJoPIgbl6M;
+        path=/; expires=Fri, 18-Apr-25 16:39:58 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=vS8.rEzWjjNsGMh2SQVPcO82wBUoFwzhbQ0OeLgOHHI-1744992598980-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 93256db8c9a88761-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "created": 1744992598,
+          "data": [
+            {
+              "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-wmU9CAljVl3xPIAk3ail1CQO/user-J1PZtzT5nOgpcsid23U7gSkJ/img-5vFJdxcDvvqvGSrprb3M51Xg.png?st=2025-04-18T15%3A09%3A58Z&se=2025-04-18T17%3A09%3A58Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=475fd488-6c59-44a5-9aa9-31c4db451bea&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-17T17%3A34%3A56Z&ske=2025-04-18T17%3A34%3A56Z&sks=b&skv=2024-08-04&sig=Nt8T9ZFy%2B5FIl1qMbGsOjF9hQUEBFdArNGZ6FXI6SHg%3D"
+            }
+          ]
+        }
+  recorded_at: Fri, 18 Apr 2025 16:09:36 GMT
+recorded_with: VCR 6.3.1

@@ -143,6 +143,13 @@ class LLM::Provider
   end
 
   ##
+  # @return [LLM::OpenAI::Images]
+  #  Returns an interface to the images API
+  def images
+    raise NotImplementedError
+  end
+
+  ##
   # @return [String]
   #  Returns the role of the assistant in the conversation.
   #  Usually "assistant" or "model"

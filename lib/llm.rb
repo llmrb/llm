@@ -5,6 +5,8 @@ module LLM
   require_relative "llm/error"
   require_relative "llm/message"
   require_relative "llm/response"
+  require_relative "llm/mime"
+  require_relative "llm/multipart"
   require_relative "llm/file"
   require_relative "llm/model"
   require_relative "llm/provider"
