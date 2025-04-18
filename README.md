@@ -229,4 +229,6 @@ llm.rb can be installed via rubygems.org:
 
 ## License
 
-MIT. See [LICENSE.txt](LICENSE.txt) for more details
+[BSD Zero Clause](https://choosealicense.com/licenses/0bsd/)
+<br>
+See [LICENSE](./LICENSE)

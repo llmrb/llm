@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
                  "flexible, and easy to use."
   spec.description = spec.summary
   spec.homepage = "https://github.com/llmrb/llm"
-  spec.license = "MIT"
+  spec.license = "0BSDL"
   spec.required_ruby_version = ">= 3.0.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
