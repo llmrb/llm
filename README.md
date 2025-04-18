@@ -156,6 +156,33 @@ res.data.urls.each do |url|
 end
 ```
 
+#### Variations
+
+The following example is focused on creating variations of a local image.
+The image (`/images/cat.png`) is returned to us with five different variations.
+The images are then moved to `${HOME}/catvariation0.png`, `${HOME}/catvariation1.png`
+and so on as the final step. Consult the provider's documentation
+(eg [OpenAI docs](https://platform.openai.com/docs/api-reference/images/createVariation))
+for more information on how to use the image variations API:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+require "open-uri"
+require "fileutils"
+
+llm = LLM.openai(ENV["KEY"])
+res = llm.images.create_variation(
+  image: LLM::File("/images/cat.png"),
+  n: 5
+)
+res.data.urls.each.with_index do |url, index|
+  FileUtils.mv OpenURI.open_uri(url).path,
+               File.join(Dir.home, "catvariation#{index}.png")
+end
+
+```
+
 ### Embeddings
 
 #### Text

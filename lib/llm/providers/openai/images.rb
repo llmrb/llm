@@ -36,6 +36,26 @@ class LLM::OpenAI
     end
 
     ##
+    # Create image variations
+    # @example
+    #   llm = LLM.openai(ENV["KEY"])
+    #   res = llm.images.create_variation(image: LLM::File("/images/hat.png"), n: 5)
+    #   p res.data.urls
+    # @see https://platform.openai.com/docs/api-reference/images/createVariation OpenAI docs
+    # @param [File] image The image to create variations from
+    # @param [Hash] params Other parameters (see OpenAI docs)
+    # @raise (see LLM::HTTPClient#request)
+    # @return [OpenStruct]
+    def create_variation(image:, **params)
+      multi = LLM::Multipart.new(params.merge!(image:))
+      req = Net::HTTP::Post.new("/v1/images/variations", headers)
+      req["content-type"] = multi.content_type
+      req.body = multi.body
+      res = request(http, req)
+      OpenStruct.from_hash JSON.parse(res.body)
+    end
+
+    ##
     # Edit an image
     # @example
     #   llm = LLM.openai(ENV["KEY"])

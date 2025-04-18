@@ -91,7 +91,7 @@ class LLM::Multipart
   def data_part(key, value, locals)
     locals = locals.merge(value:)
     multipart_header(type: :data, locals:).tap do
-      _1 << value
+      _1 << value.to_s
       _1 << "\r\n"
     end
   end

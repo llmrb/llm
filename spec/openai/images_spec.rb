@@ -23,6 +23,28 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
   end
 
+  context "when given a successful variation",
+        vcr: {cassette_name: "openai/images/successful_variation"} do
+    subject(:response) do
+      provider.images.create_variation(
+        image: LLM::File("spec/fixtures/images/bluebook.png"),
+        n: 5
+      )
+    end
+
+    it "is successful" do
+      expect(response).to be_instance_of(OpenStruct)
+    end
+
+    it "returns data" do
+      expect(response.data.size).to eq(5)
+    end
+
+    it "returns multiple variations" do
+      response.data.each { expect(_1.url).to be_instance_of(String) }
+    end
+  end
+
   context "when given a successful edit",
         vcr: {cassette_name: "openai/images/successful_edit"} do
     subject(:response) do
