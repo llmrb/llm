@@ -32,7 +32,7 @@ class LLM::Multipart
   # @return [Array<String>]
   def parts
     params.map do |key, value|
-      locals = {key: key.b, boundary: boundary.b}
+      locals = {key: key.to_s.b, boundary: boundary.to_s.b}
       if value.respond_to?(:path)
         file_part(key, value, locals)
       else
