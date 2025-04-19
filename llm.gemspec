@@ -29,9 +29,10 @@ Gem::Specification.new do |spec|
   ]
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "net-http", "~> 0.6.0"
+  spec.add_runtime_dependency "net-http", "~> 0.6"
   spec.add_runtime_dependency "json"
   spec.add_runtime_dependency "yaml"
+  spec.add_runtime_dependency "stringio"
 
   spec.add_development_dependency "webmock", "~> 3.24.0"
   spec.add_development_dependency "yard", "~> 0.9.37"

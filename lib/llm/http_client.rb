@@ -11,6 +11,8 @@ module LLM
     #  The HTTP object to use for the request
     # @param [Net::HTTPRequest] req
     #  The request to send
+    # @param [Proc] b
+    #  A block to yield the response to (optional)
     # @return [Net::HTTPResponse]
     #  The response from the server
     # @raise [LLM::Error::Unauthorized]
@@ -21,8 +23,8 @@ module LLM
     #  When any other unsuccessful status code is returned
     # @raise [SystemCallError]
     #  When there is a network error at the operating system level
-    def request(http, req)
-      res = http.request(req)
+    def request(http, req, &b)
+      res = http.request(req, &b)
       case res
       when Net::HTTPOK then res
       else error_handler.new(res).raise_error!
