@@ -20,10 +20,10 @@ RSpec.describe "LLM::OpenAI::Audio" do
   end
 
   context "when given a successful transcription",
-        vcr: {cassette_name: "openai/images/successful_transcription"} do
+        vcr: {cassette_name: "openai/audio/successful_transcription"} do
     subject(:response) do
       provider.audio.create_transcription(
-        file: LLM::File("spec/fixtures/audio/rocket.mp3"),
+        file: LLM::File("spec/fixtures/audio/rocket.mp3")
       )
     end
 
@@ -36,9 +36,8 @@ RSpec.describe "LLM::OpenAI::Audio" do
     end
   end
 
-
   context "when given a successful translation",
-        vcr: {cassette_name: "openai/images/successful_translation"} do
+        vcr: {cassette_name: "openai/audio/successful_translation"} do
     subject(:response) do
       provider.audio.create_translation(
         file: LLM::File("spec/fixtures/audio/bismillah.mp3")
@@ -49,7 +48,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
       expect(response).to be_instance_of(OpenStruct)
     end
 
-    it "returns data" do
+    it "returns a translation (Arabic => English)" do
       expect(response.text).to eq("In the name of Allah, the Beneficent, the Merciful.")
     end
   end
