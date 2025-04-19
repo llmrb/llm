@@ -30,7 +30,7 @@ module LLM
     #  Other embedding parameters
     # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#embed)
-    def embed(input, model: "voyage-2", token:, **params)
+    def embed(input, token:, model: "voyage-2", **params)
       llm = LLM.voyageai(token)
       llm.embed(input, **params.merge(model:))
     end

@@ -16,6 +16,20 @@ class LLM::File
   def mime_type
     LLM::Mime[File.extname(path)]
   end
+
+  ##
+  # @return [String]
+  #  Returns true if the file is an image
+  def image?
+    mime_type.start_with?("image/")
+  end
+
+  ##
+  # @return [String]
+  #  Returns the file contents in base64
+  def to_b64
+    [File.binread(path)].pack("m").chomp
+  end
 end
 
 ##

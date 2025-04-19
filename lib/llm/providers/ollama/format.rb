@@ -11,9 +11,11 @@ class LLM::Ollama
     def format(messages)
       messages.map do
         if Hash === _1
-          {role: _1[:role], content: format_content(_1[:content])}
+          {role: _1[:role]}
+            .merge!(_1)
+            .merge!(format_content(_1[:content]))
         else
-          {role: _1.role, content: format_content(_1.content)}
+          {role: _1.role}.merge! format_content(_1.content)
         end
       end
     end
@@ -26,10 +28,14 @@ class LLM::Ollama
     # @return [String, Hash]
     #  The formatted content
     def format_content(content)
-      if URI === content
-        [{type: :image_url, image_url: {url: content.to_s}}]
+      if LLM::File === content
+        if content.image?
+          {content: "This message has an image associated with it", images: [content.to_b64]}
+        else
+          raise TypeError, "'#{content.path}' was not recognized as an image file."
+        end
       else
-        content
+        {content:}
       end
     end
   end

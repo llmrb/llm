@@ -2,8 +2,21 @@
 
 module LLM
   ##
-  # The Ollama class implements a provider for
-  # [Ollama](https://ollama.ai/)
+  # The Ollama class implements a provider for [Ollama](https://ollama.ai/).
+  #
+  # This provider supports a wide range of models, it is relatively
+  # straight forward to run on your own hardware, and includes multi-modal
+  # models that can process images and text. See the example for a demonstration
+  # of a multi-modal model by the name `llava`
+  #
+  # @example
+  #   require "llm"
+  #   llm = LLM.ollama(nil)
+  #   conversation = LLM::Conversation.new(llm, model: "llava").lazy
+  #   conversation.chat LLM::File("/images/capybara.png")
+  #   conversation.chat "Describe the image"
+  #   message = conversation.last_message
+  #   print "[#{message.role}]", message.content, "\n"
   class Ollama < Provider
     require_relative "ollama/error_handler"
     require_relative "ollama/response_parser"
@@ -47,7 +60,7 @@ module LLM
       params   = {model:, stream: false}.merge!(params)
       req      = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      req.body = JSON.dump({messages: messages.map(&:to_h)}.merge!(params))
+      req.body = JSON.dump({messages: format(messages)}.merge!(params))
       res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
