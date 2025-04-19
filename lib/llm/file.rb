@@ -28,7 +28,7 @@ class LLM::File
   # @return [String]
   #  Returns the file contents in base64
   def to_b64
-    [File.binread(path)].pack("m").chomp
+    [File.binread(path)].pack("m0")
   end
 end
 

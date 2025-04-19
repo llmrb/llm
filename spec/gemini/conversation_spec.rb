@@ -2,16 +2,17 @@
 
 require "setup"
 
-RSpec.describe "LLM::Conversation: ollama" do
+RSpec.describe "LLM::Conversation: gemini" do
   let(:described_class) { LLM::Conversation }
-  let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
+  let(:provider) { LLM.gemini(token) }
+  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:conversation) { described_class.new(provider, **params).lazy }
 
   context "when asked to describe an image",
-          vcr: {cassette_name: "ollama/conversations/multimodal_response"} do
+          vcr: {cassette_name: "gemini/conversations/multimodal_response"} do
     subject { conversation.last_message }
 
-    let(:params) { {model: "llava"} }
+    let(:params) { {} }
     let(:image) { LLM::File("spec/fixtures/images/bluebook.png") }
 
     before do
@@ -21,10 +22,9 @@ RSpec.describe "LLM::Conversation: ollama" do
 
     it "describes the image" do
       is_expected.to have_attributes(
-        role: "assistant",
-        content: " The image is a graphic illustration of a book" \
-                 " with its pages spread out, symbolizing openness" \
-                 " or knowledge. "
+        role: "model",
+        content: "That's a simple illustration of a book " \
+                 "resting on a blue, X-shaped book stand.\n"
       )
     end
   end

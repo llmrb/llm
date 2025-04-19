@@ -29,7 +29,7 @@ class LLM::Gemini
       if LLM::File === content
         file = content
         {
-          inline_data: {mime_type: file.mime_type, data: [File.binread(file.path)].pack("m0")}
+          inline_data: {mime_type: file.mime_type, data: file.to_b64}
         }
       else
         {text: content}

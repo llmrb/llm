@@ -3,7 +3,21 @@
 module LLM
   ##
   # The Gemini class implements a provider for
-  # [Gemini](https://ai.google.dev/)
+  # [Gemini](https://ai.google.dev/).
+  #
+  # The Gemini provider can accept multiple inputs (text, images,
+  # audio, and video). The inputs can be provided inline via the
+  # prompt for files under 20MB or via the Gemini Files API for
+  # files that are over 20MB
+  #
+  # @example
+  #   require "llm"
+  #   llm = LLM.gemini(ENV["KEY"])
+  #   conversation = LLM::Conversation.new(llm).lazy
+  #   conversation.chat LLM::File("/images/capybara.png")
+  #   conversation.chat "Describe the image"
+  #   message = conversation.last_message
+  #   print "[#{message.role}]", message.content, "\n"
   class Gemini < Provider
     require_relative "gemini/error_handler"
     require_relative "gemini/response_parser"
