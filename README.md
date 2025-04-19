@@ -105,6 +105,73 @@ convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 #             The answer to ((5 + 15) * 2) / 10 is 4.
 ```
 
+### Audio
+
+#### Speech
+
+Some but not all providers implement audio generation capabilities that
+can create text from speech, transcribe audio to text, or translate
+audio to text (usually English). The following example uses the OpenAI provider
+to create an audio file from a text prompt. The audio is then moved to
+`${HOME}/hello.mp3` as the final step. As always, consult the provider's
+documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/create))
+for more information on how to use the audio generation API:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+require "open-uri"
+require "fileutils"
+
+llm = LLM.openai(ENV["KEY"])
+res = llm.audio.create_speech(input: "Hello world")
+File.binwrite File.join(Dir.home, "hello.mp3"),
+	          res.audio.string
+```
+
+#### Transcribe
+
+The following example transcribes an audio file to text. The audio file
+(`${HOME}/hello.mp3`) was theoretically created in the previous example,
+and the result is printed to the console. The example uses the OpenAI
+provider to transcribe the audio file. As always, consult the provider's
+documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranscription))
+for more information on how to use the audio transcription API:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+require "open-uri"
+require "fileutils"
+
+llm = LLM.openai(ENV["KEY"])
+res = llm.audio.create_transcription(
+  file: LLM::File(File.join(Dir.home, "hello.mp3"))
+)
+print res.text, "\n" # => "Hello world."
+```
+
+#### Translate
+
+The following example translates an audio file to text. In this example
+the audio file (`${HOME/bomdia.mp3}`) is theoretically in Portuguese,
+and it is translated to English. The example uses the OpenAI provider,
+and at the time of writing, it can only translate to English. As always,
+consult the provider's documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranslation))
+for more information on how to use the audio translation API:
+
+```ruby
+require "llm"
+require "open-uri"
+require "fileutils"
+
+llm = LLM.openai(ENV["KEY"])
+res = llm.audio.create_translation(
+  file: LLM::File(File.join(Dir.home, "bomdia.mp3"))
+)
+print res.text, "\n" # => "Good morning."
+```
+
 ### Images
 
 #### Create

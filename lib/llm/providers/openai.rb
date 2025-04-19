@@ -10,6 +10,7 @@ module LLM
     require_relative "openai/response_parser"
     require_relative "openai/responses"
     require_relative "openai/images"
+    require_relative "openai/audio"
     include Format
 
     HOST = "api.openai.com"
@@ -63,6 +64,14 @@ module LLM
     # @return [LLM::OpenAI::Images]
     def images
       LLM::OpenAI::Images.new(self)
+    end
+
+    ##
+    # Provides an interface to OpenAI's audio generation API
+    # @see https://platform.openai.com/docs/api-reference/audio/createSpeech OpenAI docs
+    # @return [LLM::OpenAI::Audio]
+    def audio
+      LLM::OpenAI::Audio.new(self)
     end
 
     ##
