@@ -24,13 +24,15 @@ module LLM
     # @param input (see LLM::Provider#embed)
     # @param [String] token
     #  Valid token for the VoyageAI API
+    # @param [String] model
+    #  The embedding model to use
     # @param [Hash] params
-    #  Additional parameters to pass to the API
+    #  Other embedding parameters
     # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#embed)
-    def embed(input, token:, **params)
+    def embed(input, model: "voyage-2", token:, **params)
       llm = LLM.voyageai(token)
-      llm.embed(input, **params)
+      llm.embed(input, **params.merge(model:))
     end
 
     ##
@@ -38,11 +40,14 @@ module LLM
     # @see https://docs.anthropic.com/en/api/messages Anthropic docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @param model (see LLM::Provider#complete)
+    # @param max_tokens The maximum number of tokens to generate
+    # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, **params)
-      params   = {max_tokens: 1024, model: "claude-3-5-sonnet-20240620"}.merge!(params)
+    def complete(prompt, role = :user, model: "claude-3-5-sonnet-20240620", max_tokens: 1024, **params)
+      params   = {max_tokens:, model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       req.body = JSON.dump({messages: format(messages)}.merge!(params))

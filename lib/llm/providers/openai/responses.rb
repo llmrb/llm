@@ -25,11 +25,12 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/responses/create OpenAI docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @param model (see LLM::Provider#complete)
     # @param [Hash] params Response params
     # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::Output]
-    def create(prompt, role = :user, **params)
-      params   = {model: "gpt-4o-mini"}.merge!(params)
+    def create(prompt, role = :user, model: "gpt-4o-mini", **params)
+      params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/responses", headers)
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]
       req.body = JSON.dump({input: format(messages)}.merge!(params))

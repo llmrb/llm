@@ -17,9 +17,9 @@ module LLM
     # [Anthropic's recommendation](https://docs.anthropic.com/en/docs/build-with-claude/embeddings)
     # @param input (see LLM::Provider#embed)
     # @return (see LLM::Provider#embed)
-    def embed(input, **params)
+    def embed(input, model: "voyage-2", **params)
       req = Net::HTTP::Post.new("/v1/embeddings", headers)
-      req.body = JSON.dump({input:, model: "voyage-2"}.merge!(params))
+      req.body = JSON.dump({input:, model:}.merge!(params))
       res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
     end

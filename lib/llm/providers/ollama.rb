@@ -21,10 +21,12 @@ module LLM
     ##
     # Provides an embedding
     # @param input (see LLM::Provider#embed)
+    # @param model (see LLM::Provider#embed)
+    # @param params (see LLM::Provider#embed)
     # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#embed)
-    def embed(input, **params)
-      params   = {model: "llama3.2"}.merge!(params)
+    def embed(input, model: "llama3.2", **params)
+      params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/embeddings", headers)
       req.body = JSON.dump({input:}.merge!(params))
       res      = request(@http, req)
@@ -36,11 +38,13 @@ module LLM
     # @see https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion Ollama docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @param model (see LLM::Provider#complete)
+    # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, **params)
-      params   = {model: "llama3.2", stream: false}.merge!(params)
+    def complete(prompt, role = :user, model: "llama3.2", **params)
+      params   = {model:, stream: false}.merge!(params)
       req      = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       req.body = JSON.dump({messages: messages.map(&:to_h)}.merge!(params))

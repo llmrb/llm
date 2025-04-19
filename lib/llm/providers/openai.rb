@@ -23,12 +23,15 @@ module LLM
 
     ##
     # Provides an embedding
+    # @see https://platform.openai.com/docs/api-reference/embeddings/create OpenAI docs
     # @param input (see LLM::Provider#embed)
+    # @param model (see LLM::Provider#embed)
+    # @param params (see LLM::Provider#embed)
     # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#embed)
-    def embed(input, **params)
+    def embed(input, model: "text-embedding-3-small", **params)
       req = Net::HTTP::Post.new("/v1/embeddings", headers)
-      req.body = JSON.dump({input:, model: "text-embedding-3-small"}.merge!(params))
+      req.body = JSON.dump({input:, model:}.merge!(params))
       res = request(@http, req)
       Response::Embedding.new(res).extend(response_parser)
     end
@@ -38,11 +41,13 @@ module LLM
     # @see https://platform.openai.com/docs/api-reference/chat/create OpenAI docs
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
+    # @param model (see LLM::Provider#complete)
+    # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::HTTPClient#request)
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, **params)
-      params   = {model: "gpt-4o-mini"}.merge!(params)
+    def complete(prompt, role = :user, model: "gpt-4o-mini", **params)
+      params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       req.body = JSON.dump({messages: format(messages)}.merge!(params))
