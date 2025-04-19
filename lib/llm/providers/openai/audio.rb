@@ -7,7 +7,7 @@ class LLM::OpenAI
   # @example
   #   llm = LLM.openai(ENV["KEY"])
   #   res = llm.audio.create_speech input: "A dog on a rocket to the moon"
-  #   File.binwrite "rocketsong.mp3", res.audio.string
+  #   File.binwrite "rocket.mp3", res.audio.string
   class Audio
     require "stringio"
 
@@ -24,7 +24,7 @@ class LLM::OpenAI
     # @example
     #   llm = LLM.openai(ENV["KEY"])
     #   res = llm.images.create_speech(input: "A dog on a rocket to the moon")
-    #   File.binwrite("rocketsong.mp3", res.audio.string)
+    #   File.binwrite("rocket.mp3", res.audio.string)
     # @see https://platform.openai.com/docs/api-reference/audio/createSpeech OpenAI docs
     # @param [String] input The text input
     # @param [String] voice The voice to use
@@ -45,7 +45,7 @@ class LLM::OpenAI
     # Create an audio transcription
     # @example
     #   llm = LLM.openai(ENV["KEY"])
-    #   res = llm.audio.create_transcription(file: LLM::File("/rocketsong.mp3"))
+    #   res = llm.audio.create_transcription(file: LLM::File("/rocket.mp3"))
     #   res.text # => "A dog on a rocket to the moon"
     # @see https://platform.openai.com/docs/api-reference/audio/createTranscription OpenAI docs
     # @param [LLM::File] file The input audio
