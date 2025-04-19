@@ -6,8 +6,8 @@ class LLM::OpenAI
   # object for interacting with [OpenAI's audio API](https://platform.openai.com/docs/api-reference/audio/createSpeech).
   # @example
   #   llm = LLM.openai(ENV["KEY"])
-  #   res = llm.audio.create_speech input: "A dog on a rocket to the moon"
-  #   File.binwrite "rocket.mp3", res.audio.string
+  #   res = llm.audio.create_speech(input: "A dog on a rocket to the moon")
+  #   File.binwrite("rocket.mp3", res.audio.string)
   class Audio
     require "stringio"
 

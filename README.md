@@ -151,6 +151,27 @@ res = llm.audio.create_transcription(
 print res.text, "\n" # => "Hello world."
 ```
 
+#### Translate
+
+The following example translates an audio file to text. In this example
+the audio file (`${HOME/bomdia.mp3}`) is theoretically in Portuguese,
+and it is translated to English. The example uses the OpenAI provider,
+and at the time of writing, it can only translate to English. As always,
+consult the provider's documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranslation))
+for more information on how to use the audio translation API:
+
+```ruby
+require "llm"
+require "open-uri"
+require "fileutils"
+
+llm = LLM.openai(ENV["KEY"])
+res = llm.audio.create_translation(
+  file: LLM::File(File.join(Dir.home, "bomdia.mp3"))
+)
+print res.text, "\n" # => "Good morning."
+```
+
 ### Images
 
 #### Create
