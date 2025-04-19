@@ -150,6 +150,13 @@ class LLM::Provider
   end
 
   ##
+  # @return [LLM::OpenAI::Audio]
+  #  Returns an interface to the audio API
+  def audio
+    raise NotImplementedError
+  end
+
+  ##
   # @return [String]
   #  Returns the role of the assistant in the conversation.
   #  Usually "assistant" or "model"
