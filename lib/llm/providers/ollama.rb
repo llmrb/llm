@@ -10,7 +10,9 @@ module LLM
   # of a multi-modal model by the name `llava`
   #
   # @example
+  #   #!/usr/bin/env ruby
   #   require "llm"
+  #
   #   llm = LLM.ollama(nil)
   #   conversation = LLM::Conversation.new(llm, model: "llava").lazy
   #   conversation.chat LLM::File("/images/capybara.png")

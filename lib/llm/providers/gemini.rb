@@ -11,7 +11,9 @@ module LLM
   # files that are over 20MB
   #
   # @example
+  #   #!/usr/bin/env ruby
   #   require "llm"
+  #
   #   llm = LLM.gemini(ENV["KEY"])
   #   conversation = LLM::Conversation.new(llm).lazy
   #   conversation.chat LLM::File("/images/capybara.png")
