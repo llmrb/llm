@@ -105,6 +105,52 @@ convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 #             The answer to ((5 + 15) * 2) / 10 is 4.
 ```
 
+### Audio
+
+#### Speech
+
+Some but not all providers implement audio generation capabilities that
+can create text from speech, transcribe audio to text, or translate
+audio to text (usually English). The following example uses the OpenAI provider
+to create an audio file from a text prompt. The audio is then moved to
+`${HOME}/hello.mp3` as the final step. As always, consult the provider's
+documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/create))
+for more information on how to use the audio generation API:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+require "open-uri"
+require "fileutils"
+
+llm = LLM.openai(ENV["KEY"])
+res = llm.audio.create_speech(input: "Hello world")
+File.binwrite File.join(Dir.home, "hello.mp3"),
+	          res.audio.string
+```
+
+#### Transcribe
+
+The following example transcribes an audio file to text. The audio file
+(`${HOME}/hello.mp3`) was theoretically created in the previous example,
+and the result is printed to the console. The example uses the OpenAI
+provider to transcribe the audio file. As always, consult the provider's
+documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranscription))
+for more information on how to use the audio transcription API:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+require "open-uri"
+require "fileutils"
+
+llm = LLM.openai(ENV["KEY"])
+res = llm.audio.create_transcription(
+  file: LLM::File(File.join(Dir.home, "hello.mp3"))
+)
+print res.text, "\n" # => "Hello world."
+```
+
 ### Images
 
 #### Create
