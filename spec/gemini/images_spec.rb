@@ -2,7 +2,7 @@
 
 require "setup"
 
-RSpec.describe "LLM::OpenAI::Images" do
+RSpec.describe "LLM::Gemini::Images" do
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:provider) { LLM.gemini(token) }
 
