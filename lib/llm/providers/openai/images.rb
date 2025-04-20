@@ -7,7 +7,7 @@ class LLM::OpenAI
   # @example
   #   llm = LLM.openai(ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
-  #   p res.data.urls
+  #   p res.urls
   class Images
     ##
     # Returns a new Responses object
@@ -22,17 +22,17 @@ class LLM::OpenAI
     # @example
     #   llm = LLM.openai(ENV["KEY"])
     #   res = llm.images.create prompt: "A dog on a rocket to the moon"
-    #   p res.data.urls
+    #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/create OpenAI docs
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::Image]
     def create(prompt:, **params)
       req = Net::HTTP::Post.new("/v1/images/generations", headers)
       req.body = JSON.dump({prompt:, n: 1}.merge!(params))
       res = request(http, req)
-      OpenStruct.from_hash JSON.parse(res.body)
+      LLM::Response::Image.new(res).extend(response_parser)
     end
 
     ##
@@ -40,19 +40,19 @@ class LLM::OpenAI
     # @example
     #   llm = LLM.openai(ENV["KEY"])
     #   res = llm.images.create_variation(image: LLM::File("/images/hat.png"), n: 5)
-    #   p res.data.urls
+    #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/createVariation OpenAI docs
     # @param [File] image The image to create variations from
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::Image]
     def create_variation(image:, **params)
       multi = LLM::Multipart.new(params.merge!(image:))
       req = Net::HTTP::Post.new("/v1/images/variations", headers)
       req["content-type"] = multi.content_type
       req.body = multi.body
       res = request(http, req)
-      OpenStruct.from_hash JSON.parse(res.body)
+      LLM::Response::Image.new(res).extend(response_parser)
     end
 
     ##
@@ -60,20 +60,20 @@ class LLM::OpenAI
     # @example
     #   llm = LLM.openai(ENV["KEY"])
     #   res = llm.images.edit(image: LLM::File("/images/hat.png"), prompt: "A cat wearing this hat")
-    #   p res.data.urls
+    #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/createEdit OpenAI docs
     # @param [File] image The image to edit
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::Image]
     def edit(image:, prompt:, **params)
       multi = LLM::Multipart.new(params.merge!(image:, prompt:))
       req = Net::HTTP::Post.new("/v1/images/edits", headers)
       req["content-type"] = multi.content_type
       req.body = multi.body
       res = request(http, req)
-      OpenStruct.from_hash JSON.parse(res.body)
+      LLM::Response::Image.new(res).extend(response_parser)
     end
 
     private
@@ -82,7 +82,7 @@ class LLM::OpenAI
       @provider.instance_variable_get(:@http)
     end
 
-    [:headers, :request].each do |m|
+    [:response_parser, :headers, :request].each do |m|
       define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
     end
   end

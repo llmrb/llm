@@ -60,6 +60,16 @@ class LLM::OpenAI
       }
     end
 
+    ##
+    # @param [Hash] body
+    #  The response body from the LLM provider
+    # @return [Hash]
+    def parse_image(body)
+      {
+        urls: body["data"].map { _1["url"] }
+      }
+    end
+
     private
 
     def text(output)

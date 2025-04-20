@@ -6,6 +6,7 @@ module LLM
     require_relative "response/completion"
     require_relative "response/embedding"
     require_relative "response/output"
+    require_relative "response/image"
 
     ##
     # @return [Hash]
