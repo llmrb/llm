@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+##
+# The {LLM::File LLM::File} class represents a local file. It can
+# be used as a prompt with certain providers (eg: Ollama, Gemini),
+# and as an input with certain methods
 class LLM::File
   ##
   # @return [String]

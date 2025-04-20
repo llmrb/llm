@@ -2,6 +2,7 @@
 
 module LLM
   ##
+  # @private
   # {LLM::Buffer LLM::Buffer} provides an Enumerable object that
   # yields each message in a conversation on-demand, and only sends
   # a request to the LLM when a response is needed.
