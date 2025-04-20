@@ -16,5 +16,13 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/cassettes"
   config.hook_into :webmock
   config.configure_rspec_metadata!
+
+  ##
+  # scrub
   config.filter_sensitive_data("TOKEN") { ENV["LLM_SECRET"] }
+  config.before_record do
+    body = _1.response.body
+    body.gsub! %r|#{Regexp.escape("https://oaidalleapiprodscus.blob.core.windows.net/")}[^"]+|,
+               "https://openai.com/generated/image.png"
+  end
 end

@@ -40,8 +40,17 @@ class LLM::Gemini
     # @return [Hash]
     def parse_image(body)
       {
-        mime_type: body.dig("candidates", 0, "content", "parts", 0, "inlineData", "mimeType").b,
-        encoded: body.dig("candidates", 0, "content", "parts", 0, "inlineData", "data").b
+        urls: [],
+        images: body["candidates"].flat_map do |candidate|
+          candidate["content"]["parts"].filter_map do
+            next unless _1.dig("inlineData", "data")
+            OpenStruct.from_hash(
+              mime_type: _1["inlineData"]["mimeType"],
+              encoded: _1["inlineData"]["data"],
+              binary: _1["inlineData"]["data"].unpack1("m0")
+            )
+          end
+        end
       }
     end
   end

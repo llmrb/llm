@@ -66,7 +66,15 @@ class LLM::OpenAI
     # @return [Hash]
     def parse_image(body)
       {
-        urls: body["data"].map { _1["url"] }
+        urls: body["data"].filter_map { _1["url"] },
+        images: body["data"].filter_map do
+          next unless _1["b64_json"]
+          OpenStruct.from_hash(
+            mime_type: nil,
+            encoded: _1["b64_json"],
+            binary: _1["b64_json"].unpack1("m0")
+          )
+        end
       }
     end
 

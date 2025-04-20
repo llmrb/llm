@@ -7,48 +7,20 @@ module LLM
   # URLs, or a base64 encoded image -- depending on the provider.
   class Response::Image < Response
     ##
-    # Returns the content type (eg image/png)
-    # @return [String]
-    def mime_type
-      parsed[:mime_type]
+    # Returns one or more image objects, or nil
+    # @return [Array<OpenStruct>, nil]
+    def images
+      parsed[:images].any? ? parsed[:images] : nil
     end
 
     ##
-    # Returns an image object
-    # @return [OpenStruct]
-    def image
-      if encoded
-        OpenStruct.from_hash(
-          encoded:,
-          binary: decoded
-        )
-      else
-        nil
-      end
-    end
-
-    ##
+    # Returns one or more image URLs, or nil
     # @return [Array<String>, nil]
-    #  Returns one or more image URLs
     def urls
-      parsed[:urls]
+      parsed[:urls].any? ? parsed[:urls] : nil
     end
 
     private
-
-    ##
-    # Returns a base64 encoded string
-    # @return [String]
-    def encoded
-      parsed[:encoded]
-    end
-
-    ##
-    # Returns the image as a binary string
-    # @return [String]
-    def decoded
-      encoded.unpack1("m0")
-    end
 
     def parsed
       @parsed ||= parse_image(body)

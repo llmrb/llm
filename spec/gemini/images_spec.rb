@@ -15,11 +15,11 @@ RSpec.describe "LLM::Gemini::Images" do
     end
 
     it "returns an encoded string" do
-      expect(response.image.encoded).to be_instance_of(String)
+      expect(response.images[0].encoded).to be_instance_of(String)
     end
 
     it "returns a binary string" do
-      expect(response.image.binary).to be_instance_of(String)
+      expect(response.images[0].binary).to be_instance_of(String)
     end
   end
 
@@ -37,11 +37,11 @@ RSpec.describe "LLM::Gemini::Images" do
     end
 
     it "returns data" do
-      expect(response.image.encoded).to be_instance_of(String)
+      expect(response.images[0].encoded).to be_instance_of(String)
     end
 
     it "returns a url" do
-      expect(response.image.binary).to be_instance_of(String)
+      expect(response.images[0].binary).to be_instance_of(String)
     end
   end
 end

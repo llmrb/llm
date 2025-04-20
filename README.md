@@ -317,7 +317,7 @@ llm = LLM.gemini(ENV["KEY"])
 fork do
   %w[dog cat sheep goat capybara].each do |animal|
     res = llm.images.create(prompt: "a #{animal} on a rocket to the moon")
-    File.binwrite "#{animal}.png", res.image.binary
+    File.binwrite "#{animal}.png", res.images[0].binary
   end
 end
 Process.wait
