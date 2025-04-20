@@ -11,15 +11,15 @@ RSpec.describe "LLM::OpenAI::Images" do
     subject(:response) { provider.images.create(prompt: "A dog on a rocket to the moon") }
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::Image)
     end
 
     it "returns data" do
-      expect(response.data).to be_instance_of(Array)
+      expect(response.urls).to be_instance_of(Array)
     end
 
     it "returns a url" do
-      expect(response.data[0].url).to be_instance_of(String)
+      expect(response.urls[0]).to be_instance_of(String)
     end
   end
 
@@ -33,15 +33,15 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::Image)
     end
 
     it "returns data" do
-      expect(response.data.size).to eq(5)
+      expect(response.urls.size).to eq(5)
     end
 
     it "returns multiple variations" do
-      response.data.each { expect(_1.url).to be_instance_of(String) }
+      response.urls.each { expect(_1).to be_instance_of(String) }
     end
   end
 
@@ -55,15 +55,15 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::Image)
     end
 
     it "returns data" do
-      expect(response.data).to be_instance_of(Array)
+      expect(response.urls).to be_instance_of(Array)
     end
 
     it "returns a url" do
-      expect(response.data[0].url).to be_instance_of(String)
+      expect(response.urls[0]).to be_instance_of(String)
     end
   end
 end
