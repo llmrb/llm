@@ -9,13 +9,17 @@ module LLM
   # API that a select few LLM providers support.
   #
   # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
   #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Conversation.new(llm).lazy
-  #   bot.chat("You are my climate expert", :system)
-  #   bot.chat("What is the climate like in Rio de Janerio?", :user)
-  #   bot.chat("What is the climate like in Algiers?", :user)
-  #   bot.chat("What is the climate like in Tokyo?", :user)
-  #   p bot.messages.map { [_1.role, _1.content] }
+  #   conversation = LLM::Conversation.new(llm).lazy
+  #   conversation.chat("Your task is to answer all of my questions", :system)
+  #   conversation.chat("Your answers should be short and concise", :system)
+  #   conversation.chat("What is 5 + 7 ?", :user)
+  #   conversation.chat("Why is the sky blue ?", :user)
+  #   conversation.chat("Why did the chicken cross the road ?", :user)
+  #   conversation.messages.map { print "[#{_1.role}]", _1.content, "\n" }
   class Conversation
     ##
     # @return [Array<LLM::Message>]
