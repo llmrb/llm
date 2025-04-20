@@ -11,10 +11,10 @@ implemented with no dependencies outside Ruby's standard library.
 
 #### LLM::Provider
 
-All providers inherit from [LLM::Provider](https://0x1eef.github.io/x/llm/LLM/Provider.html) &ndash;
+All providers inherit from [LLM::Provider](https://0x1eef.github.io/x/llm.rb/LLM/Provider.html) &ndash;
 they share a common interface and set of functionality. Each provider can be instantiated
 using an API key (if required) and an optional set of configuration options via
-[the singleton methods of LLM](https://0x1eef.github.io/x/llm/LLM.html). For example:
+[the singleton methods of LLM](https://0x1eef.github.io/x/llm.rb/LLM.html). For example:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -31,7 +31,7 @@ llm = LLM.ollama(nil)
 #### Completions
 
 The following example enables lazy mode for a
-[LLM::Conversation](https://0x1eef.github.io/x/llm/LLM/Conversation.html)
+[LLM::Conversation](https://0x1eef.github.io/x/llm.rb/LLM/Conversation.html)
 object by entering into a "lazy" conversation where messages are buffered and
 sent to the provider only when necessary.  Both lazy and non-lazy conversations
 maintain a message thread that can be reused as context throughout a conversation.
@@ -74,7 +74,7 @@ a client can avoid maintaining state manually as well as avoid sending
 the entire conversation with each request that is made. Although it is
 primarily supported by OpenAI at the moment, we might see other providers
 support it in the future. For now
-[llm.rb supports the responses API](https://0x1eef.github.io/x/llm/LLM/OpenAI/Responses.html)
+[llm.rb supports the responses API](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Responses.html)
 for the OpenAI provider:
 
 ```ruby
@@ -186,7 +186,7 @@ image of a dog on a rocket to the moon. The image is then moved to
 
 Please note that there are subtle differences between Gemini and OpenAI
 in regards to image generation &ndash; see
-[LLM::Gemini::Images](https://0x1eef.github.io/x/llm/LLM/Gemini/Images.html)
+[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html)
 for more information:
 
 ```ruby
@@ -219,7 +219,7 @@ for more information on how to use the image editing API.
 
 Please note that there are subtle differences between Gemini and OpenAI
 in regards to image generation &ndash; see
-[LLM::Gemini::Images](https://0x1eef.github.io/x/llm/LLM/Gemini/Images.html)
+[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html)
 for more information:
 
 ```ruby
@@ -271,7 +271,7 @@ end
 #### Text
 
 The
-[`LLM::Provider#embed`](https://0x1eef.github.io/x/llm/LLM/Provider.html#embed-instance_method)
+[`LLM::Provider#embed`](https://0x1eef.github.io/x/llm.rb/LLM/Provider.html#embed-instance_method)
 method generates a vector representation of one or more chunks
 of text. Embeddings capture the semantic meaning of text &ndash;
 a common use-case for them is to store chunks of text in a
