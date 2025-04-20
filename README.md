@@ -157,7 +157,9 @@ The following example translates an audio file to text. In this example
 the audio file (`${HOME/bomdia.mp3}`) is theoretically in Portuguese,
 and it is translated to English. The example uses the OpenAI provider,
 and at the time of writing, it can only translate to English. As always,
-consult the provider's documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranslation))
+consult the provider's documentation (eg
+[OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranslation),
+[Gemini docs](https://ai.google.dev/gemini-api/docs/image-generation))
 for more information on how to use the audio translation API:
 
 ```ruby
@@ -180,7 +182,12 @@ Some but all LLM providers implement image generation capabilities that
 can create new images from a prompt, or edit an existing image with a
 prompt. The following example uses the OpenAI provider to create an
 image of a dog on a rocket to the moon. The image is then moved to
-`${HOME}/dogonrocket.png` as the final step:
+`${HOME}/dogonrocket.png` as the final step.
+
+Please note that there are subtle differences between Gemini and OpenAI
+in regards to image generation &ndash; see
+[LLM::Gemini::Images](https://0x1eef.github.io/x/llm/LLM/Gemini/Images.html)
+for more information:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -190,7 +197,7 @@ require "fileutils"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.images.create(prompt: "a dog on a rocket to the moon")
-res.data.urls.each do |url|
+res.urls.each do |url|
   FileUtils.mv OpenURI.open_uri(url).path,
                File.join(Dir.home, "dogonrocket.png")
 end
@@ -201,10 +208,19 @@ end
 The following example is focused on editing a local image with the aid
 of a prompt. The image (`/images/cat.png`) is returned to us with the cat
 now wearing a hat. The image is then moved to `${HOME}/catwithhat.png` as
-the final step. Results and quality may vary, consider prompt adjustments
-if the results are not satisfactory, and consult the provider's documentation
-(eg [OpenAI docs](https://platform.openai.com/docs/api-reference/images/createEdit))
-for more information on how to use the image editing API:
+the final step.
+
+Results and quality may vary, consider prompt adjustments if the results
+are not satisfactory, and consult the provider's documentation
+(eg
+[OpenAI docs](https://platform.openai.com/docs/api-reference/images/createEdit),
+[Gemini docs](https://ai.google.dev/gemini-api/docs/image-generation))
+for more information on how to use the image editing API.
+
+Please note that there are subtle differences between Gemini and OpenAI
+in regards to image generation &ndash; see
+[LLM::Gemini::Images](https://0x1eef.github.io/x/llm/LLM/Gemini/Images.html)
+for more information:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -217,7 +233,7 @@ res = llm.images.edit(
   image: LLM::File("/images/cat.png")
   prompt: "a cat with a hat",
 )
-res.data.urls.each do |url|
+res.urls.each do |url|
   FileUtils.mv OpenURI.open_uri(url).path,
                File.join(Dir.home, "catwithhat.png")
 end
@@ -243,7 +259,7 @@ res = llm.images.create_variation(
   image: LLM::File("/images/cat.png"),
   n: 5
 )
-res.data.urls.each.with_index do |url, index|
+res.urls.each.with_index do |url, index|
   FileUtils.mv OpenURI.open_uri(url).path,
                File.join(Dir.home, "catvariation#{index}.png")
 end
