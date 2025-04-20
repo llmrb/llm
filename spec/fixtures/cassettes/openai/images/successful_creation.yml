@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.openai.com/v1/images/generations
     body:
       encoding: UTF-8
-      string: '{"prompt":"A dog on a rocket to the moon","n":1}'
+      string: '{"prompt":"A dog on a rocket to the moon","n":1,"model":"dall-e-3"}'
     headers:
       Content-Type:
       - application/json
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 18 Apr 2025 16:16:21 GMT
+      - Sun, 20 Apr 2025 23:20:14 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,37 +35,38 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_7cad2979e56e244e059b5a474b3d6a12
+      - req_5aa42b5e12e40c7203c799d0358bb4c7
       Openai-Processing-Ms:
-      - '11504'
+      - '13001'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=4bYZxkIFp.sLNfdWZYZZSAKaMZXCkSGbs20OtgL6w2I-1744992981-1.0.1.1-FvVjEdiafkQarm8OMk2ihXL6Frf8vDOtvcn7LWodhabgcOssFVNd9odMDVgD0WD4Oqb2g5SVMv.jd_nEV56okPSDiAYaIrl3SLoWho.GtWI;
-        path=/; expires=Fri, 18-Apr-25 16:46:21 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=1KZeOVl5143.ur.F4K2T3_52oZmD3i2umDkxUg3jgi0-1745191214-1.0.1.1-j_o94FdXKKFzfXj7CWKxNQBOJjBmVmgosUhHdPjhaWf_uHwpSStOS90vBzZm8Q1RK4KpL2DDrJu7OnpGTCNohAico8_5DFjUYp8gkLCRI5s;
+        path=/; expires=Sun, 20-Apr-25 23:50:14 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=zslhAViIKbsSZlel5jgQhXdqLPRQEH7sG55yBxeqv3g-1744992981877-0.0.1.1-604800000;
+      - _cfuvid=OyOkomRCf8Kab._.lTeVtNNpQjf18BqKt2jPUGUOo50-1745191214876-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9325770f7c94f171-GRU
+      - 93385eb24ee3a474-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "created": 1744992981,
+          "created": 1745191214,
           "data": [
             {
-              "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-wmU9CAljVl3xPIAk3ail1CQO/user-J1PZtzT5nOgpcsid23U7gSkJ/img-t3x07H6mAzfG2zlv3VPb69zs.png?st=2025-04-18T15%3A16%3A21Z&se=2025-04-18T17%3A16%3A21Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=475fd488-6c59-44a5-9aa9-31c4db451bea&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-18T04%3A04%3A24Z&ske=2025-04-19T04%3A04%3A24Z&sks=b&skv=2024-08-04&sig=80g/kS7YAi5hPrMu0pJd9c7KZnnfJq8Fno/cPfxFILM%3D"
+              "revised_prompt": "A fun vision of a playful canine adventuring to the lunar surface. The dog, a courageous golden retriever, stands with a triumphant air on a futuristic silver rocket. The earth dwindles into the distance while the moon, with its grey craters and barren landscape, grows closer and closer. Budding stars flash their glory in the backdrop of this epic journey. This rocket belongs to no country or organization; it's just a spontaneous trip to the lunar paradise.",
+              "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-wmU9CAljVl3xPIAk3ail1CQO/user-J1PZtzT5nOgpcsid23U7gSkJ/img-1EW1MmgiAZBHmYM04HgjMhz2.png?st=2025-04-20T22%3A20%3A14Z&se=2025-04-21T00%3A20%3A14Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=475fd488-6c59-44a5-9aa9-31c4db451bea&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-20T02%3A38%3A29Z&ske=2025-04-21T02%3A38%3A29Z&sks=b&skv=2024-08-04&sig=5CvV62nZ9Vw8%2BYRmdYQ3gwlqJcszdsFk/BEMvC9H2Pk%3D"
             }
           ]
         }
-  recorded_at: Fri, 18 Apr 2025 16:15:59 GMT
+  recorded_at: Sun, 20 Apr 2025 23:19:46 GMT
 recorded_with: VCR 6.3.1

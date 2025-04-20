@@ -25,12 +25,13 @@ class LLM::OpenAI
     #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/create OpenAI docs
     # @param [String] prompt The prompt
+    # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::Image]
-    def create(prompt:, **params)
+    def create(prompt:, model: "dall-e-3", **params)
       req = Net::HTTP::Post.new("/v1/images/generations", headers)
-      req.body = JSON.dump({prompt:, n: 1}.merge!(params))
+      req.body = JSON.dump({prompt:, n: 1, model:}.merge!(params))
       res = request(http, req)
       LLM::Response::Image.new(res).extend(response_parser)
     end
@@ -43,11 +44,12 @@ class LLM::OpenAI
     #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/createVariation OpenAI docs
     # @param [File] image The image to create variations from
+    # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::Image]
-    def create_variation(image:, **params)
-      multi = LLM::Multipart.new(params.merge!(image:))
+    def create_variation(image:, model: "dall-e-2", **params)
+      multi = LLM::Multipart.new(params.merge!(image:, model:))
       req = Net::HTTP::Post.new("/v1/images/variations", headers)
       req["content-type"] = multi.content_type
       req.body = multi.body
@@ -64,11 +66,12 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/images/createEdit OpenAI docs
     # @param [File] image The image to edit
     # @param [String] prompt The prompt
+    # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::Image]
-    def edit(image:, prompt:, **params)
-      multi = LLM::Multipart.new(params.merge!(image:, prompt:))
+    def edit(image:, prompt:, model: "dall-e-2", **params)
+      multi = LLM::Multipart.new(params.merge!(image:, prompt:, model:))
       req = Net::HTTP::Post.new("/v1/images/edits", headers)
       req["content-type"] = multi.content_type
       req.body = multi.body
