@@ -101,7 +101,7 @@ class LLM::OpenAI
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Get.new("/v1/files/#{file_id}/content?#{query}", headers)
       io = StringIO.new("".b)
-      request(http, req) { |res| res.read_body { |chunk| io << chunk } }
+      res = request(http, req) { |res| res.read_body { |chunk| io << chunk } }
       OpenStruct.from_hash(response: res, file: io)
     end
 
