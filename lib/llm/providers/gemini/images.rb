@@ -8,6 +8,9 @@ class LLM::Gemini
   # Gemini's images API will always return an image as a base64 encoded string that
   # can be decoded into binary.
   # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
   #   llm = LLM.gemini(ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
   #   File.binwrite "rocket.png", res.images[0].binary
@@ -32,6 +35,10 @@ class LLM::Gemini
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::HTTPClient#request)
+    # @note
+    #  The prompt should make it clear you want to generate an image, or you
+    #  might unexpectedly receive a purely textual response. This is due to how
+    #  Gemini implements image generation under the hood.
     # @return [LLM::Response::Image]
     def create(prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
       req = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
@@ -54,6 +61,7 @@ class LLM::Gemini
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::HTTPClient#request)
+    # @note (see LLM::Gemini::Images#create)
     # @return [LLM::Response::Image]
     def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
       req = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
