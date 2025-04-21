@@ -11,7 +11,7 @@ RSpec.describe "LLM::OpenAI::Images" do
     subject(:response) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku1.txt")) }
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::File)
     end
 
     it "returns a file object" do
@@ -28,7 +28,7 @@ RSpec.describe "LLM::OpenAI::Images" do
     subject(:response) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku2.txt")) }
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::File)
     end
 
     it "returns a file object" do
@@ -45,11 +45,11 @@ RSpec.describe "LLM::OpenAI::Images" do
     subject(:response) { provider.files.all }
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::FileList)
     end
 
     it "returns an array of file objects" do
-      expect(response.data).to match_array(
+      expect(response).to match_array(
         [
           have_attributes(
             id: instance_of(String),

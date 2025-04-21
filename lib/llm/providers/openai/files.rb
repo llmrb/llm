@@ -38,7 +38,10 @@ class LLM::OpenAI
     def all(**params)
       req = Net::HTTP::Get.new("/v1/files?#{URI.encode_www_form(params)}", headers)
       res = request(http, req)
-      OpenStruct.from_hash JSON.parse(res.body)
+      LLM::Response::FileList.new(res).tap { |filelist|
+        files = filelist.body["data"].map { OpenStruct.from_hash(_1) }
+        filelist.files = files
+      }
     end
 
     ##
@@ -58,7 +61,7 @@ class LLM::OpenAI
       req["content-type"] = multi.content_type
       req.body = multi.body
       res = request(http, req)
-      OpenStruct.from_hash JSON.parse(res.body)
+      LLM::Response::File.new(res)
     end
 
     private
