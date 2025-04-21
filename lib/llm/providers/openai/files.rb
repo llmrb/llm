@@ -36,7 +36,8 @@ class LLM::OpenAI
     # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::FileList]
     def all(**params)
-      req = Net::HTTP::Get.new("/v1/files?#{URI.encode_www_form(params)}", headers)
+      query = URI.encode_www_form(params)
+      req = Net::HTTP::Get.new("/v1/files?#{query}", headers)
       res = request(http, req)
       LLM::Response::FileList.new(res).tap { |filelist|
         files = filelist.body["data"].map { OpenStruct.from_hash(_1) }
@@ -68,14 +69,14 @@ class LLM::OpenAI
     # Get a file
     # @example
     #   llm = LLM.openai(ENV["KEY"])
-    #   res = llm.files.get("file-1234567890")
+    #   res = llm.files.get(file: "file-1234567890")
     #   print "id: ", res.id, "\n"
     # @see https://platform.openai.com/docs/api-reference/files/get OpenAI docs
     # @param [#id, #to_s] file The file ID
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::File]
-    def get(file, **params)
+    def get(file:, **params)
       file_id = file.respond_to?(:id) ? file.id : file
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/files/#{file_id}?#{query}", headers)
@@ -84,16 +85,37 @@ class LLM::OpenAI
     end
 
     ##
+    # Download the content of a file
+    # @example
+    #   llm = LLM.openai(ENV["KEY"])
+    #   res = llm.files.download(file: "file-1234567890")
+    #   File.binwrite "haiku1.txt", res.file.read
+    #   print res.file.read, "\n"
+    # @see https://platform.openai.com/docs/api-reference/files/content OpenAI docs
+    # @param [#id, #to_s] file The file ID
+    # @param [Hash] params Other parameters (see OpenAI docs)
+    # @raise (see LLM::HTTPClient#request)
+    # @return [OpenStruct]
+    def download(file:, **params)
+      query = URI.encode_www_form(params)
+      file_id = file.respond_to?(:id) ? file.id : file
+      req = Net::HTTP::Get.new("/v1/files/#{file_id}/content?#{query}", headers)
+      io = StringIO.new("".b)
+      request(http, req) { |res| res.read_body { |chunk| io << chunk } }
+      OpenStruct.from_hash(response: res, file: io)
+    end
+
+    ##
     # Delete a file
     # @example
     #   llm = LLM.openai(ENV["KEY"])
-    #   res = llm.files.delete("file-1234567890")
+    #   res = llm.files.delete(file: "file-1234567890")
     #   print res.deleted, "\n"
     # @see https://platform.openai.com/docs/api-reference/files/delete OpenAI docs
     # @param [#id, #to_s] file The file ID
     # @raise (see LLM::HTTPClient#request)
     # @return [OpenStruct] Response body
-    def delete(file)
+    def delete(file:)
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Delete.new("/v1/files/#{file_id}", headers)
       res = request(http, req)

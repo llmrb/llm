@@ -42,8 +42,8 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when given a successful delete operation (haiku3.txt)",
           vcr: {cassette_name: "openai/files/successful_delete_haiku3"} do
-    let(:response) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku3.txt")) }
-    subject { provider.files.delete(response) }
+    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku3.txt")) }
+    subject { provider.files.delete(file:) }
 
     it "is successful" do
       is_expected.to be_instance_of(OpenStruct)
