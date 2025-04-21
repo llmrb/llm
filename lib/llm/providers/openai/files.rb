@@ -34,7 +34,7 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/files/list OpenAI docs
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::FileList]
     def all(**params)
       req = Net::HTTP::Get.new("/v1/files?#{URI.encode_www_form(params)}", headers)
       res = request(http, req)
@@ -54,7 +54,7 @@ class LLM::OpenAI
     # @param [String] purpose The purpose of the file (see OpenAI docs)
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::File]
     def create(file:, purpose: "user_data", **params)
       multi = LLM::Multipart.new(params.merge!(file:, purpose:))
       req = Net::HTTP::Post.new("/v1/files", headers)
@@ -62,6 +62,23 @@ class LLM::OpenAI
       req.body = multi.body
       res = request(http, req)
       LLM::Response::File.new(res)
+    end
+
+    ##
+    # Delete a file
+    # @example
+    #   llm = LLM.openai(ENV["KEY"])
+    #   res = llm.files.delete("file-1234567890")
+    #   print res.deleted, "\n"
+    # @see https://platform.openai.com/docs/api-reference/files/delete OpenAI docs
+    # @param [#id, #to_s] file The file ID
+    # @raise (see LLM::HTTPClient#request)
+    # @return [OpenStruct] Response body
+    def delete(file)
+      file_id = file.respond_to?(:id) ? file.id : file
+      req = Net::HTTP::Delete.new("/v1/files/#{file_id}", headers)
+      res = request(http, req)
+      OpenStruct.from_hash JSON.parse(res.body)
     end
 
     private
