@@ -10,20 +10,21 @@ module LLM
     require_relative "response/audio"
 
     ##
-    # Returns the response body
-    # @return [Hash, String]
-    attr_reader :body
-
-    ##
     # @param [Net::HTTPResponse] res
     #  HTTP response
     # @return [LLM::Response]
     #  Returns an instance of LLM::Response
     def initialize(res)
       @res = res
-      case res["content-type"]
-      when %r|\Aapplication/json\s*| then @body = JSON.parse(res.body)
-      else @body = res.body
+    end
+
+    ##
+    # Returns the response body
+    # @return [Hash, String]
+    def body
+      @body ||= case @res["content-type"]
+      when %r|\Aapplication/json\s*| then JSON.parse(@res.body)
+      else @res.body
       end
     end
   end

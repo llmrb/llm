@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LLM
   ##
   # The {LLM::Response::Audio LLM::Response::Audio} class represents an
