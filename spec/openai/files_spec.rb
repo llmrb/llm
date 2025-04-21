@@ -56,6 +56,25 @@ RSpec.describe "LLM::OpenAI::Files" do
     end
   end
 
+  context "when given a successful get operation (haiku4.txt)",
+          vcr: {cassette_name: "openai/files/successful_get_haiku4"} do
+    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku4.txt")) }
+    subject { provider.files.get(file:) }
+    after { provider.files.delete(file:) }
+
+    it "is successful" do
+      is_expected.to be_instance_of(LLM::Response::File)
+    end
+
+    it "returns a file object" do
+      is_expected.to have_attributes(
+        id: instance_of(String),
+        filename: "haiku4.txt",
+        purpose: "user_data"
+      )
+    end
+  end
+
   context "when given a successful all operation",
           vcr: {cassette_name: "openai/files/successful_all"} do
     subject(:response) { provider.files.all }
