@@ -32,13 +32,13 @@ class LLM::OpenAI
     # @param [String] response_format The response format
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::Audio]
     def create_speech(input:, voice: "alloy", model: "gpt-4o-mini-tts", response_format: "mp3", **params)
       req = Net::HTTP::Post.new("/v1/audio/speech", headers)
       req.body = JSON.dump({input:, voice:, model:, response_format:}.merge!(params))
       io = StringIO.new("".b)
       res = request(http, req) { _1.read_body { |chunk| io << chunk } }
-      OpenStruct.from_hash(response: res, audio: io)
+      LLM::Response::Audio.new(res).tap { _1.audio = io }
     end
 
     ##

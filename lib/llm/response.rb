@@ -7,10 +7,11 @@ module LLM
     require_relative "response/embedding"
     require_relative "response/output"
     require_relative "response/image"
+    require_relative "response/audio"
 
     ##
-    # @return [Hash]
-    #  Returns the response body
+    # Returns the response body
+    # @return [Hash, String]
     attr_reader :body
 
     ##
@@ -20,7 +21,10 @@ module LLM
     #  Returns an instance of LLM::Response
     def initialize(res)
       @res = res
-      @body = JSON.parse(res.body)
+      case res["content-type"]
+      when %r|\Aapplication/json\s*| then @body = JSON.parse(res.body)
+      else @body = res.body
+      end
     end
   end
 end
