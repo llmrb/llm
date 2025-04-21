@@ -2,6 +2,7 @@
 
 module LLM
   require_relative "llm/version"
+  require_relative "llm/utils"
   require_relative "llm/error"
   require_relative "llm/message"
   require_relative "llm/response"

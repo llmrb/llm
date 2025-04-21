@@ -25,6 +25,7 @@ module LLM
     require_relative "gemini/response_parser"
     require_relative "gemini/format"
     require_relative "gemini/images"
+    require_relative "gemini/files"
     include Format
 
     HOST = "generativelanguage.googleapis.com"
@@ -70,17 +71,24 @@ module LLM
     end
 
     ##
-    # @return (see LLM::Provider#assistant_role)
-    def assistant_role
-      "model"
-    end
-
-    ##
     # Provides an interface to Gemini's image generation API
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
     # @return [see LLM::Gemini::Images]
     def images
       LLM::Gemini::Images.new(self)
+    end
+
+    ##
+    # Provides an interface to Gemini's file management API
+    # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
+    def files
+      LLM::Gemini::Files.new(self)
+    end
+
+    ##
+    # @return (see LLM::Provider#assistant_role)
+    def assistant_role
+      "model"
     end
 
     ##

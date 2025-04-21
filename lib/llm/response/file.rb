@@ -8,16 +8,24 @@ module LLM
   class Response::File < Response
     private
 
+    include LLM::Utils
+
     def respond_to_missing?(m, _)
-      body.key?(m.to_s) || super
+      body.key?(m.to_s) || body.key?(camelcase(m)) || super
     end
 
     def method_missing(m, *args, &block)
       if body.key?(m.to_s)
         body[m.to_s]
+      elsif body.key?(camelcase(m))
+        body[camelcase(m)]
       else
         super
       end
+    end
+
+    def body
+      super["file"] || super
     end
   end
 end
