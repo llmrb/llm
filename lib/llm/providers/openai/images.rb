@@ -4,10 +4,27 @@ class LLM::OpenAI
   ##
   # The {LLM::OpenAI::Images LLM::OpenAI::Images} class provides an images
   # object for interacting with [OpenAI's images API](https://platform.openai.com/docs/api-reference/images).
+  # OpenAI supports multiple response formats: temporary URLs, or binary strings
+  # encoded in base64. The default is to return temporary URLs.
+  #
   # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #   require "open-uri"
+  #   require "fileutils"
+  #
   #   llm = LLM.openai(ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
-  #   p res.urls
+  #   FileUtils.mv OpenURI.open_uri(res.urls[0]).path,
+  #                "rocket.png"
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.openai(ENV["KEY"])
+  #   res = llm.images.create prompt: "A dog on a rocket to the moon",
+  #                           response_format: "b64_json"
+  #   File.binwrite("rocket.png", res.images[0].binary)
   class Images
     ##
     # Returns a new Responses object
