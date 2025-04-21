@@ -6,8 +6,8 @@ RSpec.describe "LLM::OpenAI::Images" do
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:provider) { LLM.openai(token) }
 
-  context "when given a successful creation (urls)",
-          vcr: {cassette_name: "openai/images/successful_creation_urls"} do
+  context "when given a successful create operation (urls)",
+          vcr: {cassette_name: "openai/images/successful_create_urls"} do
     subject(:response) { provider.images.create(prompt: "A dog on a rocket to the moon") }
 
     it "is successful" do
@@ -23,8 +23,8 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
   end
 
-  context "when given a successful creation (base64)",
-          vcr: {cassette_name: "openai/images/successful_creation_base64"} do
+  context "when given a successful create operation (base64)",
+          vcr: {cassette_name: "openai/images/successful_create_base64"} do
     subject(:response) do
       provider.images.create(
         prompt: "A dog on a rocket to the moon",
@@ -49,7 +49,7 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
   end
 
-  context "when given a successful variation",
+  context "when given a successful variation operation",
         vcr: {cassette_name: "openai/images/successful_variation"} do
     subject(:response) do
       provider.images.create_variation(

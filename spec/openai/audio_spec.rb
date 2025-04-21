@@ -6,8 +6,8 @@ RSpec.describe "LLM::OpenAI::Audio" do
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:provider) { LLM.openai(token) }
 
-  context "when given a successful creation",
-        vcr: {cassette_name: "openai/audio/successful_creation"} do
+  context "when given a successful create operation",
+        vcr: {cassette_name: "openai/audio/successful_create"} do
     subject(:response) { provider.audio.create_speech(input: "A dog on a rocket to the moon") }
 
     it "is successful" do
@@ -19,7 +19,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
     end
   end
 
-  context "when given a successful transcription",
+  context "when given a successful transcription operation",
         vcr: {cassette_name: "openai/audio/successful_transcription"} do
     subject(:response) do
       provider.audio.create_transcription(
@@ -36,7 +36,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
     end
   end
 
-  context "when given a successful translation",
+  context "when given a successful translation operation",
         vcr: {cassette_name: "openai/audio/successful_translation"} do
     subject(:response) do
       provider.audio.create_translation(

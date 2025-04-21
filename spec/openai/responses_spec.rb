@@ -6,8 +6,8 @@ RSpec.describe "LLM::OpenAI::Responses" do
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:provider) { LLM.openai(token) }
 
-  context "when given a successful creation",
-          vcr: {cassette_name: "openai/responses/successful_creation"} do
+  context "when given a successful create operation",
+          vcr: {cassette_name: "openai/responses/successful_create"} do
     subject { provider.responses.create("Hello", :developer) }
 
     it "is successful" do
@@ -21,7 +21,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
     end
   end
 
-  context "when given a successful get",
+  context "when given a successful get operation",
           vcr: {cassette_name: "openai/responses/successful_get"} do
     let(:response) { provider.responses.create("Hello", :developer) }
     subject { provider.responses.get(response) }
@@ -37,8 +37,8 @@ RSpec.describe "LLM::OpenAI::Responses" do
     end
   end
 
-  context "when given a successful deletion",
-          vcr: {cassette_name: "openai/responses/successful_deletion"} do
+  context "when given a successful delete operation",
+          vcr: {cassette_name: "openai/responses/successful_delete"} do
     let(:response) { provider.responses.create("Hello", :developer) }
     subject { provider.responses.delete(response) }
 
