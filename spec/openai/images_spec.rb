@@ -6,20 +6,46 @@ RSpec.describe "LLM::OpenAI::Images" do
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:provider) { LLM.openai(token) }
 
-  context "when given a successful creation",
-        vcr: {cassette_name: "openai/images/successful_creation"} do
+  context "when given a successful creation (urls)",
+          vcr: {cassette_name: "openai/images/successful_creation_urls"} do
     subject(:response) { provider.images.create(prompt: "A dog on a rocket to the moon") }
 
     it "is successful" do
       expect(response).to be_instance_of(LLM::Response::Image)
     end
 
-    it "returns data" do
+    it "returns an array of urls" do
       expect(response.urls).to be_instance_of(Array)
     end
 
     it "returns a url" do
       expect(response.urls[0]).to be_instance_of(String)
+    end
+  end
+
+  context "when given a successful creation (base64)",
+          vcr: {cassette_name: "openai/images/successful_creation_base64"} do
+    subject(:response) do
+      provider.images.create(
+        prompt: "A dog on a rocket to the moon",
+        response_format: "b64_json"
+      )
+    end
+
+    it "is successful" do
+      expect(response).to be_instance_of(LLM::Response::Image)
+    end
+
+    it "returns an array of images" do
+      expect(response.images).to be_instance_of(Array)
+    end
+
+    it "returns an encoded string" do
+      expect(response.images[0].encoded).to be_instance_of(String)
+    end
+
+    it "returns an binary string" do
+      expect(response.images[0].binary).to be_instance_of(String)
     end
   end
 
