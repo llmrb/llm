@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/files
+    body:
+      encoding: ASCII-8BIT
+      string: "--BOUNDARY__5534a0acd311dbf2725ebfe784df71d1\r\nContent-Disposition:
+        form-data; name=\"file\";filename=\"haiku1.txt\"\r\nContent-Type: text/plain\r\n\r\nWhispers
+        through the trees,\nmoonlight dances on still waves --\nnight's breath softly
+        glows\n\r\n--BOUNDARY__5534a0acd311dbf2725ebfe784df71d1\r\nContent-Disposition:
+        form-data; name=\"purpose\"\r\n\r\nuser_data\r\n--BOUNDARY__5534a0acd311dbf2725ebfe784df71d1--\r\n"
+    headers:
+      Content-Type:
+      - multipart/form-data; boundary=BOUNDARY__5534a0acd311dbf2725ebfe784df71d1
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 21 Apr 2025 17:35:40 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      X-Request-Id:
+      - req_181ac67caf87ee785f7d381efbf3a400
+      Openai-Processing-Ms:
+      - '319'
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=TKMzOy3P53v3.kB.hiVuJyuZibDj3pn63AEY5hr0o9s-1745256940-1.0.1.1-h.BqUB_LQR.ciOn.F_tzEdHqjK_QIO5mKE95vj1jr8DfmJv_juDHutbSTVsRXBNXmTX.TFoTLvkVf70VZ.HPioooxvxTK0cR1kKIAwvEdME;
+        path=/; expires=Mon, 21-Apr-25 18:05:40 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=2ikuZ90OhGDHgKU6Lz7Y2mO9C9YOvw4jotwsqIVR1_c-1745256940950-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 933ea3a5e949f243-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "object": "file",
+          "id": "file-GWeFhDnRtCWDG5NqLZivGD",
+          "purpose": "user_data",
+          "filename": "haiku1.txt",
+          "bytes": 91,
+          "created_at": 1745256940,
+          "expires_at": null,
+          "status": "processed",
+          "status_details": null
+        }
+  recorded_at: Mon, 21 Apr 2025 17:35:11 GMT
+recorded_with: VCR 6.3.1

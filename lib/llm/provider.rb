@@ -159,7 +159,7 @@ class LLM::Provider
   end
 
   ##
-  # @return [LLM::OpenAI::Images]
+  # @return [LLM::OpenAI::Images, LLM::Gemini::Images]
   #  Returns an interface to the images API
   def images
     raise NotImplementedError
@@ -169,6 +169,13 @@ class LLM::Provider
   # @return [LLM::OpenAI::Audio]
   #  Returns an interface to the audio API
   def audio
+    raise NotImplementedError
+  end
+
+  ##
+  # @return [LLM::OpenAI::Files]
+  #  Returns an interface to the files API
+  def files
     raise NotImplementedError
   end
 

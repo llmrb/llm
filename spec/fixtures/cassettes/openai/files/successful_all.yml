@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openai.com/v1/files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 21 Apr 2025 17:31:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      X-Request-Id:
+      - req_0740c739698be92278f3e33bbbe9d7b0
+      Openai-Processing-Ms:
+      - '53'
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=iauEBnBwbix3XDuel9Rz6szwttgP5lMsCmXNKLJP8uw-1745256703-1.0.1.1-Ek5q8DWeExJv2t4zxqTl1EJEUYTfPI895CdQlptzZo1508TfPml5DFrTvFuWpGqwwlFZYiZFVzaKWMO.fYYZ.n9.PXaP3PKWUcd1PfVDd.E;
+        path=/; expires=Mon, 21-Apr-25 18:01:43 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=Pq.DaISC1Z6Rj5.lFUnW8cGnCond8V0lK5genfGyMFM-1745256703480-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 933e9ddb5a0252d2-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "object": "list",
+          "data": [
+            {
+              "object": "file",
+              "id": "file-91p4W7TvdyaY48qMJmG1Ff",
+              "purpose": "user_data",
+              "filename": "haiku2.txt",
+              "bytes": 75,
+              "created_at": 1745256159,
+              "expires_at": null,
+              "status": "processed",
+              "status_details": null
+            },
+            {
+              "object": "file",
+              "id": "file-WWXwBDuPt34ezdmhgDio8Y",
+              "purpose": "user_data",
+              "filename": "haiku1.txt",
+              "bytes": 91,
+              "created_at": 1745256011,
+              "expires_at": null,
+              "status": "processed",
+              "status_details": null
+            }
+          ],
+          "has_more": false,
+          "first_id": "file-91p4W7TvdyaY48qMJmG1Ff",
+          "last_id": "file-WWXwBDuPt34ezdmhgDio8Y"
+        }
+  recorded_at: Mon, 21 Apr 2025 17:31:13 GMT
+recorded_with: VCR 6.3.1

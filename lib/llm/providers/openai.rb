@@ -11,6 +11,7 @@ module LLM
     require_relative "openai/responses"
     require_relative "openai/images"
     require_relative "openai/audio"
+    require_relative "openai/files"
     include Format
 
     HOST = "api.openai.com"
@@ -77,6 +78,14 @@ module LLM
     # @return [LLM::OpenAI::Audio]
     def audio
       LLM::OpenAI::Audio.new(self)
+    end
+
+    ##
+    # Provides an interface to OpenAI's files API
+    # @see https://platform.openai.com/docs/api-reference/files/create OpenAI docs
+    # @return [LLM::OpenAI::Files]
+    def files
+      LLM::OpenAI::Files.new(self)
     end
 
     ##
