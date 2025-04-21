@@ -65,6 +65,25 @@ class LLM::OpenAI
     end
 
     ##
+    # Get a file
+    # @example
+    #   llm = LLM.openai(ENV["KEY"])
+    #   res = llm.files.get("file-1234567890")
+    #   print "id: ", res.id, "\n"
+    # @see https://platform.openai.com/docs/api-reference/files/get OpenAI docs
+    # @param [#id, #to_s] file The file ID
+    # @param [Hash] params Other parameters (see OpenAI docs)
+    # @raise (see LLM::HTTPClient#request)
+    # @return [LLM::Response::File]
+    def get(file, **params)
+      file_id = file.respond_to?(:id) ? file.id : file
+      query = URI.encode_www_form(params)
+      req = Net::HTTP::Get.new("/v1/files/#{file_id}?#{query}", headers)
+      res = request(http, req)
+      LLM::Response::File.new(res)
+    end
+
+    ##
     # Delete a file
     # @example
     #   llm = LLM.openai(ENV["KEY"])
