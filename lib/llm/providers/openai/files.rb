@@ -95,14 +95,14 @@ class LLM::OpenAI
     # @param [#id, #to_s] file The file ID
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::DownloadFile]
     def download(file:, **params)
       query = URI.encode_www_form(params)
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Get.new("/v1/files/#{file_id}/content?#{query}", headers)
       io = StringIO.new("".b)
       res = request(http, req) { |res| res.read_body { |chunk| io << chunk } }
-      OpenStruct.from_hash(response: res, file: io)
+      LLM::Response::DownloadFile.new(res).tap { _1.file = io }
     end
 
     ##
