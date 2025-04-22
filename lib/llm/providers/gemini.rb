@@ -20,6 +20,15 @@ module LLM
   #   conversation.chat "Describe the image"
   #   message = conversation.last_message
   #   print "[#{message.role}]", message.content, "\n"
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm  = LLM.gemini(ENV["KEY"])
+  #   chat = LLM::Conversation.new(llm).lazy
+  #   chat.chat ["Describe the image", LLM::File("/images/capybara.png")]
+  #   message = conversation.last_message
+  #   print "[#{message.role}]", message.content, "\n"
   class Gemini < Provider
     require_relative "gemini/error_handler"
     require_relative "gemini/response_parser"

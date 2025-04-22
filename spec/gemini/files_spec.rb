@@ -51,6 +51,45 @@ RSpec.describe "LLM::Gemini::Files" do
     end
   end
 
+  context "when given a successful translation operation (bismillah.mp3)",
+          vcr: {cassette_name: "gemini/files/successful_translation_bismillah"} do
+    subject { chat.last_message.content }
+    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
+    let(:chat) { LLM::Conversation.new(provider).lazy }
+    after { provider.files.delete(file:) }
+
+    before do
+      chat.chat file
+      chat.chat "Translate the contents of the audio file into English"
+      chat.chat "The audio is referenced in the first message I sent to you"
+      chat.chat "Provide no other content except the translation"
+    end
+
+    it "translates the audio clip" do
+      is_expected.to eq("In the name of God, the Most Gracious, the Most Merciful.\n")
+    end
+  end
+
+  context "when given a successful translation operation (alhamdullilah.mp3)",
+          vcr: {cassette_name: "gemini/files/successful_translation_alhamdullilah"} do
+    subject { chat.last_message.content }
+    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/alhamdullilah.mp3")) }
+    let(:chat) { LLM::Conversation.new(provider).lazy }
+    after { provider.files.delete(file:) }
+
+    before do
+      chat.chat [
+        "Translate the contents of the audio file into English",
+        "Provide no other content except the translation",
+        file
+      ]
+    end
+
+    it "translates the audio clip" do
+      is_expected.to eq("All praise is due to Allah, Lord of the Worlds.\n")
+    end
+  end
+
   context "when given a successful all operation",
           vcr: {cassette_name: "gemini/files/successful_all"} do
     let!(:files) do

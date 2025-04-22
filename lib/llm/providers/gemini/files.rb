@@ -17,8 +17,14 @@ class LLM::Gemini
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.gemini(ENV["KEY"])
-  #   res = llm.files.create file: LLM::File("/audio/haiku.mp3")
+  #   llm  = LLM.gemini(ENV["KEY"])
+  #   file = llm.files.create file: LLM::File("/audio/haiku.mp3")
+  #   chat = LLM::Conversation.new(llm).lazy
+  #   chat.chat(file)
+  #   chat.chat("Translate the audio to English")
+  #   chat.chat("The audio is the first message I sent to you.")
+  #   message = chat.last_message
+  #   print "[#{message.role}]", message.content, "\n"
   class Files
     ##
     # Returns a new Files object
