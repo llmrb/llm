@@ -21,9 +21,9 @@ class LLM::Gemini
     private
 
     ##
-    # @param [String, LLM::File] content
+    # @param [String, Array, LLM::Response::File, LLM::File] content
     #  The content to format
-    # @return [String, Hash]
+    # @return [Hash]
     #  The formatted content
     def format_content(content)
       case content
