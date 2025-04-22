@@ -21,7 +21,7 @@ class LLM::Gemini
   #   file = llm.files.create file: LLM::File("/audio/haiku.mp3")
   #   chat = LLM::Conversation.new(llm).lazy
   #   chat.chat(file)
-  #   chat.chat("Translate the audio to English")
+  #   chat.chat("Describe the audio file I sent to you")
   #   chat.chat("The audio is the first message I sent to you.")
   #   message = chat.last_message
   #   print "[#{message.role}]", message.content, "\n"
