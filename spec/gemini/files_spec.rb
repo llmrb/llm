@@ -56,13 +56,13 @@ RSpec.describe "LLM::Gemini::Files" do
     let!(:files) do
       [
         provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")),
-        provider.files.create(file: LLM::File("spec/fixtures/audio/alhamdullilah.mp3")),
+        provider.files.create(file: LLM::File("spec/fixtures/audio/alhamdullilah.mp3"))
       ]
     end
 
     subject(:response) { provider.files.all }
     after { files.each { |file| provider.files.delete(file:) } }
-      
+
     it "is successful" do
       expect(response).to be_instance_of(LLM::Response::FileList)
     end
@@ -77,7 +77,7 @@ RSpec.describe "LLM::Gemini::Files" do
           have_attributes(
             name: instance_of(String),
             display_name: "alhamdullilah.mp3"
-          ),
+          )
         ]
       )
     end
