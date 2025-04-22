@@ -31,10 +31,10 @@ class LLM::Gemini
         content.map { format_content(_1) }
       when LLM::Response::File
         file = content
-        { file_data: {mime_type: file.mime_type, file_uri: file.uri} }
+        {file_data: {mime_type: file.mime_type, file_uri: file.uri}}
       when LLM::File
         file = content
-        { inline_data: {mime_type: file.mime_type, data: file.to_b64} }
+        {inline_data: {mime_type: file.mime_type, data: file.to_b64}}
       else
         {text: content}
       end
