@@ -22,7 +22,7 @@ class LLM::Gemini
   #   chat = LLM::Conversation.new(llm).lazy
   #   chat.chat(file)
   #   chat.chat("Describe the audio file I sent to you")
-  #   chat.chat("The audio is the first message I sent to you.")
+  #   chat.chat("The audio file is the first message I sent to you.")
   #   message = chat.last_message
   #   print "[#{message.role}]", message.content, "\n"
   class Files
