@@ -31,7 +31,7 @@ class LLM::Gemini
     ##
     # List all files
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.gemini(ENV["KEY"])
     #   res = llm.files.all
     #   res.each do |file|
     #     print "name: ", file.name, "\n"
@@ -56,7 +56,7 @@ class LLM::Gemini
     ##
     # Create a file
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.gemini(ENV["KEY"])
     #   res = llm.files.create file: LLM::File("/audio/haiku.mp3"),
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [File] file The file
@@ -74,9 +74,28 @@ class LLM::Gemini
     end
 
     ##
+    # Get a file
+    # @example
+    #   llm = LLM.gemini(ENV["KEY"])
+    #   res = llm.files.get(file: "files/1234567890")
+    #   print "name: ", res.name, "\n"
+    # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
+    # @param [#name, String] file The file to get
+    # @param [Hash] params Other parameters (see Gemini docs)
+    # @raise (see LLM::HTTPClient#request)
+    # @return [LLM::Response::File]
+    def get(file:, **params)
+      file_id = file.respond_to?(:name) ? file.name : file.to_s
+      query = URI.encode_www_form(params.merge!(key: secret))
+      req = Net::HTTP::Get.new("/v1beta/#{file_id}?#{query}", headers)
+      res = request(http, req)
+      LLM::Response::File.new(res)
+    end
+
+    ##
     # Delete a file
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.gemini(ENV["KEY"])
     #   res = llm.files.delete(file: "files/1234567890")
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [#name, String] file The file to delete
