@@ -26,18 +26,15 @@ class LLM::Gemini
     # @return [String, Hash]
     #  The formatted content
     def format_content(content)
-      if Array === content
+      case content
+      when Array
         content.map { format_content(_1) }
-      elsif LLM::Response::File === content
+      when LLM::Response::File
         file = content
-        {
-          file_data: {mime_type: file.mime_type, file_uri: file.uri}
-        }
-      elsif LLM::File === content
+        { file_data: {mime_type: file.mime_type, file_uri: file.uri} }
+      when LLM::File
         file = content
-        {
-          inline_data: {mime_type: file.mime_type, data: file.to_b64}
-        }
+        { inline_data: {mime_type: file.mime_type, data: file.to_b64} }
       else
         {text: content}
       end
