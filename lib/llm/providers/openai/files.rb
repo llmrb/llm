@@ -16,7 +16,7 @@ class LLM::OpenAI
   #   res = llm.files.create file: LLM::File("/documents/haiku.txt")
   class Files
     ##
-    # Returns a new Responses object
+    # Returns a new Files object
     # @param provider [LLM::Provider]
     # @return [LLM::OpenAI::Files]
     def initialize(provider)
