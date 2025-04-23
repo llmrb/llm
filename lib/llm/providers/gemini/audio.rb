@@ -62,7 +62,7 @@ class LLM::Gemini
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::AudioTranslation]
     def create_translation(file:, model: "gemini-1.5-flash", **params)
       res = @provider.complete [
         "Your task is to translate the contents of an audio file into English",
