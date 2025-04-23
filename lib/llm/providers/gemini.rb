@@ -35,6 +35,7 @@ module LLM
     require_relative "gemini/format"
     require_relative "gemini/images"
     require_relative "gemini/files"
+    require_relative "gemini/audio"
     include Format
 
     HOST = "generativelanguage.googleapis.com"
@@ -77,6 +78,13 @@ module LLM
       req.body = JSON.dump({contents: format(messages)})
       res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
+    end
+
+    ##
+    # Provides an interface to Gemini's audio API
+    # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs
+    def audio
+      LLM::Gemini::Audio.new(self)
     end
 
     ##
