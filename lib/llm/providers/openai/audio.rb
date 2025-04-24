@@ -59,7 +59,7 @@ class LLM::OpenAI
       req["content-type"] = multi.content_type
       req.body = multi.body
       res = request(http, req)
-      OpenStruct.from_hash({response: res}.merge(JSON.parse(res.body)))
+      LLM::Response::AudioTranscription.new(res).tap { _1.text = _1.body["text"] }
     end
 
     ##
@@ -81,7 +81,7 @@ class LLM::OpenAI
       req["content-type"] = multi.content_type
       req.body = multi.body
       res = request(http, req)
-      OpenStruct.from_hash({response: res}.merge(JSON.parse(res.body)))
+      LLM::Response::AudioTranslation.new(res).tap { _1.text = _1.body["text"] }
     end
 
     private

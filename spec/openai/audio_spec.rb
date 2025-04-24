@@ -28,7 +28,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::AudioTranscription)
     end
 
     it "returns a transcription" do
@@ -45,7 +45,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(OpenStruct)
+      expect(response).to be_instance_of(LLM::Response::AudioTranslation)
     end
 
     it "returns a translation (Arabic => English)" do
