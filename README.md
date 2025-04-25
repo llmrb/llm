@@ -31,7 +31,7 @@ llm = LLM.ollama(nil)
 #### Completions
 
 The following example enables lazy mode for a
-[LLM::Conversation](https://0x1eef.github.io/x/llm.rb/LLM/Conversation.html)
+[LLM::Chat](https://0x1eef.github.io/x/llm.rb/LLM/Chat.html)
 object by entering into a "lazy" conversation where messages are buffered and
 sent to the provider only when necessary.  Both lazy and non-lazy conversations
 maintain a message thread that can be reused as context throughout a conversation.
@@ -42,12 +42,12 @@ The example uses the stateless chat completions API that all LLM providers suppo
 require "llm"
 
 llm = LLM.openai(ENV["KEY"])
-convo = LLM::Conversation.new(llm).lazy
-convo.chat File.read("./share/llm/prompts/system.txt"), :system
-convo.chat "Tell me the answer to 5 + 15", :user
-convo.chat "Tell me the answer to (5 + 15) * 2", :user
-convo.chat "Tell me the answer to ((5 + 15) * 2) / 10", :user
-convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+bot = LLM::Chat.new(llm).lazy
+bot.chat File.read("./share/llm/prompts/system.txt"), :system
+bot.chat "Tell me the answer to 5 + 15", :user
+bot.chat "Tell me the answer to (5 + 15) * 2", :user
+bot.chat "Tell me the answer to ((5 + 15) * 2) / 10", :user
+bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
 # [system] You are my math assistant.
@@ -82,12 +82,12 @@ for the OpenAI provider:
 require "llm"
 
 llm = LLM.openai(ENV["KEY"])
-convo = LLM::Conversation.new(llm).lazy
-convo.respond File.read("./share/llm/prompts/system.txt"), :developer
-convo.respond "Tell me the answer to 5 + 15", :user
-convo.respond "Tell me the answer to (5 + 15) * 2", :user
-convo.respond "Tell me the answer to ((5 + 15) * 2) / 10", :user
-convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+bot = LLM::Chat.new(llm).lazy
+bot.respond File.read("./share/llm/prompts/system.txt"), :developer
+bot.respond "Tell me the answer to 5 + 15", :user
+bot.respond "Tell me the answer to (5 + 15) * 2", :user
+bot.respond "Tell me the answer to ((5 + 15) * 2) / 10", :user
+bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
 # [developer] You are my math assistant.
@@ -162,7 +162,7 @@ print res.text, "\n" # => "Hello world."
 #### Translate
 
 The following example translates an audio file to text. In this example
-the audio file (`${HOME/bomdia.mp3}`) is theoretically in Portuguese,
+the audio file (`${HOME}/bomdia.mp3`) is theoretically in Portuguese,
 and it is translated to English. The example uses the OpenAI provider,
 and at the time of writing, it can only translate to English. As always,
 consult the provider's documentation (eg

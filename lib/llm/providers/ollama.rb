@@ -14,11 +14,10 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.ollama(nil)
-  #   conversation = LLM::Conversation.new(llm, model: "llava").lazy
-  #   conversation.chat LLM::File("/images/capybara.png")
-  #   conversation.chat "Describe the image"
-  #   message = conversation.last_message
-  #   print "[#{message.role}]", message.content, "\n"
+  #   bot = LLM::Chat.new(llm, model: "llava").lazy
+  #   bot.chat LLM::File("/images/capybara.png")
+  #   bot.chat "Describe the image"
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Ollama < Provider
     require_relative "ollama/error_handler"
     require_relative "ollama/response_parser"

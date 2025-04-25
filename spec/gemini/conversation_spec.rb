@@ -2,8 +2,8 @@
 
 require "setup"
 
-RSpec.describe "LLM::Conversation: gemini" do
-  let(:described_class) { LLM::Conversation }
+RSpec.describe "LLM::Chat: gemini" do
+  let(:described_class) { LLM::Chat }
   let(:provider) { LLM.gemini(token) }
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:conversation) { described_class.new(provider, **params).lazy }

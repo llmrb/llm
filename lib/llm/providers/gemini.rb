@@ -15,20 +15,18 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.gemini(ENV["KEY"])
-  #   conversation = LLM::Conversation.new(llm).lazy
-  #   conversation.chat LLM::File("/images/capybara.png")
-  #   conversation.chat "Describe the image"
-  #   message = conversation.last_message
-  #   print "[#{message.role}]", message.content, "\n"
+  #   bot = LLM::Chat.new(llm).lazy
+  #   bot.chat LLM::File("/images/capybara.png")
+  #   bot.chat "Describe the image"
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm  = LLM.gemini(ENV["KEY"])
-  #   chat = LLM::Conversation.new(llm).lazy
-  #   chat.chat ["Describe the image", LLM::File("/images/capybara.png")]
-  #   message = conversation.last_message
-  #   print "[#{message.role}]", message.content, "\n"
+  #   llm = LLM.gemini(ENV["KEY"])
+  #   bot = LLM::Chat.new(llm).lazy
+  #   bot.chat ["Describe the image", LLM::File("/images/capybara.png")]
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Gemini < Provider
     require_relative "gemini/error_handler"
     require_relative "gemini/response_parser"
