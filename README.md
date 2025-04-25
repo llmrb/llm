@@ -199,14 +199,11 @@ prompt. The following example uses the OpenAI provider to create an
 image of a dog on a rocket to the moon. The image is then moved to
 `${HOME}/dogonrocket.png` as the final step.
 
-Please note that there are subtle differences between Gemini and OpenAI
-in regards to image generation &ndash;
-see
-[LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)
-and
-[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html)
-for more information:
-
+Please also see provider-specific documentation for more provider-specific
+examples and documentation
+(eg
+[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html),
+[LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)):
 
 ```ruby
 #!/usr/bin/env ruby
@@ -236,13 +233,11 @@ are not satisfactory, and consult the provider's documentation
 [Gemini docs](https://ai.google.dev/gemini-api/docs/image-generation))
 for more information on how to use the image editing API.
 
-Please note that there are subtle differences between Gemini and OpenAI
-in regards to image generation &ndash;
-see
-[LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)
-and
-[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html)
-for more information:
+Please also see provider-specific documentation for more provider-specific
+examples and documentation
+(eg
+[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html),
+[LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)):
 
 ```ruby
 #!/usr/bin/env ruby
