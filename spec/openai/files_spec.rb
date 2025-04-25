@@ -116,7 +116,7 @@ RSpec.describe "LLM::OpenAI::Files" do
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
     after { provider.files.delete(file:) }
-    
+
     before do
       bot.respond(file)
       bot.respond("Describe the contents of the file to me")
@@ -134,7 +134,7 @@ RSpec.describe "LLM::OpenAI::Files" do
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
     after { provider.files.delete(file:) }
-    
+
     before do
       bot.respond([
         "Describe the contents of the file to me",

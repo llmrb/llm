@@ -4,7 +4,6 @@ class LLM::OpenAI
   ##
   # @private
   module Format
-
     ##
     # @param [Array<LLM::Message>] messages
     #  The messages to format
