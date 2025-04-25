@@ -84,67 +84,67 @@ class LLM::Provider
   end
 
   ##
-  # Starts a new lazy conversation powered by the chat completions API
+  # Starts a new lazy chat powered by the chat completions API
   # @note
   #  This method creates a lazy version of a
-  #  {LLM::Conversation LLM::Conversation} object.
+  #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
   # @param [Hash] params
-  #  Other completion parameters to maintain throughout a conversation
+  #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
-  # @return [LLM::Conversation]
+  # @return [LLM::Chat]
   def chat(prompt, role = :user, model: nil, **params)
-    LLM::Conversation.new(self, params).lazy.chat(prompt, role)
+    LLM::Chat.new(self, params).lazy.chat(prompt, role)
   end
 
   ##
-  # Starts a new conversation powered by the chat completions API
+  # Starts a new chat powered by the chat completions API
   # @note
   #  This method creates a non-lazy version of a
-  #  {LLM::Conversation LLM::Conversation} object.
+  #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
   # @param [Hash] params
-  #  Other completion parameters to maintain throughout a conversation
+  #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
-  # @return [LLM::Conversation]
+  # @return [LLM::Chat]
   def chat!(prompt, role = :user, model: nil, **params)
-    LLM::Conversation.new(self, params).chat(prompt, role)
+    LLM::Chat.new(self, params).chat(prompt, role)
   end
 
   ##
-  # Starts a new lazy conversation powered by the responses API
+  # Starts a new lazy chat powered by the responses API
   # @note
   #  This method creates a lazy variant of a
-  #  {LLM::Conversation LLM::Conversation} object.
+  #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
   # @param [Hash] params
-  #  Other completion parameters to maintain throughout a conversation
+  #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
-  # @return [LLM::Conversation]
+  # @return [LLM::Chat]
   def respond(prompt, role = :user, model: nil, **params)
-    LLM::Conversation.new(self, params).lazy.respond(prompt, role)
+    LLM::Chat.new(self, params).lazy.respond(prompt, role)
   end
 
   ##
-  # Starts a new conversation powered by the responses API
+  # Starts a new chat powered by the responses API
   # @note
   #  This method creates a non-lazy variant of a
-  #  {LLM::Conversation LLM::Conversation} object.
+  #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
   # @param [Hash] params
-  #  Other completion parameters to maintain throughout a conversation
+  #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
-  # @return [LLM::Conversation]
+  # @return [LLM::Chat]
   def respond!(prompt, role = :user, model: nil, **params)
-    LLM::Conversation.new(self, params).respond(prompt, role)
+    LLM::Chat.new(self, params).respond(prompt, role)
   end
 
   ##

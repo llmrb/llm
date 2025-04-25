@@ -2,25 +2,24 @@
 
 module LLM
   ##
-  # {LLM::Conversation LLM::Conversation} provides a conversation
-  # object that maintains a thread of messages that acts as context
-  # throughout the conversation. A conversation can use the chat
-  # completions API that most LLM providers support or the responses
-  # API that a select few LLM providers support.
+  # {LLM::Chat LLM::Chat} provides a chat object that maintains a
+  # thread of messages that acts as context throughout a conversation.
+  # A conversation can use the chat completions API that most LLM providers
+  # support or the responses API that a select few LLM providers support.
   #
   # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   conversation = LLM::Conversation.new(llm).lazy
-  #   conversation.chat("Your task is to answer all of my questions", :system)
-  #   conversation.chat("Your answers should be short and concise", :system)
-  #   conversation.chat("What is 5 + 7 ?", :user)
-  #   conversation.chat("Why is the sky blue ?", :user)
-  #   conversation.chat("Why did the chicken cross the road ?", :user)
-  #   conversation.messages.map { print "[#{_1.role}]", _1.content, "\n" }
-  class Conversation
+  #   bot = LLM::Chat.new(llm).lazy
+  #   bot.chat("Your task is to answer all of my questions", :system)
+  #   bot.chat("Your answers should be short and concise", :system)
+  #   bot.chat("What is 5 + 7 ?", :user)
+  #   bot.chat("Why is the sky blue ?", :user)
+  #   bot.chat("Why did the chicken cross the road ?", :user)
+  #   bot.messages.map { print "[#{_1.role}]", _1.content, "\n" }
+  class Chat
     ##
     # @return [Array<LLM::Message>]
     attr_reader :messages
@@ -42,7 +41,7 @@ module LLM
     # @param prompt (see LLM::Provider#prompt)
     # @param role (see LLM::Provider#prompt)
     # @param params (see LLM::Provider#prompt)
-    # @return [LLM::Conversation]
+    # @return [LLM::Chat]
     def chat(prompt, role = :user, **params)
       if lazy?
         @messages << [LLM::Message.new(role, prompt), @params.merge(params), :complete]
@@ -60,7 +59,7 @@ module LLM
     # @param prompt (see LLM::Provider#prompt)
     # @param role (see LLM::Provider#prompt)
     # @param params (see LLM::Provider#prompt)
-    # @return [LLM::Conversation]
+    # @return [LLM::Chat]
     def respond(prompt, role = :user, **params)
       if lazy?
         @messages << [LLM::Message.new(role, prompt), @params.merge(params), :respond]
@@ -89,7 +88,7 @@ module LLM
 
     ##
     # Enables lazy mode for the conversation.
-    # @return [LLM::Conversation]
+    # @return [LLM::Chat]
     def lazy
       tap do
         next if lazy?
