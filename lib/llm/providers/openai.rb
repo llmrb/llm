@@ -11,6 +11,7 @@ module LLM
     require_relative "openai/responses"
     require_relative "openai/images"
     require_relative "openai/audio"
+    require_relative "openai/files"
     include Format
 
     HOST = "api.openai.com"
@@ -50,7 +51,7 @@ module LLM
       params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      req.body = JSON.dump({messages: format(messages)}.merge!(params))
+      req.body = JSON.dump({messages: format(messages, :complete)}.merge!(params))
       res      = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
@@ -77,6 +78,14 @@ module LLM
     # @return [LLM::OpenAI::Audio]
     def audio
       LLM::OpenAI::Audio.new(self)
+    end
+
+    ##
+    # Provides an interface to OpenAI's files API
+    # @see https://platform.openai.com/docs/api-reference/files/create OpenAI docs
+    # @return [LLM::OpenAI::Files]
+    def files
+      LLM::OpenAI::Files.new(self)
     end
 
     ##

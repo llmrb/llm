@@ -27,7 +27,7 @@ class LLM::OpenAI
   #   File.binwrite("rocket.png", res.images[0].binary)
   class Images
     ##
-    # Returns a new Responses object
+    # Returns a new Images object
     # @param provider [LLM::Provider]
     # @return [LLM::OpenAI::Responses]
     def initialize(provider)

@@ -8,6 +8,9 @@ module LLM
     require_relative "response/output"
     require_relative "response/image"
     require_relative "response/audio"
+    require_relative "response/file"
+    require_relative "response/filelist"
+    require_relative "response/download_file"
 
     ##
     # @param [Net::HTTPResponse] res

@@ -1,0 +1,146 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/files
+    body:
+      encoding: ASCII-8BIT
+      string: "--BOUNDARY__aac9ac25709c1906e0ed4d2cd7fe306e\r\nContent-Disposition:
+        form-data; name=\"file\";filename=\"haiku3.txt\"\r\nContent-Type: text/plain\r\n\r\nMoonlight
+        on the waves,\na lone heron takes to flight --\nnight exhales gently.\n\r\n--BOUNDARY__aac9ac25709c1906e0ed4d2cd7fe306e\r\nContent-Disposition:
+        form-data; name=\"purpose\"\r\n\r\nassistants\r\n--BOUNDARY__aac9ac25709c1906e0ed4d2cd7fe306e--\r\n"
+    headers:
+      Content-Type:
+      - multipart/form-data; boundary=BOUNDARY__aac9ac25709c1906e0ed4d2cd7fe306e
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 25 Apr 2025 12:43:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      X-Request-Id:
+      - req_3d50b75acd91fc6b635e0e9275acc233
+      Openai-Processing-Ms:
+      - '278'
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=p3PB8tAajGTG81Dp_KPGtE2qxWM4DFykIjfGYcIsz90-1745585029-1.0.1.1-HKxtqzkswEkEwQOsmIkp.LAC9Yvh2hZwl5_m0gS19CVNJM0w2bjwfu.lqAgMuCg.QBif.inoPtSOmJiug74kXOXJMauYLa65CfZyDQ9C_Eo;
+        path=/; expires=Fri, 25-Apr-25 13:13:49 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=jYFJsBz85350OAVQ2bstOwd3EVZLjKekRANUWVouZRc-1745585029666-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 935deda08b3e1aa2-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "object": "file",
+          "id": "file-GLdJQDks4B91zbRGX2z4Zk",
+          "purpose": "assistants",
+          "filename": "haiku3.txt",
+          "bytes": 78,
+          "created_at": 1745585029,
+          "expires_at": null,
+          "status": "processed",
+          "status_details": null
+        }
+  recorded_at: Fri, 25 Apr 2025 12:43:10 GMT
+- request:
+    method: delete
+    uri: https://api.openai.com/v1/files/file-GLdJQDks4B91zbRGX2z4Zk
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 25 Apr 2025 12:43:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      X-Request-Id:
+      - req_e7bb2052d319badc886f190a24875aea
+      Openai-Processing-Ms:
+      - '166'
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=KlQYQavbB2XK6R8V6zv6MfX6onKdkiB55pl3.Uouo8A-1745585030-1.0.1.1-a3DkpStFtVFhD9p99YIpKGLgnmYZ9sHmfVbOHHTLmAtPxtD5ILfuplHSwxNy6rbw.uEqboGfpbEY1yYRt3Dt5pqorrn_Z6n1VCAtgmvwTHA;
+        path=/; expires=Fri, 25-Apr-25 13:13:50 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=Z45.DW5UA.oeYDbmU683U57Pn.rI0g6Fi71BhdA9Y38-1745585030071-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 935deda3bf177a84-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "object": "file",
+          "deleted": true,
+          "id": "file-GLdJQDks4B91zbRGX2z4Zk"
+        }
+  recorded_at: Fri, 25 Apr 2025 12:43:11 GMT
+recorded_with: VCR 6.3.1
