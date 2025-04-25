@@ -41,6 +41,16 @@ class LLM::File
   def to_b64
     [File.binread(path)].pack("m0")
   end
+
+  ##
+  # @return [File]
+  #  Yields an IO object suitable to be streamed
+  def with_io
+    io = File.open(path, "rb")
+    yield(io)
+  ensure
+    io.close
+  end
 end
 
 ##

@@ -69,7 +69,7 @@ class LLM::OpenAI
       multi = LLM::Multipart.new(params.merge!(image:, model:))
       req = Net::HTTP::Post.new("/v1/images/variations", headers)
       req["content-type"] = multi.content_type
-      req.body = multi.body
+      req.body_stream = multi.body
       res = request(http, req)
       LLM::Response::Image.new(res).extend(response_parser)
     end
@@ -91,7 +91,7 @@ class LLM::OpenAI
       multi = LLM::Multipart.new(params.merge!(image:, prompt:, model:))
       req = Net::HTTP::Post.new("/v1/images/edits", headers)
       req["content-type"] = multi.content_type
-      req.body = multi.body
+      req.body_stream = multi.body
       res = request(http, req)
       LLM::Response::Image.new(res).extend(response_parser)
     end

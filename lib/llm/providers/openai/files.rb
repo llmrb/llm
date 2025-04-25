@@ -73,7 +73,7 @@ class LLM::OpenAI
       multi = LLM::Multipart.new(params.merge!(file:, purpose:))
       req = Net::HTTP::Post.new("/v1/files", headers)
       req["content-type"] = multi.content_type
-      req.body = multi.body
+      req.body_stream = multi.body
       res = request(http, req)
       LLM::Response::File.new(res)
     end
