@@ -19,22 +19,20 @@ class LLM::Gemini
   #
   #   llm  = LLM.gemini(ENV["KEY"])
   #   file = llm.files.create file: LLM::File("/audio/haiku.mp3")
-  #   chat = LLM::Conversation.new(llm).lazy
-  #   chat.chat(file)
-  #   chat.chat("Describe the audio file I sent to you")
-  #   chat.chat("The audio file is the first message I sent to you.")
-  #   message = chat.last_message
-  #   print "[#{message.role}]", message.content, "\n"
+  #   bot = LLM::Chat.new(llm).lazy
+  #   bot.chat(file)
+  #   bot.chat("Describe the audio file I sent to you")
+  #   bot.chat("The audio file is the first message I sent to you.")
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
   #   llm  = LLM.gemini(ENV["KEY"])
   #   file = llm.files.create file: LLM::File("/audio/haiku.mp3")
-  #   chat = LLM::Conversation.new(llm).lazy
-  #   chat.chat(["Describe the audio file I sent to you", file])
-  #   message = chat.last_message
-  #   print "[#{message.role}]", message.content, "\n"
+  #   bot = LLM::Chat.new(llm).lazy
+  #   bot.chat(["Describe the audio file I sent to you", file])
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
     ##
     # Returns a new Files object
