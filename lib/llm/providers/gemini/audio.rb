@@ -73,15 +73,5 @@ class LLM::Gemini
         .new(res)
         .tap { _1.text = res.choices[0].content }
     end
-
-    private
-
-    def http
-      @provider.instance_variable_get(:@http)
-    end
-
-    [:headers, :request].each do |m|
-      define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
-    end
   end
 end
