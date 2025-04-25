@@ -19,7 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/llmrb/llm"
-  spec.metadata["changelog_uri"] = "https://github.com/llmrb/llm/blob/main/CHANGELOG.md"
 
   spec.files = Dir[
     "README.md", "LICENSE.txt",
@@ -28,11 +27,6 @@ Gem::Specification.new do |spec|
     "share/llm/models/*.yml", "llm.gemspec"
   ]
   spec.require_paths = ["lib"]
-
-  spec.add_runtime_dependency "net-http", "~> 0.6"
-  spec.add_runtime_dependency "json"
-  spec.add_runtime_dependency "yaml"
-  spec.add_runtime_dependency "stringio"
 
   spec.add_development_dependency "webmock", "~> 3.24.0"
   spec.add_development_dependency "yard", "~> 0.9.37"
