@@ -135,8 +135,16 @@ The following example transcribes an audio file to text. The audio file
 (`${HOME}/hello.mp3`) was theoretically created in the previous example,
 and the result is printed to the console. The example uses the OpenAI
 provider to transcribe the audio file. As always, consult the provider's
-documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranscription))
-for more information on how to use the audio transcription API:
+documentation (eg
+[OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranscription),
+[Gemini docs](https://ai.google.dev/gemini-api/docs/audio))
+for more information on how to use the audio transcription API.
+
+Please also see provider-specific documentation for more provider-specific
+examples and documentation
+(eg
+[LLM::Gemini::Audio](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Audio.html),
+[LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)):
 
 ```ruby
 #!/usr/bin/env ruby
@@ -159,8 +167,15 @@ and it is translated to English. The example uses the OpenAI provider,
 and at the time of writing, it can only translate to English. As always,
 consult the provider's documentation (eg
 [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranslation),
-[Gemini docs](https://ai.google.dev/gemini-api/docs/image-generation))
-for more information on how to use the audio translation API:
+[Gemini docs](https://ai.google.dev/gemini-api/docs/audio))
+for more information on how to use the audio translation API.
+
+Please also see provider-specific documentation for more provider-specific
+examples and documentation
+(eg
+[LLM::Gemini::Audio](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Audio.html),
+[LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)):
+
 
 ```ruby
 require "llm"

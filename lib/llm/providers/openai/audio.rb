@@ -52,14 +52,14 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::AudioTranscription]
     def create_transcription(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file:, model:))
       req = Net::HTTP::Post.new("/v1/audio/transcriptions", headers)
       req["content-type"] = multi.content_type
       req.body = multi.body
       res = request(http, req)
-      OpenStruct.from_hash({response: res}.merge(JSON.parse(res.body)))
+      LLM::Response::AudioTranscription.new(res).tap { _1.text = _1.body["text"] }
     end
 
     ##
@@ -74,14 +74,14 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::AudioTranslation]
     def create_translation(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file:, model:))
       req = Net::HTTP::Post.new("/v1/audio/translations", headers)
       req["content-type"] = multi.content_type
       req.body = multi.body
       res = request(http, req)
-      OpenStruct.from_hash({response: res}.merge(JSON.parse(res.body)))
+      LLM::Response::AudioTranslation.new(res).tap { _1.text = _1.body["text"] }
     end
 
     private
