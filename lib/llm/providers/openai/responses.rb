@@ -4,7 +4,14 @@ class LLM::OpenAI
   ##
   # The {LLM::OpenAI::Responses LLM::OpenAI::Responses} class provides a responses
   # object for interacting with [OpenAI's response API](https://platform.openai.com/docs/guides/conversation-state?api-mode=responses).
+  # The responses API is similar to the chat completions API but it can maintain
+  # conversation state across multiple requests. This is useful when you want to
+  # save bandwidth and/or not maintain the message thread by yourself.
+  #
   # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
   #   llm = LLM.openai(ENV["KEY"])
   #   res1 = llm.responses.create "Your task is to help me with math", :developer
   #   res2 = llm.responses.create "5 + 5  = ?", :user, previous_response_id: res1.id
