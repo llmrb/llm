@@ -3,7 +3,7 @@
 llm.rb is a lightweight library that provides a common interface
 and set of functionality for multiple Large Language Models (LLMs). It
 is designed to be simple, flexible, and easy to use &ndash; and it has been
-implemented with no dependencies outside Ruby's standard library.
+implemented with zero dependencies outside Ruby's standard library.
 
 ## Examples
 
