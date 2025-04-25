@@ -2,7 +2,7 @@
 
 require "setup"
 
-RSpec.describe "LLM::Conversation: non-lazy" do
+RSpec.describe "LLM::Chat: non-lazy" do
   shared_examples "a multi-turn conversation" do
     context "when given a thread of messages" do
       let(:inputs) do
@@ -57,8 +57,8 @@ RSpec.describe "LLM::Conversation: non-lazy" do
   end
 end
 
-RSpec.describe "LLM::Conversation: lazy" do
-  let(:described_class) { LLM::Conversation }
+RSpec.describe "LLM::Chat: lazy" do
+  let(:described_class) { LLM::Chat }
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:prompt) { "Keep your answers short and concise, and provide three answers to the three questions" }
 

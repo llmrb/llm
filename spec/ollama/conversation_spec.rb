@@ -2,8 +2,8 @@
 
 require "setup"
 
-RSpec.describe "LLM::Conversation: ollama" do
-  let(:described_class) { LLM::Conversation }
+RSpec.describe "LLM::Chat: ollama" do
+  let(:described_class) { LLM::Chat }
   let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
   let(:conversation) { described_class.new(provider, **params).lazy }
 
