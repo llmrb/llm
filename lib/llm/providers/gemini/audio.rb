@@ -8,7 +8,7 @@ class LLM::Gemini
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.openai(ENV["KEY"])
+  #   llm = LLM.gemini(ENV["KEY"])
   #   res = llm.audio.create_transcription(input: LLM::File("/rocket.mp3"))
   #   res.text # => "A dog on a rocket to the moon"
   class Audio
