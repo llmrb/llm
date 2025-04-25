@@ -11,7 +11,7 @@ module LLM
   require_relative "llm/file"
   require_relative "llm/model"
   require_relative "llm/provider"
-  require_relative "llm/conversation"
+  require_relative "llm/chat"
   require_relative "llm/buffer"
   require_relative "llm/core_ext/ostruct"
 
