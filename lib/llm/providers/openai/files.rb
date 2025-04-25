@@ -13,7 +13,20 @@ class LLM::OpenAI
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   res = llm.files.create file: LLM::File("/documents/haiku.txt")
+  #   bot = LLM::Chat.new(llm).lazy
+  #   file = llm.files.create file: LLM::File("/documents/freebsd.pdf")
+  #   bot.chat(file)
+  #   bot.chat("Describe the document")
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.openai(ENV["KEY"])
+  #   bot = LLM::Chat.new(llm).lazy
+  #   file = llm.files.create file: LLM::File("/documents/openbsd.pdf")
+  #   bot.chat(["Describe the document I sent to you", file])
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
     ##
     # Returns a new Files object
@@ -56,7 +69,7 @@ class LLM::OpenAI
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
     # @return [LLM::Response::File]
-    def create(file:, purpose: "user_data", **params)
+    def create(file:, purpose: "assistants", **params)
       multi = LLM::Multipart.new(params.merge!(file:, purpose:))
       req = Net::HTTP::Post.new("/v1/files", headers)
       req["content-type"] = multi.content_type

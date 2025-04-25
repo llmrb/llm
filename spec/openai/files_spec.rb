@@ -8,34 +8,36 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when given a successful create operation (haiku1.txt)",
           vcr: {cassette_name: "openai/files/successful_create_haiku1"} do
-    subject(:response) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku1.txt")) }
+    subject(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku1.txt")) }
+    after { provider.files.delete(file:) }
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::File)
+      expect(file).to be_instance_of(LLM::Response::File)
     end
 
     it "returns a file object" do
-      expect(response).to have_attributes(
+      expect(file).to have_attributes(
         id: instance_of(String),
         filename: "haiku1.txt",
-        purpose: "user_data"
+        purpose: "assistants"
       )
     end
   end
 
   context "when given a successful create operation (haiku2.txt)",
           vcr: {cassette_name: "openai/files/successful_create_haiku2"} do
-    subject(:response) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku2.txt")) }
+    subject(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku2.txt")) }
+    after { provider.files.delete(file:) }
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::File)
+      expect(file).to be_instance_of(LLM::Response::File)
     end
 
     it "returns a file object" do
-      expect(response).to have_attributes(
+      expect(file).to have_attributes(
         id: instance_of(String),
         filename: "haiku2.txt",
-        purpose: "user_data"
+        purpose: "assistants"
       )
     end
   end
@@ -70,34 +72,77 @@ RSpec.describe "LLM::OpenAI::Files" do
       is_expected.to have_attributes(
         id: instance_of(String),
         filename: "haiku4.txt",
-        purpose: "user_data"
+        purpose: "assistants"
       )
     end
   end
 
   context "when given a successful all operation",
           vcr: {cassette_name: "openai/files/successful_all"} do
-    subject(:response) { provider.files.all }
+    let!(:files) do
+      [
+        provider.files.create(file: LLM::File("spec/fixtures/documents/haiku1.txt")),
+        provider.files.create(file: LLM::File("spec/fixtures/documents/haiku2.txt"))
+      ]
+    end
+    subject(:file) { provider.files.all }
+    after { files.each { |file| provider.files.delete(file:) } }
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::FileList)
+      expect(file).to be_instance_of(LLM::Response::FileList)
     end
 
     it "returns an array of file objects" do
-      expect(response).to match_array(
+      expect(file).to match_array(
         [
           have_attributes(
             id: instance_of(String),
             filename: "haiku1.txt",
-            purpose: "user_data"
+            purpose: "assistants"
           ),
           have_attributes(
             id: instance_of(String),
             filename: "haiku2.txt",
-            purpose: "user_data"
+            purpose: "assistants"
           )
         ]
       )
+    end
+  end
+
+  context "when asked to describe the contents of a file",
+          vcr: {cassette_name: "openai/files/describe_freebsd.sysctl.pdf"} do
+    subject { bot.last_message.content }
+    let(:bot) { LLM::Chat.new(provider).lazy }
+    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
+
+    before do
+      bot.respond(file)
+      bot.respond("Describe the contents of the file to me")
+      bot.respond("Your summary should be no more than ten words")
+    end
+
+    it "describes the document" do
+      is_expected.to eq("FreeBSD system control nodes implementation and usage details.")
+    end
+  end
+
+  context "when asked to describe the contents of a file",
+          vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_2.pdf"} do
+    subject { bot.last_message.content }
+    let(:bot) { LLM::Chat.new(provider).lazy }
+    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
+
+    before do
+      bot.respond([
+        "Describe the contents of the file to me",
+        "Your summary should be no more than ten words",
+        file
+      ])
+    end
+
+    it "describes the document" do
+      is_expected.to eq("FreeBSD kernel system control nodes implementation overview.")
     end
   end
 end

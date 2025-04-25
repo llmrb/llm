@@ -26,10 +26,11 @@ class LLM::OpenAI
     # @return [String, Hash]
     #  The formatted content
     def format_content(content)
-      if URI === content
-        [{type: :image_url, image_url: {url: content.to_s}}]
-      else
-        content
+      case content
+      when Array then content.flat_map { format_content(_1) }
+      when URI then [{type: :image_url, image_url: {url: content.to_s}}]
+      when LLM::Response::File then [{type: :input_file, file_id: content.id}]
+      else [{type: :input_text, text: content.to_s}]
       end
     end
   end
