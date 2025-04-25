@@ -66,7 +66,7 @@ RSpec.describe "LLM::Gemini::Files" do
     end
 
     it "translates the audio clip" do
-      is_expected.to eq("In the name of God, the Most Gracious, the Most Merciful.\n")
+      is_expected.to eq("In the name of Allah, the Most Gracious, the Most Merciful.\n")
     end
   end
 
@@ -86,7 +86,7 @@ RSpec.describe "LLM::Gemini::Files" do
     end
 
     it "translates the audio clip" do
-      is_expected.to eq("All praise is due to Allah, Lord of the Worlds.\n")
+      is_expected.to eq("All praise is due to Allah, Lord of the worlds.\n")
     end
   end
 

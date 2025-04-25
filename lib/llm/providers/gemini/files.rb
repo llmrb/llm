@@ -82,9 +82,11 @@ class LLM::Gemini
       req["content-length"] = file.bytesize
       req["X-Goog-Upload-Offset"] = 0
       req["X-Goog-Upload-Command"] = "upload, finalize"
-      req.body = File.binread(file.path)
-      res = request(http, req)
-      LLM::Response::File.new(res)
+      file.with_io do |io|
+        req.body_stream = io
+        res = request(http, req)
+        LLM::Response::File.new(res)
+      end
     end
 
     ##
