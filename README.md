@@ -282,6 +282,36 @@ res.urls.each.with_index do |url, index|
 end
 ```
 
+### Files
+
+#### Create
+
+Most LLM providers provide a Files API where you can upload files
+that can be referenced from a prompt and llm.rb has first-class support
+for this feature. The following example uses the OpenAI provider to describe
+the contents of a PDF file after it has been uploaded. The file (an instance
+of [LLM::Response::File](https://0x1eef.github.io/x/llm.rb/LLM/Response/File.html))
+is passed directly to the chat method, and generally any object a prompt supports
+can be given to the chat method.
+
+Please also see provider-specific documentation for more provider-specific
+examples and documentation
+(eg
+[LLM::Gemini::Files](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Files.html),
+[LLM::OpenAI::Files](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Files.html)):
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(ENV["KEY"])
+bot = LLM::Chat.new(llm).lazy
+file = llm.files.create(file: LLM::File("openbsd_is_awesome.pdf"))
+bot.chat(file)
+bot.chat("What is this file about?")
+bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+```
+
 ### Embeddings
 
 #### Text
