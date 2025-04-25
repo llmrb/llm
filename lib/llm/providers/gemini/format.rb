@@ -21,16 +21,20 @@ class LLM::Gemini
     private
 
     ##
-    # @param [String, LLM::File] content
+    # @param [String, Array, LLM::Response::File, LLM::File] content
     #  The content to format
-    # @return [String, Hash]
+    # @return [Hash]
     #  The formatted content
     def format_content(content)
-      if LLM::File === content
+      case content
+      when Array
+        content.map { format_content(_1) }
+      when LLM::Response::File
         file = content
-        {
-          inline_data: {mime_type: file.mime_type, data: file.to_b64}
-        }
+        {file_data: {mime_type: file.mime_type, file_uri: file.uri}}
+      when LLM::File
+        file = content
+        {inline_data: {mime_type: file.mime_type, data: file.to_b64}}
       else
         {text: content}
       end
