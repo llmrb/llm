@@ -19,11 +19,20 @@ module LLM
   #   bot.chat LLM::File("/images/capybara.png")
   #   bot.chat "Describe the image"
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.gemini(ENV["KEY"])
+  #   bot = LLM::Chat.new(llm).lazy
+  #   bot.chat ["Describe the image", LLM::File("/images/capybara.png")]
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Gemini < Provider
     require_relative "gemini/error_handler"
     require_relative "gemini/response_parser"
     require_relative "gemini/format"
     require_relative "gemini/images"
+    require_relative "gemini/files"
     include Format
 
     HOST = "generativelanguage.googleapis.com"
@@ -69,17 +78,24 @@ module LLM
     end
 
     ##
-    # @return (see LLM::Provider#assistant_role)
-    def assistant_role
-      "model"
-    end
-
-    ##
     # Provides an interface to Gemini's image generation API
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
     # @return [see LLM::Gemini::Images]
     def images
       LLM::Gemini::Images.new(self)
+    end
+
+    ##
+    # Provides an interface to Gemini's file management API
+    # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
+    def files
+      LLM::Gemini::Files.new(self)
+    end
+
+    ##
+    # @return (see LLM::Provider#assistant_role)
+    def assistant_role
+      "model"
     end
 
     ##

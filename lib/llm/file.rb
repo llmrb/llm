@@ -29,6 +29,13 @@ class LLM::File
   end
 
   ##
+  # @return [Integer]
+  #  Returns the size of the file in bytes
+  def bytesize
+    File.size(path)
+  end
+
+  ##
   # @return [String]
   #  Returns the file contents in base64
   def to_b64
