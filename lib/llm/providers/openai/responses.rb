@@ -33,7 +33,7 @@ class LLM::OpenAI
       params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/responses", headers)
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]
-      req.body = JSON.dump({input: format(messages)}.merge!(params))
+      req.body = JSON.dump({input: format(messages, :response)}.merge!(params))
       res      = request(http, req)
       LLM::Response::Output.new(res).extend(response_parser)
     end
