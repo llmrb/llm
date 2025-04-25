@@ -52,7 +52,7 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::AudioTranscription]
     def create_transcription(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file:, model:))
       req = Net::HTTP::Post.new("/v1/audio/transcriptions", headers)
@@ -74,7 +74,7 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::HTTPClient#request)
-    # @return [OpenStruct]
+    # @return [LLM::Response::AudioTranslation]
     def create_translation(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file:, model:))
       req = Net::HTTP::Post.new("/v1/audio/translations", headers)
