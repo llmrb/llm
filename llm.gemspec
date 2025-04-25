@@ -19,7 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/llmrb/llm"
-  spec.metadata["changelog_uri"] = "https://github.com/llmrb/llm/blob/main/CHANGELOG.md"
 
   spec.files = Dir[
     "README.md", "LICENSE.txt",
