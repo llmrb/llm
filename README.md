@@ -3,7 +3,9 @@
 llm.rb is a lightweight library that provides a common interface
 and set of functionality for multiple Large Language Models (LLMs). It
 is designed to be simple, flexible, and easy to use &ndash; and it has been
-implemented with zero dependencies outside Ruby's standard library.
+implemented with zero dependencies outside Ruby's standard library. See the
+[philosophy](#philosophy) section for more information on the design principles
+behind llm.rb.
 
 ## Examples
 
@@ -193,7 +195,7 @@ print res.text, "\n" # => "Good morning."
 
 #### Create
 
-Some but all LLM providers implement image generation capabilities that
+Some but not all LLM providers implement image generation capabilities that
 can create new images from a prompt, or edit an existing image with a
 prompt. The following example uses the OpenAI provider to create an
 image of a dog on a rocket to the moon. The image is then moved to
@@ -389,6 +391,22 @@ over or doesn't cover at all. The API reference is available at
 llm.rb can be installed via rubygems.org:
 
 	gem install llm.rb
+
+## Philosophy
+
+llm.rb was built for developers who believe that simplicity is strength.
+It provides a clean, dependency-free interface to Large Language Models,
+treating Ruby itself as the primary platform &ndash; not Rails or any other
+specific framework or library. There is no hidden magic or extreme
+metaprogramming.
+
+Every part of llm.rb is designed to be explicit, composable, memory-safe,
+and production-ready without compromise. No unnecessary abstractions,
+no global configuration, and no dependencies that aren't part of standard
+Ruby. It has been inspired in part by other languages such as Python, but
+it is not a port of any other library.
+
+Good software doesn’t need marketing. It just needs to work. :)
 
 ## License
 
