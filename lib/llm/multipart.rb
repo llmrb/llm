@@ -45,7 +45,9 @@ class LLM::Multipart
   # Returns the multipart request body
   # @return [String]
   def body
-    [*parts, "--#{@boundary}--\r\n"].inject(&:<<)
+    io = StringIO.new("".b)
+    [*parts, StringIO.new("--#{@boundary}--\r\n".b)].each { IO.copy_stream(_1.tap(&:rewind), io) }
+    io.tap(&:rewind)
   end
 
   private
@@ -61,7 +63,7 @@ class LLM::Multipart
 
   def multipart_header(type:, locals:)
     if type == :file
-      str = "".b
+      str = StringIO.new("".b)
       str << "--#{locals[:boundary]}" \
              "\r\n" \
              "Content-Disposition: form-data; name=\"#{locals[:key]}\";" \
@@ -70,7 +72,7 @@ class LLM::Multipart
              "Content-Type: #{locals[:content_type]}" \
              "\r\n\r\n"
     elsif type == :data
-      str = "".b
+      str = StringIO.new("".b)
       str << "--#{locals[:boundary]}" \
              "\r\n" \
              "Content-Disposition: form-data; name=\"#{locals[:key]}\"" \
@@ -82,17 +84,17 @@ class LLM::Multipart
 
   def file_part(key, file, locals)
     locals = locals.merge(attributes(file))
-    multipart_header(type: :file, locals:).tap do
-      _1 << File.binread(file.path)
-      _1 << "\r\n"
+    multipart_header(type: :file, locals:).tap do |io|
+      IO.copy_stream(file.path, io)
+      io << "\r\n"
     end
   end
 
   def data_part(key, value, locals)
     locals = locals.merge(value:)
-    multipart_header(type: :data, locals:).tap do
-      _1 << value.to_s
-      _1 << "\r\n"
+    multipart_header(type: :data, locals:).tap do |io|
+      io << value.to_s
+      io << "\r\n"
     end
   end
 end

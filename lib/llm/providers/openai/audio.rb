@@ -57,7 +57,7 @@ class LLM::OpenAI
       multi = LLM::Multipart.new(params.merge!(file:, model:))
       req = Net::HTTP::Post.new("/v1/audio/transcriptions", headers)
       req["content-type"] = multi.content_type
-      req.body = multi.body
+      req.body_stream = multi.body
       res = request(http, req)
       LLM::Response::AudioTranscription.new(res).tap { _1.text = _1.body["text"] }
     end
@@ -79,7 +79,7 @@ class LLM::OpenAI
       multi = LLM::Multipart.new(params.merge!(file:, model:))
       req = Net::HTTP::Post.new("/v1/audio/translations", headers)
       req["content-type"] = multi.content_type
-      req.body = multi.body
+      req.body_stream = multi.body
       res = request(http, req)
       LLM::Response::AudioTranslation.new(res).tap { _1.text = _1.body["text"] }
     end

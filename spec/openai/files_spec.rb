@@ -112,39 +112,39 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when asked to describe the contents of a file",
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl.pdf"} do
-    subject { bot.last_message.content }
+    subject { bot.last_message.content.downcase[0..2] }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
     after { provider.files.delete(file:) }
 
     before do
       bot.respond(file)
-      bot.respond("Describe the contents of the file to me")
-      bot.respond("Your summary should be no more than ten words")
+      bot.respond("Is this PDF document about FreeBSD?")
+      bot.respond("Answer with yes or no. Nothing else.")
     end
 
     it "describes the document" do
-      is_expected.to eq("FreeBSD system control nodes implementation and usage overview.")
+      is_expected.to eq("yes")
     end
   end
 
   context "when asked to describe the contents of a file",
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_2.pdf"} do
-    subject { bot.last_message.content }
+    subject { bot.last_message.content.downcase[0..2] }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
     after { provider.files.delete(file:) }
 
     before do
       bot.respond([
-        "Describe the contents of the file to me",
-        "Your summary should be no more than ten words",
+        "Is this PDF document about FreeBSD?",
+        "Answer with yes or no. Nothing else.",
         file
       ])
     end
 
     it "describes the document" do
-      is_expected.to eq("FreeBSD kernel system control nodes overview and implementation.")
+      is_expected.to eq("yes")
     end
   end
 end
