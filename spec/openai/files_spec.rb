@@ -115,7 +115,8 @@ RSpec.describe "LLM::OpenAI::Files" do
     subject { bot.last_message.content }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
-
+    after { provider.files.delete(file:) }
+    
     before do
       bot.respond(file)
       bot.respond("Describe the contents of the file to me")
@@ -123,7 +124,7 @@ RSpec.describe "LLM::OpenAI::Files" do
     end
 
     it "describes the document" do
-      is_expected.to eq("FreeBSD system control nodes implementation and usage details.")
+      is_expected.to eq("FreeBSD system control nodes implementation and usage overview.")
     end
   end
 
@@ -132,7 +133,8 @@ RSpec.describe "LLM::OpenAI::Files" do
     subject { bot.last_message.content }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
-
+    after { provider.files.delete(file:) }
+    
     before do
       bot.respond([
         "Describe the contents of the file to me",
@@ -142,7 +144,7 @@ RSpec.describe "LLM::OpenAI::Files" do
     end
 
     it "describes the document" do
-      is_expected.to eq("FreeBSD kernel system control nodes implementation overview.")
+      is_expected.to eq("FreeBSD kernel system control nodes overview and implementation.")
     end
   end
 end
