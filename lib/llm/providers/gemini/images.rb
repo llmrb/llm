@@ -18,7 +18,7 @@ class LLM::Gemini
     include Format
 
     ##
-    # Returns a new Responses object
+    # Returns a new Images object
     # @param provider [LLM::Provider]
     # @return [LLM::Gemini::Responses]
     def initialize(provider)

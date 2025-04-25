@@ -12,7 +12,7 @@ class LLM::OpenAI
     require "stringio"
 
     ##
-    # Returns a new Responses object
+    # Returns a new Audio object
     # @param provider [LLM::Provider]
     # @return [LLM::OpenAI::Responses]
     def initialize(provider)
