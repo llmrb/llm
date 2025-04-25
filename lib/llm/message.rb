@@ -51,6 +51,13 @@ module LLM
     alias_method :eql?, :==
 
     ##
+    # Returns true when the message is from the LLM
+    # @return [Boolean]
+    def assistant?
+      role == "assistant" || role == "model"
+    end
+
+    ##
     # Returns a string representation of the message
     # @return [String]
     def inspect
