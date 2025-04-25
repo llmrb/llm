@@ -53,16 +53,16 @@ RSpec.describe "LLM::Gemini::Files" do
 
   context "when given a successful translation operation (bismillah.mp3)",
           vcr: {cassette_name: "gemini/files/successful_translation_bismillah"} do
-    subject { chat.last_message.content }
+    subject { bot.last_message.content }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
-    let(:chat) { LLM::Conversation.new(provider).lazy }
+    let(:bot) { LLM::Chat.new(provider).lazy }
     after { provider.files.delete(file:) }
 
     before do
-      chat.chat file
-      chat.chat "Translate the contents of the audio file into English"
-      chat.chat "The audio is referenced in the first message I sent to you"
-      chat.chat "Provide no other content except the translation"
+      bot.chat file
+      bot.chat "Translate the contents of the audio file into English"
+      bot.chat "The audio is referenced in the first message I sent to you"
+      bot.chat "Provide no other content except the translation"
     end
 
     it "translates the audio clip" do
@@ -72,13 +72,13 @@ RSpec.describe "LLM::Gemini::Files" do
 
   context "when given a successful translation operation (alhamdullilah.mp3)",
           vcr: {cassette_name: "gemini/files/successful_translation_alhamdullilah"} do
-    subject { chat.last_message.content }
+    subject { bot.last_message.content }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/alhamdullilah.mp3")) }
-    let(:chat) { LLM::Conversation.new(provider).lazy }
+    let(:bot) { LLM::Chat.new(provider).lazy }
     after { provider.files.delete(file:) }
 
     before do
-      chat.chat [
+      bot.chat [
         "Translate the contents of the audio file into English",
         "Provide no other content except the translation",
         file
