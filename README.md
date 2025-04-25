@@ -310,6 +310,12 @@ file = llm.files.create(file: LLM::File("openbsd_is_awesome.pdf"))
 bot.chat(file)
 bot.chat("What is this file about?")
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+
+##
+# [assistant] This file is about OpenBSD, a free and open-source Unix-like operating system
+#             based on the Berkeley Software Distribution (BSD). It is known for its
+#             emphasis on security, code correctness, and code simplicity. The file
+#             contains information about the features, installation, and usage of OpenBSD.
 ```
 
 ### Embeddings
