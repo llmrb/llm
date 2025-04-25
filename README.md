@@ -154,7 +154,7 @@ print res.text, "\n" # => "Hello world."
 #### Translate
 
 The following example translates an audio file to text. In this example
-the audio file (`${HOME/bomdia.mp3}`) is theoretically in Portuguese,
+the audio file (`${HOME}/bomdia.mp3`) is theoretically in Portuguese,
 and it is translated to English. The example uses the OpenAI provider,
 and at the time of writing, it can only translate to English. As always,
 consult the provider's documentation (eg
