@@ -306,7 +306,7 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
-file = llm.files.create(file: LLM::File("openbsd_is_awesome.pdf"))
+file = llm.files.create(file: LLM::File("/documents/openbsd_is_awesome.pdf"))
 bot.chat(file)
 bot.chat("What is this file about?")
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
