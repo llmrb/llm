@@ -49,6 +49,8 @@ class LLM::OpenAI
     # @param model (see LLM::Provider#complete)
     # @param [Hash] params Response params
     # @raise (see LLM::Provider#request)
+    # @raise [LLM::Error::PromptError]
+    #  When given an object a provider does not understand
     # @return [LLM::Response::Output]
     def create(prompt, role = :user, model: "gpt-4o-mini", **params)
       params   = {model:}.merge!(params)

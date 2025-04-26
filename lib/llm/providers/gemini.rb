@@ -68,6 +68,8 @@ module LLM
     # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
+    # @raise [LLM::Error::PromptError]
+    #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: "gemini-1.5-flash", **params)
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
