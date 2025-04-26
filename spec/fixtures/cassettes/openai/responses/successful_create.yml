@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.openai.com/v1/responses
     body:
       encoding: UTF-8
-      string: '{"input":[{"role":"developer","content":"Hello"}],"model":"gpt-4o-mini"}'
+      string: '{"input":[{"role":"developer","content":[{"type":"input_text","text":"Hello"}]}],"model":"gpt-4o-mini"}'
     headers:
       Content-Type:
       - application/json
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 16 Apr 2025 14:04:27 GMT
+      - Sat, 26 Apr 2025 02:30:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,34 +35,34 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_deb5e4ff15a9403b82950a101d8b4497
+      - req_b6c098871fbabaeb14de4c61210ceef5
       Openai-Processing-Ms:
-      - '776'
+      - '646'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Hj.kHFKm0E7D_jexJaV9zktH2MWoF6CQsmpfbZspF5g-1744812267-1.0.1.1-ZQWlcf6SICIdA20lPBgWou9knHVaLQniRXbJn8CqDqOY2c2qI8QO5JhajUlyO5ATFySaiVKgHlyam2YDsV6Xmf6E7iyhMUjtxL4lEWIXzgw;
-        path=/; expires=Wed, 16-Apr-25 14:34:27 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Zxl0Fcpef9IeY2qLhuA.9jsplaie9_qANSa92xkO7y4-1745634638-1.0.1.1-paD3qKoqkEfmd7_FXObkGkgoqOcs2FrX8qidKLqMadyIKvt7aE_bmZAhhnfb.35hBfSNPwpZrpvpHokB9KmM.1HUQJU7XuhAfVjzFZ6UHdY;
+        path=/; expires=Sat, 26-Apr-25 03:00:38 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Y4MSzMemYXkT5MW6Pro6.OmaSP9s0LCeZFUHyMjxEKo-1744812267026-0.0.1.1-604800000;
+      - _cfuvid=ii8KuwYzOE9gGl1lvnz7sKHbk8hIH.9BTB4IKNDNJHY-1745634638941-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93143b55fac581d6-GRU
+      - 9362a8c749026272-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_67ffb8ea163081929ec67d8acaa7e95006af4b22a23fe06a",
+          "id": "resp_680c454e195c8192a2e666860f587d7c07d1f3f0939bb368",
           "object": "response",
-          "created_at": 1744812266,
+          "created_at": 1745634638,
           "status": "completed",
           "error": null,
           "incomplete_details": null,
@@ -71,7 +71,7 @@ http_interactions:
           "model": "gpt-4o-mini-2024-07-18",
           "output": [
             {
-              "id": "msg_67ffb8ea8ad4819292904a334de09abc06af4b22a23fe06a",
+              "id": "msg_680c454e7cc48192aa541348fdaf283b07d1f3f0939bb368",
               "type": "message",
               "status": "completed",
               "content": [
@@ -90,6 +90,7 @@ http_interactions:
             "effort": null,
             "summary": null
           },
+          "service_tier": "default",
           "store": true,
           "temperature": 1.0,
           "text": {
@@ -115,5 +116,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Wed, 16 Apr 2025 14:04:09 GMT
+  recorded_at: Sat, 26 Apr 2025 02:29:58 GMT
 recorded_with: VCR 6.3.1

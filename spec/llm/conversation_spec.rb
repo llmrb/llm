@@ -60,7 +60,12 @@ end
 RSpec.describe "LLM::Chat: lazy" do
   let(:described_class) { LLM::Chat }
   let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
-  let(:prompt) { "Keep your answers short and concise, and provide three answers to the three questions" }
+  let(:prompt) do
+    "Keep your answers short and concise, and provide three answers to the three questions" \
+    "There should be one answer per line" \
+    "An answer should be a number, for example: 5" \
+    "Nothing else"
+  end
 
   context "when given completions" do
     context "with gemini",
@@ -105,7 +110,7 @@ RSpec.describe "LLM::Chat: lazy" do
         it "maintains a conversation" do
           is_expected.to have_attributes(
             role: "assistant",
-            content: "1. 5  \n2. 10  \n3. 12  "
+            content: %r|5\s*\n10\s*\n12\s*|
           )
         end
       end
@@ -167,7 +172,7 @@ RSpec.describe "LLM::Chat: lazy" do
         it "maintains a conversation" do
           is_expected.to have_attributes(
             role: "assistant",
-            content: "1. 3 + 2 = 5  \n2. 5 + 5 = 10  \n3. 5 + 7 = 12"
+            content: %r|5\s*\n10\s*\n12\s*|
           )
         end
       end

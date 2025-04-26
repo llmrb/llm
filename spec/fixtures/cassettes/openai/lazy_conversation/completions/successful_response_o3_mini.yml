@@ -5,8 +5,10 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"system","content":"Keep your answers short and
-        concise, and provide three answers to the three questions"}],"model":"o3-mini"}'
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Keep
+        your answers short and concise, and provide three answers to the three questionsThere
+        should be one answer per lineAn answer should be a number, for example: 5Nothing
+        else"}]}],"model":"o3-mini"}'
     headers:
       Content-Type:
       - application/json
@@ -24,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 28 Mar 2025 13:29:25 GMT
+      - Sat, 26 Apr 2025 02:28:15 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,7 +38,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '6202'
+      - '4919'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -46,45 +48,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '199976'
+      - '199953'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 7ms
+      - 13ms
       X-Request-Id:
-      - req_cecc91d399d66298b9511ebef91d2bca
+      - req_652e71548d385e28fd68d0a70d3de2be
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=27k47u_MXOFjirdfV1rCwfCfSwIqC2dug3F7QggwAZs-1743168565-1.0.1.1-RR7cTYgTkSI1qSHqeeUrR1cCKB1zGOsv0uUiJYGIlX9yFtTUeLUC9MZnKEmWXnWpn8MZVuwbn2RdEAB2Bc0WIHqp3qR.mIa3A.r0Rb6zqOg;
-        path=/; expires=Fri, 28-Mar-25 13:59:25 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=mD1og7cjBzkmnytipiFrUBMXMdGx1N6g3DRyBpGHHQg-1745634495-1.0.1.1-8k8a1YhfWyxgchQgwDgvHaA2z8Lr2c2cHP4znaBbqmeqbFpnPRAUqdN8DhbskRfBayoUMOjI9iyBz3drzf5Lv3YLA6Z.WRe0BvPmIvOWQwY;
+        path=/; expires=Sat, 26-Apr-25 02:58:15 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=ED9KjJMi2WhnADyk1.W1.YFEFlSMGq4NQtLLGvj1P4o-1743168565458-0.0.1.1-604800000;
+      - _cfuvid=EHB9Dh6X2GusMD8XAAPMN7lLXmw7sWOmDW.AmE38Ouo-1745634495638-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 927779c62d12a52f-GRU
+      - 9362a52df87b1b1b-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BG43rbch4fX6KPDSymrHDPW010qD0",
+          "id": "chatcmpl-BQPYwsv48p5GGpXU6Vuc96aCoRsW9",
           "object": "chat.completion",
-          "created": 1743168559,
+          "created": 1745634490,
           "model": "o3-mini-2025-01-31",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "I don't see the three questions you're referring to. Could you clarify which questions you'd like answered?",
+                "content": "1\n2\n3",
                 "refusal": null,
                 "annotations": []
               },
@@ -92,33 +94,31 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 21,
-            "completion_tokens": 478,
-            "total_tokens": 499,
+            "prompt_tokens": 42,
+            "completion_tokens": 592,
+            "total_tokens": 634,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
             },
             "completion_tokens_details": {
-              "reasoning_tokens": 448,
+              "reasoning_tokens": 576,
               "audio_tokens": 0,
               "accepted_prediction_tokens": 0,
               "rejected_prediction_tokens": 0
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_617f206dd9"
+          "system_fingerprint": "fp_2d4670fb9a"
         }
-  recorded_at: Fri, 28 Mar 2025 13:29:23 GMT
+  recorded_at: Sat, 26 Apr 2025 02:27:35 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"system","content":"Keep your answers short and
-        concise, and provide three answers to the three questions"},{"role":"assistant","content":"I
-        don''t see the three questions you''re referring to. Could you clarify which
-        questions you''d like answered?"},{"role":"user","content":"What is 5+5?"}],"model":"o3-mini"}'
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"What
+        is 5+5?"}]}],"model":"o3-mini"}'
     headers:
       Content-Type:
       - application/json
@@ -136,7 +136,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 28 Mar 2025 13:29:31 GMT
+      - Sat, 26 Apr 2025 02:28:17 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -148,7 +148,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '5641'
+      - '1799'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -158,45 +158,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '199945'
+      - '199995'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 16ms
+      - 1ms
       X-Request-Id:
-      - req_799d1295fe4833ffdb2461d13b401dda
+      - req_89ca888003d6f0cd1b9118d3e0c9ae48
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=JFhQ_kQG.0l5DrPaqWNYV.vNiaAFMaJlGM8mSwKyzoQ-1743168571-1.0.1.1-92FKVh3o__Pm.wdLywz7bmPeHm0O8YSty3KClWOOmXfEL7SI51f_vpBaokHSrBwCBKn3hmmo3FSZXWGbQF1J48Ax4RT9rKrY_cayXcirYIU;
-        path=/; expires=Fri, 28-Mar-25 13:59:31 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Op7jDBDTg.6o9QMFbYBqm6_HYRu7ZCcUqWw4gj.6aoQ-1745634497-1.0.1.1-D1cLeO3WgMQct93G3WO04nRv4Znt77TdO5dA5zxgmtxpgIQLujzQtboK5gRlRGmP1uKA6YGETM8ht.4J6LpRZfUu9UY7f8Uh.WccvOzArmY;
+        path=/; expires=Sat, 26-Apr-25 02:58:17 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Qw72ORQkktmDImuiUToBXZYfP5H4IGJglwqexHFDn2I-1743168571391-0.0.1.1-604800000;
+      - _cfuvid=FZAXSOKACTPGiKZ5YPqRmxQZl1EnFpqrCFJd4npUP7Y-1745634497661-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 927779ee790e1cf1-GRU
+      - 9362a54e1cffaf1a-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BG43xBNQJSE5gI2ORzjSqsRvsR7lO",
+          "id": "chatcmpl-BQPZ11WkxvjTuRqUDS59jLjYCXX1N",
           "object": "chat.completion",
-          "created": 1743168565,
+          "created": 1745634495,
           "model": "o3-mini-2025-01-31",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "1. 5 + 5 = 10  \n2. The sum is 10  \n3. Ten",
+                "content": "5 + 5 equals 10.",
                 "refusal": null,
                 "annotations": []
               },
@@ -204,22 +204,22 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 55,
-            "completion_tokens": 353,
-            "total_tokens": 408,
+            "prompt_tokens": 13,
+            "completion_tokens": 83,
+            "total_tokens": 96,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
             },
             "completion_tokens_details": {
-              "reasoning_tokens": 320,
+              "reasoning_tokens": 64,
               "audio_tokens": 0,
               "accepted_prediction_tokens": 0,
               "rejected_prediction_tokens": 0
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_617f206dd9"
+          "system_fingerprint": "fp_2d4670fb9a"
         }
-  recorded_at: Fri, 28 Mar 2025 13:29:29 GMT
+  recorded_at: Sat, 26 Apr 2025 02:27:37 GMT
 recorded_with: VCR 6.3.1

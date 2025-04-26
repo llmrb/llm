@@ -5,8 +5,10 @@ http_interactions:
     uri: https://api.openai.com/v1/responses
     body:
       encoding: UTF-8
-      string: '{"input":[{"role":"developer","content":"Keep your answers short and
-        concise, and provide three answers to the three questions"}],"model":"o3-mini"}'
+      string: '{"input":[{"role":"developer","content":[{"type":"input_text","text":"Keep
+        your answers short and concise, and provide three answers to the three questionsThere
+        should be one answer per lineAn answer should be a number, for example: 5Nothing
+        else"}]}],"model":"o3-mini"}'
     headers:
       Content-Type:
       - application/json
@@ -24,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 16 Apr 2025 12:50:44 GMT
+      - Sat, 26 Apr 2025 02:28:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,34 +38,34 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_2249417c3d2ac001a45252f6a423ae68
+      - req_05103e1649923f7df85198bc2bcae21a
       Openai-Processing-Ms:
-      - '10242'
+      - '5815'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=eQ5g4egLK8L8wJo7M3i5isPYMYtGr1mAZlxrlfnQGO8-1744807844-1.0.1.1-l0PkxYuWFGvH4kJ6CJzluQQ2HfoZnM4pER_O9wZa1TvXn20x1Q.siOiexb.3ijcwNCk_4Lk3TKGfG5PqGrWlBn_ALDwbVsOFnAZRtvCNPrU;
-        path=/; expires=Wed, 16-Apr-25 13:20:44 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=.NrbGtRhQskxmw2SO7jlNm6jftv1lptSl7wzgIumGHI-1745634504-1.0.1.1-ISEaebUVUTlxGQpP6d27woifKU88Ej1uuPyMWyNI2Hiu54VG.KrTbRx.7Gww7Uj7F31n0Tk_AuQBRyR8o0cGDdF_1s.Z7sKZicBBG5S.Keo;
+        path=/; expires=Sat, 26-Apr-25 02:58:24 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=04JRRSZws_2jcEI5atEM_8ZtMHoPYivHZkQyKMrqiTI-1744807844256-0.0.1.1-604800000;
+      - _cfuvid=IgNa6atijq8fd4AWJs3fFPsO8NUHVxsmg7CDVfayhyA-1745634504980-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9313cf2099b0a4a4-GRU
+      - 9362a561bc30a405-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_67ffa799d11081929c8734d81e50488806a74cd2332e7f35",
+          "id": "resp_680c44c2f1908192920de47bf9fe442b09234ccc210bd2b4",
           "object": "response",
-          "created_at": 1744807833,
+          "created_at": 1745634498,
           "status": "completed",
           "error": null,
           "incomplete_details": null,
@@ -72,19 +74,19 @@ http_interactions:
           "model": "o3-mini-2025-01-31",
           "output": [
             {
-              "id": "rs_67ffa7a210dc8192a2363ba8776d520d06a74cd2332e7f35",
+              "id": "rs_680c44c744ac81928bf1fd44f5267e1009234ccc210bd2b4",
               "type": "reasoning",
               "summary": []
             },
             {
-              "id": "msg_67ffa7a364dc81929ad6804c02f229e406a74cd2332e7f35",
+              "id": "msg_680c44c83d388192a6fa241e6b471c3f09234ccc210bd2b4",
               "type": "message",
               "status": "completed",
               "content": [
                 {
                   "type": "output_text",
                   "annotations": [],
-                  "text": "1. The capital of France is Paris.  \n2. 2 + 2 equals 4.  \n3. Mount Everest is the highest mountain in the world."
+                  "text": "1\n2\n3"
                 }
               ],
               "role": "assistant"
@@ -96,6 +98,7 @@ http_interactions:
             "effort": "medium",
             "summary": null
           },
+          "service_tier": "default",
           "store": true,
           "temperature": 1.0,
           "text": {
@@ -108,26 +111,27 @@ http_interactions:
           "top_p": 1.0,
           "truncation": "disabled",
           "usage": {
-            "input_tokens": 21,
+            "input_tokens": 42,
             "input_tokens_details": {
               "cached_tokens": 0
             },
-            "output_tokens": 803,
+            "output_tokens": 774,
             "output_tokens_details": {
               "reasoning_tokens": 768
             },
-            "total_tokens": 824
+            "total_tokens": 816
           },
           "user": null,
           "metadata": {}
         }
-  recorded_at: Wed, 16 Apr 2025 12:50:27 GMT
+  recorded_at: Sat, 26 Apr 2025 02:27:44 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/responses
     body:
       encoding: UTF-8
-      string: '{"input":[{"role":"user","content":"What is 5+5?"}],"model":"o3-mini","previous_response_id":"resp_67ffa799d11081929c8734d81e50488806a74cd2332e7f35"}'
+      string: '{"input":[{"role":"user","content":[{"type":"input_text","text":"What
+        is 5+5?"}]}],"model":"o3-mini","previous_response_id":"resp_680c44c2f1908192920de47bf9fe442b09234ccc210bd2b4"}'
     headers:
       Content-Type:
       - application/json
@@ -145,7 +149,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 16 Apr 2025 12:50:49 GMT
+      - Sat, 26 Apr 2025 02:28:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -157,34 +161,34 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_ee0596761de178a4215744ad8f3e766f
+      - req_d6ed79bd2fa40438c13eeb533e2523e4
       Openai-Processing-Ms:
-      - '5206'
+      - '4858'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=qW81kFys3eN6e3VL_9MGF2oLYR0duZ8NQoXN4ZK8zDU-1744807849-1.0.1.1-r50kkrl9p8O32ZSlDTVRX63V01m8clktJZEP6H_PEdInzqfc5p3WVTQzqCz2SKgBedZx.dYfcAN7NVRBE4_Jlb.VMbTVynbFge.mFAUQCc0;
-        path=/; expires=Wed, 16-Apr-25 13:20:49 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=5d7Mu3NGkYUcbLQSHzb8oCBVnp553uZDvg6ZTg2PbS8-1745634510-1.0.1.1-H7MP_lNNPqO2SE.B4h2NLrifhYRKOQjhmRnUARm2Ws6Jw.CCG8VUlkz12.zbSMJIxc8cVUfPATsy8D55G4GEODLBfc2I6C6dlIfc3kKUJj8;
+        path=/; expires=Sat, 26-Apr-25 02:58:30 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=jQYtZInrn1h.HkAMCduPhbamzjI99V0Eqs013byN80g-1744807849857-0.0.1.1-604800000;
+      - _cfuvid=OpxwQ7vqDdjZ36sjvZOQs6TpZ94NkUdh0dbxElDzY_Q-1745634510106-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9313cf6309524b28-GRU
+      - 9362a5887df3f1f1-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_67ffa7a475f08192b952a55cf1eb72c906a74cd2332e7f35",
+          "id": "resp_680c44c92b1c819291ce26ba68ec887e09234ccc210bd2b4",
           "object": "response",
-          "created_at": 1744807844,
+          "created_at": 1745634505,
           "status": "completed",
           "error": null,
           "incomplete_details": null,
@@ -193,30 +197,31 @@ http_interactions:
           "model": "o3-mini-2025-01-31",
           "output": [
             {
-              "id": "rs_67ffa7a8381481929e585e954cd573d506a74cd2332e7f35",
+              "id": "rs_680c44cd08f08192977977e6d29defd809234ccc210bd2b4",
               "type": "reasoning",
               "summary": []
             },
             {
-              "id": "msg_67ffa7a8f1348192b0461efecbbc4d9a06a74cd2332e7f35",
+              "id": "msg_680c44cd731c8192bfd4fc8dad93c16709234ccc210bd2b4",
               "type": "message",
               "status": "completed",
               "content": [
                 {
                   "type": "output_text",
                   "annotations": [],
-                  "text": "1. 5 + 5 equals 10.  \n2. The sum is 10.  \n3. Adding 5 and 5 gives 10."
+                  "text": "10\n10\n10"
                 }
               ],
               "role": "assistant"
             }
           ],
           "parallel_tool_calls": true,
-          "previous_response_id": "resp_67ffa799d11081929c8734d81e50488806a74cd2332e7f35",
+          "previous_response_id": "resp_680c44c2f1908192920de47bf9fe442b09234ccc210bd2b4",
           "reasoning": {
             "effort": "medium",
             "summary": null
           },
+          "service_tier": "default",
           "store": true,
           "temperature": 1.0,
           "text": {
@@ -229,18 +234,18 @@ http_interactions:
           "top_p": 1.0,
           "truncation": "disabled",
           "usage": {
-            "input_tokens": 70,
+            "input_tokens": 62,
             "input_tokens_details": {
               "cached_tokens": 0
             },
-            "output_tokens": 482,
+            "output_tokens": 454,
             "output_tokens_details": {
               "reasoning_tokens": 448
             },
-            "total_tokens": 552
+            "total_tokens": 516
           },
           "user": null,
           "metadata": {}
         }
-  recorded_at: Wed, 16 Apr 2025 12:50:32 GMT
+  recorded_at: Sat, 26 Apr 2025 02:27:49 GMT
 recorded_with: VCR 6.3.1
