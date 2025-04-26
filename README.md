@@ -330,7 +330,7 @@ to a prompt.
 
 For more depth and examples on how to use the multimodal API, please see
 the [provider-specific documentation](https://0x1eef.github.io/x/llm.rb/)
-for more provider-specific examples, there can be subtle differences
+for more provider-specific examples &ndash; there can be subtle differences
 between providers that are not covered in the README:
 
 ```ruby
@@ -432,15 +432,13 @@ llm.rb was built for developers who believe that simplicity can be challenging
 but it is always worth it. It provides a clean, dependency-free interface to
 Large Language Models, treating Ruby itself as the primary platform &ndash;
 not Rails or any other specific framework or library. There is no hidden
-magic or extreme metaprogramming.
+magic or complex metaprogramming.
 
 Every part of llm.rb is designed to be explicit, composable, memory-safe,
 and production-ready without compromise. No unnecessary abstractions,
 no global configuration, and no dependencies that aren't part of standard
 Ruby. It has been inspired in part by other languages such as Python, but
 it is not a port of any other library.
-
-Good software doesn’t need marketing. It just needs to work. :)
 
 ## License
 
