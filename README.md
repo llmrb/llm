@@ -126,8 +126,7 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.audio.create_speech(input: "Hello world")
-File.binwrite File.join(Dir.home, "hello.mp3"),
-	          res.audio.string
+IO.copy_stream res.audio, File.join(Dir.home, "hello.mp3")
 ```
 
 #### Transcribe
