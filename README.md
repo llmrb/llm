@@ -112,7 +112,7 @@ bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 #### Speech
 
 Some but not all providers implement audio generation capabilities that
-can create text from speech, transcribe audio to text, or translate
+can create speech from text, transcribe audio to text, or translate
 audio to text (usually English). The following example uses the OpenAI provider
 to create an audio file from a text prompt. The audio is then moved to
 `${HOME}/hello.mp3` as the final step. As always, consult the provider's
