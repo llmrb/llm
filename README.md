@@ -394,11 +394,11 @@ llm.rb can be installed via rubygems.org:
 
 ## Philosophy
 
-llm.rb was built for developers who believe that simplicity is strength.
-It provides a clean, dependency-free interface to Large Language Models,
-treating Ruby itself as the primary platform &ndash; not Rails or any other
-specific framework or library. There is no hidden magic or extreme
-metaprogramming.
+llm.rb was built for developers who believe that simplicity can be challenging
+but it is always worth it. It provides a clean, dependency-free interface to
+Large Language Models, treating Ruby itself as the primary platform &ndash;
+not Rails or any other specific framework or library. There is no hidden
+magic or extreme metaprogramming.
 
 Every part of llm.rb is designed to be explicit, composable, memory-safe,
 and production-ready without compromise. No unnecessary abstractions,
