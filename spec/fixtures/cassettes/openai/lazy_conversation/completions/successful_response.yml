@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 26 Apr 2025 02:28:10 GMT
+      - Sat, 26 Apr 2025 19:40:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,7 +40,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '462'
+      - '625'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -56,39 +56,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 17ms
       X-Request-Id:
-      - req_708353e93fc4d41f5a1aebe5ebf9ffe8
+      - req_146c9ff02a44060ae2b99942b590d801
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=pPkx.LxoHDTpvqDSrr4lF6bPV7EnH2VRfPYgMZZDc2Y-1745634490-1.0.1.1-ZvMhy25dTttVtXymA5JMQzbj8irpIhVP5fJvLgk0ND7tqi08ZRctgggnIiDAGy90ZvRKVO.ZVzmxF.0_Za5OUqIFXTnJcDvJutXAJdtpjJA;
-        path=/; expires=Sat, 26-Apr-25 02:58:10 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=OuHtFIF6rXLP655gUo7PU3lZlLzHsrNfc0Q79FcNE4I-1745696403-1.0.1.1-HfLBUX.bMUMSQBuJfbazfFR6uC697EdoV.dhtGABfKDJbm0BuQ1c1lsbIseEU64wPcscsoKXgW9r5UatRlKUvILVZnJWA7oI.WLklOYfQvg;
+        path=/; expires=Sat, 26-Apr-25 20:10:03 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=pGXjxoFtBrKkkYKitqLS1CU3AEXu9kWJysW8OmjjdxU-1745634490484-0.0.1.1-604800000;
+      - _cfuvid=1kGDlo_pf70TmtCoWXgjrCXqGs.FSdWy_yj1owU2R54-1745696403248-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9362a527fd48261c-GRU
+      - 93688cb1890b0292-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BQPYwDe4Vf6bO0tZmumgiPxm84hhZ",
+          "id": "chatcmpl-BQffWNQCYYQK5SV6OnfsGchxmDwQa",
           "object": "chat.completion",
-          "created": 1745634490,
+          "created": 1745696402,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "5  \n10  \n12  ",
+                "content": "5  \n10  \n12",
                 "refusal": null,
                 "annotations": []
               },
@@ -98,8 +98,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 76,
-            "completion_tokens": 7,
-            "total_tokens": 83,
+            "completion_tokens": 6,
+            "total_tokens": 82,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -114,5 +114,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_0392822090"
         }
-  recorded_at: Sat, 26 Apr 2025 02:27:30 GMT
+  recorded_at: Sat, 26 Apr 2025 19:39:21 GMT
 recorded_with: VCR 6.3.1

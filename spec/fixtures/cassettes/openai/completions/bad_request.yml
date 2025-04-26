@@ -23,7 +23,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Sat, 26 Apr 2025 02:28:37 GMT
+      - Sat, 26 Apr 2025 19:40:52 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -35,7 +35,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '48'
+      - '33'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Input-Images:
@@ -49,31 +49,31 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '9996'
       X-Ratelimit-Remaining-Tokens:
-      - '199233'
+      - '199232'
       X-Ratelimit-Reset-Input-Images:
       - 1ms
       X-Ratelimit-Reset-Requests:
-      - 27.789s
+      - 28.959s
       X-Ratelimit-Reset-Tokens:
       - 230ms
       X-Request-Id:
-      - req_378d6c3078edb553c9bea9ee33cab81f
+      - req_d9edc4169e0ee40b8fd7152c2b62e002
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=PLzNzDY_mzdy1muWRkUnNtqsUYJvXmGZRGhRGD1AQxY-1745634517-1.0.1.1-qBo9uA0.9j5t9anOmMO7ejb1YGnWv8RsHeTEE_fw4DphbRAWVaykQsjXrxNwT6koavenqryrvpwxb1T5bChS_Ga.o.9hM9HrJ73OFNbhjp4;
-        path=/; expires=Sat, 26-Apr-25 02:58:37 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=lBW13W.4DU63Oai7Y114BsuzLL.CkFB1cSV_7FPAVeQ-1745696452-1.0.1.1-PR3Ihei8iHVYYKuKCpatlNSIxa29XRj7cKPJgS_ltRgJTSnUc8l4HhE8j7.PmCnPQksOWfGbrnQ7jAsH6WcpT0hctHV2DvycEhdE_Sxr6ZM;
+        path=/; expires=Sat, 26-Apr-25 20:10:52 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=TjCZ_6cMFwVDiwbz0cLVU.PQriqIrUI877OCELNMpoY-1745634517797-0.0.1.1-604800000;
+      - _cfuvid=9qyFps27LlsTQuOMCAtAeHqgF5RuF3gsHiO1TTmEpdA-1745696452010-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9362a5d51a8ff1e1-GRU
+      - 93688de7dcb60295-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -87,5 +87,5 @@ http_interactions:
             "code": "invalid_image_url"
           }
         }
-  recorded_at: Sat, 26 Apr 2025 02:27:57 GMT
+  recorded_at: Sat, 26 Apr 2025 19:40:09 GMT
 recorded_with: VCR 6.3.1

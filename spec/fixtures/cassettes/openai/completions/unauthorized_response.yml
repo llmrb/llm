@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"#<LLM::Message:0x000001442467f6d8>"}]}],"model":"gpt-4o-mini"}'
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Hello!"}]}],"model":"gpt-4o-mini"}'
     headers:
       Content-Type:
       - application/json
@@ -23,7 +23,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sat, 26 Apr 2025 02:28:38 GMT
+      - Sat, 26 Apr 2025 19:40:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -33,23 +33,23 @@ http_interactions:
       Vary:
       - Origin
       X-Request-Id:
-      - req_0c6e758fdd813710ca0a7e3729fab10d
+      - req_d3c5791102d9299650d4a583389c7916
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=BN3K_5bewpDlFbfgqW2zLNwZThrzu3ilcX0dQXRmrzA-1745634518-1.0.1.1-FvpRHwy0s5B2TcU6jf1rZ8.JtJoV3ZC2dFoHVeQh_U2ojHu6VfePvZKUgusiu2NtG8Axn7ugRr5oqmZu35hUzd7z7lT_3qZJQAOEnj3uaeo;
-        path=/; expires=Sat, 26-Apr-25 02:58:38 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=d6VRnG4KH95pkH0LZ7fOzdNFUarSrQXQFgBNGrfYaps-1745696452-1.0.1.1-xeSqg.Oyz5ATDcE72Sj_1ms0vd.h7_VWBu9CtK.43xqirHzIulcwFCPQuqKAk1jTry4o_v1910B57WOOejZgQG5pNdI1JffgV_dWOt.IpcQ;
+        path=/; expires=Sat, 26-Apr-25 20:10:52 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Q5o_5h1SqO5D3pMqX0tmfvRVDeJqEfcitbWrtdF7lwQ-1745634518108-0.0.1.1-604800000;
+      - _cfuvid=cHmdlNvcdYmmaBjJxzssFZnV.mV6j.f0_LgpF4pFfUw-1745696452250-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9362a5d8ac008776-GRU
+      - 93688de96b530180-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -63,5 +63,5 @@ http_interactions:
                 "code": "invalid_api_key"
             }
         }
-  recorded_at: Sat, 26 Apr 2025 02:27:57 GMT
+  recorded_at: Sat, 26 Apr 2025 19:40:10 GMT
 recorded_with: VCR 6.3.1

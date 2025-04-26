@@ -94,16 +94,16 @@ RSpec.describe "LLM::OpenAI::Files" do
         provider.files.create(file: LLM::File("spec/fixtures/documents/haiku2.txt"))
       ]
     end
-    subject(:file) { provider.files.all }
+    subject(:filelist) { provider.files.all }
 
     it "is successful" do
-      expect(file).to be_instance_of(LLM::Response::FileList)
+      expect(filelist).to be_instance_of(LLM::Response::FileList)
     ensure
       files.each { |file| provider.files.delete(file:) }
     end
 
     it "returns an array of file objects" do
-      expect(file).to match_array(
+      expect(filelist.files[0..1]).to match_array(
         [
           have_attributes(
             id: instance_of(String),
