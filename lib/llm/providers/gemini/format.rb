@@ -35,8 +35,13 @@ class LLM::Gemini
       when LLM::File
         file = content
         {inline_data: {mime_type: file.mime_type, data: file.to_b64}}
-      else
+      when String
         {text: content}
+      when LLM::Message
+        format_content(content.content)
+      else
+        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
+                                       "is not supported by the Gemini API"
       end
     end
   end

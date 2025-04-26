@@ -28,14 +28,22 @@ class LLM::Ollama
     # @return [String, Hash]
     #  The formatted content
     def format_content(content)
-      if LLM::File === content
+      case content
+      when LLM::File
         if content.image?
           {content: "This message has an image associated with it", images: [content.to_b64]}
         else
-          raise TypeError, "'#{content.path}' was not recognized as an image file."
+          raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
+                                         "is not an image, and therefore not supported by the " \
+                                         "Ollama API"
         end
-      else
+      when String
         {content:}
+      when LLM::Message
+        format_content(content.content)
+      else
+        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
+                                       "is not supported by the Ollama API"
       end
     end
   end
