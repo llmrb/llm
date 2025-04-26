@@ -4,16 +4,7 @@
 # The Provider class represents an abstract class for
 # LLM (Language Model) providers.
 #
-# @note
-#  This class is not meant to be instantiated directly.
-#  Instead, use one of the subclasses that implement
-#  the methods defined here.
-#
 # @abstract
-# @see LLM::Provider::OpenAI
-# @see LLM::Provider::Anthropic
-# @see LLM::Provider::Gemini
-# @see LLM::Provider::Ollama
 class LLM::Provider
   require "net/http"
 
@@ -78,7 +69,7 @@ class LLM::Provider
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
   # @return [LLM::Response::Completion]
-  def complete(prompt, role = :user, model:, **params)
+  def complete(prompt, role = :user, model: nil, **params)
     raise NotImplementedError
   end
 

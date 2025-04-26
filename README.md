@@ -26,6 +26,7 @@ llm = LLM.openai("yourapikey")
 llm = LLM.gemini("yourapikey")
 llm = LLM.anthropic("yourapikey")
 llm = LLM.ollama(nil)
+llm = LLM.voyageai("yourapikey")
 ```
 
 ### Conversations
