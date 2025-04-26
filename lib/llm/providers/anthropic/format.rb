@@ -26,13 +26,18 @@ class LLM::Anthropic
     # @return [String, Hash]
     #  The formatted content
     def format_content(content)
-      if URI === content
-        [{
-          type: :image,
-          source: {type: :base64, media_type: LLM::File(content.to_s).mime_type, data: [content.to_s].pack("m0")}
-        }]
+      case content
+      when Array
+        content.flat_map { format_content(_1) }
+      when URI
+        [{ type: :image, source: {type: "url", url: content.to_s} }]
+      when String
+        [{type: :text, text: content}]
+      when LLM::Message
+        format_content(content.content)
       else
-        content
+        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
+                                       "is not supported by the Anthropic API"
       end
     end
   end
