@@ -28,7 +28,7 @@ module LLM
     #  The embedding model to use
     # @param [Hash] params
     #  Other embedding parameters
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return (see LLM::Provider#embed)
     def embed(input, token:, model: "voyage-2", **params)
       llm = LLM.voyageai(token)
@@ -44,7 +44,7 @@ module LLM
     # @param max_tokens The maximum number of tokens to generate
     # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: "claude-3-5-sonnet-20240620", max_tokens: 1024, **params)
       params   = {max_tokens:, model:}.merge!(params)

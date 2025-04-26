@@ -37,7 +37,7 @@ class LLM::Gemini
     # @param [LLM::File, LLM::Response::File] file The input audio
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::AudioTranscription]
     def create_transcription(file:, model: "gemini-1.5-flash", **params)
       res = @provider.complete [
@@ -61,7 +61,7 @@ class LLM::Gemini
     # @param [LLM::File, LLM::Response::File] file The input audio
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::AudioTranslation]
     def create_translation(file:, model: "gemini-1.5-flash", **params)
       res = @provider.complete [

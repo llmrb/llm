@@ -34,7 +34,7 @@ class LLM::Gemini
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @note
     #  The prompt should make it clear you want to generate an image, or you
     #  might unexpectedly receive a purely textual response. This is due to how
@@ -60,7 +60,7 @@ class LLM::Gemini
     # @param [LLM::File] image The image to edit
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @note (see LLM::Gemini::Images#create)
     # @return [LLM::Response::Image]
     def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)

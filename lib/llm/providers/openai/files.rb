@@ -46,7 +46,7 @@ class LLM::OpenAI
     #   end
     # @see https://platform.openai.com/docs/api-reference/files/list OpenAI docs
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::FileList]
     def all(**params)
       query = URI.encode_www_form(params)
@@ -67,7 +67,7 @@ class LLM::OpenAI
     # @param [File] file The file
     # @param [String] purpose The purpose of the file (see OpenAI docs)
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::File]
     def create(file:, purpose: "assistants", **params)
       multi = LLM::Multipart.new(params.merge!(file:, purpose:))
@@ -87,7 +87,7 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/files/get OpenAI docs
     # @param [#id, #to_s] file The file ID
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::File]
     def get(file:, **params)
       file_id = file.respond_to?(:id) ? file.id : file
@@ -107,7 +107,7 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/files/content OpenAI docs
     # @param [#id, #to_s] file The file ID
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::DownloadFile]
     def download(file:, **params)
       query = URI.encode_www_form(params)
@@ -126,7 +126,7 @@ class LLM::OpenAI
     #   print res.deleted, "\n"
     # @see https://platform.openai.com/docs/api-reference/files/delete OpenAI docs
     # @param [#id, #to_s] file The file ID
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [OpenStruct] Response body
     def delete(file:)
       file_id = file.respond_to?(:id) ? file.id : file

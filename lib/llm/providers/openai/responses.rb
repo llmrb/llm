@@ -34,7 +34,7 @@ class LLM::OpenAI
     # @param role (see LLM::Provider#complete)
     # @param model (see LLM::Provider#complete)
     # @param [Hash] params Response params
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Output]
     def create(prompt, role = :user, model: "gpt-4o-mini", **params)
       params   = {model:}.merge!(params)
@@ -49,7 +49,7 @@ class LLM::OpenAI
     # Get a response
     # @see https://platform.openai.com/docs/api-reference/responses/get OpenAI docs
     # @param [#id, #to_s] response Response ID
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Output]
     def get(response, **params)
       response_id = response.respond_to?(:id) ? response.id : response
@@ -63,7 +63,7 @@ class LLM::OpenAI
     # Deletes a response
     # @see https://platform.openai.com/docs/api-reference/responses/delete OpenAI docs
     # @param [#id, #to_s] response Response ID
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [OpenStruct] Response body
     def delete(response)
       response_id = response.respond_to?(:id) ? response.id : response

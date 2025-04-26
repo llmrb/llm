@@ -31,7 +31,7 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [String] response_format The response format
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Audio]
     def create_speech(input:, voice: "alloy", model: "gpt-4o-mini-tts", response_format: "mp3", **params)
       req = Net::HTTP::Post.new("/v1/audio/speech", headers)
@@ -51,7 +51,7 @@ class LLM::OpenAI
     # @param [LLM::File] file The input audio
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::AudioTranscription]
     def create_transcription(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file:, model:))
@@ -73,7 +73,7 @@ class LLM::OpenAI
     # @param [LLM::File] file The input audio
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::AudioTranslation]
     def create_translation(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file:, model:))

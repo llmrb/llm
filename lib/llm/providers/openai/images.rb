@@ -44,7 +44,7 @@ class LLM::OpenAI
     # @param [String] prompt The prompt
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Image]
     def create(prompt:, model: "dall-e-3", **params)
       req = Net::HTTP::Post.new("/v1/images/generations", headers)
@@ -63,7 +63,7 @@ class LLM::OpenAI
     # @param [File] image The image to create variations from
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Image]
     def create_variation(image:, model: "dall-e-2", **params)
       multi = LLM::Multipart.new(params.merge!(image:, model:))
@@ -85,7 +85,7 @@ class LLM::OpenAI
     # @param [String] prompt The prompt
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Image]
     def edit(image:, prompt:, model: "dall-e-2", **params)
       multi = LLM::Multipart.new(params.merge!(image:, prompt:, model:))

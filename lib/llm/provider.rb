@@ -15,8 +15,7 @@
 # @see LLM::Provider::Gemini
 # @see LLM::Provider::Ollama
 class LLM::Provider
-  require_relative "http_client"
-  include LLM::HTTPClient
+  require "net/http"
 
   ##
   # @param [String] secret
@@ -220,6 +219,32 @@ class LLM::Provider
   #  (see LLM::Provider#complete)
   def error_handler
     raise NotImplementedError
+  end
+
+  ##
+  # Initiates a HTTP request
+  # @param [Net::HTTP] http
+  #  The HTTP object to use for the request
+  # @param [Net::HTTPRequest] req
+  #  The request to send
+  # @param [Proc] b
+  #  A block to yield the response to (optional)
+  # @return [Net::HTTPResponse]
+  #  The response from the server
+  # @raise [LLM::Error::Unauthorized]
+  #  When authentication fails
+  # @raise [LLM::Error::RateLimit]
+  #  When the rate limit is exceeded
+  # @raise [LLM::Error::ResponseError]
+  #  When any other unsuccessful status code is returned
+  # @raise [SystemCallError]
+  #  When there is a network error at the operating system level
+  def request(http, req, &b)
+    res = http.request(req, &b)
+    case res
+    when Net::HTTPOK then res
+    else error_handler.new(res).raise_error!
+    end
   end
 
   ##

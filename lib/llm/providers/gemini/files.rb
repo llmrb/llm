@@ -52,7 +52,7 @@ class LLM::Gemini
     #   end
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::FileList]
     def all(**params)
       query = URI.encode_www_form(params.merge!(key: secret))
@@ -75,7 +75,7 @@ class LLM::Gemini
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [File] file The file
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::File]
     def create(file:, **params)
       req = Net::HTTP::Post.new(request_upload_url(file:), {})
@@ -98,7 +98,7 @@ class LLM::Gemini
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [#name, String] file The file to get
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::File]
     def get(file:, **params)
       file_id = file.respond_to?(:name) ? file.name : file.to_s
@@ -116,7 +116,7 @@ class LLM::Gemini
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [#name, String] file The file to delete
     # @param [Hash] params Other parameters (see Gemini docs)
-    # @raise (see LLM::HTTPClient#request)
+    # @raise (see LLM::Provider#request)
     # @return [LLM::Response::File]
     def delete(file:, **params)
       file_id = file.respond_to?(:name) ? file.name : file.to_s
