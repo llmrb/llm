@@ -31,6 +31,14 @@ class LLM::Anthropic
         content.flat_map { format_content(_1) }
       when URI
         [{ type: :image, source: {type: "url", url: content.to_s} }]
+      when LLM::File
+        if content.image?
+          [ {type: :image, source: {type: "base64", media_type: content.mime_type, data: content.to_b64} }]
+        else
+          raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
+                                          "is not an image, and therefore not supported by the " \
+                                          "Anthropic API"
+        end
       when String
         [{type: :text, text: content}]
       when LLM::Message

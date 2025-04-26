@@ -60,6 +60,24 @@ RSpec.describe "LLM::Anthropic: completions" do
     end
   end
 
+  context "when given a local reference to an image",
+          vcr: {cassette_name: "anthropic/completions/successful_response_file_image"} do
+    subject { response.choices[0].content.downcase[0..2] }
+    let(:response) do
+      anthropic.complete([
+        "Is this image a representation of a blue book ?",
+        "Answer with yes or no.",
+        "Nothing else.",
+        file
+      ], :user)
+    end
+    let(:file) { LLM::File("spec/fixtures/images/bluebook.png") }
+
+    it "describes the image" do
+      is_expected.to eq("yes")
+    end
+  end
+
   context "when given an unauthorized response",
           vcr: {cassette_name: "anthropic/completions/unauthorized_response"} do
     subject(:response) { anthropic.complete("Hello", :user) }
