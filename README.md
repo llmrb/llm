@@ -122,8 +122,6 @@ for more information on how to use the audio generation API:
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
-require "open-uri"
-require "fileutils"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.audio.create_speech(input: "Hello world")
@@ -151,8 +149,6 @@ examples and documentation
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
-require "open-uri"
-require "fileutils"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.audio.create_transcription(
@@ -181,8 +177,6 @@ examples and documentation
 
 ```ruby
 require "llm"
-require "open-uri"
-require "fileutils"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.audio.create_translation(
