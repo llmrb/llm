@@ -228,6 +228,8 @@ class LLM::Provider
   #  When the rate limit is exceeded
   # @raise [LLM::Error::ResponseError]
   #  When any other unsuccessful status code is returned
+  # @raise [LLM::Error::PromptError]
+  #  When given an object a provider does not understand
   # @raise [SystemCallError]
   #  When there is a network error at the operating system level
   def request(http, req, &b)

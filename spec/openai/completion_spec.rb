@@ -81,7 +81,7 @@ RSpec.describe "LLM::OpenAI: completions" do
 
   context "when given an unauthorized response",
           vcr: {cassette_name: "openai/completions/unauthorized_response"} do
-    subject(:response) { openai.complete(LLM::Message.new("Hello!", :user)) }
+    subject(:response) { openai.complete(LLM::Message.new(:user, "Hello!")) }
     let(:token) { "BADTOKEN" }
 
     it "raises an error" do

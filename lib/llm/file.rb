@@ -43,6 +43,13 @@ class LLM::File
   end
 
   ##
+  # @return [String]
+  #  Returns the file contents in base64 URL format
+  def to_data_uri
+    "data:#{mime_type};base64,#{to_b64}"
+  end
+
+  ##
   # @return [File]
   #  Yields an IO object suitable to be streamed
   def with_io
