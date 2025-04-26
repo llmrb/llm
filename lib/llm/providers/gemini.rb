@@ -70,11 +70,12 @@ module LLM
     # @raise (see LLM::Provider#request)
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: "gemini-1.5-flash", **params)
-      path     = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
-      req      = Net::HTTP::Post.new(path, headers)
+      path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
+      req  = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      req.body = JSON.dump({contents: format(messages)})
-      res      = request(@http, req)
+      body = JSON.dump({contents: format(messages)}).b
+      req.body_stream = StringIO.new(body)
+      res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
