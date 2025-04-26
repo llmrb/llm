@@ -60,7 +60,12 @@ class LLM::OpenAI
       when Array
         content.flat_map { format_response(_1) }
       when LLM::Response::File
-        [{type: :input_file, file_id: content.id}]
+        file = LLM::File(content.filename)
+        if file.image?
+          [{type: :input_image, file_id: content.id}]
+        else
+          [{type: :input_file, file_id: content.id}]
+        end
       when String
         [{type: :input_text, text: content.to_s}]
       when LLM::Message

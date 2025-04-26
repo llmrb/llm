@@ -16,6 +16,20 @@ class LLM::OpenAI
   #   res1 = llm.responses.create "Your task is to help me with math", :developer
   #   res2 = llm.responses.create "5 + 5  = ?", :user, previous_response_id: res1.id
   #   [res1,res2].each { llm.responses.delete(_1) }
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm  = LLM.openai(ENV["KEY"])
+  #   file = llm.files.create file: LLM::File("/images/hat.png")
+  #   res  = llm.responses.create ["Describe the image", file]
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm  = LLM.openai(ENV["KEY"])
+  #   file = llm.files.create file: LLM::File("/documents/freebsd.pdf")
+  #   res  = llm.responses.create ["Describe the document, file]
   class Responses
     include Format
 
