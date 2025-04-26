@@ -315,6 +315,45 @@ bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n"
 #             contains information about the features, installation, and usage of OpenBSD.
 ```
 
+### Prompts
+
+#### Multimodal
+
+Generally all providers accept text prompts but some providers can
+also understand URLs, and various file types (eg images, audio, video,
+etc). The llm.rb approach to multimodal prompts is to let you pass `URI`
+objects to describe links, `LLM::File` / `LLM::Response::File` objects
+to describe files, `String` objects to describe text blobs, or an array
+of the forementioned objects to describe multiple objects in a single
+prompt. Each object is a first class citizen that can be passed directly
+to a prompt.
+
+For more depth and examples on how to use the multimodal API, please see
+the [provider-specific documentation](https://0x1eef.github.io/x/llm.rb/)
+for more provider-specific examples, there can be subtle differences
+between providers that are not covered in the README:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(ENV["KEY"])
+bot = LLM::Chat.new(llm).lazy
+bot.chat URI("https://example.com/path/to/image.png")
+bot.chat "Describe the above image"
+bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+
+bot.chat LLM::File("/documents/openbsd_is_awesome.pdf")
+bot.chat "What is this file about?"
+bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+
+bot.chat [LLM::File("/images/puffy.png"), "What is this image about?"]
+bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+
+bot.chat [LLM::File("/images/beastie.png"), "What is this image about?"]
+bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+```
+
 ### Embeddings
 
 #### Text
