@@ -73,7 +73,7 @@ class LLM::OpenAI
       multi = LLM::Multipart.new(params.merge!(file:, purpose:))
       req = Net::HTTP::Post.new("/v1/files", headers)
       req["content-type"] = multi.content_type
-      req.body_stream = multi.body
+      set_body_stream(req, multi.body)
       res = request(http, req)
       LLM::Response::File.new(res)
     end
@@ -141,7 +141,7 @@ class LLM::OpenAI
       @provider.instance_variable_get(:@http)
     end
 
-    [:headers, :request].each do |m|
+    [:headers, :request, :set_body_stream].each do |m|
       define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
     end
   end

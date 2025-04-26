@@ -83,7 +83,7 @@ class LLM::Gemini
       req["X-Goog-Upload-Offset"] = 0
       req["X-Goog-Upload-Command"] = "upload, finalize"
       file.with_io do |io|
-        req.body_stream = io
+        set_body_stream(req, io)
         res = request(http, req)
         LLM::Response::File.new(res)
       end
@@ -155,7 +155,7 @@ class LLM::Gemini
       @provider.instance_variable_get(:@secret)
     end
 
-    [:headers, :request].each do |m|
+    [:headers, :request, :set_body_stream].each do |m|
       define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
     end
   end

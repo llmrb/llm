@@ -74,7 +74,7 @@ module LLM
       req  = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({contents: format(messages)}).b
-      req.body_stream = StringIO.new(body)
+      set_body_stream(req, StringIO.new(body))
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
