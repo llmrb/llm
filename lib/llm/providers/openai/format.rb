@@ -32,6 +32,7 @@ class LLM::OpenAI
         case content
         when Array then content.flat_map { format_content(_1, mode) }
         when URI then [{type: :image_url, image_url: {url: content.to_s}}]
+        when LLM::Response::File then [{type: :file, file: {file_id: content.id}}]
         else [{type: :text, text: content.to_s}]
         end
       elsif mode == :response

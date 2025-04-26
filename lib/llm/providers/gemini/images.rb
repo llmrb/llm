@@ -67,7 +67,7 @@ class LLM::Gemini
     def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
       req  = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
       body = JSON.dump({
-        contents: [ {parts: [{text: prompt}, format_content(image)]} ],
+        contents: [{parts: [{text: prompt}, format_content(image)]}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params)).b
       req.body_stream = StringIO.new(body)
