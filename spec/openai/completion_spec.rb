@@ -48,7 +48,7 @@ RSpec.describe "LLM::OpenAI: completions" do
       openai.complete "What is your name? What age are you?", :user, messages: [
         {role: "system", content: "Answer all of my questions"},
         {role: "system", content: "Answer in the format: My name is <name> and I am <age> years old"},
-        {role: "system", content: "Your name is Pablo and you are 25 years old"},
+        {role: "system", content: "Your name is Pablo and you are 25 years old"}
       ]
     end
 
