@@ -19,7 +19,7 @@ module LLM
     #  When authentication fails
     # @raise [LLM::Error::RateLimit]
     #  When the rate limit is exceeded
-    # @raise [LLM::Error::BadResponse]
+    # @raise [LLM::Error::ResponseError]
     #  When any other unsuccessful status code is returned
     # @raise [SystemCallError]
     #  When there is a network error at the operating system level

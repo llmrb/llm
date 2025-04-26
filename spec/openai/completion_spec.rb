@@ -68,7 +68,7 @@ RSpec.describe "LLM::OpenAI: completions" do
     subject(:response) { openai.complete(URI("/foobar.exe"), :user) }
 
     it "raises an error" do
-      expect { response }.to raise_error(LLM::Error::BadResponse)
+      expect { response }.to raise_error(LLM::Error::ResponseError)
     end
 
     it "includes the response" do

@@ -27,7 +27,7 @@ class LLM::Anthropic
       when Net::HTTPTooManyRequests
         raise LLM::Error::RateLimit.new { _1.response = res }, "Too many requests"
       else
-        raise LLM::Error::BadResponse.new { _1.response = res }, "Unexpected response"
+        raise LLM::Error::ResponseError.new { _1.response = res }, "Unexpected response"
       end
     end
   end
