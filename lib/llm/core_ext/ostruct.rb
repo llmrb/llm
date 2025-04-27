@@ -18,7 +18,7 @@ class OpenStruct
       hash_obj.each do |key, value|
         visited_object[key] = walk(value)
       end
-      OpenStruct.new(visited_object)
+      new(visited_object)
     end
 
     private

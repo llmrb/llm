@@ -12,6 +12,7 @@ module LLM
     require_relative "openai/images"
     require_relative "openai/audio"
     require_relative "openai/files"
+    require_relative "openai/models"
     include Format
 
     HOST = "api.openai.com"
@@ -93,13 +94,17 @@ module LLM
     end
 
     ##
+    # Provides an interface to OpenAI's models API
+    # @see https://platform.openai.com/docs/api-reference/models/list OpenAI docs
+    # @return [LLM::OpenAI::Models]
+    def models
+      LLM::OpenAI::Models.new(self)
+    end
+
+    ##
     # @return (see LLM::Provider#assistant_role)
     def assistant_role
       "assistant"
-    end
-
-    def models
-      @models ||= load_models!("openai")
     end
 
     private

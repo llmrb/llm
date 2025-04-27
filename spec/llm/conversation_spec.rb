@@ -117,7 +117,8 @@ RSpec.describe "LLM::Chat: lazy" do
 
       context "when given a specific model",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response_o3_mini"} do
-        let(:conversation) { described_class.new(provider, model: provider.models["o3-mini"]).lazy }
+        let(:model) { provider.models.all.find { _1.id == "o3-mini" } }
+        let(:conversation) { described_class.new(provider, model:).lazy }
 
         it "maintains the model throughout a conversation" do
           conversation.chat(prompt, :system)
@@ -179,7 +180,8 @@ RSpec.describe "LLM::Chat: lazy" do
 
       context "when given a specific model",
               vcr: {cassette_name: "openai/lazy_conversation/responses/successful_response_o3_mini"} do
-        let(:conversation) { described_class.new(provider, model: provider.models["o3-mini"]).lazy }
+        let(:model) { provider.models.all.find { _1.id == "o3-mini" } }
+        let(:conversation) { described_class.new(provider, model:).lazy }
 
         it "maintains the model throughout a conversation" do
           conversation.respond(prompt, :developer)

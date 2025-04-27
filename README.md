@@ -389,6 +389,38 @@ print res.embeddings[0].size, "\n"
 # 1536
 ```
 
+### Models
+
+#### List
+
+Almost all LLM providers provide a models endpoint that allows a client to
+query the list of models that are available to use. The list is dynamic,
+maintained by LLM providers, and it is independent of a specific llm.rb release.
+True to the llm.rb spirit of small, composable objects that cooperate with
+each other, a
+[LLM::Model](https://0x1eef.github.io/x/llm.rb/LLM/Model.html)
+object can be used instead of a string that describes a model name (although
+either works). Let's take a look at an example:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+##
+# List all models
+llm = LLM.openai(ENV["KEY"])
+llm.models.all.each do |model|
+  print "model: ", model.id, "\n"
+end
+
+##
+# Select a model
+model = llm.models.all.find { |m| m.id == "gpt-3.5-turbo" }
+bot = LLM::Chat.new(llm, model:)
+bot.chat "Hello #{model.id} :)"
+bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+```
+
 ### Memory
 
 #### Child process

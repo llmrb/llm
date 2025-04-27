@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module LLM
+  require_relative "llm/core_ext/ostruct"
   require_relative "llm/version"
   require_relative "llm/utils"
   require_relative "llm/error"
@@ -13,7 +14,6 @@ module LLM
   require_relative "llm/provider"
   require_relative "llm/chat"
   require_relative "llm/buffer"
-  require_relative "llm/core_ext/ostruct"
 
   module_function
 

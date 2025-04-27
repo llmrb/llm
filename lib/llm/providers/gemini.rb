@@ -34,6 +34,7 @@ module LLM
     require_relative "gemini/images"
     require_relative "gemini/files"
     require_relative "gemini/audio"
+    require_relative "gemini/models"
     include Format
 
     HOST = "generativelanguage.googleapis.com"
@@ -52,6 +53,7 @@ module LLM
     # @raise (see LLM::Provider#request)
     # @return (see LLM::Provider#embed)
     def embed(input, model: "text-embedding-004", **params)
+      model = model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "embedContent?key=#{@secret}"].join(":")
       req = Net::HTTP::Post.new(path, headers)
       req.body = JSON.dump({content: {parts: [{text: input}]}})
@@ -72,6 +74,7 @@ module LLM
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: "gemini-1.5-flash", **params)
+      model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
@@ -105,15 +108,16 @@ module LLM
     end
 
     ##
-    # @return (see LLM::Provider#assistant_role)
-    def assistant_role
-      "model"
+    # Provides an interface to Gemini's models API
+    # @see https://ai.google.dev/gemini-api/docs/models Gemini docs
+    def models
+      LLM::Gemini::Models.new(self)
     end
 
     ##
-    # @return (see LLM::Provider#models)
-    def models
-      @models ||= load_models!("gemini")
+    # @return (see LLM::Provider#assistant_role)
+    def assistant_role
+      "model"
     end
 
     private

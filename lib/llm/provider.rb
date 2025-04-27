@@ -170,17 +170,17 @@ class LLM::Provider
   end
 
   ##
-  # @return [String]
-  #  Returns the role of the assistant in the conversation.
-  #  Usually "assistant" or "model"
-  def assistant_role
+  # @return [LLM::OpenAI::Models]
+  #  Returns an interface to the models API
+  def models
     raise NotImplementedError
   end
 
   ##
-  # @return [Hash<String, LLM::Model>]
-  #  Returns a hash of available models
-  def models
+  # @return [String]
+  #  Returns the role of the assistant in the conversation.
+  #  Usually "assistant" or "model"
+  def assistant_role
     raise NotImplementedError
   end
 
@@ -247,18 +247,5 @@ class LLM::Provider
   def set_body_stream(req, io)
     req.body_stream = io
     req["transfer-encoding"] = "chunked" unless req["content-length"]
-  end
-
-  ##
-  # @param [String] provider
-  #  The name of the provider
-  # @return [Hash<String, Hash>]
-  def load_models!(provider)
-    require "yaml" unless defined?(YAML)
-    rootdir  = File.realpath File.join(__dir__, "..", "..")
-    sharedir = File.join(rootdir, "share", "llm")
-    provider = provider.gsub(/[^a-z0-9]/i, "")
-    yaml     = File.join(sharedir, "models", "#{provider}.yml")
-    YAML.safe_load_file(yaml).transform_values { LLM::Model.new(_1) }
   end
 end

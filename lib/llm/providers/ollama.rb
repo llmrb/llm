@@ -22,6 +22,7 @@ module LLM
     require_relative "ollama/error_handler"
     require_relative "ollama/response_parser"
     require_relative "ollama/format"
+    require_relative "ollama/models"
     include Format
 
     HOST = "localhost"
@@ -77,9 +78,11 @@ module LLM
     end
 
     ##
-    # @return (see LLM::Provider#models)
+    # Provides an interface to Ollama's models API
+    # @see https://github.com/ollama/ollama/blob/main/docs/api.md#list-local-models Ollama docs
+    # @return [LLM::Ollama::Models]
     def models
-      @models ||= load_models!("ollama")
+      LLM::Ollama::Models.new(self)
     end
 
     private
