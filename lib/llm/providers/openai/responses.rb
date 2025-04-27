@@ -53,11 +53,13 @@ class LLM::OpenAI
     #  When given an object a provider does not understand
     # @return [LLM::Response::Output]
     def create(prompt, role = :user, model: "gpt-4o-mini", **params)
-      params   = {model:}.merge!(params)
-      req      = Net::HTTP::Post.new("/v1/responses", headers)
+      params = {model:}.merge!(params)
+      req = Net::HTTP::Post.new("/v1/responses", headers)
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]
-      req.body = JSON.dump({input: format(messages, :response)}.merge!(params))
-      res      = request(http, req)
+      body = JSON.dump({input: format(messages, :response)}.merge!(params))
+      set_body_stream(req, StringIO.new(body))
+
+      res = request(http, req)
       LLM::Response::Output.new(res).extend(response_parser)
     end
 

@@ -60,11 +60,13 @@ module LLM
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: "llama3.2", **params)
-      params   = {model:, stream: false}.merge!(params)
-      req      = Net::HTTP::Post.new("/api/chat", headers)
+      params = {model:, stream: false}.merge!(params)
+      req = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      req.body = JSON.dump({messages: format(messages)}.merge!(params))
-      res      = request(@http, req)
+      body = JSON.dump({messages: format(messages)}.merge!(params))
+      set_body_stream(req, StringIO.new(body))
+
+      res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 

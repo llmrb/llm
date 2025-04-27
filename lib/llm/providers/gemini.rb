@@ -75,8 +75,9 @@ module LLM
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      body = JSON.dump({contents: format(messages)}).b
+      body = JSON.dump({contents: format(messages)})
       set_body_stream(req, StringIO.new(body))
+
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end

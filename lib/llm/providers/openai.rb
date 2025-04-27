@@ -50,11 +50,13 @@ module LLM
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: "gpt-4o-mini", **params)
-      params   = {model:}.merge!(params)
-      req      = Net::HTTP::Post.new("/v1/chat/completions", headers)
+      params = {model:}.merge!(params)
+      req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      req.body = JSON.dump({messages: format(messages, :complete)}.merge!(params))
-      res      = request(@http, req)
+      body =  JSON.dump({messages: format(messages, :complete)}.merge!(params))
+      set_body_stream(req, StringIO.new(body))
+
+      res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 

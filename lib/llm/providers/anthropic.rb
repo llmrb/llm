@@ -49,11 +49,13 @@ module LLM
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: "claude-3-5-sonnet-20240620", max_tokens: 1024, **params)
-      params   = {max_tokens:, model:}.merge!(params)
-      req      = Net::HTTP::Post.new("/v1/messages", headers)
+      params = {max_tokens:, model:}.merge!(params)
+      req = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      req.body = JSON.dump({messages: format(messages)}.merge!(params))
-      res      = request(@http, req)
+      body = JSON.dump({messages: format(messages)}.merge!(params))
+      set_body_stream(req, StringIO.new(body))
+
+      res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
