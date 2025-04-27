@@ -13,7 +13,7 @@ class LLM::Gemini
   #
   #   llm = LLM.gemini(ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
-  #   File.binwrite "rocket.png", res.images[0].binary
+  #   IO.copy_stream res.images[0], "rocket.png"
   class Images
     include Format
 
@@ -30,7 +30,7 @@ class LLM::Gemini
     # @example
     #   llm = LLM.gemini(ENV["KEY"])
     #   res = llm.images.create prompt: "A dog on a rocket to the moon"
-    #   File.binwrite "rocket.png", res.images[0].binary
+    #   IO.copy_stream res.images[0], "rocket.png"
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
@@ -56,7 +56,7 @@ class LLM::Gemini
     # @example
     #   llm = LLM.gemini(ENV["KEY"])
     #   res = llm.images.edit image: LLM::File("cat.png"), prompt: "Add a hat to the cat"
-    #   File.binwrite "hatoncat.png", res.images[0].binary
+    #   IO.copy_stream res.images[0], "hatoncat.png"
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
     # @param [LLM::File] image The image to edit
     # @param [String] prompt The prompt

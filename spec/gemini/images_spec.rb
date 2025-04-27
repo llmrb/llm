@@ -14,12 +14,8 @@ RSpec.describe "LLM::Gemini::Images" do
       expect(response).to be_instance_of(LLM::Response::Image)
     end
 
-    it "returns an encoded string" do
-      expect(response.images[0].encoded).to be_instance_of(String)
-    end
-
-    it "returns a binary string" do
-      expect(response.images[0].binary).to be_instance_of(String)
+    it "returns an IO-like object" do
+      expect(response.images[0]).to be_instance_of(StringIO)
     end
   end
 
@@ -36,12 +32,8 @@ RSpec.describe "LLM::Gemini::Images" do
       expect(response).to be_instance_of(LLM::Response::Image)
     end
 
-    it "returns data" do
-      expect(response.images[0].encoded).to be_instance_of(String)
-    end
-
-    it "returns a url" do
-      expect(response.images[0].binary).to be_instance_of(String)
+    it "returns an IO-like object" do
+      expect(response.images[0]).to be_instance_of(StringIO)
     end
   end
 end

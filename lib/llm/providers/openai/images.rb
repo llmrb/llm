@@ -24,7 +24,7 @@ class LLM::OpenAI
   #   llm = LLM.openai(ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon",
   #                           response_format: "b64_json"
-  #   File.binwrite("rocket.png", res.images[0].binary)
+  #   IO.copy_stream res.images[0], "rocket.png"
   class Images
     ##
     # Returns a new Images object

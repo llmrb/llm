@@ -40,12 +40,8 @@ RSpec.describe "LLM::OpenAI::Images" do
       expect(response.images).to be_instance_of(Array)
     end
 
-    it "returns an encoded string" do
-      expect(response.images[0].encoded).to be_instance_of(String)
-    end
-
-    it "returns an binary string" do
-      expect(response.images[0].binary).to be_instance_of(String)
+    it "returns an IO-like object" do
+      expect(response.images[0]).to be_instance_of(StringIO)
     end
   end
 

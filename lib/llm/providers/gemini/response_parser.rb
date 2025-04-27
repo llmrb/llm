@@ -44,11 +44,7 @@ class LLM::Gemini
         images: body["candidates"].flat_map do |candidate|
           candidate["content"]["parts"].filter_map do
             next unless _1.dig("inlineData", "data")
-            OpenStruct.from_hash(
-              mime_type: _1["inlineData"]["mimeType"],
-              encoded: _1["inlineData"]["data"],
-              binary: _1["inlineData"]["data"].unpack1("m0")
-            )
+            StringIO.new(_1["inlineData"]["data"].unpack1("m0"))
           end
         end
       }
