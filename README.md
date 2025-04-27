@@ -439,9 +439,9 @@ magic or complex metaprogramming.
 
 Every part of llm.rb is designed to be explicit, composable, memory-safe,
 and production-ready without compromise. No unnecessary abstractions,
-no global configuration, and no dependencies that aren't part of standard
-Ruby. It has been inspired in part by other languages such as Python, but
-it is not a port of any other library.
+no global configuration, no global state, and no dependencies that aren't
+part of standard Ruby. It has been inspired in part by other languages such
+as Python, but it is not a port of any other library.
 
 ## License
 
