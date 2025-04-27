@@ -96,7 +96,7 @@ class LLM::OpenAI
       @provider.instance_variable_get(:@http)
     end
 
-    [:response_parser, :headers, :request].each do |m|
+    [:response_parser, :headers, :request, :set_body_stream].each do |m|
       define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
     end
   end
