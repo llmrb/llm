@@ -42,7 +42,12 @@ class LLM::OpenAI
       when URI
         [{type: :image_url, image_url: {url: content.to_s}}]
       when LLM::File
-        [{type: :image_url, image_url: {url: content.to_data_uri}}]
+        file = content
+        if file.image?
+          [{type: :image_url, image_url: {url: file.to_data_uri}}]
+        else
+          [{type: :file, file: {filename: file.basename, file_data: file.to_data_uri}}]
+        end
       when LLM::Response::File
         [{type: :file, file: {file_id: content.id}}]
       when String

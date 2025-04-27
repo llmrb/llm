@@ -53,7 +53,7 @@ module LLM
       params = {model:}.merge!(params)
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      body =  JSON.dump({messages: format(messages, :complete)}.merge!(params))
+      body = JSON.dump({messages: format(messages, :complete)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
 
       res = request(@http, req)

@@ -64,6 +64,25 @@ RSpec.describe "LLM::OpenAI: completions" do
     end
   end
 
+  context "when asked to describe an audio file",
+          vcr: {cassette_name: "openai/completions/describe_pdf_document"} do
+    let(:file) { LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf") }
+    let(:response) do
+      openai.complete([
+        "This PDF document describes sysctl nodes on FreeBSD",
+        "Answer yes or no.",
+        "Nothing else",
+        file
+      ], :user)
+    end
+
+    subject { response.choices[0].content.downcase[0..2] }
+
+    it "is successful" do
+      is_expected.to eq("yes")
+    end
+  end
+
   context "when given a 'bad request' response",
           vcr: {cassette_name: "openai/completions/bad_request"} do
     subject(:response) { openai.complete(URI("/foobar.exe"), :user) }

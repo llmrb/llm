@@ -7,11 +7,18 @@
 class LLM::File
   ##
   # @return [String]
-  #  Returns the path to a file
+  #  Returns the path to the file
   attr_reader :path
 
   def initialize(path)
     @path = path
+  end
+
+  ##
+  # @return [String]
+  #  Returns basename of the file
+  def basename
+    File.basename(path)
   end
 
   ##
