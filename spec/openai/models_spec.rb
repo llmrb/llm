@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "setup"
 
 RSpec.describe "LLM::OpenAI::Models" do
