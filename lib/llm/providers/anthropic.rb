@@ -8,6 +8,7 @@ module LLM
     require_relative "anthropic/error_handler"
     require_relative "anthropic/response_parser"
     require_relative "anthropic/format"
+    require_relative "anthropic/models"
     include Format
 
     HOST = "api.anthropic.com"
@@ -57,6 +58,14 @@ module LLM
 
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
+    end
+
+    ##
+    # Provides an interface to Anthropic's models API
+    # @see https://docs.anthropic.com/en/api/models-list
+    # @return [LLM::Anthropic::Models]
+    def models
+      LLM::Anthropic::Models.new(self)
     end
 
     ##
