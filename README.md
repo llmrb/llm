@@ -38,7 +38,9 @@ The following example enables lazy mode for a
 object by entering into a "lazy" conversation where messages are buffered and
 sent to the provider only when necessary.  Both lazy and non-lazy conversations
 maintain a message thread that can be reused as context throughout a conversation.
-The example uses the stateless chat completions API that all LLM providers support:
+The example captures the spirit of llm.rb by demonstrating how objects cooperate
+together through composition, and it uses the stateless chat completions API that
+all LLM providers support:
 
 ```ruby
 #!/usr/bin/env ruby
