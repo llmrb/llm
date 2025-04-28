@@ -52,7 +52,7 @@ class LLM::OpenAI
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return [LLM::Response::Output]
-    def create(prompt, role = :user, model: "gpt-4o-mini", **params)
+    def create(prompt, role = :user, model: @provider.default_model, **params)
       params = {model:}.merge!(params)
       req = Net::HTTP::Post.new("/v1/responses", headers)
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]

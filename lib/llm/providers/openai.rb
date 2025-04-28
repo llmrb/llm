@@ -50,7 +50,7 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: "gpt-4o-mini", **params)
+    def complete(prompt, role = :user, model: default_model, **params)
       params = {model:}.merge!(params)
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
@@ -105,6 +105,14 @@ module LLM
     # @return (see LLM::Provider#assistant_role)
     def assistant_role
       "assistant"
+    end
+
+    ##
+    # Returns the default model for chat completions
+    # @see https://platform.openai.com/docs/models/gpt-4o-mini gpt-4o-mini
+    # @return [String]
+    def default_model
+      "gpt-4o-mini"
     end
 
     private

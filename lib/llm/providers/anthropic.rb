@@ -48,7 +48,7 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: "claude-3-5-sonnet-20240620", max_tokens: 1024, **params)
+    def complete(prompt, role = :user, model: default_model, max_tokens: 1024, **params)
       params = {max_tokens:, model:}.merge!(params)
       req = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
@@ -63,6 +63,14 @@ module LLM
     # @return (see LLM::Provider#assistant_role)
     def assistant_role
       "assistant"
+    end
+
+    ##
+    # Returns the default model for chat completions
+    # @see https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-comparison-table claude-3-5-sonnet-20240620
+    # @return [String]
+    def default_model
+      "claude-3-5-sonnet-20240620"
     end
 
     private

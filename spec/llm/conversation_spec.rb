@@ -27,7 +27,7 @@ RSpec.describe "LLM::Chat: non-lazy" do
         bot = nil
         inputs.zip(outputs).each_with_index do |(input, output), index|
           expect(provider).to receive(:complete)
-                                .with(input.content, instance_of(Symbol), messages:)
+                                .with(input.content, instance_of(Symbol), messages:, model: provider.default_model)
                                 .and_return(OpenStruct.new(choices: [output]))
           bot = index.zero? ? provider.chat!(input.content, :system) : bot.chat(input.content)
           messages.concat([input, output])

@@ -60,7 +60,7 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: "llama3.2", **params)
+    def complete(prompt, role = :user, model: default_model, **params)
       params = {model:, stream: false}.merge!(params)
       req = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
@@ -72,17 +72,25 @@ module LLM
     end
 
     ##
+    # Provides an interface to Ollama's models API
+    # @see https://github.com/ollama/ollama/blob/main/docs/api.md#list-local-models Ollama docs
+    # @return [LLM::Ollama::Models]
+    def models
+      LLM::Ollama::Models.new(self)
+    end
+
+    ##
     # @return (see LLM::Provider#assistant_role)
     def assistant_role
       "assistant"
     end
 
     ##
-    # Provides an interface to Ollama's models API
-    # @see https://github.com/ollama/ollama/blob/main/docs/api.md#list-local-models Ollama docs
-    # @return [LLM::Ollama::Models]
-    def models
-      LLM::Ollama::Models.new(self)
+    # Returns the default model for chat completions
+    # @see https://ollama.com/library llama3.2
+    # @return [String]
+    def default_model
+      "llama3.2"
     end
 
     private

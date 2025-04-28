@@ -73,7 +73,7 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: "gemini-1.5-flash", **params)
+    def complete(prompt, role = :user, model: default_model, **params)
       model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)
@@ -118,6 +118,14 @@ module LLM
     # @return (see LLM::Provider#assistant_role)
     def assistant_role
       "model"
+    end
+
+    ##
+    # Returns the default model for chat completions
+    # @see https://ai.google.dev/gemini-api/docs/models#gemini-1.5-flash gemini-1.5-flash
+    # @return [String]
+    def default_model
+      "gemini-1.5-flash"
     end
 
     private

@@ -44,7 +44,7 @@ class LLM::Provider
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
   # @return [LLM::Response::Embedding]
-  def embed(input, model:, **params)
+  def embed(input, model: nil, **params)
     raise NotImplementedError
   end
 
@@ -69,7 +69,7 @@ class LLM::Provider
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
   # @return [LLM::Response::Completion]
-  def complete(prompt, role = :user, model: nil, **params)
+  def complete(prompt, role = :user, model: default_model, **params)
     raise NotImplementedError
   end
 
@@ -85,8 +85,8 @@ class LLM::Provider
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def chat(prompt, role = :user, model: nil, **params)
-    LLM::Chat.new(self, params).lazy.chat(prompt, role)
+  def chat(prompt, role = :user, model: default_model, **params)
+    LLM::Chat.new(self, **params.merge(model:)).lazy.chat(prompt, role)
   end
 
   ##
@@ -101,8 +101,8 @@ class LLM::Provider
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def chat!(prompt, role = :user, model: nil, **params)
-    LLM::Chat.new(self, params).chat(prompt, role)
+  def chat!(prompt, role = :user, model: default_model, **params)
+    LLM::Chat.new(self, **params.merge(model:)).chat(prompt, role)
   end
 
   ##
@@ -117,8 +117,8 @@ class LLM::Provider
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def respond(prompt, role = :user, model: nil, **params)
-    LLM::Chat.new(self, params).lazy.respond(prompt, role)
+  def respond(prompt, role = :user, model: default_model, **params)
+    LLM::Chat.new(self, **params.merge(model:)).lazy.respond(prompt, role)
   end
 
   ##
@@ -133,8 +133,8 @@ class LLM::Provider
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def respond!(prompt, role = :user, model: nil, **params)
-    LLM::Chat.new(self, params).respond(prompt, role)
+  def respond!(prompt, role = :user, model: default_model, **params)
+    LLM::Chat.new(self, **params.merge(model:)).respond(prompt, role)
   end
 
   ##
@@ -181,6 +181,13 @@ class LLM::Provider
   #  Returns the role of the assistant in the conversation.
   #  Usually "assistant" or "model"
   def assistant_role
+    raise NotImplementedError
+  end
+
+  ##
+  # @return [String]
+  #  Returns the default model for chat completions
+  def default_model
     raise NotImplementedError
   end
 
