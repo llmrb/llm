@@ -3,6 +3,23 @@
 module JSON
 end unless defined?(JSON)
 
+##
+# The {JSON::Schema JSON::Schema} class represents a JSON schema,
+# and provides methods that let you describe and produce a schema
+# that can be used in various contexts that include the validation
+# and generation of JSON data.
+#
+# @see https://json-schema.org/ JSON Schema Specification
+# @see https://tour.json-schema.org/ JSON Schema Tour
+#
+# @example
+#  schema = JSON::Schema.new
+#  schema.object({
+#    name: schema.string.enum("John", "Jane").required,
+#    age: schema.integer.required,
+#    hobbies: schema.array(schema.string, schema.null).required,
+#    address: schema.object({street: schema.string}).required,
+#  })
 class JSON::Schema
   require_relative "schema/leaf"
   require_relative "schema/object"
@@ -15,25 +32,22 @@ class JSON::Schema
 
   ##
   # Returns an object
-  # @param properties [Hash] A hash of properties
-  # @param rest [Hash] Any other options
+  # @param [Hash] properties A hash of properties
   # @return [JSON::Schema::Object]
-  def object(properties, **rest)
-    Object.new(properties, **rest)
+  def object(properties)
+    Object.new(properties)
   end
 
   ##
   # Returns an array
-  # @param items [Array] An array of items
-  # @param rest [Hash] Any other options
+  # @param [Array] items An array of items
   # @return [JSON::Schema::Array]
-  def array(items, **rest)
-    Array.new(items, **rest)
+  def array(items)
+    Array.new(items)
   end
 
   ##
   # Returns a string
-  # @param rest [Hash] Any other options
   # @return [JSON::Schema::String]
   def string(...)
     String.new(...)
@@ -41,7 +55,6 @@ class JSON::Schema
 
   ##
   # Returns a number
-  # @param rest [Hash] Any other options
   # @return [JSON::Schema::Number] a number
   def number(...)
     Number.new(...)
@@ -49,7 +62,6 @@ class JSON::Schema
 
   ##
   # Returns an integer
-  # @param rest [Hash] Any other options
   # @return [JSON::Schema::Integer]
   def integer(...)
     Integer.new(...)
@@ -57,7 +69,6 @@ class JSON::Schema
 
   ##
   # Returns a boolean
-  # @param rest [Hash] Any other options
   # @return [JSON::Schema::Boolean]
   def boolean(...)
     Boolean.new(...)
@@ -65,7 +76,6 @@ class JSON::Schema
 
   ##
   # Returns null
-  # @param rest [Hash] Any other options
   # @return [JSON::Schema::Null]
   def null(...)
     Null.new(...)

@@ -133,7 +133,7 @@ The interface is designed so you could drop in any other library in its place:
 require "llm"
 
 llm = LLM.openai(ENV["KEY"])
-schema = llm.schema.object({os: llm.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD").required})
+schema = llm.schema.object({os: llm.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")})
 bot = LLM::Chat.new(llm, schema:)
 bot.chat "You secretly love NetBSD", :system
 bot.chat "What operating system is the best?", :user
