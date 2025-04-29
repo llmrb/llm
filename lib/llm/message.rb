@@ -51,6 +51,13 @@ module LLM
     alias_method :eql?, :==
 
     ##
+    # Try to parse the content as JSON
+    # @return [Hash]
+    def content!
+      JSON.parse(content)
+    end
+
+    ##
     # Returns true when the message is from the LLM
     # @return [Boolean]
     def assistant?

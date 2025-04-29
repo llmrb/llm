@@ -110,6 +110,46 @@ bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 #             The answer to ((5 + 15) * 2) / 10 is 4.
 ```
 
+### Schema
+
+#### Structured
+
+All LLM providers except Anthropic allow a client to describe the structure
+of a response that a LLM emits according to a schema that is described by JSON.
+The schema lets a client describe what JSON object (or value) an LLM should emit,
+and the LLM will abide by the schema. See also: [JSON Schema website](https://json-schema.org/overview/what-is-jsonschema).
+
+True to the llm.rb spirit of doing one thing well, and solving problems through the
+composition of objects, the generation of a schema is delegated to another object
+who is responsible for and an expert in the generation of JSON schemas. We will use
+the
+[llmrb/json-schema](https://github.com/llmrb/json-schema)
+library  for the sake of the examples - it is an optional dependency that is loaded
+on-demand. At least for the time being it is not neccessary to install it separately.
+The interface is designed so you could drop in any other library in its place:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(ENV["KEY"])
+schema = llm.schema.object({os: llm.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD").required})
+bot = LLM::Chat.new(llm, schema:)
+bot.chat "You secretly love NetBSD", :system
+bot.chat "What operating system is the best?", :user
+bot.messages.find(&:assistant?).content! # => {os: "NetBSD"}
+
+schema = llm.schema.object({answer: llm.schema.integer.required})
+bot = LLM::Chat.new(llm, schema:)
+bot.chat "Tell me the answer to ((5 + 5) / 2)", :user
+bot.messages.find(&:assistant?).content! # => {answer: 5}
+
+schema = llm.schema.object({probability: llm.schema.number.required})
+bot = LLM::Chat.new(llm, schema:)
+bot.chat "Does the earth orbit the sun?", :user
+bot.messages.find(&:assistant?).content! # => {probability: 1}
+```
+
 ### Audio
 
 #### Speech

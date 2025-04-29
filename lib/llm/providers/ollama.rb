@@ -60,13 +60,15 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, **params)
-      params = {model:, stream: false}.merge!(params)
+    def complete(prompt, role = :user, model: default_model, schema: nil, **params)
+      params = {model:, stream: false}
+                 .merge!(expand_schema(schema))
+                 .merge!(params)
+                 .compact
       req = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
@@ -100,6 +102,11 @@ module LLM
         "Content-Type" => "application/json",
         "Authorization" => "Bearer #{@secret}"
       }
+    end
+
+    def expand_schema(schema)
+      return {} unless schema
+      {format: schema}
     end
 
     def response_parser

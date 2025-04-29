@@ -27,13 +27,15 @@ module LLM
     ##
     # @param [LLM::Provider] provider
     #  A provider
+    # @param [to_json] schema
+    #  The JSON schema to maintain throughout the conversation
     # @param [String] model
     #  The model to maintain throughout the conversation
     # @param [Hash] params
     #  Other parameters to maintain throughout the conversation
-    def initialize(provider, model: provider.default_model, **params)
+    def initialize(provider, model: provider.default_model, schema: nil, **params)
       @provider = provider
-      @params = params.merge!(model:)
+      @params = params.merge!(model:, schema:)
       @lazy = false
       @messages = []
     end

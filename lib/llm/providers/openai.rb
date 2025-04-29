@@ -44,19 +44,22 @@ module LLM
     # @param prompt (see LLM::Provider#complete)
     # @param role (see LLM::Provider#complete)
     # @param model (see LLM::Provider#complete)
+    # @param schema (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, **params)
-      params = {model:}.merge!(params)
+    def complete(prompt, role = :user, model: default_model, schema: nil, **params)
+      params = {model:}
+                 .merge!(expand_schema(schema))
+                 .merge!(params)
+                 .compact
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages, :complete)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
@@ -130,6 +133,16 @@ module LLM
 
     def error_handler
       LLM::OpenAI::ErrorHandler
+    end
+
+    def expand_schema(schema)
+      return {} unless schema
+      {
+        response_format: {
+          type: "json_schema",
+          json_schema: {name: "JSONSchema", schema:}
+        }
+      }
     end
   end
 end

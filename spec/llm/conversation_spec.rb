@@ -27,7 +27,7 @@ RSpec.describe "LLM::Chat: non-lazy" do
         bot = nil
         inputs.zip(outputs).each_with_index do |(input, output), index|
           expect(provider).to receive(:complete)
-                                .with(input.content, instance_of(Symbol), messages:, model: provider.default_model)
+                                .with(input.content, instance_of(Symbol), messages:, model: provider.default_model, schema: nil)
                                 .and_return(OpenStruct.new(choices: [output]))
           bot = index.zero? ? provider.chat!(input.content, :system) : bot.chat(input.content)
           messages.concat([input, output])
@@ -188,6 +188,72 @@ RSpec.describe "LLM::Chat: lazy" do
           expect(conversation.last_message.extra[:response].model).to eq("o3-mini-2025-01-31")
           conversation.respond("What is 5+5?")
           expect(conversation.last_message.extra[:response].model).to eq("o3-mini-2025-01-31")
+        end
+      end
+    end
+  end
+
+  context "when given a schema as JSON" do
+    context "with openai" do
+      let(:provider) { LLM.openai(token) }
+      let(:conversation) { described_class.new(provider, schema:).lazy }
+
+      context "when given a schema",
+              vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response_schema_netbsd"} do
+        subject(:message) { conversation.recent_message.content! }
+        let(:schema) { provider.schema.object({os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")}) }
+
+        before do
+          conversation.chat "You secretly love NetBSD", :system
+          conversation.chat "What operating system is the best?", :user
+        end
+
+        it "formats the response" do
+          is_expected.to eq("os" => "NetBSD")
+        end
+      end
+    end
+
+    context "with gemini" do
+      let(:provider) { LLM.gemini(token) }
+      let(:conversation) { described_class.new(provider, schema:).lazy }
+
+      context "when given a schema",
+              vcr: {cassette_name: "gemini/lazy_conversation/completions/successful_response_schema_netbsd"} do
+        subject(:message) { conversation.recent_message.content! }
+        let(:schema) { provider.schema.object({os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")}) }
+
+        before do
+          conversation.chat "You secretly love NetBSD", :user
+          conversation.chat "What operating system is the best?", :user
+        end
+
+        it "formats the response" do
+          is_expected.to eq("os" => "NetBSD")
+        end
+      end
+    end
+
+    context "with ollama" do
+      let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
+      let(:conversation) { described_class.new(provider, schema:).lazy }
+
+      context "when given a schema",
+              vcr: {cassette_name: "ollama/lazy_conversation/completions/successful_response_schema_netbsd"} do
+        subject(:message) { conversation.recent_message.content! }
+        let(:schema) do
+          provider.schema.object({
+            os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD").required
+          })
+        end
+
+        before do
+          conversation.chat "You secretly love NetBSD", :system
+          conversation.chat "What operating system is the best?", :user
+        end
+
+        it "formats the response" do
+          is_expected.to eq("os" => "NetBSD")
         end
       end
     end
