@@ -125,7 +125,7 @@ who is responsible for and an expert in the generation of JSON schemas. We will 
 the
 [llmrb/json-schema](https://github.com/llmrb/json-schema)
 library  for the sake of the examples - it is an optional dependency that is loaded
-on-demand. At least for the time being it is not neccessary to install it separately.
+on-demand. At least for the time being it is not necessary to install it separately.
 The interface is designed so you could drop in any other library in its place:
 
 ```ruby
@@ -366,7 +366,7 @@ also understand URLs, and various file types (eg images, audio, video,
 etc). The llm.rb approach to multimodal prompts is to let you pass `URI`
 objects to describe links, `LLM::File` / `LLM::Response::File` objects
 to describe files, `String` objects to describe text blobs, or an array
-of the forementioned objects to describe multiple objects in a single
+of the aforementioned objects to describe multiple objects in a single
 prompt. Each object is a first class citizen that can be passed directly
 to a prompt.
 
