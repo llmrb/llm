@@ -21,10 +21,9 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/llmrb/llm"
 
   spec.files = Dir[
-    "README.md", "LICENSE.txt",
+    "README.md", "LICENSE",
     "lib/*.rb", "lib/**/*.rb",
-    "spec/*.rb", "spec/**/*.rb",
-    "share/llm/models/*.yml", "llm.gemspec"
+    "llm.gemspec"
   ]
   spec.require_paths = ["lib"]
 
