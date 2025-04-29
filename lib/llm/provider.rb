@@ -64,12 +64,14 @@ class LLM::Provider
   #  The role of the prompt (e.g. :user, :system)
   # @param [String] model
   #  The model to use for the completion
+  # @param [#to_json, nil] schema
+  #  The schema that describes the expected response format
   # @param [Hash] params
   #  Other completion parameters
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
   # @return [LLM::Response::Completion]
-  def complete(prompt, role = :user, model: default_model, **params)
+  def complete(prompt, role = :user, model: default_model, schema: nil, **params)
     raise NotImplementedError
   end
 
@@ -81,12 +83,13 @@ class LLM::Provider
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
+  # @param schema (see LLM::Provider#complete)
   # @param [Hash] params
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def chat(prompt, role = :user, model: default_model, **params)
-    LLM::Chat.new(self, **params.merge(model:)).lazy.chat(prompt, role)
+  def chat(prompt, role = :user, model: default_model, schema: nil, **params)
+    LLM::Chat.new(self, **params.merge(model:, schema:)).lazy.chat(prompt, role)
   end
 
   ##
@@ -97,12 +100,13 @@ class LLM::Provider
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
+  # @param schema (see LLM::Provider#complete)
   # @param [Hash] params
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def chat!(prompt, role = :user, model: default_model, **params)
-    LLM::Chat.new(self, **params.merge(model:)).chat(prompt, role)
+  def chat!(prompt, role = :user, model: default_model, schema: nil, **params)
+    LLM::Chat.new(self, **params.merge(model:, schema:)).chat(prompt, role)
   end
 
   ##
@@ -113,12 +117,13 @@ class LLM::Provider
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
+  # @param schema (see LLM::Provider#complete)
   # @param [Hash] params
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def respond(prompt, role = :user, model: default_model, **params)
-    LLM::Chat.new(self, **params.merge(model:)).lazy.respond(prompt, role)
+  def respond(prompt, role = :user, model: default_model, schema: nil, **params)
+    LLM::Chat.new(self, **params.merge(model:, schema:)).lazy.respond(prompt, role)
   end
 
   ##
@@ -129,12 +134,13 @@ class LLM::Provider
   # @param prompt (see LLM::Provider#complete)
   # @param role (see LLM::Provider#complete)
   # @param model (see LLM::Provider#complete)
+  # @param schema (see LLM::Provider#complete)
   # @param [Hash] params
   #  Other completion parameters to maintain throughout a chat
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def respond!(prompt, role = :user, model: default_model, **params)
-    LLM::Chat.new(self, **params.merge(model:)).respond(prompt, role)
+  def respond!(prompt, role = :user, model: default_model, schema: nil, **params)
+    LLM::Chat.new(self, **params.merge(model:, schema:)).respond(prompt, role)
   end
 
   ##
@@ -189,6 +195,16 @@ class LLM::Provider
   #  Returns the default model for chat completions
   def default_model
     raise NotImplementedError
+  end
+
+  ##
+  # Returns an object that can generate a JSON schema
+  # @return [JSON::Schema]
+  def schema
+    @schema ||= begin
+      require_relative "../json/schema"
+      JSON::Schema.new
+    end
   end
 
   private
