@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module LLM
+  require "stringio"
   require_relative "llm/core_ext/ostruct"
   require_relative "llm/version"
   require_relative "llm/utils"

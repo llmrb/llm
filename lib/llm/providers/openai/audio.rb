@@ -9,8 +9,6 @@ class LLM::OpenAI
   #   res = llm.audio.create_speech(input: "A dog on a rocket to the moon")
   #   File.binwrite("rocket.mp3", res.audio.string)
   class Audio
-    require "stringio"
-
     ##
     # Returns a new Audio object
     # @param provider [LLM::Provider]
