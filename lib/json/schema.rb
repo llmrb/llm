@@ -21,6 +21,7 @@ end unless defined?(JSON)
 #    address: schema.object({street: schema.string}).required,
 #  })
 class JSON::Schema
+  require_relative "schema/version"
   require_relative "schema/leaf"
   require_relative "schema/object"
   require_relative "schema/array"
@@ -42,8 +43,8 @@ class JSON::Schema
   # Returns an array
   # @param [Array] items An array of items
   # @return [JSON::Schema::Array]
-  def array(items)
-    Array.new(items)
+  def array(*items)
+    Array.new(*items)
   end
 
   ##

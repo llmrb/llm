@@ -2,9 +2,8 @@
 
 class JSON::Schema
   class Array < Leaf
-    def initialize(items, **rest)
+    def initialize(*items)
       @items = items
-      super(**rest)
     end
 
     def to_h
