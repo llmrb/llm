@@ -21,14 +21,14 @@ class LLM::OpenAI
   #   require "llm"
   #
   #   llm  = LLM.openai(ENV["KEY"])
-  #   file = llm.files.create file: LLM::File("/images/hat.png")
+  #   file = llm.files.create file: "/images/hat.png"
   #   res  = llm.responses.create ["Describe the image", file]
   # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
   #   llm  = LLM.openai(ENV["KEY"])
-  #   file = llm.files.create file: LLM::File("/documents/freebsd.pdf")
+  #   file = llm.files.create file: "/documents/freebsd.pdf"
   #   res  = llm.responses.create ["Describe the document, file]
   class Responses
     include Format

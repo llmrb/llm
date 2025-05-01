@@ -14,7 +14,7 @@ class LLM::OpenAI
   #
   #   llm = LLM.openai(ENV["KEY"])
   #   bot = LLM::Chat.new(llm).lazy
-  #   file = llm.files.create file: LLM::File("/documents/freebsd.pdf")
+  #   file = llm.files.create file: "/documents/freebsd.pdf"
   #   bot.chat(file)
   #   bot.chat("Describe the document")
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
@@ -24,7 +24,7 @@ class LLM::OpenAI
   #
   #   llm = LLM.openai(ENV["KEY"])
   #   bot = LLM::Chat.new(llm).lazy
-  #   file = llm.files.create file: LLM::File("/documents/openbsd.pdf")
+  #   file = llm.files.create file: "/documents/openbsd.pdf"
   #   bot.chat(["Describe the document I sent to you", file])
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
@@ -62,7 +62,7 @@ class LLM::OpenAI
     # Create a file
     # @example
     #   llm = LLM.openai(ENV["KEY"])
-    #   res = llm.files.create file: LLM::File("/documents/haiku.txt"),
+    #   res = llm.files.create file: "/documents/haiku.txt"
     # @see https://platform.openai.com/docs/api-reference/files/create OpenAI docs
     # @param [File] file The file
     # @param [String] purpose The purpose of the file (see OpenAI docs)

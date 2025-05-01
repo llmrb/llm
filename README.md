@@ -238,7 +238,7 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.audio.create_transcription(
-  file: LLM::File(File.join(Dir.home, "hello.mp3"))
+  file: File.join(Dir.home, "hello.mp3")
 )
 print res.text, "\n" # => "Hello world."
 ```
@@ -258,7 +258,7 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.audio.create_translation(
-  file: LLM::File(File.join(Dir.home, "bomdia.mp3"))
+  file: File.join(Dir.home, "bomdia.mp3")
 )
 print res.text, "\n" # => "Good morning."
 ```
@@ -306,7 +306,7 @@ require "fileutils"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.images.edit(
-  image: LLM::File("/images/cat.png"),
+  image: "/images/cat.png",
   prompt: "a cat with a hat",
 )
 res.urls.each do |url|
@@ -331,7 +331,7 @@ require "fileutils"
 
 llm = LLM.openai(ENV["KEY"])
 res = llm.images.create_variation(
-  image: LLM::File("/images/cat.png"),
+  image: "/images/cat.png",
   n: 5
 )
 res.urls.each.with_index do |url, index|
@@ -359,7 +359,7 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
-file = llm.files.create(file: LLM::File("/documents/openbsd_is_awesome.pdf"))
+file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
 bot.chat(file)
 bot.chat("What is this file about?")
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
@@ -395,15 +395,15 @@ bot.chat URI("https://example.com/path/to/image.png")
 bot.chat "Describe the above image"
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
-file = bot.files.create(file: LLM::File("/documents/openbsd_is_awesome.pdf"))
+file = bot.files.create(file: "/documents/openbsd_is_awesome.pdf")
 bot.chat file
 bot.chat "What is this file about?"
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
-bot.chat [LLM::File("/images/puffy.png"), "What is this image about?"]
+bot.chat [LLM.File("/images/puffy.png"), "What is this image about?"]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
-bot.chat [LLM::File("/images/beastie.png"), "What is this image about?"]
+bot.chat [LLM.File("/images/beastie.png"), "What is this image about?"]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 

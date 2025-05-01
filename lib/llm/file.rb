@@ -72,5 +72,10 @@ end
 #  The path to a file
 # @return [LLM::File]
 def LLM.File(path)
-  LLM::File.new(path)
+  case path
+  when LLM::File, LLM::Response::File
+    path
+  else
+    LLM::File.new(path)
+  end
 end

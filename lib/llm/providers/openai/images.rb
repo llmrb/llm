@@ -57,7 +57,7 @@ class LLM::OpenAI
     # Create image variations
     # @example
     #   llm = LLM.openai(ENV["KEY"])
-    #   res = llm.images.create_variation(image: LLM::File("/images/hat.png"), n: 5)
+    #   res = llm.images.create_variation(image: "/images/hat.png", n: 5)
     #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/createVariation OpenAI docs
     # @param [File] image The image to create variations from
@@ -66,6 +66,7 @@ class LLM::OpenAI
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Image]
     def create_variation(image:, model: "dall-e-2", **params)
+      image = LLM.File(image)
       multi = LLM::Multipart.new(params.merge!(image:, model:))
       req = Net::HTTP::Post.new("/v1/images/variations", headers)
       req["content-type"] = multi.content_type
@@ -78,7 +79,7 @@ class LLM::OpenAI
     # Edit an image
     # @example
     #   llm = LLM.openai(ENV["KEY"])
-    #   res = llm.images.edit(image: LLM::File("/images/hat.png"), prompt: "A cat wearing this hat")
+    #   res = llm.images.edit(image: "/images/hat.png", prompt: "A cat wearing this hat")
     #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/createEdit OpenAI docs
     # @param [File] image The image to edit
@@ -88,6 +89,7 @@ class LLM::OpenAI
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Image]
     def edit(image:, prompt:, model: "dall-e-2", **params)
+      image = LLM.File(image)
       multi = LLM::Multipart.new(params.merge!(image:, prompt:, model:))
       req = Net::HTTP::Post.new("/v1/images/edits", headers)
       req["content-type"] = multi.content_type

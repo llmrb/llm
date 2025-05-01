@@ -19,7 +19,7 @@ class LLM::Gemini
   #
   #   llm = LLM.gemini(ENV["KEY"])
   #   bot = LLM::Chat.new(llm).lazy
-  #   file = llm.files.create file: LLM::File("/audio/haiku.mp3")
+  #   file = llm.files.create file: "/audio/haiku.mp3"
   #   bot.chat(file)
   #   bot.chat("Describe the audio file I sent to you")
   #   bot.chat("The audio file is the first message I sent to you.")
@@ -30,7 +30,7 @@ class LLM::Gemini
   #
   #   llm = LLM.gemini(ENV["KEY"])
   #   bot = LLM::Chat.new(llm).lazy
-  #   file = llm.files.create file: LLM::File("/audio/haiku.mp3")
+  #   file = llm.files.create file: "/audio/haiku.mp3"
   #   bot.chat(["Describe the audio file I sent to you", file])
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
@@ -71,13 +71,14 @@ class LLM::Gemini
     # Create a file
     # @example
     #   llm = LLM.gemini(ENV["KEY"])
-    #   res = llm.files.create file: LLM::File("/audio/haiku.mp3"),
+    #   res = llm.files.create file: "/audio/haiku.mp3"
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
-    # @param [File] file The file
+    # @param [String, LLM::File] file The file
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response::File]
     def create(file:, **params)
+      file = LLM.File(file)
       req = Net::HTTP::Post.new(request_upload_url(file:), {})
       req["content-length"] = file.bytesize
       req["X-Goog-Upload-Offset"] = 0

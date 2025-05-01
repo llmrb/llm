@@ -34,7 +34,7 @@ class LLM::Gemini
     #   res = llm.audio.create_transcription(file: LLM::File("/rocket.mp3"))
     #   res.text # => "A dog on a rocket to the moon"
     # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs
-    # @param [LLM::File, LLM::Response::File] file The input audio
+    # @param [String, LLM::File, LLM::Response::File] file The input audio
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
@@ -43,7 +43,7 @@ class LLM::Gemini
       res = @provider.complete [
         "Your task is to transcribe the contents of an audio file",
         "Your response should include the transcription, and nothing else",
-        file
+        LLM.File(file)
       ], :user, model:, **params
       LLM::Response::AudioTranscription
         .new(res)
@@ -58,7 +58,7 @@ class LLM::Gemini
     #   res = llm.audio.create_translation(file: LLM::File("/bismillah.mp3"))
     #   res.text # => "In the name of Allah, the Beneficent, the Merciful."
     # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs
-    # @param [LLM::File, LLM::Response::File] file The input audio
+    # @param [String, LLM::File, LLM::Response::File] file The input audio
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
@@ -67,7 +67,7 @@ class LLM::Gemini
       res = @provider.complete [
         "Your task is to translate the contents of an audio file into English",
         "Your response should include the translation, and nothing else",
-        file
+        LLM.File(file)
       ], :user, model:, **params
       LLM::Response::AudioTranslation
         .new(res)

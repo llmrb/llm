@@ -58,15 +58,16 @@ class LLM::Gemini
     #   res = llm.images.edit image: LLM::File("cat.png"), prompt: "Add a hat to the cat"
     #   IO.copy_stream res.images[0], "hatoncat.png"
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
-    # @param [LLM::File] image The image to edit
+    # @param [String, LLM::File] image The image to edit
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
     # @note (see LLM::Gemini::Images#create)
     # @return [LLM::Response::Image]
     def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
-      req  = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
-      body = JSON.dump({
+      req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
+      image = LLM.File(image)
+      body  = JSON.dump({
         contents: [{parts: [{text: prompt}, format_content(image)]}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params)).b
