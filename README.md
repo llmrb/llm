@@ -154,9 +154,9 @@ bot.messages.find(&:assistant?).content! # => {probability: 1}
 
 #### Functions
 
-The OpenAI provider supports a powerful feature known as tool calling,
-and although it is a little complex to understand at first, it can be
-powerful for building agents. The following example demonstrates how we
+The OpenAI and Ollama providers support a powerful feature known as
+tool calling, and although it is a little complex to understand at first,
+it can be powerful for building agents. The following example demonstrates how we
 can define a local function (which happens to be a tool), and OpenAI can
 then detect when we should call the function. The following example
 defines an agent that can run system commands based on natural language:

@@ -24,10 +24,27 @@ class LLM::Ollama
     def parse_completion(body)
       {
         model: body["model"],
-        choices: [LLM::Message.new(*body["message"].values_at("role", "content"), {response: self})],
+        choices: [begin
+          role, content, calls = body["message"].values_at("role", "content", "tool_calls")
+          extra = {response: self, tool_calls: tool_calls(calls)}
+          LLM::Message.new(role, content, extra)
+        end],
         prompt_tokens: body.dig("prompt_eval_count"),
         completion_tokens: body.dig("eval_count")
       }
+    end
+
+    private
+
+    def tool_calls(tools)
+      return [] unless tools
+      tools.filter_map do
+        next unless _1["function"]
+        OpenStruct.new(
+          name: _1["function"]["name"],
+          arguments: _1["function"]["arguments"]
+        )
+      end
     end
   end
 end
