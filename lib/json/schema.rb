@@ -50,35 +50,35 @@ class JSON::Schema
   ##
   # Returns a string
   # @return [JSON::Schema::String]
-  def string(...)
-    String.new(...)
+  def string
+    String.new
   end
 
   ##
   # Returns a number
   # @return [JSON::Schema::Number] a number
-  def number(...)
-    Number.new(...)
+  def number
+    Number.new
   end
 
   ##
   # Returns an integer
   # @return [JSON::Schema::Integer]
-  def integer(...)
-    Integer.new(...)
+  def integer
+    Integer.new
   end
 
   ##
   # Returns a boolean
   # @return [JSON::Schema::Boolean]
-  def boolean(...)
-    Boolean.new(...)
+  def boolean
+    Boolean.new
   end
 
   ##
   # Returns null
   # @return [JSON::Schema::Null]
-  def null(...)
-    Null.new(...)
+  def null
+    Null.new
   end
 end
