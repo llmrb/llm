@@ -7,6 +7,21 @@ implemented with zero dependencies outside Ruby's standard library. See the
 [philosophy](#philosophy) section for more information on the design principles
 behind llm.rb.
 
+## Features
+
+- ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, VoyageAI, and more
+- 🧠 Stateless and stateful chat via completions and the responses API
+- 🤖 Tool calling and function execution for building agents (OpenAI, Ollama)
+- 🗂️ JSON Schema support for structured, validated responses
+- 🗣️ Text-to-speech, transcription, and translation (OpenAI, Gemini)
+- 🖼️ Image generation, editing, and variation support
+- 📎 File uploads and prompt-aware file interaction
+- 🧮 Text embeddings and vector support
+- 🔌 Model introspection and selection
+- 💡 Multimodal prompts (text, URLs, files)
+- 🧼 Memory-safe design, including child-process offloading
+- 📦 Zero dependencies outside Ruby's standard library
+
 ## Examples
 
 ### Providers
