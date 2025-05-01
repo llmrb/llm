@@ -86,6 +86,7 @@ class LLM::OpenAI
     end
 
     def tool_calls(tools)
+      return [] unless tools
       tools.filter_map do
         next unless _1["function"]
         OpenStruct.new(
