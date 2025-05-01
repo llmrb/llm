@@ -8,24 +8,24 @@ and principles behind the library.
 
 ## Features
 
-### General
+#### General
 - ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, and more
 - 📦 Zero dependencies outside Ruby's standard library
 - 🔌 Model introspection and selection
 
-### Chat & Agents
+#### Chat, Agents
 - 🧠 Stateless and stateful chat via completions and responses API
 - 🤖 Tool calling and function execution
 - 🗂️ JSON Schema support for structured, validated responses
 - 🧼 Memory-safe design, including child-process offloading
 
-### Media
+#### Media
 - 🗣️ Text-to-speech, transcription, and translation
 - 🖼️ Image generation, editing, and variation support
 - 📎 File uploads and prompt-aware file interaction
 - 💡 Multimodal prompts (text, URLs, files)
 
-### Embeddings
+#### Embeddings
 - 🧮 Text embeddings and vector support
 
 ## Examples
