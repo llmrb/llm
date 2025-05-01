@@ -159,8 +159,7 @@ can create speech from text, transcribe audio to text, or translate
 audio to text (usually English). The following example uses the OpenAI provider
 to create an audio file from a text prompt. The audio is then moved to
 `${HOME}/hello.mp3` as the final step. As always, consult the provider's
-documentation (eg [OpenAI docs](https://platform.openai.com/docs/api-reference/audio/create))
-for more information on how to use the audio generation API:
+documentation for more information on how to use the audio generation API:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -177,16 +176,7 @@ The following example transcribes an audio file to text. The audio file
 (`${HOME}/hello.mp3`) was theoretically created in the previous example,
 and the result is printed to the console. The example uses the OpenAI
 provider to transcribe the audio file. As always, consult the provider's
-documentation (eg
-[OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranscription),
-[Gemini docs](https://ai.google.dev/gemini-api/docs/audio))
-for more information on how to use the audio transcription API.
-
-Please also see provider-specific documentation for more provider-specific
-examples and documentation
-(eg
-[LLM::Gemini::Audio](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Audio.html),
-[LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)):
+documentation for more information on how to use the audio transcription API:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -205,17 +195,8 @@ The following example translates an audio file to text. In this example
 the audio file (`${HOME}/bomdia.mp3`) is theoretically in Portuguese,
 and it is translated to English. The example uses the OpenAI provider,
 and at the time of writing, it can only translate to English. As always,
-consult the provider's documentation (eg
-[OpenAI docs](https://platform.openai.com/docs/api-reference/audio/createTranslation),
-[Gemini docs](https://ai.google.dev/gemini-api/docs/audio))
-for more information on how to use the audio translation API.
-
-Please also see provider-specific documentation for more provider-specific
-examples and documentation
-(eg
-[LLM::Gemini::Audio](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Audio.html),
-[LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)):
-
+consult the provider's documentation for more information on how to use 
+the audio translation API:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -236,13 +217,7 @@ Some but not all LLM providers implement image generation capabilities that
 can create new images from a prompt, or edit an existing image with a
 prompt. The following example uses the OpenAI provider to create an
 image of a dog on a rocket to the moon. The image is then moved to
-`${HOME}/dogonrocket.png` as the final step.
-
-Please also see provider-specific documentation for more provider-specific
-examples and documentation
-(eg
-[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html),
-[LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)):
+`${HOME}/dogonrocket.png` as the final step:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -266,17 +241,8 @@ now wearing a hat. The image is then moved to `${HOME}/catwithhat.png` as
 the final step.
 
 Results and quality may vary, consider prompt adjustments if the results
-are not satisfactory, and consult the provider's documentation
-(eg
-[OpenAI docs](https://platform.openai.com/docs/api-reference/images/createEdit),
-[Gemini docs](https://ai.google.dev/gemini-api/docs/image-generation))
-for more information on how to use the image editing API.
-
-Please also see provider-specific documentation for more provider-specific
-examples and documentation
-(eg
-[LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html),
-[LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)):
+are not as expected, and consult the provider's documentation
+for more information on how to use the image editing API:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -300,9 +266,8 @@ end
 The following example is focused on creating variations of a local image.
 The image (`/images/cat.png`) is returned to us with five different variations.
 The images are then moved to `${HOME}/catvariation0.png`, `${HOME}/catvariation1.png`
-and so on as the final step. Consult the provider's documentation
-(eg [OpenAI docs](https://platform.openai.com/docs/api-reference/images/createVariation))
-for more information on how to use the image variations API:
+and so on as the final step. Consult the provider's documentation for more information
+on how to use the image variations API:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -331,13 +296,8 @@ for this feature. The following example uses the OpenAI provider to describe
 the contents of a PDF file after it has been uploaded. The file (an instance
 of [LLM::Response::File](https://0x1eef.github.io/x/llm.rb/LLM/Response/File.html))
 is passed directly to the chat method, and generally any object a prompt supports
-can be given to the chat method.
+can be given to the chat method:
 
-Please also see provider-specific documentation for more provider-specific
-examples and documentation
-(eg
-[LLM::Gemini::Files](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Files.html),
-[LLM::OpenAI::Files](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Files.html)):
 
 ```ruby
 #!/usr/bin/env ruby
@@ -368,11 +328,7 @@ objects to describe links, `LLM::File` | `LLM::Response::File` objects
 to describe files, `String` objects to describe text blobs, or an array
 of the aforementioned objects to describe multiple objects in a single
 prompt. Each object is a first class citizen that can be passed directly
-to a prompt.
-
-For more depth and examples on how to use the multimodal API, please see
-the [provider-specific documentation](https://0x1eef.github.io/x/llm.rb/)
-for more provider-specific examples:
+to a prompt:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -494,6 +450,26 @@ else there's the API reference. It covers classes and methods that the README gl
 over or doesn't cover at all. The API reference is available at
 [0x1eef.github.io/x/llm.rb](https://0x1eef.github.io/x/llm.rb).
 
+
+### See also
+
+#### Gemini
+
+* [LLM::Gemini](https://0x1eef.github.io/x/llm.rb/LLM/Gemini.html)
+* [LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html)
+* [LLM::Gemini::Audio](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Audio.html)
+
+#### OpenAI
+
+* [LLM::OpenAI](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI.html)
+* [LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)
+* [LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)
+
+#### Anthropic
+* [LLM::Anthropic](https://0x1eef.github.io/x/llm.rb/LLM/Anthropic.html)
+
+#### Ollama
+* [LLM::Ollama](https://0x1eef.github.io/x/llm.rb/LLM/Ollama.html)
 
 ## Install
 
