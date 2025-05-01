@@ -462,8 +462,8 @@ over or doesn't cover at all. The API reference is available at
 #### OpenAI
 
 * [LLM::OpenAI](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI.html)
-* [LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)
 * [LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)
+* [LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)
 
 #### Anthropic
 * [LLM::Anthropic](https://0x1eef.github.io/x/llm.rb/LLM/Anthropic.html)
