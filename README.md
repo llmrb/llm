@@ -395,9 +395,8 @@ bot.chat URI("https://example.com/path/to/image.png")
 bot.chat "Describe the above image"
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
-file = bot.files.create(file: "/documents/openbsd_is_awesome.pdf")
-bot.chat file
-bot.chat "What is this file about?"
+file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
+bot.chat [file, "What is this file about?"]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
 bot.chat [LLM.File("/images/puffy.png"), "What is this image about?"]
