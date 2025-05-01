@@ -1,26 +1,32 @@
 ## About
 
-llm.rb is a lightweight library that provides a common interface
-and set of functionality for multiple Large Language Models (LLMs). It
-is designed to be simple, flexible, and easy to use &ndash; and it has been
-implemented with zero dependencies outside Ruby's standard library. See the
-[philosophy](#philosophy) section for more information on the design principles
-behind llm.rb.
+llm.rb is a zero-dependency Ruby toolkit for Large Language Models like
+OpenAI, Gemini, Anthropic, and more. It’s fast, clean, and composable –
+with full support for chat, tool calling, audio, images, files, and
+JSON schema. See the [philosophy](#philosophy) section for the design goals
+and principles behind the library.
 
 ## Features
 
-- ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, VoyageAI, and more
-- 🧠 Stateless and stateful chat via completions and the responses API
-- 🤖 Tool calling and function execution for building agents (OpenAI, Ollama)
+#### General
+- ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, and more
+- 📦 Zero dependencies outside Ruby's standard library
+- 🔌 Model introspection and selection
+- 🚀 Optimized for performance and low memory usage
+
+#### Chat, Agents
+- 🧠 Stateless and stateful chat via completions and responses API
+- 🤖 Tool calling and function execution
 - 🗂️ JSON Schema support for structured, validated responses
-- 🗣️ Text-to-speech, transcription, and translation (OpenAI, Gemini)
+
+#### Media
+- 🗣️ Text-to-speech, transcription, and translation
 - 🖼️ Image generation, editing, and variation support
 - 📎 File uploads and prompt-aware file interaction
-- 🧮 Text embeddings and vector support
-- 🔌 Model introspection and selection
 - 💡 Multimodal prompts (text, URLs, files)
-- 🧼 Memory-safe design, including child-process offloading
-- 📦 Zero dependencies outside Ruby's standard library
+
+#### Embeddings
+- 🧮 Text embeddings and vector support
 
 ## Examples
 
@@ -249,7 +255,7 @@ The following example translates an audio file to text. In this example
 the audio file (`${HOME}/bomdia.mp3`) is theoretically in Portuguese,
 and it is translated to English. The example uses the OpenAI provider,
 and at the time of writing, it can only translate to English. As always,
-consult the provider's documentation for more information on how to use 
+consult the provider's documentation for more information on how to use
 the audio translation API:
 
 ```ruby
@@ -391,13 +397,11 @@ require "llm"
 llm = LLM.openai(ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
 
-bot.chat URI("https://example.com/path/to/image.png")
-bot.chat "Describe the above image"
+bot.chat [URI("https://example.com/path/to/image.png"), "Describe the image in the link"]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
-file = bot.files.create(file: "/documents/openbsd_is_awesome.pdf")
-bot.chat file
-bot.chat "What is this file about?"
+file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
+bot.chat [file, "What is this file about?"]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
 bot.chat [LLM.File("/images/puffy.png"), "What is this image about?"]
@@ -533,17 +537,19 @@ llm.rb can be installed via rubygems.org:
 
 ## Philosophy
 
-llm.rb was built for developers who believe that simplicity can be challenging
-but it is always worth it. It provides a clean, dependency-free interface to
-Large Language Models, treating Ruby itself as the primary platform &ndash;
-not Rails or any other specific framework or library. There is no hidden
-magic or complex metaprogramming.
+llm.rb provides a clean, dependency-free interface to Large Language Models,
+treating Ruby itself — not Rails or any specific framework — as the primary platform.
+It avoids hidden magic, complex metaprogramming, and heavy DSLs.
 
-Every part of llm.rb is designed to be explicit, composable, memory-safe,
-and production-ready without compromise. No unnecessary abstractions,
-no global configuration, no global state, and no dependencies that aren't
-part of standard Ruby. It has been inspired in part by other languages such
-as Python, but it is not a port of any other library.
+Instead, it embraces a general-purpose, object-oriented design that prioritizes
+explicitness, composability, and clarity. Code should be easy to follow, test, and adapt.
+For that reason we favor small, cooperating objects over deeply nested blocks — a pattern
+that often emerges in DSL-heavy libraries.
+
+Each part of llm.rb is designed to be conscious of memory, ready for production, and free
+from global state or non-standard dependencies. While inspired by ideas from other ecosystems
+(especially Python) it is not a port of any other library — it is a Ruby library written
+by Rubyists who value borrowing good ideas from other languages and ecosystems.
 
 ## License
 
