@@ -8,17 +8,19 @@ class OpenStruct
     #   obj = OpenStruct.from_hash(person: {name: 'John'})
     #   obj.person.name  # => 'John'
     #   obj.person.class # => OpenStruct
-    # @param [Hash] hash_obj
+    # @param [Hash, Array] obj
     #   A Hash object
     # @return [OpenStruct]
-    #   An OpenStruct object initialized by visiting `hash_obj` with
-    #   recursion
-    def from_hash(hash_obj)
-      visited_object = {}
-      hash_obj.each do |key, value|
-        visited_object[key] = walk(value)
+    #   An OpenStruct object initialized by visiting `obj` with recursion
+    def from_hash(obj)
+      case obj
+      when self then from_hash(obj.to_h)
+      when Array then obj.map { |v| from_hash(v) }
+      else
+        visited = {}
+        obj.each { visited[_1] = walk(_2) }
+        new(visited)
       end
-      new(visited_object)
     end
 
     private

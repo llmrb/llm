@@ -27,7 +27,8 @@ class LLM::OpenAI
         choices: body["choices"].map.with_index do
           extra = {
             index: _2, response: self,
-            logprobs: _1["logprobs"]
+            logprobs: _1["logprobs"],
+            tool_calls: tool_calls(_1.dig("message", "tool_calls"))
           }
           LLM::Message.new(*_1["message"].values_at("role", "content"),  extra)
         end,
@@ -53,7 +54,8 @@ class LLM::OpenAI
           extra = {
             index:, response: self,
             contents: output["content"],
-            annotations: output["annotations"]
+            annotations: output["annotations"],
+            tool_calls: tool_calls(output["tool_calls"])
           }
           LLM::Message.new(output["role"], text(output), extra)
         end
@@ -81,6 +83,17 @@ class LLM::OpenAI
         .select { _1["type"] == "output_text" }
         .map { _1["text"] }
         .join("\n")
+    end
+
+    def tool_calls(tools)
+      tools.filter_map do
+        next unless _1["function"]
+        OpenStruct.new(
+          id: _1["id"],
+          name: _1["function"]["name"],
+          arguments: JSON.parse(_1["function"]["arguments"])
+        )
+      end
     end
   end
 end

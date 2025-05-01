@@ -150,6 +150,45 @@ bot.chat "Does the earth orbit the sun?", :user
 bot.messages.find(&:assistant?).content! # => {probability: 1}
 ```
 
+### Tools
+
+#### Functions
+
+The OpenAI provider supports a powerful feature known as tool calling,
+and although it is a little complex to understand at first, it can be
+powerful for building agents. The following example demonstrates how we
+can define a local function (which happens to be a tool), and OpenAI can
+then detect when we should call the function. The following example
+defines an agent that can run system commands based on natural language:
+
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(ENV["KEY"])
+tool = LLM.function(:system) do |fn|
+  fn.description "Run a shell command"
+  fn.params do |schema|
+    schema.object(command: schema.string.required)
+  end
+  fn.define do |params|
+    system(params.command)
+  end
+end
+
+bot = LLM::Chat.new(llm, tools: [tool]).lazy
+bot.chat "You are a shell command executor. You will run shell commands.", :system
+bot.chat "What is the current date?", :user
+bot.last_message.functions.each(&:call)
+bot.chat "What operating system am I running? (short version please!)", :user
+bot.last_message.functions.each(&:call)
+
+##
+# Thu May  1 10:01:02 UTC 2025
+# FreeBSD
+```
+
 ### Audio
 
 #### Speech

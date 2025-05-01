@@ -2,6 +2,7 @@
 
 module LLM
   require "stringio"
+  require_relative "json/schema"
   require_relative "llm/core_ext/ostruct"
   require_relative "llm/version"
   require_relative "llm/utils"
@@ -15,6 +16,7 @@ module LLM
   require_relative "llm/provider"
   require_relative "llm/chat"
   require_relative "llm/buffer"
+  require_relative "llm/function"
 
   module_function
 
@@ -57,5 +59,13 @@ module LLM
   def openai(secret, options = {})
     require_relative "llm/providers/openai" unless defined?(LLM::OpenAI)
     LLM::OpenAI.new(secret, **options)
+  end
+
+  def function(name, &b)
+    functions[name.to_s] = LLM::Function.new(name, &b)
+  end
+
+  def functions
+    @functions ||= {}
   end
 end

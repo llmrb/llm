@@ -65,11 +65,28 @@ module LLM
     end
 
     ##
+    # @return [Array<LLM::Function>]
+    def functions
+      tool_calls.map do |fn|
+        lambda do
+          LLM.functions[fn.name].call(fn.arguments)
+        end
+      end
+    end
+
+    ##
     # Returns a string representation of the message
     # @return [String]
     def inspect
       "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
-      "role=#{role.inspect} content=#{content.inspect}>"
+      "tool_call=#{tool_calls.any?} role=#{role.inspect} " \
+      "content=#{content.inspect}>"
+    end
+
+    private
+
+    def tool_calls
+      @tool_calls ||= OpenStruct.from_hash(@extra[:tool_calls] || [])
     end
   end
 end
