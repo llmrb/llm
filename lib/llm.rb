@@ -61,10 +61,28 @@ module LLM
     LLM::OpenAI.new(secret, **options)
   end
 
+  ##
+  # Define a function
+  # @example
+  # LLM.function(:system) do |fn|
+  #   fn.description "Run system command"
+  #   fn.params do |schema|
+  #     schema.object(command: schema.string.required)
+  #   end
+  #   fn.define do |params|
+  #     system(params.command)
+  #   end
+  # end
+  # @param [Symbol] name The name of the function
+  # @param [Proc] b The block to define the function
+  # @return [LLM::Function] The function object
   def function(name, &b)
     functions[name.to_s] = LLM::Function.new(name, &b)
   end
 
+  ##
+  # Returns all known functions
+  # @return [Hash<String,LLM::Function>]
   def functions
     @functions ||= {}
   end
