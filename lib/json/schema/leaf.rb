@@ -13,6 +13,7 @@ class JSON::Schema
       @default = nil
       @enum = nil
       @required = nil
+      @const = nil
     end
 
     ##
@@ -33,10 +34,20 @@ class JSON::Schema
 
     ##
     # Set the allowed values of a leaf
+    # @see https://tour.json-schema.org/content/02-Primitive-Types/07-Enumerated-Values-II Enumerated Values
     # @param [Array] values The allowed values
     # @return [JSON::Schema::Leaf]
     def enum(*values)
       tap { @enum = values }
+    end
+
+    ##
+    # Set the value of a leaf to be a constant value
+    # @see https://tour.json-schema.org/content/02-Primitive-Types/08-Defining-Constant-Values Constant Values
+    # @param [Object] value The constant value
+    # @return [JSON::Schema::Leaf]
+    def const(value)
+      tap { @const = value }
     end
 
     ##

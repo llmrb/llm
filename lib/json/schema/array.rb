@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class JSON::Schema
+  ##
+  # The {JSON::Schema::Array JSON::Schema::Array} class represents an
+  # array value in a JSON schema. It is a subclass of
+  # {JSON::Schema::Leaf JSON::Schema::Leaf} and provides methods that
+  # can act as constraints.
   class Array < Leaf
     def initialize(*items)
       @items = items
