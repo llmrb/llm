@@ -397,8 +397,7 @@ require "llm"
 llm = LLM.openai(ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
 
-bot.chat URI("https://example.com/path/to/image.png")
-bot.chat "Describe the above image"
+bot.chat [URI("https://example.com/path/to/image.png"), "Describe the image in the link"]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 
 file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
@@ -544,11 +543,13 @@ It avoids hidden magic, complex metaprogramming, and heavy DSLs.
 
 Instead, it embraces a general-purpose, object-oriented design that prioritizes
 explicitness, composability, and clarity. Code should be easy to follow, test, and adapt.
-llm.rb is intentionally wary of "block spaghetti" and favors small, cooperating objects.
+For that reason we favor small, cooperating objects over deeply nested blocks — a pattern
+that often emerges in DSL-heavy libraries.
 
-Every part of llm.rb is designed to be memory-safe, production-ready, and free from
-global state or non-standard dependencies. While inspired by ideas from other ecosystems
-(especially Python) it is not a port — it is a Ruby library written the Ruby way.
+Each part of llm.rb is designed to be conscious of memory, ready for production, and free
+from global state or non-standard dependencies. While inspired by ideas from other ecosystems
+(especially Python) it is not a port of any other library — it is a Ruby library written
+by Rubyists who value borrowing good ideas from other languages and ecosystems.
 
 ## License
 
