@@ -74,12 +74,13 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, schema: nil, **params)
+    def complete(prompt, role = :user, model: default_model, tools: [], schema: nil, **params)
+      params = [format_schema(schema), format_tools(tools)].inject({}, &:merge!)
       model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
-      body = JSON.dump({contents: format(messages)}.merge!(expand_schema(schema)))
+      body = JSON.dump({contents: format(messages)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
@@ -135,17 +136,7 @@ module LLM
         "Content-Type" => "application/json"
       }
     end
-
-    def expand_schema(schema)
-      return {} unless schema
-      {
-        "generationConfig" => {
-          "response_mime_type" => "application/json",
-          "response_schema" => schema
-        }
-      }
-    end
-
+    
     def response_parser
       LLM::Gemini::ResponseParser
     end

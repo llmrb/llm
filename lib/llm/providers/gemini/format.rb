@@ -44,5 +44,32 @@ class LLM::Gemini
                                        "is not supported by the Gemini API"
       end
     end
+
+    ##
+    # @param [JSON::Schema] schema
+    #  The schema to format
+    # @return [Hash]
+    def format_schema(schema)
+      return {} unless schema
+      {
+        "generationConfig" => {
+          "response_mime_type" => "application/json",
+          "response_schema" => schema
+        }
+      }
+    end
+
+    ##
+    # @param [Array<LLM::Function>] tools
+    #  The tools to format
+    # @return [Hash]
+    def format_tools(tools)
+      return {} unless tools
+      {
+        "tools" => {
+          "functionDeclarations" => tools.grep(LLM::Function).map { _1.to_h(self) }
+        }
+      }
+    end
   end
 end
