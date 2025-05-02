@@ -2,6 +2,11 @@
 
 class LLM::Function
   ##
+  # Returns function arguments
+  # @return [Array]
+  attr_accessor :arguments
+
+  ##
   # @param [String] name The function name
   # @yieldparam [LLM::Function] self The function object
   def initialize(name, &b)
@@ -37,8 +42,17 @@ class LLM::Function
   # Call the function
   # @param [Array] args The arguments to pass to the function
   # @return [Object] The result of the function call
-  def call(*)
-    @runner.call(*)
+  def call
+    @runner.call(arguments)
+  ensure
+    @called = true
+  end
+
+  ##
+  # Returns true when a function has been called
+  # @return [Boolean]
+  def called?
+    @called
   end
 
   ##

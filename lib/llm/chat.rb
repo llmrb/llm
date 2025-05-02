@@ -108,10 +108,22 @@ module LLM
       @lazy
     end
 
+    ##
+    # @return [String]
     def inspect
       "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
       "@provider=#{@provider.class}, @params=#{@params.inspect}, " \
       "@messages=#{@messages.inspect}, @lazy=#{@lazy.inspect}>"
+    end
+
+    ##
+    # @return [Array<LLM::Function>]
+    #  An array of functions that have yet to be called
+    def functions
+      messages
+        .select(&:assistant?)
+        .flat_map(&:functions)
+        .reject(&:called?)
     end
 
     private

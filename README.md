@@ -174,7 +174,7 @@ bot.messages.find(&:assistant?).content! # => {probability: 1}
 
 #### Functions
 
-The OpenAI and Ollama providers support a powerful feature known as
+The OpenAI, Gemini and Ollama providers support a powerful feature known as
 tool calling, and although it is a little complex to understand at first,
 it can be powerful for building agents. The following example demonstrates how we
 can define a local function (which happens to be a tool), and OpenAI can
@@ -200,9 +200,9 @@ end
 bot = LLM::Chat.new(llm, tools: [tool]).lazy
 bot.chat "You are a shell command executor. You will run shell commands.", :system
 bot.chat "What is the current date?", :user
-bot.last_message.functions.each(&:call)
+bot.functions.each(&:call)
 bot.chat "What operating system am I running? (short version please!)", :user
-bot.last_message.functions.each(&:call)
+bot.functions.each(&:call)
 
 ##
 # Thu May  1 10:01:02 UTC 2025

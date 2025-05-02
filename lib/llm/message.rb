@@ -67,10 +67,8 @@ module LLM
     ##
     # @return [Array<LLM::Function>]
     def functions
-      tool_calls.map do |fn|
-        lambda do
-          LLM.functions[fn.name].call(fn.arguments)
-        end
+      @functions ||= tool_calls.map do |fn|
+        LLM.functions[fn.name].tap { _1.arguments = fn.arguments }
       end
     end
 
