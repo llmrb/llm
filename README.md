@@ -12,12 +12,12 @@ and principles behind the library.
 - ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, and more
 - 📦 Zero dependencies outside Ruby's standard library
 - 🔌 Model introspection and selection
+- 🚀 Optimized for performance and low memory usage
 
 #### Chat, Agents
 - 🧠 Stateless and stateful chat via completions and responses API
 - 🤖 Tool calling and function execution
 - 🗂️ JSON Schema support for structured, validated responses
-- 🚀 Optimized for performance and low memory usage
 
 #### Media
 - 🗣️ Text-to-speech, transcription, and translation
