@@ -3,8 +3,7 @@
 llm.rb is a zero-dependency Ruby toolkit for Large Language Models like
 OpenAI, Gemini, Anthropic, and more. It’s fast, clean, and composable –
 with full support for chat, tool calling, audio, images, files, and
-JSON schema. See the [philosophy](#philosophy) section for the design goals
-and principles behind the library.
+JSON Schema generation.
 
 ## Features
 
