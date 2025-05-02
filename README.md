@@ -17,7 +17,7 @@ and principles behind the library.
 - 🧠 Stateless and stateful chat via completions and responses API
 - 🤖 Tool calling and function execution
 - 🗂️ JSON Schema support for structured, validated responses
-- 🧼 Memory-safe design, including child-process offloading
+- 🚀 Optimized for performance and low memory usage
 
 #### Media
 - 🗣️ Text-to-speech, transcription, and translation
