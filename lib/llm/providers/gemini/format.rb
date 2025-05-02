@@ -65,9 +65,10 @@ class LLM::Gemini
     # @return [Hash]
     def format_tools(tools)
       return {} unless tools
+      functions = tools.grep(LLM::Function)
       {
         "tools" => {
-          "functionDeclarations" => tools.grep(LLM::Function).map { _1.to_h(self) }
+          "functionDeclarations" => functions.map { _1.format(self) }
         }
       }
     end

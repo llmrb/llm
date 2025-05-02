@@ -43,21 +43,15 @@ class LLM::Function
 
   ##
   # @return [Hash]
-  def to_h(provider = nil)
+  def format(provider)
     case provider.class.to_s
     when "LLM::Gemini"
-      { name: @name, description: @description, parameters: @params }.compact
+      {name: @name, description: @description, parameters: @params}.compact
     else
       {
         type: "function", name: @name,
-        function: { name: @name, description: @description, parameters: @params }
+        function: {name: @name, description: @description, parameters: @params}
       }.compact
     end
-  end
-
-  ##
-  # @return [String]
-  def to_json(options = {})
-    to_h(nil).to_json(options)
   end
 end

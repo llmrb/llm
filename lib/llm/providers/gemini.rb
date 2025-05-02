@@ -75,7 +75,7 @@ module LLM
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, role = :user, model: default_model, tools: [], schema: nil, **params)
-      params = [format_schema(schema), format_tools(tools)].inject({}, &:merge!)
+      params = [format_schema(schema), format_tools(tools), params].inject({}, &:merge!)
       model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)
@@ -136,7 +136,7 @@ module LLM
         "Content-Type" => "application/json"
       }
     end
-    
+
     def response_parser
       LLM::Gemini::ResponseParser
     end

@@ -45,7 +45,7 @@ class LLM::Gemini
           parts = c["content"]["parts"]
           parts.filter_map do
             data = _1.dig("inlineData", "data")
-            next unless data 
+            next unless data
             StringIO.new(data.unpack1("m0"))
           end
         end

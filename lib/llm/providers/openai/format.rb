@@ -80,5 +80,28 @@ class LLM::OpenAI
                                        "is not supported by the OpenAI responses API"
       end
     end
+
+    ##
+    # @param [JSON::Schema] schema
+    #  The schema to format
+    # @return [Hash]
+    def format_schema(schema)
+      return {} unless schema
+      {
+        response_format: {
+          type: "json_schema",
+          json_schema: {name: "JSONSchema", schema:}
+        }
+      }
+    end
+
+    ##
+    # @param [Array<LLM::Function>] tools
+    #  The tools to format
+    # @return [Hash]
+    def format_tools(tools)
+      return {} unless tools
+      {tools: tools.map { format_tool(_1) }}
+    end
   end
 end
