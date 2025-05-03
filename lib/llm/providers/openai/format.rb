@@ -101,7 +101,7 @@ class LLM::OpenAI
     # @return [Hash]
     def format_tools(tools)
       return {} unless tools
-      {tools: tools.map { format_tool(_1) }}
+      {tools: tools.map { _1.format(self) }}
     end
   end
 end

@@ -198,7 +198,7 @@ tool = LLM.function(:system) do |fn|
 end
 
 bot = LLM::Chat.new(llm, tools: [tool]).lazy
-bot.chat "You are a shell command executor. You will run shell commands.", :system
+bot.chat "Your task is to run shell commands via a tool.", :system
 bot.chat "What is the current date?", :user
 bot.functions.each(&:call)
 bot.chat "What operating system am I running? (short version please!)", :user
