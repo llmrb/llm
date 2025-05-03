@@ -22,7 +22,7 @@ module LLM::Anthropic::ResponseParser
 
     def format_choices(response)
       texts.map.with_index do |choice, index|
-        extra = {index:, response:, tool_calls: format_tool_calls(tools)}
+        extra = {index:, response:, tool_calls: format_tool_calls(tools), original_tool_calls: tools}
         LLM::Message.new(role, choice.text, extra)
       end
     end

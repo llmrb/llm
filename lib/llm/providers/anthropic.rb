@@ -54,7 +54,7 @@ module LLM
       params = [{max_tokens:, model:}, format_tools(tools), params].inject({}, &:merge!).compact
       req = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
-      body = JSON.dump({messages: format(messages)}.merge!(params))
+      body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = request(@http, req)
       Response::Completion.new(res).extend(response_parser)
