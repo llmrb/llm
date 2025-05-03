@@ -49,8 +49,8 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, max_tokens: 1024, **params)
-      params = {max_tokens:, model:}.merge!(params)
+    def complete(prompt, role = :user, model: default_model, max_tokens: 1024, tools: nil, **params)
+      params = [{max_tokens:, model:}, format_tools(tools), params].inject({}, &:merge!).compact
       req = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages)}.merge!(params))

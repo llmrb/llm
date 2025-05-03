@@ -38,12 +38,9 @@ class LLM::Ollama
 
     def tool_calls(tools)
       return [] unless tools
-      tools.filter_map do
-        next unless _1["function"]
-        OpenStruct.new(
-          name: _1["function"]["name"],
-          arguments: _1["function"]["arguments"]
-        )
+      tools.filter_map do |tool|
+        next unless tool["function"]
+        OpenStruct.new(tool["function"])
       end
     end
   end

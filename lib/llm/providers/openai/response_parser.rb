@@ -87,12 +87,13 @@ class LLM::OpenAI
 
     def tool_calls(tools)
       return [] unless tools
-      tools.filter_map do
-        next unless _1["function"]
+      tools.filter_map do |tool|
+        function = tool["function"] || next
         OpenStruct.new(
-          id: _1["id"],
-          name: _1["function"]["name"],
-          arguments: JSON.parse(_1["function"]["arguments"])
+          function.merge(
+            id: tool["id"],
+            arguments: JSON.parse(function["arguments"])
+          )
         )
       end
     end

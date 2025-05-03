@@ -51,8 +51,8 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, schema: nil, tools: [], **params)
-      params = [{model:}, format_schema(schema), format_tools(tools), params].inject({}, &:merge!)
+    def complete(prompt, role = :user, model: default_model, schema: nil, tools: nil, **params)
+      params = [{model:}, format_schema(schema), format_tools(tools), params].inject({}, &:merge!).compact
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages, :complete)}.merge!(params))
