@@ -117,8 +117,8 @@ module LLM
     end
 
     ##
+    # Returns an array of functions that have yet to be called
     # @return [Array<LLM::Function>]
-    #  An array of functions that have yet to be called
     def functions
       messages
         .select(&:assistant?)
