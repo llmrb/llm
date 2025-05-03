@@ -78,13 +78,14 @@ module LLM
     end
 
     def respond!(message, params)
-      input = @pending[0..-2].map { _1[0] }
-      @response = @provider.responses.create(
-        message.content,
-        message.role,
-        **params.merge(input:).merge(@response ? {previous_response_id: @response.id} : {})
-      )
-      @completed.concat([*input, message, @response.outputs[0]])
+      pendings = @pending.map { _1[0] }
+      input = [*pendings]
+      params = [
+        params.merge(input:),
+        @response ? {previous_response_id: @response.id} : {}
+      ].inject({}, &:merge!)
+      @response = @provider.responses.create(message.content, message.role, **params)
+      @completed.concat([*pendings, message, @response.outputs[0]])
       @pending.clear
     end
   end

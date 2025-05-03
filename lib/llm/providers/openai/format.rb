@@ -5,6 +5,7 @@ class LLM::OpenAI
   # @private
   module Format
     require_relative "format/completion_format"
+    require_relative "format/respond_format"
 
     ##
     # @param [Array<LLM::Message>] messages
@@ -17,7 +18,7 @@ class LLM::OpenAI
         if mode == :complete
           CompletionFormat.new(message).format
         else
-          ResponseFormat.new(message).format
+          RespondFormat.new(message).format
         end
       end
     end
