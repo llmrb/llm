@@ -46,5 +46,14 @@ class LLM::Ollama
                                        "is not supported by the Ollama API"
       end
     end
+
+    ##
+    # @param [Array<LLM::Function>] tools
+    #  The tools to format
+    # @return [Hash]
+    def format_tools(tools)
+      return {} unless tools
+      {tools: tools.map { _1.format(self) }}
+    end
   end
 end

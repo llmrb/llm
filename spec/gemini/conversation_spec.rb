@@ -10,7 +10,7 @@ RSpec.describe "LLM::Chat: gemini" do
 
   context "when asked to describe an image",
           vcr: {cassette_name: "gemini/conversations/multimodal_response"} do
-    subject { bot.last_message }
+    subject { bot.messages.find(&:assistant?) }
 
     let(:params) { {} }
     let(:image) { LLM::File("spec/fixtures/images/bluebook.png") }
@@ -31,8 +31,6 @@ RSpec.describe "LLM::Chat: gemini" do
 
   context "when given a system function",
           vcr: {cassette_name: "gemini/conversations/system_function_call"} do
-    subject { bot.last_message }
-
     let(:params) do
       {tools: [tool]}
     end

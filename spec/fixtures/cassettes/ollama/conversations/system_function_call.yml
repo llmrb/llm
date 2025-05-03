@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://eel.home.network:11434/api/chat
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
+        system commands"},{"role":"user","content":"Hey, tell me the date"}],"model":"llama3.2","stream":false,"tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands, emits their output","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 03 May 2025 00:55:50 GMT
+      Content-Length:
+      - '374'
+    body:
+      encoding: UTF-8
+      string: '{"model":"llama3.2","created_at":"2025-05-03T00:55:50.524324399Z","message":{"role":"assistant","content":"","tool_calls":[{"function":{"name":"system","arguments":{"command":"date"}}}]},"done_reason":"stop","done":true,"total_duration":1273988187,"load_duration":1062805891,"prompt_eval_count":169,"prompt_eval_duration":108127832,"eval_count":16,"eval_duration":102002800}'
+  recorded_at: Sat, 03 May 2025 00:55:51 GMT
+recorded_with: VCR 6.3.1

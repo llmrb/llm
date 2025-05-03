@@ -10,8 +10,6 @@ RSpec.describe "LLM::Chat: openai" do
 
   context "when given a system function",
           vcr: {cassette_name: "openai/conversations/system_function_call"} do
-    subject { bot.last_message }
-
     let(:params) do
       {tools: [tool]}
     end
