@@ -55,7 +55,7 @@ module LLM::Ollama::Format
       if returns.any?
         returns.map { {role: "tool", tool_call_id: _1.id, content: JSON.dump(_1.value)} }
       else
-        {role: message.role, content: message.content.map { format_content(content) }}
+        [{role: message.role, content: message.content.map { format_content(_1) }}]
       end
     end
 
