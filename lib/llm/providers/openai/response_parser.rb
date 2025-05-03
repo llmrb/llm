@@ -29,23 +29,8 @@ class LLM::OpenAI
     # @param [Hash] body
     #  The response body from the LLM provider
     # @return [Hash]
-    def parse_output_response(body)
-      {
-        id: body["id"],
-        model: body["model"],
-        input_tokens: body.dig("usage", "input_tokens"),
-        output_tokens: body.dig("usage", "output_tokens"),
-        total_tokens: body.dig("usage", "total_tokens"),
-        outputs: body["output"].filter_map.with_index do |output, index|
-          next unless output["content"]
-          extra = {
-            index:, response: self,
-            contents: output["content"],
-            annotations: output["annotations"]
-          }
-          LLM::Message.new(output["role"], text(output), extra)
-        end
-      }
+    def parse_respond_response(body)
+      RespondParser.new(body).format(self)
     end
 
     ##

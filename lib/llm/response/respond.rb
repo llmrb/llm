@@ -50,7 +50,7 @@ module LLM
     # @return [Hash]
     #  Returns the parsed response from the provider
     def parsed
-      @parsed ||= parse_output_response(body)
+      @parsed ||= parse_respond_response(body)
     end
   end
 end
