@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module LLM::OpenAI::Format
+  ##
+  # @private
   class RespondFormat
     def initialize(message)
       @message = message

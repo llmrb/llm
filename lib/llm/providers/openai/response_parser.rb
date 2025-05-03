@@ -8,19 +8,6 @@ class LLM::OpenAI
     # @param [Hash] body
     #  The response body from the LLM provider
     # @return [Hash]
-    def parse_embedding(body)
-      {
-        model: body["model"],
-        embeddings: body["data"].map { _1["embedding"] },
-        prompt_tokens: body.dig("usage", "prompt_tokens"),
-        total_tokens: body.dig("usage", "total_tokens")
-      }
-    end
-
-    ##
-    # @param [Hash] body
-    #  The response body from the LLM provider
-    # @return [Hash]
     def parse_completion(body)
       CompletionParser.new(body).format(self)
     end
@@ -37,6 +24,19 @@ class LLM::OpenAI
     # @param [Hash] body
     #  The response body from the LLM provider
     # @return [Hash]
+    def parse_embedding(body)
+      {
+        model: body["model"],
+        embeddings: body["data"].map { _1["embedding"] },
+        prompt_tokens: body.dig("usage", "prompt_tokens"),
+        total_tokens: body.dig("usage", "total_tokens")
+      }
+    end
+
+    ##
+    # @param [Hash] body
+    #  The response body from the LLM provider
+    # @return [Hash]
     def parse_image(body)
       {
         urls: body["data"].filter_map { _1["url"] },
@@ -45,15 +45,6 @@ class LLM::OpenAI
           StringIO.new(_1["b64_json"].unpack1("m0"))
         end
       }
-    end
-
-    private
-
-    def text(output)
-      output["content"]
-        .select { _1["type"] == "output_text" }
-        .map { _1["text"] }
-        .join("\n")
     end
   end
 end
