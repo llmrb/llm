@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module LLM
-  class Response::Output < Response
+  class Response::Respond < Response
     ##
     # @return [String]
     #  Returns the id of the response

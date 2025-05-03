@@ -5,7 +5,7 @@ module LLM
     require "json"
     require_relative "response/completion"
     require_relative "response/embedding"
-    require_relative "response/output"
+    require_relative "response/respond"
     require_relative "response/image"
     require_relative "response/audio"
     require_relative "response/audio_transcription"

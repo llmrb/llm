@@ -59,7 +59,7 @@ class LLM::OpenAI
       body = JSON.dump({input: format(messages, :response)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = request(http, req)
-      LLM::Response::Output.new(res).extend(response_parser)
+      LLM::Response::Respond.new(res).extend(response_parser)
     end
 
     ##
@@ -73,7 +73,7 @@ class LLM::OpenAI
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/responses/#{response_id}?#{query}", headers)
       res = request(http, req)
-      LLM::Response::Output.new(res).extend(response_parser)
+      LLM::Response::Respond.new(res).extend(response_parser)
     end
 
     ##
