@@ -29,6 +29,13 @@ module LLM
     end
 
     ##
+    # Find a message (in descending order)
+    # @return [LLM::Message, nil]
+    def find(...)
+      reverse_each.find(...)
+    end
+
+    ##
     # @param [[LLM::Message, Hash]] item
     #  A message and its parameters
     # @return [void]
