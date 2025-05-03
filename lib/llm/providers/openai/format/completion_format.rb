@@ -1,0 +1,67 @@
+# frozen_string_literal: true
+
+module LLM::OpenAI::Format
+  class CompletionFormat
+    def initialize(message)
+      @message = message
+    end
+
+    def format
+      if message.tool_call?
+        {role: message.role, content: nil, tool_calls: message.extra[:original_tool_calls]}
+      else
+        format_message
+      end
+    end
+
+    private
+
+    def format_content(content)
+      case content
+      when URI
+        [{type: :image_url, image_url: {url: content.to_s}}]
+      when LLM::File
+        format_file
+      when LLM::Response::File
+        [{type: :file, file: {file_id: content.id}}]
+      when String
+        [{type: :text, text: content.to_s}]
+      when LLM::Message
+        format_content(content.content)
+      else
+        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
+                                       "is not supported by the OpenAI chat completions API"
+      end
+    end
+
+    def format_message
+      case content
+      when Array
+        format_array
+      else
+        {role: message.role, content: format_content(content)}
+      end
+    end
+
+    def format_array
+      if returns.any?
+        returns.map { {role: "tool", tool_call_id: _1.id, content: JSON.dump(_1.value)} }
+      else
+        {role: message.role, content: message.content.map { format_content(content) }}
+      end
+    end
+
+    def format_file
+      file = content
+      if file.image?
+        [{type: :image_url, image_url: {url: file.to_data_uri}}]
+      else
+        [{type: :file, file: {filename: file.basename, file_data: file.to_data_uri}}]
+      end
+    end
+
+    def message = @message
+    def content = message.content
+    def returns = content.grep(LLM::Function::Return)
+  end
+end

@@ -26,7 +26,8 @@ module LLM::OpenAI::ResponseParser
         extra = {
           index:, response:,
           logprobs: choice.logprobs,
-          tool_calls: format_tool_calls(message.tool_calls)
+          tool_calls: format_tool_calls(message.tool_calls),
+          original_tool_calls: message.tool_calls
         }
         LLM::Message.new(message.role, message.content, extra)
       end

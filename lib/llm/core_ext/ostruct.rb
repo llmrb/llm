@@ -36,4 +36,8 @@ class OpenStruct
     end
   end
   extend FromHash
+
+  def to_json(...)
+    to_h.to_json(...)
+  end
 end

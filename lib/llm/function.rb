@@ -1,10 +1,18 @@
 # frozen_string_literal: true
 
 class LLM::Function
+  class Return < Struct.new(:id, :value)
+  end
+
   ##
   # Returns function arguments
-  # @return [Array]
+  # @return [Array, nil]
   attr_accessor :arguments
+
+  ##
+  # Returns the function ID
+  # @return [String, nil]
+  attr_accessor :id
 
   ##
   # @param [String] name The function name
@@ -43,7 +51,7 @@ class LLM::Function
   # @param [Array] args The arguments to pass to the function
   # @return [Object] The result of the function call
   def call
-    @runner.call(arguments)
+    Return.new id, @runner.call(arguments)
   ensure
     @called = true
   end
