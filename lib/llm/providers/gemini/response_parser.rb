@@ -4,6 +4,16 @@ class LLM::Gemini
   ##
   # @private
   module ResponseParser
+    require_relative "response_parser/completion_parser"
+
+    ##
+    # @param [Hash] body
+    #  The response body from the LLM provider
+    # @return [Hash]
+    def parse_completion(body)
+      CompletionParser.new(body).format(self)
+    end
+
     ##
     # @param [Hash] body
     #  The response body from the LLM provider
@@ -13,14 +23,6 @@ class LLM::Gemini
         model: "text-embedding-004",
         embeddings: body.dig("embedding", "values")
       }
-    end
-
-    ##
-    # @param [Hash] body
-    #  The response body from the LLM provider
-    # @return [Hash]
-    def parse_completion(body)
-      CompletionParser.new(body).format(self)
     end
 
     ##

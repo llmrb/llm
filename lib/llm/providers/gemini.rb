@@ -30,7 +30,6 @@ module LLM
   class Gemini < Provider
     require_relative "gemini/error_handler"
     require_relative "gemini/response_parser"
-    require_relative "gemini/response_parser/completion_parser"
     require_relative "gemini/format"
     require_relative "gemini/images"
     require_relative "gemini/files"

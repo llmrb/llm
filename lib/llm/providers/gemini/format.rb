@@ -4,46 +4,20 @@ class LLM::Gemini
   ##
   # @private
   module Format
+    require_relative "format/completion_format"
+
     ##
     # @param [Array<LLM::Message>] messages
     #  The messages to format
     # @return [Array<Hash>]
     def format(messages)
-      messages.map do
-        if Hash === _1
-          {role: _1[:role], parts: [format_content(_1[:content])]}
-        else
-          {role: _1.role, parts: [format_content(_1.content)]}
-        end
+      messages.filter_map do |message|
+        formattable = Hash === message || !message.tool_call?
+        formattable ? CompletionFormat.new(message).format : nil
       end
     end
 
     private
-
-    ##
-    # @param [String, Array, LLM::Response::File, LLM::File] content
-    #  The content to format
-    # @return [Hash]
-    #  The formatted content
-    def format_content(content)
-      case content
-      when Array
-        content.map { format_content(_1) }
-      when LLM::Response::File
-        file = content
-        {file_data: {mime_type: file.mime_type, file_uri: file.uri}}
-      when LLM::File
-        file = content
-        {inline_data: {mime_type: file.mime_type, data: file.to_b64}}
-      when String
-        {text: content}
-      when LLM::Message
-        format_content(content.content)
-      else
-        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
-                                       "is not supported by the Gemini API"
-      end
-    end
 
     ##
     # @param [JSON::Schema] schema

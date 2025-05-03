@@ -68,7 +68,7 @@ class LLM::Gemini
       req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
       image = LLM.File(image)
       body  = JSON.dump({
-        contents: [{parts: [{text: prompt}, format_content(image)]}],
+        contents: [{parts: [{text: prompt}, format.format_content(image)]}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params)).b
       set_body_stream(req, StringIO.new(body))
@@ -84,6 +84,10 @@ class LLM::Gemini
     end
 
     private
+
+    def format
+      @format ||= CompletionFormat.new(nil)
+    end
 
     def secret
       @provider.instance_variable_get(:@secret)

@@ -1,0 +1,50 @@
+# frozen_string_literal: true
+
+module LLM::Gemini::Format
+  ##
+  # @private
+  class CompletionFormat
+    ##
+    # @param [LLM::Message, Hash] message
+    #  The message to format
+    def initialize(message)
+      @message = message
+    end
+
+    ##
+    # Formats the message for the Gemini chat completions API
+    # @return [Hash]
+    def format
+      if Hash === message
+        {role: message[:role], parts: [format_content(message[:content])]}
+      else
+        {role: message.role, parts: [format_content(message.content)]}
+      end
+    end
+
+    def format_content(content)
+      case content
+      when Array
+        content.map { format_content(_1) }
+      when LLM::Response::File
+        file = content
+        {file_data: {mime_type: file.mime_type, file_uri: file.uri}}
+      when LLM::File
+        file = content
+        {inline_data: {mime_type: file.mime_type, data: file.to_b64}}
+      when String
+        {text: content}
+      when LLM::Message
+        format_content(content.content)
+      when LLM::Function::Return
+        {text: content.value}
+      else
+        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
+                                       "is not supported by the Gemini API"
+      end
+    end
+
+    def message = @message
+    def content = message.content
+  end
+end
