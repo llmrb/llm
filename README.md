@@ -178,8 +178,15 @@ The OpenAI, Gemini and Ollama providers support a powerful feature known as
 tool calling, and although it is a little complex to understand at first,
 it can be powerful for building agents. The following example demonstrates how we
 can define a local function (which happens to be a tool), and OpenAI can
-then detect when we should call the function. The following example
-defines an agent that can run system commands based on natural language:
+then detect when we should call the function.
+
+The
+[LLM::Chat#functions](https://0x1eef.github.io/x/llm.rb/LLM/Chat.html#functions-instance_method)
+method returns an array of functions that can be called after sending a message and
+it will only be populated if the LLM detects a function should be called. Each function
+corresponds to an element in the "tools" array. The array is emptied after a function call,
+and potentially repopulated on the next message. The following example defines an agent
+that can run system commands from natural language:
 
 
 ```ruby
@@ -199,8 +206,10 @@ end
 
 bot = LLM::Chat.new(llm, tools: [tool]).lazy
 bot.chat "Your task is to run shell commands via a tool.", :system
+
 bot.chat "What is the current date?", :user
 bot.functions.each(&:call)
+
 bot.chat "What operating system am I running? (short version please!)", :user
 bot.functions.each(&:call)
 
