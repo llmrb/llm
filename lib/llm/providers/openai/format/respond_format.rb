@@ -39,7 +39,7 @@ module LLM::OpenAI::Format
 
     def format_array
       if returns.any?
-        returns.map { { type: "function_call_output", call_id: _1.id, output: JSON.dump(_1.value) } }
+        returns.map { {type: "function_call_output", call_id: _1.id, output: JSON.dump(_1.value)} }
       else
         {role: message.role, content: message.content.map { format_content(content) }}
       end
