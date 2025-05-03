@@ -30,6 +30,7 @@ module LLM
   class Gemini < Provider
     require_relative "gemini/error_handler"
     require_relative "gemini/response_parser"
+    require_relative "gemini/response_parser/completion_parser"
     require_relative "gemini/format"
     require_relative "gemini/images"
     require_relative "gemini/files"
@@ -74,8 +75,8 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, tools: [], schema: nil, **params)
-      params = [format_schema(schema), format_tools(tools), params].inject({}, &:merge!)
+    def complete(prompt, role = :user, model: default_model, schema: nil, tools: nil, **params)
+      params = [format_schema(schema), format_tools(tools), params].inject({}, &:merge!).compact
       model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)

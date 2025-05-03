@@ -48,5 +48,10 @@ class LLM::Anthropic
                                        "is not supported by the Anthropic API"
       end
     end
+
+    def format_tools(tools)
+      return {} unless tools
+      {tools: tools.map { _1.format(self) }}
+    end
   end
 end

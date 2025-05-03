@@ -8,6 +8,7 @@ module LLM
     require_relative "openai/format"
     require_relative "openai/error_handler"
     require_relative "openai/response_parser"
+    require_relative "openai/response_parser/completion_parser"
     require_relative "openai/responses"
     require_relative "openai/images"
     require_relative "openai/audio"
@@ -51,8 +52,8 @@ module LLM
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, schema: nil, tools: [], **params)
-      params = [{model:}, format_schema(schema), format_tools(tools), params].inject({}, &:merge!)
+    def complete(prompt, role = :user, model: default_model, schema: nil, tools: nil, **params)
+      params = [{model:}, format_schema(schema), format_tools(tools), params].inject({}, &:merge!).compact
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages, :complete)}.merge!(params))
