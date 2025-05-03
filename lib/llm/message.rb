@@ -68,7 +68,8 @@ module LLM
     # @return [Array<LLM::Function>]
     def functions
       @functions ||= tool_calls.map do |fn|
-        LLM.functions[fn.name].tap { _1.arguments = fn.arguments }
+        function = LLM.functions[fn.name].dup
+        function.tap { _1.arguments = fn.arguments }
       end
     end
 
