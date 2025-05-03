@@ -55,7 +55,7 @@ module LLM
     private
 
     def empty!
-      message, params, method = @pending[-1]
+      message, params, method = @pending.pop
       if method == :complete
         complete!(message, params)
       elsif method == :respond
@@ -66,13 +66,14 @@ module LLM
     end
 
     def complete!(message, params)
-      messages = [*@completed, *@pending[0..-2].map { _1[0] }]
+      pendings = @pending.map { _1[0] }
+      messages = [*@completed, *pendings]
       completion = @provider.complete(
         message.content,
         message.role,
         **params.merge(messages:)
       )
-      @completed.concat([message, completion.choices[0]])
+      @completed.concat([*pendings, message, completion.choices[0]])
       @pending.clear
     end
 
