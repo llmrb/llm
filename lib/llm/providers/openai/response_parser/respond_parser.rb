@@ -27,7 +27,7 @@ module LLM::OpenAI::ResponseParser
         extra = {
           index:, response:,
           contents: output.content,
-          annotations: output.annotations,
+          annotations: output.annotations
         }
         LLM::Message.new(output.role, format_text(output), extra)
       end

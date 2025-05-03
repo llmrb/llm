@@ -74,6 +74,13 @@ module LLM
     end
 
     ##
+    # @return [Boolean]
+    #  Returns true when the message requests a function call
+    def tool_call?
+      tool_calls.any?
+    end
+
+    ##
     # Returns a string representation of the message
     # @return [String]
     def inspect

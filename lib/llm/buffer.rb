@@ -66,13 +66,13 @@ module LLM
     end
 
     def complete!(message, params)
-      messages = @pending[0..-2].map { _1[0] }
+      messages = [*@completed, *@pending[0..-2].map { _1[0] }]
       completion = @provider.complete(
         message.content,
         message.role,
         **params.merge(messages:)
       )
-      @completed.concat([*messages, message, completion.choices[0]])
+      @completed.concat([message, completion.choices[0]])
       @pending.clear
     end
 
