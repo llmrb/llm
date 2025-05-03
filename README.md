@@ -174,7 +174,7 @@ bot.messages.find(&:assistant?).content! # => {probability: 1}
 
 #### Functions
 
-The OpenAI, Gemini and Ollama providers support a powerful feature known as
+The OpenAI, Anthropic, Gemini and Ollama providers support a powerful feature known as
 tool calling, and although it is a little complex to understand at first,
 it can be powerful for building agents. The following example demonstrates how we
 can define a local function (which happens to be a tool), and OpenAI can
