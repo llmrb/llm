@@ -22,7 +22,7 @@ module LLM::OpenAI::ResponseParser
     private
 
     def format_message(response)
-      message = LLM::Message.new("assistant", +"", {tool_calls: []})
+      message = LLM::Message.new("assistant", +"", {response:, tool_calls: []})
       choices.each.with_index do |choice, index|
         if choice.type == "function_call"
           message.extra[:tool_calls] << format_tool(choice)

@@ -7,7 +7,9 @@ module LLM::OpenAI::Format
     end
 
     def format
-      if message.tool_call?
+      if Hash === message
+        {role: message[:role], content: format_content(message[:content])}
+      elsif message.tool_call?
         {role: message.role, content: nil, tool_calls: message.extra[:original_tool_calls]}
       else
         format_message
@@ -18,10 +20,12 @@ module LLM::OpenAI::Format
 
     def format_content(content)
       case content
+      when Array
+        content.map { format_content(_1) }
       when URI
         [{type: :image_url, image_url: {url: content.to_s}}]
       when LLM::File
-        format_file
+        format_file(content)
       when LLM::Response::File
         [{type: :file, file: {file_id: content.id}}]
       when String
@@ -51,7 +55,7 @@ module LLM::OpenAI::Format
       end
     end
 
-    def format_file
+    def format_file(content)
       file = content
       if file.image?
         [{type: :image_url, image_url: {url: file.to_data_uri}}]

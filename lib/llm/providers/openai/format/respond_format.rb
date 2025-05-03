@@ -15,9 +15,9 @@ module LLM::OpenAI::Format
     def format_content(content)
       case content
       when Array
-        content.flat_map { format_response(_1) }
+        content.flat_map { format_content(_1) }
       when LLM::Response::File
-        format_file
+        format_file(content)
       when String
         [{type: :input_text, text: content.to_s}]
       when LLM::Message
@@ -45,7 +45,7 @@ module LLM::OpenAI::Format
       end
     end
 
-    def format_file
+    def format_file(content)
       file = LLM::File(content.filename)
       if file.image?
         [{type: :input_image, file_id: content.id}]
