@@ -69,6 +69,7 @@ module LLM
     def functions
       @functions ||= tool_calls.map do |fn|
         function = LLM.functions[fn.name].dup
+        function.tap { _1.id = fn.id }
         function.tap { _1.arguments = fn.arguments }
       end
     end

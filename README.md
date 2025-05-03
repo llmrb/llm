@@ -208,10 +208,10 @@ bot = LLM::Chat.new(llm, tools: [tool]).lazy
 bot.chat "Your task is to run shell commands via a tool.", :system
 
 bot.chat "What is the current date?", :user
-bot.functions.each(&:call)
+bot.chat bot.functions.map(&:call) # report return value to the LLM
 
 bot.chat "What operating system am I running? (short version please!)", :user
-bot.functions.each(&:call)
+bot.chat bot.functions.map(&:call) # report return value to the LLM
 
 ##
 # Thu May  1 10:01:02 UTC 2025

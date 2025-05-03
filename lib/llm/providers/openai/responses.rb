@@ -52,11 +52,11 @@ class LLM::OpenAI
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return [LLM::Response::Output]
-    def create(prompt, role = :user, model: @provider.default_model, schema: nil, **params)
-      params = [{model:}, format_schema(schema), params].inject({}, &:merge!)
+    def create(prompt, role = :user, model: @provider.default_model, schema: nil, tools: nil, **params)
+      params = [{model:}, format_schema(schema), format_tools(tools), params].inject({}, &:merge!).compact
       req = Net::HTTP::Post.new("/v1/responses", headers)
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]
-      body = JSON.dump({input: format(messages, :response)}.merge!(params))
+      body = JSON.dump({input: [format(messages, :response)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = request(http, req)
       LLM::Response::Respond.new(res).extend(response_parser)
@@ -97,7 +97,7 @@ class LLM::OpenAI
 
     [:response_parser, :headers,
      :request, :set_body_stream,
-     :format_schema].each do |m|
+     :format_schema, :format_tools].each do |m|
       define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
     end
   end
