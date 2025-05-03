@@ -61,6 +61,8 @@ class LLM::Function
     case provider.class.to_s
     when "LLM::Gemini"
       {name: @name, description: @description, parameters: @params}.compact
+    when "LLM::Anthropic"
+      {name: @name, description: @description, input_schema: @params}.compact
     else
       {
         type: "function", name: @name,

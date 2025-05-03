@@ -17,15 +17,7 @@ class LLM::Anthropic
     #  The response body from the LLM provider
     # @return [Hash]
     def parse_completion(body)
-      {
-        model: body["model"],
-        choices: body["content"].map do
-          # TODO: don't hardcode role
-          LLM::Message.new("assistant", _1["text"], {response: self})
-        end,
-        prompt_tokens: body.dig("usage", "input_tokens"),
-        completion_tokens: body.dig("usage", "output_tokens")
-      }
+      CompletionParser.new(body).format(self)
     end
   end
 end
