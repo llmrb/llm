@@ -7,6 +7,7 @@ module LLM
   class Anthropic < Provider
     require_relative "anthropic/error_handler"
     require_relative "anthropic/response_parser"
+    require_relative "anthropic/response_parser/completion_parser"
     require_relative "anthropic/format"
     require_relative "anthropic/models"
     include Format

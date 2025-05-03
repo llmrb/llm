@@ -8,6 +8,7 @@ module LLM
     require_relative "openai/format"
     require_relative "openai/error_handler"
     require_relative "openai/response_parser"
+    require_relative "openai/response_parser/completion_parser"
     require_relative "openai/responses"
     require_relative "openai/images"
     require_relative "openai/audio"
