@@ -24,7 +24,7 @@ module LLM::Gemini::ResponseParser
         role, parts = content.role, content.parts
         text  = parts.filter_map { _1["text"] }.join
         tools = parts.filter_map { _1["functionCall"] }
-        extra = {index:, response:, tool_calls: format_tool_calls(tools)}
+        extra = {index:, response:, tool_calls: format_tool_calls(tools), original_tool_calls: tools}
         LLM::Message.new(role, text, extra)
       end
     end

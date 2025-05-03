@@ -17,6 +17,8 @@ module LLM::Gemini::Format
     def format
       if Hash === message
         {role: message[:role], parts: [format_content(message[:content])]}
+      elsif message.tool_call?
+        {role: message.role, parts: message.extra[:original_tool_calls].map { {"functionCall" => _1} }}
       else
         {role: message.role, parts: [format_content(message.content)]}
       end

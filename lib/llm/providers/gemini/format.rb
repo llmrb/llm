@@ -12,8 +12,7 @@ class LLM::Gemini
     # @return [Array<Hash>]
     def format(messages)
       messages.filter_map do |message|
-        formattable = Hash === message || !message.tool_call?
-        formattable ? CompletionFormat.new(message).format : nil
+        CompletionFormat.new(message).format
       end
     end
 
