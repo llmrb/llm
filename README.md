@@ -547,7 +547,9 @@ llm.rb can be installed via rubygems.org:
 
 llm.rb provides a clean, dependency-free interface to Large Language Models,
 treating Ruby itself — not Rails or any specific framework — as the primary platform.
-It avoids hidden magic, complex metaprogramming, and heavy DSLs.
+It avoids hidden magic, complex metaprogramming, and heavy DSLs. It is intentionally
+simple and won't compromise on being a simple library, even if that means saying no to
+certain features.
 
 Instead, it embraces a general-purpose, object-oriented design that prioritizes
 explicitness, composability, and clarity. Code should be easy to follow, test, and adapt.
