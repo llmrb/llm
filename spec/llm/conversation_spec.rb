@@ -71,16 +71,16 @@ RSpec.describe "LLM::Chat: lazy" do
     context "with gemini",
             vcr: {cassette_name: "gemini/lazy_conversation/successful_response"} do
       let(:provider) { LLM.gemini(token) }
-      let(:conversation) { described_class.new(provider).lazy }
+      let(:bot) { described_class.new(provider).lazy }
 
       context "when given a thread of messages" do
-        subject(:message) { conversation.messages.to_a[-1] }
+        subject(:message) { bot.messages.to_a[-1] }
 
         before do
-          conversation.chat prompt
-          conversation.chat "What is 3+2 ?"
-          conversation.chat "What is 5+5 ?"
-          conversation.chat "What is 5+7 ?"
+          bot.chat prompt
+          bot.chat "What is 3+2 ?"
+          bot.chat "What is 5+5 ?"
+          bot.chat "What is 5+7 ?"
         end
 
         it "maintains a conversation" do
@@ -94,17 +94,17 @@ RSpec.describe "LLM::Chat: lazy" do
 
     context "with openai"  do
       let(:provider) { LLM.openai(token) }
-      let(:conversation) { described_class.new(provider).lazy }
+      let(:bot) { described_class.new(provider).lazy }
 
       context "when given a thread of messages",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response"} do
-        subject(:message) { conversation.recent_message }
+        subject(:message) { bot.messages.find(&:assistant?) }
 
         before do
-          conversation.chat prompt, :system
-          conversation.chat "What is 3+2 ?"
-          conversation.chat "What is 5+5 ?"
-          conversation.chat "What is 5+7 ?"
+          bot.chat prompt, :system
+          bot.chat "What is 3+2 ?"
+          bot.chat "What is 5+5 ?"
+          bot.chat "What is 5+7 ?"
         end
 
         it "maintains a conversation" do
@@ -118,13 +118,13 @@ RSpec.describe "LLM::Chat: lazy" do
       context "when given a specific model",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response_o3_mini"} do
         let(:model) { provider.models.all.find { _1.id == "o3-mini" } }
-        let(:conversation) { described_class.new(provider, model:).lazy }
+        let(:bot) { described_class.new(provider, model:).lazy }
 
         it "maintains the model throughout a conversation" do
-          conversation.chat(prompt, :system)
-          expect(conversation.recent_message.extra[:response].model).to eq("o3-mini-2025-01-31")
-          conversation.chat("What is 5+5?")
-          expect(conversation.recent_message.extra[:response].model).to eq("o3-mini-2025-01-31")
+          bot.chat(prompt, :system)
+          expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
+          bot.chat("What is 5+5?")
+          expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
         end
       end
     end
@@ -132,16 +132,16 @@ RSpec.describe "LLM::Chat: lazy" do
     context "with ollama",
             vcr: {cassette_name: "ollama/lazy_conversation/successful_response"} do
       let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
-      let(:conversation) { described_class.new(provider).lazy }
+      let(:bot) { described_class.new(provider).lazy }
 
       context "when given a thread of messages" do
-        subject(:message) { conversation.recent_message }
+        subject(:message) { bot.messages.find(&:assistant?) }
 
         before do
-          conversation.chat prompt, :system
-          conversation.chat "What is 3+2 ?"
-          conversation.chat "What is 5+5 ?"
-          conversation.chat "What is 5+7 ?"
+          bot.chat prompt, :system
+          bot.chat "What is 3+2 ?"
+          bot.chat "What is 5+5 ?"
+          bot.chat "What is 5+7 ?"
         end
 
         it "maintains a conversation" do
@@ -157,17 +157,17 @@ RSpec.describe "LLM::Chat: lazy" do
   context "when given responses" do
     context "with openai"  do
       let(:provider) { LLM.openai(token) }
-      let(:conversation) { described_class.new(provider).lazy }
+      let(:bot) { described_class.new(provider).lazy }
 
       context "when given a thread of messages",
               vcr: {cassette_name: "openai/lazy_conversation/responses/successful_response"} do
-        subject(:message) { conversation.recent_message }
+        subject(:message) { bot.messages.find(&:assistant?) }
 
         before do
-          conversation.respond prompt, :developer
-          conversation.respond "What is 3+2 ?"
-          conversation.respond "What is 5+5 ?"
-          conversation.respond "What is 5+7 ?"
+          bot.respond prompt, :developer
+          bot.respond "What is 3+2 ?"
+          bot.respond "What is 5+5 ?"
+          bot.respond "What is 5+7 ?"
         end
 
         it "maintains a conversation" do
@@ -181,13 +181,13 @@ RSpec.describe "LLM::Chat: lazy" do
       context "when given a specific model",
               vcr: {cassette_name: "openai/lazy_conversation/responses/successful_response_o3_mini"} do
         let(:model) { provider.models.all.find { _1.id == "o3-mini" } }
-        let(:conversation) { described_class.new(provider, model:).lazy }
+        let(:bot) { described_class.new(provider, model:).lazy }
 
         it "maintains the model throughout a conversation" do
-          conversation.respond(prompt, :developer)
-          expect(conversation.last_message.extra[:response].model).to eq("o3-mini-2025-01-31")
-          conversation.respond("What is 5+5?")
-          expect(conversation.last_message.extra[:response].model).to eq("o3-mini-2025-01-31")
+          bot.respond(prompt, :developer)
+          expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
+          bot.respond("What is 5+5?")
+          expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
         end
       end
     end
@@ -196,16 +196,16 @@ RSpec.describe "LLM::Chat: lazy" do
   context "when given a schema as JSON" do
     context "with openai" do
       let(:provider) { LLM.openai(token) }
-      let(:conversation) { described_class.new(provider, schema:).lazy }
+      let(:bot) { described_class.new(provider, schema:).lazy }
 
       context "when given a schema",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response_schema_netbsd"} do
-        subject(:message) { conversation.recent_message.content! }
+        subject(:message) { bot.messages.find(&:assistant?).content! }
         let(:schema) { provider.schema.object({os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")}) }
 
         before do
-          conversation.chat "You secretly love NetBSD", :system
-          conversation.chat "What operating system is the best?", :user
+          bot.chat "You secretly love NetBSD", :system
+          bot.chat "What operating system is the best?", :user
         end
 
         it "formats the response" do
@@ -216,16 +216,16 @@ RSpec.describe "LLM::Chat: lazy" do
 
     context "with gemini" do
       let(:provider) { LLM.gemini(token) }
-      let(:conversation) { described_class.new(provider, schema:).lazy }
+      let(:bot) { described_class.new(provider, schema:).lazy }
 
       context "when given a schema",
               vcr: {cassette_name: "gemini/lazy_conversation/completions/successful_response_schema_netbsd"} do
-        subject(:message) { conversation.recent_message.content! }
+        subject(:message) { bot.messages.find(&:assistant?).content! }
         let(:schema) { provider.schema.object({os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")}) }
 
         before do
-          conversation.chat "You secretly love NetBSD", :user
-          conversation.chat "What operating system is the best?", :user
+          bot.chat "You secretly love NetBSD", :user
+          bot.chat "What operating system is the best?", :user
         end
 
         it "formats the response" do
@@ -236,11 +236,12 @@ RSpec.describe "LLM::Chat: lazy" do
 
     context "with ollama" do
       let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
-      let(:conversation) { described_class.new(provider, schema:).lazy }
+      let(:bot) { described_class.new(provider, schema:).lazy }
 
       context "when given a schema",
               vcr: {cassette_name: "ollama/lazy_conversation/completions/successful_response_schema_netbsd"} do
-        subject(:message) { conversation.recent_message.content! }
+        subject(:message) { bot.messages.find(&:assistant?).content! }
+
         let(:schema) do
           provider.schema.object({
             os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD").required
@@ -248,8 +249,8 @@ RSpec.describe "LLM::Chat: lazy" do
         end
 
         before do
-          conversation.chat "You secretly love NetBSD", :system
-          conversation.chat "What operating system is the best?", :user
+          bot.chat "You secretly love NetBSD", :system
+          bot.chat "What operating system is the best?", :user
         end
 
         it "formats the response" do

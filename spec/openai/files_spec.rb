@@ -124,7 +124,7 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when asked to describe the contents of a file",
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl.pdf"} do
-    subject { bot.last_message.content.downcase[0..2] }
+    subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
 
@@ -143,7 +143,7 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when asked to describe the contents of a file",
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_2.pdf"} do
-    subject { bot.last_message.content.downcase[0..2] }
+    subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
 
@@ -164,7 +164,7 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when asked to describe the contents of a file",
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_3.pdf"} do
-    subject { bot.last_message.content.downcase[0..2] }
+    subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
 
@@ -183,7 +183,7 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when asked to describe the contents of a file",
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_4.pdf"} do
-    subject { bot.last_message.content.downcase[0..2] }
+    subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Chat.new(provider).lazy }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
 
