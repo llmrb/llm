@@ -4,13 +4,15 @@ module LLM::Ollama::Format
   ##
   # @private
   class CompletionFormat
+    ##
+    # @param [LLM::Message] message
+    #  The message to format
     def initialize(message)
       @message = message
     end
 
     ##
-    # @param [LLM::Message] message
-    #  The message to format
+    # Returns the message for the Ollama chat completions API
     # @return [Hash]
     def format
       if Hash === message

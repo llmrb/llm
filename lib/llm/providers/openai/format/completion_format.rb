@@ -4,10 +4,16 @@ module LLM::OpenAI::Format
   ##
   # @private
   class CompletionFormat
+    ##
+    # @param [LLM::Message, Hash] message
+    #  The message to format
     def initialize(message)
       @message = message
     end
 
+    ##
+    # Formats the message for the OpenAI chat completions API
+    # @return [Hash]
     def format
       if Hash === message
         {role: message[:role], content: format_content(message[:content])}
@@ -40,6 +46,15 @@ module LLM::OpenAI::Format
       end
     end
 
+    def format_file(content)
+      file = content
+      if file.image?
+        [{type: :image_url, image_url: {url: file.to_data_uri}}]
+      else
+        [{type: :file, file: {filename: file.basename, file_data: file.to_data_uri}}]
+      end
+    end
+
     def format_message
       case content
       when Array
@@ -54,15 +69,6 @@ module LLM::OpenAI::Format
         returns.map { {role: "tool", tool_call_id: _1.id, content: JSON.dump(_1.value)} }
       else
         {role: message.role, content: message.content.map { format_content(content) }}
-      end
-    end
-
-    def format_file(content)
-      file = content
-      if file.image?
-        [{type: :image_url, image_url: {url: file.to_data_uri}}]
-      else
-        [{type: :file, file: {filename: file.basename, file_data: file.to_data_uri}}]
       end
     end
 
