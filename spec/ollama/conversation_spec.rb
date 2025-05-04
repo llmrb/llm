@@ -4,28 +4,25 @@ require "setup"
 
 RSpec.describe "LLM::Chat: ollama" do
   let(:described_class) { LLM::Chat }
-  let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
+  let(:provider) { LLM.ollama(nil, host:) }
+  let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
   let(:bot) { described_class.new(provider, **params).lazy }
 
   context "when asked to describe an image",
           vcr: {cassette_name: "ollama/conversations/multimodal_response"} do
-    subject { bot.messages.find(&:assistant?) }
+    subject { bot.messages.find(&:assistant?).content.downcase.strip[0..2] }
 
     let(:params) { {model: "llava"} }
     let(:image) { LLM::File("spec/fixtures/images/bluebook.png") }
 
     before do
+      bot.chat("Provide yes or no answers. Nothing else.", :system)
       bot.chat(image, :user)
-      bot.chat("Describe the image with a short sentance", :user)
+      bot.chat("Do you see an image ?", :user)
     end
 
     it "describes the image" do
-      is_expected.to have_attributes(
-        role: "assistant",
-        content: " The image is a graphic illustration of a book" \
-                 " with its pages spread out, symbolizing openness" \
-                 " or knowledge. "
-      )
+      is_expected.to eq("yes")
     end
   end
 

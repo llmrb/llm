@@ -2,11 +2,12 @@
 http_interactions:
 - request:
     method: post
-    uri: http://eel.home.network:11434/api/chat
+    uri: http://localhost:11434/api/chat
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":"Keep your answers short and
-        concise, and provide three answers to the three questions"},{"role":"user","content":"What
+        concise, and provide three answers to the three questionsThere should be one
+        answer per lineAn answer should be a number, for example: 5Nothing else"},{"role":"user","content":"What
         is 3+2 ?"},{"role":"user","content":"What is 5+5 ?"},{"role":"user","content":"What
         is 5+7 ?"}],"model":"llama3.2","stream":false}'
     headers:
@@ -20,6 +21,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 200
@@ -28,12 +31,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 28 Mar 2025 02:23:19 GMT
+      - Sun, 04 May 2025 03:34:25 GMT
       Content-Length:
-      - '367'
+      - '297'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-03-28T02:23:19.417218911Z","message":{"role":"assistant","content":"Here
-        are the calculations:\n\n1. 3 + 2 = 5\n2. 5 + 5 = 10\n3. 5 + 7 = 12"},"done_reason":"stop","done":true,"total_duration":1384448788,"load_duration":1049379740,"prompt_eval_count":61,"prompt_eval_duration":96535446,"eval_count":38,"eval_duration":237498600}'
-  recorded_at: Fri, 28 Mar 2025 02:23:18 GMT
+      string: '{"model":"llama3.2","created_at":"2025-05-04T03:34:25.570798081Z","message":{"role":"assistant","content":"5\n10\n12"},"done_reason":"stop","done":true,"total_duration":67987323,"load_duration":12655318,"prompt_eval_count":82,"prompt_eval_duration":9532571,"eval_count":6,"eval_duration":45074761}'
+  recorded_at: Sun, 04 May 2025 03:34:26 GMT
 recorded_with: VCR 6.3.1

@@ -131,7 +131,8 @@ RSpec.describe "LLM::Chat: lazy" do
 
     context "with ollama",
             vcr: {cassette_name: "ollama/lazy_conversation/successful_response"} do
-      let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
+      let(:provider) { LLM.ollama(nil, host:) }
+      let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
       let(:bot) { described_class.new(provider).lazy }
 
       context "when given a thread of messages" do
@@ -147,7 +148,7 @@ RSpec.describe "LLM::Chat: lazy" do
         it "maintains a conversation" do
           is_expected.to have_attributes(
             role: "assistant",
-            content: "Here are the calculations:\n\n1. 3 + 2 = 5\n2. 5 + 5 = 10\n3. 5 + 7 = 12"
+            content: "5\n10\n12"
           )
         end
       end
@@ -235,7 +236,8 @@ RSpec.describe "LLM::Chat: lazy" do
     end
 
     context "with ollama" do
-      let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
+      let(:provider) { LLM.ollama(nil, host:) }
+      let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
       let(:bot) { described_class.new(provider, schema:).lazy }
 
       context "when given a schema",

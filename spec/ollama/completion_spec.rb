@@ -3,7 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::Ollama: completions" do
-  let(:ollama) { LLM.ollama(nil, host: "eel.home.network") }
+  let(:ollama) { LLM.ollama(nil, host:) }
+  let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
 
   context "when given a successful response",
           vcr: {cassette_name: "ollama/completions/successful_response"} do
@@ -20,8 +21,8 @@ RSpec.describe "LLM::Ollama: completions" do
     it "includes token usage" do
       expect(response).to have_attributes(
         prompt_tokens: 27,
-        completion_tokens: 26,
-        total_tokens: 53
+        completion_tokens: 8,
+        total_tokens: 35
       )
     end
 
@@ -31,7 +32,7 @@ RSpec.describe "LLM::Ollama: completions" do
       it "has choices" do
         expect(choice).to have_attributes(
           role: "assistant",
-          content: "Hello! It's nice to meet you. Is there something I can help you with, or would you like to chat?"
+          content: "How can I help you today?"
         )
       end
 

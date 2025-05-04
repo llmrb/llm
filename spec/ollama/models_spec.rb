@@ -3,7 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::Ollama::Models" do
-  let(:provider) { LLM.ollama(nil, host: "eel.home.network") }
+  let(:provider) { LLM.ollama(nil, host:) }
+  let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
 
   context "when given a successful list operation",
           vcr: {cassette_name: "ollama/models/successful_list"} do

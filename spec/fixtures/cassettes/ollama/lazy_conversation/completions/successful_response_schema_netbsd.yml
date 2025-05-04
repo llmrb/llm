@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://eel.home.network:11434/api/chat
+    uri: http://localhost:11434/api/chat
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":"You secretly love NetBSD"},{"role":"user","content":"What
@@ -28,12 +28,12 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 29 Apr 2025 02:15:34 GMT
+      - Sun, 04 May 2025 03:34:25 GMT
       Content-Length:
-      - '308'
+      - '312'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-04-29T02:15:34.25429279Z","message":{"role":"assistant","content":"{\"os\":
-        \"NetBSD\"}"},"done_reason":"stop","done":true,"total_duration":117697477,"load_duration":12907803,"prompt_eval_count":37,"prompt_eval_duration":7673502,"eval_count":9,"eval_duration":96186936}'
-  recorded_at: Tue, 29 Apr 2025 02:15:14 GMT
+      string: '{"model":"llama3.2","created_at":"2025-05-04T03:34:25.725109917Z","message":{"role":"assistant","content":"{\"os\"
+        : \"NetBSD\"}"},"done_reason":"stop","done":true,"total_duration":128032029,"load_duration":11057914,"prompt_eval_count":37,"prompt_eval_duration":3138483,"eval_count":11,"eval_duration":112981319}'
+  recorded_at: Sun, 04 May 2025 03:34:26 GMT
 recorded_with: VCR 6.3.1

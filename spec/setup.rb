@@ -20,6 +20,7 @@ VCR.configure do |config|
   ##
   # scrub
   config.filter_sensitive_data("TOKEN") { ENV["LLM_SECRET"] }
+  config.filter_sensitive_data("localhost") { ENV["OLLAMA_HOST"] }
   config.before_record do
     body = _1.response.body
     body.gsub! %r|#{Regexp.escape("https://oaidalleapiprodscus.blob.core.windows.net/")}[^"]+|,
