@@ -5,12 +5,15 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Hello, world"}],"max_tokens":1024,"model":"claude-3-5-sonnet-20240620"}'
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Your
+        task is to greet the user. Greet the user with ''hello''. Nothing else. And
+        do not say ''hi''. "}]},{"role":"user","content":[{"type":"text","text":"Hello,
+        world"}]}],"max_tokens":1024,"model":"claude-3-5-sonnet-20240620"}'
     headers:
       Content-Type:
       - application/json
       X-Api-Key:
-      - "TOKEN"
+      - TOKEN
       Anthropic-Version:
       - '2023-06-01'
       Accept-Encoding:
@@ -19,45 +22,49 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 27 Mar 2025 02:26:21 GMT
+      - Sun, 04 May 2025 06:32:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      Anthropic-Ratelimit-Requests-Limit:
-      - '50'
-      Anthropic-Ratelimit-Requests-Remaining:
-      - '49'
-      Anthropic-Ratelimit-Requests-Reset:
-      - '2025-03-27T02:26:21Z'
       Anthropic-Ratelimit-Input-Tokens-Limit:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-03-27T02:26:21Z'
+      - '2025-05-04T06:32:24Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-03-27T02:26:21Z'
+      - '2025-05-04T06:32:24Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-05-04T06:32:25Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-03-27T02:26:21Z'
+      - '2025-05-04T06:32:24Z'
       Request-Id:
-      - req_01JE3N1SjnnmEUdT33umzEpN
+      - req_011CNn2E5EGpaQ6tuXvzKwPQ
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       Via:
@@ -69,11 +76,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 926b713d58ffdeca-GRU
+      - 93a5f5ecbcc81a98-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01EQnaZafDggGHjJStNLJfQT","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Hello!
-        How can I assist you today? Feel free to ask me any questions or let me know
-        if you need help with anything."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":10,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":30}}'
-  recorded_at: Thu, 27 Mar 2025 02:26:16 GMT
+      string: '{"id":"msg_017e1FXKysNSCAakgCvaDENj","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Hello."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":42,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":5}}'
+  recorded_at: Sun, 04 May 2025 06:32:02 GMT
 recorded_with: VCR 6.3.1

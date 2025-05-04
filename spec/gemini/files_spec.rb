@@ -7,7 +7,7 @@ RSpec.describe "LLM::Gemini::Files" do
   let(:provider) { LLM.gemini(token) }
 
   context "when given a successful create operation (bismillah.mp3)",
-          vcr: {cassette_name: "gemini/files/successful_create_bismillah"} do
+          vcr: {cassette_name: "gemini/files/successful_create_bismillah", match_requests_on: [:method]} do
     subject(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
     after { provider.files.delete(file:) }
 
@@ -24,7 +24,7 @@ RSpec.describe "LLM::Gemini::Files" do
   end
 
   context "when given a successful delete operation (bismillah.mp3)",
-          vcr: {cassette_name: "gemini/files/successful_delete_bismillah"} do
+          vcr: {cassette_name: "gemini/files/successful_delete_bismillah", match_requests_on: [:method]} do
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
     subject { provider.files.delete(file:) }
 
@@ -34,7 +34,7 @@ RSpec.describe "LLM::Gemini::Files" do
   end
 
   context "when given a successful get operation (bismillah.mp3)",
-          vcr: {cassette_name: "gemini/files/successful_get_bismillah"} do
+          vcr: {cassette_name: "gemini/files/successful_get_bismillah", match_requests_on: [:method]} do
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
     subject { provider.files.get(file:) }
     after { provider.files.delete(file:) }
@@ -52,7 +52,7 @@ RSpec.describe "LLM::Gemini::Files" do
   end
 
   context "when given a successful translation operation (bismillah.mp3)",
-          vcr: {cassette_name: "gemini/files/successful_translation_bismillah"} do
+          vcr: {cassette_name: "gemini/files/successful_translation_bismillah", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content.downcase.strip[0..2] }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
     let(:bot) { LLM::Chat.new(provider).lazy }
@@ -73,7 +73,7 @@ RSpec.describe "LLM::Gemini::Files" do
   end
 
   context "when given a successful translation operation (alhamdullilah.mp3)",
-          vcr: {cassette_name: "gemini/files/successful_translation_alhamdullilah"} do
+          vcr: {cassette_name: "gemini/files/successful_translation_alhamdullilah", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/alhamdullilah.mp3")) }
     let(:bot) { LLM::Chat.new(provider).lazy }
@@ -93,7 +93,7 @@ RSpec.describe "LLM::Gemini::Files" do
   end
 
   context "when given a successful all operation",
-          vcr: {cassette_name: "gemini/files/successful_all"} do
+          vcr: {cassette_name: "gemini/files/successful_all", match_requests_on: [:method]} do
     let!(:files) do
       [
         provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")),

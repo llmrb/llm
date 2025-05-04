@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Hello"}],"max_tokens":1024,"model":"claude-3-5-sonnet-20240620"}'
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Hello"}]}],"max_tokens":1024,"model":"claude-3-5-sonnet-20240620"}'
     headers:
       Content-Type:
       - application/json
@@ -19,13 +19,15 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Thu, 27 Mar 2025 03:05:27 GMT
+      - Sun, 04 May 2025 06:32:27 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -35,7 +37,9 @@ http_interactions:
       X-Should-Retry:
       - 'false'
       Request-Id:
-      - req_01PFAo45mbciYU4LSF276rvp
+      - req_011CNn2EKUXZwPmfKe76uAg5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -45,10 +49,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 926baa89290b621f-GRU
+      - 93a5f5fedf530130-GRU
     body:
       encoding: UTF-8
       string: '{"type":"error","error":{"type":"authentication_error","message":"invalid
         x-api-key"}}'
-  recorded_at: Thu, 27 Mar 2025 03:05:22 GMT
+  recorded_at: Sun, 04 May 2025 06:32:05 GMT
 recorded_with: VCR 6.3.1

@@ -5,7 +5,9 @@ http_interactions:
     uri: http://localhost:11434/api/chat
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Hello!"}],"model":"llama3.2","stream":false}'
+      string: '{"messages":[{"role":"system","content":"Your task is to greet the
+        user. Greet the user with ''hello''. Nothing else. And do not say ''hi''.
+        "},{"role":"user","content":"Hello!"}],"model":"llama3.2","stream":false}'
     headers:
       Content-Type:
       - application/json
@@ -27,12 +29,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sun, 04 May 2025 03:34:25 GMT
+      - Sun, 04 May 2025 06:33:46 GMT
       Content-Length:
-      - '313'
+      - '294'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-04T03:34:25.794569951Z","message":{"role":"assistant","content":"How
-        can I help you today?"},"done_reason":"stop","done":true,"total_duration":64761639,"load_duration":11338354,"prompt_eval_count":27,"prompt_eval_duration":2376914,"eval_count":8,"eval_duration":50462961}'
-  recorded_at: Sun, 04 May 2025 03:34:26 GMT
+      string: '{"model":"llama3.2","created_at":"2025-05-04T06:33:46.066522521Z","message":{"role":"assistant","content":"Hello!"},"done_reason":"stop","done":true,"total_duration":37604988,"load_duration":11477173,"prompt_eval_count":54,"prompt_eval_duration":3103077,"eval_count":3,"eval_duration":22370518}'
+  recorded_at: Sun, 04 May 2025 06:33:46 GMT
 recorded_with: VCR 6.3.1

@@ -7,7 +7,7 @@ RSpec.describe "LLM::Gemini::Images" do
   let(:provider) { LLM.gemini(token) }
 
   context "when given a successful create operation",
-        vcr: {cassette_name: "gemini/images/successful_create"} do
+        vcr: {cassette_name: "gemini/images/successful_create", match_requests_on: [:method]} do
     subject(:response) { provider.images.create(prompt: "A dog on a rocket to the moon") }
 
     it "is successful" do
@@ -20,7 +20,7 @@ RSpec.describe "LLM::Gemini::Images" do
   end
 
   context "when given a successful edit operation",
-        vcr: {cassette_name: "gemini/images/successful_edit"} do
+        vcr: {cassette_name: "gemini/images/successful_edit", match_requests_on: [:method]} do
     subject(:response) do
       provider.images.edit(
         image: LLM::File("spec/fixtures/images/bluebook.png"),

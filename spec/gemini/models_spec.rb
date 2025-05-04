@@ -7,7 +7,7 @@ RSpec.describe "LLM::Gemini::Models" do
   let(:provider) { LLM.gemini(token) }
 
   context "when given a successful list operation",
-          vcr: {cassette_name: "gemini/models/successful_list"} do
+          vcr: {cassette_name: "gemini/models/successful_list", match_requests_on: [:method]} do
     subject { provider.models.all }
 
     it "is successful" do

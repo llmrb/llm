@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 04 May 2025 03:46:44 GMT
+      - Sun, 04 May 2025 06:33:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,7 +42,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '207'
+      - '234'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -58,39 +58,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 17ms
       X-Request-Id:
-      - req_e082eaa8726268ba9a3ea7ac6d4f6f11
+      - req_e515aada4670445923651f30b4f45f1c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=FgKTdvbTevXu3cCO2jXsng5OfP5a2QqoJ5wQgRw1pSE-1746330404-1.0.1.1-e9ifGRu9RjazZHC1W1HIgc1XEd9llQJ6U0ardzyXoAVrJpDy9uSv51tbuv0z9NpaajwD_hsM9Y.ASYb5YaLp3ih651jb4g5xly3O8fSI0hc;
-        path=/; expires=Sun, 04-May-25 04:16:44 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=UaJvVp0MHllpOsN2EzU_0oIoOWnK6WcKYbamJe39NKw-1746340407-1.0.1.1-oJokN26rqu27vp0G6AuqJr4W1o55bAfMIn0nRnML_FxdAdPBHfBJmT1AYEHVDZF.FQNyoEBXUpW31v1YKdq1WxEHAGvWiUpRGRzXY7QZQGI;
+        path=/; expires=Sun, 04-May-25 07:03:27 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=kce9MAvgkBQHBXzuHWCutyqlWZHxOrNzpRKUvMJT_38-1746330404215-0.0.1.1-604800000;
+      - _cfuvid=_GE3HFHU9uF6FUax6bQi.e1a.8sICjOZHKzHSpc9j7k-1746340407664-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93a5033cbf1e6294-GRU
+      - 93a5f7795838a454-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BTKbMw2rDM0wmUmyKAoe2vj5CgRox",
+          "id": "chatcmpl-BTNChr3iRQRHmzjCdRsBLhTutSrS7",
           "object": "chat.completion",
-          "created": 1746330404,
+          "created": 1746340407,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "5  \n10  \n12  ",
+                "content": "5  \n10  \n12",
                 "refusal": null,
                 "annotations": []
               },
@@ -100,8 +100,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 76,
-            "completion_tokens": 7,
-            "total_tokens": 83,
+            "completion_tokens": 6,
+            "total_tokens": 82,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -116,5 +116,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_0392822090"
         }
-  recorded_at: Sun, 04 May 2025 03:46:22 GMT
+  recorded_at: Sun, 04 May 2025 06:33:05 GMT
 recorded_with: VCR 6.3.1

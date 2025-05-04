@@ -21,13 +21,15 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 26 Apr 2025 21:36:50 GMT
+      - Sun, 04 May 2025 06:32:25 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,27 +41,29 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-04-26T21:36:49Z'
+      - '2025-05-04T06:32:25Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-04-26T21:36:49Z'
+      - '2025-05-04T06:32:25Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
-      - '49'
+      - '48'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-04-26T21:36:50Z'
+      - '2025-05-04T06:32:26Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-04-26T21:36:49Z'
+      - '2025-05-04T06:32:25Z'
       Request-Id:
-      - req_011CNY4itkyFbT5ds6heCRHD
+      - req_011CNn2E8yFko5WThDnwsrVW
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       Via:
@@ -71,9 +75,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 936937c3bcdb1d1f-GRU
+      - 93a5f5f22fbca4cc-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01CZUWEMJ4ecsCqBEdtBXwAc","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Yes"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":90,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":4}}'
-  recorded_at: Sat, 26 Apr 2025 21:36:07 GMT
+      string: '{"id":"msg_01GTtegutDq9MwuyNEZU5Wqh","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Yes"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":90,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":4}}'
+  recorded_at: Sun, 04 May 2025 06:32:03 GMT
 recorded_with: VCR 6.3.1
