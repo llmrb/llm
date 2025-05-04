@@ -68,7 +68,7 @@ RSpec.describe "LLM::Chat: lazy" do
 
   context "when given completions" do
     context "with gemini",
-            vcr: {cassette_name: "gemini/lazy_conversation/successful_response"} do
+            vcr: {cassette_name: "gemini/lazy_conversation/successful_response", match_requests_on: [:method]} do
       let(:provider) { LLM.gemini(token) }
       let(:bot) { described_class.new(provider).lazy }
       let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
@@ -224,7 +224,7 @@ RSpec.describe "LLM::Chat: lazy" do
       let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
       context "when given a schema",
-              vcr: {cassette_name: "gemini/lazy_conversation/completions/successful_response_schema_netbsd"} do
+              vcr: {cassette_name: "gemini/lazy_conversation/completions/successful_response_schema_netbsd", match_requests_on: [:method]} do
         subject(:message) { bot.messages.find(&:assistant?).content! }
         let(:schema) { provider.schema.object({os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")}) }
 

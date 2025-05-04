@@ -9,7 +9,7 @@ RSpec.describe "LLM::Chat: gemini" do
   let(:bot) { described_class.new(provider, **params).lazy }
 
   context "when asked to describe an image",
-          vcr: {cassette_name: "gemini/conversations/multimodal_response"} do
+          vcr: {cassette_name: "gemini/conversations/multimodal_response", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
 
     let(:params) { {} }
@@ -29,7 +29,7 @@ RSpec.describe "LLM::Chat: gemini" do
   end
 
   context "when given a system function",
-          vcr: {cassette_name: "gemini/conversations/system_function_call"} do
+          vcr: {cassette_name: "gemini/conversations/system_function_call", match_requests_on: [:method]} do
     let(:params) do
       {tools: [tool]}
     end
@@ -58,7 +58,7 @@ RSpec.describe "LLM::Chat: gemini" do
   end
 
   context "when given an empty array",
-          vcr: {cassette_name: "gemini/conversations/empty_function_call"} do
+          vcr: {cassette_name: "gemini/conversations/empty_function_call", match_requests_on: [:method]} do
     let(:params) do
       {tools: [tool]}
     end
