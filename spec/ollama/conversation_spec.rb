@@ -46,12 +46,12 @@ RSpec.describe "LLM::Chat: ollama" do
 
     before do
       bot.chat("You are a bot that can run UNIX system commands", :user)
-      bot.chat("Hey, tell me the date", :user)
+      bot.chat("Hey, tell me the date via the given 'system' tool", :user)
     end
 
     it "calls the function" do
       expect(Kernel).to receive(:system).with("date").and_return(true)
-      bot.functions.each(&:call)
+      bot.chat bot.functions.map(&:call)
     end
   end
 end

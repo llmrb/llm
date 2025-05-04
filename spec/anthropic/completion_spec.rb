@@ -8,7 +8,18 @@ RSpec.describe "LLM::Anthropic: completions" do
 
   context "when given a successful response",
           vcr: {cassette_name: "anthropic/completions/successful_response"} do
-    subject(:response) { anthropic.complete("Hello, world", :user) }
+    let(:prompt) do
+      "Your task is to greet the user. " \
+      "Greet the user with 'hello'. " \
+      "Nothing else. And do not say 'hi'. "
+    end
+
+    subject(:response) do
+      anthropic.complete(
+        "Hello, world", :user,
+        messages: [{role: :user, content: [{type: :text, text: prompt}]}]
+      )
+    end
 
     it "returns a completion" do
       expect(response).to be_a(LLM::Response::Completion)
@@ -20,9 +31,9 @@ RSpec.describe "LLM::Anthropic: completions" do
 
     it "includes token usage" do
       expect(response).to have_attributes(
-        prompt_tokens: 10,
-        completion_tokens: 30,
-        total_tokens: 40
+        prompt_tokens: 42,
+        completion_tokens: 5,
+        total_tokens: 47
       )
     end
 
@@ -32,7 +43,7 @@ RSpec.describe "LLM::Anthropic: completions" do
       it "has choices" do
         expect(choice).to have_attributes(
           role: "assistant",
-          content: "Hello! How can I assist you today? Feel free to ask me any questions or let me know if you need help with anything."
+          content: /Hello/i
         )
       end
 

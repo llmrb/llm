@@ -17,7 +17,7 @@ module LLM::Anthropic::Format
     def format
       catch(:abort) do
         if Hash === message
-          {role: message[:role]}.merge(format_content(message[:content]))
+          {role: message[:role], content: format_content(message[:content])}
         else
           format_message
         end
@@ -41,6 +41,8 @@ module LLM::Anthropic::Format
     #  The formatted content
     def format_content(content)
       case content
+      when Hash
+        content.empty? ? throw(:abort, nil) : [content]
       when Array
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
       when URI

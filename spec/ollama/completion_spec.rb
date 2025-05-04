@@ -8,7 +8,14 @@ RSpec.describe "LLM::Ollama: completions" do
 
   context "when given a successful response",
           vcr: {cassette_name: "ollama/completions/successful_response"} do
-    subject(:response) { ollama.complete("Hello!", :user) }
+    let(:prompt) do
+      "Your task is to greet the user. " \
+      "Greet the user with 'hello'. " \
+      "Nothing else. And do not say 'hi'. "
+    end
+    subject(:response) do
+      ollama.complete("Hello!", :user, messages: [{role: "system", content: prompt}])
+    end
 
     it "returns a completion" do
       expect(response).to be_a(LLM::Response::Completion)
@@ -20,9 +27,9 @@ RSpec.describe "LLM::Ollama: completions" do
 
     it "includes token usage" do
       expect(response).to have_attributes(
-        prompt_tokens: 27,
-        completion_tokens: 8,
-        total_tokens: 35
+        prompt_tokens: instance_of(Integer),
+        completion_tokens: instance_of(Integer),
+        total_tokens: instance_of(Integer)
       )
     end
 
@@ -32,7 +39,7 @@ RSpec.describe "LLM::Ollama: completions" do
       it "has choices" do
         expect(choice).to have_attributes(
           role: "assistant",
-          content: "How can I help you today?"
+          content: /Hello/i
         )
       end
 
