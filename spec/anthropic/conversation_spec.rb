@@ -5,7 +5,7 @@ require "setup"
 RSpec.describe "LLM::Chat: anthropic" do
   let(:described_class) { LLM::Chat }
   let(:provider) { LLM.anthropic(token) }
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, **params).lazy }
 
   context "when given a system function",

@@ -5,7 +5,7 @@ require "setup"
 RSpec.describe "LLM::Chat: openai" do
   let(:described_class) { LLM::Chat }
   let(:provider) { LLM.openai(token) }
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, **params).lazy }
 
   context "when given a system function",

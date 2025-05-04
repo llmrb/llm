@@ -3,7 +3,7 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI::Audio" do
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
   let(:provider) { LLM.openai(token) }
 
   context "when given a successful create operation",

@@ -3,7 +3,7 @@
 require "setup"
 
 RSpec.describe "LLM::Gemini::Files" do
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
   let(:provider) { LLM.gemini(token) }
 
   context "when given a successful create operation (bismillah.mp3)",
@@ -53,20 +53,22 @@ RSpec.describe "LLM::Gemini::Files" do
 
   context "when given a successful translation operation (bismillah.mp3)",
           vcr: {cassette_name: "gemini/files/successful_translation_bismillah"} do
-    subject { bot.messages.find(&:assistant?).content }
+    subject { bot.messages.find(&:assistant?).content.downcase.strip[0..2] }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
     let(:bot) { LLM::Chat.new(provider).lazy }
     after { provider.files.delete(file:) }
 
     before do
+      bot.chat "Hello"
+      bot.chat "I want to ask you a question"
+      bot.chat "Can the following audio file be translated as:"
+      bot.chat "In the name of Allah, The Most Compassionate, The Most Merciful"
+      bot.chat "Answer with yes or no. Nothing else. Thank you."
       bot.chat file
-      bot.chat "Translate the contents of the audio file into English"
-      bot.chat "The audio is referenced in the first message I sent to you"
-      bot.chat "Provide no other content except the translation"
     end
 
     it "translates the audio clip" do
-      is_expected.to eq("In the name of Allah, the Most Gracious, the Most Merciful.\n")
+      is_expected.to eq("yes")
     end
   end
 

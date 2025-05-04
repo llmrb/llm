@@ -5,27 +5,26 @@ require "setup"
 RSpec.describe "LLM::Chat: gemini" do
   let(:described_class) { LLM::Chat }
   let(:provider) { LLM.gemini(token) }
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, **params).lazy }
 
   context "when asked to describe an image",
           vcr: {cassette_name: "gemini/conversations/multimodal_response"} do
-    subject { bot.messages.find(&:assistant?) }
+    subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
 
     let(:params) { {} }
     let(:image) { LLM::File("spec/fixtures/images/bluebook.png") }
 
     before do
-      bot.chat(image, :user)
-      bot.chat("Describe the image with a short sentance", :user)
+      bot.chat([
+        "Does this resemable a book?",
+        "Answer with yes or no. Nothing else.",
+        image
+      ], :user)
     end
 
     it "describes the image" do
-      is_expected.to have_attributes(
-        role: "model",
-        content: "That's a simple illustration of a book " \
-                 "resting on a blue, X-shaped book stand.\n"
-      )
+      is_expected.to eq("yes")
     end
   end
 

@@ -4,7 +4,7 @@ require "setup"
 
 RSpec.describe "LLM::OpenAI: completions" do
   subject(:openai) { LLM.openai(token) }
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "openai/completions/successful_response"} do

@@ -3,7 +3,7 @@
 require "setup"
 
 RSpec.describe "LLM::Gemini::Models" do
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
   let(:provider) { LLM.gemini(token) }
 
   context "when given a successful list operation",

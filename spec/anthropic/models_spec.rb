@@ -3,7 +3,7 @@
 require "setup"
 
 RSpec.describe "LLM::Anthropic::Models" do
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
   let(:provider) { LLM.anthropic(token) }
 
   context "when given a successful list operation",

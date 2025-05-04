@@ -4,7 +4,7 @@ require "setup"
 
 RSpec.describe "LLM::Anthropic: completions" do
   subject(:anthropic) { LLM.anthropic(token) }
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
+  let(:token) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "anthropic/completions/successful_response"} do

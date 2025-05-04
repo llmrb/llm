@@ -59,7 +59,6 @@ end
 
 RSpec.describe "LLM::Chat: lazy" do
   let(:described_class) { LLM::Chat }
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
   let(:prompt) do
     "Keep your answers short and concise, and provide three answers to the three questions" \
     "There should be one answer per line" \
@@ -72,6 +71,7 @@ RSpec.describe "LLM::Chat: lazy" do
             vcr: {cassette_name: "gemini/lazy_conversation/successful_response"} do
       let(:provider) { LLM.gemini(token) }
       let(:bot) { described_class.new(provider).lazy }
+      let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
       context "when given a thread of messages" do
         subject(:message) { bot.messages.to_a[-1] }
@@ -95,6 +95,7 @@ RSpec.describe "LLM::Chat: lazy" do
     context "with openai"  do
       let(:provider) { LLM.openai(token) }
       let(:bot) { described_class.new(provider).lazy }
+      let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
       context "when given a thread of messages",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response"} do
@@ -159,6 +160,7 @@ RSpec.describe "LLM::Chat: lazy" do
     context "with openai"  do
       let(:provider) { LLM.openai(token) }
       let(:bot) { described_class.new(provider).lazy }
+      let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
       context "when given a thread of messages",
               vcr: {cassette_name: "openai/lazy_conversation/responses/successful_response"} do
@@ -198,6 +200,7 @@ RSpec.describe "LLM::Chat: lazy" do
     context "with openai" do
       let(:provider) { LLM.openai(token) }
       let(:bot) { described_class.new(provider, schema:).lazy }
+      let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
       context "when given a schema",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response_schema_netbsd"} do
@@ -218,6 +221,7 @@ RSpec.describe "LLM::Chat: lazy" do
     context "with gemini" do
       let(:provider) { LLM.gemini(token) }
       let(:bot) { described_class.new(provider, schema:).lazy }
+      let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
       context "when given a schema",
               vcr: {cassette_name: "gemini/lazy_conversation/completions/successful_response_schema_netbsd"} do

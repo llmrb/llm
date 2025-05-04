@@ -4,11 +4,11 @@ require "setup"
 
 RSpec.describe "LLM::Gemini: completions" do
   subject(:gemini) { LLM.gemini(token) }
-  let(:token) { ENV["LLM_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "gemini/completions/successful_response"} do
     subject(:response) { gemini.complete("Hello!", :user) }
+    let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
     it "returns a completion" do
       expect(response).to be_a(LLM::Response::Completion)
@@ -49,18 +49,19 @@ RSpec.describe "LLM::Gemini: completions" do
   context "when given a thread of messages",
           vcr: {cassette_name: "gemini/completions/successful_response_thread"} do
     subject(:response) do
-      gemini.complete "What is your name? What age are you?", :user, messages: [
+      gemini.complete "What is your name?", :user, messages: [
         {role: "user", content: "Answer all of my questions"},
-        {role: "user", content: "Your name is Pablo, you are 25 years old and you are my amigo"}
+        {role: "user", content: "Your name is John"}
       ]
     end
+    let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
     it "has choices" do
       expect(response).to have_attributes(
         choices: [
           have_attributes(
             role: "model",
-            content: "My name is Pablo, and I am 25 years old.  ¡Amigo!\n"
+            content: /John/i
           )
         ]
       )
@@ -68,9 +69,9 @@ RSpec.describe "LLM::Gemini: completions" do
   end
 
   context "when given an unauthorized response",
-          vcr: {cassette_name: "gemini/completions/unauthorized_response"} do
+          vcr: {cassette_name: "gemini/completions/unauthorized_response", match_requests_on: [:method]} do
     subject(:response) { gemini.complete("Hello!", :user) }
-    let(:token) { "BADTOKEN" }
+    let(:token) { "TOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)

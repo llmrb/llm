@@ -3,6 +3,9 @@
 require "llm"
 require "webmock/rspec"
 require "vcr"
+require "dotenv"
+
+Dotenv.load
 
 RSpec.configure do |config|
   config.disable_monkey_patching!
@@ -19,7 +22,9 @@ VCR.configure do |config|
 
   ##
   # scrub
-  config.filter_sensitive_data("TOKEN") { ENV["LLM_SECRET"] }
+  config.filter_sensitive_data("TOKEN") { ENV["ANTHROPIC_TOKEN"] }
+  config.filter_sensitive_data("TOKEN") { ENV["GEMINI_SECRET"] }
+  config.filter_sensitive_data("TOKEN") { ENV["OPENAI_TOKEN"] }
   config.filter_sensitive_data("localhost") { ENV["OLLAMA_HOST"] }
   config.before_record do
     body = _1.response.body
