@@ -15,19 +15,21 @@ module LLM::Gemini::Format
     # Formats the message for the Gemini chat completions API
     # @return [Hash]
     def format
-      if Hash === message
-        {role: message[:role], parts: [format_content(message[:content])]}
-      elsif message.tool_call?
-        {role: message.role, parts: message.extra[:original_tool_calls].map { {"functionCall" => _1} }}
-      else
-        {role: message.role, parts: [format_content(message.content)]}
+      catch(:abort) do
+        if Hash === message
+          {role: message[:role], parts: [format_content(message[:content])]}
+        elsif message.tool_call?
+          {role: message.role, parts: message.extra[:original_tool_calls].map { {"functionCall" => _1} }}
+        else
+          {role: message.role, parts: [format_content(message.content)]}
+        end
       end
     end
 
     def format_content(content)
       case content
       when Array
-        content.map { format_content(_1) }
+        content.empty? ? throw(:abort, nil) : content.map { format_content(_1) }
       when LLM::Response::File
         file = content
         {file_data: {mime_type: file.mime_type, file_uri: file.uri}}

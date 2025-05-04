@@ -15,10 +15,12 @@ module LLM::Ollama::Format
     # Returns the message for the Ollama chat completions API
     # @return [Hash]
     def format
-      if Hash === message
-        {role: message[:role]}.merge(format_content(message[:content]))
-      else
-        format_message
+      catch(:abort) do
+        if Hash === message
+          {role: message[:role]}.merge(format_content(message[:content]))
+        else
+          format_message
+        end
       end
     end
 
@@ -54,10 +56,12 @@ module LLM::Ollama::Format
     end
 
     def format_array
-      if returns.any?
+      if content.empty?
+        nil
+      elsif returns.any?
         returns.map { {role: "tool", tool_call_id: _1.id, content: JSON.dump(_1.value)} }
       else
-        [{role: message.role, content: message.content.map { format_content(_1) }}]
+        [{role: message.role, content: content.map { format_content(_1) }}]
       end
     end
 

@@ -14,7 +14,7 @@ class LLM::OpenAI
     #  The mode to format the messages for
     # @return [Array<Hash>]
     def format(messages, mode)
-      messages.map do |message|
+      messages.filter_map do |message|
         if mode == :complete
           CompletionFormat.new(message).format
         else

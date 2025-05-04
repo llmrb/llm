@@ -11,7 +11,7 @@ class LLM::Ollama
     #  The messages to format
     # @return [Array<Hash>]
     def format(messages)
-      messages.map do |message|
+      messages.filter_map do |message|
         CompletionFormat.new(message).format
       end
     end

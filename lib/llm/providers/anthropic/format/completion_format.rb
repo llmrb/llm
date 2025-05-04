@@ -15,10 +15,12 @@ module LLM::Anthropic::Format
     # Formats the message for the Anthropic chat completions API
     # @return [Hash]
     def format
-      if Hash === message
-        {role: message[:role]}.merge(format_content(message[:content]))
-      else
-        format_message
+      catch(:abort) do
+        if Hash === message
+          {role: message[:role]}.merge(format_content(message[:content]))
+        else
+          format_message
+        end
       end
     end
 
@@ -40,7 +42,7 @@ module LLM::Anthropic::Format
     def format_content(content)
       case content
       when Array
-        content.flat_map { format_content(_1) }
+        content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
       when URI
         [{type: :image, source: {type: "url", url: content.to_s}}]
       when LLM::File

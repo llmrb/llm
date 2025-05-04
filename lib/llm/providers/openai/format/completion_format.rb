@@ -15,12 +15,14 @@ module LLM::OpenAI::Format
     # Formats the message for the OpenAI chat completions API
     # @return [Hash]
     def format
-      if Hash === message
-        {role: message[:role], content: format_content(message[:content])}
-      elsif message.tool_call?
-        {role: message.role, content: nil, tool_calls: message.extra[:original_tool_calls]}
-      else
-        format_message
+      catch(:abort) do
+        if Hash === message
+          {role: message[:role], content: format_content(message[:content])}
+        elsif message.tool_call?
+          {role: message.role, content: nil, tool_calls: message.extra[:original_tool_calls]}
+        else
+          format_message
+        end
       end
     end
 
@@ -28,8 +30,6 @@ module LLM::OpenAI::Format
 
     def format_content(content)
       case content
-      when Array
-        content.map { format_content(_1) }
       when URI
         [{type: :image_url, image_url: {url: content.to_s}}]
       when LLM::File
@@ -65,10 +65,12 @@ module LLM::OpenAI::Format
     end
 
     def format_array
-      if returns.any?
+      if content.empty?
+        nil
+      elsif returns.any?
         returns.map { {role: "tool", tool_call_id: _1.id, content: JSON.dump(_1.value)} }
       else
-        {role: message.role, content: message.content.map { format_content(content) }}
+        {role: message.role, content: content.map { format_content(_1) }}
       end
     end
 

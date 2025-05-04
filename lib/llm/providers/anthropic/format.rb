@@ -11,7 +11,7 @@ class LLM::Anthropic
     #  The messages to format
     # @return [Array<Hash>]
     def format(messages)
-      messages.map do
+      messages.filter_map do
         CompletionFormat.new(_1).format
       end
     end

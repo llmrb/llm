@@ -9,15 +9,19 @@ module LLM::OpenAI::Format
     end
 
     def format
-      format_message
+      catch(:abort) do
+        if Hash === message
+          {role: message[:role], content: format_content(message[:content])}
+        else
+          format_message
+        end
+      end
     end
 
     private
 
     def format_content(content)
       case content
-      when Array
-        content.flat_map { format_content(_1) }
       when LLM::Response::File
         format_file(content)
       when String
@@ -40,10 +44,12 @@ module LLM::OpenAI::Format
     end
 
     def format_array
-      if returns.any?
+      if content.empty?
+        nil
+      elsif returns.any?
         returns.map { {type: "function_call_output", call_id: _1.id, output: JSON.dump(_1.value)} }
       else
-        {role: message.role, content: message.content.map { format_content(content) }}
+        {role: message.role, content: content.map { format_content(_1) }}
       end
     end
 

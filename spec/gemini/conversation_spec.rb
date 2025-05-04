@@ -57,4 +57,33 @@ RSpec.describe "LLM::Chat: gemini" do
       bot.functions.each(&:call)
     end
   end
+
+  context "when given an empty array",
+          vcr: {cassette_name: "gemini/conversations/empty_function_call"} do
+    let(:params) do
+      {tools: [tool]}
+    end
+
+    let(:tool) do
+      LLM.function(:system) do |fn|
+        fn.description "Runs system commands, emits their output"
+        fn.params do |schema|
+          schema.object(command: schema.string.required)
+        end
+        fn.define do |params|
+          Kernel.system(params.command)
+        end
+      end
+    end
+
+    before do
+      bot.chat("You are a bot that can run UNIX system commands", :user)
+      bot.chat("Hello! Nice to meet you", :user)
+    end
+
+    it "does not error out" do
+      bot.chat bot.functions.each(&:call)
+      bot.messages.each { expect(_1).not_to be_tool_call }
+    end
+  end
 end
