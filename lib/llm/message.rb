@@ -58,13 +58,6 @@ module LLM
     end
 
     ##
-    # Returns true when the message is from the LLM
-    # @return [Boolean]
-    def assistant?
-      role == "assistant" || role == "model"
-    end
-
-    ##
     # @return [Array<LLM::Function>]
     def functions
       @functions ||= tool_calls.map do |fn|
@@ -72,20 +65,6 @@ module LLM
         function.tap { _1.id = fn.id }
         function.tap { _1.arguments = fn.arguments }
       end
-    end
-
-    ##
-    # @return [Boolean]
-    #  Returns true when the message requests a function call
-    def tool_call?
-      tool_calls.any?
-    end
-
-    ##
-    # Returns true when the message is a system message
-    # @return [Boolean]
-    def system?
-      role == "system"
     end
 
     ##
@@ -100,6 +79,34 @@ module LLM
     # @return [Boolean]
     def read?
       @read
+    end
+
+    ##
+    # Returns true when the message is an assistant message
+    # @return [Boolean]
+    def assistant?
+      role == "assistant" || role == "model"
+    end
+
+    ##
+    # Returns true when the message is a system message
+    # @return [Boolean]
+    def system?
+      role == "system"
+    end
+
+    ##
+    # Returns true when the message is a user message
+    # @return [Boolean]
+    def user?
+      role == "user"
+    end
+
+    ##
+    # @return [Boolean]
+    #  Returns true when the message requests a function call
+    def tool_call?
+      tool_calls.any?
     end
 
     ##
