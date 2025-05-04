@@ -82,7 +82,7 @@ RSpec.describe "LLM::Chat: gemini" do
     end
 
     it "does not error out" do
-      bot.chat bot.functions.each(&:call)
+      bot.chat bot.functions.map(&:call)
       bot.messages.each { expect(_1).not_to be_tool_call }
     end
   end
