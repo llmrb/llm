@@ -185,9 +185,11 @@ The
 method returns an array of functions that can be called after sending a message and
 it will only be populated if the LLM detects a function should be called. Each function
 corresponds to an element in the "tools" array. The array is emptied after a function call,
-and potentially repopulated on the next message. The following example defines an agent
-that can run system commands from natural language:
+and potentially repopulated on the next message.
 
+The following example defines an agent that can run system commands based on natural language,
+and it is only intended to be a fun demo of tool calling - it is not recommended to run
+arbitrary commands from a LLM without sanitizing the input first :) Without further ado:
 
 ```ruby
 #!/usr/bin/env ruby
