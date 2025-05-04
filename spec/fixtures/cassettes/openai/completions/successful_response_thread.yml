@@ -21,13 +21,15 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 26 Apr 2025 19:40:51 GMT
+      - Sun, 04 May 2025 04:02:28 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +41,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '465'
+      - '531'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -47,40 +49,40 @@ http_interactions:
       X-Ratelimit-Limit-Tokens:
       - '200000'
       X-Ratelimit-Remaining-Requests:
-      - '9997'
+      - '9998'
       X-Ratelimit-Remaining-Tokens:
       - '199951'
       X-Ratelimit-Reset-Requests:
-      - 21.015s
+      - 16.491s
       X-Ratelimit-Reset-Tokens:
       - 14ms
       X-Request-Id:
-      - req_b0a078ff048590c759ecf8082f3a2a1b
+      - req_901e2fa2ce879b765d4eefc3f90a0915
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=IrLruKGcNL7pRQxO82nygTx9_Z3yeIXUcNgPTkoH8PE-1745696451-1.0.1.1-1AMjC.9b9suL6heJavpr9.o7sGqI4kuNDBmw6BVhKaPGQpEdI8OxSmjnbI2K2OzGO1q2WGcnIcdWnSyBRt6O9pxwSyzJ4tUG8VfjNOaS0Tw;
-        path=/; expires=Sat, 26-Apr-25 20:10:51 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Z5ftXdTeHVXc2eagL6hspUAB.fsvIu4gW2M1KuS2NgY-1746331348-1.0.1.1-BHu..3YUzW1ppShOBiwS2FllG.TxNpRMcNwFbsn3UZ5C12ZTVmAGlEDuktVsUnkQqQUity_.CHQhWATuDFP9AgupLPJofeGO5uWVsgJjZYc;
+        path=/; expires=Sun, 04-May-25 04:32:28 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=yWoXSveySiOdCAPRwCyLzZcXLvE7hDENqbSSIECERt4-1745696451754-0.0.1.1-604800000;
+      - _cfuvid=E6UjsJGCKmDSF9.mpmykDCQvlMJyE1Prw1TJXNm9FlA-1746331348581-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93688de38efc535f-GRU
+      - 93a51a4c59d2f24e-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BQfgJfukoGhXKcnet6rQZafppVngt",
+          "id": "chatcmpl-BTKqaPL3N5DAjgE3thZslmBGzM6KD",
           "object": "chat.completion",
-          "created": 1745696451,
+          "created": 1746331348,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -113,5 +115,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_0392822090"
         }
-  recorded_at: Sat, 26 Apr 2025 19:40:09 GMT
+  recorded_at: Sun, 04 May 2025 04:02:07 GMT
 recorded_with: VCR 6.3.1

@@ -17,13 +17,15 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 400
       message: Bad Request
     headers:
       Date:
-      - Sat, 26 Apr 2025 19:40:52 GMT
+      - Sun, 04 May 2025 04:02:54 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -35,7 +37,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '33'
+      - '37'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Input-Images:
@@ -47,33 +49,33 @@ http_interactions:
       X-Ratelimit-Remaining-Input-Images:
       - '49999'
       X-Ratelimit-Remaining-Requests:
-      - '9996'
+      - '9999'
       X-Ratelimit-Remaining-Tokens:
-      - '199232'
+      - '187751'
       X-Ratelimit-Reset-Input-Images:
       - 1ms
       X-Ratelimit-Reset-Requests:
-      - 28.959s
+      - 8.64s
       X-Ratelimit-Reset-Tokens:
-      - 230ms
+      - 3.674s
       X-Request-Id:
-      - req_d9edc4169e0ee40b8fd7152c2b62e002
+      - req_957d1e8431050fd674d01ac964dbe8f1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=lBW13W.4DU63Oai7Y114BsuzLL.CkFB1cSV_7FPAVeQ-1745696452-1.0.1.1-PR3Ihei8iHVYYKuKCpatlNSIxa29XRj7cKPJgS_ltRgJTSnUc8l4HhE8j7.PmCnPQksOWfGbrnQ7jAsH6WcpT0hctHV2DvycEhdE_Sxr6ZM;
-        path=/; expires=Sat, 26-Apr-25 20:10:52 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=RAseVsYaQZ8RRqYvF0MUDxzt8mSyXRzpUHkTyiuflAk-1746331374-1.0.1.1-3WLYRoNc9vyHKPTahm3_CM2XVfIR9d9HOqghCi9hQCgamxSlcRQMf5U_wO9uholCqiTIMhAxTPi5V8eH99pfE4vfozx.LAJHzWYvQDMzkPo;
+        path=/; expires=Sun, 04-May-25 04:32:54 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=9qyFps27LlsTQuOMCAtAeHqgF5RuF3gsHiO1TTmEpdA-1745696452010-0.0.1.1-604800000;
+      - _cfuvid=hcm.rjetwxxz0ueeK0ehWCE4qmB8zvW2NWw4uHdy6i8-1746331374931-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93688de7dcb60295-GRU
+      - 93a51af40c9cf183-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -87,5 +89,5 @@ http_interactions:
             "code": "invalid_image_url"
           }
         }
-  recorded_at: Sat, 26 Apr 2025 19:40:09 GMT
+  recorded_at: Sun, 04 May 2025 04:02:33 GMT
 recorded_with: VCR 6.3.1

@@ -17,13 +17,15 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Sat, 26 Apr 2025 19:40:52 GMT
+      - Sun, 04 May 2025 04:02:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -33,23 +35,23 @@ http_interactions:
       Vary:
       - Origin
       X-Request-Id:
-      - req_d3c5791102d9299650d4a583389c7916
+      - req_2fb3fa7cd9f941c4be8b77b586fd0e96
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=d6VRnG4KH95pkH0LZ7fOzdNFUarSrQXQFgBNGrfYaps-1745696452-1.0.1.1-xeSqg.Oyz5ATDcE72Sj_1ms0vd.h7_VWBu9CtK.43xqirHzIulcwFCPQuqKAk1jTry4o_v1910B57WOOejZgQG5pNdI1JffgV_dWOt.IpcQ;
-        path=/; expires=Sat, 26-Apr-25 20:10:52 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=UZ2bLZpvzgcS0ba1Sr0gKc7EiHOyPse6CZ561bCVgFg-1746331375-1.0.1.1-vOxEV.9Vn5PIfZ05ZA8TJqdxCHFQIuQLcDyZYm7mKWKZg1a8zSne1TWCmtDK.wYFcDCLq.oabXpZcW5svMolz6bq_J8BnNCcRvT4rHhLI3w;
+        path=/; expires=Sun, 04-May-25 04:32:55 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=cHmdlNvcdYmmaBjJxzssFZnV.mV6j.f0_LgpF4pFfUw-1745696452250-0.0.1.1-604800000;
+      - _cfuvid=e0SIWbWApx.f5WW1GxVF6JyDB.Q1pclYHi.WKO8hpKk-1746331375166-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93688de96b530180-GRU
+      - 93a51af5cfadaef9-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -63,5 +65,5 @@ http_interactions:
                 "code": "invalid_api_key"
             }
         }
-  recorded_at: Sat, 26 Apr 2025 19:40:10 GMT
+  recorded_at: Sun, 04 May 2025 04:02:33 GMT
 recorded_with: VCR 6.3.1

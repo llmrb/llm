@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 27 Apr 2025 14:30:57 GMT
+      - Sun, 04 May 2025 04:02:54 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '8290'
+      - '24777'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -47,40 +47,40 @@ http_interactions:
       X-Ratelimit-Limit-Tokens:
       - '200000'
       X-Ratelimit-Remaining-Requests:
-      - '9999'
+      - '9997'
       X-Ratelimit-Remaining-Tokens:
       - '199212'
       X-Ratelimit-Reset-Requests:
-      - 8.64s
+      - 23.403s
       X-Ratelimit-Reset-Tokens:
       - 236ms
       X-Request-Id:
-      - req_833a478f62609730946a2aaef18c89c7
+      - req_fba4dc0984fb8444f6ed41ebdab7ef83
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Lhw4jOQrBd_0MtiIYG7eyxLAinrLMIe_iNIoYMFxpnE-1745764257-1.0.1.1-6gxQcxVE_V3GfpuyEo65FjiHyC4EJlkjQEq7YggEUZ_oKW87RXqcUsQveqvSSluksFLXGnIpxNlwBUsqwYrMTF1qqhaR86Ek6wwNrWje7F8;
-        path=/; expires=Sun, 27-Apr-25 15:00:57 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=K3Y8S7.18zhEa.P_1191HpGa.uObFWs7CNPo0EOV4uo-1746331374-1.0.1.1-xWNvL0qMnUw0FDZfhVojnpsN1WRbg1UyrnnfRjNkBr9TWUhejitdW4XWLaaGAHXsh_kHHyABvOXKZaS4KXBEQrTMWWVwLRP1VncWZMsAYpw;
+        path=/; expires=Sun, 04-May-25 04:32:54 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=DF4XbjJgN.7a3DB85wp2SvBJcYAJfeBTXdNT_rQny84-1745764257251-0.0.1.1-604800000;
+      - _cfuvid=rRLjqTqqDbpTqDg4AGlZyhRP2.QmBeJF2vWG6qulYtA-1746331374573-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 936f05173f49a4f5-GRU
+      - 93a51a511f83ad09-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BQxJvHerImAhVSgOQZ09F70HGOvbN",
+          "id": "chatcmpl-BTKqjayqz1pzQxLYEPc1eCXaZjTjQ",
           "object": "chat.completion",
-          "created": 1745764255,
+          "created": 1746331357,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -113,75 +113,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_129a36352a"
         }
-  recorded_at: Sun, 27 Apr 2025 14:30:13 GMT
-- request:
-    method: delete
-    uri: https://api.openai.com/v1/files/#%3CLLM::File:0x00000312d0dd7288%3E
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer TOKEN
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 500
-      message: Internal Server Error
-    headers:
-      Date:
-      - Sun, 27 Apr 2025 14:30:57 GMT
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '370'
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Openai-Version:
-      - '2020-10-01'
-      Openai-Organization:
-      - user-j1pztzt5nogpcsid23u7gskj
-      X-Request-Id:
-      - req_13db9bf8e33defade0b90726c4fa3ad8
-      Openai-Processing-Ms:
-      - '90'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Cf-Cache-Status:
-      - DYNAMIC
-      Set-Cookie:
-      - __cf_bm=DHZhgRYSNS5cYppOs11lC2gWsGF9DTAzpigvXmkNWgo-1745764257-1.0.1.1-ABrEqTwuITyuThc1PBUpMGE2ENrRjWoHFTAeYCit4uYbxWOqSjHIdxc4jbxmgSRFUXY7k7o_32n_eub91FBLCXZdBCixvC4T3nkEveC2glc;
-        path=/; expires=Sun, 27-Apr-25 15:00:57 GMT; domain=.api.openai.com; HttpOnly;
-        Secure; SameSite=None
-      - _cfuvid=df3xocwU9FuiEMQkn_bGmzWWAqwmltRkAoU0jvd.384-1745764257747-0.0.1.1-604800000;
-        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 936f05502866f173-GRU
-      Alt-Svc:
-      - h3=":443"; ma=86400
-    body:
-      encoding: UTF-8
-      string: |
-        {
-          "error": {
-            "message": "The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_13db9bf8e33defade0b90726c4fa3ad8 in your email.)",
-            "type": "server_error",
-            "param": null,
-            "code": null
-          }
-        }
-  recorded_at: Sun, 27 Apr 2025 14:30:13 GMT
+  recorded_at: Sun, 04 May 2025 04:02:33 GMT
 recorded_with: VCR 6.3.1

@@ -80,6 +80,8 @@ RSpec.describe "LLM::OpenAI: completions" do
 
     it "is successful" do
       is_expected.to eq("yes")
+    rescue => ex
+      p ex.response.body
     end
   end
 

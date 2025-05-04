@@ -49,7 +49,7 @@ module LLM::OpenAI::Format
       elsif returns.any?
         returns.map { {type: "function_call_output", call_id: _1.id, output: JSON.dump(_1.value)} }
       else
-        {role: message.role, content: content.map { format_content(_1) }}
+        {role: message.role, content: content.flat_map { format_content(_1) }}
       end
     end
 

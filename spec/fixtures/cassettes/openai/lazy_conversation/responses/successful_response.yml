@@ -22,52 +22,66 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sat, 26 Apr 2025 19:40:19 GMT
+      - Sun, 04 May 2025 03:47:04 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '199905'
+      X-Ratelimit-Reset-Requests:
+      - 8.64s
+      X-Ratelimit-Reset-Tokens:
+      - 28ms
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_e95ea400a5c2179af675ff9a362b2b4c
+      - req_47adcc7c6bb091a1c84457a17d37e8a4
       Openai-Processing-Ms:
-      - '818'
+      - '957'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=AgdAnXD007bBrkog42BFyjNpWi5IDFAfGNmfbuditlY-1745696419-1.0.1.1-ZGvdY4wl9Ur3Yw2YbbrYZSRkUd6SJXzNnzvqtTBlBKH.3hSwkGt8sHCnsuOycMKqx1HoHVBukZSt8ANVmJsOhkULKjYCmmf9tzfzU.uzJn0;
-        path=/; expires=Sat, 26-Apr-25 20:10:19 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=HSF41jWXLk3eVUdFBzdZ71O6vaEkGwRtmr7jEYK6bL4-1746330424-1.0.1.1-9CBICWthJ1j9jS2H.ldZd.wnfs_z5SDc.G54s7Q04CT92OzAZoJcoC5avE61ikiUCvACG2sMnB9nMq6h3_CJvXMzrZeoe8txKAlrDavygB0;
+        path=/; expires=Sun, 04-May-25 04:17:04 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=vTMpbN_nxTT1eJv55Qos0zyCYkcjT431waggH7Hahyw-1745696419731-0.0.1.1-604800000;
+      - _cfuvid=UYkC6gVFY9UMTfCxWEIaQbGZRAgVhn87XCRvUf6Acbc-1746330424182-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93688d178d352d34-GRU
+      - 93a503b5df5e6235-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_680d36a2d8108192970e09b4204f1a400ac1ef8160df8eba",
+          "id": "resp_6816e3370f5c81928bd6760e3555314f0d883250b87bbe24",
           "object": "response",
-          "created_at": 1745696418,
+          "created_at": 1746330423,
           "status": "completed",
           "error": null,
           "incomplete_details": null,
@@ -76,7 +90,7 @@ http_interactions:
           "model": "gpt-4o-mini-2024-07-18",
           "output": [
             {
-              "id": "msg_680d36a3680c81928c7c11679b0703630ac1ef8160df8eba",
+              "id": "msg_6816e33787908192b104ed878ac4bf2b0d883250b87bbe24",
               "type": "message",
               "status": "completed",
               "content": [
@@ -121,5 +135,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Sat, 26 Apr 2025 19:39:37 GMT
+  recorded_at: Sun, 04 May 2025 03:46:42 GMT
 recorded_with: VCR 6.3.1
