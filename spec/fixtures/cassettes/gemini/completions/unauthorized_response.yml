@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=BADTOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Hello!"}]}]}'
@@ -15,6 +15,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 400
@@ -27,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Thu, 27 Mar 2025 02:54:57 GMT
+      - Sun, 04 May 2025 05:21:47 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -37,7 +39,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=866
+      - gfet4t7; dur=815
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -67,5 +69,5 @@ http_interactions:
             ]
           }
         }
-  recorded_at: Thu, 27 Mar 2025 02:54:51 GMT
+  recorded_at: Sun, 04 May 2025 05:21:26 GMT
 recorded_with: VCR 6.3.1

@@ -6,9 +6,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Keep your answers short
-        and concise, provide three answers to the three questions"}]},{"role":"user","parts":[{"text":"What
-        is 3+2 ?"}]},{"role":"user","parts":[{"text":"What is 5+5 ?"}]},{"role":"user","parts":[{"text":"What
-        is 5+7 ?"}]}]}'
+        and concise, and provide three answers to the three questionsThere should
+        be one answer per lineAn answer should be a number, for example: 5Nothing
+        else"}]},{"role":"user","parts":[{"text":"What is 3+2 ?"}]},{"role":"user","parts":[{"text":"What
+        is 5+5 ?"}]},{"role":"user","parts":[{"text":"What is 5+7 ?"}]}]}'
     headers:
       Content-Type:
       - application/json
@@ -18,6 +19,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Transfer-Encoding:
+      - chunked
   response:
     status:
       code: 200
@@ -30,7 +33,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 28 Mar 2025 02:22:21 GMT
+      - Sun, 04 May 2025 05:25:19 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -40,7 +43,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1290
+      - gfet4t7; dur=1057
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -60,17 +63,17 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.047533076256513596
+              "avgLogprobs": -7.7034837886458263e-06
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 35,
+            "promptTokenCount": 57,
             "candidatesTokenCount": 8,
-            "totalTokenCount": 43,
+            "totalTokenCount": 65,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 35
+                "tokenCount": 57
               }
             ],
             "candidatesTokensDetails": [
@@ -82,5 +85,5 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Fri, 28 Mar 2025 02:22:20 GMT
+  recorded_at: Sun, 04 May 2025 05:24:57 GMT
 recorded_with: VCR 6.3.1
