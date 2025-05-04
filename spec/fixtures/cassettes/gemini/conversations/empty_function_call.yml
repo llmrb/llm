@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 04 May 2025 06:32:38 GMT
+      - Sun, 04 May 2025 06:39:14 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1131
+      - gfet4t7; dur=1108
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -62,7 +62,7 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.0047973249765003428
+              "avgLogprobs": -0.0040732069927103378
             }
           ],
           "usageMetadata": {
@@ -84,7 +84,7 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Sun, 04 May 2025 06:32:16 GMT
+  recorded_at: Sun, 04 May 2025 06:38:52 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
@@ -118,7 +118,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 04 May 2025 06:32:39 GMT
+      - Sun, 04 May 2025 06:39:15 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -128,7 +128,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=997
+      - gfet4t7; dur=444
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -162,5 +162,5 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Sun, 04 May 2025 06:32:17 GMT
+  recorded_at: Sun, 04 May 2025 06:38:53 GMT
 recorded_with: VCR 6.3.1
