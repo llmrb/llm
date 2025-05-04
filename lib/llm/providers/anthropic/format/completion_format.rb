@@ -26,7 +26,7 @@ module LLM::Anthropic::Format
 
     def format_message
       if message.tool_call?
-        {role: message.role, content: message.extra[:original_tool_calls] }
+        {role: message.role, content: message.extra[:original_tool_calls]}
       else
         {role: message.role, content: format_content(content)}
       end

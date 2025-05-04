@@ -29,6 +29,15 @@ module LLM
     end
 
     ##
+    # Returns an array of unread messages
+    # @see LLM::Message#read?
+    # @see LLM::Message#read!
+    # @return [Array<LLM::Message>]
+    def unread
+      reject(&:read?)
+    end
+
+    ##
     # Find a message (in descending order)
     # @return [LLM::Message, nil]
     def find(...)

@@ -37,7 +37,7 @@ module LLM
       @provider = provider
       @params = params.merge!(model:, schema:)
       @lazy = false
-      @messages = [].extend(Find)
+      @messages = [].extend(Array)
     end
 
     ##
@@ -130,12 +130,16 @@ module LLM
 
     ##
     # @private
-    module Find
+    module Array
       def find(...)
         reverse_each.find(...)
       end
+
+      def unread
+        reject(&:read?)
+      end
     end
-    private_constant :Find
+    private_constant :Array
 
     def respond!(prompt, role, params)
       @provider.responses.create(

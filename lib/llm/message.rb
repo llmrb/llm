@@ -82,6 +82,27 @@ module LLM
     end
 
     ##
+    # Returns true when the message is a system message
+    # @return [Boolean]
+    def system?
+      role == "system"
+    end
+
+    ##
+    # Marks the message as read
+    # @return [void]
+    def read!
+      @read = true
+    end
+
+    ##
+    # Returns true when the message has been read
+    # @return [Boolean]
+    def read?
+      @read
+    end
+
+    ##
     # Returns a string representation of the message
     # @return [String]
     def inspect
