@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Is this
         image the flag of brazil ? "},{"type":"text","text":"Answer with yes or no.
-        "},{"type":"text","text":"Nothing else."},{"type":"image","source":{"type":"url","url":"https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png"}}]}],"max_tokens":1024,"model":"claude-3-5-sonnet-20240620"}'
+        "},{"type":"text","text":"Nothing else."},{"type":"image","source":{"type":"url","url":"https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png"}}]}],"model":"claude-3-5-sonnet-20240620","max_tokens":1024}'
     headers:
       Content-Type:
       - application/json
@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 04 May 2025 06:39:02 GMT
+      - Mon, 05 May 2025 07:57:53 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,27 +41,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-04T06:39:02Z'
+      - '2025-05-05T07:57:53Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-04T06:39:02Z'
+      - '2025-05-05T07:57:53Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-04T06:39:02Z'
+      - '2025-05-05T07:57:54Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-04T06:39:02Z'
+      - '2025-05-05T07:57:53Z'
       Request-Id:
-      - req_011CNn2jPBq9AfoRc3xkE2ke
+      - req_011CNp2Z4o2FU29xq9G59eq2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -75,9 +75,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 93a5ffa16e458772-GRU
+      - 93aeb0824f740195-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01AEPfRaXY2RyyqgYh7GzKBm","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Yes"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":90,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":4}}'
-  recorded_at: Sun, 04 May 2025 06:38:40 GMT
+      string: '{"id":"msg_01TNZssyDg6kN3MCfRyi9QjU","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Yes"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":90,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":4}}'
+  recorded_at: Mon, 05 May 2025 07:57:29 GMT
 recorded_with: VCR 6.3.1

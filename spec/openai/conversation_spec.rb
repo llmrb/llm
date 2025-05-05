@@ -27,8 +27,8 @@ RSpec.describe "LLM::Chat: openai" do
     end
 
     before do
-      bot.chat("You are a bot that can run UNIX system commands", :user)
-      bot.chat("Hey, tell me the date", :user)
+      bot.chat("You are a bot that can run UNIX system commands", role: :user)
+      bot.chat("Hey, tell me the date", role: :user)
     end
 
     it "calls the function" do

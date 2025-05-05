@@ -8,7 +8,7 @@ RSpec.describe "LLM::OpenAI: completions" do
 
   context "when given a successful response",
           vcr: {cassette_name: "openai/completions/successful_response"} do
-    subject(:response) { openai.complete("Hello!", :user) }
+    subject(:response) { openai.complete("Hello!", role: :user) }
 
     it "returns a completion" do
       expect(response).to be_a(LLM::Response::Completion)
@@ -45,7 +45,7 @@ RSpec.describe "LLM::OpenAI: completions" do
   context "when given a thread of messages",
           vcr: {cassette_name: "openai/completions/successful_response_thread"} do
     subject(:response) do
-      openai.complete "What is your name? What age are you?", :user, messages: [
+      openai.complete "What is your name? What age are you?", role: :user, messages: [
         {role: "system", content: "Answer all of my questions"},
         {role: "system", content: "Answer in the format: My name is <name> and I am <age> years old"},
         {role: "system", content: "Your name is Pablo and you are 25 years old"}
@@ -73,7 +73,7 @@ RSpec.describe "LLM::OpenAI: completions" do
         "Answer yes or no.",
         "Nothing else",
         file
-      ], :user)
+      ], role: :user)
     end
 
     subject { response.choices[0].content.downcase[0..2] }
@@ -87,7 +87,7 @@ RSpec.describe "LLM::OpenAI: completions" do
 
   context "when given a 'bad request' response",
           vcr: {cassette_name: "openai/completions/bad_request"} do
-    subject(:response) { openai.complete(URI("/foobar.exe"), :user) }
+    subject(:response) { openai.complete(URI("/foobar.exe"), role: :user) }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::ResponseError)

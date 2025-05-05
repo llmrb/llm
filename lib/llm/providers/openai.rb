@@ -44,17 +44,16 @@ module LLM
     # Provides an interface to the chat completions API
     # @see https://platform.openai.com/docs/api-reference/chat/create OpenAI docs
     # @param prompt (see LLM::Provider#complete)
-    # @param role (see LLM::Provider#complete)
-    # @param model (see LLM::Provider#complete)
-    # @param schema (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, schema: nil, tools: nil, **params)
-      params = [{model:}, format_schema(schema), format_tools(tools), params].inject({}, &:merge!).compact
+    def complete(prompt, params = {})
+      params = {role: :user, model: default_model}.merge!(params)
+      params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
+      role = params.delete(:role)
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages, :complete).flatten}.merge!(params))

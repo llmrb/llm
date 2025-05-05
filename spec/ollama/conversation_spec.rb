@@ -16,9 +16,9 @@ RSpec.describe "LLM::Chat: ollama" do
     let(:image) { LLM::File("spec/fixtures/images/bluebook.png") }
 
     before do
-      bot.chat("Provide yes or no answers. Nothing else.", :system)
-      bot.chat(image, :user)
-      bot.chat("Do you see an image ?", :user)
+      bot.chat("Provide yes or no answers. Nothing else.", role: :system)
+      bot.chat(image, role: :user)
+      bot.chat("Do you see an image ?", role: :user)
     end
 
     it "describes the image" do
@@ -45,8 +45,8 @@ RSpec.describe "LLM::Chat: ollama" do
     end
 
     before do
-      bot.chat("You are a bot that can run UNIX system commands", :user)
-      bot.chat("Hey, tell me the date via the given 'system' tool", :user)
+      bot.chat("You are a bot that can run UNIX system commands", role: :user)
+      bot.chat("Hey, tell me the date via the given 'system' tool", role: :user)
     end
 
     it "calls the function" do

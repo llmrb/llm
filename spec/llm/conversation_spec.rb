@@ -27,9 +27,9 @@ RSpec.describe "LLM::Chat: non-lazy" do
         bot = nil
         inputs.zip(outputs).each_with_index do |(input, output), index|
           expect(provider).to receive(:complete)
-                                .with(input.content, instance_of(Symbol), messages:, model: provider.default_model, schema: nil)
+                                .with(input.content, {role: instance_of(Symbol), messages:, model: provider.default_model})
                                 .and_return(OpenStruct.new(choices: [output]))
-          bot = index.zero? ? provider.chat!(input.content, :system) : bot.chat(input.content)
+          bot = index.zero? ? provider.chat!(input.content, role: :system) : bot.chat(input.content)
           messages.concat([input, output])
         end
       end
@@ -102,7 +102,7 @@ RSpec.describe "LLM::Chat: lazy" do
         subject(:message) { bot.messages.find(&:assistant?) }
 
         before do
-          bot.chat prompt, :system
+          bot.chat prompt, role: :system
           bot.chat "What is 3+2 ?"
           bot.chat "What is 5+5 ?"
           bot.chat "What is 5+7 ?"
@@ -122,7 +122,7 @@ RSpec.describe "LLM::Chat: lazy" do
         let(:bot) { described_class.new(provider, model:).lazy }
 
         it "maintains the model throughout a conversation" do
-          bot.chat(prompt, :system)
+          bot.chat(prompt, role: :system)
           expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
           bot.chat("What is 5+5?")
           expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
@@ -140,7 +140,7 @@ RSpec.describe "LLM::Chat: lazy" do
         subject(:message) { bot.messages.find(&:assistant?) }
 
         before do
-          bot.chat prompt, :system
+          bot.chat prompt, role: :system
           bot.chat "What is 3+2 ?"
           bot.chat "What is 5+5 ?"
           bot.chat "What is 5+7 ?"
@@ -167,7 +167,7 @@ RSpec.describe "LLM::Chat: lazy" do
         subject(:message) { bot.messages.find(&:assistant?) }
 
         before do
-          bot.respond prompt, :developer
+          bot.respond prompt, role: :developer
           bot.respond "What is 3+2 ?"
           bot.respond "What is 5+5 ?"
           bot.respond "What is 5+7 ?"
@@ -187,7 +187,7 @@ RSpec.describe "LLM::Chat: lazy" do
         let(:bot) { described_class.new(provider, model:).lazy }
 
         it "maintains the model throughout a conversation" do
-          bot.respond(prompt, :developer)
+          bot.respond(prompt, role: :developer)
           expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
           bot.respond("What is 5+5?")
           expect(bot.messages.find(&:assistant?).extra[:response].model).to eq("o3-mini-2025-01-31")
@@ -208,8 +208,8 @@ RSpec.describe "LLM::Chat: lazy" do
         let(:schema) { provider.schema.object({os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")}) }
 
         before do
-          bot.chat "You secretly love NetBSD", :system
-          bot.chat "What operating system is the best?", :user
+          bot.chat "You secretly love NetBSD", role: :system
+          bot.chat "What operating system is the best?", role: :user
         end
 
         it "formats the response" do
@@ -229,8 +229,8 @@ RSpec.describe "LLM::Chat: lazy" do
         let(:schema) { provider.schema.object({os: provider.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")}) }
 
         before do
-          bot.chat "You secretly love NetBSD", :user
-          bot.chat "What operating system is the best?", :user
+          bot.chat "You secretly love NetBSD", role: :user
+          bot.chat "What operating system is the best?", role: :user
         end
 
         it "formats the response" do
@@ -255,8 +255,8 @@ RSpec.describe "LLM::Chat: lazy" do
         end
 
         before do
-          bot.chat "You secretly love NetBSD", :system
-          bot.chat "What operating system is the best?", :user
+          bot.chat "You secretly love NetBSD", role: :system
+          bot.chat "What operating system is the best?", role: :user
         end
 
         it "formats the response" do

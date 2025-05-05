@@ -77,10 +77,10 @@ module LLM
     def complete!(message, params)
       pendings = @pending.map { _1[0] }
       messages = [*@completed, *pendings]
+      role = message.role
       completion = @provider.complete(
         message.content,
-        message.role,
-        **params.merge(messages:)
+        params.merge(role:, messages:)
       )
       @completed.concat([*pendings, message, completion.choices[0]])
       @pending.clear
@@ -89,11 +89,12 @@ module LLM
     def respond!(message, params)
       pendings = @pending.map { _1[0] }
       input = [*pendings]
+      role = message.role
       params = [
         params.merge(input:),
         @response ? {previous_response_id: @response.id} : {}
       ].inject({}, &:merge!)
-      @response = @provider.responses.create(message.content, message.role, **params)
+      @response = @provider.responses.create(message.content, params.merge(role:))
       @completed.concat([*pendings, message, @response.outputs[0]])
       @pending.clear
     end

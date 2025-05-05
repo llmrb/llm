@@ -41,17 +41,16 @@ module LLM
     # Provides an interface to the chat completions API
     # @see https://docs.anthropic.com/en/api/messages Anthropic docs
     # @param prompt (see LLM::Provider#complete)
-    # @param role (see LLM::Provider#complete)
-    # @param model (see LLM::Provider#complete)
-    # @param max_tokens The maximum number of tokens to generate
     # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, max_tokens: 1024, tools: nil, **params)
-      params = [{max_tokens:, model:}, format_tools(tools), params].inject({}, &:merge!).compact
+    def complete(prompt, params = {})
+      params = {role: :user, model: default_model, max_tokens: 1024}.merge!(params)
+      params = [params, format_tools(params)].inject({}, &:merge!).compact
+      role = params.delete(:role)
       req = Net::HTTP::Post.new("/v1/messages", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))

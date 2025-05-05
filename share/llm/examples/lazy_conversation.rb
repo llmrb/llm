@@ -2,10 +2,10 @@
 require "llm"
 
 llm = LLM.openai(ENV["KEY"])
-convo = llm.chat File.read("./share/llm/prompts/system.txt"), :system
-convo.chat "Tell me the answer to 5 + 15"
-convo.chat "Tell me the answer to (5 + 15) * 2"
-convo.chat "Tell me the answer to ((5 + 15) * 2) / 10"
+convo = llm.chat File.read("./share/llm/prompts/system.txt"), role: :system
+convo.chat "Tell me the answer to 5 + 15", role: :user
+convo.chat "Tell me the answer to (5 + 15) * 2", role: :user
+convo.chat "Tell me the answer to ((5 + 15) * 2) / 10", role: :user
 convo.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##

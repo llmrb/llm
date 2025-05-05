@@ -13,11 +13,10 @@ module LLM
   #
   #   llm = LLM.openai(ENV["KEY"])
   #   bot = LLM::Chat.new(llm).lazy
-  #   bot.chat("Your task is to answer all of my questions", :system)
-  #   bot.chat("Your answers should be short and concise", :system)
-  #   bot.chat("What is 5 + 7 ?", :user)
-  #   bot.chat("Why is the sky blue ?", :user)
-  #   bot.chat("Why did the chicken cross the road ?", :user)
+  #   bot.chat("Provide short and concise answers", role: :system)
+  #   bot.chat("What is 5 + 7 ?", role: :user)
+  #   bot.chat("Why is the sky blue ?", role: :user)
+  #   bot.chat("Why did the chicken cross the road ?", role: :user)
   #   bot.messages.map { print "[#{_1.role}]", _1.content, "\n" }
   class Chat
     ##
@@ -43,16 +42,18 @@ module LLM
 
     ##
     # Maintain a conversation via the chat completions API
-    # @param prompt (see LLM::Provider#prompt)
-    # @param role (see LLM::Provider#prompt)
-    # @param params (see LLM::Provider#prompt)
+    # @param prompt (see LLM::Provider#complete)
+    # @param params (see LLM::Provider#complete)
     # @return [LLM::Chat]
-    def chat(prompt, role = :user, **params)
+    def chat(prompt, params = {})
+      params = {role: :user}.merge!(params)
       if lazy?
+        role = params.delete(:role)
         @messages << [LLM::Message.new(role, prompt), @params.merge(params), :complete]
         self
       else
-        completion = complete!(prompt, role, params)
+        role = params[:role]
+        completion = complete!(prompt, params)
         @messages.concat [Message.new(role, prompt), completion.choices[0]]
         self
       end
@@ -61,16 +62,18 @@ module LLM
     ##
     # Maintain a conversation via the responses API
     # @note Not all LLM providers support this API
-    # @param prompt (see LLM::Provider#prompt)
-    # @param role (see LLM::Provider#prompt)
-    # @param params (see LLM::Provider#prompt)
+    # @param prompt (see LLM::Provider#complete)
+    # @param params (see LLM::Provider#complete)
     # @return [LLM::Chat]
-    def respond(prompt, role = :user, **params)
+    def respond(prompt, params = {})
+      params = {role: :user}.merge!(params)
       if lazy?
+        role = params.delete(:role)
         @messages << [LLM::Message.new(role, prompt), @params.merge(params), :respond]
         self
       else
-        @response = respond!(prompt, role, params)
+        role = params[:role]
+        @response = respond!(prompt, params)
         @messages.concat [Message.new(role, prompt), @response.outputs[0]]
         self
       end
@@ -142,19 +145,17 @@ module LLM
     end
     private_constant :Array
 
-    def respond!(prompt, role, params)
+    def respond!(prompt, params)
       @provider.responses.create(
         prompt,
-        role,
-        **@params.merge(params.merge(@response ? {previous_response_id: @response.id} : {}))
+        @params.merge(params.merge(@response ? {previous_response_id: @response.id} : {}))
       )
     end
 
-    def complete!(prompt, role, params)
+    def complete!(prompt, params)
       @provider.complete(
         prompt,
-        role,
-        **@params.merge(params.merge(messages:))
+        @params.merge(params.merge(messages:))
       )
     end
   end

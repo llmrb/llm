@@ -7,7 +7,7 @@ RSpec.describe "LLM::Gemini: completions" do
 
   context "when given a successful response",
           vcr: {cassette_name: "gemini/completions/successful_response", match_requests_on: [:method]} do
-    subject(:response) { gemini.complete("Hello!", :user) }
+    subject(:response) { gemini.complete("Hello!", role: :user) }
     let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
     it "returns a completion" do
@@ -49,10 +49,12 @@ RSpec.describe "LLM::Gemini: completions" do
   context "when given a thread of messages",
           vcr: {cassette_name: "gemini/completions/successful_response_thread", match_requests_on: [:method]} do
     subject(:response) do
-      gemini.complete "What is your name?", :user, messages: [
-        {role: "user", content: "Answer all of my questions"},
-        {role: "user", content: "Your name is John"}
-      ]
+      gemini.complete "What is your name?",
+                      role: :user,
+                      messages: [
+                        {role: "user", content: "Answer all of my questions"},
+                        {role: "user", content: "Your name is John"}
+                      ]
     end
     let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
@@ -70,7 +72,7 @@ RSpec.describe "LLM::Gemini: completions" do
 
   context "when given an unauthorized response",
           vcr: {cassette_name: "gemini/completions/unauthorized_response", match_requests_on: [:method]} do
-    subject(:response) { gemini.complete("Hello!", :user) }
+    subject(:response) { gemini.complete("Hello!", role: :user) }
     let(:token) { "TOKEN" }
 
     it "raises an error" do

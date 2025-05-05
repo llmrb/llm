@@ -52,16 +52,16 @@ module LLM
     # Provides an interface to the chat completions API
     # @see https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion Ollama docs
     # @param prompt (see LLM::Provider#complete)
-    # @param role (see LLM::Provider#complete)
-    # @param model (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, schema: nil, tools: nil, **params)
-      params = [{model:, stream: false, format: schema}, format_tools(tools), params].inject({}, &:merge!).compact
+    def complete(prompt, params = {})
+      params = {role: :user, model: default_model, stream: false}.merge!(params)
+      params = [params, {format: params[:schema]}, format_tools(params)].inject({}, &:merge!).compact
+      role = params.delete(:role)
       req = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))

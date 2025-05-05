@@ -16,7 +16,8 @@ RSpec.describe "LLM::Anthropic: completions" do
 
     subject(:response) do
       anthropic.complete(
-        "Hello, world", :user,
+        "Hello, world",
+        role: :user,
         messages: [{role: :user, content: [{type: :text, text: prompt}]}]
       )
     end
@@ -62,7 +63,7 @@ RSpec.describe "LLM::Anthropic: completions" do
         "Answer with yes or no. ",
         "Nothing else.",
         uri
-      ], :user)
+      ], role: :user)
     end
     let(:uri) { URI("https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png") }
 
@@ -80,7 +81,7 @@ RSpec.describe "LLM::Anthropic: completions" do
         "Answer with yes or no.",
         "Nothing else.",
         file
-      ], :user)
+      ], role: :user)
     end
     let(:file) { LLM::File("spec/fixtures/images/bluebook.png") }
 
@@ -91,7 +92,7 @@ RSpec.describe "LLM::Anthropic: completions" do
 
   context "when given an unauthorized response",
           vcr: {cassette_name: "anthropic/completions/unauthorized_response"} do
-    subject(:response) { anthropic.complete("Hello", :user) }
+    subject(:response) { anthropic.complete("Hello", role: :user) }
     let(:token) { "BADTOKEN" }
 
     it "raises an error" do

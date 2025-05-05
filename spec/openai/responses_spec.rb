@@ -8,7 +8,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
   context "when given a successful create operation",
           vcr: {cassette_name: "openai/responses/successful_create"} do
-    subject { provider.responses.create("Hello", :developer) }
+    subject { provider.responses.create("Hello", role: :developer) }
 
     it "is successful" do
       is_expected.to be_instance_of(LLM::Response::Respond)
@@ -23,7 +23,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
   context "when given a successful get operation",
           vcr: {cassette_name: "openai/responses/successful_get"} do
-    let(:response) { provider.responses.create("Hello", :developer) }
+    let(:response) { provider.responses.create("Hello", role: :developer) }
     subject { provider.responses.get(response) }
 
     it "is successful" do
@@ -39,7 +39,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
   context "when given a successful delete operation",
           vcr: {cassette_name: "openai/responses/successful_delete"} do
-    let(:response) { provider.responses.create("Hello", :developer) }
+    let(:response) { provider.responses.create("Hello", role: :developer) }
     subject { provider.responses.delete(response) }
 
     it "is successful" do
