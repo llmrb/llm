@@ -6,7 +6,7 @@ RSpec.describe "LLM::Chat: gemini" do
   let(:described_class) { LLM::Chat }
   let(:provider) { LLM.gemini(token) }
   let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
-  let(:bot) { described_class.new(provider, **params).lazy }
+  let(:bot) { described_class.new(provider, params).lazy }
 
   context "when asked to describe an image",
           vcr: {cassette_name: "gemini/conversations/multimodal_response", match_requests_on: [:method]} do
@@ -20,7 +20,7 @@ RSpec.describe "LLM::Chat: gemini" do
         "Does this resemable a book?",
         "Answer with yes or no. Nothing else.",
         image
-      ], :user)
+      ], role: :user)
     end
 
     it "describes the image" do
@@ -47,8 +47,8 @@ RSpec.describe "LLM::Chat: gemini" do
     end
 
     before do
-      bot.chat("You are a bot that can run UNIX system commands", :user)
-      bot.chat("Hey, tell me the date", :user)
+      bot.chat("You are a bot that can run UNIX system commands", role: :user)
+      bot.chat("Hey, tell me the date", role: :user)
     end
 
     it "calls the function" do
@@ -76,8 +76,8 @@ RSpec.describe "LLM::Chat: gemini" do
     end
 
     before do
-      bot.chat("You are a bot that can run UNIX system commands", :user)
-      bot.chat("Hello! Nice to meet you", :user)
+      bot.chat("You are a bot that can run UNIX system commands", role: :user)
+      bot.chat("Hello! Nice to meet you", role: :user)
     end
 
     it "does not error out" do

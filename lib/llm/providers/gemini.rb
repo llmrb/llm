@@ -65,17 +65,16 @@ module LLM
     # Provides an interface to the chat completions API
     # @see https://ai.google.dev/api/generate-content#v1beta.models.generateContent Gemini docs
     # @param prompt (see LLM::Provider#complete)
-    # @param role (see LLM::Provider#complete)
-    # @param model (see LLM::Provider#complete)
-    # @param schema (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
     # @example (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
-    def complete(prompt, role = :user, model: default_model, schema: nil, tools: nil, **params)
-      params = [format_schema(schema), format_tools(tools), params].inject({}, &:merge!).compact
+    def complete(prompt, params = {})
+      params = {role: :user, model: default_model}.merge!(params)
+      params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
+      role, model = [:role, :model].map { params.delete(_1) }
       model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)

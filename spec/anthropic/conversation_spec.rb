@@ -6,7 +6,7 @@ RSpec.describe "LLM::Chat: anthropic" do
   let(:described_class) { LLM::Chat }
   let(:provider) { LLM.anthropic(token) }
   let(:token) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
-  let(:bot) { described_class.new(provider, **params).lazy }
+  let(:bot) { described_class.new(provider, params).lazy }
 
   context "when given a system function",
           vcr: {cassette_name: "anthropic/conversations/system_function_call"} do
@@ -27,8 +27,8 @@ RSpec.describe "LLM::Chat: anthropic" do
     end
 
     before do
-      bot.chat("You are a bot that can run UNIX system commands", :user)
-      bot.chat("Hey, tell me the date", :user)
+      bot.chat("You are a bot that can run UNIX system commands", role: :user)
+      bot.chat("Hey, tell me the date", role: :user)
     end
 
     it "calls the function" do

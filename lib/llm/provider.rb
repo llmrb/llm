@@ -52,26 +52,23 @@ class LLM::Provider
   # Provides an interface to the chat completions API
   # @example
   #   llm = LLM.openai(ENV["KEY"])
-  #   messages = [
-  #     {role: "system", content: "Your task is to answer all of my questions"},
-  #     {role: "system", content: "Your answers should be short and concise"},
-  #   ]
-  #   res = llm.complete("Hello. What is the answer to 5 + 2 ?", :user, messages:)
+  #   messages = [{role: "system", content: "Your task is to answer all of my questions"}]
+  #   res = llm.complete("5 + 2 ?", messages:)
   #   print "[#{res.choices[0].role}]", res.choices[0].content, "\n"
   # @param [String] prompt
   #  The input prompt to be completed
-  # @param [Symbol] role
-  #  The role of the prompt (e.g. :user, :system)
-  # @param [String] model
-  #  The model to use for the completion
-  # @param [#to_json, nil] schema
-  #  The schema that describes the expected response format
   # @param [Hash] params
-  #  Other completion parameters
+  #  The parameters to maintain throughout the conversation.
+  #  Any parameter the provider supports can be included and
+  #  not only those listed here.
+  # @option params [Symbol] :role Defaults to the provider's default role
+  # @option params [String] :model Defaults to the provider's default model
+  # @option params [#to_json, nil] :schema Defaults to nil
+  # @option params [Array<LLM::Function>, nil] :tools Defaults to nil
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
   # @return [LLM::Response::Completion]
-  def complete(prompt, role = :user, model: default_model, schema: nil, **params)
+  def complete(prompt, params = {})
     raise NotImplementedError
   end
 
@@ -81,15 +78,11 @@ class LLM::Provider
   #  This method creates a lazy version of a
   #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
-  # @param role (see LLM::Provider#complete)
-  # @param model (see LLM::Provider#complete)
-  # @param schema (see LLM::Provider#complete)
-  # @param [Hash] params
-  #  Other completion parameters to maintain throughout a chat
-  # @raise (see LLM::Provider#complete)
+  # @param params (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def chat(prompt, role = :user, model: default_model, schema: nil, **params)
-    LLM::Chat.new(self, **params.merge(model:, schema:)).lazy.chat(prompt, role)
+  def chat(prompt, params = {})
+    role = params.delete(:role)
+    LLM::Chat.new(self, params).lazy.chat(prompt, role:)
   end
 
   ##
@@ -98,15 +91,12 @@ class LLM::Provider
   #  This method creates a non-lazy version of a
   #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
-  # @param role (see LLM::Provider#complete)
-  # @param model (see LLM::Provider#complete)
-  # @param schema (see LLM::Provider#complete)
-  # @param [Hash] params
-  #  Other completion parameters to maintain throughout a chat
+  # @param params (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def chat!(prompt, role = :user, model: default_model, schema: nil, **params)
-    LLM::Chat.new(self, **params.merge(model:, schema:)).chat(prompt, role)
+  def chat!(prompt, params = {})
+    role = params.delete(:role)
+    LLM::Chat.new(self, params).chat(prompt, role:)
   end
 
   ##
@@ -115,15 +105,12 @@ class LLM::Provider
   #  This method creates a lazy variant of a
   #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
-  # @param role (see LLM::Provider#complete)
-  # @param model (see LLM::Provider#complete)
-  # @param schema (see LLM::Provider#complete)
-  # @param [Hash] params
-  #  Other completion parameters to maintain throughout a chat
+  # @param params (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def respond(prompt, role = :user, model: default_model, schema: nil, **params)
-    LLM::Chat.new(self, **params.merge(model:, schema:)).lazy.respond(prompt, role)
+  def respond(prompt, params = {})
+    role = params.delete(:role)
+    LLM::Chat.new(self, params).lazy.respond(prompt, role:)
   end
 
   ##
@@ -132,15 +119,12 @@ class LLM::Provider
   #  This method creates a non-lazy variant of a
   #  {LLM::Chat LLM::Chat} object.
   # @param prompt (see LLM::Provider#complete)
-  # @param role (see LLM::Provider#complete)
-  # @param model (see LLM::Provider#complete)
-  # @param schema (see LLM::Provider#complete)
-  # @param [Hash] params
-  #  Other completion parameters to maintain throughout a chat
+  # @param params (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Chat]
-  def respond!(prompt, role = :user, model: default_model, schema: nil, **params)
-    LLM::Chat.new(self, **params.merge(model:, schema:)).respond(prompt, role)
+  def respond!(prompt, params = {})
+    role = params.delete(:role)
+    LLM::Chat.new(self, params).respond(prompt, role:)
   end
 
   ##

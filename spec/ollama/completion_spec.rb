@@ -14,7 +14,7 @@ RSpec.describe "LLM::Ollama: completions" do
       "Nothing else. And do not say 'hi'. "
     end
     subject(:response) do
-      ollama.complete("Hello!", :user, messages: [{role: "system", content: prompt}])
+      ollama.complete("Hello!", role: :user, messages: [{role: "system", content: prompt}])
     end
 
     it "returns a completion" do

@@ -22,28 +22,20 @@ class LLM::Gemini
     # @param [JSON::Schema] schema
     #  The schema to format
     # @return [Hash]
-    def format_schema(schema)
-      return {} unless schema
-      {
-        "generationConfig" => {
-          "response_mime_type" => "application/json",
-          "response_schema" => schema
-        }
-      }
+    def format_schema(params)
+      return {} unless params and params[:schema]
+      schema = params.delete(:schema)
+      {generationConfig: {response_mime_type: "application/json", response_schema: schema}}
     end
 
     ##
     # @param [Array<LLM::Function>] tools
     #  The tools to format
     # @return [Hash]
-    def format_tools(tools)
-      return {} unless tools
-      functions = tools.grep(LLM::Function)
-      {
-        "tools" => {
-          "functionDeclarations" => functions.map { _1.format(self) }
-        }
-      }
+    def format_tools(params)
+      return {} unless params and params[:tools]&.any?
+      functions = params.delete(:tools).grep(LLM::Function)
+      {tools: {functionDeclarations: functions.map { _1.format(self) }}}
     end
   end
 end

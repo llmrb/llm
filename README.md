@@ -68,10 +68,10 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
-bot.chat File.read("./share/llm/prompts/system.txt"), :system
-bot.chat "Tell me the answer to 5 + 15", :user
-bot.chat "Tell me the answer to (5 + 15) * 2", :user
-bot.chat "Tell me the answer to ((5 + 15) * 2) / 10", :user
+bot.chat File.read("./share/llm/prompts/system.txt"), role: :system
+bot.chat "Tell me the answer to 5 + 15", role: :user
+bot.chat "Tell me the answer to (5 + 15) * 2", role: :user
+bot.chat "Tell me the answer to ((5 + 15) * 2) / 10", role: :user
 bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
@@ -108,10 +108,10 @@ require "llm"
 
 llm = LLM.openai(ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
-bot.respond File.read("./share/llm/prompts/system.txt"), :developer
-bot.respond "Tell me the answer to 5 + 15", :user
-bot.respond "Tell me the answer to (5 + 15) * 2", :user
-bot.respond "Tell me the answer to ((5 + 15) * 2) / 10", :user
+bot.respond File.read("./share/llm/prompts/system.txt"), role: :developer
+bot.respond "Tell me the answer to 5 + 15", role: :user
+bot.respond "Tell me the answer to (5 + 15) * 2", role: :user
+bot.respond "Tell me the answer to ((5 + 15) * 2) / 10", role: :user
 bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
@@ -155,18 +155,18 @@ require "llm"
 llm = LLM.openai(ENV["KEY"])
 schema = llm.schema.object({os: llm.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")})
 bot = LLM::Chat.new(llm, schema:)
-bot.chat "You secretly love NetBSD", :system
-bot.chat "What operating system is the best?", :user
+bot.chat "You secretly love NetBSD", role: :system
+bot.chat "What operating system is the best?", role: :user
 bot.messages.find(&:assistant?).content! # => {os: "NetBSD"}
 
 schema = llm.schema.object({answer: llm.schema.integer.required})
 bot = LLM::Chat.new(llm, schema:)
-bot.chat "Tell me the answer to ((5 + 5) / 2)", :user
+bot.chat "Tell me the answer to ((5 + 5) / 2)", role: :user
 bot.messages.find(&:assistant?).content! # => {answer: 5}
 
 schema = llm.schema.object({probability: llm.schema.number.required})
 bot = LLM::Chat.new(llm, schema:)
-bot.chat "Does the earth orbit the sun?", :user
+bot.chat "Does the earth orbit the sun?", role: :user
 bot.messages.find(&:assistant?).content! # => {probability: 1}
 ```
 
@@ -207,12 +207,12 @@ tool = LLM.function(:system) do |fn|
 end
 
 bot = LLM::Chat.new(llm, tools: [tool]).lazy
-bot.chat "Your task is to run shell commands via a tool.", :system
+bot.chat "Your task is to run shell commands via a tool.", role: :system
 
-bot.chat "What is the current date?", :user
+bot.chat "What is the current date?", role: :user
 bot.chat bot.functions.map(&:call) # report return value to the LLM
 
-bot.chat "What operating system am I running? (short version please!)", :user
+bot.chat "What operating system am I running? (short version please!)", role: :user
 bot.chat bot.functions.map(&:call) # report return value to the LLM
 
 ##

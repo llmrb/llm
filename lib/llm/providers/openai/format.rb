@@ -29,8 +29,9 @@ class LLM::OpenAI
     # @param [JSON::Schema] schema
     #  The schema to format
     # @return [Hash]
-    def format_schema(schema)
-      return {} unless schema
+    def format_schema(params)
+      return {} unless params and params[:schema]
+      schema = params.delete(:schema)
       {
         response_format: {
           type: "json_schema",
@@ -43,8 +44,9 @@ class LLM::OpenAI
     # @param [Array<LLM::Function>] tools
     #  The tools to format
     # @return [Hash]
-    def format_tools(tools)
-      return {} unless tools
+    def format_tools(params)
+      return {} unless params and params[:tools]&.any?
+      tools = params[:tools]
       {tools: tools.map { _1.format(self) }}
     end
   end

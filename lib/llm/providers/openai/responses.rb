@@ -45,15 +45,15 @@ class LLM::OpenAI
     # Create a response
     # @see https://platform.openai.com/docs/api-reference/responses/create OpenAI docs
     # @param prompt (see LLM::Provider#complete)
-    # @param role (see LLM::Provider#complete)
-    # @param model (see LLM::Provider#complete)
-    # @param [Hash] params Response params
+    # @param params (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
     # @raise [LLM::Error::PromptError]
     #  When given an object a provider does not understand
     # @return [LLM::Response::Output]
-    def create(prompt, role = :user, model: @provider.default_model, schema: nil, tools: nil, **params)
-      params = [{model:}, format_schema(schema), format_tools(tools), params].inject({}, &:merge!).compact
+    def create(prompt, params = {})
+      params = {role: :user, model: @provider.default_model}.merge!(params)
+      params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
+      role = params.delete(:role)
       req = Net::HTTP::Post.new("/v1/responses", headers)
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({input: [format(messages, :response)].flatten}.merge!(params))

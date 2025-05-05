@@ -9,7 +9,7 @@ class LLM::Gemini
   #   require "llm"
   #
   #   llm = LLM.gemini(ENV["KEY"])
-  #   res = llm.audio.create_transcription(input: LLM::File("/rocket.mp3"))
+  #   res = llm.audio.create_transcription(input: "/audio/rocket.mp3")
   #   res.text # => "A dog on a rocket to the moon"
   class Audio
     ##
@@ -31,7 +31,7 @@ class LLM::Gemini
     # Create an audio transcription
     # @example
     #   llm = LLM.gemini(ENV["KEY"])
-    #   res = llm.audio.create_transcription(file: LLM::File("/rocket.mp3"))
+    #   res = llm.audio.create_transcription(file: "/audio/rocket.mp3")
     #   res.text # => "A dog on a rocket to the moon"
     # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs
     # @param [String, LLM::File, LLM::Response::File] file The input audio
@@ -44,7 +44,7 @@ class LLM::Gemini
         "Your task is to transcribe the contents of an audio file",
         "Your response should include the transcription, and nothing else",
         LLM.File(file)
-      ], :user, model:, **params
+      ], params.merge(role: :user, model:)
       LLM::Response::AudioTranscription
         .new(res)
         .tap { _1.text = res.choices[0].content }
@@ -55,7 +55,7 @@ class LLM::Gemini
     # @example
     #   # Arabic => English
     #   llm = LLM.gemini(ENV["KEY"])
-    #   res = llm.audio.create_translation(file: LLM::File("/bismillah.mp3"))
+    #   res = llm.audio.create_translation(file: "/audio/bismillah.mp3")
     #   res.text # => "In the name of Allah, the Beneficent, the Merciful."
     # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs
     # @param [String, LLM::File, LLM::Response::File] file The input audio
@@ -68,7 +68,7 @@ class LLM::Gemini
         "Your task is to translate the contents of an audio file into English",
         "Your response should include the translation, and nothing else",
         LLM.File(file)
-      ], :user, model:, **params
+      ], params.merge(role: :user, model:)
       LLM::Response::AudioTranslation
         .new(res)
         .tap { _1.text = res.choices[0].content }
