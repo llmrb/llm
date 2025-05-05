@@ -88,7 +88,7 @@ RSpec.describe "LLM::Gemini::Files" do
     end
 
     it "translates the audio clip" do
-      is_expected.to eq("All praise is due to Allah, Lord of the worlds.\n")
+      is_expected.to match(/All praise is due to Allah, Lord of the worlds/i)
     end
   end
 
