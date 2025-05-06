@@ -33,7 +33,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 06 May 2025 07:49:43 GMT
+      - Tue, 06 May 2025 08:16:15 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -43,7 +43,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=499
+      - gfet4t7; dur=1163
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -68,7 +68,7 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -1.8397954894074548e-05
+              "avgLogprobs": -1.8755368121977273e-05
             }
           ],
           "usageMetadata": {
@@ -90,7 +90,7 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Tue, 06 May 2025 07:49:17 GMT
+  recorded_at: Tue, 06 May 2025 08:15:48 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
@@ -124,7 +124,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 06 May 2025 07:49:45 GMT
+      - Tue, 06 May 2025 08:16:16 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -134,7 +134,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1060
+      - gfet4t7; dur=1126
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -154,7 +154,7 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.019645483543475468
+              "avgLogprobs": -0.023285438617070515
             }
           ],
           "usageMetadata": {
@@ -176,5 +176,5 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Tue, 06 May 2025 07:49:18 GMT
+  recorded_at: Tue, 06 May 2025 08:15:50 GMT
 recorded_with: VCR 6.3.1

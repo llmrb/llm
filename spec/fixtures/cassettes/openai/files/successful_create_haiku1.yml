@@ -5,14 +5,14 @@ http_interactions:
     uri: https://api.openai.com/v1/files
     body:
       encoding: ASCII-8BIT
-      string: "--BOUNDARY__b045a5a4f025dfceec713aaf16a8cdb2\r\nContent-Disposition:
+      string: "--BOUNDARY__f21295e0ef6a6d8d5c94227ce167be18\r\nContent-Disposition:
         form-data; name=\"file\";filename=\"haiku1.txt\"\r\nContent-Type: text/plain\r\n\r\nWhispers
         through the trees,\nmoonlight dances on still waves --\nnight's breath softly
-        glows\n\r\n--BOUNDARY__b045a5a4f025dfceec713aaf16a8cdb2\r\nContent-Disposition:
-        form-data; name=\"purpose\"\r\n\r\nassistants\r\n--BOUNDARY__b045a5a4f025dfceec713aaf16a8cdb2--\r\n"
+        glows\n\r\n--BOUNDARY__f21295e0ef6a6d8d5c94227ce167be18\r\nContent-Disposition:
+        form-data; name=\"purpose\"\r\n\r\nassistants\r\n--BOUNDARY__f21295e0ef6a6d8d5c94227ce167be18--\r\n"
     headers:
       Content-Type:
-      - multipart/form-data; boundary=BOUNDARY__b045a5a4f025dfceec713aaf16a8cdb2
+      - multipart/form-data; boundary=BOUNDARY__f21295e0ef6a6d8d5c94227ce167be18
       Authorization:
       - Bearer TOKEN
       Accept-Encoding:
@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 05 May 2025 07:59:56 GMT
+      - Tue, 06 May 2025 08:18:22 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,9 +41,9 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_441987253eca7cfe71d454d7cd2d4466
+      - req_240e56ff659f7fed4b4135e4853025ed
       Openai-Processing-Ms:
-      - '733'
+      - '681'
       Access-Control-Allow-Origin:
       - "*"
       Strict-Transport-Security:
@@ -51,17 +51,17 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=MdVxbXpqkSXGBtLsBvyIrubACCQiViXpwOlM1sPx6mk-1746431996-1.0.1.1-khY3eoCmidFJTXh04mrwpTC7N1k0CiUCo25VFu0P1MXglmTKPR6fpNSlbymWGrIyobxTmMAoJctNmnoRoOaAFiIxlbBLK1ORvTrDxgN5PEA;
-        path=/; expires=Mon, 05-May-25 08:29:56 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=syyEVBvL1CQwK1GvT8j6PMOWDlnqCccQTjU07SG0SeY-1746519502-1.0.1.1-vJXo.YLICh5xeiV4_Nva8M9zn5R60y9lNb1qSwpUr0Bn91QT3eRRYFxmS8M_ODnWwuto28eC7wAsvEnBQOY9ZRyyjpaDe3bY.Q2tapJ9GZE;
+        path=/; expires=Tue, 06-May-25 08:48:22 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=uFShNu6xFojBXY7Vyg7ssyDkkcibDMmDxiED0nv9CA4-1746431996929-0.0.1.1-604800000;
+      - _cfuvid=T2Cx4NM_uPWQ.txm5Fv8BvDUCGYYCEhzln5eD8JpKZ8-1746519502496-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93aeb3870867a4bc-GRU
+      - 93b70be37c89a4d2-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -69,19 +69,19 @@ http_interactions:
       string: |
         {
           "object": "file",
-          "id": "file-D5hPqtYjDSBuv1TbaAF3Ss",
+          "id": "file-MGjmGvSXPQ3CN8BcwqRUZ1",
           "purpose": "assistants",
           "filename": "haiku1.txt",
           "bytes": 91,
-          "created_at": 1746431996,
+          "created_at": 1746519501,
           "expires_at": null,
           "status": "processed",
           "status_details": null
         }
-  recorded_at: Mon, 05 May 2025 07:59:32 GMT
+  recorded_at: Tue, 06 May 2025 08:17:55 GMT
 - request:
     method: delete
-    uri: https://api.openai.com/v1/files/file-D5hPqtYjDSBuv1TbaAF3Ss
+    uri: https://api.openai.com/v1/files/file-MGjmGvSXPQ3CN8BcwqRUZ1
     body:
       encoding: US-ASCII
       string: ''
@@ -102,7 +102,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 05 May 2025 07:59:57 GMT
+      - Tue, 06 May 2025 08:18:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -114,9 +114,9 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_4b6e4c5d8fccba756305550e29956b59
+      - req_b9de39bcdeb8c88026d61c8a0fd78c12
       Openai-Processing-Ms:
-      - '169'
+      - '265'
       Access-Control-Allow-Origin:
       - "*"
       Strict-Transport-Security:
@@ -124,17 +124,17 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Y9RpaOjmp3PeLSQ.g.WLsM1w6V5erMm0c1suaTR3ogc-1746431997-1.0.1.1-x9DAaGQsQQjq8ioqpWFFy.h46Chthjh83mQQHdqJOoR9Zt2gHaXG8THqEgdZcmXmEnQDdHJaE5s1CpRoVemF7eyUWYeFwOLroUKG794QejA;
-        path=/; expires=Mon, 05-May-25 08:29:57 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=xviwLOOC5vt8IrdL1LGs30p5bEVQZituVR_15Zg3iRU-1746519503-1.0.1.1-PtjdgG1QEhVjY8eeXI8hb0MHxQ2ZU.ZI7b6mku43isEpZRPsb6bNuI931.aZiQoaQ_eJ5NlTA0.UCJTZ8SoI713Hux_UDfBbYbMeuWv2JAM;
+        path=/; expires=Tue, 06-May-25 08:48:23 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=BlXEtsjuKCipbetpj8Hb6yrjVANPW1QDwJLfawaXF2s-1746431997333-0.0.1.1-604800000;
+      - _cfuvid=UGLvf0BMSiiRok6SGch.qVqiMSbw5fJDqhdBYBrznNE-1746519503046-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93aeb38d3b891ac0-GRU
+      - 93b70beb4ca61a99-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -143,7 +143,7 @@ http_interactions:
         {
           "object": "file",
           "deleted": true,
-          "id": "file-D5hPqtYjDSBuv1TbaAF3Ss"
+          "id": "file-MGjmGvSXPQ3CN8BcwqRUZ1"
         }
-  recorded_at: Mon, 05 May 2025 07:59:32 GMT
+  recorded_at: Tue, 06 May 2025 08:17:56 GMT
 recorded_with: VCR 6.3.1

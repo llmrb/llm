@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 05 May 2025 08:02:37 GMT
+      - Tue, 06 May 2025 08:20:44 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,25 +33,25 @@ http_interactions:
       Openai-Version:
       - '2020-10-01'
       X-Request-Id:
-      - b3579a52bbf993c9a90812f61a745db9
+      - 79c08cefdf4d4836f89e7a0fe61034a8
       Openai-Processing-Ms:
-      - '428'
+      - '257'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=SjfujiJT0n4zMxVb76uTbF5_vr9rxo6jS9J92Ij1HIA-1746432157-1.0.1.1-bzpMDqSuuPMagJmKaOHVIM.LP6jxv9.7wMLpeudhj93YOYFx_TnuMz70dOh.e22B4n4KiN.tt9_s4KKEOVgUZ4JrPGB83zo0ySs59u2PV3A;
-        path=/; expires=Mon, 05-May-25 08:32:37 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=7t6U5f5vzxQ5Je.OXfRmNSwLthP8sNgs57jDzanftuM-1746519644-1.0.1.1-i_O4zQKbyZt2xQhk084gnv0Ko_bKGVt8Z_1YA.ipWhQ4.lzlmoD3f4Dqy0CJuFTt2LFaNpYNrLTPWdoGqVTJZi8L3c313svEDSiUFCwPkCo;
+        path=/; expires=Tue, 06-May-25 08:50:44 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=IVbwVElGNEALbYEJOR9MlmlsTf_IUZO7WcuYh5Z5lRo-1746432157479-0.0.1.1-604800000;
+      - _cfuvid=J_NwtkKd2uhpRwKUtNJHs4uXTzMMumYaK6.rojfTbr4-1746519644098-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93aeb771ab5eae5d-GRU
+      - 93b70f5af8dfb3c6-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -94,6 +94,12 @@ http_interactions:
               "id": "text-embedding-3-small",
               "object": "model",
               "created": 1705948997,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4-1106-preview",
+              "object": "model",
+              "created": 1698957206,
               "owned_by": "system"
             },
             {
@@ -157,12 +163,6 @@ http_interactions:
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-realtime-preview-2024-12-17",
-              "object": "model",
-              "created": 1733945430,
-              "owned_by": "system"
-            },
-            {
               "id": "gpt-4o-mini-audio-preview",
               "object": "model",
               "created": 1734387424,
@@ -223,6 +223,12 @@ http_interactions:
               "owned_by": "system"
             },
             {
+              "id": "gpt-3.5-turbo-16k",
+              "object": "model",
+              "created": 1683758102,
+              "owned_by": "openai-internal"
+            },
+            {
               "id": "o1-2024-12-17",
               "object": "model",
               "created": 1734326976,
@@ -244,12 +250,6 @@ http_interactions:
               "id": "gpt-4o-search-preview",
               "object": "model",
               "created": 1741388720,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-4-1106-preview",
-              "object": "model",
-              "created": 1698957206,
               "owned_by": "system"
             },
             {
@@ -301,18 +301,6 @@ http_interactions:
               "owned_by": "system"
             },
             {
-              "id": "gpt-3.5-turbo-16k",
-              "object": "model",
-              "created": 1683758102,
-              "owned_by": "openai-internal"
-            },
-            {
-              "id": "gpt-image-1",
-              "object": "model",
-              "created": 1745517030,
-              "owned_by": "system"
-            },
-            {
               "id": "o1-pro-2025-03-19",
               "object": "model",
               "created": 1742251504,
@@ -329,6 +317,12 @@ http_interactions:
               "object": "model",
               "created": 1686588896,
               "owned_by": "openai"
+            },
+            {
+              "id": "gpt-image-1",
+              "object": "model",
+              "created": 1745517030,
+              "owned_by": "system"
             },
             {
               "id": "text-embedding-3-large",
@@ -463,6 +457,12 @@ http_interactions:
               "owned_by": "system"
             },
             {
+              "id": "gpt-4o-realtime-preview-2024-12-17",
+              "object": "model",
+              "created": 1733945430,
+              "owned_by": "system"
+            },
+            {
               "id": "tts-1",
               "object": "model",
               "created": 1681940951,
@@ -494,5 +494,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Mon, 05 May 2025 08:02:13 GMT
+  recorded_at: Tue, 06 May 2025 08:20:17 GMT
 recorded_with: VCR 6.3.1
