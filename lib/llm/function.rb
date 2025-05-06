@@ -5,6 +5,11 @@ class LLM::Function
   end
 
   ##
+  # Returns the function name
+  # @return [String]
+  attr_reader :name
+
+  ##
   # Returns function arguments
   # @return [Array, nil]
   attr_accessor :arguments
