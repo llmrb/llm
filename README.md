@@ -8,7 +8,7 @@ JSON Schema generation.
 ## Features
 
 #### General
-- ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, and more
+- ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, LlamaCpp and more
 - 📦 Zero dependencies outside Ruby's standard library
 - 🔌 Model introspection and selection
 - 🚀 Optimized for performance and low memory usage
@@ -46,6 +46,7 @@ llm = LLM.openai(key: "yourapikey")
 llm = LLM.gemini(key: "yourapikey")
 llm = LLM.anthropic(key: "yourapikey")
 llm = LLM.ollama(key: nil)
+llm = LLM.llamacpp(key: nil)
 llm = LLM.voyageai(key: "yourapikey")
 ```
 

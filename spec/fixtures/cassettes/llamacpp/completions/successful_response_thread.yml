@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Your
+        name is John"}]},{"role":"user","content":[{"type":"text","text":"What is
+        your name? "}]}],"model":"gpt-4o-mini"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Keep-Alive:
+      - timeout=5, max=100
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - llama.cpp
+      Content-Length:
+      - '3305'
+      Access-Control-Allow-Origin:
+      - ''
+    body:
+      encoding: UTF-8
+      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"<think>\nOkay,
+        the user asked, \"What is your name?\" I need to respond appropriately. Since
+        my name is John, I should confirm that. But wait, the user might be testing
+        if I know my own name. Let me make sure I''m not confused. The initial instruction
+        says my name is John, so I should just state that clearly. Maybe add a friendly
+        line to keep the conversation going. Let me check for any typos. Yep, looks
+        good. Alright, respond with my name and a simple question to engage them further.\n</think>\n\nMy
+        name is John. What''s your name?"}}],"created":1746592811,"model":"gpt-4o-mini","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":124,"prompt_tokens":23,"total_tokens":147},"id":"chatcmpl-ryPitusMTjCZLC6gopvWHM8pioLVliNw","__verbose":{"index":0,"content":"<think>\nOkay,
+        the user asked, \"What is your name?\" I need to respond appropriately. Since
+        my name is John, I should confirm that. But wait, the user might be testing
+        if I know my own name. Let me make sure I''m not confused. The initial instruction
+        says my name is John, so I should just state that clearly. Maybe add a friendly
+        line to keep the conversation going. Let me check for any typos. Yep, looks
+        good. Alright, respond with my name and a simple question to engage them further.\n</think>\n\nMy
+        name is John. What''s your name?","tokens":[],"id_slot":0,"stop":true,"model":"gpt-4o-mini","tokens_predicted":124,"tokens_evaluated":23,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>system\nYour
+        name is John<|im_end|>\n<|im_start|>user\nWhat is your name? <|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":146,"timings":{"prompt_n":22,"prompt_ms":176.124,"prompt_per_token_ms":8.005636363636363,"prompt_per_second":124.91199382253413,"predicted_n":124,"predicted_ms":2759.707,"predicted_per_token_ms":22.255701612903223,"predicted_per_second":44.93230621946461}},"timings":{"prompt_n":22,"prompt_ms":176.124,"prompt_per_token_ms":8.005636363636363,"prompt_per_second":124.91199382253413,"predicted_n":124,"predicted_ms":2759.707,"predicted_per_token_ms":22.255701612903223,"predicted_per_second":44.93230621946461}}'
+  recorded_at: Wed, 07 May 2025 04:39:42 GMT
+recorded_with: VCR 6.3.1

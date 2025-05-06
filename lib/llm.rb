@@ -21,7 +21,7 @@ module LLM
   module_function
 
   ##
-  # @param secret (see LLM::Anthropic#initialize)
+  # @param (see LLM::Provider#initialize)
   # @return (see LLM::Anthropic#initialize)
   def anthropic(**)
     require_relative "llm/providers/anthropic" unless defined?(LLM::Anthropic)
@@ -30,7 +30,7 @@ module LLM
   end
 
   ##
-  # @param secret (see LLM::VoyageAI#initialize)
+  # @param (see LLM::Provider#initialize)
   # @return (see LLM::VoyageAI#initialize)
   def voyageai(**)
     require_relative "llm/providers/voyageai" unless defined?(LLM::VoyageAI)
@@ -38,7 +38,7 @@ module LLM
   end
 
   ##
-  # @param secret (see LLM::Gemini#initialize)
+  # @param (see LLM::Provider#initialize)
   # @return (see LLM::Gemini#initialize)
   def gemini(**)
     require_relative "llm/providers/gemini" unless defined?(LLM::Gemini)
@@ -46,7 +46,7 @@ module LLM
   end
 
   ##
-  # @param host (see LLM::Ollama#initialize)
+  # @param (see LLM::Provider#initialize)
   # @return (see LLM::Ollama#initialize)
   def ollama(key: nil, **)
     require_relative "llm/providers/ollama" unless defined?(LLM::Ollama)
@@ -54,7 +54,16 @@ module LLM
   end
 
   ##
-  # @param secret (see LLM::OpenAI#initialize)
+  # @param key (see LLM::Provider#initialize)
+  # @return (see LLM::LlamaCpp#initialize)
+  def llamacpp(key: nil, **)
+    require_relative "llm/providers/openai" unless defined?(LLM::OpenAI)
+    require_relative "llm/providers/llamacpp" unless defined?(LLM::LlamaCpp)
+    LLM::LlamaCpp.new(key:, **)
+  end
+
+  ##
+  # @param key (see LLM::Provider#initialize)
   # @return (see LLM::OpenAI#initialize)
   def openai(**)
     require_relative "llm/providers/openai" unless defined?(LLM::OpenAI)

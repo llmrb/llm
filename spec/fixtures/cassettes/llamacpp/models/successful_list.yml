@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/v1/models
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Keep-Alive:
+      - timeout=5, max=100
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - llama.cpp
+      Content-Length:
+      - '217'
+      Access-Control-Allow-Origin:
+      - ''
+    body:
+      encoding: UTF-8
+      string: '{"object":"list","data":[{"id":"qwen3","object":"model","created":1746591717,"owned_by":"llamacpp","meta":{"vocab_type":2,"n_vocab":151936,"n_ctx_train":40960,"n_embd":5120,"n_params":14768307200,"size":7315353600}}]}'
+  recorded_at: Wed, 07 May 2025 04:21:28 GMT
+recorded_with: VCR 6.3.1
