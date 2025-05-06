@@ -51,7 +51,7 @@ RSpec.describe "LLM::Chat: gemini" do
     end
   end
 
-  context "when given an instance of LLM::Function",
+  context "when given an instance of LLM::Function::Return",
           vcr: {cassette_name: "gemini/conversations/system_function_call_1", match_requests_on: [:method]} do
     let(:params) { {tools: [tool]} }
     let(:prompt) do
@@ -72,7 +72,7 @@ RSpec.describe "LLM::Chat: gemini" do
     end
   end
 
-  context "when given an instance of LLM::Function (via an array)",
+  context "when given an instance of LLM::Function::Return (via an array)",
           vcr: {cassette_name: "gemini/conversations/system_function_call_2", match_requests_on: [:method]} do
     let(:params) {  {tools: [tool]} }
     let(:prompt) do

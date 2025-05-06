@@ -20,7 +20,7 @@ RSpec.describe "LLM::Chat: openai" do
     end
   end
 
-  context "when given an instance of LLM::Function",
+  context "when given an instance of LLM::Function::Return",
           vcr: {cassette_name: "openai/conversations/system_function_call_1"} do
     let(:params) { {tools: [tool]} }
 
@@ -36,7 +36,7 @@ RSpec.describe "LLM::Chat: openai" do
     end
   end
 
-  context "when given an instance of LLM::Function (via an array)",
+  context "when given an instance of LLM::Function::Return (via an array)",
           vcr: {cassette_name: "openai/conversations/system_function_call_2"} do
     let(:params) { {tools: [tool]} }
 

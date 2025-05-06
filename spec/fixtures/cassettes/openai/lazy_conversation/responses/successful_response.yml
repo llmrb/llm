@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 06 May 2025 08:17:30 GMT
+      - Tue, 06 May 2025 09:10:07 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -54,34 +54,34 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_a04711a53c3e2b827fd897268ea2e504
+      - req_45b225bb4515733a64af10a301bcfb5f
       Openai-Processing-Ms:
-      - '1447'
+      - '1912'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=3NOUKgBVIKVE75Ui9by_48VXQ_e88VlBFWX1JFkUEk8-1746519450-1.0.1.1-pdLO2gZhNIFwy35AappLXGvuLleYO7cxD8S7zfLFn3OcPlIeKuJtsZvWRhk47PoMQdh5z_fyMmlS4UAacjT7IrYZyI0TMlVUhoKEZI6LVnA;
-        path=/; expires=Tue, 06-May-25 08:47:30 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=NOUb8z0D7unii1AWIyGD_jE2lVWjPtVfRYvF6MFKglM-1746522607-1.0.1.1-urrJUP2nOZkZ5336F9XfhYQJgDjm.EO.tS8koTnBVJxsX9DnuPG_iOZEv3JRRyqV97arDAr2Jh8V7_Rb9cIFxncyD9wsiZqZqATG395mAvI;
+        path=/; expires=Tue, 06-May-25 09:40:07 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=0XnoXIlrH8kf4857ZeT48ycRGdTk19ixIdizlCaDGPE-1746519450524-0.0.1.1-604800000;
+      - _cfuvid=PBcnmfPTzmQzLnHQIbbC146WPBp8ztXMf6mrjMIe8po-1746522607962-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93b70a978d8428b5-GRU
+      - 93b757aadff11cfd-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_6819c598fc00819297c86eefbbf1eee4046a249e773fd2b4",
+          "id": "resp_6819d1ef49208192869c680a37fa3e770f04f8d91afd455c",
           "object": "response",
-          "created_at": 1746519448,
+          "created_at": 1746522607,
           "status": "completed",
           "error": null,
           "incomplete_details": null,
@@ -90,7 +90,7 @@ http_interactions:
           "model": "gpt-4o-mini-2024-07-18",
           "output": [
             {
-              "id": "msg_6819c59a4b308192838b877b7955a321046a249e773fd2b4",
+              "id": "msg_6819d1efb03c81929f289430e9b809430f04f8d91afd455c",
               "type": "message",
               "status": "completed",
               "content": [
@@ -135,5 +135,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Tue, 06 May 2025 08:17:03 GMT
+  recorded_at: Tue, 06 May 2025 09:09:40 GMT
 recorded_with: VCR 6.3.1
