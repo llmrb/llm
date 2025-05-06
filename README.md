@@ -545,6 +545,16 @@ llm.rb can be installed via rubygems.org:
 
 	gem install llm.rb
 
+## See also
+
+**[llmrb/llm-shell](https://github.com/llmrb/llm-shell)**
+
+An extensible, developer-oriented command line utility that is powered by
+llm.rb and serves as a demonstration of the library's capabilities. The
+[demo](https://github.com/llmrb/llm-shell#demos) section has a number of GIF
+previews might be especially interesting!
+
+
 ## Philosophy
 
 llm.rb provides a clean, dependency-free interface to Large Language Models,
