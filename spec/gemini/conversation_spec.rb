@@ -4,8 +4,8 @@ require "setup"
 
 RSpec.describe "LLM::Chat: gemini" do
   let(:described_class) { LLM::Chat }
-  let(:provider) { LLM.gemini(token) }
-  let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
+  let(:provider) { LLM.gemini(key:) }
+  let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, params).lazy }
 
   context "when asked to describe an image",

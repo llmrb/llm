@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::Anthropic: completions" do
-  subject(:anthropic) { LLM.anthropic(token) }
-  let(:token) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
+  subject(:anthropic) { LLM.anthropic(key:) }
+  let(:key) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "anthropic/completions/successful_response"} do
@@ -93,7 +93,7 @@ RSpec.describe "LLM::Anthropic: completions" do
   context "when given an unauthorized response",
           vcr: {cassette_name: "anthropic/completions/unauthorized_response"} do
     subject(:response) { anthropic.complete("Hello", role: :user) }
-    let(:token) { "BADTOKEN" }
+    let(:key) { "BADTOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)

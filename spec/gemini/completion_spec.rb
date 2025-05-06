@@ -3,12 +3,12 @@
 require "setup"
 
 RSpec.describe "LLM::Gemini: completions" do
-  subject(:gemini) { LLM.gemini(token) }
+  subject(:gemini) { LLM.gemini(key:) }
 
   context "when given a successful response",
           vcr: {cassette_name: "gemini/completions/successful_response", match_requests_on: [:method]} do
     subject(:response) { gemini.complete("Hello!", role: :user) }
-    let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
+    let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
     it "returns a completion" do
       expect(response).to be_a(LLM::Response::Completion)
@@ -56,7 +56,7 @@ RSpec.describe "LLM::Gemini: completions" do
                         {role: "user", content: "Your name is John"}
                       ]
     end
-    let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
+    let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
     it "has choices" do
       expect(response).to have_attributes(
@@ -73,7 +73,7 @@ RSpec.describe "LLM::Gemini: completions" do
   context "when given an unauthorized response",
           vcr: {cassette_name: "gemini/completions/unauthorized_response", match_requests_on: [:method]} do
     subject(:response) { gemini.complete("Hello!", role: :user) }
-    let(:token) { "TOKEN" }
+    let(:key) { "TOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)

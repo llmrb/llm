@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::Gemini::Models" do
-  let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
-  let(:provider) { LLM.gemini(token) }
+  let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
+  let(:provider) { LLM.gemini(key:) }
 
   context "when given a successful list operation",
           vcr: {cassette_name: "gemini/models/successful_list", match_requests_on: [:method]} do

@@ -37,22 +37,22 @@ RSpec.describe "LLM::Chat: non-lazy" do
   end
 
   context "with openai" do
-    subject(:provider) { LLM.openai("") }
+    subject(:provider) { LLM.openai(key: nil) }
     include_examples "a multi-turn conversation"
   end
 
   context "with gemini" do
-    subject(:provider) { LLM.gemini("") }
+    subject(:provider) { LLM.gemini(key: nil) }
     include_examples "a multi-turn conversation"
   end
 
   context "with anthropic" do
-    subject(:provider) { LLM.anthropic("") }
+    subject(:provider) { LLM.anthropic(key: nil) }
     include_examples "a multi-turn conversation"
   end
 
   context "with ollama" do
-    subject(:provider) { LLM.ollama("") }
+    subject(:provider) { LLM.ollama(key: nil) }
     include_examples "a multi-turn conversation"
   end
 end
@@ -69,9 +69,9 @@ RSpec.describe "LLM::Chat: lazy" do
   context "when given completions" do
     context "with gemini",
             vcr: {cassette_name: "gemini/lazy_conversation/successful_response", match_requests_on: [:method]} do
-      let(:provider) { LLM.gemini(token) }
+      let(:provider) { LLM.gemini(key:) }
       let(:bot) { described_class.new(provider).lazy }
-      let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
+      let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
       context "when given a thread of messages" do
         subject(:message) { bot.messages.to_a[-1] }
@@ -93,9 +93,9 @@ RSpec.describe "LLM::Chat: lazy" do
     end
 
     context "with openai"  do
-      let(:provider) { LLM.openai(token) }
+      let(:provider) { LLM.openai(key:) }
       let(:bot) { described_class.new(provider).lazy }
-      let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
+      let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
       context "when given a thread of messages",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response"} do
@@ -132,7 +132,7 @@ RSpec.describe "LLM::Chat: lazy" do
 
     context "with ollama",
             vcr: {cassette_name: "ollama/lazy_conversation/successful_response"} do
-      let(:provider) { LLM.ollama(nil, host:) }
+      let(:provider) { LLM.ollama(host:) }
       let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
       let(:bot) { described_class.new(provider).lazy }
 
@@ -158,9 +158,9 @@ RSpec.describe "LLM::Chat: lazy" do
 
   context "when given responses" do
     context "with openai"  do
-      let(:provider) { LLM.openai(token) }
+      let(:provider) { LLM.openai(key:) }
       let(:bot) { described_class.new(provider).lazy }
-      let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
+      let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
       context "when given a thread of messages",
               vcr: {cassette_name: "openai/lazy_conversation/responses/successful_response"} do
@@ -198,9 +198,9 @@ RSpec.describe "LLM::Chat: lazy" do
 
   context "when given a schema as JSON" do
     context "with openai" do
-      let(:provider) { LLM.openai(token) }
+      let(:provider) { LLM.openai(key:) }
       let(:bot) { described_class.new(provider, schema:).lazy }
-      let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
+      let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
       context "when given a schema",
               vcr: {cassette_name: "openai/lazy_conversation/completions/successful_response_schema_netbsd"} do
@@ -219,9 +219,9 @@ RSpec.describe "LLM::Chat: lazy" do
     end
 
     context "with gemini" do
-      let(:provider) { LLM.gemini(token) }
+      let(:provider) { LLM.gemini(key:) }
       let(:bot) { described_class.new(provider, schema:).lazy }
-      let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
+      let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
       context "when given a schema",
               vcr: {cassette_name: "gemini/lazy_conversation/completions/successful_response_schema_netbsd", match_requests_on: [:method]} do
@@ -240,7 +240,7 @@ RSpec.describe "LLM::Chat: lazy" do
     end
 
     context "with ollama" do
-      let(:provider) { LLM.ollama(nil, host:) }
+      let(:provider) { LLM.ollama(host:) }
       let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
       let(:bot) { described_class.new(provider, schema:).lazy }
 

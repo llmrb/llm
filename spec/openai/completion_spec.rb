@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI: completions" do
-  subject(:openai) { LLM.openai(token) }
-  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
+  subject(:openai) { LLM.openai(key:) }
+  let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "openai/completions/successful_response"} do
@@ -103,7 +103,7 @@ RSpec.describe "LLM::OpenAI: completions" do
   context "when given an unauthorized response",
           vcr: {cassette_name: "openai/completions/unauthorized_response"} do
     subject(:response) { openai.complete(LLM::Message.new(:user, "Hello!")) }
-    let(:token) { "BADTOKEN" }
+    let(:key) { "BADTOKEN" }
 
     it "raises an error" do
       expect { response }.to raise_error(LLM::Error::Unauthorized)

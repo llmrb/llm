@@ -41,7 +41,7 @@ class LLM::Gemini
     #  Gemini implements image generation under the hood.
     # @return [LLM::Response::Image]
     def create(prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
-      req  = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
+      req  = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       body = JSON.dump({
         contents: [{parts: {text: prompt}}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
@@ -65,7 +65,7 @@ class LLM::Gemini
     # @note (see LLM::Gemini::Images#create)
     # @return [LLM::Response::Image]
     def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
-      req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{secret}", headers)
+      req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       image = LLM.File(image)
       body  = JSON.dump({
         contents: [{parts: [{text: prompt}, format.format_content(image)]}],
@@ -89,8 +89,8 @@ class LLM::Gemini
       @format ||= CompletionFormat.new(nil)
     end
 
-    def secret
-      @provider.instance_variable_get(:@secret)
+    def key
+      @provider.instance_variable_get(:@key)
     end
 
     def http

@@ -3,7 +3,7 @@
 require "setup"
 
 RSpec.describe "LLM::Ollama: embeddings" do
-  let(:ollama) { LLM.ollama(nil, host:) }
+  let(:ollama) { LLM.ollama(host:) }
   let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
 
   context "when given a successful response",

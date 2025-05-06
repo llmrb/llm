@@ -15,25 +15,25 @@ module LLM
     HOST = "api.anthropic.com"
 
     ##
-    # @param secret (see LLM::Provider#initialize)
-    def initialize(secret, **)
-      super(secret, host: HOST, **)
+    # @param key (see LLM::Provider#initialize)
+    def initialize(**)
+      super(host: HOST, **)
     end
 
     ##
     # Provides an embedding via VoyageAI per
     # [Anthropic's recommendation](https://docs.anthropic.com/en/docs/build-with-claude/embeddings)
     # @param input (see LLM::Provider#embed)
-    # @param [String] token
-    #  Valid token for the VoyageAI API
+    # @param [String] key
+    #  Valid key for the VoyageAI API
     # @param [String] model
     #  The embedding model to use
     # @param [Hash] params
     #  Other embedding parameters
     # @raise (see LLM::Provider#request)
     # @return (see LLM::Provider#embed)
-    def embed(input, token:, model: "voyage-2", **params)
-      llm = LLM.voyageai(token)
+    def embed(input, key:, model: "voyage-2", **params)
+      llm = LLM.voyageai(key:)
       llm.embed(input, **params.merge(model:))
     end
 
@@ -86,7 +86,7 @@ module LLM
     def headers
       {
         "Content-Type" => "application/json",
-        "x-api-key" => @secret,
+        "x-api-key" => @key,
         "anthropic-version" => "2023-06-01"
       }
     end

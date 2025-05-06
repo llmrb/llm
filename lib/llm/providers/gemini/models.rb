@@ -40,7 +40,7 @@ class LLM::Gemini
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response::ModelList]
     def all(**params)
-      query = URI.encode_www_form(params.merge!(key: secret))
+      query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/models?#{query}", headers)
       res = request(http, req)
       LLM::Response::ModelList.new(res).tap { |modellist|
@@ -58,8 +58,8 @@ class LLM::Gemini
       @provider.instance_variable_get(:@http)
     end
 
-    def secret
-      @provider.instance_variable_get(:@secret)
+    def key
+      @provider.instance_variable_get(:@key)
     end
 
     [:headers, :request].each do |m|

@@ -7,9 +7,9 @@ module LLM
     HOST = "api.voyageai.com"
 
     ##
-    # @param secret (see LLM::Provider#initialize)
-    def initialize(secret, **)
-      super(secret, host: HOST, **)
+    # @param key (see LLM::Provider#initialize)
+    def initialize(**)
+      super(host: HOST, **)
     end
 
     ##
@@ -29,7 +29,7 @@ module LLM
     def headers
       {
         "Content-Type" => "application/json",
-        "Authorization" => "Bearer #{@secret}"
+        "Authorization" => "Bearer #{@key}"
       }
     end
 

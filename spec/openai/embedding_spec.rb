@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI: embeddings" do
-  let(:openai) { LLM.openai(token) }
-  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
+  let(:openai) { LLM.openai(key:) }
+  let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "openai/embeddings/successful_response"} do

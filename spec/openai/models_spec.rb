@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI::Models" do
-  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
-  let(:provider) { LLM.openai(token) }
+  let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
+  let(:provider) { LLM.openai(key:) }
 
   context "when given a successful list operation",
           vcr: {cassette_name: "openai/models/successful_list"} do

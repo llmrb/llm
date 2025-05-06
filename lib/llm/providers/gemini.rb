@@ -40,9 +40,9 @@ module LLM
     HOST = "generativelanguage.googleapis.com"
 
     ##
-    # @param secret (see LLM::Provider#initialize)
-    def initialize(secret, **)
-      super(secret, host: HOST, **)
+    # @param key (see LLM::Provider#initialize)
+    def initialize(**)
+      super(host: HOST, **)
     end
 
     ##
@@ -54,7 +54,7 @@ module LLM
     # @return (see LLM::Provider#embed)
     def embed(input, model: "text-embedding-004", **params)
       model = model.respond_to?(:id) ? model.id : model
-      path = ["/v1beta/models/#{model}", "embedContent?key=#{@secret}"].join(":")
+      path = ["/v1beta/models/#{model}", "embedContent?key=#{@key}"].join(":")
       req = Net::HTTP::Post.new(path, headers)
       req.body = JSON.dump({content: {parts: [{text: input}]}})
       res = request(@http, req)
@@ -76,7 +76,7 @@ module LLM
       params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
       role, model = [:role, :model].map { params.delete(_1) }
       model.respond_to?(:id) ? model.id : model
-      path = ["/v1beta/models/#{model}", "generateContent?key=#{@secret}"].join(":")
+      path = ["/v1beta/models/#{model}", "generateContent?key=#{@key}"].join(":")
       req  = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({contents: format(messages)}.merge!(params))

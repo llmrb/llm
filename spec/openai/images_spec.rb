@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI::Images" do
-  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
-  let(:provider) { LLM.openai(token) }
+  let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
+  let(:provider) { LLM.openai(key:) }
 
   context "when given a successful create operation (urls)",
           vcr: {cassette_name: "openai/images/successful_create_urls"} do

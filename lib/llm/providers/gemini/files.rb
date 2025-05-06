@@ -55,7 +55,7 @@ class LLM::Gemini
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response::FileList]
     def all(**params)
-      query = URI.encode_www_form(params.merge!(key: secret))
+      query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/files?#{query}", headers)
       res = request(http, req)
       LLM::Response::FileList.new(res).tap { |filelist|
@@ -103,7 +103,7 @@ class LLM::Gemini
     # @return [LLM::Response::File]
     def get(file:, **params)
       file_id = file.respond_to?(:name) ? file.name : file.to_s
-      query = URI.encode_www_form(params.merge!(key: secret))
+      query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/#{file_id}?#{query}", headers)
       res = request(http, req)
       LLM::Response::File.new(res)
@@ -121,7 +121,7 @@ class LLM::Gemini
     # @return [LLM::Response::File]
     def delete(file:, **params)
       file_id = file.respond_to?(:name) ? file.name : file.to_s
-      query = URI.encode_www_form(params.merge!(key: secret))
+      query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Delete.new("/v1beta/#{file_id}?#{query}", headers)
       request(http, req)
     end
@@ -138,7 +138,7 @@ class LLM::Gemini
     include LLM::Utils
 
     def request_upload_url(file:)
-      req = Net::HTTP::Post.new("/upload/v1beta/files?key=#{secret}", headers)
+      req = Net::HTTP::Post.new("/upload/v1beta/files?key=#{key}", headers)
       req["X-Goog-Upload-Protocol"] = "resumable"
       req["X-Goog-Upload-Command"] = "start"
       req["X-Goog-Upload-Header-Content-Length"] = file.bytesize
@@ -152,8 +152,8 @@ class LLM::Gemini
       @provider.instance_variable_get(:@http)
     end
 
-    def secret
-      @provider.instance_variable_get(:@secret)
+    def key
+      @provider.instance_variable_get(:@key)
     end
 
     [:headers, :request, :set_body_stream].each do |m|

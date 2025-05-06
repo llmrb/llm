@@ -42,11 +42,11 @@ using an API key (if required) and an optional set of configuration options via
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai("yourapikey")
-llm = LLM.gemini("yourapikey")
-llm = LLM.anthropic("yourapikey")
-llm = LLM.ollama(nil)
-llm = LLM.voyageai("yourapikey")
+llm = LLM.openai(key: "yourapikey")
+llm = LLM.gemini(key: "yourapikey")
+llm = LLM.anthropic(key: "yourapikey")
+llm = LLM.ollama(key: nil)
+llm = LLM.voyageai(key: "yourapikey")
 ```
 
 ### Conversations
@@ -66,7 +66,7 @@ all LLM providers support:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
 bot.chat File.read("./share/llm/prompts/system.txt"), role: :system
 bot.chat "Tell me the answer to 5 + 15", role: :user
@@ -106,7 +106,7 @@ for the OpenAI provider:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
 bot.respond File.read("./share/llm/prompts/system.txt"), role: :developer
 bot.respond "Tell me the answer to 5 + 15", role: :user
@@ -152,7 +152,7 @@ The interface is designed so you could drop in any other library in its place:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 schema = llm.schema.object({os: llm.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")})
 bot = LLM::Chat.new(llm, schema:)
 bot.chat "You secretly love NetBSD", role: :system
@@ -195,7 +195,7 @@ arbitrary commands from a LLM without sanitizing the input first :) Without furt
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 tool = LLM.function(:system) do |fn|
   fn.description "Run a shell command"
   fn.params do |schema|
@@ -235,7 +235,7 @@ documentation for more information on how to use the audio generation API:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 res = llm.audio.create_speech(input: "Hello world")
 IO.copy_stream res.audio, File.join(Dir.home, "hello.mp3")
 ```
@@ -252,7 +252,7 @@ documentation for more information on how to use the audio transcription API:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 res = llm.audio.create_transcription(
   file: File.join(Dir.home, "hello.mp3")
 )
@@ -272,7 +272,7 @@ the audio translation API:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 res = llm.audio.create_translation(
   file: File.join(Dir.home, "bomdia.mp3")
 )
@@ -295,7 +295,7 @@ require "llm"
 require "open-uri"
 require "fileutils"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 res = llm.images.create(prompt: "a dog on a rocket to the moon")
 res.urls.each do |url|
   FileUtils.mv OpenURI.open_uri(url).path,
@@ -320,7 +320,7 @@ require "llm"
 require "open-uri"
 require "fileutils"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 res = llm.images.edit(
   image: "/images/cat.png",
   prompt: "a cat with a hat",
@@ -345,7 +345,7 @@ require "llm"
 require "open-uri"
 require "fileutils"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 res = llm.images.create_variation(
   image: "/images/cat.png",
   n: 5
@@ -373,7 +373,7 @@ can be given to the chat method:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
 file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
 bot.chat(file)
@@ -404,7 +404,7 @@ to a prompt:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
 
 bot.chat [URI("https://example.com/path/to/image.png"), "Describe the image in the link"]
@@ -439,7 +439,7 @@ which will go on to generate a response:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 res = llm.embed(["programming is fun", "ruby is a programming language", "sushi is art"])
 print res.class, "\n"
 print res.embeddings.size, "\n"
@@ -470,7 +470,7 @@ require "llm"
 
 ##
 # List all models
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 llm.models.all.each do |model|
   print "model: ", model.id, "\n"
 end
@@ -501,7 +501,7 @@ demonstrates how that might look like in practice:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.gemini(ENV["KEY"])
+llm = LLM.gemini(key: ENV["KEY"])
 fork do
   %w[dog cat sheep goat capybara].each do |animal|
     res = llm.images.create(prompt: "a #{animal} on a rocket to the moon")

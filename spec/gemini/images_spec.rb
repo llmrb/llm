@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::Gemini::Images" do
-  let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
-  let(:provider) { LLM.gemini(token) }
+  let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
+  let(:provider) { LLM.gemini(key:) }
 
   context "when given a successful create operation",
         vcr: {cassette_name: "gemini/images/successful_create", match_requests_on: [:method]} do

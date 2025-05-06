@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::OpenAI::Files" do
-  let(:token) { ENV["OPENAI_SECRET"] || "TOKEN" }
-  let(:provider) { LLM.openai(token) }
+  let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
+  let(:provider) { LLM.openai(key:) }
 
   context "when given a successful create operation (haiku1.txt)",
           vcr: {cassette_name: "openai/files/successful_create_haiku1"} do

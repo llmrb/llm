@@ -9,7 +9,7 @@ class LLM::Provider
   require "net/http"
 
   ##
-  # @param [String] secret
+  # @param [String, nil] key
   #  The secret key for authentication
   # @param [String] host
   #  The host address of the LLM provider
@@ -17,8 +17,10 @@ class LLM::Provider
   #  The port number
   # @param [Integer] timeout
   #  The number of seconds to wait for a response
-  def initialize(secret, host:, port: 443, timeout: 60, ssl: true)
-    @secret = secret
+  # @param [Boolean] ssl
+  #  Whether to use SSL for the connection
+  def initialize(key:, host:, port: 443, timeout: 60, ssl: true)
+    @key = key
     @http = Net::HTTP.new(host, port).tap do |http|
       http.use_ssl = ssl
       http.read_timeout = timeout
@@ -30,7 +32,7 @@ class LLM::Provider
   # @return [String]
   # @note The secret key is redacted in inspect for security reasons
   def inspect
-    "#<#{self.class.name}:0x#{object_id.to_s(16)} @secret=[REDACTED] @http=#{@http.inspect}>"
+    "#<#{self.class.name}:0x#{object_id.to_s(16)} @key=[REDACTED] @http=#{@http.inspect}>"
   end
 
   ##

@@ -28,9 +28,9 @@ module LLM
     HOST = "localhost"
 
     ##
-    # @param secret (see LLM::Provider#initialize)
-    def initialize(secret, **)
-      super(secret, host: HOST, port: 11434, ssl: false, **)
+    # @param key (see LLM::Provider#initialize)
+    def initialize(**)
+      super(host: HOST, port: 11434, ssl: false, **)
     end
 
     ##
@@ -97,7 +97,7 @@ module LLM
     def headers
       {
         "Content-Type" => "application/json",
-        "Authorization" => "Bearer #{@secret}"
+        "Authorization" => "Bearer #{@key}"
       }
     end
 

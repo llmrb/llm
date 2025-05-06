@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(ENV["KEY"])
+llm = LLM.openai(key: ENV["KEY"])
 convo = llm.chat File.read("./share/llm/prompts/system.txt"), role: :system
 convo.chat "Tell me the answer to 5 + 15", role: :user
 convo.chat "Tell me the answer to (5 + 15) * 2", role: :user

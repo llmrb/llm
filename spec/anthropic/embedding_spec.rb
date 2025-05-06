@@ -3,12 +3,12 @@
 require "setup"
 
 RSpec.describe "LLM::Anthropic: embeddings" do
-  let(:anthropic) { LLM.anthropic(token) }
-  let(:token) { ENV["VOYAGEAI_SECRET"] || "TOKEN" }
+  let(:anthropic) { LLM.anthropic(key:) }
+  let(:key) { ENV["VOYAGEAI_SECRET"] || "TOKEN" }
 
   context "when given a successful response",
           vcr: {cassette_name: "anthropic/embeddings/successful_response"} do
-    subject(:response) { anthropic.embed("Hello, world", token:) }
+    subject(:response) { anthropic.embed("Hello, world", key:) }
 
     it "returns an embedding" do
       expect(response).to be_instance_of(LLM::Response::Embedding)

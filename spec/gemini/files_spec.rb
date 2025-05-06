@@ -3,8 +3,8 @@
 require "setup"
 
 RSpec.describe "LLM::Gemini::Files" do
-  let(:token) { ENV["GEMINI_SECRET"] || "TOKEN" }
-  let(:provider) { LLM.gemini(token) }
+  let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
+  let(:provider) { LLM.gemini(key:) }
 
   context "when given a successful create operation (bismillah.mp3)",
           vcr: {cassette_name: "gemini/files/successful_create_bismillah", match_requests_on: [:method]} do
