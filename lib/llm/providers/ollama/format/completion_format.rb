@@ -40,6 +40,8 @@ module LLM::Ollama::Format
         {content:}
       when LLM::Message
         format_content(content.content)
+      when LLM::Function::Return
+        throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
       else
         raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
                                        "is not supported by the Ollama API"
