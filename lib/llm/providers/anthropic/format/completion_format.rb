@@ -60,7 +60,7 @@ module LLM::Anthropic::Format
       when LLM::Message
         format_content(content.content)
       when LLM::Function::Return
-        {type: "tool_result", tool_use_id: content.id, content: content.value}
+        [{type: "tool_result", tool_use_id: content.id, content: [{type: :text, text: JSON.dump(content.value)}]}]
       else
         raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
                                        "is not supported by the Anthropic API"

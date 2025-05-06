@@ -24,18 +24,6 @@ RSpec.describe "LLM::Chat: openai" do
           vcr: {cassette_name: "openai/conversations/system_function_call_1"} do
     let(:params) { {tools: [tool]} }
 
-    let(:tool) do
-      LLM.function(:system) do |fn|
-        fn.description "Runs system commands, emits their output"
-        fn.params do |schema|
-          schema.object(command: schema.string.required)
-        end
-        fn.define do |params|
-          Kernel.system(params.command)
-        end
-      end
-    end
-
     before do
       bot.chat("You are a bot that can run UNIX system commands", role: :user)
       bot.chat("Hey, tell me the date", role: :user)
