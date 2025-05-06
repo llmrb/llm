@@ -41,7 +41,7 @@ module LLM::Gemini::Format
       when LLM::Message
         format_content(content.content)
       when LLM::Function::Return
-        [{text: content.value}]
+        [{text: JSON.dump(content.value)}]
       else
         raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
                                        "is not supported by the Gemini API"
