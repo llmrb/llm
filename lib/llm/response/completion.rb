@@ -15,6 +15,7 @@ module LLM
     def choices
       parsed[:choices]
     end
+    alias_method :messages, :choices
 
     ##
     # @return [Integer]
