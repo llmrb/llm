@@ -2,7 +2,7 @@
 
 llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
 includes OpenAI, Gemini, Anthropic, Ollama, and LlamaCpp. It’s fast, simple
-and composable – with full support for chat, tool calling, audio, 
+and composable – with full support for chat, tool calling, audio,
 images, files, and JSON Schema generation.
 
 ## Features
@@ -54,6 +54,11 @@ llm = LLM.voyageai(key: "yourapikey")
 
 #### Completions
 
+> This example uses the stateless chat completions API that all
+> providers support. A similar example for OpenAI's stateful
+> responses API is available in the [docs/](docs/OPENAI_RESPONSES.md)
+> directory.
+
 The following example enables lazy mode for a
 [LLM::Chat](https://0x1eef.github.io/x/llm.rb/LLM/Chat.html)
 object by entering into a "lazy" conversation where messages are buffered and
@@ -61,7 +66,7 @@ sent to the provider only when necessary.  Both lazy and non-lazy conversations
 maintain a message thread that can be reused as context throughout a conversation.
 The example captures the spirit of llm.rb by demonstrating how objects cooperate
 together through composition, and it uses the stateless chat completions API that
-all LLM providers support:
+all LLM providers support.
 
 ```ruby
 #!/usr/bin/env ruby
@@ -91,46 +96,6 @@ bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 #             The answer to ((5 + 15) * 2) / 10 is 4.
 ```
 
-#### Responses
-
-The responses API is a recent addition
-[provided by OpenAI](https://platform.openai.com/docs/guides/conversation-state?api-mode=responses)
-that lets a client store message state on their servers &ndash; and in turn
-a client can avoid maintaining state manually as well as avoid sending
-the entire conversation with each request that is made. Although it is
-primarily supported by OpenAI at the moment, we might see other providers
-support it in the future. For now
-[llm.rb supports the responses API](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Responses.html)
-for the OpenAI provider:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Chat.new(llm).lazy
-bot.respond File.read("./share/llm/prompts/system.txt"), role: :developer
-bot.respond "Tell me the answer to 5 + 15", role: :user
-bot.respond "Tell me the answer to (5 + 15) * 2", role: :user
-bot.respond "Tell me the answer to ((5 + 15) * 2) / 10", role: :user
-bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
-
-##
-# [developer] You are my math assistant.
-#             I will provide you with (simple) equations.
-#             You will provide answers in the format "The answer to <equation> is <answer>".
-#             I will provide you a set of messages. Reply to all of them.
-#             A message is considered unanswered if there is no corresponding assistant response.
-#
-# [user] Tell me the answer to 5 + 15
-# [user] Tell me the answer to (5 + 15) * 2
-# [user] Tell me the answer to ((5 + 15) * 2) / 10
-#
-# [assistant] The answer to 5 + 15 is 20.
-#             The answer to (5 + 15) * 2 is 40.
-#             The answer to ((5 + 15) * 2) / 10 is 4.
-```
-
 ### Schema
 
 #### Structured
@@ -145,7 +110,7 @@ composition of objects, the generation of a schema is delegated to another objec
 who is responsible for and an expert in the generation of JSON schemas. We will use
 the
 [llmrb/json-schema](https://github.com/llmrb/json-schema)
-library for the sake of the examples &ndash; the interface is designed so you 
+library for the sake of the examples &ndash; the interface is designed so you
 could drop in any other library in its place:
 
 ```ruby
