@@ -1,17 +1,17 @@
 ## About
 
-llm.rb is a zero-dependency Ruby toolkit for Large Language Models like
-OpenAI, Gemini, Anthropic, and more. It’s fast, clean, and composable –
-with full support for chat, tool calling, audio, images, files, and
-JSON Schema generation.
+llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
+includes OpenAI, Gemini, Anthropic, Ollama, and LlamaCpp. It’s fast, simple
+and composable – with full support for chat, tool calling, audio, 
+images, files, and JSON Schema generation.
 
 ## Features
 
 #### General
-- ✅ Unified interface for: OpenAI, Gemini, Anthropic, Ollama, LlamaCpp, VoyageAI
+- ✅ A single unified interface for multiple providers
 - 📦 Zero dependencies outside Ruby's standard library
-- 🔌 Model introspection and selection
 - 🚀 Optimized for performance and low memory usage
+- 🔌 Retrieve models dynamically for introspection and selection
 
 #### Chat, Agents
 - 🧠 Stateless and stateful chat via completions and responses API
@@ -145,9 +145,8 @@ composition of objects, the generation of a schema is delegated to another objec
 who is responsible for and an expert in the generation of JSON schemas. We will use
 the
 [llmrb/json-schema](https://github.com/llmrb/json-schema)
-library  for the sake of the examples - it is an optional dependency that is loaded
-on-demand. At least for the time being it is not necessary to install it separately.
-The interface is designed so you could drop in any other library in its place:
+library for the sake of the examples &ndash; the interface is designed so you 
+could drop in any other library in its place:
 
 ```ruby
 #!/usr/bin/env ruby
