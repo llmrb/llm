@@ -8,7 +8,7 @@ JSON Schema generation.
 ## Features
 
 #### General
-- ✅ Unified interface for OpenAI, Gemini, Anthropic, Ollama, LlamaCpp and more
+- ✅ Unified interface for: OpenAI, Gemini, Anthropic, Ollama, LlamaCpp, VoyageAI
 - 📦 Zero dependencies outside Ruby's standard library
 - 🔌 Model introspection and selection
 - 🚀 Optimized for performance and low memory usage
@@ -527,18 +527,28 @@ over or doesn't cover at all. The API reference is available at
 * [LLM::Gemini](https://0x1eef.github.io/x/llm.rb/LLM/Gemini.html)
 * [LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html)
 * [LLM::Gemini::Audio](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Audio.html)
+* [LLM::Gemini::Files](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Files.html)
+* [LLM::Gemini::Models](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Models.html)
 
 #### OpenAI
 
 * [LLM::OpenAI](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI.html)
 * [LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)
 * [LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)
+* [LLM::OpenAI::Files](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Files.html)
+* [LLM::OpenAI::Models](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Models.html)
 
 #### Anthropic
 * [LLM::Anthropic](https://0x1eef.github.io/x/llm.rb/LLM/Anthropic.html)
+* [LLM::Anthropic::Models](https://0x1eef.github.io/x/llm.rb/LLM/Anthropic/Models.html)
 
 #### Ollama
 * [LLM::Ollama](https://0x1eef.github.io/x/llm.rb/LLM/Ollama.html)
+* [LLM::Ollama::Models](https://0x1eef.github.io/x/llm.rb/LLM/Ollama/Models.html)
+
+#### LlamaCpp
+* [LLM::LlamaCpp](https://0x1eef.github.io/x/llm.rb/LLM/LlamaCpp.html)
+* [LLM::LlamaCpp::Models](https://0x1eef.github.io/x/llm.rb/LLM/LlamaCpp/Models.html)
 
 ## Install
 
@@ -556,23 +566,33 @@ llm.rb and serves as a demonstration of the library's capabilities. The
 previews might be especially interesting!
 
 
-## Philosophy
+## Design
 
-llm.rb provides a clean, dependency-free interface to Large Language Models,
-treating Ruby itself — not Rails or any specific framework — as the primary platform.
-It avoids hidden magic, complex metaprogramming, and heavy DSLs. It is intentionally
-simple and won't compromise on being a simple library, even if that means saying no to
-certain features.
+> **Foreword** <br>
+> This part of the documentation primarily serves as a reminder to myself
+> and others about the design guidelines that llm.rb follows &ndash; it is
+> not intended to be a criticism of any other library or approach to software
+> development.
 
-Instead, it embraces a general-purpose, object-oriented design that prioritizes
-explicitness, composability, and clarity. Code should be easy to follow, test, and adapt.
-For that reason we favor small, cooperating objects over deeply nested blocks — a pattern
-that often emerges in DSL-heavy libraries.
+llm.rb aims to provide a clean, simple, and dependency-free interface to
+Large Language Models (LLMs). It follows the spirit of the Unix philosophy:
+_do one thing well_ &ndash; and it is designed around composable parts
+that can be injected as dependencies that all quack the same way &ndash;
+which allows alternative implementations to easily replace the defaults.
+It does not aim to be a monolith that is hard to extend or change.
 
-Each part of llm.rb is designed to be conscious of memory, ready for production, and free
-from global state or non-standard dependencies. While inspired by ideas from other ecosystems
-(especially Python) it is not a port of any other library — it is a Ruby library written
-by Rubyists who value borrowing good ideas from other languages and ecosystems.
+The library does not aim to be or try to be an "everything" library &ndash;
+instead it tries to be just one tool in your toolbox, and you should use
+the right tool for the task at hand. It embraces a general-purpose,
+object-oriented design that prioritizes explicitness, composability,
+and clarity. The library is intentionally simple and won't compromise
+on being a simple library &ndash; even if that means saying no to certain features.
+
+Each part of llm.rb is designed to be conscious of memory, ready for production,
+and free from global state or non-standard dependencies. While inspired by ideas
+from other ecosystems (especially Python) it is not a port of any other library —
+it is a Ruby library written by Rubyists who value borrowing good ideas
+from other languages and ecosystems.
 
 ## License
 
