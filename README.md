@@ -484,35 +484,9 @@ bot.chat "Hello #{model.id} :)"
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
-### Memory
+## Documentation
 
-#### Child process
-
-When it comes to the generation of audio, images, and video memory consumption
-can be a potential problem. There are a few strategies in place to deal with this,
-and one lesser known strategy is to let a child process handle the memory cost
-by delegating media generation to a child process.
-
-Once a child process exits, any memory it had used is freed immediately and
-the parent process can continue to have a small memory footprint. In a sense
-it is similar to being able to use malloc + free from Ruby. The following example
-demonstrates how that might look like in practice:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.gemini(key: ENV["KEY"])
-fork do
-  %w[dog cat sheep goat capybara].each do |animal|
-    res = llm.images.create(prompt: "a #{animal} on a rocket to the moon")
-    IO.copy_stream res.images[0], "#{animal}.png"
-  end
-end
-Process.wait
-```
-
-## API reference
+### API
 
 The README tries to provide a high-level overview of the library. For everything
 else there's the API reference. It covers classes and methods that the README glances
@@ -520,35 +494,11 @@ over or doesn't cover at all. The API reference is available at
 [0x1eef.github.io/x/llm.rb](https://0x1eef.github.io/x/llm.rb).
 
 
-### See also
+### Guides
 
-#### Gemini
-
-* [LLM::Gemini](https://0x1eef.github.io/x/llm.rb/LLM/Gemini.html)
-* [LLM::Gemini::Images](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Images.html)
-* [LLM::Gemini::Audio](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Audio.html)
-* [LLM::Gemini::Files](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Files.html)
-* [LLM::Gemini::Models](https://0x1eef.github.io/x/llm.rb/LLM/Gemini/Models.html)
-
-#### OpenAI
-
-* [LLM::OpenAI](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI.html)
-* [LLM::OpenAI::Images](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Images.html)
-* [LLM::OpenAI::Audio](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Audio.html)
-* [LLM::OpenAI::Files](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Files.html)
-* [LLM::OpenAI::Models](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Models.html)
-
-#### Anthropic
-* [LLM::Anthropic](https://0x1eef.github.io/x/llm.rb/LLM/Anthropic.html)
-* [LLM::Anthropic::Models](https://0x1eef.github.io/x/llm.rb/LLM/Anthropic/Models.html)
-
-#### Ollama
-* [LLM::Ollama](https://0x1eef.github.io/x/llm.rb/LLM/Ollama.html)
-* [LLM::Ollama::Models](https://0x1eef.github.io/x/llm.rb/LLM/Ollama/Models.html)
-
-#### LlamaCpp
-* [LLM::LlamaCpp](https://0x1eef.github.io/x/llm.rb/LLM/LlamaCpp.html)
-* [LLM::LlamaCpp::Models](https://0x1eef.github.io/x/llm.rb/LLM/LlamaCpp/Models.html)
+The [docs/](docs/) directory contains some additional documentation that
+didn't quite make it into the README. It covers the design guidelines that
+the library follows, and some strategies for memory management.
 
 ## Install
 
@@ -564,35 +514,6 @@ An extensible, developer-oriented command line utility that is powered by
 llm.rb and serves as a demonstration of the library's capabilities. The
 [demo](https://github.com/llmrb/llm-shell#demos) section has a number of GIF
 previews might be especially interesting!
-
-
-## Design
-
-> **Foreword** <br>
-> This part of the documentation primarily serves as a reminder to myself
-> and others about the design guidelines that llm.rb follows &ndash; it is
-> not intended to be a criticism of any other library or approach to software
-> development.
-
-llm.rb aims to provide a clean, simple, and dependency-free interface to
-Large Language Models (LLMs). It follows the spirit of the Unix philosophy:
-_do one thing well_ &ndash; and it is designed around composable parts
-that can be injected as dependencies that all quack the same way &ndash;
-which allows alternative implementations to easily replace the defaults.
-It does not aim to be a monolith that is hard to extend or change.
-
-The library does not aim to be or try to be an "everything" library &ndash;
-instead it tries to be just one tool in your toolbox, and you should use
-the right tool for the task at hand. It embraces a general-purpose,
-object-oriented design that prioritizes explicitness, composability,
-and clarity. The library is intentionally simple and won't compromise
-on being a simple library &ndash; even if that means saying no to certain features.
-
-Each part of llm.rb is designed to be conscious of memory, ready for production,
-and free from global state or non-standard dependencies. While inspired by ideas
-from other ecosystems (especially Python) it is not a port of any other library —
-it is a Ruby library written by Rubyists who value borrowing good ideas
-from other languages and ecosystems.
 
 ## License
 
