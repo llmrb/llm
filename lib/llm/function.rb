@@ -53,7 +53,6 @@ class LLM::Function
 
   ##
   # Call the function
-  # @param [Array] args The arguments to pass to the function
   # @return [Object] The result of the function call
   def call
     Return.new id, @runner.call(arguments)

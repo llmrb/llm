@@ -18,6 +18,9 @@ class LLM::Anthropic
 
     private
 
+    ##
+    # @param [Hash] params
+    # @return [Hash]
     def format_tools(params)
       return {} unless params and params[:tools]&.any?
       tools = params[:tools]

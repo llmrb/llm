@@ -73,15 +73,15 @@ module LLM
   ##
   # Define a function
   # @example
-  # LLM.function(:system) do |fn|
-  #   fn.description "Run system command"
-  #   fn.params do |schema|
-  #     schema.object(command: schema.string.required)
+  #   LLM.function(:system) do |fn|
+  #     fn.description "Run system command"
+  #     fn.params do |schema|
+  #       schema.object(command: schema.string.required)
+  #     end
+  #     fn.define do |params|
+  #       system(params.command)
+  #     end
   #   end
-  #   fn.define do |params|
-  #     system(params.command)
-  #   end
-  # end
   # @param [Symbol] name The name of the function
   # @param [Proc] b The block to define the function
   # @return [LLM::Function] The function object

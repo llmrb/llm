@@ -19,8 +19,7 @@ class LLM::Gemini
     private
 
     ##
-    # @param [JSON::Schema] schema
-    #  The schema to format
+    # @param [Hash] params
     # @return [Hash]
     def format_schema(params)
       return {} unless params and params[:schema]
@@ -29,8 +28,7 @@ class LLM::Gemini
     end
 
     ##
-    # @param [Array<LLM::Function>] tools
-    #  The tools to format
+    # @param [Hash] params
     # @return [Hash]
     def format_tools(params)
       return {} unless params and params[:tools]&.any?
