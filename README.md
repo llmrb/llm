@@ -499,12 +499,6 @@ The [docs/](docs/) directory contains some additional documentation that
 didn't quite make it into the README. It covers the design guidelines that
 the library follows, and some strategies for memory management.
 
-## Install
-
-llm.rb can be installed via rubygems.org:
-
-	gem install llm.rb
-
 ## See also
 
 **[llmrb/llm-shell](https://github.com/llmrb/llm-shell)**
@@ -513,6 +507,12 @@ An extensible, developer-oriented command line utility that is powered by
 llm.rb and serves as a demonstration of the library's capabilities. The
 [demo](https://github.com/llmrb/llm-shell#demos) section has a number of GIF
 previews might be especially interesting!
+
+## Install
+
+llm.rb can be installed via rubygems.org:
+
+	gem install llm.rb
 
 ## License
 
