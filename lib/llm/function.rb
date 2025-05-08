@@ -91,6 +91,13 @@ class LLM::Function
   end
 
   ##
+  # Returns true when a function has neither been called nor cancelled
+  # @return [Boolean]
+  def pending?
+    !@called && !@cancelled
+  end
+
+  ##
   # @return [Hash]
   def format(provider)
     case provider.class.to_s

@@ -127,7 +127,7 @@ module LLM
       messages
         .select(&:assistant?)
         .flat_map(&:functions)
-        .reject { _1.called? || _1.cancelled? }
+        .select(&:pending?)
     end
 
     private
