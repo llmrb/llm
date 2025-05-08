@@ -121,13 +121,13 @@ module LLM
     end
 
     ##
-    # Returns an array of functions that have yet to be called
+    # Returns an array of functions that can be called
     # @return [Array<LLM::Function>]
     def functions
       messages
         .select(&:assistant?)
         .flat_map(&:functions)
-        .reject(&:called?)
+        .reject { _1.called? || _1.cancelled? }
     end
 
     private

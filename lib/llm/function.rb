@@ -25,6 +25,8 @@ class LLM::Function
   def initialize(name, &b)
     @name = name
     @schema = JSON::Schema.new
+    @called = false
+    @cancelled = false
     yield(self)
   end
 
@@ -53,7 +55,7 @@ class LLM::Function
 
   ##
   # Call the function
-  # @return [Object] The result of the function call
+  # @return [LLM::Function::Return] The result of the function call
   def call
     Return.new id, @runner.call(arguments)
   ensure
@@ -61,10 +63,31 @@ class LLM::Function
   end
 
   ##
+  # Returns a value that communicates that the function call was cancelled
+  # @example
+  #   llm = LLM.openai(key: ENV["KEY"])
+  #   bot = LLM::Chat.new(llm, tools: [fn1, fn2])
+  #   bot.chat "I want to run the functions"
+  #   bot.chat bot.functions.map(&:cancel)
+  # @return [LLM::Function::Return]
+  def cancel(reason: "function call cancelled")
+    Return.new(id, {cancelled: true, reason:})
+  ensure
+    @cancelled = true
+  end
+
+  ##
   # Returns true when a function has been called
   # @return [Boolean]
   def called?
     @called
+  end
+
+  ##
+  # Returns true when a function has been cancelled
+  # @return [Boolean]
+  def cancelled?
+    @cancelled
   end
 
   ##
