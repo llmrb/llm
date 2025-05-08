@@ -27,6 +27,18 @@ images, files, and JSON Schema generation.
 #### Embeddings
 - 🧮 Text embeddings and vector support
 
+## Demos
+
+<details>
+  <summary><b>1. Tool calls</b></summary>
+  <img src="share/llm-shell/examples/example2.gif/">
+</details>
+
+<details>
+  <summary><b>2. File discussion</b></summary>
+  <img src="share/llm-shell/examples/example1.gif">
+</details>
+
 ## Examples
 
 ### Providers
@@ -66,7 +78,7 @@ sent to the provider only when necessary.  Both lazy and non-lazy conversations
 maintain a message thread that can be reused as context throughout a conversation.
 The example captures the spirit of llm.rb by demonstrating how objects cooperate
 together through composition, and it uses the stateless chat completions API that
-all LLM providers support.
+all LLM providers support:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -118,11 +130,11 @@ could drop in any other library in its place:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-schema = llm.schema.object({os: llm.schema.string.enum("OpenBSD", "FreeBSD", "NetBSD")})
+schema = llm.schema.object({fruit: llm.schema.string.enum("Apple", "Orange", "Pineapple")})
 bot = LLM::Chat.new(llm, schema:)
-bot.chat "You secretly love NetBSD", role: :system
-bot.chat "What operating system is the best?", role: :user
-bot.messages.find(&:assistant?).content! # => {os: "NetBSD"}
+bot.chat "Your favorite fruit is Pineapple", role: :system
+bot.chat "What fruit is your favorite?", role: :user
+bot.messages.find(&:assistant?).content! # => {fruit: "Pineapple"}
 
 schema = llm.schema.object({answer: llm.schema.integer.required})
 bot = LLM::Chat.new(llm, schema:)
@@ -462,7 +474,8 @@ over or doesn't cover at all. The API reference is available at
 
 The [docs/](docs/) directory contains some additional documentation that
 didn't quite make it into the README. It covers the design guidelines that
-the library follows, and some strategies for memory management.
+the library follows, some strategies for memory management, and other
+provider-specific features.
 
 ## See also
 
@@ -471,7 +484,7 @@ the library follows, and some strategies for memory management.
 An extensible, developer-oriented command line utility that is powered by
 llm.rb and serves as a demonstration of the library's capabilities. The
 [demo](https://github.com/llmrb/llm-shell#demos) section has a number of GIF
-previews might be especially interesting!
+previews might be especially interesting.
 
 ## Install
 
