@@ -11,15 +11,15 @@ module LLM
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Chat.new(llm).lazy
-  #   log = bot.chat do |prompt|
+  #   llm  = LLM.openai(ENV["KEY"])
+  #   bot  = LLM::Chat.new(llm).lazy
+  #   msgs = bot.chat do |prompt|
   #     prompt.system "Answer the following questions."
   #     prompt.user "What is 5 + 7 ?"
   #     prompt.user "Why is the sky blue ?"
   #     prompt.user "Why did the chicken cross the road ?"
   #   end
-  #   log.map { print "[#{_1.role}]", _1.content, "\n" }
+  #   msgs.map { print "[#{_1.role}]", _1.content, "\n" }
   #
   # @example
   #   #!/usr/bin/env ruby
