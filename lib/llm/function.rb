@@ -3,7 +3,7 @@
 ##
 # The {LLM::Function LLM::Function} class represents a function that can
 # be called by an LLM. It comes in two forms: a Proc-based function,
-# or a class-based function.
+# or a Class-based function.
 #
 # @example
 #   # Proc-based
