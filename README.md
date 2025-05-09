@@ -22,7 +22,7 @@ images, files, and JSON Schema generation.
 - 🗣️ Text-to-speech, transcription, and translation
 - 🖼️ Image generation, editing, and variation support
 - 📎 File uploads and prompt-aware file interaction
-- 💡 Multimodal prompts (text, URLs, files)
+- 💡 Multimodal prompts (text, images, PDFs, URLs, files)
 
 #### Embeddings
 - 🧮 Text embeddings and vector support
@@ -78,8 +78,8 @@ llm = LLM.voyageai(key: "yourapikey")
 
 The following example enables lazy mode for a
 [LLM::Chat](https://0x1eef.github.io/x/llm.rb/LLM/Chat.html)
-object by entering into a "lazy" conversation where messages are buffered and
-sent to the provider only when necessary.  Both lazy and non-lazy conversations
+object by entering into a conversation where messages are buffered and
+sent to the provider only when necessary. Both lazy and non-lazy conversations
 maintain a message thread that can be reused as context throughout a conversation.
 The example captures the spirit of llm.rb by demonstrating how objects cooperate
 together through composition, and it uses the stateless chat completions API that
@@ -97,6 +97,8 @@ msgs = bot.chat do |prompt|
   prompt.user "Tell me the answer to (5 + 15) * 2"
   prompt.user "Tell me the answer to ((5 + 15) * 2) / 10"
 end
+
+# At this point, we execute a single request
 msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
@@ -134,18 +136,18 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 schema = llm.schema.object({fruit: llm.schema.string.enum("Apple", "Orange", "Pineapple")})
-bot = LLM::Chat.new(llm, schema:)
+bot = LLM::Chat.new(llm, schema:).lazy
 bot.chat "Your favorite fruit is Pineapple", role: :system
 bot.chat "What fruit is your favorite?", role: :user
 bot.messages.find(&:assistant?).content! # => {fruit: "Pineapple"}
 
 schema = llm.schema.object({answer: llm.schema.integer.required})
-bot = LLM::Chat.new(llm, schema:)
+bot = LLM::Chat.new(llm, schema:).lazy
 bot.chat "Tell me the answer to ((5 + 5) / 2)", role: :user
 bot.messages.find(&:assistant?).content! # => {answer: 5}
 
 schema = llm.schema.object({probability: llm.schema.number.required})
-bot = LLM::Chat.new(llm, schema:)
+bot = LLM::Chat.new(llm, schema:).lazy
 bot.chat "Does the earth orbit the sun?", role: :user
 bot.messages.find(&:assistant?).content! # => {probability: 1}
 ```
@@ -182,7 +184,11 @@ tool = LLM.function(:system) do |fn|
     schema.object(command: schema.string.required)
   end
   fn.define do |params|
-    system(params.command)
+    ro, wo = IO.pipe
+    re, we = IO.pipe
+    Process.wait Process.spawn(params.command, out: wo, err: we)
+    [wo,we].each(&:close)
+    {stderr: re.read, stdout: ro.read}
   end
 end
 
@@ -196,8 +202,8 @@ bot.chat "What operating system am I running? (short version please!)", role: :u
 bot.chat bot.functions.map(&:call) # report return value to the LLM
 
 ##
-# Thu May  1 10:01:02 UTC 2025
-# FreeBSD
+# {stderr: "", stdout: "Thu May  1 10:01:02 UTC 2025"}
+# {stderr: "", stdout: "FreeBSD"}
 ```
 
 ### Audio
