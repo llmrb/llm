@@ -11,7 +11,7 @@ RSpec.describe "LLM::Chat: openai" do
   context "when given a block-based function" do
     let(:tool) do
       LLM.function(:system) do |fn|
-        fn.description "Runs system commands, emits their output"
+        fn.description "Runs system commands"
         fn.params do |schema|
           schema.object(command: schema.string.required)
         end
@@ -65,7 +65,7 @@ RSpec.describe "LLM::Chat: openai" do
 
     let(:tool) do
       LLM.function(:system) do |fn|
-        fn.description "Runs system commands, emits their output"
+        fn.description "Runs system commands"
         fn.params do |schema|
           schema.object(command: schema.string.required)
         end
