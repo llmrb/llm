@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Your
         name is John"}]},{"role":"user","content":[{"type":"text","text":"What is
-        your name? "}]}],"model":"gpt-4o-mini"}'
+        your name? "}]}],"model":"llama3.2"}'
     headers:
       Content-Type:
       - application/json
@@ -33,26 +33,28 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '3305'
+      - '3387'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"<think>\nOkay,
-        the user asked, \"What is your name?\" I need to respond appropriately. Since
-        my name is John, I should confirm that. But wait, the user might be testing
-        if I know my own name. Let me make sure I''m not confused. The initial instruction
-        says my name is John, so I should just state that clearly. Maybe add a friendly
-        line to keep the conversation going. Let me check for any typos. Yep, looks
-        good. Alright, respond with my name and a simple question to engage them further.\n</think>\n\nMy
-        name is John. What''s your name?"}}],"created":1746592811,"model":"gpt-4o-mini","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":124,"prompt_tokens":23,"total_tokens":147},"id":"chatcmpl-ryPitusMTjCZLC6gopvWHM8pioLVliNw","__verbose":{"index":0,"content":"<think>\nOkay,
-        the user asked, \"What is your name?\" I need to respond appropriately. Since
-        my name is John, I should confirm that. But wait, the user might be testing
-        if I know my own name. Let me make sure I''m not confused. The initial instruction
-        says my name is John, so I should just state that clearly. Maybe add a friendly
-        line to keep the conversation going. Let me check for any typos. Yep, looks
-        good. Alright, respond with my name and a simple question to engage them further.\n</think>\n\nMy
-        name is John. What''s your name?","tokens":[],"id_slot":0,"stop":true,"model":"gpt-4o-mini","tokens_predicted":124,"tokens_evaluated":23,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>system\nYour
-        name is John<|im_end|>\n<|im_start|>user\nWhat is your name? <|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":146,"timings":{"prompt_n":22,"prompt_ms":176.124,"prompt_per_token_ms":8.005636363636363,"prompt_per_second":124.91199382253413,"predicted_n":124,"predicted_ms":2759.707,"predicted_per_token_ms":22.255701612903223,"predicted_per_second":44.93230621946461}},"timings":{"prompt_n":22,"prompt_ms":176.124,"prompt_per_token_ms":8.005636363636363,"prompt_per_second":124.91199382253413,"predicted_n":124,"predicted_ms":2759.707,"predicted_per_token_ms":22.255701612903223,"predicted_per_second":44.93230621946461}}'
-  recorded_at: Wed, 07 May 2025 04:39:42 GMT
+        the user asked, \"What is your name?\" I need to respond correctly. My name
+        is John, so I should say that. But wait, sometimes people might expect a different
+        response. Let me make sure I''m not misunderstanding the question. The user
+        is probably just confirming my identity. I should keep it straightforward.
+        Maybe add a friendly line to make it engaging. Let me check if there''s any
+        other context I should consider. No, the user just wants my name. Alright,
+        respond with my name and maybe a simple greeting.\n</think>\n\nMy name is
+        John. How can I assist you today?"}}],"created":1746791610,"model":"llama3.2","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":127,"prompt_tokens":23,"total_tokens":150},"id":"chatcmpl-JPjymTnCeHYeP1RnL3bjfAFrJIh0uXTq","__verbose":{"index":0,"content":"<think>\nOkay,
+        the user asked, \"What is your name?\" I need to respond correctly. My name
+        is John, so I should say that. But wait, sometimes people might expect a different
+        response. Let me make sure I''m not misunderstanding the question. The user
+        is probably just confirming my identity. I should keep it straightforward.
+        Maybe add a friendly line to make it engaging. Let me check if there''s any
+        other context I should consider. No, the user just wants my name. Alright,
+        respond with my name and maybe a simple greeting.\n</think>\n\nMy name is
+        John. How can I assist you today?","tokens":[],"id_slot":0,"stop":true,"model":"llama3.2","tokens_predicted":127,"tokens_evaluated":23,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>system\nYour
+        name is John<|im_end|>\n<|im_start|>user\nWhat is your name? <|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":149,"timings":{"prompt_n":22,"prompt_ms":176.646,"prompt_per_token_ms":8.029363636363636,"prompt_per_second":124.54287105284014,"predicted_n":127,"predicted_ms":2841.041,"predicted_per_token_ms":22.37040157480315,"predicted_per_second":44.70192440024624}},"timings":{"prompt_n":22,"prompt_ms":176.646,"prompt_per_token_ms":8.029363636363636,"prompt_per_second":124.54287105284014,"predicted_n":127,"predicted_ms":2841.041,"predicted_per_token_ms":22.37040157480315,"predicted_per_second":44.70192440024624}}'
+  recorded_at: Fri, 09 May 2025 11:53:28 GMT
 recorded_with: VCR 6.3.1

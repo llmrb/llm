@@ -9,7 +9,7 @@ http_interactions:
         run UNIX system commands. When the command is successful I will respond with
         true. Otherwise false. "}]},{"role":"user","parts":[{"text":"Hey, tell me
         the date"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
-        system commands, emits their output","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
       - application/json
@@ -33,7 +33,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 06 May 2025 09:08:58 GMT
+      - Fri, 09 May 2025 11:52:34 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -43,7 +43,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1142
+      - gfet4t7; dur=1147
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -68,17 +68,17 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -1.847727859664398e-05
+              "avgLogprobs": -2.4239641788881272e-05
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 44,
+            "promptTokenCount": 40,
             "candidatesTokenCount": 3,
-            "totalTokenCount": 47,
+            "totalTokenCount": 43,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 44
+                "tokenCount": 40
               }
             ],
             "candidatesTokensDetails": [
@@ -90,7 +90,7 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Tue, 06 May 2025 09:08:32 GMT
+  recorded_at: Fri, 09 May 2025 11:52:31 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
@@ -100,7 +100,7 @@ http_interactions:
         run UNIX system commands. When the command is successful I will respond with
         true. Otherwise false. "}]},{"role":"user","parts":[{"text":"Hey, tell me
         the date"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"true"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
-        system commands, emits their output","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
       - application/json
@@ -124,7 +124,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 06 May 2025 09:09:00 GMT
+      - Fri, 09 May 2025 11:52:35 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -134,7 +134,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1105
+      - gfet4t7; dur=1111
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -154,17 +154,17 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.023308527966340382
+              "avgLogprobs": -0.017450188597043354
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 48,
+            "promptTokenCount": 44,
             "candidatesTokenCount": 12,
-            "totalTokenCount": 60,
+            "totalTokenCount": 56,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 48
+                "tokenCount": 44
               }
             ],
             "candidatesTokensDetails": [
@@ -176,5 +176,5 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Tue, 06 May 2025 09:08:33 GMT
+  recorded_at: Fri, 09 May 2025 11:52:32 GMT
 recorded_with: VCR 6.3.1

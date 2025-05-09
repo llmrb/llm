@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Tue, 06 May 2025 09:09:51 GMT
+      - Fri, 09 May 2025 11:53:24 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=819
+      - gfet4t7; dur=831
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -404,6 +404,40 @@ http_interactions:
               "maxTemperature": 2
             },
             {
+              "name": "models/gemini-2.5-flash-preview-04-17-thinking",
+              "version": "2.5-preview-04-17",
+              "displayName": "Gemini 2.5 Flash Preview 04-17 for cursor testing",
+              "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+              "inputTokenLimit": 1048576,
+              "outputTokenLimit": 65536,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens",
+                "createCachedContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2
+            },
+            {
+              "name": "models/gemini-2.5-pro-preview-05-06",
+              "version": "2.5-preview-05-06",
+              "displayName": "Gemini 2.5 Pro Preview 05-06",
+              "description": "Preview release (May 6th, 2025) of Gemini 2.5 Pro",
+              "inputTokenLimit": 1048576,
+              "outputTokenLimit": 65536,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens",
+                "createCachedContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2
+            },
+            {
               "name": "models/gemini-2.0-flash-exp",
               "version": "2.0",
               "displayName": "Gemini 2.0 Flash Experimental",
@@ -503,6 +537,22 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 40,
+              "maxTemperature": 2
+            },
+            {
+              "name": "models/gemini-2.0-flash-preview-image-generation",
+              "version": "2.0",
+              "displayName": "Gemini 2.0 Flash Preview Image Generation",
+              "description": "Gemini 2.0 Flash Preview Image Generation",
+              "inputTokenLimit": 32768,
+              "outputTokenLimit": 8192,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
               "maxTemperature": 2
             },
             {
@@ -788,35 +838,9 @@ http_interactions:
               "temperature": 0.2,
               "topP": 1,
               "topK": 40
-            },
-            {
-              "name": "models/imagen-3.0-generate-002",
-              "version": "002",
-              "displayName": "Imagen 3.0 002 model",
-              "description": "Vertex served Imagen 3.0 002 model",
-              "inputTokenLimit": 480,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "predict"
-              ]
-            },
-            {
-              "name": "models/gemini-2.0-flash-live-001",
-              "version": "001",
-              "displayName": "Gemini 2.0 Flash 001",
-              "description": "Gemini 2.0 Flash 001",
-              "inputTokenLimit": 131072,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "bidiGenerateContent",
-                "countTokens"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 64,
-              "maxTemperature": 2
             }
-          ]
+          ],
+          "nextPageToken": "Cgptb2RlbHMvYXFh"
         }
-  recorded_at: Tue, 06 May 2025 09:09:24 GMT
+  recorded_at: Fri, 09 May 2025 11:53:21 GMT
 recorded_with: VCR 6.3.1

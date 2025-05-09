@@ -8,7 +8,7 @@ http_interactions:
       string: '{"messages":[{"role":"system","content":[{"type":"text","text":"/nothink"}]},{"role":"user","content":[{"type":"text","text":"You
         are a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
         tell me the date"}]}],"model":"qwen3","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
-        system commands, emits their output","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
       - application/json
@@ -34,13 +34,13 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '5053'
+      - '5031'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
-      string: '{"choices":[{"finish_reason":"tool_calls","index":0,"message":{"role":"assistant","content":"\n\n","tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"x2Vm3dWDhCbLHvQLOKbDqGC0AN4chQaJ"}]}}],"created":1746589646,"model":"qwen3","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":23,"prompt_tokens":171,"total_tokens":194},"id":"chatcmpl-du1RySEdEvRjakDlHrjGTL7aSR1v0FjM","__verbose":{"index":0,"content":"<think>\n\n</think>\n\n<tool_call>\n{\"name\":
-        \"system\", \"arguments\": {\"command\": \"date\"}}\n</tool_call>","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":23,"tokens_evaluated":171,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
+      string: '{"choices":[{"finish_reason":"tool_calls","index":0,"message":{"role":"assistant","content":"\n\n","tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"I0VhcLi89gQHxQKZoSNrIg282VnPrG3N"}]}}],"created":1746791613,"model":"qwen3","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":23,"prompt_tokens":167,"total_tokens":190},"id":"chatcmpl-YzNQS2SITZAZRVunKmeDeY6C2si4P6AZ","__verbose":{"index":0,"content":"<think>\n\n</think>\n\n<tool_call>\n{\"name\":
+        \"system\", \"arguments\": {\"command\": \"date\"}}\n</tool_call>","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":23,"tokens_evaluated":167,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
         ::= ( system-call ) space\nchar ::= [^\"\\\\\\x7F\\x00-\\x1F] | [\\\\] ([\"\\\\bfnrt]
         | \"u\" [0-9a-fA-F]{4})\nroot ::= tool-call\nspace ::= | \" \" | \"\\n\"{1,2}
         [ \\t]{0,20}\nstring ::= \"\\\"\" char* \"\\\"\" space\nsystem-args ::= \"{\"
@@ -64,14 +64,14 @@ http_interactions:
         Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou
         are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\":
         \"function\", \"function\": {\"name\": \"system\", \"description\": \"Runs
-        system commands, emits their output\", \"parameters\": {\"type\": \"object\",
-        \"properties\": {\"command\": {\"type\": \"string\"}}, \"required\": [\"command\"]}}}\n</tools>\n\nFor
+        system commands\", \"parameters\": {\"type\": \"object\", \"properties\":
+        {\"command\": {\"type\": \"string\"}}, \"required\": [\"command\"]}}}\n</tools>\n\nFor
         each function call, return a json object with function name and arguments
         within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>,
         \"arguments\": <args-json-object>}\n</tool_call><|im_end|>\n<|im_start|>user\nYou
         are a bot that can run UNIX system commands<|im_end|>\n<|im_start|>user\nHey,
-        tell me the date<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":193,"timings":{"prompt_n":1,"prompt_ms":23.81,"prompt_per_token_ms":23.81,"prompt_per_second":41.999160016799664,"predicted_n":23,"predicted_ms":499.658,"predicted_per_token_ms":21.724260869565217,"predicted_per_second":46.0314855361067}},"timings":{"prompt_n":1,"prompt_ms":23.81,"prompt_per_token_ms":23.81,"prompt_per_second":41.999160016799664,"predicted_n":23,"predicted_ms":499.658,"predicted_per_token_ms":21.724260869565217,"predicted_per_second":46.0314855361067}}'
-  recorded_at: Wed, 07 May 2025 03:46:58 GMT
+        tell me the date<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":189,"timings":{"prompt_n":1,"prompt_ms":23.56,"prompt_per_token_ms":23.56,"prompt_per_second":42.44482173174873,"predicted_n":23,"predicted_ms":498.32,"predicted_per_token_ms":21.666086956521738,"predicted_per_second":46.15508107240328}},"timings":{"prompt_n":1,"prompt_ms":23.56,"prompt_per_token_ms":23.56,"prompt_per_second":42.44482173174873,"predicted_n":23,"predicted_ms":498.32,"predicted_per_token_ms":21.666086956521738,"predicted_per_second":46.15508107240328}}'
+  recorded_at: Fri, 09 May 2025 11:53:30 GMT
 - request:
     method: post
     uri: http://localhost:8080/v1/chat/completions
@@ -79,8 +79,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":[{"type":"text","text":"/nothink"}]},{"role":"user","content":[{"type":"text","text":"You
         are a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        tell me the date"}]},{"role":"assistant","content":null,"tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"x2Vm3dWDhCbLHvQLOKbDqGC0AN4chQaJ"}]},{"role":"tool","tool_call_id":"x2Vm3dWDhCbLHvQLOKbDqGC0AN4chQaJ","content":"true"}],"model":"qwen3","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
-        system commands, emits their output","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+        tell me the date"}]},{"role":"assistant","content":null,"tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"I0VhcLi89gQHxQKZoSNrIg282VnPrG3N"}]},{"role":"tool","tool_call_id":"I0VhcLi89gQHxQKZoSNrIg282VnPrG3N","content":"true"}],"model":"qwen3","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
       - application/json
@@ -106,14 +106,14 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '5325'
+      - '5265'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"\n\nThe
-        current date is: Mon Sep 23 12:34:56 UTC 2024."}}],"created":1746589648,"model":"qwen3","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":31,"prompt_tokens":297,"total_tokens":328},"id":"chatcmpl-W7mtinMQ7tn7zu4bZ54IeCvQfvIGnbIs","__verbose":{"index":0,"content":"<think>\n\n</think>\n\nThe
-        current date is: Mon Sep 23 12:34:56 UTC 2024.","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":31,"tokens_evaluated":297,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
+        current date is: $(date)."}}],"created":1746791613,"model":"qwen3","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":13,"prompt_tokens":299,"total_tokens":312},"id":"chatcmpl-J4KNthFjyFfdx33wugjIV8hbYtUPlrpt","__verbose":{"index":0,"content":"<think>\n\n</think>\n\nThe
+        current date is: $(date).","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":13,"tokens_evaluated":299,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
         ::= ( system-call ) space\nchar ::= [^\"\\\\\\x7F\\x00-\\x1F] | [\\\\] ([\"\\\\bfnrt]
         | \"u\" [0-9a-fA-F]{4})\nroot ::= tool-call\nspace ::= | \" \" | \"\\n\"{1,2}
         [ \\t]{0,20}\nstring ::= \"\\\"\" char* \"\\\"\" space\nsystem-args ::= \"{\"
@@ -137,15 +137,15 @@ http_interactions:
         Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou
         are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\":
         \"function\", \"function\": {\"name\": \"system\", \"description\": \"Runs
-        system commands, emits their output\", \"parameters\": {\"type\": \"object\",
-        \"properties\": {\"command\": {\"type\": \"string\"}}, \"required\": [\"command\"]}}}\n</tools>\n\nFor
+        system commands\", \"parameters\": {\"type\": \"object\", \"properties\":
+        {\"command\": {\"type\": \"string\"}}, \"required\": [\"command\"]}}}\n</tools>\n\nFor
         each function call, return a json object with function name and arguments
         within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>,
         \"arguments\": <args-json-object>}\n</tool_call><|im_end|>\n<|im_start|>user\nYou
         are a bot that can run UNIX system commands<|im_end|>\n<|im_start|>user\nHey,
         tell me the date<|im_end|>\n<|im_start|>assistant\n{\n  \"tool_calls\": [\n    {\n      \"name\":
         \"system\",\n      \"arguments\": {\n        \"command\": \"date\"\n      },\n      \"id\":
-        \"x2Vm3dWDhCbLHvQLOKbDqGC0AN4chQaJ\"\n    }\n  ]\n}<|im_end|>\n<|im_start|>user\n{\n  \"tool_response\":
-        {\n    \"content\": \"true\",\n    \"tool_call_id\": \"x2Vm3dWDhCbLHvQLOKbDqGC0AN4chQaJ\"\n  }\n}<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":327,"timings":{"prompt_n":126,"prompt_ms":336.777,"prompt_per_token_ms":2.672833333333333,"prompt_per_second":374.1348132443724,"predicted_n":31,"predicted_ms":680.896,"predicted_per_token_ms":21.964387096774193,"predicted_per_second":45.52824513582104}},"timings":{"prompt_n":126,"prompt_ms":336.777,"prompt_per_token_ms":2.672833333333333,"prompt_per_second":374.1348132443724,"predicted_n":31,"predicted_ms":680.896,"predicted_per_token_ms":21.964387096774193,"predicted_per_second":45.52824513582104}}'
-  recorded_at: Wed, 07 May 2025 03:46:59 GMT
+        \"I0VhcLi89gQHxQKZoSNrIg282VnPrG3N\"\n    }\n  ]\n}<|im_end|>\n<|im_start|>user\n{\n  \"tool_response\":
+        {\n    \"content\": \"true\",\n    \"tool_call_id\": \"I0VhcLi89gQHxQKZoSNrIg282VnPrG3N\"\n  }\n}<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":311,"timings":{"prompt_n":132,"prompt_ms":475.915,"prompt_per_token_ms":3.6054166666666667,"prompt_per_second":277.3604530220732,"predicted_n":13,"predicted_ms":273.435,"predicted_per_token_ms":21.033461538461538,"predicted_per_second":47.54329182438239}},"timings":{"prompt_n":132,"prompt_ms":475.915,"prompt_per_token_ms":3.6054166666666667,"prompt_per_second":277.3604530220732,"predicted_n":13,"predicted_ms":273.435,"predicted_per_token_ms":21.033461538461538,"predicted_per_second":47.54329182438239}}'
+  recorded_at: Fri, 09 May 2025 11:53:30 GMT
 recorded_with: VCR 6.3.1

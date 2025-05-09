@@ -8,7 +8,7 @@ http_interactions:
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
         system commands"},{"role":"user","content":"Hey, tell me the date via the
         given ''system'' tool"}],"model":"llama3.2","stream":false,"tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
-        system commands, emits their output","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
       - application/json
@@ -30,13 +30,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 06 May 2025 09:10:37 GMT
+      - Fri, 09 May 2025 11:59:00 GMT
       Content-Length:
-      - '369'
+      - '374'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-06T09:10:37.221954055Z","message":{"role":"assistant","content":"","tool_calls":[{"function":{"name":"system","arguments":{"command":"date"}}}]},"done_reason":"stop","done":true,"total_duration":127553972,"load_duration":12028790,"prompt_eval_count":176,"prompt_eval_duration":4119690,"eval_count":16,"eval_duration":110562897}'
-  recorded_at: Tue, 06 May 2025 09:10:10 GMT
+      string: '{"model":"llama3.2","created_at":"2025-05-09T11:59:00.594730106Z","message":{"role":"assistant","content":"","tool_calls":[{"function":{"name":"system","arguments":{"command":"date"}}}]},"done_reason":"stop","done":true,"total_duration":1691231373,"load_duration":1481487427,"prompt_eval_count":172,"prompt_eval_duration":107782041,"eval_count":16,"eval_duration":100614624}'
+  recorded_at: Fri, 09 May 2025 11:58:57 GMT
 - request:
     method: post
     uri: http://localhost:11434/api/chat
@@ -45,7 +45,7 @@ http_interactions:
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
         system commands"},{"role":"user","content":"Hey, tell me the date via the
         given ''system'' tool"},{"role":"assistant","content":""},{"role":"tool","tool_call_id":null,"content":"true"}],"model":"llama3.2","stream":false,"tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
-        system commands, emits their output","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
       - application/json
@@ -67,14 +67,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 06 May 2025 09:10:37 GMT
+      - Fri, 09 May 2025 11:59:01 GMT
       Content-Length:
-      - '511'
+      - '509'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-06T09:10:37.524522384Z","message":{"role":"assistant","content":"The
-        output of the `system` command is \"true\", which means the current date and
-        time information was not available or could not be retrieved. This is because
-        the system does not have access to the current date and time."},"done_reason":"stop","done":true,"total_duration":300458565,"load_duration":12030519,"prompt_eval_count":93,"prompt_eval_duration":3145782,"eval_count":46,"eval_duration":284489142}'
-  recorded_at: Tue, 06 May 2025 09:10:10 GMT
+      string: '{"model":"llama3.2","created_at":"2025-05-09T11:59:01.014179851Z","message":{"role":"assistant","content":"That
+        means your system is Unix-based (such as Linux or macOS). To get the current
+        date and time, I can use the `date` command. Here''s an example:\n\n```bash\ndate\n```\n\nOutput:\n```\nFri
+        Mar 17 16:13:15 UTC 2023\n```"},"done_reason":"stop","done":true,"total_duration":416770383,"load_duration":11737907,"prompt_eval_count":93,"prompt_eval_duration":3514565,"eval_count":64,"eval_duration":400577145}'
+  recorded_at: Fri, 09 May 2025 11:58:58 GMT
 recorded_with: VCR 6.3.1
