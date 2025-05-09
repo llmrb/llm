@@ -18,11 +18,13 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Chat.new(llm).lazy
-bot.respond File.read("./share/llm/prompts/system.txt"), role: :developer
-bot.respond "Tell me the answer to 5 + 15", role: :user
-bot.respond "Tell me the answer to (5 + 15) * 2", role: :user
-bot.respond "Tell me the answer to ((5 + 15) * 2) / 10", role: :user
-bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+log = bot.respond do |prompt|
+  prompt.developer File.read("./share/llm/prompts/system.txt")
+  prompt.user "Tell me the answer to 5 + 15"
+  prompt.user "Tell me the answer to (5 + 15) * 2"
+  prompt.user "Tell me the answer to ((5 + 15) * 2) / 10"
+end
+log.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 ##
 # [developer] You are my math assistant.

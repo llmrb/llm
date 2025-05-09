@@ -1,0 +1,141 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"input":[{"role":"developer","content":[{"type":"input_text","text":"You
+        are my math assistant.\nI will provide you with (simple) equations.\nYou will
+        provide answers in the format \"The answer to <equation> is <answer>\".\nI
+        will provide you a set of messages. Reply to all of them.\nA message is considered
+        unanswered if there is no corresponding assistant response.\n"}]},{"role":"user","content":[{"type":"input_text","text":"Tell
+        me the answer to 5 + 15"}]},{"role":"user","content":[{"type":"input_text","text":"Tell
+        me the answer to (5 + 15) * 2"}]},{"role":"user","content":[{"type":"input_text","text":"Tell
+        me the answer to ((5 + 15) * 2) / 10"}]}],"model":"gpt-4o-mini"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 09 May 2025 10:23:49 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '200000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '199856'
+      X-Ratelimit-Reset-Requests:
+      - 8.64s
+      X-Ratelimit-Reset-Tokens:
+      - 43ms
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      X-Request-Id:
+      - req_40631e3f62c4e24d9f877e170665113f
+      Openai-Processing-Ms:
+      - '2272'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=AkHS5MSShHnoaYcrzBC5a0ldpwpEzN4JVxe8lmM7t_g-1746786229-1.0.1.1-QBRBe.gMOLlxKnrRvZA6owFIOLp5_mp6glYK8ED2r8UyeYQZueiBeah7KWuliQcgFySKlVACojER7HZVnW110pZT4.coNKbQinP_mbddqD4;
+        path=/; expires=Fri, 09-May-25 10:53:49 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=8fo2dlTy87HzmIto0oA3yyoCvSPHWfc7KqqtUTOINv8-1746786229130-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 93d07bba9a0ae015-GIG
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "resp_681dd7b2c4988191ac195ec4203efa260ab8e29beec685c5",
+          "object": "response",
+          "created_at": 1746786226,
+          "status": "completed",
+          "error": null,
+          "incomplete_details": null,
+          "instructions": null,
+          "max_output_tokens": null,
+          "model": "gpt-4o-mini-2024-07-18",
+          "output": [
+            {
+              "id": "msg_681dd7b38b0881919e876ea8b2706fd40ab8e29beec685c5",
+              "type": "message",
+              "status": "completed",
+              "content": [
+                {
+                  "type": "output_text",
+                  "annotations": [],
+                  "text": "The answer to 5 + 15 is 20.  \nThe answer to (5 + 15) * 2 is 40.  \nThe answer to ((5 + 15) * 2) / 10 is 4."
+                }
+              ],
+              "role": "assistant"
+            }
+          ],
+          "parallel_tool_calls": true,
+          "previous_response_id": null,
+          "reasoning": {
+            "effort": null,
+            "summary": null
+          },
+          "service_tier": "default",
+          "store": true,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            }
+          },
+          "tool_choice": "auto",
+          "tools": [],
+          "top_p": 1.0,
+          "truncation": "disabled",
+          "usage": {
+            "input_tokens": 125,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 51,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 176
+          },
+          "user": null,
+          "metadata": {}
+        }
+  recorded_at: Fri, 09 May 2025 10:23:46 GMT
+recorded_with: VCR 6.3.1
