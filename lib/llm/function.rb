@@ -1,5 +1,37 @@
 # frozen_string_literal: true
 
+##
+# The {LLM::Function LLM::Function} class represents a function that can
+# be called by an LLM. It comes in two forms: a Proc-based function,
+# or a class-based function.
+#
+# @example
+#   # Proc-based
+#   LLM.function(:system) do |fn|
+#     fn.description "Runs system commands, emits their output"
+#     fn.params do |schema|
+#       schema.object(command: schema.string.required)
+#     end
+#     fn.define do |params|
+#       Kernel.system(params.command)
+#     end
+#   end
+#
+# @example
+#   # Class-based
+#   class System
+#     def call(params)
+#       Kernel.system(params.command)
+#     end
+#   end
+#
+#   LLM.function(:system) do |fn|
+#     fn.description "Runs system commands, emits their output"
+#     fn.params do |schema|
+#       schema.object(command: schema.string.required)
+#     end
+#     fn.register(System)
+#   end
 class LLM::Function
   class Return < Struct.new(:id, :value)
   end
@@ -47,17 +79,18 @@ class LLM::Function
 
   ##
   # Set the function implementation
-  # @param [Proc] b The function implementation
+  # @param [Proc, Class] b The function implementation
   # @return [void]
-  def define(&b)
-    @runner = b
+  def define(klass = nil, &b)
+    @runner = klass || b
   end
+  alias_method :register, :define
 
   ##
   # Call the function
   # @return [LLM::Function::Return] The result of the function call
   def call
-    Return.new id, @runner.call(arguments)
+    Return.new id, (Class === @runner) ? @runner.new.call(arguments) : @runner.call(arguments)
   ensure
     @called = true
   end
