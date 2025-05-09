@@ -30,13 +30,19 @@ images, files, and JSON Schema generation.
 ## Demos
 
 <details>
-  <summary><b>1. Tool calls</b></summary>
-  <img src="share/llm-shell/examples/example2.gif/">
+<details>
+  <summary><b>1. Tools: "system" function</b></summary>
+  <img src="share/llm-shell/examples/toolcalls.gif">
 </details>
 
 <details>
-  <summary><b>2. File discussion</b></summary>
-  <img src="share/llm-shell/examples/example1.gif">
+  <summary><b>2. Files: import at boot time</b></summary>
+  <img src="share/llm-shell/examples/files-boottime.gif">
+</details>
+
+<details>
+<summary><b>3. Files: import at runtime</b></summary>
+  <img src="share/llm-shell/examples/files-runtime.gif">
 </details>
 
 ## Examples
