@@ -13,12 +13,34 @@ module LLM
   #
   #   llm = LLM.openai(ENV["KEY"])
   #   bot = LLM::Chat.new(llm).lazy
-  #   bot.chat("Provide short and concise answers", role: :system)
-  #   bot.chat("What is 5 + 7 ?", role: :user)
-  #   bot.chat("Why is the sky blue ?", role: :user)
-  #   bot.chat("Why did the chicken cross the road ?", role: :user)
+  #   log = bot.chat do |prompt|
+  #     prompt.system "Answer the following questions."
+  #     prompt.user "What is 5 + 7 ?"
+  #     prompt.user "Why is the sky blue ?"
+  #     prompt.user "Why did the chicken cross the road ?"
+  #   end
+  #   log.map { print "[#{_1.role}]", _1.content, "\n" }
+  #
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.openai(ENV["KEY"])
+  #   bot = LLM::Chat.new(llm).lazy
+  #   bot.chat "Answer the following questions.", role: :system
+  #   bot.chat "What is 5 + 7 ?", role: :user
+  #   bot.chat "Why is the sky blue ?", role: :user
+  #   bot.chat "Why did the chicken cross the road ?", role: :user
   #   bot.messages.map { print "[#{_1.role}]", _1.content, "\n" }
   class Chat
+    require_relative "chat/prompt/completion"
+    require_relative "chat/prompt/respond"
+    require_relative "chat/conversable"
+    require_relative "chat/builder"
+
+    include Conversable
+    include Builder
+
     ##
     # @return [Array<LLM::Message>]
     attr_reader :messages
@@ -44,18 +66,18 @@ module LLM
     # Maintain a conversation via the chat completions API
     # @param prompt (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
-    # @return [LLM::Chat]
-    def chat(prompt, params = {})
-      params = {role: :user}.merge!(params)
-      if lazy?
-        role = params.delete(:role)
-        @messages << [LLM::Message.new(role, prompt), @params.merge(params), :complete]
-        self
+    # @yieldparam [LLM::Chat::CompletionPrompt] prompt Yields a prompt
+    # @return [LLM::Chat, Array<LLM::Message>, LLM::Buffer]
+    #  Returns self unless given a block, otherwise returns messages
+    def chat(prompt = nil, params = {})
+      if block_given?
+        yield Prompt::Completion.new(self)
+        messages
+      elsif prompt.nil?
+        raise ArgumentError, "wrong number of arguments (given 0, expected 1)"
       else
-        role = params[:role]
-        completion = complete!(prompt, params)
-        @messages.concat [Message.new(role, prompt), completion.choices[0]]
-        self
+        params = {role: :user}.merge!(params)
+        tap { lazy? ? async_completion(prompt, params) : sync_completion(prompt, params) }
       end
     end
 
@@ -64,18 +86,17 @@ module LLM
     # @note Not all LLM providers support this API
     # @param prompt (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
-    # @return [LLM::Chat]
-    def respond(prompt, params = {})
-      params = {role: :user}.merge!(params)
-      if lazy?
-        role = params.delete(:role)
-        @messages << [LLM::Message.new(role, prompt), @params.merge(params), :respond]
-        self
+    # @return [LLM::Chat, Array<LLM::Message>, LLM::Buffer]
+    #  Returns self unless given a block, otherwise returns messages
+    def respond(prompt = nil, params = {})
+      if block_given?
+        yield Prompt::Respond.new(self)
+        messages
+      elsif prompt.nil?
+        raise ArgumentError, "wrong number of arguments (given 0, expected 1)"
       else
-        role = params[:role]
-        @response = respond!(prompt, params)
-        @messages.concat [Message.new(role, prompt), @response.outputs[0]]
-        self
+        params = {role: :user}.merge!(params)
+        tap { lazy? ? async_response(prompt, params) : sync_response(prompt, params) }
       end
     end
 
@@ -144,19 +165,5 @@ module LLM
       end
     end
     private_constant :Array
-
-    def respond!(prompt, params)
-      @provider.responses.create(
-        prompt,
-        @params.merge(params.merge(@response ? {previous_response_id: @response.id} : {}))
-      )
-    end
-
-    def complete!(prompt, params)
-      @provider.complete(
-        prompt,
-        @params.merge(params.merge(messages:))
-      )
-    end
   end
 end
