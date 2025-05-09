@@ -177,7 +177,7 @@ arbitrary commands from a LLM without sanitizing the input first :) Without furt
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(key: ENV["KEY"])
+llm  = LLM.openai(key: ENV["KEY"])
 tool = LLM.function(:system) do |fn|
   fn.description "Run a shell command"
   fn.params do |schema|

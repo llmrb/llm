@@ -6,6 +6,10 @@ class LLM::Chat
   module Builder
     private
 
+    ##
+    # @param [String] prompt The prompt
+    # @param [Hash] params
+    # @return [LLM::Response::Respond]
     def create_response!(prompt, params)
       @provider.responses.create(
         prompt,
@@ -13,6 +17,10 @@ class LLM::Chat
       )
     end
 
+    ##
+    # @param [String] prompt The prompt
+    # @param [Hash] params
+    # @return [LLM::Response::Completion]
     def create_completion!(prompt, params)
       @provider.complete(
         prompt,
