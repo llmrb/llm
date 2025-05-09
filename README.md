@@ -121,11 +121,7 @@ All LLM providers except Anthropic allow a client to describe the structure
 of a response that a LLM emits according to a schema that is described by JSON.
 The schema lets a client describe what JSON object (or value) an LLM should emit,
 and the LLM will abide by the schema. See also: [JSON Schema website](https://json-schema.org/overview/what-is-jsonschema).
-
-True to the llm.rb spirit of doing one thing well, and solving problems through the
-composition of objects, the generation of a schema is delegated to another object
-who is responsible for and an expert in the generation of JSON schemas. We will use
-the
+ We will use the
 [llmrb/json-schema](https://github.com/llmrb/json-schema)
 library for the sake of the examples &ndash; the interface is designed so you
 could drop in any other library in its place:
@@ -210,8 +206,7 @@ Some but not all providers implement audio generation capabilities that
 can create speech from text, transcribe audio to text, or translate
 audio to text (usually English). The following example uses the OpenAI provider
 to create an audio file from a text prompt. The audio is then moved to
-`${HOME}/hello.mp3` as the final step. As always, consult the provider's
-documentation for more information on how to use the audio generation API:
+`${HOME}/hello.mp3` as the final step:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -227,8 +222,7 @@ IO.copy_stream res.audio, File.join(Dir.home, "hello.mp3")
 The following example transcribes an audio file to text. The audio file
 (`${HOME}/hello.mp3`) was theoretically created in the previous example,
 and the result is printed to the console. The example uses the OpenAI
-provider to transcribe the audio file. As always, consult the provider's
-documentation for more information on how to use the audio transcription API:
+provider to transcribe the audio file:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -246,9 +240,7 @@ print res.text, "\n" # => "Hello world."
 The following example translates an audio file to text. In this example
 the audio file (`${HOME}/bomdia.mp3`) is theoretically in Portuguese,
 and it is translated to English. The example uses the OpenAI provider,
-and at the time of writing, it can only translate to English. As always,
-consult the provider's documentation for more information on how to use
-the audio translation API:
+and at the time of writing, it can only translate to English:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -290,11 +282,7 @@ end
 The following example is focused on editing a local image with the aid
 of a prompt. The image (`/images/cat.png`) is returned to us with the cat
 now wearing a hat. The image is then moved to `${HOME}/catwithhat.png` as
-the final step.
-
-Results and quality may vary, consider prompt adjustments if the results
-are not as expected, and consult the provider's documentation
-for more information on how to use the image editing API:
+the final step:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -318,8 +306,7 @@ end
 The following example is focused on creating variations of a local image.
 The image (`/images/cat.png`) is returned to us with five different variations.
 The images are then moved to `${HOME}/catvariation0.png`, `${HOME}/catvariation1.png`
-and so on as the final step. Consult the provider's documentation for more information
-on how to use the image variations API:
+and so on as the final step:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -440,10 +427,8 @@ print res.embeddings[0].size, "\n"
 Almost all LLM providers provide a models endpoint that allows a client to
 query the list of models that are available to use. The list is dynamic,
 maintained by LLM providers, and it is independent of a specific llm.rb release.
-True to the llm.rb spirit of small, composable objects that cooperate with
-each other, a
 [LLM::Model](https://0x1eef.github.io/x/llm.rb/LLM/Model.html)
-object can be used instead of a string that describes a model name (although
+objects can be used instead of a string that describes a model name (although
 either works). Let's take a look at an example:
 
 ```ruby
