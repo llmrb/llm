@@ -30,7 +30,6 @@ images, files, and JSON Schema generation.
 ## Demos
 
 <details>
-<details>
   <summary><b>1. Tools: "system" function</b></summary>
   <img src="share/llm-shell/examples/toolcalls.gif">
 </details>
