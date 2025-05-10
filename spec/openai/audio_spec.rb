@@ -25,6 +25,8 @@ RSpec.describe "LLM::OpenAI::Audio" do
       provider.audio.create_transcription(
         file: LLM::File("spec/fixtures/audio/rocket.mp3")
       )
+    rescue => ex
+      puts ex.response.body
     end
 
     it "is successful" do

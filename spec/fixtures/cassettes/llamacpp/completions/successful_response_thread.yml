@@ -33,28 +33,26 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '3387'
+      - '3265'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"<think>\nOkay,
-        the user asked, \"What is your name?\" I need to respond correctly. My name
-        is John, so I should say that. But wait, sometimes people might expect a different
-        response. Let me make sure I''m not misunderstanding the question. The user
-        is probably just confirming my identity. I should keep it straightforward.
-        Maybe add a friendly line to make it engaging. Let me check if there''s any
-        other context I should consider. No, the user just wants my name. Alright,
-        respond with my name and maybe a simple greeting.\n</think>\n\nMy name is
-        John. How can I assist you today?"}}],"created":1746791610,"model":"llama3.2","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":127,"prompt_tokens":23,"total_tokens":150},"id":"chatcmpl-JPjymTnCeHYeP1RnL3bjfAFrJIh0uXTq","__verbose":{"index":0,"content":"<think>\nOkay,
-        the user asked, \"What is your name?\" I need to respond correctly. My name
-        is John, so I should say that. But wait, sometimes people might expect a different
-        response. Let me make sure I''m not misunderstanding the question. The user
-        is probably just confirming my identity. I should keep it straightforward.
-        Maybe add a friendly line to make it engaging. Let me check if there''s any
-        other context I should consider. No, the user just wants my name. Alright,
-        respond with my name and maybe a simple greeting.\n</think>\n\nMy name is
-        John. How can I assist you today?","tokens":[],"id_slot":0,"stop":true,"model":"llama3.2","tokens_predicted":127,"tokens_evaluated":23,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>system\nYour
-        name is John<|im_end|>\n<|im_start|>user\nWhat is your name? <|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":149,"timings":{"prompt_n":22,"prompt_ms":176.646,"prompt_per_token_ms":8.029363636363636,"prompt_per_second":124.54287105284014,"predicted_n":127,"predicted_ms":2841.041,"predicted_per_token_ms":22.37040157480315,"predicted_per_second":44.70192440024624}},"timings":{"prompt_n":22,"prompt_ms":176.646,"prompt_per_token_ms":8.029363636363636,"prompt_per_second":124.54287105284014,"predicted_n":127,"predicted_ms":2841.041,"predicted_per_token_ms":22.37040157480315,"predicted_per_second":44.70192440024624}}'
-  recorded_at: Fri, 09 May 2025 11:53:28 GMT
+        the user asked, \"What is your name?\" I need to respond appropriately. Since
+        my name is John, I should say that. But wait, maybe I should check if there''s
+        a specific context or if the user is testing something. However, the initial
+        instruction says my name is John, so I should just answer directly. Let me
+        make sure I''m not overcomplicating it. The user probably just wants a straightforward
+        answer. So, I''ll reply with \"My name is John.\" That''s simple and to the
+        point.\n</think>\n\nMy name is John."}}],"created":1746900064,"model":"llama3.2","system_fingerprint":"b5293-1e333d5b","object":"chat.completion","usage":{"completion_tokens":120,"prompt_tokens":23,"total_tokens":143},"id":"chatcmpl-VLAWIDHjC1sV4TXQiNyfnfunIzOC8qwp","__verbose":{"index":0,"content":"<think>\nOkay,
+        the user asked, \"What is your name?\" I need to respond appropriately. Since
+        my name is John, I should say that. But wait, maybe I should check if there''s
+        a specific context or if the user is testing something. However, the initial
+        instruction says my name is John, so I should just answer directly. Let me
+        make sure I''m not overcomplicating it. The user probably just wants a straightforward
+        answer. So, I''ll reply with \"My name is John.\" That''s simple and to the
+        point.\n</think>\n\nMy name is John.","tokens":[],"id_slot":0,"stop":true,"model":"llama3.2","tokens_predicted":120,"tokens_evaluated":23,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>system\nYour
+        name is John<|im_end|>\n<|im_start|>user\nWhat is your name? <|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":142,"timings":{"prompt_n":22,"prompt_ms":176.463,"prompt_per_token_ms":8.021045454545455,"prompt_per_second":124.67202756385193,"predicted_n":120,"predicted_ms":2783.08,"predicted_per_token_ms":23.192333333333334,"predicted_per_second":43.117696940080776}},"timings":{"prompt_n":22,"prompt_ms":176.463,"prompt_per_token_ms":8.021045454545455,"prompt_per_second":124.67202756385193,"predicted_n":120,"predicted_ms":2783.08,"predicted_per_token_ms":23.192333333333334,"predicted_per_second":43.117696940080776}}'
+  recorded_at: Sat, 10 May 2025 18:00:58 GMT
 recorded_with: VCR 6.3.1

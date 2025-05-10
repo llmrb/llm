@@ -29,7 +29,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 09 May 2025 11:52:32 GMT
+      - Sat, 10 May 2025 18:00:05 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -39,7 +39,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1139
+      - gfet4t7; dur=1108
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -53,19 +53,19 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "Nice to meet you too! How can I help you today?\n"
+                    "text": "Nice to meet you too!  How can I help you today?\n"
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.060325030769620626
+              "avgLogprobs": -0.067943239212036127
             }
           ],
           "usageMetadata": {
             "promptTokenCount": 6,
-            "candidatesTokenCount": 14,
-            "totalTokenCount": 20,
+            "candidatesTokenCount": 15,
+            "totalTokenCount": 21,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
@@ -75,11 +75,11 @@ http_interactions:
             "candidatesTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 14
+                "tokenCount": 15
               }
             ]
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Fri, 09 May 2025 11:52:30 GMT
+  recorded_at: Sat, 10 May 2025 18:00:00 GMT
 recorded_with: VCR 6.3.1
