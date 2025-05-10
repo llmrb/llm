@@ -42,7 +42,7 @@ class LLM::Multipart
 
   def file(key, file, locals)
     locals = locals.merge(attributes(file))
-    build_file(locals:) do |body|
+    build_file(locals) do |body|
       IO.copy_stream(file.path, body)
       body << "\r\n"
     end
@@ -50,31 +50,33 @@ class LLM::Multipart
 
   def form(key, value, locals)
     locals = locals.merge(value:)
-    build_form(locals:) do |body|
+    build_form(locals) do |body|
       body << value.to_s
       body << "\r\n"
     end
   end
 
   def build_file(locals)
-    str = StringIO.new("".b)
-    str << "--#{locals[:boundary]}" \
-           "\r\n" \
-           "Content-Disposition: form-data; name=\"#{locals[:key]}\";" \
-           "filename=\"#{locals[:filename]}\"" \
-           "\r\n" \
-           "Content-Type: #{locals[:content_type]}" \
-           "\r\n\r\n"
-    yield(str)
+    StringIO.new("".b).tap do |io|
+      io << "--#{locals[:boundary]}" \
+             "\r\n" \
+             "Content-Disposition: form-data; name=\"#{locals[:key]}\";" \
+             "filename=\"#{locals[:filename]}\"" \
+             "\r\n" \
+             "Content-Type: #{locals[:content_type]}" \
+             "\r\n\r\n"
+      yield(io)
+    end
   end
 
   def build_form(locals)
-    str = StringIO.new("".b)
-    str << "--#{locals[:boundary]}" \
-           "\r\n" \
-           "Content-Disposition: form-data; name=\"#{locals[:key]}\"" \
-           "\r\n\r\n"
-    yield(str)
+    StringIO.new("".b).tap do |io|
+      io << "--#{locals[:boundary]}" \
+             "\r\n" \
+             "Content-Disposition: form-data; name=\"#{locals[:key]}\"" \
+             "\r\n\r\n"
+      yield(io)
+    end
   end
 
   ##
