@@ -40,7 +40,7 @@ class LLM::Multipart
 
   attr_reader :params
 
-  def file(key, file, locals)
+  def file(locals, file)
     locals = locals.merge(attributes(file))
     build_file(locals) do |body|
       IO.copy_stream(file.path, body)
@@ -48,7 +48,7 @@ class LLM::Multipart
     end
   end
 
-  def form(key, value, locals)
+  def form(locals, value)
     locals = locals.merge(value:)
     build_form(locals) do |body|
       body << value.to_s
@@ -86,9 +86,9 @@ class LLM::Multipart
     params.map do |key, value|
       locals = {key: key.to_s.b, boundary: boundary.to_s.b}
       if value.respond_to?(:path)
-        file(key, value, locals)
+        file(locals, value)
       else
-        form(key, value, locals)
+        form(locals, value)
       end
     end
   end
