@@ -24,6 +24,18 @@ class LLM::OpenAI
     # @param [Hash] body
     #  The response body from the LLM provider
     # @return [Hash]
+    def parse_moderation_list(body)
+      {
+        id: body["id"],
+        model: body["model"],
+        moderations: body["results"].map { LLM::Response::ModerationList::Moderation.new(_1) }
+      }
+    end
+
+    ##
+    # @param [Hash] body
+    #  The response body from the LLM provider
+    # @return [Hash]
     def parse_embedding(body)
       {
         model: body["model"],

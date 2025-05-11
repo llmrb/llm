@@ -14,6 +14,7 @@ module LLM
     require_relative "response/filelist"
     require_relative "response/download_file"
     require_relative "response/modellist"
+    require_relative "response/moderationlist"
 
     ##
     # @param [Net::HTTPResponse] res

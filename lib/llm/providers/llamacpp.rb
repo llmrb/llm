@@ -33,6 +33,12 @@ module LLM
     end
 
     ##
+    # @raise [NotImplementedError]
+    def moderations
+      raise NotImplementedError
+    end
+
+    ##
     # Returns the default model for chat completions
     # @see https://ollama.com/library llama3.2
     # @return [String]

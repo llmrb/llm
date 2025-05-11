@@ -19,15 +19,19 @@ module LLM
     end
 
     ##
-    # When a prompt is given an object that's not understood
-    PromptError = Class.new(Error)
-
-    ##
     # HTTPUnauthorized
     Unauthorized = Class.new(ResponseError)
 
     ##
     # HTTPTooManyRequests
     RateLimit = Class.new(ResponseError)
+
+    ##
+    # When an given an input that is not understood
+    FormatError = Class.new(Error)
+
+    ##
+    # When given a prompt that is not understood
+    PromptError = Class.new(FormatError)
   end
 end

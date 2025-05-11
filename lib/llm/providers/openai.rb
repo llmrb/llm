@@ -15,6 +15,8 @@ module LLM
     require_relative "openai/audio"
     require_relative "openai/files"
     require_relative "openai/models"
+    require_relative "openai/moderations"
+
     include Format
 
     HOST = "api.openai.com"
@@ -100,6 +102,15 @@ module LLM
     # @return [LLM::OpenAI::Models]
     def models
       LLM::OpenAI::Models.new(self)
+    end
+
+    ##
+    # Provides an interface to OpenAI's moderation API
+    # @see https://platform.openai.com/docs/api-reference/moderations/create OpenAI docs
+    # @see https://platform.openai.com/docs/models#moderation OpenAI moderation models
+    # @return [LLM::OpenAI::Moderations]
+    def moderations
+      LLM::OpenAI::Moderations.new(self)
     end
 
     ##

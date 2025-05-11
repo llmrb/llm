@@ -169,6 +169,13 @@ class LLM::Provider
   end
 
   ##
+  # @return [LLM::OpenAI::Moderations]
+  #  Returns an interface to the moderations API
+  def moderations
+    raise NotImplementedError
+  end
+
+  ##
   # @return [String]
   #  Returns the role of the assistant in the conversation.
   #  Usually "assistant" or "model"

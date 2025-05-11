@@ -6,6 +6,7 @@ class LLM::OpenAI
   module Format
     require_relative "format/completion_format"
     require_relative "format/respond_format"
+    require_relative "format/moderation_format"
 
     ##
     # @param [Array<LLM::Message>] messages
