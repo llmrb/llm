@@ -30,13 +30,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 10 May 2025 18:01:48 GMT
+      - Sun, 11 May 2025 09:13:46 GMT
       Content-Length:
       - '374'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-10T18:01:48.866550141Z","message":{"role":"assistant","content":"","tool_calls":[{"function":{"name":"system","arguments":{"command":"date"}}}]},"done_reason":"stop","done":true,"total_duration":1730153423,"load_duration":1525877811,"prompt_eval_count":172,"prompt_eval_duration":102844857,"eval_count":16,"eval_duration":100269386}'
-  recorded_at: Sat, 10 May 2025 18:01:42 GMT
+      string: '{"model":"llama3.2","created_at":"2025-05-11T09:13:46.855739991Z","message":{"role":"assistant","content":"","tool_calls":[{"function":{"name":"system","arguments":{"command":"date"}}}]},"done_reason":"stop","done":true,"total_duration":1687212440,"load_duration":1474582816,"prompt_eval_count":172,"prompt_eval_duration":108661960,"eval_count":16,"eval_duration":102711520}'
+  recorded_at: Sun, 11 May 2025 09:13:39 GMT
 - request:
     method: post
     uri: http://localhost:11434/api/chat
@@ -67,16 +67,16 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 10 May 2025 18:01:49 GMT
+      - Sun, 11 May 2025 09:13:47 GMT
       Content-Length:
-      - '647'
+      - '626'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-10T18:01:49.400915992Z","message":{"role":"assistant","content":"This
-        is the output of the `system` command, which simply returns 0 (indicating
-        success) to indicate that it was able to execute. The actual date is not provided
-        by this command.\n\nIf you want to get the current date, I can run another
-        command for you:\n\n```bash\ndate\n```\n\nPlease let me know if you''d like
-        me to format a response based on this output."},"done_reason":"stop","done":true,"total_duration":531811304,"load_duration":11373541,"prompt_eval_count":93,"prompt_eval_duration":3203482,"eval_count":83,"eval_duration":515949885}'
-  recorded_at: Sat, 10 May 2025 18:01:43 GMT
+      string: '{"model":"llama3.2","created_at":"2025-05-11T09:13:47.388250317Z","message":{"role":"assistant","content":"Since
+        the `system` function in Python returns `True`, it means the command was executed
+        successfully. However, the actual output of the command is not provided by
+        this function.\n\nTo get the current date, I can run the following Unix system
+        command:\n\n```bash\ndate\n```\n\nThe output will be:\n```\nWed Dec  7 09:30:54
+        UTC 2022\n```"},"done_reason":"stop","done":true,"total_duration":530055619,"load_duration":11671573,"prompt_eval_count":93,"prompt_eval_duration":2968037,"eval_count":82,"eval_duration":514543016}'
+  recorded_at: Sun, 11 May 2025 09:13:39 GMT
 recorded_with: VCR 6.3.1

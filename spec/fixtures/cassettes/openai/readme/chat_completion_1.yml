@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 10 May 2025 18:04:23 GMT
+      - Sun, 11 May 2025 09:17:54 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,50 +44,50 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '1195'
+      - '1134'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '1199'
+      - '1140'
       X-Ratelimit-Limit-Requests:
       - '10000'
       X-Ratelimit-Limit-Tokens:
       - '200000'
       X-Ratelimit-Remaining-Requests:
-      - '9996'
+      - '9998'
       X-Ratelimit-Remaining-Tokens:
       - '199895'
       X-Ratelimit-Reset-Requests:
-      - 29.199s
+      - 15.96s
       X-Ratelimit-Reset-Tokens:
       - 31ms
       X-Request-Id:
-      - req_e763575beea25ea4574fa81b3ee36c8d
+      - req_a15797c282fec0d83c01308e72431c88
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=UBQaDYG8lMd1heMizWN39sOHB9HOiOC3h5suatwIuVA-1746900263-1.0.1.1-EPdaRZcEB87EA9ydTaAxiQ6L3Nu_fIzVO13LRsx_KnGz_GFyJ_QXmC0vbvreI.eRPn0_v7PIPaxsOzrUG.0Kk_XBUOuStC.ieyLySflaf6c;
-        path=/; expires=Sat, 10-May-25 18:34:23 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=95W9t0XRN2rHh8OYXXuaxptUEizvi7p50hmnguDhDSo-1746955074-1.0.1.1-Zd_Kuiil3grwF_4W_spXAvadGdvCHvkev_M7tHX_ZHtY5yCeBrt_iii3lAcfzWwfXJsqOFxbXMakzTI4ilom2bdHNHtAZZtj_qcLYCc.Cew;
+        path=/; expires=Sun, 11-May-25 09:47:54 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=_UEG88U2he.wYQUL.UoFiGWtJ4pa1wTtpHcvChC3h8Q-1746900263803-0.0.1.1-604800000;
+      - _cfuvid=rYQjIcJP4Bf0_yf1275FNkRmFoYisQLbNASlT6HPaUg-1746955074559-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 93db5bd049a501a6-GRU
+      - 93e095f7eb0bf19d-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BViqcdvBoRutil2yIPesipyT0ApIt",
+          "id": "chatcmpl-BVx6fMJmPK0FU23wqmgdFboBmEKA2",
           "object": "chat.completion",
-          "created": 1746900262,
+          "created": 1746955073,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -120,5 +120,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_129a36352a"
         }
-  recorded_at: Sat, 10 May 2025 18:04:17 GMT
+  recorded_at: Sun, 11 May 2025 09:17:47 GMT
 recorded_with: VCR 6.3.1
