@@ -1,5 +1,10 @@
 ## Strategies
 
+### Contents
+
+* [Memory](#memory)
+  * [Fork](#fork)
+
 ### Memory
 
 #### Fork

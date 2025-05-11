@@ -22,6 +22,6 @@ on being a simple library &ndash; even if that means saying no to certain featur
 
 Each part of llm.rb is designed to be conscious of memory, ready for production,
 and free from global state or non-standard dependencies. While inspired by ideas
-from other ecosystems (especially Python) it is not a port of any other library —
-it is a Ruby library written by Rubyists who value borrowing good ideas
-from other languages and ecosystems.
+from other ecosystems (especially Python, and JavaScript) it is not a port of
+any other library — it is a Ruby library written by Ruby programmers who value
+borrowing good ideas from other languages and ecosystems.
