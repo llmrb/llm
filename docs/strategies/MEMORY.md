@@ -1,6 +1,8 @@
-## Memory
+## Strategies
 
-### Child process
+### Memory
+
+#### Fork
 
 When it comes to the generation of audio, images, and video memory consumption
 can be a potential problem. There are a few strategies in place to deal with this,
