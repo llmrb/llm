@@ -73,7 +73,7 @@ llm = LLM.voyageai(key: "yourapikey")
 
 > This example uses the stateless chat completions API that all
 > providers support. A similar example for OpenAI's stateful
-> responses API is available in the [docs/](docs/OPENAI_RESPONSES.md)
+> responses API is available in the [docs/](docs/OPENAI.md)
 > directory.
 
 The following example enables lazy mode for a
