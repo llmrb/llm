@@ -193,6 +193,20 @@ class LLM::Provider
     end
   end
 
+  ##
+  # Add one or more headers to all requests
+  # @example
+  #   llm = LLM.openai(key: ENV["KEY"])
+  #   llm.with(headers: {"OpenAI-Organization" => ENV["ORG"]})
+  #   llm.with(headers: {"OpenAI-Project" => ENV["PROJECT"]})
+  # @param [Hash<String,String>] headers
+  #  One or more headers
+  # @return [LLM::Provider]
+  #  Returns self
+  def with(headers:)
+    tap { (@headers ||= {}).merge!(headers) }
+  end
+
   private
 
   ##

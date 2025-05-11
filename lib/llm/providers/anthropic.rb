@@ -84,11 +84,11 @@ module LLM
     private
 
     def headers
-      {
+      (@headers || {}).merge(
         "Content-Type" => "application/json",
         "x-api-key" => @key,
         "anthropic-version" => "2023-06-01"
-      }
+      )
     end
 
     def response_parser

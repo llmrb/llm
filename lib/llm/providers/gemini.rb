@@ -131,9 +131,9 @@ module LLM
     private
 
     def headers
-      {
+      (@headers || {}).merge(
         "Content-Type" => "application/json"
-      }
+      )
     end
 
     def response_parser
