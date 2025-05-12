@@ -5,7 +5,7 @@ module LLM::OpenAI::ResponseParser
   # @private
   class CompletionParser
     def initialize(body)
-      @body = OpenStruct.from_hash(body)
+      @body = LLM::Object.from_hash(body)
     end
 
     def format(response)
@@ -41,7 +41,7 @@ module LLM::OpenAI::ResponseParser
           name: tool.function.name,
           arguments: JSON.parse(tool.function.arguments)
         }
-        OpenStruct.new(tool)
+        LLM::Object.new(tool)
       end
     end
 

@@ -5,7 +5,7 @@ module LLM::OpenAI::ResponseParser
   # @private
   class RespondParser
     def initialize(body)
-      @body = OpenStruct.from_hash(body)
+      @body = LLM::Object.from_hash(body)
     end
 
     def format(response)
@@ -37,7 +37,7 @@ module LLM::OpenAI::ResponseParser
     end
 
     def format_tool(tool)
-      OpenStruct.new(
+      LLM::Object.new(
         id: tool.call_id,
         name: tool.name,
         arguments: JSON.parse(tool.arguments)

@@ -54,7 +54,7 @@ RSpec.describe "LLM::OpenAI::Files" do
     subject { provider.files.delete(file:) }
 
     it "is successful" do
-      is_expected.to be_instance_of(OpenStruct)
+      is_expected.to be_instance_of(LLM::Object)
     end
 
     it "returns deleted status" do

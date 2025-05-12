@@ -121,7 +121,7 @@ module LLM
     private
 
     def tool_calls
-      @tool_calls ||= OpenStruct.from_hash(@extra[:tool_calls] || [])
+      @tool_calls ||= LLM::Object.from_hash(@extra[:tool_calls] || [])
     end
   end
 end

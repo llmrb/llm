@@ -8,7 +8,7 @@ module LLM
   class Response::Image < Response
     ##
     # Returns one or more image objects, or nil
-    # @return [Array<OpenStruct>, nil]
+    # @return [Array<LLM::Object>, nil]
     def images
       parsed[:images].any? ? parsed[:images] : nil
     end

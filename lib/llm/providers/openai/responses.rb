@@ -81,12 +81,12 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/responses/delete OpenAI docs
     # @param [#id, #to_s] response Response ID
     # @raise (see LLM::Provider#request)
-    # @return [OpenStruct] Response body
+    # @return [LLM::Object] Response body
     def delete(response)
       response_id = response.respond_to?(:id) ? response.id : response
       req = Net::HTTP::Delete.new("/v1/responses/#{response_id}", headers)
       res = request(http, req)
-      OpenStruct.from_hash JSON.parse(res.body)
+      LLM::Object.from_hash JSON.parse(res.body)
     end
 
     private

@@ -4,7 +4,7 @@
 # The {LLM::Model LLM::Model} class represents an LLM model that
 # is available to use. Its properties are delegated to the underlying
 # response body, and vary by provider.
-class LLM::Model < OpenStruct
+class LLM::Model < LLM::Object
   ##
   # Returns a subclass of {LLM::Provider LLM::Provider}
   # @return [LLM::Provider]

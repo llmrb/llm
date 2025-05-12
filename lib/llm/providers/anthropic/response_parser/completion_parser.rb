@@ -5,7 +5,7 @@ module LLM::Anthropic::ResponseParser
   # @private
   class CompletionParser
     def initialize(body)
-      @body = OpenStruct.from_hash(body)
+      @body = LLM::Object.from_hash(body)
     end
 
     def format(response)
@@ -34,7 +34,7 @@ module LLM::Anthropic::ResponseParser
           name: tool.name,
           arguments: tool.input
         }
-        OpenStruct.new(tool)
+        LLM::Object.new(tool)
       end
     end
 

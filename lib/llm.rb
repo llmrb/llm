@@ -3,7 +3,7 @@
 module LLM
   require "stringio"
   require_relative "json/schema"
-  require_relative "llm/core_ext/ostruct"
+  require_relative "llm/object"
   require_relative "llm/version"
   require_relative "llm/utils"
   require_relative "llm/error"

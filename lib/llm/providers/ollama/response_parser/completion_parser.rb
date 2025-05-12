@@ -5,7 +5,7 @@ module LLM::Ollama::ResponseParser
   # @private
   class CompletionParser
     def initialize(body)
-      @body = OpenStruct.from_hash(body)
+      @body = LLM::Object.from_hash(body)
     end
 
     def format(response)
@@ -29,7 +29,7 @@ module LLM::Ollama::ResponseParser
       return [] unless tools
       tools.filter_map do |tool|
         next unless tool["function"]
-        OpenStruct.new(tool["function"])
+        LLM::Object.new(tool["function"])
       end
     end
 

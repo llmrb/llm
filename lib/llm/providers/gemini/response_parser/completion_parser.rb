@@ -3,7 +3,7 @@
 module LLM::Gemini::ResponseParser
   class CompletionParser
     def initialize(body)
-      @body = OpenStruct.from_hash(body)
+      @body = LLM::Object.from_hash(body)
     end
 
     def format(response)
@@ -32,7 +32,7 @@ module LLM::Gemini::ResponseParser
     def format_tool_calls(tools)
       (tools || []).map do |tool|
         function = {name: tool.name, arguments: tool.args}
-        OpenStruct.new(function)
+        LLM::Object.new(function)
       end
     end
 

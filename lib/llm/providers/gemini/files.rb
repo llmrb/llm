@@ -61,7 +61,7 @@ class LLM::Gemini
       LLM::Response::FileList.new(res).tap { |filelist|
         files = filelist.body["files"]&.map do |file|
           file = file.transform_keys { snakecase(_1) }
-          OpenStruct.from_hash(file)
+          LLM::Object.from_hash(file)
         end || []
         filelist.files = files
       }

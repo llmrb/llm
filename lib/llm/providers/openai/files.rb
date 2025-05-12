@@ -53,7 +53,7 @@ class LLM::OpenAI
       req = Net::HTTP::Get.new("/v1/files?#{query}", headers)
       res = request(http, req)
       LLM::Response::FileList.new(res).tap { |filelist|
-        files = filelist.body["data"].map { OpenStruct.from_hash(_1) }
+        files = filelist.body["data"].map { LLM::Object.from_hash(_1) }
         filelist.files = files
       }
     end
@@ -127,12 +127,12 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/files/delete OpenAI docs
     # @param [#id, #to_s] file The file ID
     # @raise (see LLM::Provider#request)
-    # @return [OpenStruct] Response body
+    # @return [LLM::Object] Response body
     def delete(file:)
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Delete.new("/v1/files/#{file_id}", headers)
       res = request(http, req)
-      OpenStruct.from_hash JSON.parse(res.body)
+      LLM::Object.from_hash JSON.parse(res.body)
     end
 
     private
