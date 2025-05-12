@@ -13,8 +13,8 @@ class LLM::OpenAI
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   res1 = llm.responses.create "Your task is to help me with math", :developer
-  #   res2 = llm.responses.create "5 + 5  = ?", :user, previous_response_id: res1.id
+  #   res1 = llm.responses.create "Your task is to help me with math", role: :developer
+  #   res2 = llm.responses.create "5 + 5  = ?", role: :user, previous_response_id: res1.id
   #   [res1,res2].each { llm.responses.delete(_1) }
   # @example
   #   #!/usr/bin/env ruby
