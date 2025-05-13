@@ -35,13 +35,13 @@ images, files, and JSON Schema generation.
 </details>
 
 <details>
-  <summary><b>2. Files: import at boot time</b></summary>
-  <img src="share/llm-shell/examples/files-boottime.gif">
+  <summary><b>2. Files: import at runtime</b></summary>
+  <img src="share/llm-shell/examples/files-runtime.gif">
 </details>
 
 <details>
-<summary><b>3. Files: import at runtime</b></summary>
-  <img src="share/llm-shell/examples/files-runtime.gif">
+  <summary><b>3. Files: import at boot time</b></summary>
+  <img src="share/llm-shell/examples/files-boottime.gif">
 </details>
 
 ## Examples
