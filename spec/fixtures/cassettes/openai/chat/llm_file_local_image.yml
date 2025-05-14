@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 15 May 2025 16:02:39 GMT
+      - Thu, 15 May 2025 17:31:31 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,11 +39,11 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '417'
+      - '825'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '374'
+      - '630'
       X-Ratelimit-Limit-Input-Images:
       - '50000'
       X-Ratelimit-Limit-Requests:
@@ -53,42 +53,42 @@ http_interactions:
       X-Ratelimit-Remaining-Input-Images:
       - '49999'
       X-Ratelimit-Remaining-Requests:
-      - '9999'
+      - '9991'
       X-Ratelimit-Remaining-Tokens:
       - '199217'
       X-Ratelimit-Reset-Input-Images:
       - 1ms
       X-Ratelimit-Reset-Requests:
-      - 8.64s
+      - 1m13.643s
       X-Ratelimit-Reset-Tokens:
       - 234ms
       X-Request-Id:
-      - req_b310893c40b92609876b033c0f7349f6
+      - req_10c6107b1ee975e12a639589a440fa63
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=bLFjlOIVyUh6sotCsqCkHOoW67ZmU7atFPLkJl0eqMA-1747324959-1.0.1.1-DlS.e7JzR9UP2zGIo7.2pJUv6zzyiufsuIVSROBbOsYpcZ6T6wGCuIU9yp6yXICnbJbzArZm80UAyBBhIeXuELTKIP6bOlsWsuGqNuCuBis;
-        path=/; expires=Thu, 15-May-25 16:32:39 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=2ScdfSmTLgWucVV2FO3e1JjukTpJAhsSSWgHzRMukJk-1747330291-1.0.1.1-VxsKiDzg.H_y4SfDnKolr.pagopDbjyeidd.qb8yJPs9LmZ0PJVhtGBOr1eh.5vMZG_Im3nZfHCuYB53aLCa2_H2Depg4c7EGgO.JbE.Nvw;
+        path=/; expires=Thu, 15-May-25 18:01:31 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=XXiboyLcsxiBGYGjed0jvo2RD0C77xu0rMqVGiNeuMQ-1747324959990-0.0.1.1-604800000;
+      - _cfuvid=oy3swprWIKwuSyCgF1LBi29WfkQ8v0R1EugPzLJVADI-1747330291162-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9403dc610a1802e6-GRU
+      - 94045e88fa16a444-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BXVKZoA6tVMMXjlbP4E4mgrn9wqlP",
+          "id": "chatcmpl-BXWiYVzgMKJP5ma5O3EjOMilArYHL",
           "object": "chat.completion",
-          "created": 1747324959,
+          "created": 1747330290,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -121,5 +121,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_129a36352a"
         }
-  recorded_at: Thu, 15 May 2025 16:02:35 GMT
+  recorded_at: Thu, 15 May 2025 17:31:26 GMT
 recorded_with: VCR 6.3.1

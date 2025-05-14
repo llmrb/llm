@@ -15,4 +15,8 @@ RSpec.describe "LLM::Chat: gemini" do
   context LLM::File do
     include_examples "LLM::Chat: files", :gemini, match_requests_on: [:method]
   end
+
+  context JSON::Schema do
+    include_examples "LLM::Chat: schema", :gemini, match_requests_on: [:method]
+  end
 end

@@ -15,4 +15,8 @@ RSpec.describe "LLM::Chat: openai" do
   context LLM::File do
     include_examples "LLM::Chat: files", :openai
   end
+
+  context JSON::Schema do
+    include_examples "LLM::Chat: schema", :openai
+  end
 end

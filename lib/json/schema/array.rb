@@ -7,7 +7,7 @@ class JSON::Schema
   # {JSON::Schema::Leaf JSON::Schema::Leaf} and provides methods that
   # can act as constraints.
   class Array < Leaf
-    def initialize(*items)
+    def initialize(items)
       @items = items
     end
 

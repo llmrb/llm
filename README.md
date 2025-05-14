@@ -141,22 +141,31 @@ could drop in any other library in its place:
 #!/usr/bin/env ruby
 require "llm"
 
+##
+# Objects
 llm = LLM.openai(key: ENV["KEY"])
-schema = llm.schema.object({fruit: llm.schema.string.enum("Apple", "Orange", "Pineapple")})
+schema = llm.schema.object(answer: llm.schema.integer.required)
+bot = LLM::Chat.new(llm, schema:).lazy
+bot.chat "Does the earth orbit the sun?", role: :user
+bot.messages.find(&:assistant?).content! # => {probability: 1}
+
+##
+# Enums
+schema = llm.schema.object(fruit: llm.schema.string.enum("Apple", "Orange", "Pineapple"))
 bot = LLM::Chat.new(llm, schema:).lazy
 bot.chat "Your favorite fruit is Pineapple", role: :system
 bot.chat "What fruit is your favorite?", role: :user
 bot.messages.find(&:assistant?).content! # => {fruit: "Pineapple"}
 
-schema = llm.schema.object({answer: llm.schema.integer.required})
+##
+# Arrays
+schema = llm.schema.object(answers: llm.schema.array(llm.schema.integer.required))
 bot = LLM::Chat.new(llm, schema:).lazy
+bot.chat "Answer all of my questions", role: :system
 bot.chat "Tell me the answer to ((5 + 5) / 2)", role: :user
-bot.messages.find(&:assistant?).content! # => {answer: 5}
-
-schema = llm.schema.object({probability: llm.schema.number.required})
-bot = LLM::Chat.new(llm, schema:).lazy
-bot.chat "Does the earth orbit the sun?", role: :user
-bot.messages.find(&:assistant?).content! # => {probability: 1}
+bot.chat "Tell me the answer to ((5 + 5) / 2) * 2", role: :user
+bot.chat "Tell me the answer to ((5 + 5) / 2) * 2 + 1", role: :user
+bot.messages.find(&:assistant?).content! # => {answers: [5, 10, 11]}
 ```
 
 ### Tools
