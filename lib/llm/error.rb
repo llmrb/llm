@@ -16,6 +16,10 @@ module LLM
       # @return [Net::HTTPResponse]
       #  Returns the response associated with an error
       attr_accessor :response
+
+      def message
+        [super, response.body].join("\n")
+      end
     end
 
     ##
