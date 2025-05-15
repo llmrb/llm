@@ -82,7 +82,7 @@ module LLM
         message.content,
         params.merge(role:, messages:)
       )
-      @completed.concat([*pendings, message, completion.choices[0]])
+      @completed.concat([*pendings, message, *completion.choices[0]])
       @pending.clear
     end
 
@@ -95,7 +95,7 @@ module LLM
         @response ? {previous_response_id: @response.id} : {}
       ].inject({}, &:merge!)
       @response = @provider.responses.create(message.content, params.merge(role:))
-      @completed.concat([*pendings, message, @response.outputs[0]])
+      @completed.concat([*pendings, message, *@response.outputs[0]])
       @pending.clear
     end
   end

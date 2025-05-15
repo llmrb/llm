@@ -24,7 +24,7 @@ class LLM::Chat
     def sync_response(prompt, params = {})
       role = params[:role]
       @response = create_response!(prompt, params)
-      @messages.concat [Message.new(role, prompt), @response.outputs[0]]
+      @messages.concat [Message.new(role, prompt), *@response.outputs[0]]
     end
 
     ##
@@ -45,7 +45,7 @@ class LLM::Chat
     def sync_completion(prompt, params = {})
       role = params[:role]
       completion = create_completion!(prompt, params)
-      @messages.concat [Message.new(role, prompt), completion.choices[0]]
+      @messages.concat [Message.new(role, prompt), *completion.choices[0]]
     end
 
     include LLM
