@@ -1,9 +1,9 @@
 ## About
 
 llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
-includes OpenAI, Gemini, Anthropic, Ollama, and LlamaCpp. It’s fast, simple
-and composable – with full support for chat, tool calling, audio,
-images, files, and JSON Schema generation.
+includes OpenAI, Gemini, Anthropic, DeepSeek, Ollama, and LlamaCpp.
+It’s fast, simple and composable – with full support for chat,
+tool calling, audio, images, files, and JSON Schema generation.
 
 ## Features
 
@@ -59,12 +59,18 @@ using an API key (if required) and an optional set of configuration options via
 #!/usr/bin/env ruby
 require "llm"
 
+##
+# cloud providers
 llm = LLM.openai(key: "yourapikey")
 llm = LLM.gemini(key: "yourapikey")
 llm = LLM.anthropic(key: "yourapikey")
+llm = LLM.deepseek(key: "yourapikey")
+llm = LLM.voyageai(key: "yourapikey")
+
+##
+# local providers
 llm = LLM.ollama(key: nil)
 llm = LLM.llamacpp(key: nil)
-llm = LLM.voyageai(key: "yourapikey")
 ```
 
 ### Conversations
@@ -121,11 +127,12 @@ msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 #### Structured
 
-All LLM providers except Anthropic allow a client to describe the structure
-of a response that a LLM emits according to a schema that is described by JSON.
-The schema lets a client describe what JSON object (or value) an LLM should emit,
-and the LLM will abide by the schema. See also: [JSON Schema website](https://json-schema.org/overview/what-is-jsonschema).
- We will use the
+All LLM providers except Anthropic and DeepSeek allow a client to describe
+the structure of a response that a LLM emits according to a schema that is
+described by JSON. The schema lets a client describe what JSON object (or value)
+an LLM should emit, and the LLM will abide by the schema.
+See also: [JSON Schema website](https://json-schema.org/overview/what-is-jsonschema).
+We will use the
 [llmrb/json-schema](https://github.com/llmrb/json-schema)
 library for the sake of the examples &ndash; the interface is designed so you
 could drop in any other library in its place:

@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "llm.rb is a zero-dependency Ruby toolkit for " \
                  "Large Language Models that includes OpenAI, Gemini, " \
-                 "Anthropic, Ollama, and LlamaCpp. It’s fast, simple " \
+                 "Anthropic, DeepSeek, Ollama, and LlamaCpp. It’s fast, simple " \
                  "and composable – with full support for chat, tool calling, audio, " \
                  "images, files, and JSON Schema generation."
   spec.description = spec.summary

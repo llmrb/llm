@@ -44,9 +44,8 @@ class LLM::OpenAI
     # @param [Hash] params
     # @return [Hash]
     def format_tools(params)
-      return {} unless params and params[:tools]&.any?
-      tools = params[:tools]
-      {tools: tools.map { _1.format(self) }}
+      tools = params.delete(:tools)
+      (tools.nil? || tools.empty?) ? {} : {tools: tools.map { _1.format(self) }}
     end
   end
 end

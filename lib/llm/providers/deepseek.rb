@@ -4,15 +4,18 @@ require_relative "openai" unless defined?(LLM::OpenAI)
 
 module LLM
   ##
-  # The LlamaCpp class implements a provider for
-  # [llama.cpp](https://github.com/ggml-org/llama.cpp)
-  # through the OpenAI-compatible API provided by the
-  # llama-server binary.
-  class LlamaCpp < OpenAI
+  # The DeepSeek class implements a provider for
+  # [DeepSeek](https://deepseek.com)
+  # through its OpenAI-compatible API provided via
+  # their [web platform](https://platform.deepseek.com).
+  class DeepSeek < OpenAI
+    require_relative "deepseek/format"
+    include DeepSeek::Format
+
     ##
     # @param (see LLM::Provider#initialize)
-    # @return [LLM::LlamaCpp]
-    def initialize(host: "localhost", port: 8080, ssl: false, **)
+    # @return [LLM::DeepSeek]
+    def initialize(host: "api.deepseek.com", port: 443, ssl: true, **)
       super
     end
 
@@ -48,10 +51,10 @@ module LLM
 
     ##
     # Returns the default model for chat completions
-    # @see https://ollama.com/library llama3.2
+    # @see https://api-docs.deepseek.com/quick_start/pricing deepseek-chat
     # @return [String]
     def default_model
-      "llama3.2"
+      "deepseek-chat"
     end
   end
 end

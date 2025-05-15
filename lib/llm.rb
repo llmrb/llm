@@ -57,9 +57,16 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::LlamaCpp#initialize)
   def llamacpp(key: nil, **)
-    require_relative "llm/providers/openai" unless defined?(LLM::OpenAI)
     require_relative "llm/providers/llamacpp" unless defined?(LLM::LlamaCpp)
     LLM::LlamaCpp.new(key:, **)
+  end
+
+  ##
+  # @param key (see LLM::Provider#initialize)
+  # @return (see LLM::DeepSeek#initialize)
+  def deepseek(**)
+    require_relative "llm/providers/deepseek" unless defined?(LLM::DeepSeek)
+    LLM::DeepSeek.new(**)
   end
 
   ##
