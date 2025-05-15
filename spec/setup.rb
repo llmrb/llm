@@ -5,6 +5,7 @@ require "webmock/rspec"
 require "vcr"
 require "dotenv"
 
+Dir[File.join(__dir__, "support/shared_examples/*.rb")].each { require(_1) }
 Dotenv.load
 
 RSpec.configure do |config|

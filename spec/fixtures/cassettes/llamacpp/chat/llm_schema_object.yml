@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Does
+        the earth orbit the sun?"}]}],"model":"qwen3","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"probability":{"type":"integer"}},"required":["probability"]}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Keep-Alive:
+      - timeout=5, max=100
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - llama.cpp
+      Content-Length:
+      - '2479'
+      Access-Control-Allow-Origin:
+      - ''
+    body:
+      encoding: UTF-8
+      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{\n  \"probability\":
+        0\n}\n"}}],"created":1747339618,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":12,"prompt_tokens":15,"total_tokens":27},"id":"chatcmpl-XBMRmC7XoQzBlTLlc5F1nYVhHN9Hh5tq","__verbose":{"index":0,"content":"{\n  \"probability\":
+        0\n}\n","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":12,"tokens_evaluated":15,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"integer
+        ::= (\"-\"? integral-part) space\nintegral-part ::= [0] | [1-9] [0-9]{0,15}\nprobability-kv
+        ::= \"\\\"probability\\\"\" space \":\" space integer\nroot ::= \"{\" space
+        probability-kv \"}\" space\nspace ::= | \" \" | \"\\n\"{1,2} [ \\t]{0,20}\n","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>user\nDoes
+        the earth orbit the sun?<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":26,"timings":{"prompt_n":15,"prompt_ms":43.424,"prompt_per_token_ms":2.8949333333333334,"prompt_per_second":345.4310980103169,"predicted_n":12,"predicted_ms":260.354,"predicted_per_token_ms":21.696166666666667,"predicted_per_second":46.09109136022493}},"timings":{"prompt_n":15,"prompt_ms":43.424,"prompt_per_token_ms":2.8949333333333334,"prompt_per_second":345.4310980103169,"predicted_n":12,"predicted_ms":260.354,"predicted_per_token_ms":21.696166666666667,"predicted_per_second":46.09109136022493}}'
+  recorded_at: Thu, 15 May 2025 20:06:58 GMT
+recorded_with: VCR 6.3.1

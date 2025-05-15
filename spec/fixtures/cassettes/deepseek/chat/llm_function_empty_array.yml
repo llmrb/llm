@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepseek.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Hello! Nice to meet you"}],"model":"deepseek-chat"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer sk-746eccc2d5c845f0b8e076b86fe9ef44
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 May 2025 15:14:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - 9c5d63fc294b739e4ff161c909dbe5d5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=8V5oAlmEYu.mOJFQ9VITMgm4MPCCMaf0SptBJX8ZsTQ-1747322046-1.0.1.1-gPfsZH.IbOENO3SHHbmVoAJeHny29ZnRnkfXP9WbXzleaqETIqMZRsDAfBv_uB28501nMmQ7mxwBZs781PGAzIRMQx.QNwmWG3OxqlUx6hw;
+        path=/; expires=Thu, 15-May-25 15:44:06 GMT; domain=.deepseek.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 94039546bbbb2912-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6IjhjNzM2ZTA3LWY0ZDYtNDI2NC04MjNkLTg2NmZlMzg4MWUwNCIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NDczMjIwNDYsIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiSGVsbG8hIE5pY2UgdG8gbWVldCB5b3UgdG9vISDwn5iKIEhvdyBjYW4gSSBhc3Npc3QgeW91IHRvZGF5PyBXaGV0aGVyIHlvdSBoYXZlIHF1ZXN0aW9ucywgbmVlZCBoZWxwIHdpdGggc29tZXRoaW5nLCBvciBqdXN0IHdhbnQgdG8gY2hhdCwgSSdtIGhlcmUgZm9yIHlvdSEgTGV0IG1lIGtub3cgd2hhdCdzIG9uIHlvdXIgbWluZC4ifSwibG9ncHJvYnMiOm51bGwsImZpbmlzaF9yZWFzb24iOiJzdG9wIn1dLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjo5LCJjb21wbGV0aW9uX3Rva2VucyI6NDgsInRvdGFsX3Rva2VucyI6NTcsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjowfSwicHJvbXB0X2NhY2hlX2hpdF90b2tlbnMiOjAsInByb21wdF9jYWNoZV9taXNzX3Rva2VucyI6OX0sInN5c3RlbV9maW5nZXJwcmludCI6ImZwXzg4MDIzNjllYWFfcHJvZDA0MjVmcDgifQ==
+  recorded_at: Thu, 15 May 2025 15:14:09 GMT
+recorded_with: VCR 6.3.1
