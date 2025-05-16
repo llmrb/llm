@@ -29,11 +29,11 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '217'
+      - '249'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
-      string: '{"object":"list","data":[{"id":"qwen3","object":"model","created":1746954061,"owned_by":"llamacpp","meta":{"vocab_type":2,"n_vocab":151936,"n_ctx_train":40960,"n_embd":5120,"n_params":14768307200,"size":7315353600}}]}'
-  recorded_at: Sun, 11 May 2025 09:00:54 GMT
+      string: '{"object":"list","data":[{"id":"/home/void/models/qwen3/14B-Q4KM.gguf","object":"model","created":1747433043,"owned_by":"llamacpp","meta":{"vocab_type":2,"n_vocab":151936,"n_ctx_train":40960,"n_embd":5120,"n_params":14768307200,"size":8995793920}}]}'
+  recorded_at: Fri, 16 May 2025 22:04:00 GMT
 recorded_with: VCR 6.3.1
