@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:11434/api/chat
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Hello! Nice to meet you"}],"model":"llama3.2","stream":false}'
+      string: '{"messages":[{"role":"user","content":"Hello! Nice to meet you"}],"model":"mistral-small3.1","stream":false}'
     headers:
       Content-Type:
       - application/json
@@ -27,15 +27,12 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 16 May 2025 00:19:54 GMT
+      - Fri, 16 May 2025 07:05:36 GMT
       Content-Length:
-      - '594'
+      - '360'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-16T00:19:54.150215675Z","message":{"role":"assistant","content":"Nice
-        to meet you too. I''m happy to chat with you, but I should mention that I''m
-        a large language model, I don''t have personal experiences or emotions like
-        humans do, but I''m always excited to meet new people and help them with any
-        questions or topics they''d like to discuss. How''s your day going so far?"},"done_reason":"stop","done":true,"total_duration":434057195,"load_duration":10507514,"prompt_eval_count":31,"prompt_eval_duration":3867651,"eval_count":70,"eval_duration":419031073}'
-  recorded_at: Fri, 16 May 2025 00:19:53 GMT
+      string: '{"model":"mistral-small3.1","created_at":"2025-05-16T07:05:36.173891384Z","message":{"role":"assistant","content":"Hello!
+        Nice to meet you too. How can I assist you today?"},"done_reason":"stop","done":true,"total_duration":5401557888,"load_duration":14210264,"prompt_eval_count":364,"prompt_eval_duration":547395339,"eval_count":16,"eval_duration":4835737940}'
+  recorded_at: Fri, 16 May 2025 07:05:35 GMT
 recorded_with: VCR 6.3.1

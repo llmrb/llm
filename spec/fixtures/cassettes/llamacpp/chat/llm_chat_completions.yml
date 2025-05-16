@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Keep
+        your answers short and concise, and provide three answers to the three questionsThere
+        should be one answer per lineAn answer should be a number, for example: 5Nothing
+        else"}]},{"role":"user","content":[{"type":"text","text":"What is 3+2 ?"}]},{"role":"user","content":[{"type":"text","text":"What
+        is 5+5 ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+7
+        ?"}]}],"model":"qwen3"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Keep-Alive:
+      - timeout=5, max=100
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - llama.cpp
+      Content-Length:
+      - '3334'
+      Access-Control-Allow-Origin:
+      - ''
+    body:
+      encoding: UTF-8
+      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"<think>\nOkay,
+        let''s see. The user wants three answers to three math questions, each on
+        a separate line, just the numbers. The first question is 3+2. That''s straightforward,
+        3 plus 2 equals 5. Next is 5+5, which is 10. Then 5+7, which should be 12.
+        I need to make sure each answer is just the number, no extra text. Let me
+        double-check each calculation to avoid mistakes. Yep, 3+2=5, 5+5=10, 5+7=12.
+        All correct.\n</think>\n\n5  \n10  \n12"}}],"created":1747422539,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":140,"prompt_tokens":80,"total_tokens":220},"id":"chatcmpl-fy8bAYsmQGw8kvuJBKjZC9xkHX9rL53z","__verbose":{"index":0,"content":"<think>\nOkay,
+        let''s see. The user wants three answers to three math questions, each on
+        a separate line, just the numbers. The first question is 3+2. That''s straightforward,
+        3 plus 2 equals 5. Next is 5+5, which is 10. Then 5+7, which should be 12.
+        I need to make sure each answer is just the number, no extra text. Let me
+        double-check each calculation to avoid mistakes. Yep, 3+2=5, 5+5=10, 5+7=12.
+        All correct.\n</think>\n\n5  \n10  \n12","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":140,"tokens_evaluated":80,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>user\nKeep
+        your answers short and concise, and provide three answers to the three questionsThere
+        should be one answer per lineAn answer should be a number, for example: 5Nothing
+        else<|im_end|>\n<|im_start|>user\nWhat is 3+2 ?<|im_end|>\n<|im_start|>user\nWhat
+        is 5+5 ?<|im_end|>\n<|im_start|>user\nWhat is 5+7 ?<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":219,"timings":{"prompt_n":77,"prompt_ms":41.738,"prompt_per_token_ms":0.542051948051948,"prompt_per_second":1844.8416311275098,"predicted_n":140,"predicted_ms":2834.469,"predicted_per_token_ms":20.246207142857145,"predicted_per_second":49.39196724324732}},"timings":{"prompt_n":77,"prompt_ms":41.738,"prompt_per_token_ms":0.542051948051948,"prompt_per_second":1844.8416311275098,"predicted_n":140,"predicted_ms":2834.469,"predicted_per_token_ms":20.246207142857145,"predicted_per_second":49.39196724324732}}'
+  recorded_at: Fri, 16 May 2025 19:08:56 GMT
+recorded_with: VCR 6.3.1

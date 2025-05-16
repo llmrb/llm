@@ -7,6 +7,11 @@ RSpec.describe "LLM::Chat: openai" do
   let(:provider) { LLM.openai(key:) }
   let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, params).lazy }
+  let(:params) { {} }
+
+  context LLM::Chat do
+    include_examples "LLM::Chat: completions", :openai
+  end
 
   context LLM::Function do
     include_examples "LLM::Chat: functions", :openai

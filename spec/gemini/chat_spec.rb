@@ -7,6 +7,11 @@ RSpec.describe "LLM::Chat: gemini" do
   let(:provider) { LLM.gemini(key:) }
   let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, params).lazy }
+  let(:params) { {} }
+
+  context LLM::Chat do
+    include_examples "LLM::Chat: completions", :gemini, match_requests_on: [:method]
+  end
 
   context LLM::Function do
     include_examples "LLM::Chat: functions", :gemini, match_requests_on: [:method]

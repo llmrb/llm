@@ -7,8 +7,17 @@ RSpec.describe "LLM::Chat: ollama" do
   let(:provider) { LLM.ollama(host:) }
   let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
   let(:bot) { described_class.new(provider, params).lazy }
+  let(:params) { {} }
+
+  context LLM::Chat do
+    include_examples "LLM::Chat: completions", :ollama
+  end
 
   context LLM::Function do
     include_examples "LLM::Chat: functions", :ollama
+  end
+
+  context LLM::File do
+    include_examples "LLM::Chat: files", :ollama
   end
 end

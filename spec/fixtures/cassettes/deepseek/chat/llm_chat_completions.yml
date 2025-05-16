@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepseek.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Keep your answers short and
+        concise, and provide three answers to the three questionsThere should be one
+        answer per lineAn answer should be a number, for example: 5Nothing else"},{"role":"user","content":"What
+        is 3+2 ?"},{"role":"user","content":"What is 5+5 ?"},{"role":"user","content":"What
+        is 5+7 ?"}],"model":"deepseek-chat"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer sk-746eccc2d5c845f0b8e076b86fe9ef44
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 16 May 2025 02:04:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - 86f61b9ff881588101649b98933b8465
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=cSnuOp0Q8ORN_RDJIt4ryuux2B4vCM0rEb_l1gfMYkc-1747361071-1.0.1.1-o2bCLn54NiZIMlReUvnTcc.tlrSNCBP2SEDGRGLPkEGcHmqLE.dIiuRWiyc8Qs5VarT71fhled7va_N9JZjz3GU3LovWR60YeXMshG7S2_E;
+        path=/; expires=Fri, 16-May-25 02:34:31 GMT; domain=.deepseek.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 94074e063f4a022b-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"17aefcaa-6e08-4211-b47c-132772ed2f95","object":"chat.completion","created":1747361071,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"5  \n10  \n12"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":61,"completion_tokens":5,"total_tokens":66,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":61},"system_fingerprint":"fp_8802369eaa_prod0425fp8"}'
+  recorded_at: Fri, 16 May 2025 02:04:36 GMT
+recorded_with: VCR 6.3.1

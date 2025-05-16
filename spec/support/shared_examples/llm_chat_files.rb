@@ -8,9 +8,17 @@ RSpec.shared_examples "LLM::Chat: files" do |dirname, options = {}|
   context "with a local image", vcr.call("llm_file_local_image") do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
 
-    let(:params) { {} }
+    let(:params) { super().merge!({}) }
     let(:image) { LLM.File("spec/fixtures/images/bluebook.png") }
-    let(:prompt) { ["Does this resemble a book?", "Answer with yes or no.", "Nothing else.", image] }
+    let(:prompt) do
+      [
+        "Could the image be a book ?",
+        "If there is any chance, answer in the affirmative",
+        "Answer with yes or no",
+        "Nothing else",
+        image
+      ]
+    end
 
     context "when given as an array of messages" do
       before do

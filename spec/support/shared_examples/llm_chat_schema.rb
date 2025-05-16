@@ -40,7 +40,7 @@ RSpec.shared_examples "LLM::Chat: schema" do |dirname, options = {}|
   end
 
   context "with an array", vcr.call("llm_schema_array") do
-    let(:schema) { llm.schema.object(answers: llm.schema.array(llm.schema.integer.required)) }
+    let(:schema) { llm.schema.object(answers: llm.schema.array(llm.schema.integer.required).required) }
     subject { bot.messages.find(&:assistant?).content! }
 
     before do

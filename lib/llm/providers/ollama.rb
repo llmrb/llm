@@ -40,7 +40,7 @@ module LLM
     # @param params (see LLM::Provider#embed)
     # @raise (see LLM::Provider#request)
     # @return (see LLM::Provider#embed)
-    def embed(input, model: "llama3.2", **params)
+    def embed(input, model: default_model, **params)
       params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/embeddings", headers)
       req.body = JSON.dump({input:}.merge!(params))
@@ -86,10 +86,10 @@ module LLM
 
     ##
     # Returns the default model for chat completions
-    # @see https://ollama.com/library llama3.2
+    # @see https://ollama.com/library/qwen3 qwen3
     # @return [String]
     def default_model
-      "llama3.2"
+      "qwen3:latest"
     end
 
     private

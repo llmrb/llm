@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
-        system commands"},{"role":"user","content":"Hey, tell me the date"}],"model":"llama3.2","stream":false,"tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands"},{"role":"user","content":"Hey, run the ''date'' command"}],"model":"mistral-small3.1","stream":false,"tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -29,20 +29,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 16 May 2025 00:19:53 GMT
+      - Fri, 16 May 2025 07:04:58 GMT
       Content-Length:
-      - '374'
+      - '382'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-16T00:19:53.295273364Z","message":{"role":"assistant","content":"","tool_calls":[{"function":{"name":"system","arguments":{"command":"date"}}}]},"done_reason":"stop","done":true,"total_duration":1888252110,"load_duration":1423301336,"prompt_eval_count":165,"prompt_eval_duration":353171276,"eval_count":16,"eval_duration":110788728}'
-  recorded_at: Fri, 16 May 2025 00:19:52 GMT
+      string: '{"model":"mistral-small3.1","created_at":"2025-05-16T07:04:58.142831732Z","message":{"role":"assistant","content":"","tool_calls":[{"function":{"name":"system","arguments":{"command":"date"}}}]},"done_reason":"stop","done":true,"total_duration":8475947172,"load_duration":13594829,"prompt_eval_count":423,"prompt_eval_duration":3955569788,"eval_count":15,"eval_duration":4501326610}'
+  recorded_at: Fri, 16 May 2025 07:04:56 GMT
 - request:
     method: post
     uri: http://localhost:11434/api/chat
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
-        system commands"},{"role":"user","content":"Hey, tell me the date"},{"role":"assistant","content":""},{"role":"tool","tool_call_id":null,"content":"{\"success\":true}"}],"model":"llama3.2","stream":false,"tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands"},{"role":"user","content":"Hey, run the ''date'' command"},{"role":"assistant","content":""},{"role":"tool","tool_call_id":null,"content":"{\"success\":true}"}],"model":"mistral-small3.1","stream":false,"tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -65,12 +65,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 16 May 2025 00:19:53 GMT
+      - Fri, 16 May 2025 07:05:12 GMT
       Content-Length:
-      - '340'
+      - '399'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-16T00:19:53.439638177Z","message":{"role":"assistant","content":"The
-        current date is: Fri Dec 15 02:36:35 MST 2023"},"done_reason":"stop","done":true,"total_duration":141452765,"load_duration":10657960,"prompt_eval_count":90,"prompt_eval_duration":3855253,"eval_count":20,"eval_duration":125917907}'
-  recorded_at: Fri, 16 May 2025 00:19:52 GMT
+      string: '{"model":"mistral-small3.1","created_at":"2025-05-16T07:05:12.29694089Z","message":{"role":"assistant","content":"Sure,
+        here is the output of the `date` command:\n\n```\nTue Oct  3 12:44:18 PM CEST
+        2023\n```"},"done_reason":"stop","done":true,"total_duration":14150081679,"load_duration":13294830,"prompt_eval_count":387,"prompt_eval_duration":1853869066,"eval_count":39,"eval_duration":12279296342}'
+  recorded_at: Fri, 16 May 2025 07:05:11 GMT
 recorded_with: VCR 6.3.1

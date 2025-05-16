@@ -32,17 +32,17 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '2479'
+      - '2445'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
-      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{\n  \"probability\":
-        0\n}\n"}}],"created":1747339618,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":12,"prompt_tokens":15,"total_tokens":27},"id":"chatcmpl-XBMRmC7XoQzBlTLlc5F1nYVhHN9Hh5tq","__verbose":{"index":0,"content":"{\n  \"probability\":
-        0\n}\n","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":12,"tokens_evaluated":15,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"integer
+      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{\"probability\":
+        0}\n"}}],"created":1747422566,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":10,"prompt_tokens":15,"total_tokens":25},"id":"chatcmpl-5mKCP5kpmgzfjBqXnmFE3Vm9dEJ3scmP","__verbose":{"index":0,"content":"{\"probability\":
+        0}\n","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":10,"tokens_evaluated":15,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"integer
         ::= (\"-\"? integral-part) space\nintegral-part ::= [0] | [1-9] [0-9]{0,15}\nprobability-kv
         ::= \"\\\"probability\\\"\" space \":\" space integer\nroot ::= \"{\" space
         probability-kv \"}\" space\nspace ::= | \" \" | \"\\n\"{1,2} [ \\t]{0,20}\n","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>user\nDoes
-        the earth orbit the sun?<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":26,"timings":{"prompt_n":15,"prompt_ms":43.424,"prompt_per_token_ms":2.8949333333333334,"prompt_per_second":345.4310980103169,"predicted_n":12,"predicted_ms":260.354,"predicted_per_token_ms":21.696166666666667,"predicted_per_second":46.09109136022493}},"timings":{"prompt_n":15,"prompt_ms":43.424,"prompt_per_token_ms":2.8949333333333334,"prompt_per_second":345.4310980103169,"predicted_n":12,"predicted_ms":260.354,"predicted_per_token_ms":21.696166666666667,"predicted_per_second":46.09109136022493}}'
-  recorded_at: Thu, 15 May 2025 20:06:58 GMT
+        the earth orbit the sun?<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":24,"timings":{"prompt_n":14,"prompt_ms":38.456,"prompt_per_token_ms":2.746857142857143,"prompt_per_second":364.05242354899104,"predicted_n":10,"predicted_ms":226.262,"predicted_per_token_ms":22.6262,"predicted_per_second":44.19655090116767}},"timings":{"prompt_n":14,"prompt_ms":38.456,"prompt_per_token_ms":2.746857142857143,"prompt_per_second":364.05242354899104,"predicted_n":10,"predicted_ms":226.262,"predicted_per_token_ms":22.6262,"predicted_per_second":44.19655090116767}}'
+  recorded_at: Fri, 16 May 2025 19:09:23 GMT
 recorded_with: VCR 6.3.1

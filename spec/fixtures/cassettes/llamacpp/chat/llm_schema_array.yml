@@ -9,8 +9,7 @@ http_interactions:
         all of my questions"}]},{"role":"user","content":[{"type":"text","text":"Tell
         me the answer to ((5 + 5) / 2)"}]},{"role":"user","content":[{"type":"text","text":"Tell
         me the answer to ((5 + 5) / 2) * 2"}]},{"role":"user","content":[{"type":"text","text":"Tell
-        me the answer to ((5 + 5) / 2) * 2 + 1"}]}],"model":"qwen3","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"answers":{"description":"The
-        answers to my questions","type":"array","items":{"type":"integer"}}},"required":["answers"]}}}}'
+        me the answer to ((5 + 5) / 2) * 2 + 1"}]}],"model":"qwen3","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"answers":{"type":"array","items":{"type":"integer"}}},"required":["answers"]}}}}'
     headers:
       Content-Type:
       - application/json
@@ -36,13 +35,13 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '2776'
+      - '2796'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{\n  \"answers\":
-        [\n    5,\n    10,\n    11\n  ]\n}\n"}}],"created":1747339619,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":25,"prompt_tokens":82,"total_tokens":107},"id":"chatcmpl-7DqvmYhYCZ7vUImCDaxAzevHn6OCeFO8","__verbose":{"index":0,"content":"{\n  \"answers\":
+        [\n    5,\n    10,\n    11\n  ]\n}\n"}}],"created":1747422567,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":25,"prompt_tokens":82,"total_tokens":107},"id":"chatcmpl-lw51Hr1RHHNwCiC6JZh6MT1mAE9cYqzy","__verbose":{"index":0,"content":"{\n  \"answers\":
         [\n    5,\n    10,\n    11\n  ]\n}\n","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":25,"tokens_evaluated":82,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"answers
         ::= \"[\" space (integer (\",\" space integer)*)? \"]\" space\nanswers-kv
         ::= \"\\\"answers\\\"\" space \":\" space answers\ninteger ::= (\"-\"? integral-part)
@@ -51,6 +50,6 @@ http_interactions:
         all of my questions<|im_end|>\n<|im_start|>user\nTell me the answer to ((5
         + 5) / 2)<|im_end|>\n<|im_start|>user\nTell me the answer to ((5 + 5) / 2)
         * 2<|im_end|>\n<|im_start|>user\nTell me the answer to ((5 + 5) / 2) * 2 +
-        1<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":106,"timings":{"prompt_n":79,"prompt_ms":45.915,"prompt_per_token_ms":0.5812025316455696,"prompt_per_second":1720.570619623217,"predicted_n":25,"predicted_ms":512.509,"predicted_per_token_ms":20.50036,"predicted_per_second":48.77963118696452}},"timings":{"prompt_n":79,"prompt_ms":45.915,"prompt_per_token_ms":0.5812025316455696,"prompt_per_second":1720.570619623217,"predicted_n":25,"predicted_ms":512.509,"predicted_per_token_ms":20.50036,"predicted_per_second":48.77963118696452}}'
-  recorded_at: Thu, 15 May 2025 20:06:59 GMT
+        1<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":106,"timings":{"prompt_n":79,"prompt_ms":46.741,"prompt_per_token_ms":0.5916582278481013,"prompt_per_second":1690.1649515414733,"predicted_n":25,"predicted_ms":520.82,"predicted_per_token_ms":20.832800000000002,"predicted_per_second":48.00122883145808}},"timings":{"prompt_n":79,"prompt_ms":46.741,"prompt_per_token_ms":0.5916582278481013,"prompt_per_second":1690.1649515414733,"predicted_n":25,"predicted_ms":520.82,"predicted_per_token_ms":20.832800000000002,"predicted_per_second":48.00122883145808}}'
+  recorded_at: Fri, 16 May 2025 19:09:24 GMT
 recorded_with: VCR 6.3.1

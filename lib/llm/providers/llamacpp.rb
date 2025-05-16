@@ -48,10 +48,10 @@ module LLM
 
     ##
     # Returns the default model for chat completions
-    # @see https://ollama.com/library llama3.2
+    # @see https://ollama.com/library/qwen3 qwen3
     # @return [String]
     def default_model
-      "llama3.2"
+      "qwen3"
     end
   end
 end

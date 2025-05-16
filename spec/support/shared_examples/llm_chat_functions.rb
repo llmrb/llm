@@ -17,7 +17,7 @@ RSpec.shared_examples "LLM::Chat: functions" do |dirname, options = {}|
 
     before do
       bot.chat("You are a bot that can run UNIX system commands", role: :user)
-      bot.chat("Hey, tell me the date", role: :user)
+      bot.chat("Hey, run the 'date' command", role: :user)
     end
 
     it "calls the function" do
@@ -52,7 +52,7 @@ RSpec.shared_examples "LLM::Chat: functions" do |dirname, options = {}|
 
     before do
       bot.chat("You are a bot that can run UNIX system commands", role: :user)
-      bot.chat("Hey, tell me the date", role: :user)
+      bot.chat("Hey, run the 'date' command", role: :user)
     end
 
     it "calls the function" do
