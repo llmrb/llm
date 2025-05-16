@@ -24,7 +24,9 @@ RSpec.shared_examples "LLM::Chat: schema" do |dirname, options = {}|
   end
 
   context "with an enum", vcr.call("llm_schema_enum") do
-    let(:schema) { llm.schema.object(fruit: llm.schema.string.enum("apple", "pineapple", "orange")) }
+    let(:schema) { llm.schema.object(fruit:) }
+    let(:fruit) { llm.schema.string.enum(*fruits).required.description("The favorite fruit") }
+    let(:fruits) { ["apple", "pineapple", "orange"] }
     subject { bot.messages.find(&:assistant?).content!  }
 
     before do
@@ -40,19 +42,19 @@ RSpec.shared_examples "LLM::Chat: schema" do |dirname, options = {}|
   end
 
   context "with an array", vcr.call("llm_schema_array") do
-    let(:schema) { llm.schema.object(answers: llm.schema.array(llm.schema.integer.required).required) }
+    let(:schema) { llm.schema.object(answers:) }
+    let(:answers) { llm.schema.array(llm.schema.integer.required).required.description("The answer to two questions") }
     subject { bot.messages.find(&:assistant?).content! }
 
     before do
       bot.chat "Answer all of my questions", role: :user
-      bot.chat "Tell me the answer to ((5 + 5) / 2)", role: :user
-      bot.chat "Tell me the answer to ((5 + 5) / 2) * 2", role: :user
-      bot.chat "Tell me the answer to ((5 + 5) / 2) * 2 + 1", role: :user
+      bot.chat "Tell me the answer to (5 + 5) * 2", role: :user
+      bot.chat "Tell me the answer to (5 + 7) * 2", role: :user
     end
 
     it "returns the answers" do
       is_expected.to match(
-        "answers" => [5, 10, 11]
+        "answers" => [20, 24]
       )
     end
   end

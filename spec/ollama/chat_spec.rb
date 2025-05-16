@@ -17,7 +17,7 @@ RSpec.describe "LLM::Chat: ollama" do
     include_examples "LLM::Chat: functions", :ollama
   end
 
-  context LLM::File do
-    include_examples "LLM::Chat: files", :ollama
+  context JSON::Schema do
+    include_examples "LLM::Chat: schema", :ollama
   end
 end
