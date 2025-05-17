@@ -56,4 +56,3 @@ RSpec.describe "LLM::Chat: non-lazy" do
     include_examples "a multi-turn conversation"
   end
 end
-
