@@ -10,7 +10,7 @@ http_interactions:
       Content-Type:
       - application/json
       Authorization:
-      - Bearer sk-746eccc2d5c845f0b8e076b86fe9ef44
+      - Bearer TOKEN
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 17 May 2025 16:33:54 GMT
+      - Sat, 17 May 2025 18:39:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,7 +35,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - bae3930b396d89b6d20c12ff0d1eaf44
+      - 48548a3fc0baef7eecf01ac54b2787d9
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -43,15 +43,15 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=bOt9BN5ig87EpDE6chr45_wPCNmUC_OrFljyFsGhv94-1747499634-1.0.1.1-fI1o5JaIc2NMTlPhwgeNGdOUO6kMPNPgN1HyKGsnaq8v_OTYpf5EG0ksyWdwJ_aKnHNrQJcuxay4T6i_p1S4v76h0c_W8xgyd5aWczGFwP4;
-        path=/; expires=Sat, 17-May-25 17:03:54 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=UyoDmMOuH5LnMd8_gzhSlfETyb8oMf6077cS7927IjM-1747507146-1.0.1.1-KSL1smikXs_WbzOBNnM2.GEuQEoKs9wtns45Dm77QQE.aDwV1553YAu3ZOOelDe9YWEnWdeSTJx82U6OnEGXUq76z0COSAl7Qb2VSlaa5ao;
+        path=/; expires=Sat, 17-May-25 19:09:06 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 941484eaba84623f-GRU
+      - 94153c4f98b313ca-MIA
     body:
       encoding: ASCII-8BIT
       string: '{"object":"list","data":[{"id":"deepseek-chat","object":"model","owned_by":"deepseek"},{"id":"deepseek-reasoner","object":"model","owned_by":"deepseek"}]}'
-  recorded_at: Sat, 17 May 2025 16:33:50 GMT
+  recorded_at: Sat, 17 May 2025 18:39:01 GMT
 recorded_with: VCR 6.3.1
