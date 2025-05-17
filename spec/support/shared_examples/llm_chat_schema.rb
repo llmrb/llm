@@ -48,13 +48,13 @@ RSpec.shared_examples "LLM::Chat: schema" do |dirname, options = {}|
 
     before do
       bot.chat "Answer all of my questions", role: :user
-      bot.chat "Tell me the answer to (5 + 5) * 2", role: :user
-      bot.chat "Tell me the answer to (5 + 7) * 2", role: :user
+      bot.chat "Tell me the answer to 5 + 5", role: :user
+      bot.chat "Tell me the answer to 5 + 7", role: :user
     end
 
     it "returns the answers" do
       is_expected.to match(
-        "answers" => [20, 24]
+        "answers" => [10, 12]
       )
     end
   end

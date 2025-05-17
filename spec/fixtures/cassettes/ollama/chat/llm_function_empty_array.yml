@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:11434/api/chat
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Hello! Nice to meet you"}],"model":"qwen3:latest","stream":false}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 17 May 2025 15:30:36 GMT
+      Content-Length:
+      - '1062'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJtb2RlbCI6InF3ZW4zOmxhdGVzdCIsImNyZWF0ZWRfYXQiOiIyMDI1LTA1LTE3VDE1OjMwOjM2LjI1ODQxMzM5NloiLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiXHUwMDNjdGhpbmtcdTAwM2Vcbk9rYXksIHRoZSB1c2VyIHNhaWQgXCJIZWxsbyEgTmljZSB0byBtZWV0IHlvdVwiIGFuZCBJIG5lZWQgdG8gcmVzcG9uZC4gTGV0IG1lIHN0YXJ0IGJ5IGFja25vd2xlZGdpbmcgdGhlaXIgZ3JlZXRpbmcuIEkgc2hvdWxkIGtlZXAgaXQgZnJpZW5kbHkgYW5kIG9wZW4tZW5kZWQgdG8gZW5jb3VyYWdlIHRoZW0gdG8gc2hhcmUgbW9yZS4gTWF5YmUgYXNrIGhvdyB0aGV5J3JlIGRvaW5nIG9yIGlmIHRoZXkgaGF2ZSBhbnkgc3BlY2lmaWMgcXVlc3Rpb25zLiBJIHNob3VsZCBtYWtlIHN1cmUgdGhlIHRvbmUgaXMgd2FybSBhbmQgYXBwcm9hY2hhYmxlLiBMZXQgbWUgY2hlY2sgaWYgdGhlcmUncyBhbnl0aGluZyBlbHNlIHRoZXkgbWlnaHQgbmVlZC4gT2gsIGFuZCBtYXliZSBtZW50aW9uIGJlaW5nIGhlcmUgdG8gaGVscCB3aXRoIGFueSB0b3BpY3MgdGhleSdyZSBpbnRlcmVzdGVkIGluLiBUaGF0IHNob3VsZCBjb3ZlciBpdCB3aXRob3V0IGJlaW5nIHRvbyB2ZXJib3NlLlxuXHUwMDNjL3RoaW5rXHUwMDNlXG5cbkhlbGxvISBJdCdzIGFic29sdXRlbHkgbXkgcGxlYXN1cmUgdG8gbWVldCB5b3UhIPCfmIogSG93IGFyZSB5b3UgdG9kYXk/IEknbSBoZXJlIGFuZCByZWFkeSB0byBjaGF0IGFib3V0IGFueXRoaW5nIHlvdSdyZSBjdXJpb3VzIGFib3V04oCUd2hldGhlciBpdCdzIGEgcXVlc3Rpb24sIGEgc3RvcnksIG9yIGV2ZW4ganVzdCBicmFpbnN0b3JtaW5nIGlkZWFzLiBXaGF0J3Mgb24geW91ciBtaW5kPyJ9LCJkb25lX3JlYXNvbiI6InN0b3AiLCJkb25lIjp0cnVlLCJ0b3RhbF9kdXJhdGlvbiI6MzQyMDk3MjkzOSwibG9hZF9kdXJhdGlvbiI6MTAzMjUwMDgsInByb21wdF9ldmFsX2NvdW50IjoxNCwicHJvbXB0X2V2YWxfZHVyYXRpb24iOjE0MDc1OTE1LCJldmFsX2NvdW50IjoxNjUsImV2YWxfZHVyYXRpb24iOjMzOTU5OTMyOTh9
+  recorded_at: Sat, 17 May 2025 15:30:31 GMT
+recorded_with: VCR 6.3.1

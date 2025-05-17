@@ -36,31 +36,33 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '3748'
+      - '3816'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"<think>\nOkay,
-        let me tackle these math problems. The user wants three answers, each on a
-        separate line, just numbers.\n\nFirst question: 3 + 2. That''s straightforward.
-        3 plus 2 equals 5. So the answer is 5.\n\nSecond question: 5 + 5. Hmm, 5 plus
-        5 is 10. I need to make sure there''s no trick here, but it''s just basic
-        addition. So 10.\n\nThird question: 5 + 7. Let me check that again. 5 plus
-        7... 5+7 is 12. Yep, that''s right. So the answers should be 5, 10, 12. I
-        need to make sure each answer is on its own line and only the numbers are
-        there. No extra text or explanations. Just the numbers. Alright, that''s done.\n</think>\n\n5  \n10  \n12"}}],"created":1747433019,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":196,"prompt_tokens":80,"total_tokens":276},"id":"chatcmpl-dENQGtwiNynupIRPTXH4Srjj7RJLIAOS","__verbose":{"index":0,"content":"<think>\nOkay,
-        let me tackle these math problems. The user wants three answers, each on a
-        separate line, just numbers.\n\nFirst question: 3 + 2. That''s straightforward.
-        3 plus 2 equals 5. So the answer is 5.\n\nSecond question: 5 + 5. Hmm, 5 plus
-        5 is 10. I need to make sure there''s no trick here, but it''s just basic
-        addition. So 10.\n\nThird question: 5 + 7. Let me check that again. 5 plus
-        7... 5+7 is 12. Yep, that''s right. So the answers should be 5, 10, 12. I
-        need to make sure each answer is on its own line and only the numbers are
-        there. No extra text or explanations. Just the numbers. Alright, that''s done.\n</think>\n\n5  \n10  \n12","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":196,"tokens_evaluated":80,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>user\nKeep
+        let''s see. The user wants three answers to three math questions, each on
+        a separate line, just the numbers.\n\nFirst question: 3 + 2. That''s straightforward.
+        3 plus 2 equals 5. So the answer is 5.\n\nSecond question: 5 + 5. That''s
+        10. Simple addition, no complications there.\n\nThird question: 5 + 7. Hmm,
+        5 plus 7 is 12. I need to make sure I didn''t mix up the numbers. Yeah, 5+7
+        is definitely 12. \n\nWait, the user said to keep answers short and concise,
+        one number per line. Let me double-check each answer. 3+2 is 5, correct. 5+5
+        is 10, right. 5+7 is 12. Yep, that''s all. No need for extra text, just the
+        numbers. Alright, that should do it.\n</think>\n\n5  \n10  \n12"}}],"created":1747506553,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":213,"prompt_tokens":80,"total_tokens":293},"id":"chatcmpl-AqSjkHoKh1pWEVbJnuKvHk8B9LV3GhfD","__verbose":{"index":0,"content":"<think>\nOkay,
+        let''s see. The user wants three answers to three math questions, each on
+        a separate line, just the numbers.\n\nFirst question: 3 + 2. That''s straightforward.
+        3 plus 2 equals 5. So the answer is 5.\n\nSecond question: 5 + 5. That''s
+        10. Simple addition, no complications there.\n\nThird question: 5 + 7. Hmm,
+        5 plus 7 is 12. I need to make sure I didn''t mix up the numbers. Yeah, 5+7
+        is definitely 12. \n\nWait, the user said to keep answers short and concise,
+        one number per line. Let me double-check each answer. 3+2 is 5, correct. 5+5
+        is 10, right. 5+7 is 12. Yep, that''s all. No need for extra text, just the
+        numbers. Alright, that should do it.\n</think>\n\n5  \n10  \n12","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":213,"tokens_evaluated":80,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>user\nKeep
         your answers short and concise, and provide three answers to the three questionsThere
         should be one answer per lineAn answer should be a number, for example: 5Nothing
         else<|im_end|>\n<|im_start|>user\nWhat is 3+2 ?<|im_end|>\n<|im_start|>user\nWhat
-        is 5+5 ?<|im_end|>\n<|im_start|>user\nWhat is 5+7 ?<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":275,"timings":{"prompt_n":77,"prompt_ms":50.799,"prompt_per_token_ms":0.6597272727272727,"prompt_per_second":1515.7778696431033,"predicted_n":196,"predicted_ms":4052.127,"predicted_per_token_ms":20.674117346938775,"predicted_per_second":48.36965870023324}},"timings":{"prompt_n":77,"prompt_ms":50.799,"prompt_per_token_ms":0.6597272727272727,"prompt_per_second":1515.7778696431033,"predicted_n":196,"predicted_ms":4052.127,"predicted_per_token_ms":20.674117346938775,"predicted_per_second":48.36965870023324}}'
-  recorded_at: Fri, 16 May 2025 22:03:36 GMT
+        is 5+5 ?<|im_end|>\n<|im_start|>user\nWhat is 5+7 ?<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":292,"timings":{"prompt_n":80,"prompt_ms":191.644,"prompt_per_token_ms":2.39555,"prompt_per_second":417.44067124459934,"predicted_n":213,"predicted_ms":4399.988,"predicted_per_token_ms":20.657220657276998,"predicted_per_second":48.40922293424436}},"timings":{"prompt_n":80,"prompt_ms":191.644,"prompt_per_token_ms":2.39555,"prompt_per_second":417.44067124459934,"predicted_n":213,"predicted_ms":4399.988,"predicted_per_token_ms":20.657220657276998,"predicted_per_second":48.40922293424436}}'
+  recorded_at: Sat, 17 May 2025 18:29:08 GMT
 recorded_with: VCR 6.3.1

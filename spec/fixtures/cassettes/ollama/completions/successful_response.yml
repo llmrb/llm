@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"system","content":"Your task is to greet the
         user. Greet the user with ''hello''. Nothing else. And do not say ''hi''.
-        "},{"role":"user","content":"Hello!"}],"model":"llama3.2","stream":false}'
+        "},{"role":"user","content":"Hello!"}],"model":"qwen3:latest","stream":false}'
     headers:
       Content-Type:
       - application/json
@@ -29,11 +29,16 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sun, 11 May 2025 09:13:41 GMT
+      - Sat, 17 May 2025 15:27:13 GMT
       Content-Length:
-      - '299'
+      - '705'
     body:
       encoding: UTF-8
-      string: '{"model":"llama3.2","created_at":"2025-05-11T09:13:41.321678255Z","message":{"role":"assistant","content":"Hello!"},"done_reason":"stop","done":true,"total_duration":1183999273,"load_duration":1065216220,"prompt_eval_count":54,"prompt_eval_duration":98081898,"eval_count":3,"eval_duration":19839009}'
-  recorded_at: Sun, 11 May 2025 09:13:33 GMT
+      string: '{"model":"qwen3:latest","created_at":"2025-05-17T15:27:13.19363616Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+        the user said \"Hello!\" so I need to respond. The instructions say to greet
+        them with ''hello'' and nothing else. Also, don''t say ''hi''. Let me make
+        sure I follow that. They used an exclamation mark, but I should just respond
+        with a simple ''hello''. No extra text or punctuation. Just ''hello''. Let
+        me check again. Yes, that''s all. Alright, time to send that.\n\u003c/think\u003e\n\nhello"},"done_reason":"stop","done":true,"total_duration":2000063570,"load_duration":9985311,"prompt_eval_count":42,"prompt_eval_duration":15149543,"eval_count":96,"eval_duration":1972828248}'
+  recorded_at: Sat, 17 May 2025 15:27:08 GMT
 recorded_with: VCR 6.3.1

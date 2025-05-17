@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
-        system commands"},{"role":"user","content":"Hey, tell me the date"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands"},{"role":"user","content":"Hey, run the ''date'' command"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 15 May 2025 01:45:38 GMT
+      - Sat, 17 May 2025 16:33:25 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - beeb7ab4649a437fec599abc51bf6da9
+      - ca00e6866cc0d8352d6a59d25774b1f6
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -47,24 +47,24 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=XdlwhKA37KVdUSA6CooK3N_NI2znyfLR4ZboWy8eVqk-1747273538-1.0.1.1-Bysf4keBoC37SSjYR7PuwHxCYPbTftqogQVFfmLudhYJXJT1OcS6kWk79AC_NCRcVpPVZs11jDgcJ7pMzMXaFfwKryyBTpFcRh0A6d2xNqQ;
-        path=/; expires=Thu, 15-May-25 02:15:38 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=Z73vqz.Ua7XgVtS4P8ZuBTtWNbNTl8mQnCuWGrHRX.A-1747499605-1.0.1.1-ul.fLxIl_rcbbdDzIq8HwzScCLZJI3erFtXH_v8tQ_.4rKoBIfCG_.HyTUlvBTxtOpqTugU6BxAH4IikI.D.bn1OCH6HqHMqc_T1A7xsT8A;
+        path=/; expires=Sat, 17-May-25 17:03:25 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 93fef4fe18cc1d32-GRU
+      - 94148436ee164f4a-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"2401d2f4-1c08-4f1c-85c4-8bd5e47ba7ba","object":"chat.completion","created":1747273538,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_0_430db02f-956d-4f77-a421-5759ba2f9359","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":113,"completion_tokens":17,"total_tokens":130,"prompt_tokens_details":{"cached_tokens":64},"prompt_cache_hit_tokens":64,"prompt_cache_miss_tokens":49},"system_fingerprint":"fp_8802369eaa_prod0425fp8"}'
-  recorded_at: Thu, 15 May 2025 01:45:40 GMT
+      string: '{"id":"d196443a-b6da-4f2e-8ae9-063b3024876a","object":"chat.completion","created":1747499605,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_0_fc14990b-61d3-468a-a55b-ab3005d8a78d","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":115,"completion_tokens":17,"total_tokens":132,"prompt_tokens_details":{"cached_tokens":64},"prompt_cache_hit_tokens":64,"prompt_cache_miss_tokens":51},"system_fingerprint":"fp_8802369eaa_prod0425fp8"}'
+  recorded_at: Sat, 17 May 2025 16:33:25 GMT
 - request:
     method: post
     uri: https://api.deepseek.com/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
-        system commands"},{"role":"user","content":"Hey, tell me the date"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_430db02f-956d-4f77-a421-5759ba2f9359","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},{"role":"tool","tool_call_id":"call_0_430db02f-956d-4f77-a421-5759ba2f9359","content":"true"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands"},{"role":"user","content":"Hey, run the ''date'' command"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_fc14990b-61d3-468a-a55b-ab3005d8a78d","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},{"role":"tool","tool_call_id":"call_0_fc14990b-61d3-468a-a55b-ab3005d8a78d","content":"{\"success\":true}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -85,7 +85,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 15 May 2025 01:45:45 GMT
+      - Sat, 17 May 2025 16:33:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -97,7 +97,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - ae2ea627d06876e8bd7ad212843b89c1
+      - 678b96544a856d943f566cb4fe054cc5
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -105,16 +105,17 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=LMGSYLN64z54FyOCYvvPr6mhabMb.FVZMb87JTXrHTQ-1747273545-1.0.1.1-SNhRMQ1o1mwfUwoRDdMf3.Xm5Jjb.1.JL69fDrb6MeCODE4tBfCWiHY8teryb3Izskur.HHNVXUcQcxKabond5.uX_CI2fy6smYvIq7k6RE;
-        path=/; expires=Thu, 15-May-25 02:15:45 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=gr6EXITf.h7rJlgNMmMCvNPLbWBVMJzx.PZ2gKaU44I-1747499610-1.0.1.1-mAgJhvZ.EoKhQ55d4oUSp7sPX3x_Hh1DjU6yPjLP9YURmhKw6CAB2njhHbds_7i1hIo189SeRhGBptgNiu43HNtjSANOZJpPbpGo76n97Ec;
+        path=/; expires=Sat, 17-May-25 17:03:30 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 93fef52138f20106-GRU
+      - 94148454f83cf227-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"2836d739-6989-454a-a756-81cbe33ca630","object":"chat.completion","created":1747273545,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"The
-        current date is: Tue Oct 24 10:30:15 UTC 2023"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":136,"completion_tokens":19,"total_tokens":155,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":8},"system_fingerprint":"fp_8802369eaa_prod0425fp8"}'
-  recorded_at: Thu, 15 May 2025 01:45:46 GMT
+      string: '{"id":"00b67a1f-37b5-4d88-af37-baac329d970d","object":"chat.completion","created":1747499610,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"The
+        ''date'' command was executed successfully. Let me know if you''d like to
+        see the output or need anything else!"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":142,"completion_tokens":25,"total_tokens":167,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":14},"system_fingerprint":"fp_8802369eaa_prod0425fp8"}'
+  recorded_at: Sat, 17 May 2025 16:33:31 GMT
 recorded_with: VCR 6.3.1

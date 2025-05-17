@@ -34,7 +34,7 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '5730'
+      - '5728'
       Access-Control-Allow-Origin:
       - ''
     body:
@@ -44,13 +44,13 @@ http_interactions:
         There''s a system function that takes a command parameter. So I need to call
         that function with \"date\" as the command. Just make sure the JSON is formatted
         correctly and the arguments are properly enclosed. Alright, that should do
-        it.","content":"\n\n","tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"WhF1YnWMzQnqFrzRoVWPMiKsv9BCSEPm"}]}}],"created":1747433021,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":92,"prompt_tokens":166,"total_tokens":258},"id":"chatcmpl-H7ZpLTpMRrPVDQl7XkAPeQGjEiub5q9z","__verbose":{"index":0,"content":"<think>\nOkay,
+        it.","content":"\n\n","tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"6f3hotoaRzthInkheciggjxOHNYa9wHb"}]}}],"created":1747506555,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":92,"prompt_tokens":166,"total_tokens":258},"id":"chatcmpl-U802rdG5ImLtxRxn50W23MRQsUk916Kl","__verbose":{"index":0,"content":"<think>\nOkay,
         the user wants me to run the ''date'' command. Let me check the tools available.
         There''s a system function that takes a command parameter. So I need to call
         that function with \"date\" as the command. Just make sure the JSON is formatted
         correctly and the arguments are properly enclosed. Alright, that should do
         it.\n</think>\n\n<tool_call>\n{\"name\": \"system\", \"arguments\": {\"command\":
-        \"date\"}}\n</tool_call>","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":92,"tokens_evaluated":166,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
+        \"date\"}}\n</tool_call>","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":92,"tokens_evaluated":166,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
         ::= ( system-call ) space\nchar ::= [^\"\\\\\\x7F\\x00-\\x1F] | [\\\\] ([\"\\\\bfnrt]
         | \"u\" [0-9a-fA-F]{4})\nroot ::= tool-call\nspace ::= | \" \" | \"\\n\"{1,2}
         [ \\t]{0,20}\nstring ::= \"\\\"\" char* \"\\\"\" space\nsystem-args ::= \"{\"
@@ -80,8 +80,8 @@ http_interactions:
         within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>,
         \"arguments\": <args-json-object>}\n</tool_call><|im_end|>\n<|im_start|>user\nYou
         are a bot that can run UNIX system commands<|im_end|>\n<|im_start|>user\nHey,
-        run the ''date'' command<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":257,"timings":{"prompt_n":163,"prompt_ms":79.668,"prompt_per_token_ms":0.48876073619631905,"prompt_per_second":2045.9908620776218,"predicted_n":92,"predicted_ms":1863.201,"predicted_per_token_ms":20.252184782608698,"predicted_per_second":49.377388698267126}},"timings":{"prompt_n":163,"prompt_ms":79.668,"prompt_per_token_ms":0.48876073619631905,"prompt_per_second":2045.9908620776218,"predicted_n":92,"predicted_ms":1863.201,"predicted_per_token_ms":20.252184782608698,"predicted_per_second":49.377388698267126}}'
-  recorded_at: Fri, 16 May 2025 22:03:38 GMT
+        run the ''date'' command<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":257,"timings":{"prompt_n":166,"prompt_ms":79.262,"prompt_per_token_ms":0.47748192771084336,"prompt_per_second":2094.3201029497113,"predicted_n":92,"predicted_ms":1893.835,"predicted_per_token_ms":20.58516304347826,"predicted_per_second":48.578677656712436}},"timings":{"prompt_n":166,"prompt_ms":79.262,"prompt_per_token_ms":0.47748192771084336,"prompt_per_second":2094.3201029497113,"predicted_n":92,"predicted_ms":1893.835,"predicted_per_token_ms":20.58516304347826,"predicted_per_second":48.578677656712436}}'
+  recorded_at: Sat, 17 May 2025 18:29:10 GMT
 - request:
     method: post
     uri: http://localhost:8080/v1/chat/completions
@@ -89,7 +89,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
         a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]},{"role":"assistant","content":null,"tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"WhF1YnWMzQnqFrzRoVWPMiKsv9BCSEPm"}]},{"role":"tool","tool_call_id":"WhF1YnWMzQnqFrzRoVWPMiKsv9BCSEPm","content":"{\"success\":true}"}],"model":"qwen3","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        run the ''date'' command"}]},{"role":"assistant","content":null,"tool_calls":[{"type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"},"id":"6f3hotoaRzthInkheciggjxOHNYa9wHb"}]},{"role":"tool","tool_call_id":"6f3hotoaRzthInkheciggjxOHNYa9wHb","content":"{\"success\":true}"}],"model":"qwen3","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -116,64 +116,74 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '9052'
+      - '9746'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","reasoning_content":"Okay,
         the user asked me to run the ''date'' command. I called the system function
-        with that command. The response came back as successful. Now I need to relay
-        the output of the date command to the user.\n\nWait, but the tool response
-        here just says {\"success\":true}. Does that mean the command executed successfully,
-        but the actual output isn''t included? Hmm, maybe the system function returns
-        a success status but not the stdout. In that case, I should inform the user
-        that the command ran successfully and maybe prompt them if they want the output
-        or need anything else. Alternatively, if the output is supposed to be captured,
-        perhaps I should check if there''s a way to get it. But according to the tool
-        definition, the function only takes a command and returns success or failure.
-        So maybe I can''t get the actual output. \n\nSo, I should tell the user that
-        the ''date'' command was executed successfully. Maybe they can check the output
-        in the system logs or the terminal where it was run. Or maybe the system function
-        is designed to capture the output and return it, but in this case, the response
-        is just a success flag. \n\nI need to respond based on the information I have.
-        Since the tool response is {\"success\":true}, I should confirm that the command
-        was executed successfully. Let me make sure to mention that the command ran
-        without errors. If the user needs the actual date output, they might need
-        to run the command themselves or check where the output was directed. \n\nAlternatively,
-        maybe the system function is supposed to return the output, but in this case,
-        it''s not included. I should proceed with the information available and inform
-        the user of the success. Let me draft a response that states the command was
-        successful and offer further assistance if needed.","content":"\n\nThe ''date''
-        command has been executed successfully. If you need the actual output of the
-        command, you might want to check your terminal or system logs where the command
-        was run. Let me know if you need anything else!"}}],"created":1747433029,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":412,"prompt_tokens":201,"total_tokens":613},"id":"chatcmpl-wuELO4AmP8qBJSIOV3c05WBh76RpOmJ6","__verbose":{"index":0,"content":"<think>\nOkay,
+        with that command. The response came back as successful. Now I need to figure
+        out what to do next.\n\nFirst, I should check the output of the ''date'' command.
+        But wait, the tool response only says {\"success\":true}. It doesn''t include
+        the actual output. Hmm, maybe the system function is designed to return success
+        status without the output. That''s a bit odd because usually, when you run
+        a command, you''d want the output to be visible to the user.\n\nWait, maybe
+        the assistant is supposed to handle that. Since the success is true, I can
+        assume the command ran without errors. But the user would expect to see the
+        current date and time. However, since the tool response doesn''t provide the
+        output, I can''t relay it. Maybe there''s a misunderstanding in the setup.
+        \n\nAlternatively, maybe the system function is supposed to capture the output
+        and return it. But in this case, the response only has a success flag. So
+        perhaps I need to inform the user that the command was executed successfully,
+        but the output isn''t available here. Or maybe the assistant is supposed to
+        know that the ''date'' command outputs the current date and time, so I can
+        just state that it''s done and maybe provide the current date based on my
+        knowledge.\n\nWait, but as an AI, I don''t have real-time data. So I can''t
+        know the exact output of the ''date'' command unless it''s provided by the
+        tool. Since the tool response doesn''t include the output, I should just confirm
+        that the command was run successfully. The user might be testing if the command
+        execution works, so the main point is that the system function was called
+        correctly. \n\nSo the appropriate response is to let the user know that the
+        ''date'' command was executed successfully. Even without the output, the success
+        status is the key here. The user might be looking for confirmation that the
+        command was run, not necessarily the output. \n\nTherefore, I''ll respond
+        by saying something like, \"The ''date'' command has been executed successfully.
+        The current date and time can be viewed in the system''s output.\" But since
+        I can''t show the output, I''ll just confirm the success.","content":"\n\nThe
+        ''date'' command has been executed successfully. The current date and time
+        are displayed in the system''s output. Let me know if you need anything else!"}}],"created":1747506565,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":501,"prompt_tokens":201,"total_tokens":702},"id":"chatcmpl-ASsSLsQWHGfKbKuPIK1G7qm1WbzjNgtB","__verbose":{"index":0,"content":"<think>\nOkay,
         the user asked me to run the ''date'' command. I called the system function
-        with that command. The response came back as successful. Now I need to relay
-        the output of the date command to the user.\n\nWait, but the tool response
-        here just says {\"success\":true}. Does that mean the command executed successfully,
-        but the actual output isn''t included? Hmm, maybe the system function returns
-        a success status but not the stdout. In that case, I should inform the user
-        that the command ran successfully and maybe prompt them if they want the output
-        or need anything else. Alternatively, if the output is supposed to be captured,
-        perhaps I should check if there''s a way to get it. But according to the tool
-        definition, the function only takes a command and returns success or failure.
-        So maybe I can''t get the actual output. \n\nSo, I should tell the user that
-        the ''date'' command was executed successfully. Maybe they can check the output
-        in the system logs or the terminal where it was run. Or maybe the system function
-        is designed to capture the output and return it, but in this case, the response
-        is just a success flag. \n\nI need to respond based on the information I have.
-        Since the tool response is {\"success\":true}, I should confirm that the command
-        was executed successfully. Let me make sure to mention that the command ran
-        without errors. If the user needs the actual date output, they might need
-        to run the command themselves or check where the output was directed. \n\nAlternatively,
-        maybe the system function is supposed to return the output, but in this case,
-        it''s not included. I should proceed with the information available and inform
-        the user of the success. Let me draft a response that states the command was
-        successful and offer further assistance if needed.\n</think>\n\nThe ''date''
-        command has been executed successfully. If you need the actual output of the
-        command, you might want to check your terminal or system logs where the command
-        was run. Let me know if you need anything else!","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":412,"tokens_evaluated":201,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
+        with that command. The response came back as successful. Now I need to figure
+        out what to do next.\n\nFirst, I should check the output of the ''date'' command.
+        But wait, the tool response only says {\"success\":true}. It doesn''t include
+        the actual output. Hmm, maybe the system function is designed to return success
+        status without the output. That''s a bit odd because usually, when you run
+        a command, you''d want the output to be visible to the user.\n\nWait, maybe
+        the assistant is supposed to handle that. Since the success is true, I can
+        assume the command ran without errors. But the user would expect to see the
+        current date and time. However, since the tool response doesn''t provide the
+        output, I can''t relay it. Maybe there''s a misunderstanding in the setup.
+        \n\nAlternatively, maybe the system function is supposed to capture the output
+        and return it. But in this case, the response only has a success flag. So
+        perhaps I need to inform the user that the command was executed successfully,
+        but the output isn''t available here. Or maybe the assistant is supposed to
+        know that the ''date'' command outputs the current date and time, so I can
+        just state that it''s done and maybe provide the current date based on my
+        knowledge.\n\nWait, but as an AI, I don''t have real-time data. So I can''t
+        know the exact output of the ''date'' command unless it''s provided by the
+        tool. Since the tool response doesn''t include the output, I should just confirm
+        that the command was run successfully. The user might be testing if the command
+        execution works, so the main point is that the system function was called
+        correctly. \n\nSo the appropriate response is to let the user know that the
+        ''date'' command was executed successfully. Even without the output, the success
+        status is the key here. The user might be looking for confirmation that the
+        command was run, not necessarily the output. \n\nTherefore, I''ll respond
+        by saying something like, \"The ''date'' command has been executed successfully.
+        The current date and time can be viewed in the system''s output.\" But since
+        I can''t show the output, I''ll just confirm the success.\n</think>\n\nThe
+        ''date'' command has been executed successfully. The current date and time
+        are displayed in the system''s output. Let me know if you need anything else!","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":501,"tokens_evaluated":201,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"any-tool-call
         ::= ( system-call ) space\nchar ::= [^\"\\\\\\x7F\\x00-\\x1F] | [\\\\] ([\"\\\\bfnrt]
         | \"u\" [0-9a-fA-F]{4})\nroot ::= tool-call\nspace ::= | \" \" | \"\\n\"{1,2}
         [ \\t]{0,20}\nstring ::= \"\\\"\" char* \"\\\"\" space\nsystem-args ::= \"{\"
@@ -204,6 +214,6 @@ http_interactions:
         \"arguments\": <args-json-object>}\n</tool_call><|im_end|>\n<|im_start|>user\nYou
         are a bot that can run UNIX system commands<|im_end|>\n<|im_start|>user\nHey,
         run the ''date'' command<|im_end|>\n<|im_start|>assistant\n<tool_call>\n{\"name\":
-        \"system\", \"arguments\": {\"command\":\"date\"}}\n</tool_call><|im_end|>\n<|im_start|>user\n<tool_response>\n{\"success\":true}\n</tool_response><|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":612,"timings":{"prompt_n":35,"prompt_ms":31.985,"prompt_per_token_ms":0.9138571428571428,"prompt_per_second":1094.2629357511335,"predicted_n":412,"predicted_ms":8475.616,"predicted_per_token_ms":20.57188349514563,"predicted_per_second":48.61003613188705}},"timings":{"prompt_n":35,"prompt_ms":31.985,"prompt_per_token_ms":0.9138571428571428,"prompt_per_second":1094.2629357511335,"predicted_n":412,"predicted_ms":8475.616,"predicted_per_token_ms":20.57188349514563,"predicted_per_second":48.61003613188705}}'
-  recorded_at: Fri, 16 May 2025 22:03:46 GMT
+        \"system\", \"arguments\": {\"command\":\"date\"}}\n</tool_call><|im_end|>\n<|im_start|>user\n<tool_response>\n{\"success\":true}\n</tool_response><|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":701,"timings":{"prompt_n":35,"prompt_ms":31.132,"prompt_per_token_ms":0.8894857142857143,"prompt_per_second":1124.2451496852113,"predicted_n":501,"predicted_ms":10373.703,"predicted_per_token_ms":20.705994011976045,"predicted_per_second":48.29519410763929}},"timings":{"prompt_n":35,"prompt_ms":31.132,"prompt_per_token_ms":0.8894857142857143,"prompt_per_second":1124.2451496852113,"predicted_n":501,"predicted_ms":10373.703,"predicted_per_token_ms":20.705994011976045,"predicted_per_second":48.29519410763929}}'
+  recorded_at: Sat, 17 May 2025 18:29:20 GMT
 recorded_with: VCR 6.3.1

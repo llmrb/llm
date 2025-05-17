@@ -7,7 +7,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Your
         favorite fruit is pineapple"}]},{"role":"user","content":[{"type":"text","text":"What
-        fruit is your favorite?"}]}],"model":"gpt-4o-mini","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"fruit":{"enum":["apple","pineapple","orange"],"type":"string"}},"required":[]}}}}'
+        fruit is your favorite?"}]}],"model":"gpt-4o-mini","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"fruit":{"description":"The
+        favorite fruit","enum":["apple","pineapple","orange"],"type":"string"}},"required":["fruit"]}}}}'
     headers:
       Content-Type:
       - application/json
@@ -27,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 15 May 2025 17:31:32 GMT
+      - Sat, 17 May 2025 15:32:51 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,50 +40,50 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '253'
+      - '305'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '257'
+      - '310'
       X-Ratelimit-Limit-Requests:
       - '10000'
       X-Ratelimit-Limit-Tokens:
       - '200000'
       X-Ratelimit-Remaining-Requests:
-      - '9989'
+      - '9991'
       X-Ratelimit-Remaining-Tokens:
-      - '194835'
+      - '196938'
       X-Ratelimit-Reset-Requests:
-      - 1m29.241s
+      - 1m12.78s
       X-Ratelimit-Reset-Tokens:
-      - 1.549s
+      - 918ms
       X-Request-Id:
-      - req_3c7a7a9e5ab332a9fcf9d4a6815fde0e
+      - req_f760b173a284e103283aad05fb878b7f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=XasDmUohTOBycLPVxKRTxaFR685TkIIgqvLkzBEIz0A-1747330292-1.0.1.1-BvRAWd3JQYnzPzWf2BTsi5GG9y7r6_x7u7B7tmcvVk9dO_BUO35ab5gkzczHCV5F9uJecbksQsk1RXLEyeUNWx5J3XZpOI0PwqtSzHlIGNU;
-        path=/; expires=Thu, 15-May-25 18:01:32 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=cIrH7mvthWNrXCCs0QnuZov_f_crwQRnYm8n5YOAmT0-1747495971-1.0.1.1-Rj9g3lYx2pjFhgTSzfizC.pUQMUSXGmB6H34xY8IXzGZkEnRGE1tZ1GQ70xUB_cotWKhe63rOB_GMIsI0SYCuHzZkq5bvSG4ubrBOCmiRQU;
+        path=/; expires=Sat, 17-May-25 16:02:51 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=wL_DJcwVz7mZgAYEeNJRv6u380olm8tuiPJJexWzJZw-1747330292211-0.0.1.1-604800000;
+      - _cfuvid=4ayfRIZj5d3INb9HsqrDi9PdzxfoRfb8NOx9C7BtYWQ-1747495971733-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 94045e938d1c6288-GRU
+      - 94142b7c1f15f20c-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BXWiZWQpmUVPDlrT6waXoF1Ucn7x6",
+          "id": "chatcmpl-BYDopG3fBYLOwZIlfk1CQ6IGwxVhu",
           "object": "chat.completion",
-          "created": 1747330291,
+          "created": 1747495971,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -98,9 +99,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 62,
-            "completion_tokens": 7,
-            "total_tokens": 69,
+            "prompt_tokens": 68,
+            "completion_tokens": 6,
+            "total_tokens": 74,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -113,7 +114,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_0392822090"
+          "system_fingerprint": "fp_54eb4bd693"
         }
-  recorded_at: Thu, 15 May 2025 17:31:27 GMT
+  recorded_at: Sat, 17 May 2025 15:32:47 GMT
 recorded_with: VCR 6.3.1

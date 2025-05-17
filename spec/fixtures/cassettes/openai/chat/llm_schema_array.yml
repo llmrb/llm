@@ -7,9 +7,9 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Answer
         all of my questions"}]},{"role":"user","content":[{"type":"text","text":"Tell
-        me the answer to ((5 + 5) / 2)"}]},{"role":"user","content":[{"type":"text","text":"Tell
-        me the answer to ((5 + 5) / 2) * 2"}]},{"role":"user","content":[{"type":"text","text":"Tell
-        me the answer to ((5 + 5) / 2) * 2 + 1"}]}],"model":"gpt-4o-mini","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"answers":{"type":"array","items":{"type":"integer"}}},"required":[]}}}}'
+        me the answer to 5 + 5"}]},{"role":"user","content":[{"type":"text","text":"Tell
+        me the answer to 5 + 7"}]}],"model":"gpt-4o-mini","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"answers":{"description":"The
+        answer to two questions","type":"array","items":{"type":"integer"}}},"required":["answers"]}}}}'
     headers:
       Content-Type:
       - application/json
@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 15 May 2025 17:31:32 GMT
+      - Sat, 17 May 2025 15:32:52 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,57 +41,57 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '410'
+      - '545'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '413'
+      - '551'
       X-Ratelimit-Limit-Requests:
       - '10000'
       X-Ratelimit-Limit-Tokens:
       - '200000'
       X-Ratelimit-Remaining-Requests:
-      - '9988'
+      - '9990'
       X-Ratelimit-Remaining-Tokens:
-      - '196291'
+      - '198545'
       X-Ratelimit-Reset-Requests:
-      - 1m37.417s
+      - 1m20.914s
       X-Ratelimit-Reset-Tokens:
-      - 1.112s
+      - 436ms
       X-Request-Id:
-      - req_afd4d21da3a45eb802fea5b9b75404d2
+      - req_9d7ecb00f9db8b29969f80a48494132f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=2ZFvbYkrBTOLnab.V68imFR4CzSOYj2b5D_MBADmbuo-1747330292-1.0.1.1-UrZKIOjOiJ7Nj8EaQhHgiJGQVvgCYa62E0S.3Y881mSji8V8J55JNVSSe_O4QmD3TKbY92q7.A_.w3H36Kr.FCl0Jmws4mrcyHhpTLOFZco;
-        path=/; expires=Thu, 15-May-25 18:01:32 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=hqf13bpNd1NItK6QxjjUVAc9X465FTrBwniNOdll0sY-1747495972-1.0.1.1-QQCXaabGjj1n3oDq0xmrA_Nj0sMmCMBZwMLlUBpsEwbi7Gp1qaD7svHBs5UApqUbMK3Ba.keXhkrbDr8jw0_hw1JFkaz_gWT1fhQYUCzYAo;
+        path=/; expires=Sat, 17-May-25 16:02:52 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Df6aLjA.hCYHRjGkVepqBYYrS0KVFVuLzkQfJO6.5v8-1747330292835-0.0.1.1-604800000;
+      - _cfuvid=Hlwj.qN7TqzfQwhyy8jXTal25tmqXNSXz.i3P.k9tdA-1747495972494-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 94045e969bd21b1b-GRU
+      - 94142b7faa1cdc3f-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BXWiateOZ4D0GtbarRNb5kYOzKWbJ",
+          "id": "chatcmpl-BYDopbDdd1p6vnz9XagxPqwPU627r",
           "object": "chat.completion",
-          "created": 1747330292,
+          "created": 1747495971,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"answers\":[5,10,11]}",
+                "content": "{\"answers\":[10,12]}",
                 "refusal": null,
                 "annotations": []
               },
@@ -100,9 +100,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 114,
-            "completion_tokens": 10,
-            "total_tokens": 124,
+            "prompt_tokens": 84,
+            "completion_tokens": 7,
+            "total_tokens": 91,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -117,5 +117,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_dbaca60df0"
         }
-  recorded_at: Thu, 15 May 2025 17:31:28 GMT
+  recorded_at: Sat, 17 May 2025 15:32:48 GMT
 recorded_with: VCR 6.3.1

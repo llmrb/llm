@@ -6,7 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Your favorite fruit is
-        pineapple"}]},{"role":"user","parts":[{"text":"What fruit is your favorite?"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"fruit":{"enum":["apple","pineapple","orange"],"type":"string"}},"required":[]}}}'
+        pineapple"}]},{"role":"user","parts":[{"text":"What fruit is your favorite?"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"fruit":{"description":"The
+        favorite fruit","enum":["apple","pineapple","orange"],"type":"string"}},"required":["fruit"]}}}'
     headers:
       Content-Type:
       - application/json
@@ -30,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Thu, 15 May 2025 17:27:32 GMT
+      - Sat, 17 May 2025 16:34:05 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -40,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=444
+      - gfet4t7; dur=442
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -60,17 +61,17 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.00040040886960923672
+              "avgLogprobs": -4.3028223444707692e-05
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 17,
+            "promptTokenCount": 21,
             "candidatesTokenCount": 6,
-            "totalTokenCount": 23,
+            "totalTokenCount": 27,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 17
+                "tokenCount": 21
               }
             ],
             "candidatesTokensDetails": [
@@ -82,5 +83,5 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Thu, 15 May 2025 17:27:28 GMT
+  recorded_at: Sat, 17 May 2025 16:34:00 GMT
 recorded_with: VCR 6.3.1

@@ -15,7 +15,7 @@ RSpec.describe "LLM::Ollama: embeddings" do
     end
 
     it "returns a model" do
-      expect(response.model).to eq("llama3.2")
+      expect(response.model).to eq("qwen3:latest")
     end
 
     it "has embeddings" do

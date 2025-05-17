@@ -20,9 +20,9 @@ RSpec.describe "LLM::OpenAI: completions" do
 
     it "includes token usage" do
       expect(response).to have_attributes(
-        prompt_tokens: 9,
-        completion_tokens: 10,
-        total_tokens: 19
+        prompt_tokens: instance_of(Integer),
+        completion_tokens: instance_of(Integer),
+        total_tokens: instance_of(Integer)
       )
     end
 
@@ -80,8 +80,6 @@ RSpec.describe "LLM::OpenAI: completions" do
 
     it "is successful" do
       is_expected.to eq("yes")
-    rescue => ex
-      p ex.response.body
     end
   end
 

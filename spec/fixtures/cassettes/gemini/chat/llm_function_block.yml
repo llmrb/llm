@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, tell me
-        the date"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
+        ''date'' command"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Thu, 15 May 2025 15:53:24 GMT
+      - Sat, 17 May 2025 16:33:57 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=501
+      - gfet4t7; dur=1179
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -67,17 +67,17 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -2.1339214678543311e-05
+              "avgLogprobs": -1.59346018335782e-05
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 24,
+            "promptTokenCount": 26,
             "candidatesTokenCount": 3,
-            "totalTokenCount": 27,
+            "totalTokenCount": 29,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 24
+                "tokenCount": 26
               }
             ],
             "candidatesTokensDetails": [
@@ -89,15 +89,15 @@ http_interactions:
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Thu, 15 May 2025 15:53:19 GMT
+  recorded_at: Sat, 17 May 2025 16:33:52 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, tell me
-        the date"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
+        ''date'' command"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
@@ -122,7 +122,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Thu, 15 May 2025 15:53:25 GMT
+      - Sat, 17 May 2025 16:33:58 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -132,7 +132,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1267
+      - gfet4t7; dur=584
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -146,33 +146,33 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "The date is not in the output.  I need to run a command that will return the date.  Please provide an API that can get the current date.\n"
+                    "text": "OK. The date command ran successfully.  Anything else?\n"
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.30524528727811928
+              "avgLogprobs": -0.28035470155569225
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 32,
-            "candidatesTokenCount": 34,
-            "totalTokenCount": 66,
+            "promptTokenCount": 34,
+            "candidatesTokenCount": 13,
+            "totalTokenCount": 47,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 32
+                "tokenCount": 34
               }
             ],
             "candidatesTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 34
+                "tokenCount": 13
               }
             ]
           },
           "modelVersion": "gemini-1.5-flash"
         }
-  recorded_at: Thu, 15 May 2025 15:53:21 GMT
+  recorded_at: Sat, 17 May 2025 16:33:53 GMT
 recorded_with: VCR 6.3.1

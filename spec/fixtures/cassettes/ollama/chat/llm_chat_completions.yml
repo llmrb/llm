@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:11434/api/chat
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Keep your answers short and
+        concise, and provide three answers to the three questionsThere should be one
+        answer per lineAn answer should be a number, for example: 5Nothing else"},{"role":"user","content":"What
+        is 3+2 ?"},{"role":"user","content":"What is 5+5 ?"},{"role":"user","content":"What
+        is 5+7 ?"}],"model":"qwen3:latest","stream":false}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 17 May 2025 15:26:53 GMT
+      Content-Length:
+      - '974'
+    body:
+      encoding: UTF-8
+      string: '{"model":"qwen3:latest","created_at":"2025-05-17T15:26:53.321773838Z","message":{"role":"assistant","content":"\u003cthink\u003e\nOkay,
+        let''s see. The user wants three answers, each on a separate line, and they
+        should be numbers only. The questions are straightforward arithmetic problems.\n\nFirst
+        question: 3 + 2. That''s simple. 3 plus 2 equals 5. No problem there.\n\nSecond
+        question: 5 + 5. That''s 10. Easy enough.\n\nThird question: 5 + 7. Hmm, 5
+        plus 7 is 12. Wait, is that right? Let me check again. Yeah, 5 + 7 is definitely
+        12. Okay, that''s correct.\n\nI need to make sure each answer is just the
+        number, no extra text. So the answers should be:\n\n5\n\n10\n\n12\n\nThat''s
+        all. No explanations, just the numbers. Alright, that should do it.\n\u003c/think\u003e\n\n5  \n10  \n12"},"done_reason":"stop","done":true,"total_duration":3908768085,"load_duration":10001166,"prompt_eval_count":66,"prompt_eval_duration":19127967,"eval_count":187,"eval_duration":3876697797}'
+  recorded_at: Sat, 17 May 2025 15:26:48 GMT
+recorded_with: VCR 6.3.1

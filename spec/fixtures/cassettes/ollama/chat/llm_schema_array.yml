@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:11434/api/chat
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Answer all of my questions"},{"role":"user","content":"Tell
+        me the answer to 5 + 5"},{"role":"user","content":"Tell me the answer to 5
+        + 7"}],"model":"qwen3:latest","stream":false,"schema":{"type":"object","properties":{"answers":{"description":"The
+        answer to two questions","type":"array","items":{"type":"integer"}}},"required":["answers"]},"format":{"type":"object","properties":{"answers":{"description":"The
+        answer to two questions","type":"array","items":{"type":"integer"}}},"required":["answers"]}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 17 May 2025 15:27:11 GMT
+      Content-Length:
+      - '322'
+    body:
+      encoding: UTF-8
+      string: '{"model":"qwen3:latest","created_at":"2025-05-17T15:27:11.18976464Z","message":{"role":"assistant","content":"{\"answers\":
+        [10, 12]}\n\n"},"done_reason":"stop","done":true,"total_duration":362717716,"load_duration":10806627,"prompt_eval_count":35,"prompt_eval_duration":13755173,"eval_count":14,"eval_duration":335979452}'
+  recorded_at: Sat, 17 May 2025 15:27:06 GMT
+recorded_with: VCR 6.3.1

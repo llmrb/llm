@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 11 May 2025 09:00:53 GMT
+      - Sat, 17 May 2025 16:34:57 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=819
+      - gfet4t7; dur=823
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -47,37 +47,6 @@ http_interactions:
       string: |
         {
           "models": [
-            {
-              "name": "models/chat-bison-001",
-              "version": "001",
-              "displayName": "PaLM 2 Chat (Legacy)",
-              "description": "A legacy text-only model optimized for chat conversations",
-              "inputTokenLimit": 4096,
-              "outputTokenLimit": 1024,
-              "supportedGenerationMethods": [
-                "generateMessage",
-                "countMessageTokens"
-              ],
-              "temperature": 0.25,
-              "topP": 0.95,
-              "topK": 40
-            },
-            {
-              "name": "models/text-bison-001",
-              "version": "001",
-              "displayName": "PaLM 2 (Legacy)",
-              "description": "A legacy model that understands text and generates text as an output",
-              "inputTokenLimit": 8196,
-              "outputTokenLimit": 1024,
-              "supportedGenerationMethods": [
-                "generateText",
-                "countTextTokens",
-                "createTunedTextModel"
-              ],
-              "temperature": 0.7,
-              "topP": 0.95,
-              "topK": 40
-            },
             {
               "name": "models/embedding-gecko-001",
               "version": "001",
@@ -362,7 +331,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -379,7 +349,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -396,7 +367,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -413,7 +385,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -430,7 +403,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -464,7 +438,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -481,7 +456,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -515,7 +491,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -532,7 +509,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -565,7 +543,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -582,7 +561,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -599,7 +579,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -616,7 +597,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -633,7 +615,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -650,7 +633,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -667,7 +651,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -684,23 +669,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "generateContent",
                 "countTokens",
-                "createCachedContent"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 64,
-              "maxTemperature": 2
-            },
-            {
-              "name": "models/learnlm-1.5-pro-experimental",
-              "version": "001",
-              "displayName": "LearnLM 1.5 Pro Experimental",
-              "description": "Alias that points to the most recent stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens.",
-              "inputTokenLimit": 32767,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens"
+                "createCachedContent",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -838,9 +808,35 @@ http_interactions:
               "temperature": 0.2,
               "topP": 1,
               "topK": 40
+            },
+            {
+              "name": "models/imagen-3.0-generate-002",
+              "version": "002",
+              "displayName": "Imagen 3.0 002 model",
+              "description": "Vertex served Imagen 3.0 002 model",
+              "inputTokenLimit": 480,
+              "outputTokenLimit": 8192,
+              "supportedGenerationMethods": [
+                "predict"
+              ]
+            },
+            {
+              "name": "models/gemini-2.0-flash-live-001",
+              "version": "001",
+              "displayName": "Gemini 2.0 Flash 001",
+              "description": "Gemini 2.0 Flash 001",
+              "inputTokenLimit": 131072,
+              "outputTokenLimit": 8192,
+              "supportedGenerationMethods": [
+                "bidiGenerateContent",
+                "countTokens"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2
             }
-          ],
-          "nextPageToken": "Cgptb2RlbHMvYXFh"
+          ]
         }
-  recorded_at: Sun, 11 May 2025 09:00:46 GMT
+  recorded_at: Sat, 17 May 2025 16:34:52 GMT
 recorded_with: VCR 6.3.1
