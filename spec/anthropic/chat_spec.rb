@@ -11,6 +11,8 @@ RSpec.describe "LLM::Chat: anthropic" do
 
   context LLM::Chat do
     include_examples "LLM::Chat: completions", :anthropic
+    include_examples "LLM::Chat: text stream", :anthropic
+    include_examples "LLM::Chat: tool stream", :anthropic
   end
 
   context LLM::Function do

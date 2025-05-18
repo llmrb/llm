@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
+        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
+        ''date'' command"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/event-stream
+      Content-Disposition:
+      - attachment
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 24 May 2025 19:02:05 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=1236
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"functionCall\":
+        {\"name\": \"system\",\"args\": {\"command\": \"date\"}}}],\"role\": \"model\"},\"finishReason\":
+        \"STOP\"}],\"usageMetadata\": {\"promptTokenCount\": 26,\"candidatesTokenCount\":
+        3,\"totalTokenCount\": 29,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        26}],\"candidatesTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        3}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\": \"rBcyaJ-SN4iT7dcPq42tuAY\"}\r\n\r\n"
+  recorded_at: Sat, 24 May 2025 19:01:43 GMT
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
+        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
+        ''date'' command"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/event-stream
+      Content-Disposition:
+      - attachment
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 24 May 2025 19:02:06 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=1095
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"OK\"}],\"role\":
+        \"model\"}}],\"usageMetadata\": {\"promptTokenCount\": 73,\"totalTokenCount\":
+        73,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\": 73}]},\"modelVersion\":
+        \"gemini-1.5-flash\",\"responseId\": \"rhcyaM72EfyQ7dcPhLua8AU\"}\r\n\r\ndata:
+        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \".  The date command
+        executed successfully.  Do you have any other commands you\"}],\"role\": \"model\"}}],\"usageMetadata\":
+        {\"promptTokenCount\": 73,\"totalTokenCount\": 73,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 73}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\":
+        \"rhcyaM72EfyQ7dcPhLua8AU\"}\r\n\r\ndata: {\"candidates\": [{\"content\":
+        {\"parts\": [{\"text\": \" would like me to run?\\n\"}],\"role\": \"model\"},\"finishReason\":
+        \"STOP\"}],\"usageMetadata\": {\"promptTokenCount\": 34,\"candidatesTokenCount\":
+        24,\"totalTokenCount\": 58,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        34}],\"candidatesTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        24}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\": \"rhcyaM72EfyQ7dcPhLua8AU\"}\r\n\r\n"
+  recorded_at: Sat, 24 May 2025 19:01:44 GMT
+recorded_with: VCR 6.3.1

@@ -41,9 +41,9 @@ module LLM::Anthropic::ResponseParser
     def body = @body
     def role = body.role
     def model = body.model
-    def prompt_tokens = body.usage.input_tokens
-    def completion_tokens = body.usage.output_tokens
-    def total_tokens = body.usage.total_tokens
+    def prompt_tokens = body.usage&.input_tokens
+    def completion_tokens = body.usage&.output_tokens
+    def total_tokens = body.usage&.total_tokens
     def parts = body.content
     def texts = parts.select { _1["type"] == "text" }
     def tools = parts.select { _1["type"] == "tool_use" }
