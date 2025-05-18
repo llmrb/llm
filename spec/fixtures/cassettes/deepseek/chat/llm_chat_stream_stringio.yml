@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepseek.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"Keep your answers short and
+        concise, and provide three answers to the three questions. There should be
+        one answer per line. An answer should be a number, for example: 5. Nothing
+        else"},{"role":"user","content":"What is 3+2 ?"},{"role":"user","content":"What
+        is 5+5 ?"},{"role":"user","content":"What is 5+7 ?"}],"model":"deepseek-chat","stream":true}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 20 May 2025 04:26:55 GMT
+      Content-Type:
+      - text/event-stream; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - e56ff316c5ac571a0566704ec19f8b04
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=gHg2CjtXunlcAHmaXyazRLwHs.WCEbVcd4YZPgd1WJo-1747715215-1.0.1.1-dDewYn8VNB7k6_NFXVsd7RMrBV5FDo7fO4PyKnBO6pOyigEjLSsunoho8xiUDMMdM_w8ukL9g_G9pVlTMgBlCBOWcEXmXNeTbCV.qw1NQxA;
+        path=/; expires=Tue, 20-May-25 04:56:55 GMT; domain=.deepseek.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9429141bdae1f20e-GRU
+    body:
+      encoding: UTF-8
+      string: |+
+        data: {"id":"b3ed8011-aca8-4856-a77c-e2291e76c8c2","object":"chat.completion.chunk","created":1747715215,"model":"deepseek-chat","system_fingerprint":"fp_8802369eaa_prod0425fp8","choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
+
+        data: {"id":"b3ed8011-aca8-4856-a77c-e2291e76c8c2","object":"chat.completion.chunk","created":1747715215,"model":"deepseek-chat","system_fingerprint":"fp_8802369eaa_prod0425fp8","choices":[{"index":0,"delta":{"content":"5"},"logprobs":null,"finish_reason":null}]}
+
+        data: {"id":"b3ed8011-aca8-4856-a77c-e2291e76c8c2","object":"chat.completion.chunk","created":1747715215,"model":"deepseek-chat","system_fingerprint":"fp_8802369eaa_prod0425fp8","choices":[{"index":0,"delta":{"content":"  \n"},"logprobs":null,"finish_reason":null}]}
+
+        data: {"id":"b3ed8011-aca8-4856-a77c-e2291e76c8c2","object":"chat.completion.chunk","created":1747715215,"model":"deepseek-chat","system_fingerprint":"fp_8802369eaa_prod0425fp8","choices":[{"index":0,"delta":{"content":"10"},"logprobs":null,"finish_reason":null}]}
+
+        data: {"id":"b3ed8011-aca8-4856-a77c-e2291e76c8c2","object":"chat.completion.chunk","created":1747715215,"model":"deepseek-chat","system_fingerprint":"fp_8802369eaa_prod0425fp8","choices":[{"index":0,"delta":{"content":"  \n"},"logprobs":null,"finish_reason":null}]}
+
+        data: {"id":"b3ed8011-aca8-4856-a77c-e2291e76c8c2","object":"chat.completion.chunk","created":1747715215,"model":"deepseek-chat","system_fingerprint":"fp_8802369eaa_prod0425fp8","choices":[{"index":0,"delta":{"content":"12"},"logprobs":null,"finish_reason":null}]}
+
+        data: {"id":"b3ed8011-aca8-4856-a77c-e2291e76c8c2","object":"chat.completion.chunk","created":1747715215,"model":"deepseek-chat","system_fingerprint":"fp_8802369eaa_prod0425fp8","choices":[{"index":0,"delta":{"content":""},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":64,"completion_tokens":5,"total_tokens":69,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":64}}
+
+        data: [DONE]
+
+  recorded_at: Tue, 20 May 2025 04:26:48 GMT
+recorded_with: VCR 6.3.1
+...

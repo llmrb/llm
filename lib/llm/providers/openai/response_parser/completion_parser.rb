@@ -47,9 +47,9 @@ module LLM::OpenAI::ResponseParser
 
     def body = @body
     def model = body.model
-    def prompt_tokens = body.usage.prompt_tokens
-    def completion_tokens = body.usage.completion_tokens
-    def total_tokens = body.usage.total_tokens
+    def prompt_tokens = body.usage&.prompt_tokens
+    def completion_tokens = body.usage&.completion_tokens
+    def total_tokens = body.usage&.total_tokens
     def choices = body.choices
   end
 end

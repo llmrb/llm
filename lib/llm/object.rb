@@ -17,7 +17,7 @@ class LLM::Object < BasicObject
   ##
   # @param [Hash] h
   # @return [LLM::Object]
-  def initialize(h)
+  def initialize(h = {})
     @h = h.transform_keys(&:to_sym) || h
   end
 
@@ -49,6 +49,12 @@ class LLM::Object < BasicObject
   # @return [String]
   def to_json(...)
     to_h.to_json(...)
+  end
+
+  ##
+  # @return [Boolean]
+  def empty?
+    @h.empty?
   end
 
   ##

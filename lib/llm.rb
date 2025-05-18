@@ -3,6 +3,7 @@
 module LLM
   require "stringio"
   require_relative "llm/json/schema"
+  require_relative "llm/event_handler"
   require_relative "llm/object"
   require_relative "llm/version"
   require_relative "llm/utils"
@@ -17,6 +18,7 @@ module LLM
   require_relative "llm/chat"
   require_relative "llm/buffer"
   require_relative "llm/function"
+  require_relative "llm/eventstream"
 
   module_function
 
