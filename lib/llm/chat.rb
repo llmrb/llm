@@ -71,7 +71,8 @@ module LLM
     #  Returns self unless given a block, otherwise returns messages
     def chat(prompt = nil, params = {})
       if block_given?
-        yield Prompt::Completion.new(self)
+        params = prompt
+        yield Prompt::Completion.new(self, params)
         messages
       elsif prompt.nil?
         raise ArgumentError, "wrong number of arguments (given 0, expected 1)"
@@ -90,7 +91,8 @@ module LLM
     #  Returns self unless given a block, otherwise returns messages
     def respond(prompt = nil, params = {})
       if block_given?
-        yield Prompt::Respond.new(self)
+        params = prompt
+        yield Prompt::Respond.new(self, params)
         messages
       elsif prompt.nil?
         raise ArgumentError, "wrong number of arguments (given 0, expected 1)"

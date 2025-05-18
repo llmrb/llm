@@ -1,12 +1,21 @@
 # frozen_string_literal: true
 
 module LLM::Chat::Prompt
-  class Respond < Struct.new(:bot)
+  class Respond < Struct.new(:bot, :defaults)
+    ##
+    # @param [LLM::Chat] bot
+    # @param [Hash] defaults
+    # @return [LLM::Chat::Prompt::Completion]
+    def initialize(bot, defaults)
+      super(bot, defaults || {})
+    end
+
     ##
     # @param [String] prompt
     # @param [Hash] params (see LLM::Provider#complete)
     # @return [LLM::Chat]
     def system(prompt, params = {})
+      params = defaults.merge(params)
       bot.respond prompt, params.merge(role: :system)
     end
 
@@ -15,6 +24,7 @@ module LLM::Chat::Prompt
     # @param [Hash] params (see LLM::Provider#complete)
     # @return [LLM::Chat]
     def developer(prompt, params = {})
+      params = defaults.merge(params)
       bot.respond prompt, params.merge(role: :developer)
     end
 
@@ -23,6 +33,7 @@ module LLM::Chat::Prompt
     # @param [Hash] params (see LLM::Provider#complete)
     # @return [LLM::Chat]
     def user(prompt, params = {})
+      params = defaults.merge(params)
       bot.respond prompt, params.merge(role: :user)
     end
   end
