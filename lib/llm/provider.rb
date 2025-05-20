@@ -194,10 +194,7 @@ class LLM::Provider
   # Returns an object that can generate a JSON schema
   # @return [JSON::Schema]
   def schema
-    @schema ||= begin
-      require_relative "../json/schema"
-      JSON::Schema.new
-    end
+    @schema ||= JSON::Schema.new
   end
 
   ##
