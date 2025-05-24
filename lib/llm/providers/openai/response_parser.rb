@@ -4,6 +4,9 @@ class LLM::OpenAI
   ##
   # @private
   module ResponseParser
+    require_relative "response_parser/completion_parser"
+    require_relative "response_parser/respond_parser"
+
     ##
     # @param [Hash] body
     #  The response body from the LLM provider

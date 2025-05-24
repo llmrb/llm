@@ -16,6 +16,7 @@ tool calling, audio, images, files, and JSON Schema generation.
 - 🧠 Stateless and stateful chat via completions and responses API
 - 🤖 Tool calling and function execution
 - 🗂️ JSON Schema support for structured, validated responses
+- ⚡ Streaming support for real-time response updates
 
 #### Media
 - 🗣️ Text-to-speech, transcription, and translation
@@ -60,7 +61,7 @@ using an API key (if required) and an optional set of configuration options via
 require "llm"
 
 ##
-# cloud providers
+# remote providers
 llm = LLM.openai(key: "yourapikey")
 llm = LLM.gemini(key: "yourapikey")
 llm = LLM.anthropic(key: "yourapikey")
@@ -79,17 +80,16 @@ llm = LLM.llamacpp(key: nil)
 
 > This example uses the stateless chat completions API that all
 > providers support. A similar example for OpenAI's stateful
-> responses API is available in the [docs/](docs/OPENAI.md)
+> responses API is available in the [docs/](docs/OPENAI.md#responses)
 > directory.
 
 The following example enables lazy mode for a
 [LLM::Chat](https://0x1eef.github.io/x/llm.rb/LLM/Chat.html)
 object by entering into a conversation where messages are buffered and
-sent to the provider only when necessary. Both lazy and non-lazy conversations
-maintain a message thread that can be reused as context throughout a conversation.
-The example captures the spirit of llm.rb by demonstrating how objects cooperate
-together through composition, and it uses the stateless chat completions API that
-all LLM providers support:
+sent to the provider on-demand. Both lazy and non-lazy conversations
+maintain a message thread that can be reused as context throughout
+a conversation. The example uses the stateless chat completions API
+that all LLM providers support:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -106,21 +106,33 @@ end
 
 # At this point, we execute a single request
 msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
+```
 
-##
-# [system] You are my math assistant.
-#          I will provide you with (simple) equations.
-#          You will provide answers in the format "The answer to <equation> is <answer>".
-#          I will provide you a set of messages. Reply to all of them.
-#          A message is considered unanswered if there is no corresponding assistant response.
-#
-# [user] Tell me the answer to 5 + 15
-# [user] Tell me the answer to (5 + 15) * 2
-# [user] Tell me the answer to ((5 + 15) * 2) / 10
-#
-# [assistant] The answer to 5 + 15 is 20.
-#             The answer to (5 + 15) * 2 is 40.
-#             The answer to ((5 + 15) * 2) / 10 is 4.
+#### Streaming
+
+The following example streams the messages in a conversation
+as they are generated in real-time. This feature can be useful
+in case you want to see the contents of a message as it is
+generated, or in case you want to avoid potential read timeouts
+during the generation of a response.
+
+The `stream` option can be set to an IO object, or the value `true`
+to enable streaming &ndash; and at the end of the request, `bot.chat`
+returns the same response as the non-streaming version which allows
+you to process a response in the same way:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+bot = LLM::Chat.new(llm).lazy
+bot.chat(stream: $stdout) do |prompt|
+  prompt.system "You are my math assistant."
+  prompt.user "Tell me the answer to 5 + 15"
+  prompt.user "Tell me the answer to (5 + 15) * 2"
+  prompt.user "Tell me the answer to ((5 + 15) * 2) / 10"
+end.to_a
 ```
 
 ### Schema

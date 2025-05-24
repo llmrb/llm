@@ -4,6 +4,7 @@ class LLM::Anthropic
   ##
   # @private
   module ResponseParser
+    require_relative "response_parser/completion_parser"
     def parse_embedding(body)
       {
         model: body["model"],
