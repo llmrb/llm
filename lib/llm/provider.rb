@@ -290,14 +290,14 @@ class LLM::Provider
       parser = LLM::EventStream::Parser.new
       parser.register(handler)
       res.read_body(parser)
-      if handler.body.empty?
+      res.body = if handler.body.empty?
         # If the handler body is empty, it means the
         # response was most likely not streamed or
         # parsing has failed. In that case, we fallback
         # on the original response body.
-        res.body = parser.body.dup
+        parser.body.dup
       else
-        res.body = handler.body
+        handler.body
       end
     ensure
       parser.free
