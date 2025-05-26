@@ -253,7 +253,7 @@ class LLM::Provider
   end
 
   ##
-  # Initiates a HTTP request
+  # Executes a HTTP request
   # @param [Net::HTTP] http
   #  The HTTP object to use for the request
   # @param [Net::HTTPRequest] req
@@ -270,33 +270,37 @@ class LLM::Provider
   #  When any other unsuccessful status code is returned
   # @raise [SystemCallError]
   #  When there is a network error at the operating system level
-  def request(http, req, &b)
-    res = http.request(req, &b)
-    case res
-    when Net::HTTPOK then res
-    else error_handler.new(res).raise_error!
+  # @return [Net::HTTPResponse]
+  def execute(client:, request:, stream: nil, &b)
+    res = if stream
+      client.request(request) do |res|
+        handler = event_handler.new stream_parser.new(stream)
+        parser = LLM::EventStream::Parser.new
+        parser.register(handler)
+        res.read_body(parser)
+        # If the handler body is empty, it means the
+        # response was most likely not streamed or
+        # parsing has failed. In that case, we fallback
+        # on the original response body.
+        res.body = handler.body.empty? ? parser.body.dup : handler.body
+      ensure
+        parser&.free
+      end
+    else
+      client.request(request, &b)
     end
+    handle_response(res)
   end
 
   ##
-  # @raise (see LLM::Provider#request)
-  # @param http (see LLM::Provider#request)
-  # @param req (see LLM::Provider#request)
-  # @param [#<<] stream The stream to write the response to
+  # Handles the response from a request
+  # @param [Net::HTTPResponse] res
+  #  The response to handle
   # @return [Net::HTTPResponse]
-  def stream(http, req, stream)
-    request(http, req) do |res|
-      handler = event_handler.new stream_parser.new(stream)
-      parser = LLM::EventStream::Parser.new
-      parser.register(handler)
-      res.read_body(parser)
-      # If the handler body is empty, it means the
-      # response was most likely not streamed or
-      # parsing has failed. In that case, we fallback
-      # on the original response body.
-      res.body = handler.body.empty? ? parser.body.dup : handler.body
-    ensure
-      parser&.free
+  def handle_response(res)
+    case res
+    when Net::HTTPOK then res
+    else error_handler.new(res).raise_error!
     end
   end
 

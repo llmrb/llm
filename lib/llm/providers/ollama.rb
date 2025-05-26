@@ -21,7 +21,7 @@ module LLM
   class Ollama < Provider
     require_relative "ollama/error_handler"
     require_relative "ollama/format"
-    require_relative "ollama/stream_parser"   
+    require_relative "ollama/stream_parser"
     require_relative "ollama/response_parser"
     require_relative "ollama/models"
 
@@ -46,7 +46,7 @@ module LLM
       params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/embeddings", headers)
       req.body = JSON.dump({input:}.merge!(params))
-      res      = request(@http, req)
+      res      = execute(client: @http, request: req)
       Response::Embedding.new(res).extend(response_parser)
     end
 
@@ -69,7 +69,7 @@ module LLM
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = params[:stream] ? stream(@http, req, stream) : request(@http, req)
+      res = execute(client: @http, request: req, stream:)
       Response::Completion.new(res).extend(response_parser)
     end
 

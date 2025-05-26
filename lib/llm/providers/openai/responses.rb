@@ -58,7 +58,7 @@ class LLM::OpenAI
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({input: [format(messages, :response)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = request(http, req)
+      res = execute(client: http, request: req)
       LLM::Response::Respond.new(res).extend(response_parser)
     end
 
@@ -72,7 +72,7 @@ class LLM::OpenAI
       response_id = response.respond_to?(:id) ? response.id : response
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/responses/#{response_id}?#{query}", headers)
-      res = request(http, req)
+      res = execute(client: http, request: req)
       LLM::Response::Respond.new(res).extend(response_parser)
     end
 
@@ -85,7 +85,7 @@ class LLM::OpenAI
     def delete(response)
       response_id = response.respond_to?(:id) ? response.id : response
       req = Net::HTTP::Delete.new("/v1/responses/#{response_id}", headers)
-      res = request(http, req)
+      res = execute(client: http, request: req)
       LLM::Object.from_hash JSON.parse(res.body)
     end
 
@@ -96,9 +96,9 @@ class LLM::OpenAI
     end
 
     [:response_parser, :headers,
-     :request, :set_body_stream,
+     :execute, :set_body_stream,
      :format_schema, :format_tools].each do |m|
-      define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
+      define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
   end
 end

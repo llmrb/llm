@@ -47,7 +47,7 @@ class LLM::Gemini
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params))
       req.body = body
-      res = request(http, req)
+      res = execute(client: http, request: req)
       LLM::Response::Image.new(res).extend(response_parser)
     end
 
@@ -72,7 +72,7 @@ class LLM::Gemini
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params)).b
       set_body_stream(req, StringIO.new(body))
-      res = request(http, req)
+      res = execute(client: http, request: req)
       LLM::Response::Image.new(res).extend(response_parser)
     end
 
@@ -97,8 +97,8 @@ class LLM::Gemini
       @provider.instance_variable_get(:@http)
     end
 
-    [:response_parser, :headers, :request, :set_body_stream].each do |m|
-      define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
+    [:response_parser, :headers, :execute, :set_body_stream].each do |m|
+      define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
   end
 end
