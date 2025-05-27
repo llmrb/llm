@@ -47,9 +47,9 @@ class LLM::OpenAI
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response::Image]
     def create(prompt:, model: "dall-e-3", **params)
-      req = Net::HTTP::Post.new("/v1/images/generations", headers)
-      req.body = JSON.dump({prompt:, n: 1, model:}.merge!(params))
-      res = request(http, req)
+      request = Net::HTTP::Post.new("/v1/images/generations", headers)
+      request.body = JSON.dump({prompt:, n: 1, model:}.merge!(params))
+      res = execute(client:, request:)
       LLM::Response::Image.new(res).extend(response_parser)
     end
 
@@ -68,10 +68,10 @@ class LLM::OpenAI
     def create_variation(image:, model: "dall-e-2", **params)
       image = LLM.File(image)
       multi = LLM::Multipart.new(params.merge!(image:, model:))
-      req = Net::HTTP::Post.new("/v1/images/variations", headers)
-      req["content-type"] = multi.content_type
-      set_body_stream(req, multi.body)
-      res = request(http, req)
+      request = Net::HTTP::Post.new("/v1/images/variations", headers)
+      request["content-type"] = multi.content_type
+      set_body_stream(request, multi.body)
+      res = execute(client:, request:)
       LLM::Response::Image.new(res).extend(response_parser)
     end
 
@@ -91,21 +91,19 @@ class LLM::OpenAI
     def edit(image:, prompt:, model: "dall-e-2", **params)
       image = LLM.File(image)
       multi = LLM::Multipart.new(params.merge!(image:, prompt:, model:))
-      req = Net::HTTP::Post.new("/v1/images/edits", headers)
-      req["content-type"] = multi.content_type
-      set_body_stream(req, multi.body)
-      res = request(http, req)
+      request = Net::HTTP::Post.new("/v1/images/edits", headers)
+      request["content-type"] = multi.content_type
+      set_body_stream(request, multi.body)
+      res = execute(client:, request:)
       LLM::Response::Image.new(res).extend(response_parser)
     end
 
     private
 
-    def http
-      @provider.instance_variable_get(:@http)
-    end
+    def client = @provider.instance_variable_get(:@http)
 
-    [:response_parser, :headers, :request, :set_body_stream].each do |m|
-      define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
+    [:response_parser, :headers, :execute, :set_body_stream].each do |m|
+      define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
   end
 end

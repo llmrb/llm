@@ -37,7 +37,7 @@ module LLM
     def embed(input, model: "text-embedding-3-small", **params)
       req = Net::HTTP::Post.new("/v1/embeddings", headers)
       req.body = JSON.dump({input:, model:}.merge!(params))
-      res = request(@http, req)
+      res = execute(client: @http, request: req)
       Response::Embedding.new(res).extend(response_parser)
     end
 
@@ -60,7 +60,7 @@ module LLM
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages, :complete).flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = params[:stream] ? stream(@http, req, stream) : request(@http, req)
+      res = execute(client: @http, request: req, stream:)
       Response::Completion.new(res).extend(response_parser)
     end
 

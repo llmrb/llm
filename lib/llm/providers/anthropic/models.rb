@@ -40,7 +40,7 @@ class LLM::Anthropic
     def all(**params)
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/models?#{query}", headers)
-      res = request(http, req)
+      res = execute(client: http, request: req)
       LLM::Response::ModelList.new(res).tap { |modellist|
         models = modellist.body["data"].map do |model|
           LLM::Model.from_hash(model).tap { _1.provider = @provider }
@@ -55,8 +55,8 @@ class LLM::Anthropic
       @provider.instance_variable_get(:@http)
     end
 
-    [:headers, :request].each do |m|
-      define_method(m) { |*args, &b| @provider.send(m, *args, &b) }
+    [:headers, :execute].each do |m|
+      define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
   end
 end

@@ -59,7 +59,7 @@ module LLM
       path = ["/v1beta/models/#{model}", "embedContent?key=#{@key}"].join(":")
       req = Net::HTTP::Post.new(path, headers)
       req.body = JSON.dump({content: {parts: [{text: input}]}})
-      res = request(@http, req)
+      res = execute(client: @http, request: req)
       Response::Embedding.new(res).extend(response_parser)
     end
 
@@ -84,7 +84,7 @@ module LLM
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({contents: format(messages)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = stream ? stream(@http, req, stream) : request(@http, req)
+      res = execute(client: @http, request: req, stream:)
       Response::Completion.new(res).extend(response_parser)
     end
 
