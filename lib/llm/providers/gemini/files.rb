@@ -57,7 +57,7 @@ class LLM::Gemini
     def all(**params)
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/files?#{query}", headers)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::FileList.new(res).tap { |filelist|
         files = filelist.body["files"]&.map do |file|
           file = file.transform_keys { snakecase(_1) }
@@ -85,7 +85,7 @@ class LLM::Gemini
       req["X-Goog-Upload-Command"] = "upload, finalize"
       file.with_io do |io|
         set_body_stream(req, io)
-        res = execute(client: http, request: req)
+        res = execute(request: req)
         LLM::Response::File.new(res)
       end
     end
@@ -105,7 +105,7 @@ class LLM::Gemini
       file_id = file.respond_to?(:name) ? file.name : file.to_s
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/#{file_id}?#{query}", headers)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::File.new(res)
     end
 
@@ -123,7 +123,7 @@ class LLM::Gemini
       file_id = file.respond_to?(:name) ? file.name : file.to_s
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Delete.new("/v1beta/#{file_id}?#{query}", headers)
-      execute(client: http, request: req)
+      execute(request: req)
     end
 
     ##
@@ -144,12 +144,8 @@ class LLM::Gemini
       req["X-Goog-Upload-Header-Content-Length"] = file.bytesize
       req["X-Goog-Upload-Header-Content-Type"] = file.mime_type
       req.body = JSON.dump(file: {display_name: File.basename(file.path)})
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       res["x-goog-upload-url"]
-    end
-
-    def http
-      @provider.instance_variable_get(:@http)
     end
 
     def key

@@ -43,7 +43,7 @@ class LLM::Ollama
     def all(**params)
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/api/tags?#{query}", headers)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::ModelList.new(res).tap { |modellist|
         models = modellist.body["models"].map do |model|
           model = model.transform_keys { snakecase(_1) }
@@ -54,10 +54,6 @@ class LLM::Ollama
     end
 
     private
-
-    def http
-      @provider.instance_variable_get(:@http)
-    end
 
     [:headers, :execute].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }

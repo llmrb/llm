@@ -51,7 +51,7 @@ class LLM::OpenAI
     def all(**params)
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/files?#{query}", headers)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::FileList.new(res).tap { |filelist|
         files = filelist.body["data"].map { LLM::Object.from_hash(_1) }
         filelist.files = files
@@ -74,7 +74,7 @@ class LLM::OpenAI
       req = Net::HTTP::Post.new("/v1/files", headers)
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::File.new(res)
     end
 
@@ -93,7 +93,7 @@ class LLM::OpenAI
       file_id = file.respond_to?(:id) ? file.id : file
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/files/#{file_id}?#{query}", headers)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::File.new(res)
     end
 
@@ -114,7 +114,7 @@ class LLM::OpenAI
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Get.new("/v1/files/#{file_id}/content?#{query}", headers)
       io = StringIO.new("".b)
-      res = execute(client: http, request: req) { |res| res.read_body { |chunk| io << chunk } }
+      res = execute(request: req) { |res| res.read_body { |chunk| io << chunk } }
       LLM::Response::DownloadFile.new(res).tap { _1.file = io }
     end
 
@@ -131,15 +131,11 @@ class LLM::OpenAI
     def delete(file:)
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Delete.new("/v1/files/#{file_id}", headers)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Object.from_hash JSON.parse(res.body)
     end
 
     private
-
-    def http
-      @provider.instance_variable_get(:@http)
-    end
 
     [:headers, :execute, :set_body_stream].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }

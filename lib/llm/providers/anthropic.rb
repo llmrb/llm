@@ -56,7 +56,7 @@ module LLM
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = execute(client: @http, request: req, stream:)
+      res = execute(request: req, stream:)
       Response::Completion.new(res).extend(response_parser)
     end
 

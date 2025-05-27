@@ -20,7 +20,7 @@ module LLM
     def embed(input, model: "voyage-2", **params)
       req = Net::HTTP::Post.new("/v1/embeddings", headers)
       req.body = JSON.dump({input:, model:}.merge!(params))
-      res = execute(client: @http, request: req)
+      res = execute(request: req)
       Response::Embedding.new(res).extend(response_parser)
     end
 

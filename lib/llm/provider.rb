@@ -21,10 +21,9 @@ class LLM::Provider
   #  Whether to use SSL for the connection
   def initialize(key:, host:, port: 443, timeout: 60, ssl: true)
     @key = key
-    @http = Net::HTTP.new(host, port).tap do |http|
-      http.use_ssl = ssl
-      http.read_timeout = timeout
-    end
+    @client = Net::HTTP.new(host, port)
+    @client.use_ssl = ssl
+    @client.read_timeout = timeout
   end
 
   ##
@@ -213,6 +212,8 @@ class LLM::Provider
 
   private
 
+  attr_reader :client
+
   ##
   # The headers to include with a request
   # @raise [NotImplementedError]
@@ -254,8 +255,6 @@ class LLM::Provider
 
   ##
   # Executes a HTTP request
-  # @param [Net::HTTP] http
-  #  The HTTP object to use for the request
   # @param [Net::HTTPRequest] req
   #  The request to send
   # @param [Proc] b
@@ -271,7 +270,7 @@ class LLM::Provider
   # @raise [SystemCallError]
   #  When there is a network error at the operating system level
   # @return [Net::HTTPResponse]
-  def execute(client:, request:, stream: nil, &b)
+  def execute(request:, stream: nil, &b)
     res = if stream
       client.request(request) do |res|
         handler = event_handler.new stream_parser.new(stream)

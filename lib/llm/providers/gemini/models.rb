@@ -42,7 +42,7 @@ class LLM::Gemini
     def all(**params)
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/models?#{query}", headers)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::ModelList.new(res).tap { |modellist|
         models = modellist.body["models"].map do |model|
           model = model.transform_keys { snakecase(_1) }
@@ -53,10 +53,6 @@ class LLM::Gemini
     end
 
     private
-
-    def http
-      @provider.instance_variable_get(:@http)
-    end
 
     def key
       @provider.instance_variable_get(:@key)

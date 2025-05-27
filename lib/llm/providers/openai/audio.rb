@@ -35,7 +35,7 @@ class LLM::OpenAI
       req = Net::HTTP::Post.new("/v1/audio/speech", headers)
       req.body = JSON.dump({input:, voice:, model:, response_format:}.merge!(params))
       io = StringIO.new("".b)
-      res = execute(client: http, request: req) { _1.read_body { |chunk| io << chunk } }
+      res = execute(request: req) { _1.read_body { |chunk| io << chunk } }
       LLM::Response::Audio.new(res).tap { _1.audio = io }
     end
 
@@ -56,7 +56,7 @@ class LLM::OpenAI
       req = Net::HTTP::Post.new("/v1/audio/transcriptions", headers)
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::AudioTranscription.new(res).tap { _1.text = _1.body["text"] }
     end
 
@@ -78,15 +78,11 @@ class LLM::OpenAI
       req = Net::HTTP::Post.new("/v1/audio/translations", headers)
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
-      res = execute(client: http, request: req)
+      res = execute(request: req)
       LLM::Response::AudioTranslation.new(res).tap { _1.text = _1.body["text"] }
     end
 
     private
-
-    def http
-      @provider.instance_variable_get(:@http)
-    end
 
     [:headers, :execute, :set_body_stream].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
