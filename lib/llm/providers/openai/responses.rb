@@ -8,7 +8,7 @@ class LLM::OpenAI
   # conversation state across multiple requests. This is useful when you want to
   # save bandwidth and/or not maintain the message thread by yourself.
   #
-  # @example
+  # @example example #1
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
@@ -16,14 +16,16 @@ class LLM::OpenAI
   #   res1 = llm.responses.create "Your task is to help me with math", role: :developer
   #   res2 = llm.responses.create "5 + 5  = ?", role: :user, previous_response_id: res1.id
   #   [res1,res2].each { llm.responses.delete(_1) }
-  # @example
+  #
+  # @example example #2
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
   #   llm  = LLM.openai(ENV["KEY"])
   #   file = llm.files.create file: "/images/hat.png"
   #   res  = llm.responses.create ["Describe the image", file]
-  # @example
+  #
+  # @example example #3
   #   #!/usr/bin/env ruby
   #   require "llm"
   #

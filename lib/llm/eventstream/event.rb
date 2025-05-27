@@ -61,7 +61,7 @@ module LLM::EventStream
 
     ##
     # Returns true when a chunk represents the end of the stream
-    # @retuen [Boolean]
+    # @return [Boolean]
     def end?
       @value == "[DONE]"
     end

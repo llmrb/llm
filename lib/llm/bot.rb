@@ -3,11 +3,11 @@
 module LLM
   ##
   # {LLM::Bot LLM::Bot} provides a bot object that can maintain a
-  # thread of messages that act as context throughout a conversation.
-  # A conversation can use the chat completions API that most LLM providers
-  # support or the responses API that a select few LLM providers support.
+  # a conversation. A conversation can use the chat completions API
+  # that all LLM providers support or the responses API that a select
+  # few LLM providers support.
   #
-  # @example
+  # @example example #1
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
@@ -19,9 +19,9 @@ module LLM
   #     prompt.user "Why is the sky blue ?"
   #     prompt.user "Why did the chicken cross the road ?"
   #   end
-  #   msgs.map { print "[#{_1.role}]", _1.content, "\n" }
+  #   msgs.each { print "[#{_1.role}]", _1.content, "\n" }
   #
-  # @example
+  # @example example #2
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
@@ -31,7 +31,7 @@ module LLM
   #   bot.chat "What is 5 + 7 ?", role: :user
   #   bot.chat "Why is the sky blue ?", role: :user
   #   bot.chat "Why did the chicken cross the road ?", role: :user
-  #   bot.messages.map { print "[#{_1.role}]", _1.content, "\n" }
+  #   bot.messages.each { print "[#{_1.role}]", _1.content, "\n" }
   class Bot
     require_relative "bot/prompt/completion"
     require_relative "bot/prompt/respond"

@@ -7,7 +7,7 @@ class LLM::OpenAI
   # OpenAI supports multiple response formats: temporary URLs, or binary strings
   # encoded in base64. The default is to return temporary URLs.
   #
-  # @example
+  # @example example #1
   #   #!/usr/bin/env ruby
   #   require "llm"
   #   require "open-uri"
@@ -17,7 +17,8 @@ class LLM::OpenAI
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
   #   FileUtils.mv OpenURI.open_uri(res.urls[0]).path,
   #                "rocket.png"
-  # @example
+  #
+  # @example example #2
   #   #!/usr/bin/env ruby
   #   require "llm"
   #

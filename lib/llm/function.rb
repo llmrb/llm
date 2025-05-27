@@ -5,28 +5,26 @@
 # be called by an LLM. It comes in two forms: a Proc-based function,
 # or a Class-based function.
 #
-# @example
-#   # Proc-based
+# @example example #1
 #   LLM.function(:system) do |fn|
-#     fn.description "Runs system commands, emits their output"
+#     fn.description "Runs system commands"
 #     fn.params do |schema|
 #       schema.object(command: schema.string.required)
 #     end
 #     fn.define do |params|
-#       Kernel.system(params.command)
+#       {success: Kernel.system(params.command)}
 #     end
 #   end
 #
-# @example
-#   # Class-based
+# @example example #2
 #   class System
 #     def call(params)
-#       Kernel.system(params.command)
+#       {success: Kernel.system(params.command)}
 #     end
 #   end
 #
 #   LLM.function(:system) do |fn|
-#     fn.description "Runs system commands, emits their output"
+#     fn.description "Runs system commands"
 #     fn.params do |schema|
 #       schema.object(command: schema.string.required)
 #     end

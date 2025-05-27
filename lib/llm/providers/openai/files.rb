@@ -8,7 +8,7 @@ class LLM::OpenAI
   # and API endpoints. OpenAI supports multiple file formats, including text
   # files, CSV files, JSON files, and more.
   #
-  # @example
+  # @example example #1
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
@@ -18,7 +18,8 @@ class LLM::OpenAI
   #   bot.chat(file)
   #   bot.chat("Describe the document")
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
-  # @example
+  #
+  # @example example #2
   #   #!/usr/bin/env ruby
   #   require "llm"
   #

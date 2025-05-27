@@ -5,7 +5,7 @@ module LLM
   # @private
   class EventHandler
     ##
-    # @param [#<<] stream Streamable
+    # @param [#parse!] parser
     # @return [LLM::EventHandler]
     def initialize(parser)
       @parser = parser

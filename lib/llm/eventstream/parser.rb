@@ -23,7 +23,7 @@ module LLM::EventStream
 
     ##
     # Subscribe to an event
-    # @param [Symbol] event
+    # @param [Symbol] evtname
     # @param [Proc] block
     # @return [void]
     def on(evtname, &block)

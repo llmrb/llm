@@ -10,16 +10,17 @@ module LLM
   # prompt for files under 20MB or via the Gemini Files API for
   # files that are over 20MB
   #
-  # @example
+  # @example example #1
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
   #   llm = LLM.gemini(ENV["KEY"])
   #   bot = LLM::Bot.new(llm).lazy
-  #   bot.chat LLM::File("/images/capybara.png")
+  #   bot.chat LLM.File("/images/capybara.png")
   #   bot.chat "Describe the image"
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
-  # @example
+  #
+  # @example example #2
   #   #!/usr/bin/env ruby
   #   require "llm"
   #

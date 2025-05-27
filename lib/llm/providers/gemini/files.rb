@@ -13,7 +13,7 @@ class LLM::Gemini
   # in the prompt over and over again (which could be the case in a
   # multi-turn conversation).
   #
-  # @example
+  # @example example #1
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
@@ -24,7 +24,8 @@ class LLM::Gemini
   #   bot.chat("Describe the audio file I sent to you")
   #   bot.chat("The audio file is the first message I sent to you.")
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
-  # @example
+  #
+  # @example example #2
   #   #!/usr/bin/env ruby
   #   require "llm"
   #

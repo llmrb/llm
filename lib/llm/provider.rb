@@ -255,7 +255,7 @@ class LLM::Provider
 
   ##
   # Executes a HTTP request
-  # @param [Net::HTTPRequest] req
+  # @param [Net::HTTPRequest] request
   #  The request to send
   # @param [Proc] b
   #  A block to yield the response to (optional)
