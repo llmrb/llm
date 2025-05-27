@@ -3,7 +3,8 @@
 llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
 includes OpenAI, Gemini, Anthropic, DeepSeek, Ollama, and LlamaCpp.
 It's fast, simple and composable – with full support for chat,
-tool calling, audio, images, files, and JSON Schema generation.
+streaming, tool calling, audio, images, files, and JSON Schema
+generation.
 
 ## Features
 
@@ -16,7 +17,7 @@ tool calling, audio, images, files, and JSON Schema generation.
 - 🧠 Stateless and stateful chat via completions and responses API
 - 🤖 Tool calling and function execution
 - 🗂️ JSON Schema support for structured, validated responses
-- ⚡ Streaming support for real-time response updates
+- 📡 Streaming support for real-time response updates
 
 #### Media
 - 🗣️ Text-to-speech, transcription, and translation
@@ -83,9 +84,9 @@ llm = LLM.llamacpp(key: nil)
 > responses API is available in the [docs/](docs/OPENAI.md#responses)
 > directory.
 
-The following example enables lazy mode for a
+The following example enables lazy mode for an instance of
 [LLM::Bot](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html)
-object by entering into a conversation where messages are buffered and
+by entering into a conversation where messages are buffered and
 sent to the provider on-demand. Both lazy and non-lazy conversations
 maintain a message thread that can be reused as context throughout
 a conversation. The example uses the stateless chat completions API
@@ -184,11 +185,11 @@ bot.messages.find(&:assistant?).content! # => {answers: [5, 10, 11]}
 
 #### Functions
 
-The OpenAI, Anthropic, Gemini and Ollama providers support a powerful feature known as
-tool calling, and although it is a little complex to understand at first,
-it can be powerful for building agents. The following example demonstrates how we
-can define a local function (which happens to be a tool), and OpenAI can
-then detect when we should call the function.
+All providers support a powerful feature known as tool calling, and although
+it is a little complex to understand at first, it can be powerful for building
+agents. The following example demonstrates how we can define a local function
+(which happens to be a tool), and a provider (such as OpenAI) can then detect
+when we should call the function.
 
 The
 [LLM::Bot#functions](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#functions-instance_method)
