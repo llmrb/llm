@@ -11,6 +11,8 @@ RSpec.describe "LLM::Chat: gemini" do
 
   context LLM::Chat do
     include_examples "LLM::Chat: completions", :gemini, match_requests_on: [:method]
+    include_examples "LLM::Chat: text stream", :gemini, match_requests_on: [:method]
+    include_examples "LLM::Chat: tool stream", :gemini, match_requests_on: [:method]
   end
 
   context LLM::Function do

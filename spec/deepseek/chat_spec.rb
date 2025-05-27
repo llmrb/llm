@@ -11,6 +11,8 @@ RSpec.describe "LLM::Chat: openai" do
 
   context LLM::Chat do
     include_examples "LLM::Chat: completions", :deepseek
+    include_examples "LLM::Chat: text stream", :deepseek
+    include_examples "LLM::Chat: tool stream", :deepseek
   end
 
   context LLM::Function do

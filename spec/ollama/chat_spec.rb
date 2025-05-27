@@ -11,6 +11,7 @@ RSpec.describe "LLM::Chat: ollama" do
 
   context LLM::Chat do
     include_examples "LLM::Chat: completions", :ollama
+    include_examples "LLM::Chat: text stream", :ollama
   end
 
   context LLM::Function do

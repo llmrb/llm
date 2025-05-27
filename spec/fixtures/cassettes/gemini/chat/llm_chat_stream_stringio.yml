@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"Keep your answers short
+        and concise, and provide three answers to the three questions. There should
+        be one answer per line. An answer should be a number, for example: 5. Nothing
+        else"}]},{"role":"user","parts":[{"text":"What is 3+2 ?"}]},{"role":"user","parts":[{"text":"What
+        is 5+5 ?"}]},{"role":"user","parts":[{"text":"What is 5+7 ?"}]}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/event-stream
+      Content-Disposition:
+      - attachment
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Sat, 24 May 2025 17:44:35 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=1083
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"5\"}],\"role\":
+        \"model\"}}],\"usageMetadata\": {\"promptTokenCount\": 64,\"totalTokenCount\":
+        64,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\": 64}]},\"modelVersion\":
+        \"gemini-1.5-flash\",\"responseId\": \"gwUyaLHECPuh7dcP2IubgAc\"}\r\n\r\ndata:
+        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"\\n10\\n12\\n\"}],\"role\":
+        \"model\"},\"finishReason\": \"STOP\"}],\"usageMetadata\": {\"promptTokenCount\":
+        60,\"candidatesTokenCount\": 8,\"totalTokenCount\": 68,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 60}],\"candidatesTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 8}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\":
+        \"gwUyaLHECPuh7dcP2IubgAc\"}\r\n\r\n"
+  recorded_at: Sat, 24 May 2025 17:44:13 GMT
+recorded_with: VCR 6.3.1

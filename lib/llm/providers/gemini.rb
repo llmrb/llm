@@ -29,12 +29,14 @@ module LLM
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Gemini < Provider
     require_relative "gemini/error_handler"
-    require_relative "gemini/response_parser"
     require_relative "gemini/format"
+    require_relative "gemini/stream_parser"
+    require_relative "gemini/response_parser"
+    require_relative "gemini/models"
     require_relative "gemini/images"
     require_relative "gemini/files"
     require_relative "gemini/audio"
-    require_relative "gemini/models"
+
     include Format
 
     HOST = "generativelanguage.googleapis.com"
@@ -74,14 +76,15 @@ module LLM
     def complete(prompt, params = {})
       params = {role: :user, model: default_model}.merge!(params)
       params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
-      role, model = [:role, :model].map { params.delete(_1) }
+      role, model, stream = [:role, :model, :stream].map { params.delete(_1) }
+      action = stream ? "streamGenerateContent?key=#{@key}&alt=sse" : "generateContent?key=#{@key}"
       model.respond_to?(:id) ? model.id : model
-      path = ["/v1beta/models/#{model}", "generateContent?key=#{@key}"].join(":")
+      path = ["/v1beta/models/#{model}", action].join(":")
       req  = Net::HTTP::Post.new(path, headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({contents: format(messages)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = request(@http, req)
+      res = stream ? stream(@http, req, stream) : request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
@@ -138,6 +141,10 @@ module LLM
 
     def response_parser
       LLM::Gemini::ResponseParser
+    end
+
+    def stream_parser
+      LLM::Gemini::StreamParser
     end
 
     def error_handler

@@ -20,9 +20,11 @@ module LLM
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Ollama < Provider
     require_relative "ollama/error_handler"
-    require_relative "ollama/response_parser"
     require_relative "ollama/format"
+    require_relative "ollama/stream_parser"
+    require_relative "ollama/response_parser"
     require_relative "ollama/models"
+
     include Format
 
     HOST = "localhost"
@@ -59,14 +61,15 @@ module LLM
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, params = {})
-      params = {role: :user, model: default_model, stream: false}.merge!(params)
+      params = {role: :user, model: default_model}.merge!(params)
       params = [params, {format: params[:schema]}, format_tools(params)].inject({}, &:merge!).compact
-      role = params.delete(:role)
+      role, stream = params.delete(:role), params.delete(:stream)
+      params[:stream] = true if stream.respond_to?(:<<) || stream == true
       req = Net::HTTP::Post.new("/api/chat", headers)
       messages = [*(params.delete(:messages) || []), LLM::Message.new(role, prompt)]
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = request(@http, req)
+      res = params[:stream] ? stream(@http, req, stream) : request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
@@ -103,6 +106,10 @@ module LLM
 
     def response_parser
       LLM::Ollama::ResponseParser
+    end
+
+    def stream_parser
+      LLM::Ollama::StreamParser
     end
 
     def error_handler

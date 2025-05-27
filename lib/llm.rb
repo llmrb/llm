@@ -17,6 +17,8 @@ module LLM
   require_relative "llm/chat"
   require_relative "llm/buffer"
   require_relative "llm/function"
+  require_relative "llm/eventstream"
+  require_relative "llm/event_handler"
 
   module_function
 

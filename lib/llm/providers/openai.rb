@@ -5,16 +5,15 @@ module LLM
   # The OpenAI class implements a provider for
   # [OpenAI](https://platform.openai.com/)
   class OpenAI < Provider
-    require_relative "openai/format"
     require_relative "openai/error_handler"
+    require_relative "openai/format"
+    require_relative "openai/stream_parser"
     require_relative "openai/response_parser"
-    require_relative "openai/response_parser/completion_parser"
-    require_relative "openai/response_parser/respond_parser"
+    require_relative "openai/models"
     require_relative "openai/responses"
     require_relative "openai/images"
     require_relative "openai/audio"
     require_relative "openai/files"
-    require_relative "openai/models"
     require_relative "openai/moderations"
 
     include Format
@@ -55,12 +54,13 @@ module LLM
     def complete(prompt, params = {})
       params = {role: :user, model: default_model}.merge!(params)
       params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
-      role = params.delete(:role)
+      role, stream = params.delete(:role), params.delete(:stream)
+      params[:stream] = true if stream.respond_to?(:<<) || stream == true
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages, :complete).flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
-      res = request(@http, req)
+      res = params[:stream] ? stream(@http, req, stream) : request(@http, req)
       Response::Completion.new(res).extend(response_parser)
     end
 
@@ -138,6 +138,10 @@ module LLM
 
     def response_parser
       LLM::OpenAI::ResponseParser
+    end
+
+    def stream_parser
+      LLM::OpenAI::StreamParser
     end
 
     def error_handler
