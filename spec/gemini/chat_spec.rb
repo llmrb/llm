@@ -2,28 +2,28 @@
 
 require "setup"
 
-RSpec.describe "LLM::Chat: gemini" do
-  let(:described_class) { LLM::Chat }
+RSpec.describe "LLM::Bot: gemini" do
+  let(:described_class) { LLM::Bot }
   let(:provider) { LLM.gemini(key:) }
   let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, params).lazy }
   let(:params) { {} }
 
-  context LLM::Chat do
-    include_examples "LLM::Chat: completions", :gemini, match_requests_on: [:method]
-    include_examples "LLM::Chat: text stream", :gemini, match_requests_on: [:method]
-    include_examples "LLM::Chat: tool stream", :gemini, match_requests_on: [:method]
+  context LLM::Bot do
+    include_examples "LLM::Bot: completions", :gemini, match_requests_on: [:method]
+    include_examples "LLM::Bot: text stream", :gemini, match_requests_on: [:method]
+    include_examples "LLM::Bot: tool stream", :gemini, match_requests_on: [:method]
   end
 
   context LLM::Function do
-    include_examples "LLM::Chat: functions", :gemini, match_requests_on: [:method]
+    include_examples "LLM::Bot: functions", :gemini, match_requests_on: [:method]
   end
 
   context LLM::File do
-    include_examples "LLM::Chat: files", :gemini, match_requests_on: [:method]
+    include_examples "LLM::Bot: files", :gemini, match_requests_on: [:method]
   end
 
   context JSON::Schema do
-    include_examples "LLM::Chat: schema", :gemini, match_requests_on: [:method]
+    include_examples "LLM::Bot: schema", :gemini, match_requests_on: [:method]
   end
 end

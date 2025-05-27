@@ -2,8 +2,8 @@
 
 module LLM
   ##
-  # {LLM::Chat LLM::Chat} provides a chat object that maintains a
-  # thread of messages that acts as context throughout a conversation.
+  # {LLM::Bot LLM::Bot} provides a bot object that can maintain a
+  # thread of messages that act as context throughout a conversation.
   # A conversation can use the chat completions API that most LLM providers
   # support or the responses API that a select few LLM providers support.
   #
@@ -12,7 +12,7 @@ module LLM
   #   require "llm"
   #
   #   llm  = LLM.openai(ENV["KEY"])
-  #   bot  = LLM::Chat.new(llm).lazy
+  #   bot  = LLM::Bot.new(llm).lazy
   #   msgs = bot.chat do |prompt|
   #     prompt.system "Answer the following questions."
   #     prompt.user "What is 5 + 7 ?"
@@ -26,17 +26,17 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Chat.new(llm).lazy
+  #   bot = LLM::Bot.new(llm).lazy
   #   bot.chat "Answer the following questions.", role: :system
   #   bot.chat "What is 5 + 7 ?", role: :user
   #   bot.chat "Why is the sky blue ?", role: :user
   #   bot.chat "Why did the chicken cross the road ?", role: :user
   #   bot.messages.map { print "[#{_1.role}]", _1.content, "\n" }
-  class Chat
-    require_relative "chat/prompt/completion"
-    require_relative "chat/prompt/respond"
-    require_relative "chat/conversable"
-    require_relative "chat/builder"
+  class Bot
+    require_relative "bot/prompt/completion"
+    require_relative "bot/prompt/respond"
+    require_relative "bot/conversable"
+    require_relative "bot/builder"
 
     include Conversable
     include Builder
@@ -66,8 +66,8 @@ module LLM
     # Maintain a conversation via the chat completions API
     # @param prompt (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
-    # @yieldparam [LLM::Chat::CompletionPrompt] prompt Yields a prompt
-    # @return [LLM::Chat, Array<LLM::Message>, LLM::Buffer]
+    # @yieldparam [LLM::Bot::CompletionPrompt] prompt Yields a prompt
+    # @return [LLM::Bot, Array<LLM::Message>, LLM::Buffer]
     #  Returns self unless given a block, otherwise returns messages
     def chat(prompt = nil, params = {})
       if block_given?
@@ -87,7 +87,7 @@ module LLM
     # @note Not all LLM providers support this API
     # @param prompt (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
-    # @return [LLM::Chat, Array<LLM::Message>, LLM::Buffer]
+    # @return [LLM::Bot, Array<LLM::Message>, LLM::Buffer]
     #  Returns self unless given a block, otherwise returns messages
     def respond(prompt = nil, params = {})
       if block_given?
@@ -104,7 +104,7 @@ module LLM
 
     ##
     # Enables lazy mode for the conversation.
-    # @return [LLM::Chat]
+    # @return [LLM::Bot]
     def lazy
       tap do
         next if lazy?

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples "LLM::Chat: schema" do |dirname, options = {}|
+RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
   vcr = lambda do |basename|
     {vcr: options.merge({cassette_name: "#{dirname}/chat/#{basename}"})}
   end

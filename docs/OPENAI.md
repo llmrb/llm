@@ -23,30 +23,17 @@ the entire conversation on each turn in a conversation. See also:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Chat.new(llm).lazy
-log = bot.respond do |prompt|
+llm  = LLM.openai(key: ENV["KEY"])
+bot  = LLM::Bot.new(llm).lazy
+msgs = bot.respond do |prompt|
   prompt.developer File.read("./share/llm/prompts/system.txt")
   prompt.user "Tell me the answer to 5 + 15"
   prompt.user "Tell me the answer to (5 + 15) * 2"
   prompt.user "Tell me the answer to ((5 + 15) * 2) / 10"
 end
-log.each { print "[#{_1.role}] ", _1.content, "\n" }
 
-##
-# [developer] You are my math assistant.
-#             I will provide you with (simple) equations.
-#             You will provide answers in the format "The answer to <equation> is <answer>".
-#             I will provide you a set of messages. Reply to all of them.
-#             A message is considered unanswered if there is no corresponding assistant response.
-#
-# [user] Tell me the answer to 5 + 15
-# [user] Tell me the answer to (5 + 15) * 2
-# [user] Tell me the answer to ((5 + 15) * 2) / 10
-#
-# [assistant] The answer to 5 + 15 is 20.
-#             The answer to (5 + 15) * 2 is 40.
-#             The answer to ((5 + 15) * 2) / 10 is 4.
+# At this point, we execute a single request
+msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 #### Moderations

@@ -2,20 +2,20 @@
 
 require "setup"
 
-RSpec.describe "LLM::Chat: openai" do
-  let(:described_class) { LLM::Chat }
+RSpec.describe "LLM::Bot: openai" do
+  let(:described_class) { LLM::Bot }
   let(:provider) { LLM.deepseek(key:) }
   let(:key) { ENV["DEEPSEEK_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, params).lazy }
   let(:params) { {} }
 
-  context LLM::Chat do
-    include_examples "LLM::Chat: completions", :deepseek
-    include_examples "LLM::Chat: text stream", :deepseek
-    include_examples "LLM::Chat: tool stream", :deepseek
+  context LLM::Bot do
+    include_examples "LLM::Bot: completions", :deepseek
+    include_examples "LLM::Bot: text stream", :deepseek
+    include_examples "LLM::Bot: tool stream", :deepseek
   end
 
   context LLM::Function do
-    include_examples "LLM::Chat: functions", :deepseek
+    include_examples "LLM::Bot: functions", :deepseek
   end
 end

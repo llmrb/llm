@@ -2,19 +2,19 @@
 
 require "setup"
 
-RSpec.describe "LLM::Chat: llamacpp" do
-  let(:described_class) { LLM::Chat }
+RSpec.describe "LLM::Bot: llamacpp" do
+  let(:described_class) { LLM::Bot }
   let(:provider) { LLM.llamacpp(host:) }
   let(:host) { ENV["LLAMACPP_HOST"] || "localhost" }
   let(:bot) { described_class.new(provider, params.merge(model: "qwen3")).lazy }
   let(:params) { {} }
   vcr = lambda { {vcr: {cassette_name: "llamacpp/chat/#{_1}"}} }
 
-  context LLM::Chat do
-    include_examples "LLM::Chat: completions", :llamacpp
+  context LLM::Bot do
+    include_examples "LLM::Bot: completions", :llamacpp
 
     context "with streams" do
-      include_examples "LLM::Chat: text stream", :llamacpp
+      include_examples "LLM::Bot: text stream", :llamacpp
 
       context "when tool calls are not supported", vcr.call("llm_chat_stream_tool") do
         before { bot.chat "Run the tool" }
@@ -39,10 +39,10 @@ RSpec.describe "LLM::Chat: llamacpp" do
   end
 
   context LLM::Function do
-    include_examples "LLM::Chat: functions", :llamacpp
+    include_examples "LLM::Bot: functions", :llamacpp
   end
 
   context JSON::Schema do
-    include_examples "LLM::Chat: schema", :llamacpp
+    include_examples "LLM::Bot: schema", :llamacpp
   end
 end

@@ -2,24 +2,24 @@
 
 require "setup"
 
-RSpec.describe "LLM::Chat: anthropic" do
-  let(:described_class) { LLM::Chat }
+RSpec.describe "LLM::Bot: anthropic" do
+  let(:described_class) { LLM::Bot }
   let(:provider) { LLM.anthropic(key:) }
   let(:key) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, params).lazy }
   let(:params) { {} }
 
-  context LLM::Chat do
-    include_examples "LLM::Chat: completions", :anthropic
-    include_examples "LLM::Chat: text stream", :anthropic
-    include_examples "LLM::Chat: tool stream", :anthropic
+  context LLM::Bot do
+    include_examples "LLM::Bot: completions", :anthropic
+    include_examples "LLM::Bot: text stream", :anthropic
+    include_examples "LLM::Bot: tool stream", :anthropic
   end
 
   context LLM::Function do
-    include_examples "LLM::Chat: functions", :anthropic
+    include_examples "LLM::Bot: functions", :anthropic
   end
 
   context LLM::File do
-    include_examples "LLM::Chat: files", :anthropic
+    include_examples "LLM::Bot: files", :anthropic
   end
 end

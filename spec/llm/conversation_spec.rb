@@ -2,7 +2,7 @@
 
 require "setup"
 
-RSpec.describe "LLM::Chat: non-lazy" do
+RSpec.describe "LLM::Bot: non-lazy" do
   shared_examples "a multi-turn conversation" do
     context "when given a thread of messages" do
       let(:inputs) do

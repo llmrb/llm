@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LLM::Chat
+class LLM::Bot
   ##
   # @private
   module Builder

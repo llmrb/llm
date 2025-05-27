@@ -99,7 +99,7 @@ class LLM::Function
   # Returns a value that communicates that the function call was cancelled
   # @example
   #   llm = LLM.openai(key: ENV["KEY"])
-  #   bot = LLM::Chat.new(llm, tools: [fn1, fn2])
+  #   bot = LLM::Bot.new(llm, tools: [fn1, fn2])
   #   bot.chat "I want to run the functions"
   #   bot.chat bot.functions.map(&:cancel)
   # @return [LLM::Function::Return]

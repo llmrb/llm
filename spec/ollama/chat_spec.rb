@@ -2,23 +2,23 @@
 
 require "setup"
 
-RSpec.describe "LLM::Chat: ollama" do
-  let(:described_class) { LLM::Chat }
+RSpec.describe "LLM::Bot: ollama" do
+  let(:described_class) { LLM::Bot }
   let(:provider) { LLM.ollama(host:) }
   let(:host) { ENV["OLLAMA_HOST"] || "localhost" }
   let(:bot) { described_class.new(provider, params).lazy }
   let(:params) { {} }
 
-  context LLM::Chat do
-    include_examples "LLM::Chat: completions", :ollama
-    include_examples "LLM::Chat: text stream", :ollama
+  context LLM::Bot do
+    include_examples "LLM::Bot: completions", :ollama
+    include_examples "LLM::Bot: text stream", :ollama
   end
 
   context LLM::Function do
-    include_examples "LLM::Chat: functions", :ollama
+    include_examples "LLM::Bot: functions", :ollama
   end
 
   context JSON::Schema do
-    include_examples "LLM::Chat: schema", :ollama
+    include_examples "LLM::Bot: schema", :ollama
   end
 end

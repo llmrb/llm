@@ -55,7 +55,7 @@ RSpec.describe "LLM::Gemini::Files" do
           vcr: {cassette_name: "gemini/files/successful_translation_bismillah", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content.downcase.strip[0..2] }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
-    let(:bot) { LLM::Chat.new(provider).lazy }
+    let(:bot) { LLM::Bot.new(provider).lazy }
     after { provider.files.delete(file:) }
 
     before do
@@ -76,7 +76,7 @@ RSpec.describe "LLM::Gemini::Files" do
           vcr: {cassette_name: "gemini/files/successful_translation_alhamdullilah", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content }
     let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/alhamdullilah.mp3")) }
-    let(:bot) { LLM::Chat.new(provider).lazy }
+    let(:bot) { LLM::Bot.new(provider).lazy }
     after { provider.files.delete(file:) }
 
     before do
