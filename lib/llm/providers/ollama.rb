@@ -21,7 +21,7 @@ module LLM
   class Ollama < Provider
     require_relative "ollama/error_handler"
     require_relative "ollama/format"
-    require_relative "ollama/stream_parser"   
+    require_relative "ollama/stream_parser"
     require_relative "ollama/response_parser"
     require_relative "ollama/models"
 
