@@ -33,17 +33,17 @@ generation.
 
 <details>
   <summary><b>1. Tools: "system" function</b></summary>
-  <img src="share/llm-shell/examples/toolcalls.gif">
+  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/toolcalls.gif">
 </details>
 
 <details>
   <summary><b>2. Files: import at runtime</b></summary>
-  <img src="share/llm-shell/examples/files-runtime.gif">
+  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-runtime.gif">
 </details>
 
 <details>
   <summary><b>3. Files: import at boot time</b></summary>
-  <img src="share/llm-shell/examples/files-boottime.gif">
+  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-boottime.gif">
 </details>
 
 ## Examples
