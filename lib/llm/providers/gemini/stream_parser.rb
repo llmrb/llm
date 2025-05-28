@@ -39,17 +39,29 @@ class LLM::Gemini
 
     def merge_candidates!(candidates)
       candidates.each.with_index do |candidate, i|
-        if @body.candidates[i]
-          parts = @body.candidates[i].dig("content", "parts")
-          parts&.each&.with_index do |part, j|
-            if part["text"]
-              target = candidate["content"]["parts"][j]
-              part["text"] << target["text"]
-              @io << part["text"] if @io.respond_to?(:<<)
-            end
-          end
+        if @body.candidates[i].nil?
+          merge_one(@body.candidates, candidate, i)
         else
-          @body.candidates[i] = candidate
+          merge_two(@body.candidates, candidate, i)
+        end
+      end
+    end
+
+    def merge_one(candidates, candidate, i)
+      candidate
+        .dig("content", "parts")
+        &.filter_map { _1["text"] }
+        &.each { @io << _1 if @io.respond_to?(:<<) }
+      candidates[i] = candidate
+    end
+
+    def merge_two(candidates, candidate, i)
+      parts = candidates[i].dig("content", "parts")
+      parts&.each&.with_index do |part, j|
+        if part["text"]
+          target = candidate["content"]["parts"][j]
+          part["text"] << target["text"]
+          @io << target["text"] if @io.respond_to?(:<<)
         end
       end
     end
