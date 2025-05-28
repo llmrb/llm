@@ -13,7 +13,7 @@ class LLM::Anthropic
     # @param [#<<] io An IO-like object
     # @return [LLM::Anthropic::StreamParser]
     def initialize(io)
-      @body = LLM::Object.new
+      @body = LLM::Object.new(role: "assistant", content: [])
       @io = io
     end
 
@@ -30,7 +30,6 @@ class LLM::Anthropic
       if chunk["type"] == "message_start"
         merge_message!(chunk["message"])
       elsif chunk["type"] == "content_block_start"
-        @body["content"] ||= []
         @body["content"][chunk["index"]] = chunk["content_block"]
       elsif chunk["type"] == "content_block_delta"
         if chunk["delta"]["type"] == "text_delta"
