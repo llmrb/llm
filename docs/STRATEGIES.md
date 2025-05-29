@@ -3,21 +3,25 @@
 ### Contents
 
 * [Memory](#memory)
-  * [Fork](#fork)
+  * [Temporary memory](#temporary-memory)
 
 ### Memory
 
-#### Fork
+#### Temporary memory
 
-When it comes to the generation of audio, images, and video memory consumption
-can be a potential problem. There are a few strategies in place to deal with this,
-and one lesser known strategy is to let a child process handle the memory cost
-by delegating media generation to a child process.
+When it comes to the generation of audio, images, and video &ndash;
+memory consumption can be a potential problem. Although llm.rb tries
+to optimize how it handles media content; there is another relatively
+straight-forward technique that can be implemented by users of the
+library.
 
-Once a child process exits, any memory it had used is freed immediately and
-the parent process can continue to have a small memory footprint. In a sense
-it is similar to being able to use malloc + free from Ruby. The following example
-demonstrates how that might look like in practice:
+We can avoid inheriting a process with high memory usage by letting a
+child process handle the generation of media content. Once the child
+process exits, the memory it had used is freed immediately and the
+parent process can continue to have a small memory footprint.
+
+In a sense it is similar to being able to use malloc + free from Ruby. The
+following example demonstrates how that might look like in practice:
 
 ```ruby
 #!/usr/bin/env ruby
