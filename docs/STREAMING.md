@@ -68,7 +68,7 @@ end
 * **Single request** <br>
 The streaming API can also be enabled for a single request by passing the
 `stream` option to the [chat](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#chat-instance_method)
-without a block:
+method without a block:
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
