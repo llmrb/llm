@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 ##
-# The {LLM::Function LLM::Function} class represents a function that can
-# be called by an LLM. It comes in two forms: a Proc-based function,
-# or a Class-based function.
+# The {LLM::Function LLM::Function} class represents a
+# local function that can be called by an LLM.
 #
 # @example example #1
 #   LLM.function(:system) do |fn|
