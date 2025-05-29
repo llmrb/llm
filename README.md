@@ -111,6 +111,11 @@ msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 #### Streaming
 
+> There Is More Than One Way To Do It (TIMTOWTDI) when you are
+> using llm.rb &ndash; and this is especially relevant when it
+> comes to streaming. See the streaming documentation in
+> [docs/](docs/STREAMING.md) for more details.
+
 The following example streams the messages in a conversation
 as they are generated in real-time. This feature can be useful
 in case you want to see the contents of a message as it is
