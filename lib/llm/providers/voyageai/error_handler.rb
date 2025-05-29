@@ -21,11 +21,11 @@ class LLM::VoyageAI
     def raise_error!
       case res
       when Net::HTTPUnauthorized
-        raise LLM::Error::Unauthorized.new { _1.response = res }, "Authentication error"
+        raise LLM::UnauthorizedError.new { _1.response = res }, "Authentication error"
       when Net::HTTPTooManyRequests
-        raise LLM::Error::RateLimit.new { _1.response = res }, "Too many requests"
+        raise LLM::RateLimitError.new { _1.response = res }, "Too many requests"
       else
-        raise LLM::Error::ResponseError.new { _1.response = res }, "Unexpected response"
+        raise LLM::ResponseError.new { _1.response = res }, "Unexpected response"
       end
     end
   end

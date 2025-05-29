@@ -88,7 +88,7 @@ RSpec.describe "LLM::OpenAI: completions" do
     subject(:response) { openai.complete(URI("/foobar.exe"), role: :user) }
 
     it "raises an error" do
-      expect { response }.to raise_error(LLM::Error::ResponseError)
+      expect { response }.to raise_error(LLM::ResponseError)
     end
 
     it "includes the response" do
@@ -104,12 +104,12 @@ RSpec.describe "LLM::OpenAI: completions" do
     let(:key) { "BADTOKEN" }
 
     it "raises an error" do
-      expect { response }.to raise_error(LLM::Error::Unauthorized)
+      expect { response }.to raise_error(LLM::UnauthorizedError)
     end
 
     it "includes the response" do
       response
-    rescue LLM::Error::Unauthorized => ex
+    rescue LLM::UnauthorizedError => ex
       expect(ex.response).to be_kind_of(Net::HTTPResponse)
     end
   end

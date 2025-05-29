@@ -8,34 +8,34 @@ module LLM
       block_given? ? yield(self) : nil
       super
     end
-
-    ##
-    # The superclass of all HTTP protocol errors
-    class ResponseError < Error
-      ##
-      # @return [Net::HTTPResponse]
-      #  Returns the response associated with an error
-      attr_accessor :response
-
-      def message
-        [super, response.body].join("\n")
-      end
-    end
-
-    ##
-    # HTTPUnauthorized
-    Unauthorized = Class.new(ResponseError)
-
-    ##
-    # HTTPTooManyRequests
-    RateLimit = Class.new(ResponseError)
-
-    ##
-    # When an given an input that is not understood
-    FormatError = Class.new(Error)
-
-    ##
-    # When given a prompt that is not understood
-    PromptError = Class.new(FormatError)
   end
+
+  ##
+  # The superclass of all HTTP protocol errors
+  class ResponseError < Error
+    ##
+    # @return [Net::HTTPResponse]
+    #  Returns the response associated with an error
+    attr_accessor :response
+
+    def message
+      [super, response.body].join("\n")
+    end
+  end
+
+  ##
+  # HTTPUnauthorized
+  UnauthorizedError = Class.new(ResponseError)
+
+  ##
+  # HTTPTooManyRequests
+  RateLimitError = Class.new(ResponseError)
+
+  ##
+  # When an given an input object that is not understood
+  FormatError = Class.new(Error)
+
+  ##
+  # When given a prompt object that is not understood
+  PromptError = Class.new(FormatError)
 end

@@ -25,14 +25,14 @@ class LLM::Gemini
       when Net::HTTPBadRequest
         reason = body.dig("error", "details", 0, "reason")
         if reason == "API_KEY_INVALID"
-          raise LLM::Error::Unauthorized.new { _1.response = res }, "Authentication error"
+          raise LLM::UnauthorizedError.new { _1.response = res }, "Authentication error"
         else
-          raise LLM::Error::ResponseError.new { _1.response = res }, "Unexpected response"
+          raise LLM::ResponseError.new { _1.response = res }, "Unexpected response"
         end
       when Net::HTTPTooManyRequests
-        raise LLM::Error::RateLimit.new { _1.response = res }, "Too many requests"
+        raise LLM::RateLimitError.new { _1.response = res }, "Too many requests"
       else
-        raise LLM::Error::ResponseError.new { _1.response = res }, "Unexpected response"
+        raise LLM::ResponseError.new { _1.response = res }, "Unexpected response"
       end
     end
 
