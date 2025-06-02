@@ -113,7 +113,7 @@ msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
 #### Streaming
 
 > There Is More Than One Way To Do It (TIMTOWTDI) when you are
-> using llm.rb &ndash; and this is especially relevant when it
+> using llm.rb &ndash; and this is especially true when it
 > comes to streaming. See the streaming documentation in
 > [docs/](docs/STREAMING.md#flexibility) for more details.
 
