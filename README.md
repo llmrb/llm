@@ -149,12 +149,7 @@ end.to_a
 All LLM providers except Anthropic and DeepSeek allow a client to describe
 the structure of a response that a LLM emits according to a schema that is
 described by JSON. The schema lets a client describe what JSON object (or value)
-an LLM should emit, and the LLM will abide by the schema.
-See also: [JSON Schema website](https://json-schema.org/overview/what-is-jsonschema).
-We will use the
-[llmrb/json-schema](https://github.com/llmrb/json-schema)
-library for the sake of the examples &ndash; the interface is designed so you
-could drop in any other library in its place:
+an LLM should emit, and the LLM will abide by the schema:
 
 ```ruby
 #!/usr/bin/env ruby
