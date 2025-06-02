@@ -6,7 +6,7 @@ RSpec.describe "LLM::Bot: gemini" do
   let(:described_class) { LLM::Bot }
   let(:provider) { LLM.gemini(key:) }
   let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
-  let(:bot) { described_class.new(provider, params).lazy }
+  let(:bot) { described_class.new(provider, params) }
   let(:params) { {} }
 
   context LLM::Bot do

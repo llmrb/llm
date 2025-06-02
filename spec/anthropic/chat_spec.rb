@@ -6,7 +6,7 @@ RSpec.describe "LLM::Bot: anthropic" do
   let(:described_class) { LLM::Bot }
   let(:provider) { LLM.anthropic(key:) }
   let(:key) { ENV["ANTHROPIC_SECRET"] || "TOKEN" }
-  let(:bot) { described_class.new(provider, params).lazy }
+  let(:bot) { described_class.new(provider, params) }
   let(:params) { {} }
 
   context LLM::Bot do

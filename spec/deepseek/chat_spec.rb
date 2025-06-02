@@ -6,7 +6,7 @@ RSpec.describe "LLM::Bot: openai" do
   let(:described_class) { LLM::Bot }
   let(:provider) { LLM.deepseek(key:) }
   let(:key) { ENV["DEEPSEEK_SECRET"] || "TOKEN" }
-  let(:bot) { described_class.new(provider, params).lazy }
+  let(:bot) { described_class.new(provider, params) }
   let(:params) { {} }
 
   context LLM::Bot do

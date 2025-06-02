@@ -10,7 +10,7 @@ cassette = "openai/readme/chat_responses_1"
 # functions
 def example
   llm  = LLM.openai(key: ENV["KEY"])
-  bot  = LLM::Bot.new(llm).lazy
+  bot  = LLM::Bot.new(llm)
   msgs = bot.respond do |prompt|
     prompt.developer File.read("./share/llm/prompts/system.txt")
     prompt.user "Tell me the answer to 5 + 15"

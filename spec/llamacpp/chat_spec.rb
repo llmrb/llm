@@ -6,7 +6,7 @@ RSpec.describe "LLM::Bot: llamacpp" do
   let(:described_class) { LLM::Bot }
   let(:provider) { LLM.llamacpp(host:) }
   let(:host) { ENV["LLAMACPP_HOST"] || "localhost" }
-  let(:bot) { described_class.new(provider, params.merge(model: "qwen3")).lazy }
+  let(:bot) { described_class.new(provider, params.merge(model: "qwen3")) }
   let(:params) { {} }
   vcr = lambda { {vcr: {cassette_name: "llamacpp/chat/#{_1}"}} }
 

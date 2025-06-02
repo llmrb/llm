@@ -24,7 +24,7 @@ you to process a response in the same way:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm).lazy
+bot = LLM::Bot.new(llm)
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "You are my math assistant."
   prompt.user "Tell me the answer to 5 + 15"
@@ -44,7 +44,7 @@ through [`LLM::Bot#initialize`](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#i
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm, stream: $stdout).lazy
+bot = LLM::Bot.new(llm, stream: $stdout)
 ```
 
 * **Block-level** <br>
@@ -58,7 +58,7 @@ method:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm).lazy
+bot = LLM::Bot.new(llm)
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "You are my math assistant."
   # ..
@@ -74,6 +74,6 @@ method without a block:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm).lazy
+bot = LLM::Bot.new(llm)
 bot.chat "You are my math assistant.", role: :system, stream: $stdout
 ```

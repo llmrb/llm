@@ -84,20 +84,21 @@ llm = LLM.llamacpp(key: nil)
 > responses API is available in the [docs/](docs/OPENAI.md#responses)
 > directory.
 
-The following example enables lazy mode for an instance of
+The following example creates an instance of
 [LLM::Bot](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html)
 by entering into a conversation where messages are buffered and
-sent to the provider on-demand. Both lazy and non-lazy conversations
-maintain a message thread that can be reused as context throughout
-a conversation. The example uses the stateless chat completions API
-that all LLM providers support:
+sent to the provider on-demand. This is standard behavior because
+it can reduce the number of requests sent to a provider, and
+avoids unneccessary requests until an attempt to iterate over
+[LLM::Bot#messages](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#messages-instance_method)
+is made:
 
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
 
 llm  = LLM.openai(key: ENV["KEY"])
-bot  = LLM::Bot.new(llm).lazy
+bot  = LLM::Bot.new(llm)
 msgs = bot.chat do |prompt|
   prompt.system File.read("./share/llm/prompts/system.txt")
   prompt.user "Tell me the answer to 5 + 15"
@@ -132,7 +133,7 @@ you to process a response in the same way:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm).lazy
+bot = LLM::Bot.new(llm)
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "You are my math assistant."
   prompt.user "Tell me the answer to 5 + 15"
@@ -163,14 +164,14 @@ require "llm"
 # Objects
 llm = LLM.openai(key: ENV["KEY"])
 schema = llm.schema.object(answer: llm.schema.integer.required)
-bot = LLM::Bot.new(llm, schema:).lazy
+bot = LLM::Bot.new(llm, schema:)
 bot.chat "Does the earth orbit the sun?", role: :user
 bot.messages.find(&:assistant?).content! # => {probability: 1}
 
 ##
 # Enums
 schema = llm.schema.object(fruit: llm.schema.string.enum("Apple", "Orange", "Pineapple"))
-bot = LLM::Bot.new(llm, schema:).lazy
+bot = LLM::Bot.new(llm, schema:)
 bot.chat "Your favorite fruit is Pineapple", role: :system
 bot.chat "What fruit is your favorite?", role: :user
 bot.messages.find(&:assistant?).content! # => {fruit: "Pineapple"}
@@ -178,7 +179,7 @@ bot.messages.find(&:assistant?).content! # => {fruit: "Pineapple"}
 ##
 # Arrays
 schema = llm.schema.object(answers: llm.schema.array(llm.schema.integer.required))
-bot = LLM::Bot.new(llm, schema:).lazy
+bot = LLM::Bot.new(llm, schema:)
 bot.chat "Answer all of my questions", role: :system
 bot.chat "Tell me the answer to ((5 + 5) / 2)", role: :user
 bot.chat "Tell me the answer to ((5 + 5) / 2) * 2", role: :user
@@ -226,7 +227,7 @@ tool = LLM.function(:system) do |fn|
   end
 end
 
-bot = LLM::Bot.new(llm, tools: [tool]).lazy
+bot = LLM::Bot.new(llm, tools: [tool])
 bot.chat "Your task is to run shell commands via a tool.", role: :system
 
 bot.chat "What is the current date?", role: :user
@@ -385,7 +386,7 @@ can be given to the chat method:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm).lazy
+bot = LLM::Bot.new(llm)
 file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
 bot.chat(file)
 bot.chat("What is this file about?")
@@ -416,7 +417,7 @@ to a prompt:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm).lazy
+bot = LLM::Bot.new(llm)
 
 bot.chat [URI("https://example.com/path/to/image.png"), "Describe the image in the link"]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }

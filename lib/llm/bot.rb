@@ -58,8 +58,7 @@ module LLM
     def initialize(provider, params = {})
       @provider = provider
       @params = {model: provider.default_model, schema: nil}.compact.merge!(params)
-      @lazy = false
-      @messages = [].extend(Array)
+      @messages = LLM::Buffer.new(provider)
     end
 
     ##
@@ -78,7 +77,7 @@ module LLM
         raise ArgumentError, "wrong number of arguments (given 0, expected 1)"
       else
         params = {role: :user}.merge!(params)
-        tap { lazy? ? async_completion(prompt, params) : sync_completion(prompt, params) }
+        tap { async_completion(prompt, params) }
       end
     end
 
@@ -98,26 +97,8 @@ module LLM
         raise ArgumentError, "wrong number of arguments (given 0, expected 1)"
       else
         params = {role: :user}.merge!(params)
-        tap { lazy? ? async_response(prompt, params) : sync_response(prompt, params) }
+        tap { async_response(prompt, params) }
       end
-    end
-
-    ##
-    # Enables lazy mode for the conversation.
-    # @return [LLM::Bot]
-    def lazy
-      tap do
-        next if lazy?
-        @lazy = true
-        @messages = LLM::Buffer.new(@provider)
-      end
-    end
-
-    ##
-    # @return [Boolean]
-    #  Returns true if the conversation is lazy
-    def lazy?
-      @lazy
     end
 
     ##
@@ -125,7 +106,7 @@ module LLM
     def inspect
       "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
       "@provider=#{@provider.class}, @params=#{@params.inspect}, " \
-      "@messages=#{@messages.inspect}, @lazy=#{@lazy.inspect}>"
+      "@messages=#{@messages.inspect}>"
     end
 
     ##
@@ -137,20 +118,5 @@ module LLM
         .flat_map(&:functions)
         .select(&:pending?)
     end
-
-    private
-
-    ##
-    # @private
-    module Array
-      def find(...)
-        reverse_each.find(...)
-      end
-
-      def unread
-        reject(&:read?)
-      end
-    end
-    private_constant :Array
   end
 end
