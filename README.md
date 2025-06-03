@@ -87,9 +87,9 @@ llm = LLM.llamacpp(key: nil)
 The following example creates an instance of
 [LLM::Bot](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html)
 by entering into a conversation where messages are buffered and
-sent to the provider on-demand. This is standard behavior because
-it can reduce the number of requests sent to a provider, and
-avoids unneccessary requests until an attempt to iterate over
+sent to the provider on-demand. This is the default behavior
+because it can reduce the number of requests sent to a provider,
+and avoids unneccessary requests until an attempt to iterate over
 [LLM::Bot#messages](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#messages-instance_method)
 is made:
 
