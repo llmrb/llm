@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 17 May 2025 16:33:10 GMT
+      - Tue, 03 Jun 2025 03:36:57 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,27 +42,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-17T16:33:09Z'
+      - '2025-06-03T03:36:56Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-17T16:33:10Z'
+      - '2025-06-03T03:36:56Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-17T16:33:10Z'
+      - '2025-06-03T03:36:56Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-17T16:33:09Z'
+      - '2025-06-03T03:36:56Z'
       Request-Id:
-      - req_011CPDRZ1NAHxxiXAG1QgLsG
+      - req_011CPkb7U2b19nXXttos535X
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -76,13 +76,13 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 941483cdc88cf1de-GRU
+      - 949c26231ce1794f-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01A7wGC21AhZrkxBGg8hLSAb","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Certainly!
+      string: '{"id":"msg_019fvurqpMEYYGMinVRAQBgf","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Certainly!
         I can run the ''date'' command for you using the system function. Here''s
-        how we''ll do that:"},{"type":"tool_use","id":"toolu_01JVfpJ2uYpubMdohdcELAs2","name":"system","input":{"command":"date"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":372,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":79}}'
-  recorded_at: Sat, 17 May 2025 16:33:05 GMT
+        how we''ll do that:"},{"type":"tool_use","id":"toolu_017UxgtxuopkxPsMM77ucUjs","name":"system","input":{"command":"date"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":372,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":79,"service_tier":"standard"}}'
+  recorded_at: Tue, 03 Jun 2025 03:36:46 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -90,7 +90,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
         a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01JVfpJ2uYpubMdohdcELAs2","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01JVfpJ2uYpubMdohdcELAs2","content":[{"type":"text","text":"{\"success\":true}"}]}]}],"model":"claude-3-5-sonnet-20240620","max_tokens":1024,"tools":[{"name":"system","description":"Runs
+        run the ''date'' command"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_017UxgtxuopkxPsMM77ucUjs","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_017UxgtxuopkxPsMM77ucUjs","content":[{"type":"text","text":"{\"success\":true}"}]}]}],"model":"claude-3-5-sonnet-20240620","max_tokens":1024,"tools":[{"name":"system","description":"Runs
         system commands","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}'
     headers:
       Content-Type:
@@ -113,7 +113,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 17 May 2025 16:33:12 GMT
+      - Tue, 03 Jun 2025 03:36:58 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -125,27 +125,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-17T16:33:11Z'
+      - '2025-06-03T03:36:57Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-17T16:33:12Z'
+      - '2025-06-03T03:36:58Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-17T16:33:11Z'
+      - '2025-06-03T03:36:58Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-17T16:33:11Z'
+      - '2025-06-03T03:36:57Z'
       Request-Id:
-      - req_011CPDRZ7mdLoVJR7WB9qf4n
+      - req_011CPkb7aXG9tzJiDzC6g2QJ
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -159,17 +159,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 941483d6fd51ae3c-GRU
+      - 949c262d1d5ef1e5-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01TcvzUGTzr6DFh9nAaKxtBS","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Certainly!
-        I''ve run the ''date'' command for you using the system function. This command
-        displays the current date and time on the system. \n\nThe command was executed
-        successfully, as indicated by the \"success\":true response. However, the
-        actual output of the date command isn''t provided in the function results.
-        Typically, the ''date'' command would return the current date and time in
-        a format like this:\n\nWed May 17 15:30:45 UTC 2023\n\n(Note that the actual
-        date, time, and timezone would depend on the system''s current settings.)\n\nIs
-        there anything else you''d like me to do with the system commands?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":439,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":145}}'
-  recorded_at: Sat, 17 May 2025 16:33:08 GMT
+      string: '{"id":"msg_01Qvr8mdDF85Sum6gy3QCxmo","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"I''ve
+        run the ''date'' command for you using the system function. This command displays
+        the current date and time on Unix-like operating systems. The command was
+        executed successfully, as indicated by the \"success\":true result.\n\nIs
+        there anything specific about the date or time you''d like to know? Or would
+        you like me to run any other commands for you?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":439,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":80,"service_tier":"standard"}}'
+  recorded_at: Tue, 03 Jun 2025 03:36:48 GMT
 recorded_with: VCR 6.3.1

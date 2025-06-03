@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 17 May 2025 18:38:31 GMT
+      - Tue, 03 Jun 2025 03:37:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,7 +41,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - ddd3be056b98736823c94855204c0bbf
+      - ed3a79ede478f5dedc2350ddc26d3566
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -49,15 +49,15 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=r3X70oEN5qiPAkO0fQlQAp7V5SBpJ2_as1jTipWp_bc-1747507111-1.0.1.1-_B4c5X2OO92Ai_p0O6TQsmbyzO4PQqTQrjOlOg6lTAT7BfHtU7SNYAPQTUN7lAoVtEei.87rfgabJD0nPqFI4AZoR1k6CQ83krITv.bgnmM;
-        path=/; expires=Sat, 17-May-25 19:08:31 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=qQch94gRvwPOWk6WIfIUuv3r1k811zaESppfwnH84Ms-1748921828-1.0.1.1-YKAWKaOdIuqAN1j2HUbDySlAlkHy5kny5.SHDVZqkFzAHtoZW4dgJAdN.7YCJZU64RbOj6QWyHx4BL7nu04jLpVDWAXfGegHAZBJMHBmwS8;
+        path=/; expires=Tue, 03-Jun-25 04:07:08 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 94153b737e6d204d-MIA
+      - 949c266e089d01a2-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"c3d89817-8856-4511-8cb0-d5758b4ee8e7","object":"chat.completion","created":1747507111,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"5  \n10  \n12"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":61,"completion_tokens":5,"total_tokens":66,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":61},"system_fingerprint":"fp_8802369eaa_prod0425fp8"}'
-  recorded_at: Sat, 17 May 2025 18:38:31 GMT
+      string: '{"id":"c3f720eb-333f-46a4-9ba4-3a3f7cdb4d21","object":"chat.completion","created":1748921827,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"5  \n10  \n12"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":61,"completion_tokens":5,"total_tokens":66,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":61},"system_fingerprint":"fp_8802369eaa_prod0425fp8"}'
+  recorded_at: Tue, 03 Jun 2025 03:37:03 GMT
 recorded_with: VCR 6.3.1

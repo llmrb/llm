@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 23 May 2025 22:12:00 GMT
+      - Tue, 03 Jun 2025 03:36:47 GMT
       Content-Type:
       - text/event-stream; charset=utf-8
       Transfer-Encoding:
@@ -46,27 +46,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-23T22:12:00Z'
+      - '2025-06-03T03:36:46Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '7000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-23T22:12:06Z'
+      - '2025-06-03T03:36:52Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
-      - '49'
+      - '48'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-23T22:12:01Z'
+      - '2025-06-03T03:36:47Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '47000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-23T22:12:00Z'
+      - '2025-06-03T03:36:46Z'
       Request-Id:
-      - req_011CPREFCpFQV3JQEMgpXRDj
+      - req_011CPkb6mRZtWva2bG4N7VfT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -80,34 +80,37 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9447e46badb602e6-GRU
+      - 949c25e8385a03e5-GRU
     body:
       encoding: UTF-8
       string: |+
         event: message_start
-        data: {"type":"message_start","message":{"id":"msg_01Jn6oLML9WZ3nUgJdEQtZif","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":2,"service_tier":"standard"}}       }
+        data: {"type":"message_start","message":{"id":"msg_01A3XQwb6peW1ZouhqETCTYg","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":2,"service_tier":"standard"}}       }
 
         event: content_block_start
-        data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}            }
+        data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}      }
 
         event: ping
         data: {"type": "ping"}
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"5"}     }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"5"}      }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"\n10\n12"}         }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"\n10"}           }
+
+        event: content_block_delta
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"\n12"}  }
 
         event: content_block_stop
-        data: {"type":"content_block_stop","index":0         }
+        data: {"type":"content_block_stop","index":0           }
 
         event: message_delta
-        data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"output_tokens":9}             }
+        data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"output_tokens":9} }
 
         event: message_stop
-        data: {"type":"message_stop"           }
+        data: {"type":"message_stop"              }
 
-  recorded_at: Fri, 23 May 2025 22:11:41 GMT
+  recorded_at: Tue, 03 Jun 2025 03:36:36 GMT
 recorded_with: VCR 6.3.1
 ...

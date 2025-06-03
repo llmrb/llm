@@ -25,7 +25,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Sat, 17 May 2025 15:33:03 GMT
+      - Tue, 03 Jun 2025 03:39:50 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '24'
+      - '26'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Input-Images:
@@ -49,33 +49,33 @@ http_interactions:
       X-Ratelimit-Remaining-Input-Images:
       - '49999'
       X-Ratelimit-Remaining-Requests:
-      - '9987'
+      - '9986'
       X-Ratelimit-Remaining-Tokens:
-      - '187650'
+      - '187904'
       X-Ratelimit-Reset-Input-Images:
       - 1ms
       X-Ratelimit-Reset-Requests:
-      - 1m43.991s
+      - 1m58.047s
       X-Ratelimit-Reset-Tokens:
-      - 3.704s
+      - 3.628s
       X-Request-Id:
-      - req_803aa712d8f8a39cccb00baac4173990
+      - req_db13001db2f2d62fe19021a7d7485bb2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=0xQzLm.dN6Zn4A0gXV3W6JldrUHZTV28nXFAJ1Bc6gY-1747495983-1.0.1.1-IYIZPZLEtIEV5.8SGgzknAZYwHkOd7IofWj2Otb.y_p_1_UagIaVE0kHGp6nqY8Y1w8LpI2URQ0Yprq_SayGEACSm.RZk5fNoY4BQYh5JqU;
-        path=/; expires=Sat, 17-May-25 16:03:03 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=nqIlAdRi4P1zKXhIAjUbOCGEUx466Pg_8Yv599Gqt1I-1748921990-1.0.1.1-YVkbpw41E3SpIBHpUgKhRpWNivGuTwqm4mJo4Dyo1qGifnR_0GAROUD7oM0aJuUAY5CAxJT2p9UMsp6rdx0FtMXmSlpX5VM7ZE.Hbpno_to;
+        path=/; expires=Tue, 03-Jun-25 04:09:50 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=YsZYmWh7S9_1ZFHbWRbKq8AdCSD4lf53s1xcjkHHO3Q-1747495983440-0.0.1.1-604800000;
+      - _cfuvid=3cXnCj4.yh1hgy3jHEk8Lvn4unvYqGNyVPCAkaK49TE-1748921990691-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 94142bc76eefa43e-GRU
+      - 949c2a68abb00195-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -89,5 +89,5 @@ http_interactions:
             "code": "invalid_image_url"
           }
         }
-  recorded_at: Sat, 17 May 2025 15:32:58 GMT
+  recorded_at: Tue, 03 Jun 2025 03:39:40 GMT
 recorded_with: VCR 6.3.1

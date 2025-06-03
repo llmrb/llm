@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 17 May 2025 15:35:25 GMT
+      - Tue, 03 Jun 2025 03:42:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,11 +44,11 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '1549'
+      - '830'
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '1552'
+      - '836'
       X-Ratelimit-Limit-Requests:
       - '10000'
       X-Ratelimit-Limit-Tokens:
@@ -58,36 +58,36 @@ http_interactions:
       X-Ratelimit-Remaining-Tokens:
       - '199895'
       X-Ratelimit-Reset-Requests:
-      - 32.5s
+      - 29.072s
       X-Ratelimit-Reset-Tokens:
       - 31ms
       X-Request-Id:
-      - req_5e93fced2e2bd73b404cc7029edbb662
+      - req_bd44bb848bc02a9524049c8b0fd76878
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=p1TLc6WGJkc0C7s1gPGB78Rjgxh4RDjj7rFnCavQSac-1747496125-1.0.1.1-wUcTuUpaRz_Mc1tbwHSKzDABDnqavlpZqmt1ODSm0HFC2j7n4dnyHh.S1j7zf5yff_3FiLyAeTkizJ0bXQjkitJpUKk5GAq7lmGFbs2TqKQ;
-        path=/; expires=Sat, 17-May-25 16:05:25 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=VotGaQB9ZPIJOQ0j8o2.PIzZaZAIX_timimbAXN1tAM-1748922158-1.0.1.1-6tIjtrG2_nlwvOpdPPQo924F7zMEgdGJlB3VoKXjEl_E4aOeu_HFqZzrGdik_xIgFNPfdeKHC5k9HCv3hVSsXPrM9xA6UO40Nd9eckx8Rk0;
+        path=/; expires=Tue, 03-Jun-25 04:12:38 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=iZXXI0E8mPlU1Rsp2KjIUj6rXwCplAYGIwAZvrLQhsM-1747496125585-0.0.1.1-604800000;
+      - _cfuvid=xYjXiUcB8LlYAvRQ6hAExBc4UKwp_0kdRkBur7SGL74-1748922158144-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 94142f360cc7f1d5-GRU
+      - 949c2e7a3cdfa3ff-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BYDrIp7BTnjTvH9v4fFMd2Hok3BvE",
+          "id": "chatcmpl-BeCppacCjWEelw9kMBhNuRvWXvnTu",
           "object": "chat.completion",
-          "created": 1747496124,
+          "created": 1748922157,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -118,7 +118,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_54eb4bd693"
+          "system_fingerprint": "fp_34a54ae93c"
         }
-  recorded_at: Sat, 17 May 2025 15:35:21 GMT
+  recorded_at: Tue, 03 Jun 2025 03:42:27 GMT
 recorded_with: VCR 6.3.1

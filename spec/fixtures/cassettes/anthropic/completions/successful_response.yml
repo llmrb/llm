@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 17 May 2025 16:33:16 GMT
+      - Tue, 03 Jun 2025 03:37:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,27 +42,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-05-17T16:33:15Z'
+      - '2025-06-03T03:37:02Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-05-17T16:33:15Z'
+      - '2025-06-03T03:37:02Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
-      - '48'
+      - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-05-17T16:33:17Z'
+      - '2025-06-03T03:37:03Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-05-17T16:33:15Z'
+      - '2025-06-03T03:37:02Z'
       Request-Id:
-      - req_011CPDRZVnCWEg83EG6D6GC8
+      - req_011CPkb7v1XfdCVDZGfVaBaP
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -76,9 +76,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 941483f74a0a36f4-GRU
+      - 949c26499cd977c4-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01VSNFBT9sVUKFb8g3u8bpaZ","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Hello."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":42,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":5}}'
-  recorded_at: Sat, 17 May 2025 16:33:11 GMT
+      string: '{"id":"msg_01QD1bET13acX6EfpEeKRfqW","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Hello."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":42,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":5,"service_tier":"standard"}}'
+  recorded_at: Tue, 03 Jun 2025 03:36:52 GMT
 recorded_with: VCR 6.3.1
