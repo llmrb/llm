@@ -42,7 +42,8 @@ module LLM
     include Builder
 
     ##
-    # @return [Array<LLM::Message>]
+    # Returns an Enumerable for the messages in a conversation
+    # @return [LLM::Buffer<LLM::Message>]
     attr_reader :messages
 
     ##
