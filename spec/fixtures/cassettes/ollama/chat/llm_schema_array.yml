@@ -7,9 +7,9 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"Answer all of my questions"},{"role":"user","content":"Tell
         me the answer to 5 + 5"},{"role":"user","content":"Tell me the answer to 5
-        + 7"}],"model":"qwen3:latest","stream":false,"schema":{"type":"object","properties":{"answers":{"description":"The
+        + 7"}],"model":"qwen3:latest","schema":{"type":"object","properties":{"answers":{"description":"The
         answer to two questions","type":"array","items":{"type":"integer"}}},"required":["answers"]},"format":{"type":"object","properties":{"answers":{"description":"The
-        answer to two questions","type":"array","items":{"type":"integer"}}},"required":["answers"]}}'
+        answer to two questions","type":"array","items":{"type":"integer"}}},"required":["answers"]},"stream":true}'
     headers:
       Content-Type:
       - application/json
@@ -29,14 +29,27 @@ http_interactions:
       message: OK
     headers:
       Content-Type:
-      - application/json; charset=utf-8
+      - application/x-ndjson
       Date:
-      - Sat, 17 May 2025 15:27:11 GMT
-      Content-Length:
-      - '322'
+      - Thu, 05 Jun 2025 00:31:48 GMT
+      Transfer-Encoding:
+      - chunked
     body:
       encoding: UTF-8
-      string: '{"model":"qwen3:latest","created_at":"2025-05-17T15:27:11.18976464Z","message":{"role":"assistant","content":"{\"answers\":
-        [10, 12]}\n\n"},"done_reason":"stop","done":true,"total_duration":362717716,"load_duration":10806627,"prompt_eval_count":35,"prompt_eval_duration":13755173,"eval_count":14,"eval_duration":335979452}'
-  recorded_at: Sat, 17 May 2025 15:27:06 GMT
+      string: |
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:48.891406347Z","message":{"role":"assistant","content":"{\""},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:48.921145153Z","message":{"role":"assistant","content":"answer"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:48.949693321Z","message":{"role":"assistant","content":"s"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:48.97047955Z","message":{"role":"assistant","content":"\":"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:48.990772833Z","message":{"role":"assistant","content":" ["},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.011212093Z","message":{"role":"assistant","content":"1"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.031678056Z","message":{"role":"assistant","content":"0"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.052146762Z","message":{"role":"assistant","content":","},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.072602949Z","message":{"role":"assistant","content":" "},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.093007518Z","message":{"role":"assistant","content":"1"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.113418346Z","message":{"role":"assistant","content":"2"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.133869407Z","message":{"role":"assistant","content":"]"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.154342464Z","message":{"role":"assistant","content":"}\n\n"},"done":false}
+        {"model":"qwen3:latest","created_at":"2025-06-05T00:31:49.183959971Z","message":{"role":"assistant","content":""},"done_reason":"stop","done":true,"total_duration":343548117,"load_duration":9735328,"prompt_eval_count":35,"prompt_eval_duration":13646221,"eval_count":14,"eval_duration":317973353}
+  recorded_at: Thu, 05 Jun 2025 00:31:48 GMT
 recorded_with: VCR 6.3.1

@@ -15,6 +15,7 @@ RSpec.describe "LLM::Bot: ollama" do
   end
 
   context LLM::Function do
+    let(:params) { {stream: false} }
     include_examples "LLM::Bot: functions", :ollama
   end
 

@@ -61,7 +61,7 @@ module LLM
     #  When given an object a provider does not understand
     # @return (see LLM::Provider#complete)
     def complete(prompt, params = {})
-      params = {role: :user, model: default_model}.merge!(params)
+      params = {role: :user, model: default_model, stream: true}.merge!(params)
       params = [params, {format: params[:schema]}, format_tools(params)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true

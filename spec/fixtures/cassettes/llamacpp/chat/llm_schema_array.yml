@@ -35,19 +35,19 @@ http_interactions:
       Server:
       - llama.cpp
       Content-Length:
-      - '2615'
+      - '2617'
       Access-Control-Allow-Origin:
       - ''
     body:
       encoding: UTF-8
       string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"role":"assistant","content":"{
-        \"answers\": [ 10, 12 ] }\n\n"}}],"created":1747506612,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":16,"prompt_tokens":43,"total_tokens":59},"id":"chatcmpl-KcBUkVlM1unZbkJVdF8ZN2zUlAk9PZiL","__verbose":{"index":0,"content":"{
-        \"answers\": [ 10, 12 ] }\n\n","tokens":[],"id_slot":1,"stop":true,"model":"qwen3","tokens_predicted":16,"tokens_evaluated":43,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"answers
+        \"answers\": [ 10, 12 ] }\n"}}],"created":1749083846,"model":"qwen3","system_fingerprint":"b5379-360a9c98","object":"chat.completion","usage":{"completion_tokens":16,"prompt_tokens":43,"total_tokens":59},"id":"chatcmpl-dff3XG6GRHZEaM750sEutGf4EDkuo5zX","__verbose":{"index":0,"content":"{
+        \"answers\": [ 10, 12 ] }\n","tokens":[],"id_slot":0,"stop":true,"model":"qwen3","tokens_predicted":16,"tokens_evaluated":43,"generation_settings":{"n_predict":-1,"seed":4294967295,"temperature":0.800000011920929,"dynatemp_range":0.0,"dynatemp_exponent":1.0,"top_k":40,"top_p":0.949999988079071,"min_p":0.05000000074505806,"top_n_sigma":-1.0,"xtc_probability":0.0,"xtc_threshold":0.10000000149011612,"typical_p":1.0,"repeat_last_n":64,"repeat_penalty":1.0,"presence_penalty":0.0,"frequency_penalty":0.0,"dry_multiplier":0.0,"dry_base":1.75,"dry_allowed_length":2,"dry_penalty_last_n":4096,"dry_sequence_breakers":["\n",":","\"","*"],"mirostat":0,"mirostat_tau":5.0,"mirostat_eta":0.10000000149011612,"stop":[],"max_tokens":-1,"n_keep":0,"n_discard":0,"ignore_eos":false,"stream":false,"logit_bias":[],"n_probs":0,"min_keep":0,"grammar":"answers
         ::= \"[\" space (integer (\",\" space integer)*)? \"]\" space\nanswers-kv
         ::= \"\\\"answers\\\"\" space \":\" space answers\ninteger ::= (\"-\"? integral-part)
         space\nintegral-part ::= [0] | [1-9] [0-9]{0,15}\nroot ::= \"{\" space answers-kv
         \"}\" space\nspace ::= | \" \" | \"\\n\"{1,2} [ \\t]{0,20}\n","grammar_lazy":false,"grammar_triggers":[],"preserved_tokens":[],"chat_format":"Content-only","samplers":["penalties","dry","top_n_sigma","top_k","typ_p","top_p","min_p","xtc","temperature"],"speculative.n_max":16,"speculative.n_min":0,"speculative.p_min":0.75,"timings_per_token":false,"post_sampling_probs":false,"lora":[]},"prompt":"<|im_start|>user\nAnswer
         all of my questions<|im_end|>\n<|im_start|>user\nTell me the answer to 5 +
-        5<|im_end|>\n<|im_start|>user\nTell me the answer to 5 + 7<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":58,"timings":{"prompt_n":40,"prompt_ms":47.504,"prompt_per_token_ms":1.1876,"prompt_per_second":842.0343550016842,"predicted_n":16,"predicted_ms":347.909,"predicted_per_token_ms":21.7443125,"predicted_per_second":45.98903736321854}},"timings":{"prompt_n":40,"prompt_ms":47.504,"prompt_per_token_ms":1.1876,"prompt_per_second":842.0343550016842,"predicted_n":16,"predicted_ms":347.909,"predicted_per_token_ms":21.7443125,"predicted_per_second":45.98903736321854}}'
-  recorded_at: Sat, 17 May 2025 18:30:08 GMT
+        5<|im_end|>\n<|im_start|>user\nTell me the answer to 5 + 7<|im_end|>\n<|im_start|>assistant\n","has_new_line":true,"truncated":false,"stop_type":"eos","stopping_word":"","tokens_cached":58,"timings":{"prompt_n":40,"prompt_ms":36.993,"prompt_per_token_ms":0.924825,"prompt_per_second":1081.2856486362284,"predicted_n":16,"predicted_ms":338.255,"predicted_per_token_ms":21.1409375,"predicted_per_second":47.30159199420556}},"timings":{"prompt_n":40,"prompt_ms":36.993,"prompt_per_token_ms":0.924825,"prompt_per_second":1081.2856486362284,"predicted_n":16,"predicted_ms":338.255,"predicted_per_token_ms":21.1409375,"predicted_per_second":47.30159199420556}}'
+  recorded_at: Thu, 05 Jun 2025 00:37:26 GMT
 recorded_with: VCR 6.3.1

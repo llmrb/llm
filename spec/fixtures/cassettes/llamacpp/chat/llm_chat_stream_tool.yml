@@ -5,9 +5,8 @@ http_interactions:
     uri: http://localhost:8080/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
-        a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]}],"model":"qwen3","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Run the
+        tool"}]}],"model":"qwen3","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}],"stream":true}'
     headers:
       Content-Type:
@@ -40,5 +39,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"error":{"code":500,"message":"Cannot use tools with stream","type":"server_error"}}'
-  recorded_at: Wed, 21 May 2025 01:13:23 GMT
+  recorded_at: Thu, 05 Jun 2025 00:37:11 GMT
 recorded_with: VCR 6.3.1
