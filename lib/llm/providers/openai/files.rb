@@ -13,7 +13,7 @@ class LLM::OpenAI
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm).lazy
+  #   bot = LLM::Bot.new(llm)
   #   file = llm.files.create file: "/documents/freebsd.pdf"
   #   bot.chat(file)
   #   bot.chat("Describe the document")
@@ -24,7 +24,7 @@ class LLM::OpenAI
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm).lazy
+  #   bot = LLM::Bot.new(llm)
   #   file = llm.files.create file: "/documents/openbsd.pdf"
   #   bot.chat(["Describe the document I sent to you", file])
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }

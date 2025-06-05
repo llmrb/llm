@@ -14,7 +14,7 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.ollama(nil)
-  #   bot = LLM::Bot.new(llm, model: "llava").lazy
+  #   bot = LLM::Bot.new(llm, model: "llava")
   #   bot.chat LLM::File("/images/capybara.png")
   #   bot.chat "Describe the image"
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }

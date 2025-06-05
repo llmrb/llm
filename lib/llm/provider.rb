@@ -83,7 +83,7 @@ class LLM::Provider
   # @return [LLM::Bot]
   def chat(prompt, params = {})
     role = params.delete(:role)
-    LLM::Bot.new(self, params).lazy.chat(prompt, role:)
+    LLM::Bot.new(self, params).chat(prompt, role:)
   end
 
   ##
@@ -111,7 +111,7 @@ class LLM::Provider
   # @return [LLM::Bot]
   def respond(prompt, params = {})
     role = params.delete(:role)
-    LLM::Bot.new(self, params).lazy.respond(prompt, role:)
+    LLM::Bot.new(self, params).respond(prompt, role:)
   end
 
   ##

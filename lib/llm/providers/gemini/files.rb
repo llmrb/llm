@@ -18,7 +18,7 @@ class LLM::Gemini
   #   require "llm"
   #
   #   llm = LLM.gemini(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm).lazy
+  #   bot = LLM::Bot.new(llm)
   #   file = llm.files.create file: "/audio/haiku.mp3"
   #   bot.chat(file)
   #   bot.chat("Describe the audio file I sent to you")
@@ -30,7 +30,7 @@ class LLM::Gemini
   #   require "llm"
   #
   #   llm = LLM.gemini(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm).lazy
+  #   bot = LLM::Bot.new(llm)
   #   file = llm.files.create file: "/audio/haiku.mp3"
   #   bot.chat(["Describe the audio file I sent to you", file])
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }

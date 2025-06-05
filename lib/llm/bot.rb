@@ -12,7 +12,7 @@ module LLM
   #   require "llm"
   #
   #   llm  = LLM.openai(ENV["KEY"])
-  #   bot  = LLM::Bot.new(llm).lazy
+  #   bot  = LLM::Bot.new(llm)
   #   msgs = bot.chat do |prompt|
   #     prompt.system "Answer the following questions."
   #     prompt.user "What is 5 + 7 ?"
@@ -26,7 +26,7 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm).lazy
+  #   bot = LLM::Bot.new(llm)
   #   bot.chat "Answer the following questions.", role: :system
   #   bot.chat "What is 5 + 7 ?", role: :user
   #   bot.chat "Why is the sky blue ?", role: :user

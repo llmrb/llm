@@ -15,7 +15,7 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.gemini(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm).lazy
+  #   bot = LLM::Bot.new(llm)
   #   bot.chat LLM.File("/images/capybara.png")
   #   bot.chat "Describe the image"
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
@@ -25,7 +25,7 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.gemini(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm).lazy
+  #   bot = LLM::Bot.new(llm)
   #   bot.chat ["Describe the image", LLM::File("/images/capybara.png")]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Gemini < Provider
