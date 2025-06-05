@@ -64,11 +64,17 @@ module LLM
 
     ##
     # Maintain a conversation via the chat completions API
-    # @param prompt (see LLM::Provider#complete)
-    # @param params (see LLM::Provider#complete)
-    # @yieldparam [LLM::Bot::CompletionPrompt] prompt Yields a prompt
-    # @return [LLM::Bot, Array<LLM::Message>, LLM::Buffer]
-    #  Returns self unless given a block, otherwise returns messages
+    # @overload def chat(prompt, params = {})
+    #   @param prompt (see LLM::Provider#complete)
+    #   @param params The params
+    #   @return [LLM::Bot]
+    #     Returns self
+    # @overload def chat(prompt, params, &block)
+    #   @param prompt (see LLM::Provider#complete)
+    #   @param params The params
+    #   @yield prompt Yields a prompt
+    #   @return [LLM::Buffer]
+    #     Returns messages
     def chat(prompt = nil, params = {})
       if block_given?
         params = prompt
@@ -84,11 +90,18 @@ module LLM
 
     ##
     # Maintain a conversation via the responses API
-    # @note Not all LLM providers support this API
-    # @param prompt (see LLM::Provider#complete)
-    # @param params (see LLM::Provider#complete)
-    # @return [LLM::Bot, Array<LLM::Message>, LLM::Buffer]
-    #  Returns self unless given a block, otherwise returns messages
+    # @overload def respond(prompt, params = {})
+    #   @param prompt (see LLM::Provider#complete)
+    #   @param params The params
+    #   @return [LLM::Bot]
+    #     Returns self
+    # @overload def respond(prompt, params, &block)
+    #   @note Not all LLM providers support this API
+    #   @param prompt (see LLM::Provider#complete)
+    #   @param params The params
+    #   @yield prompt Yields a prompt
+    #   @return [LLM::Buffer]
+    #     Returns messages
     def respond(prompt = nil, params = {})
       if block_given?
         params = prompt
