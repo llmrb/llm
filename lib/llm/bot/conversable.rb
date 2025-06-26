@@ -25,7 +25,5 @@ class LLM::Bot
       role = params.delete(:role)
       @messages.push [LLM::Message.new(role, prompt), @params.merge(params), :complete]
     end
-
-    include LLM
   end
 end
