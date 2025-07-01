@@ -10,7 +10,7 @@ images, files, and JSON Schema generation.
 #### General
 - ✅ A single unified interface for multiple providers
 - 📦 Zero dependencies outside Ruby's standard library
-- 🚀 Optimized for performance and low memory usage
+- 🚀 Efficient API design that minimizes the request count
 
 #### Chat, Agents
 - 🧠 Stateless and stateful chat via completions and responses API
