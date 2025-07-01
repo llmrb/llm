@@ -8,11 +8,13 @@ Gem::Specification.new do |spec|
   spec.authors = ["Antar Azri", "0x1eef"]
   spec.email = ["azantar@proton.me", "0x1eef@proton.me"]
 
-  spec.summary = "llm.rb is a zero-dependency Ruby toolkit for " \
-                 "Large Language Models that includes OpenAI, Gemini, " \
-                 "Anthropic, DeepSeek, Ollama, and LlamaCpp. It’s fast, simple " \
-                 "and composable – with full support for chat, streaming, tool calling, audio, " \
-                 "images, files, and JSON Schema generation."
+  spec.summary = <<~SUMMARY
+  llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
+  includes OpenAI, Gemini, Anthropic, DeepSeek, Ollama, and LlamaCpp. The
+  toolkit includes full support for chat, streaming, tool calling, audio,
+  images, files, and JSON Schema generation.
+  SUMMARY
+
   spec.description = spec.summary
   spec.homepage = "https://github.com/llmrb/llm"
   spec.license = "0BSDL"
