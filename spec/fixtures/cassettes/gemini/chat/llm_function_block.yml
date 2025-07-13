@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 17 May 2025 16:33:57 GMT
+      - Sun, 13 Jul 2025 22:43:02 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1179
+      - gfet4t7; dur=1194
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -67,7 +67,7 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -1.59346018335782e-05
+              "avgLogprobs": -1.4424294931814075e-05
             }
           ],
           "usageMetadata": {
@@ -87,9 +87,10 @@ http_interactions:
               }
             ]
           },
-          "modelVersion": "gemini-1.5-flash"
+          "modelVersion": "gemini-1.5-flash",
+          "responseId": "djZ0aK2bD6vLnvgP8LmBsA0"
         }
-  recorded_at: Sat, 17 May 2025 16:33:52 GMT
+  recorded_at: Sun, 13 Jul 2025 22:42:52 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
@@ -122,7 +123,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 17 May 2025 16:33:58 GMT
+      - Sun, 13 Jul 2025 22:43:03 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -132,7 +133,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=584
+      - gfet4t7; dur=1123
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -146,19 +147,19 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "OK. The date command ran successfully.  Anything else?\n"
+                    "text": "OK.  Anything else?\n"
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.28035470155569225
+              "avgLogprobs": -0.039797774382999966
             }
           ],
           "usageMetadata": {
             "promptTokenCount": 34,
-            "candidatesTokenCount": 13,
-            "totalTokenCount": 47,
+            "candidatesTokenCount": 7,
+            "totalTokenCount": 41,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
@@ -168,11 +169,12 @@ http_interactions:
             "candidatesTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 13
+                "tokenCount": 7
               }
             ]
           },
-          "modelVersion": "gemini-1.5-flash"
+          "modelVersion": "gemini-1.5-flash",
+          "responseId": "dzZ0aKKuJYq2nvgPvce1uQQ"
         }
-  recorded_at: Sat, 17 May 2025 16:33:53 GMT
+  recorded_at: Sun, 13 Jul 2025 22:42:53 GMT
 recorded_with: VCR 6.3.1

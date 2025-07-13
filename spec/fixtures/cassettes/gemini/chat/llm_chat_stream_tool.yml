@@ -36,7 +36,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sat, 24 May 2025 19:02:05 GMT
+      - Sun, 13 Jul 2025 22:42:59 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -46,7 +46,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1236
+      - gfet4t7; dur=1272
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
@@ -56,8 +56,8 @@ http_interactions:
         \"STOP\"}],\"usageMetadata\": {\"promptTokenCount\": 26,\"candidatesTokenCount\":
         3,\"totalTokenCount\": 29,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
         26}],\"candidatesTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        3}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\": \"rBcyaJ-SN4iT7dcPq42tuAY\"}\r\n\r\n"
-  recorded_at: Sat, 24 May 2025 19:01:43 GMT
+        3}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\": \"czZ0aJTgC5v3_NUP2o7KgAM\"}\r\n\r\n"
+  recorded_at: Sun, 13 Jul 2025 22:42:49 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key=TOKEN
@@ -94,7 +94,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Sat, 24 May 2025 19:02:06 GMT
+      - Sun, 13 Jul 2025 22:43:00 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -104,7 +104,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1095
+      - gfet4t7; dur=1081
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
@@ -112,16 +112,12 @@ http_interactions:
       string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"OK\"}],\"role\":
         \"model\"}}],\"usageMetadata\": {\"promptTokenCount\": 73,\"totalTokenCount\":
         73,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\": 73}]},\"modelVersion\":
-        \"gemini-1.5-flash\",\"responseId\": \"rhcyaM72EfyQ7dcPhLua8AU\"}\r\n\r\ndata:
-        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \".  The date command
-        executed successfully.  Do you have any other commands you\"}],\"role\": \"model\"}}],\"usageMetadata\":
-        {\"promptTokenCount\": 73,\"totalTokenCount\": 73,\"promptTokensDetails\":
-        [{\"modality\": \"TEXT\",\"tokenCount\": 73}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\":
-        \"rhcyaM72EfyQ7dcPhLua8AU\"}\r\n\r\ndata: {\"candidates\": [{\"content\":
-        {\"parts\": [{\"text\": \" would like me to run?\\n\"}],\"role\": \"model\"},\"finishReason\":
-        \"STOP\"}],\"usageMetadata\": {\"promptTokenCount\": 34,\"candidatesTokenCount\":
-        24,\"totalTokenCount\": 58,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        34}],\"candidatesTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        24}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\": \"rhcyaM72EfyQ7dcPhLua8AU\"}\r\n\r\n"
-  recorded_at: Sat, 24 May 2025 19:01:44 GMT
+        \"gemini-1.5-flash\",\"responseId\": \"dDZ0aIHFI6HS1PIPiYeK0QU\"}\r\n\r\ndata:
+        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \".  Anything else?\\n\"}],\"role\":
+        \"model\"},\"finishReason\": \"STOP\"}],\"usageMetadata\": {\"promptTokenCount\":
+        34,\"candidatesTokenCount\": 7,\"totalTokenCount\": 41,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 34}],\"candidatesTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 7}]},\"modelVersion\": \"gemini-1.5-flash\",\"responseId\":
+        \"dDZ0aIHFI6HS1PIPiYeK0QU\"}\r\n\r\n"
+  recorded_at: Sun, 13 Jul 2025 22:42:50 GMT
 recorded_with: VCR 6.3.1

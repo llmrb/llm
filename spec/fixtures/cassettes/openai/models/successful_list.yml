@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Jun 2025 03:42:30 GMT
+      - Sun, 13 Jul 2025 22:46:43 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,25 +33,25 @@ http_interactions:
       Openai-Version:
       - '2020-10-01'
       X-Request-Id:
-      - 4923447cd0150405d1ffd8915aea9125
+      - e8733a18c036172ead66f4d9c5d3304e
       Openai-Processing-Ms:
-      - '161'
+      - '117'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=9CFvwwrPdAo8mklWkwLdV8t60lWbu4x8_RTQmEoBQas-1748922150-1.0.1.1-d4hkSg92CEBzoTILyWgEQhnBbcUVab0lTz3D9uXigFGWwwTmqHXhSeTz86EB6ks6n8raMv2Avpq08AACi.ovXJlo4hQtsekGqf.J2mFcQPg;
-        path=/; expires=Tue, 03-Jun-25 04:12:30 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=NilsmNdS18q_U8DrBUKejIGq0YrcEpfu9U30lSwpbr4-1752446803-1.0.1.1-KePhgFqKyMu3ePP.MSje1A15DfxTrReHTZwgp.LCqvez9KFuEegI02TVzl8RMS19sr9Gfg9.vXmxKVxb2ds_l.PaMk1Onp52g0fcu2cV52M;
+        path=/; expires=Sun, 13-Jul-25 23:16:43 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=cIDyrxNFuZU4vAXeJPH9YWoq3NcBnh9XZZBIK3cUGKY-1748922150696-0.0.1.1-604800000;
+      - _cfuvid=xVGe8TnSv7cT96HLcDKt1bYtgaW_oOjTmGI4u6S89Q8-1752446803094-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 949c2e4dbe09f1ef-GRU
+      - 95ec51639cc9f1bd-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -79,33 +79,33 @@ http_interactions:
               "owned_by": "openai"
             },
             {
+              "id": "o4-mini-deep-research-2025-06-26",
+              "object": "model",
+              "created": 1750866121,
+              "owned_by": "system"
+            },
+            {
               "id": "codex-mini-latest",
               "object": "model",
               "created": 1746673257,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4.1-mini",
+              "id": "gpt-4o-realtime-preview-2025-06-03",
               "object": "model",
-              "created": 1744318173,
+              "created": 1748907838,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4.1-nano-2025-04-14",
+              "id": "gpt-4o-audio-preview-2025-06-03",
               "object": "model",
-              "created": 1744321025,
+              "created": 1748908498,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4.1-nano",
+              "id": "o4-mini-deep-research",
               "object": "model",
-              "created": 1744321707,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-image-1",
-              "object": "model",
-              "created": 1745517030,
+              "created": 1749685485,
               "owned_by": "system"
             },
             {
@@ -475,6 +475,30 @@ http_interactions:
               "owned_by": "system"
             },
             {
+              "id": "gpt-4.1-mini",
+              "object": "model",
+              "created": 1744318173,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-nano-2025-04-14",
+              "object": "model",
+              "created": 1744321025,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4.1-nano",
+              "object": "model",
+              "created": 1744321707,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-image-1",
+              "object": "model",
+              "created": 1745517030,
+              "owned_by": "system"
+            },
+            {
               "id": "gpt-3.5-turbo-16k",
               "object": "model",
               "created": 1683758102,
@@ -500,5 +524,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Tue, 03 Jun 2025 03:42:20 GMT
+  recorded_at: Sun, 13 Jul 2025 22:46:32 GMT
 recorded_with: VCR 6.3.1

@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Jun 2025 03:37:02 GMT
+      - Sun, 13 Jul 2025 22:42:10 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,27 +42,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '40000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-06-03T03:37:02Z'
+      - '2025-07-13T22:42:10Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-06-03T03:37:02Z'
+      - '2025-07-13T22:42:10Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
-      - '49'
+      - '48'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-06-03T03:37:03Z'
+      - '2025-07-13T22:42:11Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '48000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '48000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-06-03T03:37:02Z'
+      - '2025-07-13T22:42:10Z'
       Request-Id:
-      - req_011CPkb7v1XfdCVDZGfVaBaP
+      - req_011CR5poJbE9X94V4gZNMZEo
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -76,9 +76,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 949c26499cd977c4-GRU
+      - 95ec4aba9fb3f1b1-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01QD1bET13acX6EfpEeKRfqW","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Hello."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":42,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":5,"service_tier":"standard"}}'
-  recorded_at: Tue, 03 Jun 2025 03:36:52 GMT
+      string: '{"id":"msg_01G8HhFQsZRNVnWy4FRcpLYf","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Hello."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":42,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":5,"service_tier":"standard"}}'
+  recorded_at: Sun, 13 Jul 2025 22:42:00 GMT
 recorded_with: VCR 6.3.1

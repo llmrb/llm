@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Jun 2025 03:42:40 GMT
+      - Sun, 13 Jul 2025 22:46:51 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,11 +44,11 @@ http_interactions:
       X-Ratelimit-Limit-Tokens:
       - '200000'
       X-Ratelimit-Remaining-Requests:
-      - '9995'
+      - '9992'
       X-Ratelimit-Remaining-Tokens:
       - '199856'
       X-Ratelimit-Reset-Requests:
-      - 35.596s
+      - 1m9.098s
       X-Ratelimit-Reset-Tokens:
       - 43ms
       Openai-Version:
@@ -56,51 +56,53 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       X-Request-Id:
-      - req_b37d4c15605a59ae93b09a11593c92e5
+      - req_fb507e8e9d30573112ce1a4ff81e567a
       Openai-Processing-Ms:
-      - '1002'
+      - '1212'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=c12EUn21UiMstANBE6a7lSlguYprYw0jhUlspyVpkRY-1748922160-1.0.1.1-c4s9GvKocASan5LaEygWdQQTwo12ic7fP4tjrM_1vvVd9ggDdGm9L2xzksjLpG.hynpOIAXIaH4O.6ZmCvfGdTXw_LjkMe3v6Z39EIoNdOw;
-        path=/; expires=Tue, 03-Jun-25 04:12:40 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=LK6X_15.br_2B1.ZcIshfzVGkSonEY24O8NJ58rQZYA-1752446811-1.0.1.1-MKpJYa0pcW9sxQbMNGZ7hJoCBUtE6nYm2sovzdb0S0OrfTxv7OdwFoHC7p7hq5OAIRWtdMQQKEWjKbS84POyz77_BeXwA4E2y7VC4opQ4pw;
+        path=/; expires=Sun, 13-Jul-25 23:16:51 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=F1sPwThXdo.JkewNHcMFBol8SBAIOwT1t4pMv1w9S.E-1748922160460-0.0.1.1-604800000;
+      - _cfuvid=dYvVNTYfHxb8HzUaTF.DopSEDUpdvxZiEv3z_cLn6QE-1752446811894-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 949c2e86afe8011e-GRU
+      - 95ec5194cfcea52f-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_683e6f2f43ec819b8d8c0ac5d844269600b2c0199a2e861f",
+          "id": "resp_6874375a7e68819a96b473ba00cb9bb70568f09e247c074a",
           "object": "response",
-          "created_at": 1748922159,
+          "created_at": 1752446810,
           "status": "completed",
           "background": false,
           "error": null,
           "incomplete_details": null,
           "instructions": null,
           "max_output_tokens": null,
+          "max_tool_calls": null,
           "model": "gpt-4o-mini-2024-07-18",
           "output": [
             {
-              "id": "msg_683e6f2fbe4c819bbe38e29cf9b4f17300b2c0199a2e861f",
+              "id": "msg_6874375ad6d0819aaaa93ecd156495590568f09e247c074a",
               "type": "message",
               "status": "completed",
               "content": [
                 {
                   "type": "output_text",
                   "annotations": [],
-                  "text": "The answer to 5 + 15 is 20.\n\nThe answer to (5 + 15) * 2 is 40.\n\nThe answer to ((5 + 15) * 2) / 10 is 4."
+                  "logprobs": [],
+                  "text": "The answer to 5 + 15 is 20.  \nThe answer to (5 + 15) * 2 is 40.  \nThe answer to ((5 + 15) * 2) / 10 is 4."
                 }
               ],
               "role": "assistant"
@@ -122,6 +124,7 @@ http_interactions:
           },
           "tool_choice": "auto",
           "tools": [],
+          "top_logprobs": 0,
           "top_p": 1.0,
           "truncation": "disabled",
           "usage": {
@@ -129,14 +132,14 @@ http_interactions:
             "input_tokens_details": {
               "cached_tokens": 0
             },
-            "output_tokens": 49,
+            "output_tokens": 51,
             "output_tokens_details": {
               "reasoning_tokens": 0
             },
-            "total_tokens": 174
+            "total_tokens": 176
           },
           "user": null,
           "metadata": {}
         }
-  recorded_at: Tue, 03 Jun 2025 03:42:29 GMT
+  recorded_at: Sun, 13 Jul 2025 22:46:41 GMT
 recorded_with: VCR 6.3.1

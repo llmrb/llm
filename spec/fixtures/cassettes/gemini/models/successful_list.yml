@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 17 May 2025 16:34:57 GMT
+      - Sun, 13 Jul 2025 22:44:05 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=823
+      - gfet4t7; dur=822
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -106,23 +106,6 @@ http_interactions:
               "maxTemperature": 2
             },
             {
-              "name": "models/gemini-1.5-pro-001",
-              "version": "001",
-              "displayName": "Gemini 1.5 Pro 001",
-              "description": "Stable version of Gemini 1.5 Pro, our mid-size multimodal model that supports up to 2 million tokens, released in May of 2024.",
-              "inputTokenLimit": 2000000,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens",
-                "createCachedContent"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 64,
-              "maxTemperature": 2
-            },
-            {
               "name": "models/gemini-1.5-pro-002",
               "version": "002",
               "displayName": "Gemini 1.5 Pro 002",
@@ -169,40 +152,6 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 40,
-              "maxTemperature": 2
-            },
-            {
-              "name": "models/gemini-1.5-flash-001",
-              "version": "001",
-              "displayName": "Gemini 1.5 Flash 001",
-              "description": "Stable version of Gemini 1.5 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in May of 2024.",
-              "inputTokenLimit": 1000000,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens",
-                "createCachedContent"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 64,
-              "maxTemperature": 2
-            },
-            {
-              "name": "models/gemini-1.5-flash-001-tuning",
-              "version": "001",
-              "displayName": "Gemini 1.5 Flash 001 Tuning",
-              "description": "Version of Gemini 1.5 Flash that supports tuning, our fast and versatile multimodal model for scaling across diverse tasks, released in May of 2024.",
-              "inputTokenLimit": 16384,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens",
-                "createTunedModel"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 64,
               "maxTemperature": 2
             },
             {
@@ -290,56 +239,6 @@ http_interactions:
               "maxTemperature": 2
             },
             {
-              "name": "models/gemini-1.5-flash-8b-exp-0827",
-              "version": "001",
-              "displayName": "Gemini 1.5 Flash 8B Experimental 0827",
-              "description": "Experimental release (August 27th, 2024) of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model. Replaced by Gemini-1.5-flash-8b-001 (stable).",
-              "inputTokenLimit": 1000000,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 40,
-              "maxTemperature": 2
-            },
-            {
-              "name": "models/gemini-1.5-flash-8b-exp-0924",
-              "version": "001",
-              "displayName": "Gemini 1.5 Flash 8B Experimental 0924",
-              "description": "Experimental release (September 24th, 2024) of Gemini 1.5 Flash-8B, our smallest and most cost effective Flash model. Replaced by Gemini-1.5-flash-8b-001 (stable).",
-              "inputTokenLimit": 1000000,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 40,
-              "maxTemperature": 2
-            },
-            {
-              "name": "models/gemini-2.5-pro-exp-03-25",
-              "version": "2.5-exp-03-25",
-              "displayName": "Gemini 2.5 Pro Experimental 03-25",
-              "description": "Experimental release (March 25th, 2025) of Gemini 2.5 Pro",
-              "inputTokenLimit": 1048576,
-              "outputTokenLimit": 65536,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens",
-                "createCachedContent",
-                "batchGenerateContent"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 64,
-              "maxTemperature": 2
-            },
-            {
               "name": "models/gemini-2.5-pro-preview-03-25",
               "version": "2.5-preview-03-25",
               "displayName": "Gemini 2.5 Pro Preview 03-25",
@@ -355,7 +254,8 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.5-flash-preview-04-17",
@@ -373,7 +273,46 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
+            },
+            {
+              "name": "models/gemini-2.5-flash-preview-05-20",
+              "version": "2.5-preview-05-20",
+              "displayName": "Gemini 2.5 Flash Preview 05-20",
+              "description": "Preview release (April 17th, 2025) of Gemini 2.5 Flash",
+              "inputTokenLimit": 1048576,
+              "outputTokenLimit": 65536,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens",
+                "createCachedContent",
+                "batchGenerateContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2,
+              "thinking": true
+            },
+            {
+              "name": "models/gemini-2.5-flash",
+              "version": "001",
+              "displayName": "Gemini 2.5 Flash",
+              "description": "Stable version of Gemini 2.5 Flash, our mid-size multimodal model that supports up to 1 million tokens, released in June of 2025.",
+              "inputTokenLimit": 1048576,
+              "outputTokenLimit": 65536,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens",
+                "createCachedContent",
+                "batchGenerateContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.5-flash-preview-04-17-thinking",
@@ -391,7 +330,27 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
+            },
+            {
+              "name": "models/gemini-2.5-flash-lite-preview-06-17",
+              "version": "2.5-preview-06-17",
+              "displayName": "Gemini 2.5 Flash-Lite Preview 06-17",
+              "description": "Preview release (June 11th, 2025) of Gemini 2.5 Flash-Lite",
+              "inputTokenLimit": 1048576,
+              "outputTokenLimit": 65536,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens",
+                "createCachedContent",
+                "batchGenerateContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.5-pro-preview-05-06",
@@ -409,7 +368,46 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
+            },
+            {
+              "name": "models/gemini-2.5-pro-preview-06-05",
+              "version": "2.5-preview-06-05",
+              "displayName": "Gemini 2.5 Pro Preview",
+              "description": "Preview release (June 5th, 2025) of Gemini 2.5 Pro",
+              "inputTokenLimit": 1048576,
+              "outputTokenLimit": 65536,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens",
+                "createCachedContent",
+                "batchGenerateContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2,
+              "thinking": true
+            },
+            {
+              "name": "models/gemini-2.5-pro",
+              "version": "2.5",
+              "displayName": "Gemini 2.5 Pro",
+              "description": "Stable release (June 17th, 2025) of Gemini 2.5 Pro",
+              "inputTokenLimit": 1048576,
+              "outputTokenLimit": 65536,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens",
+                "createCachedContent",
+                "batchGenerateContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.0-flash-exp",
@@ -485,7 +483,7 @@ http_interactions:
               "name": "models/gemini-2.0-flash-lite-001",
               "version": "2.0",
               "displayName": "Gemini 2.0 Flash-Lite 001",
-              "description": "Stable version of Gemini 2.0 Flash Lite",
+              "description": "Stable version of Gemini 2.0 Flash-Lite",
               "inputTokenLimit": 1048576,
               "outputTokenLimit": 8192,
               "supportedGenerationMethods": [
@@ -537,7 +535,7 @@ http_interactions:
               "name": "models/gemini-2.0-flash-lite-preview-02-05",
               "version": "preview-02-05",
               "displayName": "Gemini 2.0 Flash-Lite Preview 02-05",
-              "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash Lite",
+              "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash-Lite",
               "inputTokenLimit": 1048576,
               "outputTokenLimit": 8192,
               "supportedGenerationMethods": [
@@ -555,7 +553,7 @@ http_interactions:
               "name": "models/gemini-2.0-flash-lite-preview",
               "version": "preview-02-05",
               "displayName": "Gemini 2.0 Flash-Lite Preview",
-              "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash Lite",
+              "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash-Lite",
               "inputTokenLimit": 1048576,
               "outputTokenLimit": 8192,
               "supportedGenerationMethods": [
@@ -585,7 +583,8 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.0-pro-exp-02-05",
@@ -603,7 +602,8 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-exp-1206",
@@ -621,7 +621,8 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.0-flash-thinking-exp-01-21",
@@ -639,7 +640,8 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.0-flash-thinking-exp",
@@ -657,7 +659,8 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 2,
+              "thinking": true
             },
             {
               "name": "models/gemini-2.0-flash-thinking-exp-1219",
@@ -671,6 +674,39 @@ http_interactions:
                 "countTokens",
                 "createCachedContent",
                 "batchGenerateContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2,
+              "thinking": true
+            },
+            {
+              "name": "models/gemini-2.5-flash-preview-tts",
+              "version": "gemini-2.5-flash-exp-tts-2025-05-19",
+              "displayName": "Gemini 2.5 Flash Preview TTS",
+              "description": "Gemini 2.5 Flash Preview TTS",
+              "inputTokenLimit": 8192,
+              "outputTokenLimit": 16384,
+              "supportedGenerationMethods": [
+                "countTokens",
+                "generateContent"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64,
+              "maxTemperature": 2
+            },
+            {
+              "name": "models/gemini-2.5-pro-preview-tts",
+              "version": "gemini-2.5-pro-preview-tts-2025-05-19",
+              "displayName": "Gemini 2.5 Pro Preview TTS",
+              "description": "Gemini 2.5 Pro Preview TTS",
+              "inputTokenLimit": 8192,
+              "outputTokenLimit": 16384,
+              "supportedGenerationMethods": [
+                "countTokens",
+                "generateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -750,6 +786,34 @@ http_interactions:
               "topK": 64
             },
             {
+              "name": "models/gemma-3n-e4b-it",
+              "version": "001",
+              "displayName": "Gemma 3n E4B",
+              "inputTokenLimit": 8192,
+              "outputTokenLimit": 2048,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64
+            },
+            {
+              "name": "models/gemma-3n-e2b-it",
+              "version": "001",
+              "displayName": "Gemma 3n E2B",
+              "inputTokenLimit": 8192,
+              "outputTokenLimit": 2048,
+              "supportedGenerationMethods": [
+                "generateContent",
+                "countTokens"
+              ],
+              "temperature": 1,
+              "topP": 0.95,
+              "topK": 64
+            },
+            {
               "name": "models/embedding-001",
               "version": "001",
               "displayName": "Embedding 001",
@@ -780,7 +844,8 @@ http_interactions:
               "outputTokenLimit": 1,
               "supportedGenerationMethods": [
                 "embedContent",
-                "countTextTokens"
+                "countTextTokens",
+                "countTokens"
               ]
             },
             {
@@ -792,7 +857,8 @@ http_interactions:
               "outputTokenLimit": 1,
               "supportedGenerationMethods": [
                 "embedContent",
-                "countTextTokens"
+                "countTextTokens",
+                "countTokens"
               ]
             },
             {
@@ -808,35 +874,9 @@ http_interactions:
               "temperature": 0.2,
               "topP": 1,
               "topK": 40
-            },
-            {
-              "name": "models/imagen-3.0-generate-002",
-              "version": "002",
-              "displayName": "Imagen 3.0 002 model",
-              "description": "Vertex served Imagen 3.0 002 model",
-              "inputTokenLimit": 480,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "predict"
-              ]
-            },
-            {
-              "name": "models/gemini-2.0-flash-live-001",
-              "version": "001",
-              "displayName": "Gemini 2.0 Flash 001",
-              "description": "Gemini 2.0 Flash 001",
-              "inputTokenLimit": 131072,
-              "outputTokenLimit": 8192,
-              "supportedGenerationMethods": [
-                "bidiGenerateContent",
-                "countTokens"
-              ],
-              "temperature": 1,
-              "topP": 0.95,
-              "topK": 64,
-              "maxTemperature": 2
             }
-          ]
+          ],
+          "nextPageToken": "Cgptb2RlbHMvYXFh"
         }
-  recorded_at: Sat, 17 May 2025 16:34:52 GMT
+  recorded_at: Sun, 13 Jul 2025 22:43:55 GMT
 recorded_with: VCR 6.3.1
