@@ -23,9 +23,13 @@ module LLM
     #  Yields each message in the conversation thread
     # @raise (see LLM::Provider#complete)
     # @return [void]
-    def each
-      empty! unless @pending.empty?
-      @completed.each { yield(_1) }
+    def each(...)
+      if block_given?
+        empty! unless @pending.empty?
+        @completed.each { yield(_1) }
+      else
+        enum_for(:each, ...)
+      end
     end
 
     ##

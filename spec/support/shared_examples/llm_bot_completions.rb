@@ -13,7 +13,8 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
       "Nothing else"
     end
 
-    subject(:message) { bot.messages.to_a[-1] }
+    let(:messages) { bot.messages }
+    let(:message) { messages.to_a[-1] }
 
     before do
       bot.chat prompt
@@ -22,11 +23,15 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
       bot.chat "What is 5+7 ?"
     end
 
-    it "maintains a conversation" do
-      is_expected.to have_attributes(
+    it "provides a response" do
+      expect(message).to have_attributes(
         role: %r_\A(assistant|model)\z_,
         content: %r_5\s*\n10\s*\n12\s*_
       )
+    end
+
+    it "provides an Enumerator" do
+      expect(messages.each).to be_a(Enumerator)
     end
   end
 end
