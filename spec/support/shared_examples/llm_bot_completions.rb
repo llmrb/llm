@@ -33,5 +33,13 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
     it "provides an Enumerator" do
       expect(messages.each).to be_a(Enumerator)
     end
+
+    it "provides a message at an index" do
+      0.upto(4) { |i| expect(messages[i]).to be_a(LLM::Message) }
+    end
+
+    it "returns nil when an index is out of bounds" do
+      expect(messages[5]).to be_nil
+    end
   end
 end

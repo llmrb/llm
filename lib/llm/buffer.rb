@@ -2,7 +2,6 @@
 
 module LLM
   ##
-  # @private
   # {LLM::Buffer LLM::Buffer} provides an Enumerable object that
   # yields each message in a conversation on-demand, and only sends
   # a request to the LLM when a response is needed.
@@ -57,6 +56,15 @@ module LLM
       self
     end
     alias_method :push, :<<
+
+    ##
+    # @param [Integer, #to_i] index
+    #  The message index
+    # @return [LLM::Message, nil]
+    #  Returns a message, or nil
+    def [](index)
+      @completed[index.to_i] || to_a[index.to_i]
+    end
 
     ##
     # @return [String]
