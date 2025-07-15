@@ -30,6 +30,12 @@ images, files, and JSON Schema generation.
 
 ## Demos
 
+> The
+> [llmrb/llm-shell](https://github.com/llmrb/llm-shell)
+> project is built with llm.rb and its demos have been
+> included to provide a better idea of what llm.rb
+> is capable of.
+
 <details>
   <summary><b>1. Tools: "system" function</b></summary>
   <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/toolcalls.gif">
@@ -496,22 +502,10 @@ else there's the API reference. It covers classes and methods that the README gl
 over or doesn't cover at all. The API reference is available at
 [0x1eef.github.io/x/llm.rb](https://0x1eef.github.io/x/llm.rb).
 
-
 ### Guides
 
 The [docs/](docs/) directory contains some additional documentation that
-didn't quite make it into the README. It covers the design guidelines that
-the library follows, some strategies for memory management, and other
-provider-specific features.
-
-## See also
-
-**[llmrb/llm-shell](https://github.com/llmrb/llm-shell)**
-
-An extensible, developer-oriented command line utility that is powered by
-llm.rb and serves as a demonstration of the library's capabilities. The
-[demo](https://github.com/llmrb/llm-shell#demos) section has a number of GIF
-previews might be especially interesting.
+didn't quite make it into the README.
 
 ## Install
 
