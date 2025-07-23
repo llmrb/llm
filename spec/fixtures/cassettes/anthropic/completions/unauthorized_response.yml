@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Hello"}]}],"model":"claude-3-5-sonnet-20240620","max_tokens":1024}'
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Hello"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024}'
     headers:
       Content-Type:
       - application/json
@@ -27,7 +27,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sun, 13 Jul 2025 22:42:13 GMT
+      - Wed, 23 Jul 2025 04:31:25 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       X-Should-Retry:
       - 'false'
       Request-Id:
-      - req_011CR5poYgYukwJhAmAovBLf
+      - req_011CRPKiHHQ18uGPixU9W2xz
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Via:
@@ -49,10 +49,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95ec4acf2e9f6eb2-GRU
+      - 963872b7edddf1e7-GRU
     body:
       encoding: UTF-8
       string: '{"type":"error","error":{"type":"authentication_error","message":"invalid
         x-api-key"}}'
-  recorded_at: Sun, 13 Jul 2025 22:42:02 GMT
+  recorded_at: Wed, 23 Jul 2025 04:30:52 GMT
 recorded_with: VCR 6.3.1

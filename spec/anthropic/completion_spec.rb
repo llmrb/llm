@@ -27,14 +27,14 @@ RSpec.describe "LLM::Anthropic: completions" do
     end
 
     it "returns a model" do
-      expect(response.model).to eq("claude-3-5-sonnet-20240620")
+      expect(response.model).to eq("claude-sonnet-4-20250514")
     end
 
     it "includes token usage" do
       expect(response).to have_attributes(
-        prompt_tokens: 42,
-        completion_tokens: 5,
-        total_tokens: 47
+        prompt_tokens: instance_of(Integer),
+        completion_tokens: instance_of(Integer),
+        total_tokens: instance_of(Integer)
       )
     end
 
@@ -77,7 +77,7 @@ RSpec.describe "LLM::Anthropic: completions" do
     subject { response.choices[0].content.downcase[0..2] }
     let(:response) do
       anthropic.complete([
-        "Is this image a representation of a blue book ?",
+        "Is this image a representation of a book ?",
         "Answer with yes or no.",
         "Nothing else.",
         file

@@ -76,10 +76,10 @@ module LLM
 
     ##
     # Returns the default model for chat completions
-    # @see https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-comparison-table claude-3-5-sonnet-20240620
+    # @see https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-comparison-table claude-sonnet-4-20250514
     # @return [String]
     def default_model
-      "claude-3-5-sonnet-20240620"
+      "claude-sonnet-4-20250514"
     end
 
     private

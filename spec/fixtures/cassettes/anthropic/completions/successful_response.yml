@@ -8,7 +8,7 @@ http_interactions:
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Your
         task is to greet the user. Greet the user with ''hello''. Nothing else. And
         do not say ''hi''. "}]},{"role":"user","content":[{"type":"text","text":"Hello,
-        world"}]}],"model":"claude-3-5-sonnet-20240620","max_tokens":1024}'
+        world"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024}'
     headers:
       Content-Type:
       - application/json
@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 13 Jul 2025 22:42:10 GMT
+      - Wed, 23 Jul 2025 04:31:21 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,31 +38,31 @@ http_interactions:
       Connection:
       - keep-alive
       Anthropic-Ratelimit-Input-Tokens-Limit:
-      - '40000'
+      - '30000'
       Anthropic-Ratelimit-Input-Tokens-Remaining:
-      - '40000'
+      - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-07-13T22:42:10Z'
+      - '2025-07-23T04:31:21Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-07-13T22:42:10Z'
+      - '2025-07-23T04:31:21Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
-      - '48'
+      - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-07-13T22:42:11Z'
+      - '2025-07-23T04:31:22Z'
       Anthropic-Ratelimit-Tokens-Limit:
-      - '48000'
+      - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
-      - '48000'
+      - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-07-13T22:42:10Z'
+      - '2025-07-23T04:31:21Z'
       Request-Id:
-      - req_011CR5poJbE9X94V4gZNMZEo
+      - req_011CRPKhw8h18RD7LycKL6Gw
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -76,9 +76,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 95ec4aba9fb3f1b1-GRU
+      - 9638729a6b4802ea-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01G8HhFQsZRNVnWy4FRcpLYf","type":"message","role":"assistant","model":"claude-3-5-sonnet-20240620","content":[{"type":"text","text":"Hello."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":42,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":5,"service_tier":"standard"}}'
-  recorded_at: Sun, 13 Jul 2025 22:42:00 GMT
+      string: '{"id":"msg_01BoPJanWegeX1MhZ8LZ8uS9","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"hello"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":42,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":4,"service_tier":"standard"}}'
+  recorded_at: Wed, 23 Jul 2025 04:30:48 GMT
 recorded_with: VCR 6.3.1
