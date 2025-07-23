@@ -43,7 +43,7 @@ class LLM::Gemini
     def create(prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
       req  = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       body = JSON.dump({
-        contents: [{parts: {text: prompt}}],
+        contents: [{parts: [{text: create_prompt}, {text: prompt}]}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params))
       req.body = body
@@ -91,6 +91,15 @@ class LLM::Gemini
 
     def key
       @provider.instance_variable_get(:@key)
+    end
+
+    def create_prompt
+      <<~PROMPT
+        Your task is to generate one or more image(s) from
+        text I will provide to you. Your response *MUST* include
+        at least one image, and your response *MUST NOT* include
+        any text or other content.
+      PROMPT
     end
 
     [:response_parser, :headers, :execute, :set_body_stream].each do |m|
