@@ -121,10 +121,10 @@ module LLM
 
     ##
     # Returns the default model for chat completions
-    # @see https://platform.openai.com/docs/models/gpt-4o-mini gpt-4o-mini
+    # @see https://platform.openai.com/docs/models/gpt-4.1 gpt-4.1
     # @return [String]
     def default_model
-      "gpt-4o-mini"
+      "gpt-4.1"
     end
 
     private

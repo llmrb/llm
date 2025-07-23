@@ -12,7 +12,7 @@ http_interactions:
         unanswered if there is no corresponding assistant response.\n"}]},{"role":"user","content":[{"type":"input_text","text":"Tell
         me the answer to 5 + 15"}]},{"role":"user","content":[{"type":"input_text","text":"Tell
         me the answer to (5 + 15) * 2"}]},{"role":"user","content":[{"type":"input_text","text":"Tell
-        me the answer to ((5 + 15) * 2) / 10"}]}],"model":"gpt-4o-mini"}'
+        me the answer to ((5 + 15) * 2) / 10"}]}],"model":"gpt-4.1"}'
     headers:
       Content-Type:
       - application/json
@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 13 Jul 2025 22:46:51 GMT
+      - Wed, 23 Jul 2025 04:21:36 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,50 +40,52 @@ http_interactions:
       Connection:
       - keep-alive
       X-Ratelimit-Limit-Requests:
-      - '10000'
+      - '500'
       X-Ratelimit-Limit-Tokens:
-      - '200000'
+      - '30000'
       X-Ratelimit-Remaining-Requests:
-      - '9992'
+      - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '199856'
+      - '29856'
       X-Ratelimit-Reset-Requests:
-      - 1m9.098s
+      - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 43ms
+      - 288ms
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_fb507e8e9d30573112ce1a4ff81e567a
+      - req_7b2f867ec1c3c695c2fc3af9a907a3ff
       Openai-Processing-Ms:
-      - '1212'
+      - '1360'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=LK6X_15.br_2B1.ZcIshfzVGkSonEY24O8NJ58rQZYA-1752446811-1.0.1.1-MKpJYa0pcW9sxQbMNGZ7hJoCBUtE6nYm2sovzdb0S0OrfTxv7OdwFoHC7p7hq5OAIRWtdMQQKEWjKbS84POyz77_BeXwA4E2y7VC4opQ4pw;
-        path=/; expires=Sun, 13-Jul-25 23:16:51 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=XgVTkRUaY.Zmlw63PxyJV2yqQ6C3J7pkpKmvgxGkdkg-1753244496-1.0.1.1-uB6iS.QwvjtqA2gkrtguPYgUIXli9cOYV6Uy68A2v.2WbQChm7zPYmylOPtk4XqvyN8F63D69N.AFBLNj0ZPyuL0VpC_2yAaoivF3AbE_a4;
+        path=/; expires=Wed, 23-Jul-25 04:51:36 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=dYvVNTYfHxb8HzUaTF.DopSEDUpdvxZiEv3z_cLn6QE-1752446811894-0.0.1.1-604800000;
+      - _cfuvid=aL6_tP2J_3O2OzlZEvb16A3ZDAT95S4xqvNYIHB9fq0-1753244496366-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 95ec5194cfcea52f-GRU
+      - 9638644c6a6302e3-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_6874375a7e68819a96b473ba00cb9bb70568f09e247c074a",
+          "id": "resp_6880634ee94c819aa7a908f392a0f1360df0965fc8edfbef",
           "object": "response",
-          "created_at": 1752446810,
+          "created_at": 1753244494,
           "status": "completed",
           "background": false,
           "error": null,
@@ -91,10 +93,10 @@ http_interactions:
           "instructions": null,
           "max_output_tokens": null,
           "max_tool_calls": null,
-          "model": "gpt-4o-mini-2024-07-18",
+          "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_6874375ad6d0819aaaa93ecd156495590568f09e247c074a",
+              "id": "msg_6880634f75b4819a88b08470367bdf2b0df0965fc8edfbef",
               "type": "message",
               "status": "completed",
               "content": [
@@ -102,7 +104,7 @@ http_interactions:
                   "type": "output_text",
                   "annotations": [],
                   "logprobs": [],
-                  "text": "The answer to 5 + 15 is 20.  \nThe answer to (5 + 15) * 2 is 40.  \nThe answer to ((5 + 15) * 2) / 10 is 4."
+                  "text": "The answer to 5 + 15 is 20.\n\nThe answer to (5 + 15) * 2 is 40.\n\nThe answer to ((5 + 15) * 2) / 10 is 4."
                 }
               ],
               "role": "assistant"
@@ -110,10 +112,12 @@ http_interactions:
           ],
           "parallel_tool_calls": true,
           "previous_response_id": null,
+          "prompt_cache_key": null,
           "reasoning": {
             "effort": null,
             "summary": null
           },
+          "safety_identifier": null,
           "service_tier": "default",
           "store": true,
           "temperature": 1.0,
@@ -132,14 +136,14 @@ http_interactions:
             "input_tokens_details": {
               "cached_tokens": 0
             },
-            "output_tokens": 51,
+            "output_tokens": 49,
             "output_tokens_details": {
               "reasoning_tokens": 0
             },
-            "total_tokens": 176
+            "total_tokens": 174
           },
           "user": null,
           "metadata": {}
         }
-  recorded_at: Sun, 13 Jul 2025 22:46:41 GMT
+  recorded_at: Wed, 23 Jul 2025 04:21:03 GMT
 recorded_with: VCR 6.3.1

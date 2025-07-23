@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Hello!
-        Nice to meet you"}]}],"model":"gpt-4o-mini"}'
+        Nice to meet you"}]}],"model":"gpt-4.1"}'
     headers:
       Content-Type:
       - application/json
@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 13 Jul 2025 22:44:28 GMT
+      - Wed, 23 Jul 2025 04:19:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,57 +38,59 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '380'
+      - '492'
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '383'
+      - '500'
       X-Ratelimit-Limit-Requests:
-      - '10000'
+      - '500'
       X-Ratelimit-Limit-Tokens:
-      - '200000'
+      - '30000'
       X-Ratelimit-Remaining-Requests:
-      - '9992'
+      - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '199992'
+      - '29992'
       X-Ratelimit-Reset-Requests:
-      - 1m5.045s
+      - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 2ms
+      - 16ms
       X-Request-Id:
-      - req_f14ec3e8d87272fe1c0a96b474cad568
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - 4b756e4b-071e-49db-9781-7cd246092d47
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=svVJPyKC3bWLe64Sw07PhZDYgrohl5246gror1CZfqw-1752446668-1.0.1.1-ho3vj8P0ZEoa0LDBqYwxOk5N0_Yz_H2PYUlUXDOMPzwn0owXklh7.8nIDgnL_JQ70Jj1kOurBjn86hkreHWlv7U_UP5SycBWA0kUqq2yOGE;
-        path=/; expires=Sun, 13-Jul-25 23:14:28 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=o_24kOwucBouxVqeQhFaHUmzdKiYtsYiCG9l7NrZXIM-1753244349-1.0.1.1-JZAeUUMoYNCo9r1FNXSjrJRzILIN1ijN4HZjC7CqP1p.pf.4krd5dsnYSfuNZzjUpvY2z0DQoSPFK8Jz._OR5i.NBOcIvR2.Mfc0Keo6ges;
+        path=/; expires=Wed, 23-Jul-25 04:49:09 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=_duCJCU96SEuzBhnd0aSbSua6dFDjjrShrFREWw09TI-1752446668211-0.0.1.1-604800000;
+      - _cfuvid=yW6X5SAoqx_To8Iiu2sx6C96Why1loESe5vEsAi.4n4-1753244349202-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 95ec4e158e82f190-GRU
+      - 963860b7dc95f1d9-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BszilHPWKSS9fnSLNOSMcRNPALrMd",
+          "id": "chatcmpl-BwLEawxQnmOmzHOEyPiLoyGysyK7m",
           "object": "chat.completion",
-          "created": 1752446667,
-          "model": "gpt-4o-mini-2024-07-18",
+          "created": 1753244348,
+          "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "Hello! Nice to meet you too! How can I assist you today?",
+                "content": "Hello! Nice to meet you too. How can I help you today?",
                 "refusal": null,
                 "annotations": []
               },
@@ -112,7 +114,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_62a23a81ef"
+          "system_fingerprint": "fp_b3f1157249"
         }
-  recorded_at: Sun, 13 Jul 2025 22:44:17 GMT
+  recorded_at: Wed, 23 Jul 2025 04:18:36 GMT
 recorded_with: VCR 6.3.1

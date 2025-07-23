@@ -10,7 +10,7 @@ http_interactions:
         should be one answer per lineAn answer should be a number, for example: 5Nothing
         else"}]},{"role":"user","content":[{"type":"text","text":"What is 3+2 ?"}]},{"role":"user","content":[{"type":"text","text":"What
         is 5+5 ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+7
-        ?"}]}],"model":"gpt-4o-mini"}'
+        ?"}]}],"model":"gpt-4.1"}'
     headers:
       Content-Type:
       - application/json
@@ -30,7 +30,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 13 Jul 2025 22:44:12 GMT
+      - Wed, 23 Jul 2025 04:19:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,57 +42,59 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '268'
+      - '247'
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '272'
+      - '252'
       X-Ratelimit-Limit-Requests:
-      - '10000'
+      - '500'
       X-Ratelimit-Limit-Tokens:
-      - '200000'
+      - '30000'
       X-Ratelimit-Remaining-Requests:
-      - '9998'
+      - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '199941'
+      - '29941'
       X-Ratelimit-Reset-Requests:
-      - 11.788s
+      - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 17ms
+      - 118ms
       X-Request-Id:
-      - req_0c4fc551f48d787d5103b6beb9af8549
+      - req_8ad8c0f433750347ace61cd2b4b17ecf
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=86TzPf6885VwIKiDezoWycCfawiygtqb1fhaRdpChpU-1752446652-1.0.1.1-30RAWp2yGkGbLjOWkXWCzNvSMpPVawggioLNZ1LphMU8tR7RDd.OkqSSvXH11mK1h9jd7.Vv9jXRNH4_73Q3Gfre8SoYOZrV3xEoAOTHuF0;
-        path=/; expires=Sun, 13-Jul-25 23:14:12 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=0c4J.WSnKLPGxVC9987xOBI7mJuhAT7O0wdo6VTrr_0-1753244342-1.0.1.1-Rc3h00.N4HW2yF1rq_mAj_lLGUDudzNdNFeddMDzcVd7t0NBH5ZEx83Sv_K2nGgNfCkU.sNMP_so.AFx3hgypwMY9Wu6oJjLKHb8zUCFKDw;
+        path=/; expires=Wed, 23-Jul-25 04:49:02 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Vmgn9LFMRDcMk1pUcFX6I3gwvl64Hieb28qwLrQzArM-1752446652226-0.0.1.1-604800000;
+      - _cfuvid=WSzVCS.H5riNd.lX4IaTLTj0IvkXd0OOEVt_QaV8mDE-1753244342630-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 95ec4db49f530317-GRU
+      - 9638608fdad1624b-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-BsziVFZjXk3hWDiI10eD76MY87b6I",
+          "id": "chatcmpl-BwLEU1heB5I9ct3DjpGlXbuOfw4qr",
           "object": "chat.completion",
-          "created": 1752446651,
-          "model": "gpt-4o-mini-2024-07-18",
+          "created": 1753244342,
+          "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "5  \n10  \n12  ",
+                "content": "5  \n10  \n12",
                 "refusal": null,
                 "annotations": []
               },
@@ -102,8 +104,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 76,
-            "completion_tokens": 6,
-            "total_tokens": 82,
+            "completion_tokens": 5,
+            "total_tokens": 81,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -116,7 +118,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": null
+          "system_fingerprint": "fp_b3f1157249"
         }
-  recorded_at: Sun, 13 Jul 2025 22:44:01 GMT
+  recorded_at: Wed, 23 Jul 2025 04:18:29 GMT
 recorded_with: VCR 6.3.1

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Hello!"}]}],"model":"gpt-4o-mini"}'
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Hello!"}]}],"model":"gpt-4.1"}'
     headers:
       Content-Type:
       - application/json
@@ -25,7 +25,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Sun, 13 Jul 2025 22:44:40 GMT
+      - Wed, 23 Jul 2025 04:19:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -35,23 +35,23 @@ http_interactions:
       Vary:
       - Origin
       X-Request-Id:
-      - req_3b557fe71fd713d38f4b605c27f20e5c
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - fdc04557-6fa0-42d2-9ff5-44f41fdbf988
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=NqStWiOJOnBFOdzmwTwz_BzxuZ4_z61N1C.HKqzlkgc-1752446680-1.0.1.1-M8ly_OwJfoqQ1odG4cp5.ooVACwI.U5gpVB5VZnzwDYrAJi3iDwQ9GEzWhP5.xkfjAEEeVcgYQJ.f8lzPNomT5U1ds.YVcPuxHBuNLEl.G8;
-        path=/; expires=Sun, 13-Jul-25 23:14:40 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=AU9_muzlHbWloUBSOdQg266GTe3rb2k7gbKAnTS5Muk-1753244362-1.0.1.1-aJOn1sMhkNbYKxgoeSyRLF01DJ6adTMKV2WHb_Zucx.YqxBoR.LA6ybDFMPIp0i64qhBfMdkDhrY4alLw.TnJJ4me_9nyNO5ed6E7ns9R40;
+        path=/; expires=Wed, 23-Jul-25 04:49:22 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=LGxDwA8uN7QB1Pfx_baAEtBv1yHNvODHYal4Zjv47mM-1752446680294-0.0.1.1-604800000;
+      - _cfuvid=AP5I5cZAI9bqzLDtE5qsLKLIaC9O9pX4Bnc4DPM1Ibg-1753244362762-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 95ec4e66ae3e01d3-GRU
+      - 963861122a7b1d13-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -65,5 +65,5 @@ http_interactions:
                 "code": "invalid_api_key"
             }
         }
-  recorded_at: Sun, 13 Jul 2025 22:44:29 GMT
+  recorded_at: Wed, 23 Jul 2025 04:18:49 GMT
 recorded_with: VCR 6.3.1

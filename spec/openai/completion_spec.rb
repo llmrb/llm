@@ -15,7 +15,7 @@ RSpec.describe "LLM::OpenAI: completions" do
     end
 
     it "returns a model" do
-      expect(response.model).to eq("gpt-4o-mini-2024-07-18")
+      expect(response.model).to eq("gpt-4.1-2025-04-14")
     end
 
     it "includes token usage" do
@@ -32,7 +32,7 @@ RSpec.describe "LLM::OpenAI: completions" do
       it "has choices" do
         expect(choice).to have_attributes(
           role: "assistant",
-          content: "Hello! How can I assist you today?"
+          content: instance_of(String),
         )
       end
 

@@ -12,7 +12,7 @@ http_interactions:
         unanswered if there is no corresponding assistant response.\n"}]},{"role":"user","content":[{"type":"text","text":"Tell
         me the answer to 5 + 15"}]},{"role":"user","content":[{"type":"text","text":"Tell
         me the answer to (5 + 15) * 2"}]},{"role":"user","content":[{"type":"text","text":"Tell
-        me the answer to ((5 + 15) * 2) / 10"}]}],"model":"gpt-4o-mini"}'
+        me the answer to ((5 + 15) * 2) / 10"}]}],"model":"gpt-4.1"}'
     headers:
       Content-Type:
       - application/json
@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 13 Jul 2025 22:46:49 GMT
+      - Wed, 23 Jul 2025 04:21:33 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,57 +44,59 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '733'
+      - '1359'
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '742'
+      - '1362'
       X-Ratelimit-Limit-Requests:
-      - '10000'
+      - '500'
       X-Ratelimit-Limit-Tokens:
-      - '200000'
+      - '30000'
       X-Ratelimit-Remaining-Requests:
-      - '9992'
+      - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '199895'
+      - '29895'
       X-Ratelimit-Reset-Requests:
-      - 1m2.55s
+      - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 31ms
+      - 210ms
       X-Request-Id:
-      - req_e7a1238a00e8c8ff52f9ab54e61d967a
+      - req_c18694c10e2e1635784dadce7e70a8fe
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=x3EnweZBc1dLJBOG._K6e7aKXHeP1qHZ38MFJjGKFdA-1752446809-1.0.1.1-2hxvpH35hBU1jgeynEP1bt7MHhqRPgjP05OpRorCK9NQBsPrtozINvl6h4XTFH3Q1FijgnVMSqwnih49b0bfObYGorc_3xk4hHEKwzKUgVs;
-        path=/; expires=Sun, 13-Jul-25 23:16:49 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=2dT99U4pLGpqXXQOz6B_SWncmWM73XOYnr1kXv4Os.Q-1753244493-1.0.1.1-fHjLsF8c6CzKVRAHFD7vY5gPEb1J9O1xEnrgvmoUupCMwbWCkuJbSnoH.Z41pajGtszy1wH3GJXa4Gz9zRQKQB1PG1CEljoOGJdXwI5c_Ac;
+        path=/; expires=Wed, 23-Jul-25 04:51:33 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=uv7MJFLcJOptS.4sboNOP0JrpL.C.dB7GmQTIc2g1IA-1752446809309-0.0.1.1-604800000;
+      - _cfuvid=IDCcOr.FF2ceLBEWlhQ2ScvyDtr7GpHwdLZS8iyyb7w-1753244493787-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 95ec51885954af2c-GRU
+      - 9638643ca913f1cf-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-Bszl29HG22ZbI4h7iwXoX54vYV6x3",
+          "id": "chatcmpl-BwLGu17M4RxBk5uxIvKOdA2pV47ke",
           "object": "chat.completion",
-          "created": 1752446808,
-          "model": "gpt-4o-mini-2024-07-18",
+          "created": 1753244492,
+          "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "The answer to 5 + 15 is 20.  \nThe answer to (5 + 15) * 2 is 40.  \nThe answer to ((5 + 15) * 2) / 10 is 4.",
+                "content": "The answer to 5 + 15 is 20.\n\nThe answer to (5 + 15) * 2 is 40.\n\nThe answer to ((5 + 15) * 2) / 10 is 4.",
                 "refusal": null,
                 "annotations": []
               },
@@ -104,8 +106,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 125,
-            "completion_tokens": 50,
-            "total_tokens": 175,
+            "completion_tokens": 48,
+            "total_tokens": 173,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -118,7 +120,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_34a54ae93c"
+          "system_fingerprint": "fp_51e1070cf2"
         }
-  recorded_at: Sun, 13 Jul 2025 22:46:38 GMT
+  recorded_at: Wed, 23 Jul 2025 04:21:00 GMT
 recorded_with: VCR 6.3.1
