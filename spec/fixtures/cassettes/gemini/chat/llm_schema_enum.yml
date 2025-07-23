@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Your favorite fruit is
@@ -31,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 13 Jul 2025 22:43:11 GMT
+      - Wed, 23 Jul 2025 03:12:38 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1306
+      - gfet4t7; dur=1649
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,28 +61,23 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -4.1696844467272363e-05
+              "index": 0
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 21,
+            "promptTokenCount": 13,
             "candidatesTokenCount": 6,
-            "totalTokenCount": 27,
+            "totalTokenCount": 88,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 21
+                "tokenCount": 13
               }
             ],
-            "candidatesTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 6
-              }
-            ]
+            "thoughtsTokenCount": 69
           },
-          "modelVersion": "gemini-1.5-flash",
-          "responseId": "fzZ0aNSuBO24nvgPksuL8Ao"
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "JlOAaP7XJ5edqtsPjMPTkQE"
         }
-  recorded_at: Sun, 13 Jul 2025 22:43:01 GMT
+  recorded_at: Wed, 23 Jul 2025 03:12:05 GMT
 recorded_with: VCR 6.3.1

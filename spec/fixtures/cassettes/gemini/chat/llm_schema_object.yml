@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Does the earth orbit
@@ -30,7 +30,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 13 Jul 2025 22:43:10 GMT
+      - Wed, 23 Jul 2025 03:12:36 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -40,7 +40,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=528
+      - gfet4t7; dur=1952
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -54,34 +54,29 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "{\"probability\": 1}"
+                    "text": "{\"probability\":100}"
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.048368468880653381
+              "index": 0
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 11,
-            "candidatesTokenCount": 6,
-            "totalTokenCount": 17,
+            "promptTokenCount": 8,
+            "candidatesTokenCount": 7,
+            "totalTokenCount": 128,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 11
+                "tokenCount": 8
               }
             ],
-            "candidatesTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 6
-              }
-            ]
+            "thoughtsTokenCount": 113
           },
-          "modelVersion": "gemini-1.5-flash",
-          "responseId": "fTZ0aIGqKoienvgP757VgQ0"
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "JFOAaNvQNf-qqtsPg7bc2Aw"
         }
-  recorded_at: Sun, 13 Jul 2025 22:42:59 GMT
+  recorded_at: Wed, 23 Jul 2025 03:12:03 GMT
 recorded_with: VCR 6.3.1

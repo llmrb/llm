@@ -126,10 +126,10 @@ module LLM
 
     ##
     # Returns the default model for chat completions
-    # @see https://ai.google.dev/gemini-api/docs/models#gemini-1.5-flash gemini-1.5-flash
+    # @see https://ai.google.dev/gemini-api/docs/models#gemini-2.5-flash gemini-2.5-flash
     # @return [String]
     def default_model
-      "gemini-1.5-flash"
+      "gemini-2.5-flash"
     end
 
     private

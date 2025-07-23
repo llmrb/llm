@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Answer all of my questions"}]},{"role":"user","parts":[{"text":"Tell
@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 13 Jul 2025 22:43:12 GMT
+      - Wed, 23 Jul 2025 03:12:40 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1183
+      - gfet4t7; dur=1641
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -62,28 +62,23 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.000434018417515538
+              "index": 0
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 35,
+            "promptTokenCount": 28,
             "candidatesTokenCount": 11,
-            "totalTokenCount": 46,
+            "totalTokenCount": 124,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 35
+                "tokenCount": 28
               }
             ],
-            "candidatesTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 11
-              }
-            ]
+            "thoughtsTokenCount": 85
           },
-          "modelVersion": "gemini-1.5-flash",
-          "responseId": "gDZ0aJ3TJNSanvgPoLzXsQs"
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "KFOAaMf_HdeUmtkPmoehgAE"
         }
-  recorded_at: Sun, 13 Jul 2025 22:43:02 GMT
+  recorded_at: Wed, 23 Jul 2025 03:12:07 GMT
 recorded_with: VCR 6.3.1

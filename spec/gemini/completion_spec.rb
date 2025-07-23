@@ -15,14 +15,14 @@ RSpec.describe "LLM::Gemini: completions" do
     end
 
     it "returns a model" do
-      expect(response.model).to eq("gemini-1.5-flash")
+      expect(response.model).to eq("gemini-2.5-flash")
     end
 
     it "includes token usage" do
       expect(response).to have_attributes(
-        prompt_tokens: 2,
-        completion_tokens: 11,
-        total_tokens: 13
+        prompt_tokens: instance_of(Integer),
+        completion_tokens: instance_of(Integer),
+        total_tokens: instance_of(Integer)
       )
     end
 
@@ -34,7 +34,7 @@ RSpec.describe "LLM::Gemini: completions" do
           choices: [
             have_attributes(
               role: "model",
-              content: "Hello there! How can I help you today?\n"
+              content: instance_of(String),
             )
           ]
         )

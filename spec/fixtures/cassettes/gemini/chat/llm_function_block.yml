@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 13 Jul 2025 22:43:02 GMT
+      - Wed, 23 Jul 2025 03:12:24 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1194
+      - gfet4t7; dur=1513
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,39 +61,35 @@ http_interactions:
                       "args": {
                         "command": "date"
                       }
-                    }
+                    },
+                    "thoughtSignature": "CuYBAVSoXO7fBxfTWGVMBe/4PIYnq+vZ3LnyTVA/kdy7/80uSnod6ydqIwLZzcc56nfq0sVTr9gMhlS2xD1JbNFR5HvBSiE6fsaKOKPLjupm4cdPEA1VRIpdMqJ61KzXlmN3lvLjaH+vfeFeZ4++qdXuNMjoFskFKke53hb93Xk0IWASnzRCFubcDHuHH5K2RJvyEOrx+IUvaRXgjowQ/3/VjHpaxhXJiLTtOMOLTYCVi/RtMqk97y3zI6qr9noCZ9m4HjBwU1t3XFXP/7BBF7mMBQrrKwqysD61DcylH3hB1R880YcXFZI="
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -1.4424294931814075e-05
+              "index": 0
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 26,
-            "candidatesTokenCount": 3,
-            "totalTokenCount": 29,
+            "promptTokenCount": 53,
+            "candidatesTokenCount": 13,
+            "totalTokenCount": 117,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 26
+                "tokenCount": 53
               }
             ],
-            "candidatesTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 3
-              }
-            ]
+            "thoughtsTokenCount": 51
           },
-          "modelVersion": "gemini-1.5-flash",
-          "responseId": "djZ0aK2bD6vLnvgP8LmBsA0"
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "GFOAaLroOYqUmtkP-7fJiQ0"
         }
-  recorded_at: Sun, 13 Jul 2025 22:42:52 GMT
+  recorded_at: Wed, 23 Jul 2025 03:11:52 GMT
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
@@ -123,7 +119,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 13 Jul 2025 22:43:03 GMT
+      - Wed, 23 Jul 2025 03:12:26 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -133,7 +129,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1123
+      - gfet4t7; dur=1159
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -147,34 +143,30 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "OK.  Anything else?\n"
+                    "text": "Okay, I see. Do you have another command you'd like me to run, or anything else I can help with?",
+                    "thoughtSignature": "Cq4DAVSoXO6qNdcrqZw2ajIl8u0ZANmG+TI5SOJrslFC1U0G8/9QTUjRIcHaAQJJWVD02urq6/Rs5duCDlhP2lzh0tEM/YffN/Adtx5NuOz1koo8eqLnDtfPMirTZ3ucTVXAg5NQrCeLoNQnoc1RhAHfnzMkzg1uL+HOR5VUZlM7M+Cb8eX60xXDqNlTWL7a/x1Fg2cjnvVJjG10Pj4xtC12YZqcf/efVgRKjCSPh2shayKzdClNWK0fcC/Sa1rZet+XBRS5DHnW8hzmtQWKi6wwVU5BCg+CU1aRjThuwctwExAC4x6mabOJVPEi1UmYw4NZhwl4nK8b4Zr1WZxpYRYjkmk9OcNb6vmwSW7wqeiJDllEr+u/ARWWYDx00aPfkvzIUqjX5aqfipS/YqQrq3oMOLjRqdxAgX4ycVTsGNospk2hYPeBEdQbmKC/+vovShCg0P5fL9Vw3V/ZJLhaRcnlvd/LpXn1H4tN0Er2Y3dzuM/J1sFCCwnItFoE1nB9dsI985NQVf21KjKZfViZ7yG0TauI/SyVuY9poaUrnaveYp3N0lKbZImStKDTMIShcw=="
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.039797774382999966
+              "index": 0
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 34,
-            "candidatesTokenCount": 7,
-            "totalTokenCount": 41,
+            "promptTokenCount": 73,
+            "candidatesTokenCount": 26,
+            "totalTokenCount": 187,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 34
+                "tokenCount": 73
               }
             ],
-            "candidatesTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 7
-              }
-            ]
+            "thoughtsTokenCount": 88
           },
-          "modelVersion": "gemini-1.5-flash",
-          "responseId": "dzZ0aKKuJYq2nvgPvce1uQQ"
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "GlOAaLfwDdP5qtsPpdOekA0"
         }
-  recorded_at: Sun, 13 Jul 2025 22:42:53 GMT
+  recorded_at: Wed, 23 Jul 2025 03:11:53 GMT
 recorded_with: VCR 6.3.1

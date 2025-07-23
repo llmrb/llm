@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=TOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Could the image be a
@@ -31,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 13 Jul 2025 22:43:09 GMT
+      - Wed, 23 Jul 2025 03:12:34 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=2063
+      - gfet4t7; dur=1251
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -55,38 +55,33 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "Yes\n"
+                    "text": "Yes"
                   }
                 ],
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -0.19095611572265625
+              "index": 0
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 282,
-            "candidatesTokenCount": 2,
-            "totalTokenCount": 284,
+            "promptTokenCount": 283,
+            "candidatesTokenCount": 1,
+            "totalTokenCount": 356,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 24
+                "tokenCount": 25
               },
               {
                 "modality": "IMAGE",
                 "tokenCount": 258
               }
             ],
-            "candidatesTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 2
-              }
-            ]
+            "thoughtsTokenCount": 72
           },
-          "modelVersion": "gemini-1.5-flash",
-          "responseId": "fDZ0aKSnDoq2nvgPvce1uQQ"
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "IlOAaNWbJ82Hz7IPjcjRwQk"
         }
-  recorded_at: Sun, 13 Jul 2025 22:42:58 GMT
+  recorded_at: Wed, 23 Jul 2025 03:12:01 GMT
 recorded_with: VCR 6.3.1
