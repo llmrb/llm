@@ -34,7 +34,7 @@ RSpec.describe "LLM::Gemini: completions" do
           choices: [
             have_attributes(
               role: "model",
-              content: instance_of(String),
+              content: instance_of(String)
             )
           ]
         )

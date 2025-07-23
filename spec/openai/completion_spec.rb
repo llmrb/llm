@@ -32,7 +32,7 @@ RSpec.describe "LLM::OpenAI: completions" do
       it "has choices" do
         expect(choice).to have_attributes(
           role: "assistant",
-          content: instance_of(String),
+          content: instance_of(String)
         )
       end
 
