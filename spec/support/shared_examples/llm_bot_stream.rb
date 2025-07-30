@@ -55,9 +55,9 @@ RSpec.shared_examples "LLM::Bot: tool stream" do |dirname, options = {}|
       bot.chat("Hey, run the 'date' command", role: :user)
     end
 
-    it "calls the function" do
+    it "calls the function(s)" do
       expect(Kernel).to receive(:system).with("date").and_return(true)
-      bot.chat bot.functions[0].call
+      bot.chat bot.functions.map(&:call)
       expect(bot.functions).to be_empty
     end
   end
