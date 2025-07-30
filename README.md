@@ -120,13 +120,13 @@ msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
 > There Is More Than One Way To Do It (TIMTOWTDI) when you are
 > using llm.rb &ndash; and this is especially true when it
 > comes to streaming. See the streaming documentation in
-> [docs/](docs/STREAMING.md#flexibility) for more details.
+> [docs/](docs/STREAMING.md#scopes) for more details.
 
 The following example streams the messages in a conversation
 as they are generated in real-time. This feature can be useful
-in case you want to see the contents of a message as it is
-generated, or in case you want to avoid potential read timeouts
-during the generation of a response.
+when you want to stream a conversation in real time, or when you
+want to avoid potential read timeouts during the generation of a
+response.
 
 The `stream` option can be set to an IO object, or the value `true`
 to enable streaming &ndash; and at the end of the request, `bot.chat`

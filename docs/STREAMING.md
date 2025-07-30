@@ -4,14 +4,14 @@
 
 * [API](#api)
   * [Introduction](#introduction)
-  * [Flexibility](#flexibility)
+  * [scopes](#scopes)
 
 ### API
 
 #### Introduction
 
-The streaming API can be useful in case you want to see the contents
-of a message as it is generated, or in case you want to avoid potential
+The streaming API can be useful when you want to stream a
+conversation in real time, or when you want to avoid potential
 read timeouts during the generation of a response.
 
 The `stream` option can be set to an IO object, or the value `true`
@@ -33,7 +33,7 @@ bot.chat(stream: $stdout) do |prompt|
 end.to_a
 ```
 
-#### Flexibility
+#### Scopes
 
 * **Conversation-level** <br>
 There are three different ways to use the streaming API. It can be
