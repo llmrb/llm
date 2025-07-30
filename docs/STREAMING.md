@@ -4,7 +4,7 @@
 
 * [API](#api)
   * [Introduction](#introduction)
-  * [scopes](#scopes)
+  * [Scopes](#scopes)
 
 ### API
 
