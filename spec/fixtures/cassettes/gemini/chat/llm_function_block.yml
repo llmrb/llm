@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 23 Jul 2025 03:12:24 GMT
+      - Wed, 30 Jul 2025 11:51:18 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1513
+      - gfet4t7; dur=1462
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,8 +61,7 @@ http_interactions:
                       "args": {
                         "command": "date"
                       }
-                    },
-                    "thoughtSignature": "CuYBAVSoXO7fBxfTWGVMBe/4PIYnq+vZ3LnyTVA/kdy7/80uSnod6ydqIwLZzcc56nfq0sVTr9gMhlS2xD1JbNFR5HvBSiE6fsaKOKPLjupm4cdPEA1VRIpdMqJ61KzXlmN3lvLjaH+vfeFeZ4++qdXuNMjoFskFKke53hb93Xk0IWASnzRCFubcDHuHH5K2RJvyEOrx+IUvaRXgjowQ/3/VjHpaxhXJiLTtOMOLTYCVi/RtMqk97y3zI6qr9noCZ9m4HjBwU1t3XFXP/7BBF7mMBQrrKwqysD61DcylH3hB1R880YcXFZI="
+                    }
                   }
                 ],
                 "role": "model"
@@ -74,19 +73,19 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 53,
             "candidatesTokenCount": 13,
-            "totalTokenCount": 117,
+            "totalTokenCount": 122,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 53
               }
             ],
-            "thoughtsTokenCount": 51
+            "thoughtsTokenCount": 56
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "GFOAaLroOYqUmtkP-7fJiQ0"
+          "responseId": "NgeKaM2yMtCJz7IPlsXL-QM"
         }
-  recorded_at: Wed, 23 Jul 2025 03:11:52 GMT
+  recorded_at: Wed, 30 Jul 2025 11:51:08 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
@@ -119,7 +118,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 23 Jul 2025 03:12:26 GMT
+      - Wed, 30 Jul 2025 11:51:20 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -129,7 +128,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1159
+      - gfet4t7; dur=1981
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -143,8 +142,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "Okay, I see. Do you have another command you'd like me to run, or anything else I can help with?",
-                    "thoughtSignature": "Cq4DAVSoXO6qNdcrqZw2ajIl8u0ZANmG+TI5SOJrslFC1U0G8/9QTUjRIcHaAQJJWVD02urq6/Rs5duCDlhP2lzh0tEM/YffN/Adtx5NuOz1koo8eqLnDtfPMirTZ3ucTVXAg5NQrCeLoNQnoc1RhAHfnzMkzg1uL+HOR5VUZlM7M+Cb8eX60xXDqNlTWL7a/x1Fg2cjnvVJjG10Pj4xtC12YZqcf/efVgRKjCSPh2shayKzdClNWK0fcC/Sa1rZet+XBRS5DHnW8hzmtQWKi6wwVU5BCg+CU1aRjThuwctwExAC4x6mabOJVPEi1UmYw4NZhwl4nK8b4Zr1WZxpYRYjkmk9OcNb6vmwSW7wqeiJDllEr+u/ARWWYDx00aPfkvzIUqjX5aqfipS/YqQrq3oMOLjRqdxAgX4ycVTsGNospk2hYPeBEdQbmKC/+vovShCg0P5fL9Vw3V/ZJLhaRcnlvd/LpXn1H4tN0Er2Y3dzuM/J1sFCCwnItFoE1nB9dsI985NQVf21KjKZfViZ7yG0TauI/SyVuY9poaUrnaveYp3N0lKbZImStKDTMIShcw=="
+                    "text": "I received the output `{\"success\":true}`. Is there anything else I can help you with?"
                   }
                 ],
                 "role": "model"
@@ -155,18 +153,18 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 73,
-            "candidatesTokenCount": 26,
-            "totalTokenCount": 187,
+            "candidatesTokenCount": 21,
+            "totalTokenCount": 215,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 73
               }
             ],
-            "thoughtsTokenCount": 88
+            "thoughtsTokenCount": 121
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "GlOAaLfwDdP5qtsPpdOekA0"
+          "responseId": "OAeKaJbRN4ygz7IPlPyz6AY"
         }
-  recorded_at: Wed, 23 Jul 2025 03:11:53 GMT
+  recorded_at: Wed, 30 Jul 2025 11:51:10 GMT
 recorded_with: VCR 6.3.1

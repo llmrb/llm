@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 23 Jul 2025 03:13:31 GMT
+      - Wed, 30 Jul 2025 11:52:24 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=822
+      - gfet4t7; dur=160
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -58,36 +58,6 @@ http_interactions:
                 "embedText",
                 "countTextTokens"
               ]
-            },
-            {
-              "name": "models/gemini-1.0-pro-vision-latest",
-              "version": "001",
-              "displayName": "Gemini 1.0 Pro Vision",
-              "description": "The original Gemini 1.0 Pro Vision model version which was optimized for image understanding. Gemini 1.0 Pro Vision was deprecated on July 12, 2024. Move to a newer Gemini version.",
-              "inputTokenLimit": 12288,
-              "outputTokenLimit": 4096,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens"
-              ],
-              "temperature": 0.4,
-              "topP": 1,
-              "topK": 32
-            },
-            {
-              "name": "models/gemini-pro-vision",
-              "version": "001",
-              "displayName": "Gemini 1.0 Pro Vision",
-              "description": "The original Gemini 1.0 Pro Vision model version which was optimized for image understanding. Gemini 1.0 Pro Vision was deprecated on July 12, 2024. Move to a newer Gemini version.",
-              "inputTokenLimit": 12288,
-              "outputTokenLimit": 4096,
-              "supportedGenerationMethods": [
-                "generateContent",
-                "countTokens"
-              ],
-              "temperature": 0.4,
-              "topP": 1,
-              "topK": 32
             },
             {
               "name": "models/gemini-1.5-pro-latest",
@@ -868,9 +838,31 @@ http_interactions:
               "temperature": 0.2,
               "topP": 1,
               "topK": 40
+            },
+            {
+              "name": "models/imagen-3.0-generate-002",
+              "version": "002",
+              "displayName": "Imagen 3.0 002 model",
+              "description": "Vertex served Imagen 3.0 002 model",
+              "inputTokenLimit": 480,
+              "outputTokenLimit": 8192,
+              "supportedGenerationMethods": [
+                "predict"
+              ]
+            },
+            {
+              "name": "models/imagen-4.0-generate-preview-06-06",
+              "version": "01",
+              "displayName": "Imagen 4 (Preview)",
+              "description": "Vertex served Imagen 4.0 model",
+              "inputTokenLimit": 480,
+              "outputTokenLimit": 8192,
+              "supportedGenerationMethods": [
+                "predict"
+              ]
             }
           ],
-          "nextPageToken": "Cgptb2RlbHMvYXFh"
+          "nextPageToken": "Cihtb2RlbHMvaW1hZ2VuLTQuMC1nZW5lcmF0ZS1wcmV2aWV3LTA2LTA2"
         }
-  recorded_at: Wed, 23 Jul 2025 03:12:58 GMT
+  recorded_at: Wed, 30 Jul 2025 11:52:14 GMT
 recorded_with: VCR 6.3.1
