@@ -34,6 +34,11 @@ class LLM::Function
   end
 
   ##
+  # Returns the function ID
+  # @return [String, nil]
+  attr_accessor :id
+
+  ##
   # Returns the function name
   # @return [String]
   attr_reader :name
@@ -42,11 +47,6 @@ class LLM::Function
   # Returns function arguments
   # @return [Array, nil]
   attr_accessor :arguments
-
-  ##
-  # Returns the function ID
-  # @return [String, nil]
-  attr_accessor :id
 
   ##
   # @param [String] name The function name
@@ -61,10 +61,14 @@ class LLM::Function
 
   ##
   # Set the function description
-  # @param [String] str The function description
+  # @param [String] desc The function description
   # @return [void]
-  def description(str)
-    @description = str
+  def description(desc)
+    if desc
+      @description = desc
+    else
+      @description
+    end
   end
 
   ##
