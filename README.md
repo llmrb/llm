@@ -37,18 +37,13 @@ images, files, and JSON Schema generation.
 > is capable of.
 
 <details>
-  <summary><b>1. Tools: "system" function</b></summary>
-  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/toolcalls.gif">
+  <summary><b>1. An introduction to tool calls</b></summary>
+  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/toolcalls_v2.gif">
 </details>
 
 <details>
-  <summary><b>2. Files: import at runtime</b></summary>
-  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-runtime.gif">
-</details>
-
-<details>
-  <summary><b>3. Files: import at boot time</b></summary>
-  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-boottime.gif">
+  <summary><b>2. Add files as conversation context</b></summary>
+  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-runtime_v2.gif">
 </details>
 
 ## Examples
