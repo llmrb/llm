@@ -63,7 +63,7 @@ class LLM::Function
   # Set the function description
   # @param [String] desc The function description
   # @return [void]
-  def description(desc)
+  def description(desc = nil)
     if desc
       @description = desc
     else
