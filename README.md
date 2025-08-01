@@ -38,12 +38,12 @@ images, files, and JSON Schema generation.
 
 <details>
   <summary><b>1. An introduction to tool calls</b></summary>
-  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/toolcalls.gif">
+  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/toolcalls_v2.gif">
 </details>
 
 <details>
   <summary><b>2. Add files as conversation context</b></summary>
-  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-runtime.gif">
+  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-runtime_v2.gif">
 </details>
 
 ## Examples
