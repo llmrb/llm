@@ -50,9 +50,11 @@ module LLM::Anthropic::Format
       when LLM::File
         if content.image?
           [{type: :image, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]
+        elsif content.mime_type == "application/pdf"
+          [{type: :document, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]
         else
           raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
-                                          "is not an image, and therefore not supported by the " \
+                                          "is not an image or PDF, and therefore not supported by the " \
                                           "Anthropic API"
         end
       when String
