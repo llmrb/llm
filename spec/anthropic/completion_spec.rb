@@ -90,6 +90,25 @@ RSpec.describe "LLM::Anthropic: completions" do
     end
   end
 
+  context "when given a PDF document",
+          vcr: {cassette_name: "anthropic/completions/successful_response_file_pdf"} do
+    let(:file) { LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf") }
+    let(:response) do
+      anthropic.complete([
+        "This PDF document describes sysctl nodes on FreeBSD",
+        "Answer yes or no.",
+        "Nothing else",
+        file
+      ], role: :user)
+    end
+
+    subject { response.choices[0].content.downcase[0..2] }
+
+    it "describes the PDF" do
+      is_expected.to eq("yes")
+    end
+  end
+
   context "when given an unauthorized response",
           vcr: {cassette_name: "anthropic/completions/unauthorized_response"} do
     subject(:response) { anthropic.complete("Hello", role: :user) }
