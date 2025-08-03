@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 30 Jul 2025 11:49:52 GMT
+      - Sun, 03 Aug 2025 19:25:17 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,27 +40,27 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-07-30T11:49:51Z'
+      - '2025-08-03T19:25:16Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-07-30T11:49:52Z'
+      - '2025-08-03T19:25:17Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-07-30T11:49:51Z'
+      - '2025-08-03T19:25:16Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-07-30T11:49:51Z'
+      - '2025-08-03T19:25:16Z'
       Request-Id:
-      - req_011CRd9okbz9GLxZk7Ypzkq5
+      - req_011CRmKmfr8S6xhCnGdrUHHc
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
@@ -74,12 +74,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9674a28ea873f1c5-GRU
+      - 9698332ced58a41d-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01LeShcPSYCVdNnNq69x4izZ","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"Hello!
-        It''s nice to meet you too! I''m Claude, an AI assistant created by Anthropic.
-        How are you doing today? Is there anything I can help you with or would you
-        like to chat about something in particular?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":13,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":51,"service_tier":"standard"}}'
-  recorded_at: Wed, 30 Jul 2025 11:49:42 GMT
+      string: '{"id":"msg_01ShgvLQiUyAxTmdD6ZrgkPS","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"Hello!
+        It''s nice to meet you too! I''m Claude, an AI assistant. How are you doing
+        today? Is there anything I can help you with or would you like to chat about
+        something in particular?"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":13,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":46,"service_tier":"standard"}}'
+  recorded_at: Sun, 03 Aug 2025 19:24:56 GMT
 recorded_with: VCR 6.3.1

@@ -36,7 +36,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 30 Jul 2025 11:51:14 GMT
+      - Sun, 03 Aug 2025 19:26:19 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -46,7 +46,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1357
+      - gfet4t7; dur=771
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
@@ -54,10 +54,10 @@ http_interactions:
       string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"functionCall\":
         {\"name\": \"system\",\"args\": {\"command\": \"date\"}}}],\"role\": \"model\"},\"finishReason\":
         \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 53,\"candidatesTokenCount\":
-        13,\"totalTokenCount\": 119,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        53}],\"thoughtsTokenCount\": 53},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\":
-        \"MgeKaNCbAYHXz7IPn5jr0AM\"}\r\n\r\n"
-  recorded_at: Wed, 30 Jul 2025 11:51:03 GMT
+        13,\"totalTokenCount\": 110,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        53}],\"thoughtsTokenCount\": 44},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\":
+        \"27ePaNCjE62gz7IPpoyQ8AE\"}\r\n\r\n"
+  recorded_at: Sun, 03 Aug 2025 19:25:57 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse&key=TOKEN
@@ -94,7 +94,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Wed, 30 Jul 2025 11:51:17 GMT
+      - Sun, 03 Aug 2025 19:26:20 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -104,15 +104,21 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=3110
+      - gfet4t7; dur=1474
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
-      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"Okay.\"}],\"role\":
-        \"model\"},\"finishReason\": \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\":
-        73,\"candidatesTokenCount\": 2,\"totalTokenCount\": 458,\"promptTokensDetails\":
-        [{\"modality\": \"TEXT\",\"tokenCount\": 73}],\"thoughtsTokenCount\": 383},\"modelVersion\":
-        \"gemini-2.5-flash\",\"responseId\": \"NQeKaKeAD7_gz7IP0_KasAw\"}\r\n\r\n"
-  recorded_at: Wed, 30 Jul 2025 11:51:06 GMT
+      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"I\"}],\"role\":
+        \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
+        1,\"totalTokenCount\": 140,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        73}],\"thoughtsTokenCount\": 66},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\":
+        \"3LePaJe7N_3hqtsP_f_d-Q0\"}\r\n\r\ndata: {\"candidates\": [{\"content\":
+        {\"parts\": [{\"text\": \" received \\\"{\\\"success\\\":true}\\\". Is there
+        anything else I can help you with?\"}],\"role\": \"model\"},\"finishReason\":
+        \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
+        18,\"totalTokenCount\": 157,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        73}],\"thoughtsTokenCount\": 66},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\":
+        \"3LePaJe7N_3hqtsP_f_d-Q0\"}\r\n\r\n"
+  recorded_at: Sun, 03 Aug 2025 19:25:59 GMT
 recorded_with: VCR 6.3.1

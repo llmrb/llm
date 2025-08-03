@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 30 Jul 2025 11:51:18 GMT
+      - Sun, 03 Aug 2025 19:26:22 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1462
+      - gfet4t7; dur=1497
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -73,19 +73,19 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 53,
             "candidatesTokenCount": 13,
-            "totalTokenCount": 122,
+            "totalTokenCount": 109,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 53
               }
             ],
-            "thoughtsTokenCount": 56
+            "thoughtsTokenCount": 43
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "NgeKaM2yMtCJz7IPlsXL-QM"
+          "responseId": "3rePaNPqMpbWz7IPtcK-4Aw"
         }
-  recorded_at: Wed, 30 Jul 2025 11:51:08 GMT
+  recorded_at: Sun, 03 Aug 2025 19:26:01 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
@@ -118,7 +118,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 30 Jul 2025 11:51:20 GMT
+      - Sun, 03 Aug 2025 19:26:25 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -128,7 +128,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1981
+      - gfet4t7; dur=2500
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -142,7 +142,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "I received the output `{\"success\":true}`. Is there anything else I can help you with?"
+                    "text": "I ran the `date` command for you. What was the output? I see `{\"success\":true}`, but that doesn't seem to be the actual output from the `date` command itself. Could you please provide the full output?"
                   }
                 ],
                 "role": "model"
@@ -153,18 +153,18 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 73,
-            "candidatesTokenCount": 21,
-            "totalTokenCount": 215,
+            "candidatesTokenCount": 50,
+            "totalTokenCount": 341,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 73
               }
             ],
-            "thoughtsTokenCount": 121
+            "thoughtsTokenCount": 218
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "OAeKaJbRN4ygz7IPlPyz6AY"
+          "responseId": "4bePaJPlGrmtz7IPwoSU6As"
         }
-  recorded_at: Wed, 30 Jul 2025 11:51:10 GMT
+  recorded_at: Sun, 03 Aug 2025 19:26:04 GMT
 recorded_with: VCR 6.3.1
