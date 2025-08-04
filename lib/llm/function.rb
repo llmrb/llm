@@ -10,15 +10,15 @@
 #     fn.params do |schema|
 #       schema.object(command: schema.string.required)
 #     end
-#     fn.define do |params|
-#       {success: Kernel.system(params.command)}
+#     fn.define do |command:|
+#       {success: Kernel.system(command)}
 #     end
 #   end
 #
 # @example example #2
 #   class System
-#     def call(params)
-#       {success: Kernel.system(params.command)}
+#     def call(command:)
+#       {success: Kernel.system(command)}
 #     end
 #   end
 #
@@ -91,7 +91,8 @@ class LLM::Function
   # Call the function
   # @return [LLM::Function::Return] The result of the function call
   def call
-    Return.new id, (Class === @runner) ? @runner.new.call(arguments) : @runner.call(arguments)
+    runner = ((Class === @runner) ? @runner.new : @runner)
+    Return.new(id, runner.call(**arguments))
   ensure
     @called = true
   end

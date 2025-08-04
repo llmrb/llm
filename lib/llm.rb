@@ -87,8 +87,8 @@ module LLM
   #     fn.params do |schema|
   #       schema.object(command: schema.string.required)
   #     end
-  #     fn.define do |params|
-  #       system(params.command)
+  #     fn.define do |command:|
+  #       system(command)
   #     end
   #   end
   # @param [Symbol] name The name of the function

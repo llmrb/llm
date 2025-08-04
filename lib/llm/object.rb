@@ -62,6 +62,7 @@ class LLM::Object < BasicObject
   def to_h
     @h
   end
+  alias_method :to_hash, :to_h
 
   private
 

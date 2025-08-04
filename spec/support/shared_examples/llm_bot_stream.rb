@@ -47,7 +47,7 @@ RSpec.shared_examples "LLM::Bot: tool stream" do |dirname, options = {}|
       LLM.function(:system) do |fn|
         fn.description "Runs system commands"
         fn.params { _1.object(command: _1.string.required) }
-        fn.define { {success: Kernel.system(_1.command)} }
+        fn.define { |command:| {success: Kernel.system(command)} }
       end
     end
     before do
