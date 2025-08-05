@@ -110,6 +110,14 @@ module LLM
     end
 
     ##
+    # @return [Boolean]
+    #  Returns true when the message represents a function return
+    def tool_return?
+      LLM::Function::Return === content ||
+        [*content].grep(LLM::Function::Return).any?
+    end
+
+    ##
     # Returns a string representation of the message
     # @return [String]
     def inspect
