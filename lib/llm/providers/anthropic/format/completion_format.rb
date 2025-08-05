@@ -50,7 +50,7 @@ module LLM::Anthropic::Format
       when LLM::File
         if content.image?
           [{type: :image, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]
-        elsif content.mime_type == "application/pdf"
+        elsif content.pdf?
           [{type: :document, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]
         else
           raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \

@@ -29,10 +29,17 @@ class LLM::File
   end
 
   ##
-  # @return [String]
+  # @return [Boolean]
   #  Returns true if the file is an image
   def image?
     mime_type.start_with?("image/")
+  end
+
+  ##
+  # @return [Boolean]
+  #  Returns true if the file is a PDF document
+  def pdf?
+    mime_type == "application/pdf"
   end
 
   ##
