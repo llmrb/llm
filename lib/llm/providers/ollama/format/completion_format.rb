@@ -32,9 +32,9 @@ module LLM::Ollama::Format
         if content.image?
           {content: "This message has an image associated with it", images: [content.to_b64]}
         else
-          raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
-                                         "is not an image, and therefore not supported by the " \
-                                         "Ollama API"
+          raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                  "is not an image, and therefore not supported by the " \
+                                  "Ollama API"
         end
       when String
         {content:}
@@ -43,8 +43,8 @@ module LLM::Ollama::Format
       when LLM::Function::Return
         throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
       else
-        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
-                                       "is not supported by the Ollama API"
+        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                "is not supported by the Ollama API"
       end
     end
 

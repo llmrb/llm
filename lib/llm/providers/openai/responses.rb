@@ -49,7 +49,7 @@ class LLM::OpenAI
     # @param prompt (see LLM::Provider#complete)
     # @param params (see LLM::Provider#complete)
     # @raise (see LLM::Provider#request)
-    # @raise [LLM::Error::PromptError]
+    # @raise [LLM::PromptError]
     #  When given an object a provider does not understand
     # @return [LLM::Response::Output]
     def create(prompt, params = {})

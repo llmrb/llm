@@ -22,8 +22,8 @@ module LLM::OpenAI::Format
         elsif URI === input
           {type: :image_url, url: input.to_s}
         else
-          raise LLM::Error::FormatError, "The given object (an instance of #{input.class}) " \
-                                         "is not supported by OpenAI moderations API"
+          raise LLM::FormatError, "The given object (an instance of #{input.class}) " \
+                                  "is not supported by OpenAI moderations API"
         end
       end
     end

@@ -53,9 +53,9 @@ module LLM::Anthropic::Format
         elsif content.pdf?
           [{type: :document, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]
         else
-          raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
-                                          "is not an image or PDF, and therefore not supported by the " \
-                                          "Anthropic API"
+          raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                  "is not an image or PDF, and therefore not supported by the " \
+                                  "Anthropic API"
         end
       when String
         [{type: :text, text: content}]
@@ -64,8 +64,8 @@ module LLM::Anthropic::Format
       when LLM::Function::Return
         [{type: "tool_result", tool_use_id: content.id, content: [{type: :text, text: JSON.dump(content.value)}]}]
       else
-        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
-                                       "is not supported by the Anthropic API"
+        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                "is not supported by the Anthropic API"
       end
     end
 

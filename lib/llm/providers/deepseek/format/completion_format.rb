@@ -12,7 +12,7 @@ module LLM::DeepSeek::Format
     end
 
     ##
-    # Formats the message for the OpenAI chat completions API
+    # Formats the message for the DeepSeek chat completions API
     # @return [Hash]
     def format
       catch(:abort) do
@@ -37,8 +37,8 @@ module LLM::DeepSeek::Format
       when LLM::Function::Return
         throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
       else
-        raise LLM::Error::PromptError, "The given object (an instance of #{content.class}) " \
-                                       "is not supported by the DeepSeek chat completions API"
+        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                "is not supported by the DeepSeek chat completions API"
       end
     end
 
