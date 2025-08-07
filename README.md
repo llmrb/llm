@@ -27,6 +27,7 @@ images, files, and JSON Schema generation.
 #### Miscellaneous
 - 🧮 Text embeddings and vector support
 - 🔌 Retrieve models dynamically for introspection and selection
+- 🧱 Includes support for OpenAI's responses, moderations, and vector stores APIs
 
 ## Demos
 

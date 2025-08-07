@@ -65,13 +65,13 @@ class LLM::OpenAI
     #   llm = LLM.openai(ENV["KEY"])
     #   res = llm.files.create file: "/documents/haiku.txt"
     # @see https://platform.openai.com/docs/api-reference/files/create OpenAI docs
-    # @param [File] file The file
+    # @param [File, LLM::File, String] file The file
     # @param [String] purpose The purpose of the file (see OpenAI docs)
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response::File]
     def create(file:, purpose: "assistants", **params)
-      multi = LLM::Multipart.new(params.merge!(file:, purpose:))
+      multi = LLM::Multipart.new(params.merge!(file: LLM.File(file), purpose:))
       req = Net::HTTP::Post.new("/v1/files", headers)
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)

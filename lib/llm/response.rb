@@ -17,6 +17,11 @@ module LLM
     require_relative "response/moderationlist"
 
     ##
+    # Returns the HTTP response
+    # @return [Net::HTTPResponse]
+    attr_reader :res
+
+    ##
     # @param [Net::HTTPResponse] res
     #  HTTP response
     # @return [LLM::Response]
@@ -33,6 +38,23 @@ module LLM
       when %r|\Aapplication/json\s*| then JSON.parse(@res.body)
       else @res.body
       end
+    end
+
+    ##
+    # Returns an inspection of the response object
+    # @return [String]
+    def inspect
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} @body=#{body.inspect} @res=#{@res.inspect}>"
+    end
+
+    private
+
+    def method_missing(m, *args, **kwargs, &b)
+      body.key?(m.to_s) ? body[m.to_s] : super
+    end
+
+    def respond_to_missing?(m, include_private = false)
+      body.key?(m.to_s) || super
     end
   end
 end

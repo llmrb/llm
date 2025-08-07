@@ -47,6 +47,12 @@ module LLM
     end
 
     ##
+    # @raise [NotImplementedError]
+    def vector_stores
+      raise NotImplementedError
+    end
+
+    ##
     # Returns the default model for chat completions
     # @see https://ollama.com/library/qwen3 qwen3
     # @return [String]
