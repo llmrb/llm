@@ -42,4 +42,13 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
       expect(messages[5]).to be_nil
     end
   end
+
+  context "when given a prompt that is not recognized" do
+    before { bot.chat(Object.new) }
+    subject(:messages) { bot.messages.to_a }
+
+    it "raises an error" do
+      expect { messages }.to raise_error(LLM::PromptError)
+    end
+  end
 end
