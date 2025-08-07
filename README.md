@@ -10,7 +10,7 @@ images, files, and JSON Schema generation.
 #### General
 - ✅ A single unified interface for multiple providers
 - 📦 Zero dependencies outside Ruby's standard library
-- 🚀 Efficient API design that minimizes the request count
+- 🚀 Efficient API design that minimizes the number of requests made
 
 #### Chat, Agents
 - 🧠 Stateless and stateful chat via completions and responses API
@@ -86,12 +86,11 @@ llm = LLM.llamacpp(key: nil)
 
 The following example creates an instance of
 [LLM::Bot](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html)
-by entering into a conversation where messages are buffered and
-sent to the provider on-demand. This is the default behavior
-because it can reduce the number of requests sent to a provider,
-and avoids unneccessary requests until an attempt to iterate over
+and enters into a conversation where messages are buffered and
+sent to the provider on-demand. The implementation is designed to
+buffer messages by waiting until an attempt to iterate over
 [LLM::Bot#messages](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#messages-instance_method)
-is made:
+is made before sending a request to the LLM:
 
 ```ruby
 #!/usr/bin/env ruby

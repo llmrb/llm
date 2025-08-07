@@ -2,10 +2,10 @@
 
 module LLM
   ##
-  # {LLM::Bot LLM::Bot} provides a bot object that can maintain a
+  # {LLM::Bot LLM::Bot} provides an object that can maintain a
   # a conversation. A conversation can use the chat completions API
-  # that all LLM providers support or the responses API that a select
-  # few LLM providers support.
+  # that all LLM providers support or the responses API that currently
+  # only OpenAI supports.
   #
   # @example example #1
   #   #!/usr/bin/env ruby
@@ -14,10 +14,9 @@ module LLM
   #   llm  = LLM.openai(ENV["KEY"])
   #   bot  = LLM::Bot.new(llm)
   #   msgs = bot.chat do |prompt|
-  #     prompt.system "Answer the following questions."
-  #     prompt.user "What is 5 + 7 ?"
-  #     prompt.user "Why is the sky blue ?"
-  #     prompt.user "Why did the chicken cross the road ?"
+  #     prompt.user "What programming language should I learn next ?"
+  #     prompt.user "Can you recommend a good book ?"
+  #     prompt.user "Can you suggest a fun project to practice ?"
   #   end
   #   msgs.each { print "[#{_1.role}]", _1.content, "\n" }
   #
@@ -27,10 +26,9 @@ module LLM
   #
   #   llm = LLM.openai(ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
-  #   bot.chat "Answer the following questions.", role: :system
-  #   bot.chat "What is 5 + 7 ?", role: :user
-  #   bot.chat "Why is the sky blue ?", role: :user
-  #   bot.chat "Why did the chicken cross the road ?", role: :user
+  #   bot.chat "What programming language should I learn next ?", role: :user
+  #   bot.chat "Can you recommend a good book ?", role: :user
+  #   bot.chat "Can you suggest a fun project to practice ?", role: :user
   #   bot.messages.each { print "[#{_1.role}]", _1.content, "\n" }
   class Bot
     require_relative "bot/prompt/completion"
