@@ -50,6 +50,12 @@ module LLM
     end
 
     ##
+    # @raise [NotImplementedError]
+    def vector_stores
+      raise NotImplementedError
+    end
+
+    ##
     # Returns the default model for chat completions
     # @see https://api-docs.deepseek.com/quick_start/pricing deepseek-chat
     # @return [String]

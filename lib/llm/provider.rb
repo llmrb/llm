@@ -175,6 +175,13 @@ class LLM::Provider
   end
 
   ##
+  # @return [LLM::OpenAI::VectorStore]
+  #  Returns an interface to the vector stores API
+  def vector_stores
+    raise NotImplementedError
+  end
+
+  ##
   # @return [String]
   #  Returns the role of the assistant in the conversation.
   #  Usually "assistant" or "model"

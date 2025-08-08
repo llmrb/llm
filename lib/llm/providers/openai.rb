@@ -15,6 +15,7 @@ module LLM
     require_relative "openai/audio"
     require_relative "openai/files"
     require_relative "openai/moderations"
+    require_relative "openai/vector_stores"
 
     include Format
 
@@ -111,6 +112,14 @@ module LLM
     # @return [LLM::OpenAI::Moderations]
     def moderations
       LLM::OpenAI::Moderations.new(self)
+    end
+
+    ##
+    # Provides an interface to OpenAI's vector store API
+    # @see https://platform.openai.com/docs/api-reference/vector-stores/create OpenAI docs
+    # @return [LLM::OpenAI::VectorStore]
+    def vector_stores
+      LLM::OpenAI::VectorStores.new(self)
     end
 
     ##
