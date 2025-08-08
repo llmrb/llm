@@ -47,6 +47,13 @@ module LLM
       "#<#{self.class.name}:0x#{object_id.to_s(16)} @body=#{body.inspect} @res=#{@res.inspect}>"
     end
 
+    ##
+    # Returns true if the response is successful
+    # @return [Boolean]
+    def ok?
+      Net::HTTPSuccess === @res
+    end
+
     private
 
     def method_missing(m, *args, **kwargs, &b)

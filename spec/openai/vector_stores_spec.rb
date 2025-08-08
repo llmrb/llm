@@ -12,7 +12,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
     after { provider.vector_stores.delete(vector: store) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response)
+      is_expected.to be_ok
     end
 
     it "includes created status" do
@@ -30,7 +30,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
     after { provider.vector_stores.delete(vector: store) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response)
+      is_expected.to be_ok
     end
 
     it "includes the store" do
@@ -47,7 +47,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
     subject { provider.vector_stores.delete(vector: store) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response)
+      is_expected.to be_ok
     end
 
     it "includes deleted status" do
