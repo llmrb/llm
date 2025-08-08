@@ -52,7 +52,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
     it "includes deleted status" do
       is_expected.to have_attributes(
-        "deleted" => true,
+        "deleted" => true
       )
     end
   end
