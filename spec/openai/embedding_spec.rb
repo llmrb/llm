@@ -11,7 +11,7 @@ RSpec.describe "LLM::OpenAI: embeddings" do
     subject(:response) { openai.embed("Hello, world") }
 
     it "returns an embedding" do
-      expect(response).to be_instance_of(LLM::Response::Embedding)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns a model" do

@@ -18,7 +18,7 @@ RSpec.describe "LLM::Ollama: completions" do
     end
 
     it "returns a completion" do
-      expect(response).to be_a(LLM::Response::Completion)
+      expect(response).to be_a(LLM::Response)
     end
 
     it "returns a model" do

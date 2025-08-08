@@ -99,7 +99,7 @@ class LLM::OpenAI
 
     private
 
-    [:response_parser, :headers, :execute, :set_body_stream].each do |m|
+    [:headers, :execute, :set_body_stream].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
   end

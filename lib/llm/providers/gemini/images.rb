@@ -15,6 +15,7 @@ class LLM::Gemini
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
   #   IO.copy_stream res.images[0], "rocket.png"
   class Images
+    require_relative "response/image"
     include Format
 
     ##
@@ -39,16 +40,16 @@ class LLM::Gemini
     #  The prompt should make it clear you want to generate an image, or you
     #  might unexpectedly receive a purely textual response. This is due to how
     #  Gemini implements image generation under the hood.
-    # @return [LLM::Response::Image]
+    # @return [LLM::Response]
     def create(prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
       req  = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       body = JSON.dump({
-        contents: [{parts: [{text: create_prompt}, {text: prompt}]}],
+        contents: [{parts: [{text: system_prompt}, {text: prompt}]}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params))
       req.body = body
       res = execute(request: req)
-      LLM::Response::Image.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::Gemini::Response::Image)
     end
 
     ##
@@ -63,7 +64,7 @@ class LLM::Gemini
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
     # @note (see LLM::Gemini::Images#create)
-    # @return [LLM::Response::Image]
+    # @return [LLM::Response]
     def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
       req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       image = LLM.File(image)
@@ -73,7 +74,7 @@ class LLM::Gemini
       }.merge!(params)).b
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req)
-      LLM::Response::Image.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::Gemini::Response::Image)
     end
 
     ##
@@ -93,7 +94,7 @@ class LLM::Gemini
       @provider.instance_variable_get(:@key)
     end
 
-    def create_prompt
+    def system_prompt
       <<~PROMPT
         Your task is to generate one or more image(s) from
         text I will provide to you. Your response *MUST* include
@@ -102,7 +103,7 @@ class LLM::Gemini
       PROMPT
     end
 
-    [:response_parser, :headers, :execute, :set_body_stream].each do |m|
+    [:headers, :execute, :set_body_stream].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
   end

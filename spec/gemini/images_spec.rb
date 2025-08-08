@@ -11,7 +11,7 @@ RSpec.describe "LLM::Gemini::Images" do
     subject(:response) { provider.images.create(prompt: "A dog on a rocket to the moon") }
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::Image)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns an IO-like object" do
@@ -29,7 +29,7 @@ RSpec.describe "LLM::Gemini::Images" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::Image)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns an IO-like object" do

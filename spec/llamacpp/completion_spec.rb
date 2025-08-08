@@ -12,7 +12,7 @@ RSpec.describe "LLM::Llamacpp: completions" do
     subject(:response) { llamacpp.complete("Hello!", params.merge(role: :user)) }
 
     it "returns a completion" do
-      expect(response).to be_a(LLM::Response::Completion)
+      expect(response).to be_a(LLM::Response)
     end
 
     it "returns a model" do

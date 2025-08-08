@@ -5,10 +5,11 @@ module LLM
   # The OpenAI class implements a provider for
   # [OpenAI](https://platform.openai.com/)
   class OpenAI < Provider
+    require_relative "openai/response/embedding"
+    require_relative "openai/response/completion"
     require_relative "openai/error_handler"
     require_relative "openai/format"
     require_relative "openai/stream_parser"
-    require_relative "openai/response_parser"
     require_relative "openai/models"
     require_relative "openai/responses"
     require_relative "openai/images"
@@ -39,7 +40,7 @@ module LLM
       req = Net::HTTP::Post.new("/v1/embeddings", headers)
       req.body = JSON.dump({input:, model:}.merge!(params))
       res = execute(request: req)
-      Response::Embedding.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Embedding)
     end
 
     ##
@@ -62,7 +63,7 @@ module LLM
       body = JSON.dump({messages: format(messages, :complete).flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      Response::Completion.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Completion)
     end
 
     ##
@@ -143,10 +144,6 @@ module LLM
         "Content-Type" => "application/json",
         "Authorization" => "Bearer #{@key}"
       )
-    end
-
-    def response_parser
-      LLM::OpenAI::ResponseParser
     end
 
     def stream_parser

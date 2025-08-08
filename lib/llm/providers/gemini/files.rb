@@ -35,6 +35,8 @@ class LLM::Gemini
   #   bot.chat(["Describe the audio file I sent to you", file])
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
+    require_relative "response/file"
+
     ##
     # Returns a new Files object
     # @param provider [LLM::Provider]
@@ -54,18 +56,12 @@ class LLM::Gemini
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::FileList]
+    # @return [LLM::Response]
     def all(**params)
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/files?#{query}", headers)
       res = execute(request: req)
-      LLM::Response::FileList.new(res).tap { |filelist|
-        files = filelist.body["files"]&.map do |file|
-          file = file.transform_keys { snakecase(_1) }
-          LLM::Object.from_hash(file)
-        end || []
-        filelist.files = files
-      }
+      LLM::Response.new(res)
     end
 
     ##
@@ -77,7 +73,7 @@ class LLM::Gemini
     # @param [String, LLM::File] file The file
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::File]
+    # @return [LLM::Response]
     def create(file:, **params)
       file = LLM.File(file)
       req = Net::HTTP::Post.new(request_upload_url(file:), {})
@@ -87,7 +83,7 @@ class LLM::Gemini
       file.with_io do |io|
         set_body_stream(req, io)
         res = execute(request: req)
-        LLM::Response::File.new(res)
+        LLM::Response.new(res).extend(LLM::Gemini::Response::File)
       end
     end
 
@@ -101,13 +97,13 @@ class LLM::Gemini
     # @param [#name, String] file The file to get
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::File]
+    # @return [LLM::Response]
     def get(file:, **params)
       file_id = file.respond_to?(:name) ? file.name : file.to_s
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/#{file_id}?#{query}", headers)
       res = execute(request: req)
-      LLM::Response::File.new(res)
+      LLM::Response.new(res).extend(LLM::Gemini::Response::File)
     end
 
     ##
@@ -119,12 +115,13 @@ class LLM::Gemini
     # @param [#name, String] file The file to delete
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::File]
+    # @return [LLM::Response]
     def delete(file:, **params)
       file_id = file.respond_to?(:name) ? file.name : file.to_s
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Delete.new("/v1beta/#{file_id}?#{query}", headers)
-      execute(request: req)
+      res = execute(request: req)
+      LLM::Response.new(res)
     end
 
     ##

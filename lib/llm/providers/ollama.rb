@@ -19,10 +19,11 @@ module LLM
   #   bot.chat "Describe the image"
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Ollama < Provider
+    require_relative "ollama/response/embedding"
+    require_relative "ollama/response/completion"
     require_relative "ollama/error_handler"
     require_relative "ollama/format"
     require_relative "ollama/stream_parser"
-    require_relative "ollama/response_parser"
     require_relative "ollama/models"
 
     include Format
@@ -47,7 +48,7 @@ module LLM
       req      = Net::HTTP::Post.new("/v1/embeddings", headers)
       req.body = JSON.dump({input:}.merge!(params))
       res      = execute(request: req)
-      Response::Embedding.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::Ollama::Response::Embedding)
     end
 
     ##
@@ -70,7 +71,7 @@ module LLM
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      Response::Completion.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::Ollama::Response::Completion)
     end
 
     ##
@@ -102,10 +103,6 @@ module LLM
         "Content-Type" => "application/json",
         "Authorization" => "Bearer #{@key}"
       )
-    end
-
-    def response_parser
-      LLM::Ollama::ResponseParser
     end
 
     def stream_parser

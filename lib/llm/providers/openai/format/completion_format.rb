@@ -34,8 +34,8 @@ module LLM::OpenAI::Format
         [{type: :image_url, image_url: {url: content.to_s}}]
       when LLM::File
         format_file(content)
-      when LLM::Response::File
-        [{type: :file, file: {file_id: content.id}}]
+      when LLM::Response
+        content.file? ? [{type: :file, file: {file_id: content.id}}] : prompt_error!(content)
       when String
         [{type: :text, text: content.to_s}]
       when LLM::Message
@@ -43,8 +43,7 @@ module LLM::OpenAI::Format
       when LLM::Function::Return
         throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
       else
-        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                "is not supported by the OpenAI chat completions API"
+        prompt_error!(content)
       end
     end
 
@@ -74,6 +73,11 @@ module LLM::OpenAI::Format
       else
         {role: message.role, content: content.flat_map { format_content(_1) }}
       end
+    end
+
+    def prompt_error!(content)
+      raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                              "is not supported by the OpenAI chat completions API"
     end
 
     def message = @message

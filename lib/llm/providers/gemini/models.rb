@@ -38,18 +38,12 @@ class LLM::Gemini
     # @see https://ai.google.dev/api/models?hl=en#method:-models.list Gemini docs
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::ModelList]
+    # @return [LLM::Response]
     def all(**params)
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/models?#{query}", headers)
       res = execute(request: req)
-      LLM::Response::ModelList.new(res).tap { |modellist|
-        models = modellist.body["models"].map do |model|
-          model = model.transform_keys { snakecase(_1) }
-          LLM::Model.from_hash(model).tap { _1.provider = @provider }
-        end
-        modellist.models = models
-      }
+      LLM::Response.new(res)
     end
 
     private

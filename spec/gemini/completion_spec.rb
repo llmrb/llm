@@ -11,7 +11,7 @@ RSpec.describe "LLM::Gemini: completions" do
     let(:key) { ENV["GEMINI_SECRET"] || "TOKEN" }
 
     it "returns a completion" do
-      expect(response).to be_a(LLM::Response::Completion)
+      expect(response).to be_a(LLM::Response)
     end
 
     it "returns a model" do
@@ -30,7 +30,7 @@ RSpec.describe "LLM::Gemini: completions" do
       subject(:choice) { response.choices[0] }
 
       it "has choices" do
-        expect(response).to be_a(LLM::Response::Completion).and have_attributes(
+        expect(response).to be_a(LLM::Response).and have_attributes(
           choices: [
             have_attributes(
               role: "model",

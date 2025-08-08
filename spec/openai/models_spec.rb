@@ -8,14 +8,14 @@ RSpec.describe "LLM::OpenAI::Models" do
 
   context "when given a successful list operation",
           vcr: {cassette_name: "openai/models/successful_list"} do
-    subject { provider.models.all }
+    subject(:response) { provider.models.all }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response::ModelList)
+      is_expected.to be_instance_of(LLM::Response)
     end
 
     it "returns a list of models" do
-      expect(subject.models).to all(be_a(LLM::Model))
+      expect(response.data).to all(be_a(LLM::Object))
     end
   end
 end

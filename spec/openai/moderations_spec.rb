@@ -8,20 +8,15 @@ RSpec.describe "LLM::OpenAI::Moderations" do
 
   context "when given a string",
           vcr: {cassette_name: "openai/moderations/create_1"} do
-    subject(:moderation) { provider.moderations.create(input: "I hate you") }
+    let(:response) { provider.moderations.create(input: "I hate you") }
+    subject(:moderation) { response.moderations.first }
 
-    it "returns a list of moderations" do
-      is_expected.to be_instance_of(LLM::Response::ModerationList::Moderation)
+    it "has categories" do
+      expect(moderation.categories).to eq([:harassment])
     end
 
-    context "when given the input" do
-      it "has categories" do
-        expect(moderation.categories).to eq(["harassment"])
-      end
-
-      it "has scores" do
-        expect(moderation.scores).to match("harassment" => instance_of(Float))
-      end
+    it "has scores" do
+      expect(moderation.scores).to match(harassment: instance_of(Float))
     end
   end
 end

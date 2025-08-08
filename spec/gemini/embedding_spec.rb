@@ -11,15 +11,11 @@ RSpec.describe "LLM::OpenAI: embeddings" do
     subject(:response) { gemini.embed("Hello, world") }
 
     it "returns an embedding" do
-      expect(response).to be_instance_of(LLM::Response::Embedding)
-    end
-
-    it "returns a model" do
-      expect(response.model).to eq("text-embedding-004")
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "has embeddings" do
-      expect(response.embeddings).to be_instance_of(Array)
+      expect(response.embedding.values).to be_instance_of(Array)
     end
   end
 end

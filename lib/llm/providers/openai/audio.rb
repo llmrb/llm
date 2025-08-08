@@ -30,13 +30,13 @@ class LLM::OpenAI
     # @param [String] response_format The response format
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::Audio]
+    # @return [LLM::Response]
     def create_speech(input:, voice: "alloy", model: "gpt-4o-mini-tts", response_format: "mp3", **params)
       req = Net::HTTP::Post.new("/v1/audio/speech", headers)
       req.body = JSON.dump({input:, voice:, model:, response_format:}.merge!(params))
       io = StringIO.new("".b)
       res = execute(request: req) { _1.read_body { |chunk| io << chunk } }
-      LLM::Response::Audio.new(res).tap { _1.audio = io }
+      LLM::Response.new(res).tap { _1.define_singleton_method(:audio) { io } }
     end
 
     ##
@@ -50,14 +50,14 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::AudioTranscription]
+    # @return [LLM::Response]
     def create_transcription(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file: LLM.File(file), model:))
       req = Net::HTTP::Post.new("/v1/audio/transcriptions", headers)
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
       res = execute(request: req)
-      LLM::Response::AudioTranscription.new(res).tap { _1.text = _1.body["text"] }
+      LLM::Response.new(res)
     end
 
     ##
@@ -72,14 +72,14 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::AudioTranslation]
+    # @return [LLM::Response]
     def create_translation(file:, model: "whisper-1", **params)
       multi = LLM::Multipart.new(params.merge!(file: LLM.File(file), model:))
       req = Net::HTTP::Post.new("/v1/audio/translations", headers)
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
       res = execute(request: req)
-      LLM::Response::AudioTranslation.new(res).tap { _1.text = _1.body["text"] }
+      LLM::Response.new(res)
     end
 
     private

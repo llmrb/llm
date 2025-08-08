@@ -39,18 +39,12 @@ class LLM::Ollama
     # @see https://ollama.com/library Ollama library
     # @param [Hash] params Other parameters (see Ollama docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::ModelList]
+    # @return [LLM::Response]
     def all(**params)
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/api/tags?#{query}", headers)
       res = execute(request: req)
-      LLM::Response::ModelList.new(res).tap { |modellist|
-        models = modellist.body["models"].map do |model|
-          model = model.transform_keys { snakecase(_1) }
-          LLM::Model.from_hash(model).tap { _1.provider = @provider }
-        end
-        modellist.models = models
-      }
+      LLM::Response.new(res)
     end
 
     private

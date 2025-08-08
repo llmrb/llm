@@ -8,10 +8,10 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when given a successful create operation (haiku1.txt)",
           vcr: {cassette_name: "openai/files/successful_create_haiku1"} do
-    subject(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku1.txt")) }
+    subject(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
 
     it "is successful" do
-      expect(file).to be_instance_of(LLM::Response::File)
+      expect(file).to be_instance_of(LLM::Response)
     ensure
       provider.files.delete(file:)
     end
@@ -29,10 +29,10 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when given a successful create operation (haiku2.txt)",
           vcr: {cassette_name: "openai/files/successful_create_haiku2"} do
-    subject(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku2.txt")) }
+    subject(:file) { provider.files.create(file: "spec/fixtures/documents/haiku2.txt") }
 
     it "is successful" do
-      expect(file).to be_instance_of(LLM::Response::File)
+      expect(file).to be_instance_of(LLM::Response)
     ensure
       provider.files.delete(file:)
     end
@@ -50,11 +50,11 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when given a successful delete operation (haiku3.txt)",
           vcr: {cassette_name: "openai/files/successful_delete_haiku3"} do
-    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku3.txt")) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku3.txt") }
     subject { provider.files.delete(file:) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Object)
+      is_expected.to be_instance_of(LLM::Response)
     end
 
     it "returns deleted status" do
@@ -66,11 +66,11 @@ RSpec.describe "LLM::OpenAI::Files" do
 
   context "when given a successful get operation (haiku4.txt)",
           vcr: {cassette_name: "openai/files/successful_get_haiku4"} do
-    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/haiku4.txt")) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku4.txt") }
     subject { provider.files.get(file:) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response::File)
+      is_expected.to be_instance_of(LLM::Response)
     ensure
       provider.files.delete(file:)
     end
@@ -97,13 +97,13 @@ RSpec.describe "LLM::OpenAI::Files" do
     subject(:filelist) { provider.files.all }
 
     it "is successful" do
-      expect(filelist).to be_instance_of(LLM::Response::FileList)
+      expect(filelist).to be_instance_of(LLM::Response)
     ensure
       files.each { |file| provider.files.delete(file:) }
     end
 
     it "returns an array of file objects" do
-      expect(filelist.files[0..1]).to match_array(
+      expect(filelist.data[0..1]).to match_array(
         [
           have_attributes(
             id: instance_of(String),
@@ -126,7 +126,7 @@ RSpec.describe "LLM::OpenAI::Files" do
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl.pdf"} do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Bot.new(provider) }
-    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
 
     before do
       bot.respond(file)
@@ -145,7 +145,7 @@ RSpec.describe "LLM::OpenAI::Files" do
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_2.pdf"} do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Bot.new(provider) }
-    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
 
     before do
       bot.respond([
@@ -166,7 +166,7 @@ RSpec.describe "LLM::OpenAI::Files" do
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_3.pdf"} do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Bot.new(provider) }
-    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
 
     before do
       bot.chat(file)
@@ -185,7 +185,7 @@ RSpec.describe "LLM::OpenAI::Files" do
           vcr: {cassette_name: "openai/files/describe_freebsd.sysctl_4.pdf"} do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Bot.new(provider) }
-    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf")) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
 
     before do
       bot.chat([

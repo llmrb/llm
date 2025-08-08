@@ -29,10 +29,11 @@ module LLM
   #   bot.chat ["Describe the image", LLM::File("/images/capybara.png")]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Gemini < Provider
+    require_relative "gemini/response/embedding"
+    require_relative "gemini/response/completion"
     require_relative "gemini/error_handler"
     require_relative "gemini/format"
     require_relative "gemini/stream_parser"
-    require_relative "gemini/response_parser"
     require_relative "gemini/models"
     require_relative "gemini/images"
     require_relative "gemini/files"
@@ -61,7 +62,7 @@ module LLM
       req = Net::HTTP::Post.new(path, headers)
       req.body = JSON.dump({content: {parts: [{text: input}]}})
       res = execute(request: req)
-      Response::Embedding.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::Gemini::Response::Embedding)
     end
 
     ##
@@ -86,7 +87,7 @@ module LLM
       body = JSON.dump({contents: format(messages)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      Response::Completion.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::Gemini::Response::Completion)
     end
 
     ##
@@ -138,10 +139,6 @@ module LLM
       (@headers || {}).merge(
         "Content-Type" => "application/json"
       )
-    end
-
-    def response_parser
-      LLM::Gemini::ResponseParser
     end
 
     def stream_parser

@@ -44,7 +44,7 @@ class LLM::Provider
   #  Other embedding parameters
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
-  # @return [LLM::Response::Embedding]
+  # @return [LLM::Response]
   def embed(input, model: nil, **params)
     raise NotImplementedError
   end
@@ -68,7 +68,7 @@ class LLM::Provider
   # @option params [Array<LLM::Function>, nil] :tools Defaults to nil
   # @raise [NotImplementedError]
   #  When the method is not implemented by a subclass
-  # @return [LLM::Response::Completion]
+  # @return [LLM::Response]
   def complete(prompt, params = {})
     raise NotImplementedError
   end
@@ -226,15 +226,6 @@ class LLM::Provider
   # @raise [NotImplementedError]
   #  (see LLM::Provider#complete)
   def headers
-    raise NotImplementedError
-  end
-
-  ##
-  # @return [Module]
-  #  Returns the module responsible for parsing a successful LLM response
-  # @raise [NotImplementedError]
-  #  (see LLM::Provider#complete)
-  def response_parser
     raise NotImplementedError
   end
 

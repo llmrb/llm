@@ -30,9 +30,8 @@ module LLM::Gemini::Format
       case content
       when Array
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
-      when LLM::Response::File
-        file = content
-        [{file_data: {mime_type: file.mime_type, file_uri: file.uri}}]
+      when LLM::Response
+        format_response(content)
       when LLM::File
         file = content
         [{inline_data: {mime_type: file.mime_type, data: file.to_b64}}]
@@ -43,9 +42,22 @@ module LLM::Gemini::Format
       when LLM::Function::Return
         [{text: JSON.dump(content.value)}]
       else
-        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                "is not supported by the Gemini API"
+        prompt_error!(content)
       end
+    end
+
+    def format_response(response)
+      if response.file?
+        file = response
+        [{file_data: {mime_type: file.mime_type, file_uri: file.uri}}]
+      else
+        prompt_error!(content)
+      end
+    end
+
+    def prompt_error!(object)
+        raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
+                                "is not supported by the Gemini API"
     end
 
     def message = @message

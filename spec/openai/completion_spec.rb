@@ -11,7 +11,7 @@ RSpec.describe "LLM::OpenAI: completions" do
     subject(:response) { openai.complete("Hello!", role: :user) }
 
     it "returns a completion" do
-      expect(response).to be_a(LLM::Response::Completion)
+      expect(response).to be_a(LLM::Response)
     end
 
     it "returns a model" do

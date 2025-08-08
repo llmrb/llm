@@ -12,6 +12,10 @@ class LLM::Object
       ::Kernel.instance_method(:instance_of?).bind(self).call(...)
     end
 
+    def extend(...)
+      ::Kernel.instance_method(:extend).bind(self).call(...)
+    end
+
     def method(...)
       ::Kernel.instance_method(:method).bind(self).call(...)
     end
@@ -41,5 +45,9 @@ class LLM::Object
       "#<#{self.class}:0x#{object_id.to_s(16)} properties=#{to_h.inspect}>"
     end
     alias_method :to_s, :inspect
+
+    def pretty_print(q)
+      q.text(inspect)
+    end
   end
 end

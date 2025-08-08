@@ -22,15 +22,14 @@ module LLM::OpenAI::Format
 
     def format_content(content)
       case content
-      when LLM::Response::File
-        format_file(content)
+      when LLM::Response
+        content.file? ? format_file(content) : prompt_error!(content)
       when String
         [{type: :input_text, text: content.to_s}]
       when LLM::Message
         format_content(content.content)
       else
-        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                "is not supported by the OpenAI responses API"
+        prompt_error!(content)
       end
     end
 
@@ -62,6 +61,10 @@ module LLM::OpenAI::Format
       end
     end
 
+    def prompt_error!(content)
+      raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                              "is not supported by the OpenAI responses API"
+    end
     def message = @message
     def content = message.content
     def returns = content.grep(LLM::Function::Return)

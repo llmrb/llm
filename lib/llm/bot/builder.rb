@@ -9,7 +9,7 @@ class LLM::Bot
     ##
     # @param [String] prompt The prompt
     # @param [Hash] params
-    # @return [LLM::Response::Respond]
+    # @return [LLM::Response]
     def create_response!(prompt, params)
       @provider.responses.create(
         prompt,
@@ -20,7 +20,7 @@ class LLM::Bot
     ##
     # @param [String] prompt The prompt
     # @param [Hash] params
-    # @return [LLM::Response::Completion]
+    # @return [LLM::Response]
     def create_completion!(prompt, params)
       @provider.complete(
         prompt,

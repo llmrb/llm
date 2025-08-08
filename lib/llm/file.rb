@@ -80,9 +80,7 @@ end
 # @return [LLM::File]
 def LLM.File(path)
   case path
-  when LLM::File, LLM::Response::File
-    path
-  else
-    LLM::File.new(path)
+  when LLM::File, LLM::Response then path
+  else LLM::File.new(path)
   end
 end

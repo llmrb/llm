@@ -11,7 +11,7 @@ RSpec.describe "LLM::Ollama: embeddings" do
     subject(:response) { ollama.embed(["This is a paragraph", "This is another one"]) }
 
     it "returns an embedding" do
-      expect(response).to be_instance_of(LLM::Response::Embedding)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns a model" do

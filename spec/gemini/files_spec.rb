@@ -12,7 +12,7 @@ RSpec.describe "LLM::Gemini::Files" do
     after { provider.files.delete(file:) }
 
     it "is successful" do
-      expect(file).to be_instance_of(LLM::Response::File)
+      expect(file).to be_instance_of(LLM::Response)
     end
 
     it "returns a file object" do
@@ -29,7 +29,7 @@ RSpec.describe "LLM::Gemini::Files" do
     subject { provider.files.delete(file:) }
 
     it "is successful" do
-      is_expected.to be_instance_of(Net::HTTPOK)
+      is_expected.to be_ok
     end
   end
 
@@ -40,7 +40,7 @@ RSpec.describe "LLM::Gemini::Files" do
     after { provider.files.delete(file:) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response::File)
+      is_expected.to be_instance_of(LLM::Response)
     end
 
     it "returns a file object" do
@@ -54,7 +54,7 @@ RSpec.describe "LLM::Gemini::Files" do
   context "when given a successful translation operation (bismillah.mp3)",
           vcr: {cassette_name: "gemini/files/successful_translation_bismillah", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content.downcase.strip[0..2] }
-    let(:file) { provider.files.create(file: LLM::File("spec/fixtures/audio/bismillah.mp3")) }
+    let(:file) { provider.files.create(file: "spec/fixtures/audio/bismillah.mp3") }
     let(:bot) { LLM::Bot.new(provider) }
     after { provider.files.delete(file:) }
 
@@ -105,19 +105,19 @@ RSpec.describe "LLM::Gemini::Files" do
     after { files.each { |file| provider.files.delete(file:) } }
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::FileList)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns an array of file objects" do
-      expect(response).to match_array(
+      expect(response.files).to match_array(
         [
           have_attributes(
             name: instance_of(String),
-            display_name: "bismillah.mp3"
+            displayName: "bismillah.mp3"
           ),
           have_attributes(
             name: instance_of(String),
-            display_name: "alhamdullilah.mp3"
+            displayName: "alhamdullilah.mp3"
           )
         ]
       )

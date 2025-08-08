@@ -29,6 +29,8 @@ class LLM::OpenAI
   #   bot.chat(["Describe the document I sent to you", file])
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
+    require_relative "response/file"
+
     ##
     # Returns a new Files object
     # @param provider [LLM::Provider]
@@ -48,15 +50,12 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/files/list OpenAI docs
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::FileList]
+    # @return [LLM::Response]
     def all(**params)
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/files?#{query}", headers)
       res = execute(request: req)
-      LLM::Response::FileList.new(res).tap { |filelist|
-        files = filelist.body["data"].map { LLM::Object.from_hash(_1) }
-        filelist.files = files
-      }
+      LLM::Response.new(res)
     end
 
     ##
@@ -69,14 +68,14 @@ class LLM::OpenAI
     # @param [String] purpose The purpose of the file (see OpenAI docs)
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::File]
+    # @return [LLM::Response]
     def create(file:, purpose: "assistants", **params)
       multi = LLM::Multipart.new(params.merge!(file: LLM.File(file), purpose:))
       req = Net::HTTP::Post.new("/v1/files", headers)
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
       res = execute(request: req)
-      LLM::Response::File.new(res)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::File)
     end
 
     ##
@@ -89,13 +88,13 @@ class LLM::OpenAI
     # @param [#id, #to_s] file The file ID
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::File]
+    # @return [LLM::Response]
     def get(file:, **params)
       file_id = file.respond_to?(:id) ? file.id : file
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/files/#{file_id}?#{query}", headers)
       res = execute(request: req)
-      LLM::Response::File.new(res)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::File)
     end
 
     ##
@@ -109,14 +108,14 @@ class LLM::OpenAI
     # @param [#id, #to_s] file The file ID
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::DownloadFile]
+    # @return [LLM::Response]
     def download(file:, **params)
       query = URI.encode_www_form(params)
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Get.new("/v1/files/#{file_id}/content?#{query}", headers)
       io = StringIO.new("".b)
       res = execute(request: req) { |res| res.read_body { |chunk| io << chunk } }
-      LLM::Response::DownloadFile.new(res).tap { _1.file = io }
+      LLM::Response.new(res).tap { _1.define_singleton_method(:file) { io } }
     end
 
     ##
@@ -128,12 +127,12 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/files/delete OpenAI docs
     # @param [#id, #to_s] file The file ID
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Object] Response body
+    # @return [LLM::Response]
     def delete(file:)
       file_id = file.respond_to?(:id) ? file.id : file
       req = Net::HTTP::Delete.new("/v1/files/#{file_id}", headers)
       res = execute(request: req)
-      LLM::Object.from_hash JSON.parse(res.body)
+      LLM::Response.new(res)
     end
 
     private

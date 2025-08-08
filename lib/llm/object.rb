@@ -64,6 +64,12 @@ class LLM::Object < BasicObject
   end
   alias_method :to_hash, :to_h
 
+  ##
+  # @return [Object, nil]
+  def dig(...)
+    to_h.dig(...)
+  end
+
   private
 
   def method_missing(m, *args, &b)

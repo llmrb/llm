@@ -11,7 +11,7 @@ RSpec.describe "LLM::OpenAI::Images" do
     subject(:response) { provider.images.create(prompt: "A dog on a rocket to the moon") }
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::Image)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns an array of urls" do
@@ -33,7 +33,7 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::Image)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns an array of images" do
@@ -55,7 +55,7 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::Image)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns data" do
@@ -77,7 +77,7 @@ RSpec.describe "LLM::OpenAI::Images" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::Image)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns data" do

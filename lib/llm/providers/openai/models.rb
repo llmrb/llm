@@ -36,17 +36,12 @@ class LLM::OpenAI
     # @see https://platform.openai.com/docs/api-reference/models/list OpenAI docs
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::FileList]
+    # @return [LLM::Response]
     def all(**params)
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/models?#{query}", headers)
       res = execute(request: req)
-      LLM::Response::ModelList.new(res).tap { |modellist|
-        models = modellist.body["data"].map do |model|
-          LLM::Model.from_hash(model).tap { _1.provider = @provider }
-        end
-        modellist.models = models
-      }
+      LLM::Response.new(res)
     end
 
     private

@@ -27,6 +27,7 @@ class LLM::OpenAI
   #                           response_format: "b64_json"
   #   IO.copy_stream res.images[0], "rocket.png"
   class Images
+    require_relative "response/image"
     ##
     # Returns a new Images object
     # @param provider [LLM::Provider]
@@ -46,12 +47,12 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::Image]
+    # @return [LLM::Response]
     def create(prompt:, model: "dall-e-3", **params)
       req = Net::HTTP::Post.new("/v1/images/generations", headers)
       req.body = JSON.dump({prompt:, n: 1, model:}.merge!(params))
       res = execute(request: req)
-      LLM::Response::Image.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Image)
     end
 
     ##
@@ -65,7 +66,7 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::Image]
+    # @return [LLM::Response]
     def create_variation(image:, model: "dall-e-2", **params)
       image = LLM.File(image)
       multi = LLM::Multipart.new(params.merge!(image:, model:))
@@ -73,7 +74,7 @@ class LLM::OpenAI
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
       res = execute(request: req)
-      LLM::Response::Image.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Image)
     end
 
     ##
@@ -88,7 +89,7 @@ class LLM::OpenAI
     # @param [String] model The model to use
     # @param [Hash] params Other parameters (see OpenAI docs)
     # @raise (see LLM::Provider#request)
-    # @return [LLM::Response::Image]
+    # @return [LLM::Response]
     def edit(image:, prompt:, model: "dall-e-2", **params)
       image = LLM.File(image)
       multi = LLM::Multipart.new(params.merge!(image:, prompt:, model:))
@@ -96,12 +97,12 @@ class LLM::OpenAI
       req["content-type"] = multi.content_type
       set_body_stream(req, multi.body)
       res = execute(request: req)
-      LLM::Response::Image.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Image)
     end
 
     private
 
-    [:response_parser, :headers, :execute, :set_body_stream].each do |m|
+    [:headers, :execute, :set_body_stream].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
   end

@@ -11,7 +11,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
     subject { provider.responses.create("Hello", role: :developer) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response::Respond)
+      is_expected.to be_instance_of(LLM::Response)
     end
 
     it "has outputs" do
@@ -27,7 +27,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
     subject { provider.responses.get(response) }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response::Respond)
+      is_expected.to be_instance_of(LLM::Response)
     end
 
     it "has outputs" do

@@ -371,7 +371,7 @@ Most LLM providers provide a Files API where you can upload files
 that can be referenced from a prompt and llm.rb has first-class support
 for this feature. The following example uses the OpenAI provider to describe
 the contents of a PDF file after it has been uploaded. The file (an instance
-of [LLM::Response::File](https://0x1eef.github.io/x/llm.rb/LLM/Response/File.html))
+of [LLM::Response](https://0x1eef.github.io/x/llm.rb/LLM/Response/File.html))
 is passed directly to the chat method, and generally any object a prompt supports
 can be given to the chat method:
 
@@ -401,7 +401,7 @@ bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n"
 Generally all providers accept text prompts but some providers can
 also understand URLs, and various file types (eg images, audio, video,
 etc). The llm.rb approach to multimodal prompts is to let you pass `URI`
-objects to describe links, `LLM::File` | `LLM::Response::File` objects
+objects to describe links, `LLM::File`, and `LLM::Response` objects
 to describe files, `String` objects to describe text blobs, or an array
 of the aforementioned objects to describe multiple objects in a single
 prompt. Each object is a first class citizen that can be passed directly
@@ -453,7 +453,7 @@ print res.embeddings.size, "\n"
 print res.embeddings[0].size, "\n"
 
 ##
-# LLM::Response::Embedding
+# LLM::Response
 # 3
 # 1536
 ```

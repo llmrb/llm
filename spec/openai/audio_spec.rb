@@ -11,7 +11,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
     subject(:response) { provider.audio.create_speech(input: "A dog on a rocket to the moon") }
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::Audio)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns an audio" do
@@ -30,7 +30,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::AudioTranscription)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns a transcription" do
@@ -47,7 +47,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
     end
 
     it "is successful" do
-      expect(response).to be_instance_of(LLM::Response::AudioTranslation)
+      expect(response).to be_instance_of(LLM::Response)
     end
 
     it "returns a translation (Arabic => English)" do

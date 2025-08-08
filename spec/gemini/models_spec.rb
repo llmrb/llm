@@ -11,11 +11,11 @@ RSpec.describe "LLM::Gemini::Models" do
     subject { provider.models.all }
 
     it "is successful" do
-      is_expected.to be_instance_of(LLM::Response::ModelList)
+      is_expected.to be_instance_of(LLM::Response)
     end
 
     it "returns a list of models" do
-      expect(subject.models).to all(be_a(LLM::Model))
+      expect(subject.models).to all(be_a(LLM::Object))
     end
   end
 end

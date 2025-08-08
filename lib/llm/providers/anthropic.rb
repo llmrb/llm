@@ -5,10 +5,10 @@ module LLM
   # The Anthropic class implements a provider for
   # [Anthropic](https://www.anthropic.com)
   class Anthropic < Provider
+    require_relative "anthropic/response/completion"
     require_relative "anthropic/format"
     require_relative "anthropic/error_handler"
     require_relative "anthropic/stream_parser"
-    require_relative "anthropic/response_parser"
     require_relative "anthropic/models"
     include Format
 
@@ -57,7 +57,7 @@ module LLM
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      Response::Completion.new(res).extend(response_parser)
+      LLM::Response.new(res).extend(LLM::Anthropic::Response::Completion)
     end
 
     ##
@@ -90,10 +90,6 @@ module LLM
         "x-api-key" => @key,
         "anthropic-version" => "2023-06-01"
       )
-    end
-
-    def response_parser
-      LLM::Anthropic::ResponseParser
     end
 
     def stream_parser
