@@ -68,7 +68,6 @@ llm = LLM.openai(key: "yourapikey")
 llm = LLM.gemini(key: "yourapikey")
 llm = LLM.anthropic(key: "yourapikey")
 llm = LLM.deepseek(key: "yourapikey")
-llm = LLM.voyageai(key: "yourapikey")
 
 ##
 # local providers

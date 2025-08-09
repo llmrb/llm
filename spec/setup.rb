@@ -27,7 +27,6 @@ VCR.configure do |config|
   config.filter_sensitive_data("TOKEN") { ENV["GEMINI_SECRET"] }
   config.filter_sensitive_data("TOKEN") { ENV["OPENAI_SECRET"] }
   config.filter_sensitive_data("TOKEN") { ENV["DEEPSEEK_SECRET"] }
-  config.filter_sensitive_data("TOKEN") { ENV["VOYAGEAI_SECRET"] }
   config.filter_sensitive_data("localhost") { ENV["OLLAMA_HOST"] }
   config.before_record do
     body = _1.response.body
