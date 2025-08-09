@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 03 Aug 2025 19:26:22 GMT
+      - Sat, 09 Aug 2025 12:37:59 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1497
+      - gfet4t7; dur=1414
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,7 +61,8 @@ http_interactions:
                       "args": {
                         "command": "date"
                       }
-                    }
+                    },
+                    "thoughtSignature": "CvABAVSoXO4KH0u9iFr+NkJ6kdQpCeHj3jsXHMusqZdGG+edsGbhFCzg56VblrR2at3GnNi6oKH+ITjexJTbDVPGAZhL9V3+YGRuS49gXsw5DtjCNKR2DB4jorSJOdeSDX96eFX/J/Hyk4mGEx+WZncWrAQ9pbMdVfBDZTHcFvXFK72cWXN1/J5khc1ZlSSg+idUJ1lGtPMjWJ29fbCU3IlL20VtD4gwWHC8Pwwc8T7UV4f2bjTlEfq9QlcNYyngpd2E0luKfWpZjmUwIr4IadVDjVjlmrsjElo6ELjlXM9Hq4XXOJqWU7UIlImYMnVhOmZ2"
                   }
                 ],
                 "role": "model"
@@ -73,19 +74,19 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 53,
             "candidatesTokenCount": 13,
-            "totalTokenCount": 109,
+            "totalTokenCount": 121,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 53
               }
             ],
-            "thoughtsTokenCount": 43
+            "thoughtsTokenCount": 55
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "3rePaNPqMpbWz7IPtcK-4Aw"
+          "responseId": "J0GXaMrwG5HRz7IP3cHL6AI"
         }
-  recorded_at: Sun, 03 Aug 2025 19:26:01 GMT
+  recorded_at: Sat, 09 Aug 2025 12:37:49 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
@@ -118,7 +119,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sun, 03 Aug 2025 19:26:25 GMT
+      - Sat, 09 Aug 2025 12:38:01 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -128,7 +129,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=2500
+      - gfet4t7; dur=1772
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -142,7 +143,8 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "I ran the `date` command for you. What was the output? I see `{\"success\":true}`, but that doesn't seem to be the actual output from the `date` command itself. Could you please provide the full output?"
+                    "text": "I did not receive the output of the `date` command. I received a `{\"success\":true}` message instead. Is there anything else I can help you with?",
+                    "thoughtSignature": "CqsEAVSoXO7xdH7hQ1k4DSYAqoKHEtCDETWLsbVjTdvhIjdT142XjWZKgeA1jiwbxjbK8eX5QNXpT0F1Ko7Fzvx9L5PaLXRhVON7mQrkIoL8rSpiCIhJ1RJAj0cThymDwR27ROn7QhxILAM8vAcWjshHnqM31d6ytVOt96CO0LHRbzVZrmOdLEfjipFu+HXZLxi7HioeTUWAi7J0L6oTIglkY++zI1dtEHN1Pg0f5IlnR7gBy6Z+tP9SZys0J8snss3Yw4TEmS4sPOGf8EgpV3QjL89M0+PD/t8EMECEgUdBTPd1l6yTQSM19bRrMKFrsaOU4k+HgHWikgv4nwqDpZ48yZe6aA4WPoYO31nm3ccqlgJd+i3edyweFF9EA8RtjJawZ7WJ+U/ej1c6En9/ZUurH+4Y0EiR+3dLapc+yhntxXYsAmn/8UQ4swkrwEQwTeJ/cda5dvwjRC9BTN58DUuSIbHVfeDXBSsHnmq04T+eI+ItIqzzmReu+dqTLlM5uFhYPsxLw+YLehH9+Tu0/XvAlfmfh9dxCP65V7y+JYrNchW20Otne20e5Vg2pJ+ThuUZSackHBjXqLXD5G2WradCZDL35PM6Fj6seiMN0yv+R9DXLpZLToP3UrDJgUTEhfnx6TTvHO6XieMdGmKmviLhHQRnIfC8NNBrKSQ3UHquxDQx6E6PO9/Jx+LVWLRE36JdeUxMvxklnb0fhalsosvd5T6VYibZdXQ547+m"
                   }
                 ],
                 "role": "model"
@@ -153,18 +155,18 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 73,
-            "candidatesTokenCount": 50,
-            "totalTokenCount": 341,
+            "candidatesTokenCount": 35,
+            "totalTokenCount": 225,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 73
               }
             ],
-            "thoughtsTokenCount": 218
+            "thoughtsTokenCount": 117
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "4bePaJPlGrmtz7IPwoSU6As"
+          "responseId": "KUGXaKL5FP-UmtkPvMHOuQ8"
         }
-  recorded_at: Sun, 03 Aug 2025 19:26:04 GMT
+  recorded_at: Sat, 09 Aug 2025 12:37:51 GMT
 recorded_with: VCR 6.3.1

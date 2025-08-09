@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:30:03 GMT
+      - Sat, 09 Aug 2025 12:41:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,36 +37,34 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_30f8bd94d31707844a79e411f47aa792
+      - req_6945dbc746360ea992468a164b48d0b7
       Openai-Processing-Ms:
-      - '266'
+      - '236'
       X-Envoy-Upstream-Service-Time:
-      - '271'
-      X-Envoy-Decorator-Operation:
-      - modapi.openai.svc.cluster.local:5007/*
+      - '242'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=6gxAI4Da0_.ZXIATAAqLB16B0nP3IlmFFmUv39hBcaY-1754249403-1.0.1.1-6GDRWOaLUHBJX4zHtRAOOIqeK9wEN.RLyupbiYyXpcm91J0rAF6mqqvupBOKJoH5yPV86lLZqTgtRJAAtjWSEad1QzbPPVDGmModk7I8fdY;
-        path=/; expires=Sun, 03-Aug-25 20:00:03 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=txmaGJ8sdOUA2Ngl1EDYDjnem5A33DJ1y1o8xFiVrcY-1754743284-1.0.1.1-oqIXQ9AMXJqKWlIxirJymX3xl7k4aDOQZ67GehYGuw.9UXGjHLwGztCDuXlVksRxM76JBxAIUO6vIQWTwcRrOQBj312BJKZ815h8pso9fDw;
+        path=/; expires=Sat, 09-Aug-25 13:11:24 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=_eYzSt1HpOhOx33ryoZuD5jepJwtoEDxFc.qhm2XQrE-1754249403889-0.0.1.1-604800000;
+      - _cfuvid=ESTYiquMd2VtAFK4.1dld0QTKlPpwVQqYj7Zjc2I8jg-1754743284262-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 96983a338c60c700-GRU
+      - 96c753d40873c618-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "modr-8449",
+          "id": "modr-5554",
           "model": "omni-moderation-latest",
           "results": [
             {
@@ -145,5 +143,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Sun, 03 Aug 2025 19:29:42 GMT
+  recorded_at: Sat, 09 Aug 2025 12:41:14 GMT
 recorded_with: VCR 6.3.1

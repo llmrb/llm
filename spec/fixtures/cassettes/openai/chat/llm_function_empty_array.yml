@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:27:46 GMT
+      - Sat, 09 Aug 2025 12:39:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,13 +38,13 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '391'
+      - '461'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '624'
+      - '475'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -58,16 +58,14 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 16ms
       X-Request-Id:
-      - req_1eaba00666ca46dc9fa38ec87180c125
-      X-Envoy-Decorator-Operation:
-      - router.openai.svc.cluster.local:5004/*
+      - req_5d6fe0615e52430ba468ba0b27b69e09
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=_twHI.vMzRFjmPJ_s23FlW94Fr63y0crsUlFE.2Ob4M-1754249266-1.0.1.1-a_o1mKduViKsX3DG4ILzOzRXKS0zKRu_jHZOtN1MetbOeb5JWUinBsbqVeqI2cyrVQmgBurfggTPd7l0akt8NvC_Qdfyd9adPTtm6T4Xudo;
-        path=/; expires=Sun, 03-Aug-25 19:57:46 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=5CEcAC81S39aRBdEQNRvLaQhtmhf5d7fprm_GCinA3U-1754743169-1.0.1.1-GlOChp1nWyCMlb5d.4omSzrLcKYNkG517TbAMFHYHzxezi2T625q.cj9JkI6VGbIy7.VIYQ4.UMFXujj87ET0gMp1YYX9xIZ_SOwk.dHqyU;
+        path=/; expires=Sat, 09-Aug-25 13:09:29 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=bVYbR78EYVoxfVaXUIyBaEmOvp4cA3._wMF2mrfXRgA-1754249266148-0.0.1.1-604800000;
+      - _cfuvid=ldnfU_lZbGQNUNz5eCKn3qTIQyhqswarM25DPmpmg2g-1754743169596-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -76,16 +74,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 969836d4987cae47-GRU
+      - 96c75105ff5f2d34-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-C0YevIXiolq6KPsDeRAVQBOQS3CW6",
+          "id": "chatcmpl-C2d971eIM2i3ySJ95sUzDEhvXbdsP",
           "object": "chat.completion",
-          "created": 1754249265,
+          "created": 1754743169,
           "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
@@ -116,7 +114,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_51e1070cf2"
+          "system_fingerprint": "fp_b3f1157249"
         }
-  recorded_at: Sun, 03 Aug 2025 19:27:24 GMT
+  recorded_at: Sat, 09 Aug 2025 12:39:19 GMT
 recorded_with: VCR 6.3.1

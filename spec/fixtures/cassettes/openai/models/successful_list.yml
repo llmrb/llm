@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:30:03 GMT
+      - Sat, 09 Aug 2025 12:41:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,25 +33,25 @@ http_interactions:
       Openai-Version:
       - '2020-10-01'
       X-Request-Id:
-      - ce224e0e45516e497b7d4ca644617cb2
+      - 76d3f824d5e5983ebd2179905cb2eb72
       Openai-Processing-Ms:
-      - '140'
+      - '591'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=7gMEuaBLPmmHSyPRU9t376sUmaLsOrfp4uTC0oCX0a8-1754249403-1.0.1.1-GxCO4yswX5tFO1PjspRF1waImBwVtpvAjjXcziBBO15YSHMk7g9ctIpY3zqIljgvoqX9B72Ge6A6bI21h9AyRGuZSpTcHA9g1X_Y6Klvw8U;
-        path=/; expires=Sun, 03-Aug-25 20:00:03 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=jh4b5mA.nEA9eWNaXUGWK7h53Uxsr8LIL0tNqN_NLNc-1754743283-1.0.1.1-mmUFFsw.VH3Ch8ewpiUUHhKgoIN0ZTZy3nOBkAaMVklJWioA5Eik9kGdFuSYQDBf1HUiSrHcEDYXehBd8ZfUTFEI5irxBGXDMuZl8WnnXKs;
+        path=/; expires=Sat, 09-Aug-25 13:11:23 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=0yCg.BMfkHqpWCS_UIXPaEbaVf1ezcnRo8jyHeqfzWc-1754249403309-0.0.1.1-604800000;
+      - _cfuvid=7o51gi1jcxDB4NuQsc4PzwO_gs7sE8QuT29qK4KvzlI-1754743283400-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 96983a30ec8db81e-GRU
+      - 96c753c7bb29e9c5-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -79,33 +79,33 @@ http_interactions:
               "owned_by": "openai"
             },
             {
-              "id": "o4-mini-deep-research-2025-06-26",
+              "id": "gpt-5-nano",
               "object": "model",
-              "created": 1750866121,
+              "created": 1754426384,
               "owned_by": "system"
             },
             {
-              "id": "codex-mini-latest",
+              "id": "gpt-5",
               "object": "model",
-              "created": 1746673257,
+              "created": 1754425777,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-realtime-preview-2025-06-03",
+              "id": "gpt-5-mini-2025-08-07",
               "object": "model",
-              "created": 1748907838,
+              "created": 1754425867,
               "owned_by": "system"
             },
             {
-              "id": "gpt-4o-audio-preview-2025-06-03",
+              "id": "gpt-5-mini",
               "object": "model",
-              "created": 1748908498,
+              "created": 1754425928,
               "owned_by": "system"
             },
             {
-              "id": "o4-mini-deep-research",
+              "id": "gpt-5-nano-2025-08-07",
               "object": "model",
-              "created": 1749685485,
+              "created": 1754426303,
               "owned_by": "system"
             },
             {
@@ -421,9 +421,21 @@ http_interactions:
               "owned_by": "system"
             },
             {
+              "id": "o3-2025-04-16",
+              "object": "model",
+              "created": 1744133301,
+              "owned_by": "system"
+            },
+            {
               "id": "o4-mini-2025-04-16",
               "object": "model",
               "created": 1744133506,
+              "owned_by": "system"
+            },
+            {
+              "id": "o3",
+              "object": "model",
+              "created": 1744225308,
               "owned_by": "system"
             },
             {
@@ -475,6 +487,48 @@ http_interactions:
               "owned_by": "system"
             },
             {
+              "id": "codex-mini-latest",
+              "object": "model",
+              "created": 1746673257,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-realtime-preview-2025-06-03",
+              "object": "model",
+              "created": 1748907838,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-4o-audio-preview-2025-06-03",
+              "object": "model",
+              "created": 1748908498,
+              "owned_by": "system"
+            },
+            {
+              "id": "o4-mini-deep-research",
+              "object": "model",
+              "created": 1749685485,
+              "owned_by": "system"
+            },
+            {
+              "id": "o4-mini-deep-research-2025-06-26",
+              "object": "model",
+              "created": 1750866121,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-chat-latest",
+              "object": "model",
+              "created": 1754073306,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-2025-08-07",
+              "object": "model",
+              "created": 1754075360,
+              "owned_by": "system"
+            },
+            {
               "id": "gpt-3.5-turbo-16k",
               "object": "model",
               "created": 1683758102,
@@ -500,5 +554,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Sun, 03 Aug 2025 19:29:41 GMT
+  recorded_at: Sat, 09 Aug 2025 12:41:13 GMT
 recorded_with: VCR 6.3.1

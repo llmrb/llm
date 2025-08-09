@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:25:46 GMT
+      - Sat, 09 Aug 2025 12:37:19 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 4813b9755c7173f48364eb75a611e5e3
+      - f5100e0aa1406f8253a34f817ccb7927
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -47,24 +47,24 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=jvxX6UDOVlB.ab3gROEKYhDRXxLNSTUGy85rMlCRINY-1754249146-1.0.1.1-y70XLVrREdkzzhnDr5gaQYN7gKc_wfeTMhWjICKrRev_JdDNhx9I9NLGMae3oDfbNMZ2_sK6gwXGARx6tUWhF9ECn_0bylR.AnwUtj4faK4;
-        path=/; expires=Sun, 03-Aug-25 19:55:46 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=qPwXmFXhulRx7PchTnnpNOMaLbguutk0zi9NxNJFEfU-1754743039-1.0.1.1-ciwx96a0v0cz6A2emUn63bYl6KuYPoPuRcOFBxPoGcfh3wyQGHG5vONdU9LlMIDXITg1ZIbYLZxpnG.yftj5AjjmZ3Z30OUmvhpyFo2StFo;
+        path=/; expires=Sat, 09-Aug-25 13:07:19 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 969833e70f7002f3-GRU
+      - 96c74dd7ad6af225-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"4cf1deb0-da36-4fb7-8407-352c21500efe","object":"chat.completion","created":1754249146,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_0_5f37a679-41f2-482f-91ce-abce5b00dfa4","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":115,"completion_tokens":17,"total_tokens":132,"prompt_tokens_details":{"cached_tokens":64},"prompt_cache_hit_tokens":64,"prompt_cache_miss_tokens":51},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
-  recorded_at: Sun, 03 Aug 2025 19:25:30 GMT
+      string: '{"id":"1c00915a-971e-4c74-b9c1-f81e68e37726","object":"chat.completion","created":1754743038,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_0_cd526e70-4d00-45aa-81d7-435fdfd62d6e","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":115,"completion_tokens":18,"total_tokens":133,"prompt_tokens_details":{"cached_tokens":64},"prompt_cache_hit_tokens":64,"prompt_cache_miss_tokens":51},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
+  recorded_at: Sat, 09 Aug 2025 12:37:14 GMT
 - request:
     method: post
     uri: https://api.deepseek.com/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
-        system commands"},{"role":"user","content":"Hey, run the ''date'' command"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_5f37a679-41f2-482f-91ce-abce5b00dfa4","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},{"role":"tool","tool_call_id":"call_0_5f37a679-41f2-482f-91ce-abce5b00dfa4","content":"{\"success\":true}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands"},{"role":"user","content":"Hey, run the ''date'' command"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_cd526e70-4d00-45aa-81d7-435fdfd62d6e","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},{"role":"tool","tool_call_id":"call_0_cd526e70-4d00-45aa-81d7-435fdfd62d6e","content":"{\"success\":true}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -85,7 +85,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:25:52 GMT
+      - Sat, 09 Aug 2025 12:37:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -97,7 +97,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 46335ef1e9174d3a770eae0282eb6fcd
+      - 9ed1cd4b8117efc57bd63d7817e3b7f9
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -105,17 +105,22 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=N3OcZAikEJkZUHOJHyyg8O9le_d_lPuEWB1d6WZjb0U-1754249152-1.0.1.1-pRyZzsgRobWrws5xa28vBgwEB_F0ibaDs_O7hd.1oOHaXHDX2nVMwJmUaUrF3eXga.2MDL6LTeil1bOzkoGI5DITVkzZOLJbji07D2bRhLo;
-        path=/; expires=Sun, 03-Aug-25 19:55:52 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=SlY8CWANa4NApNZNT5hT3sJTiLhRdWSUdmN5YQgXZqM-1754743044-1.0.1.1-Llp80gaZfpIuX9z5otBndyQJCj_tcLQBevGBrOoOgv7YwF6K826I_NpbVCsFkGnvsFwJBh3ffQPqhrU74w5jA1riNCYo2PdohZ4R9MxK6Ig;
+        path=/; expires=Sat, 09-Aug-25 13:07:24 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/csp-reporting.cloudflare.com\/cdn-cgi\/script_monitor\/report?m=7eKuAGEAdEApMvmEhN47M12u9GGjgTVcsaXbBM9P1W4-1754743044-1.0.1.1-1IjG1VqLp3EQ7sjOgcJwg3FG4BT0zqATNNLdwzDTGpSQd5FKqn3s2buhd89K.4lT59jV0uMO3vyfZJcjVr0w0hO_SjZ_hg2nc7jruEmlUBLV0U.VO_YZ0R1IJreKBMb9ulrXpyv6JIKx8FE17UlwLC.C0jCaKvOlBGb8...7a.M"}],"group":"cf-csp-endpoint","max_age":86400}'
+      Content-Security-Policy-Report-Only:
+      - script-src 'none'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=7eKuAGEAdEApMvmEhN47M12u9GGjgTVcsaXbBM9P1W4-1754743044-1.0.1.1-1IjG1VqLp3EQ7sjOgcJwg3FG4BT0zqATNNLdwzDTGpSQd5FKqn3s2buhd89K.4lT59jV0uMO3vyfZJcjVr0w0hO_SjZ_hg2nc7jruEmlUBLV0U.VO_YZ0R1IJreKBMb9ulrXpyv6JIKx8FE17UlwLC.C0jCaKvOlBGb8...7a.M;
+        report-to cf-csp-endpoint
       Server:
       - cloudflare
       Cf-Ray:
-      - 9698340e086128b5-GRU
+      - 96c74df9996732a9-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"0bc95116-f987-472c-b991-cb6d158d5c59","object":"chat.completion","created":1754249152,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"The
-        ''date'' command was executed successfully. Let me know if you''d like to
-        see the output or run any other commands!"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":142,"completion_tokens":26,"total_tokens":168,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":14},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
-  recorded_at: Sun, 03 Aug 2025 19:25:35 GMT
+      string: '{"id":"ccdf076b-4466-4ec2-af0c-e68e454e6db1","object":"chat.completion","created":1754743044,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"The
+        current date and time is not displayed in the response. Would you like me
+        to run the command again or provide additional details?"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":142,"completion_tokens":26,"total_tokens":168,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":14},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
+  recorded_at: Sat, 09 Aug 2025 12:37:20 GMT
 recorded_with: VCR 6.3.1

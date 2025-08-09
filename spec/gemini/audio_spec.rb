@@ -29,7 +29,8 @@ RSpec.describe "LLM::OpenAI::Audio" do
       [
         "In the name of Allah, the Beneficent, the Merciful.",
         "In the name of God, the Most Gracious, the Most Merciful.",
-        "In the name of Allah, the Most Compassionate, the Most Merciful."
+        "In the name of Allah, the Most Compassionate, the Most Merciful.",
+        "In the name of Allah, the Most Gracious, the Most Merciful."
       ]
     end
 

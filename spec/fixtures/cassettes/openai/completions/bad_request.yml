@@ -25,7 +25,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:28:00 GMT
+      - Sat, 09 Aug 2025 12:39:41 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -37,7 +37,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '41'
+      - '21'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
@@ -53,26 +53,24 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '16951'
+      - '16944'
       X-Ratelimit-Reset-Input-Images:
       - 1ms
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 26.097s
+      - 26.111s
       X-Request-Id:
-      - req_ee590e54cb284721b05bc31f59eee5a2
+      - req_c00d0e87600441fb98cbd2b2744f69c9
       X-Envoy-Upstream-Service-Time:
-      - '67'
-      X-Envoy-Decorator-Operation:
-      - router.openai.svc.cluster.local:5004/*
+      - '38'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=xMxYUVCo5qgaRJyTuIHLsfNkqcYmv_KAuHjgh2LhhbE-1754249280-1.0.1.1-IoHx0SP_b37ejqgvTR68_Et9c0PhwWN4qj02MGMouI53Tf9ymKRAqwwZqdA55qsSYwKC0d5bwsNgjdcnl98aZFQZJgAPCAnPzR.VQtuJU5U;
-        path=/; expires=Sun, 03-Aug-25 19:58:00 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=AM8bU4cxJ7v3DBIehmnKLmFUGx4sNht57RyVXMhXTBo-1754743181-1.0.1.1-_ESV3DuyQrKFQuk8rPVP86FpMcaQ8rGq9ZvnEOEE1kgMZHlh6P64E_20yPcJsvqNAYmhulEWvqCTfUwdRnAMGvXSOnlYrqoHvzbrTC5oHQY;
+        path=/; expires=Sat, 09-Aug-25 13:09:41 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=8u0DaAKA4LIQ4HXc.VJzBftuydoLNK1FPFrCjZBMvs0-1754249280228-0.0.1.1-604800000;
+      - _cfuvid=eYL15A3hjDhME1UDJMeDwU7DGL4snhkMe5BHKl.nz2Y-1754743181450-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -81,7 +79,7 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9698372feca0f237-GRU
+      - 96c75152b88df1b1-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -95,5 +93,5 @@ http_interactions:
             "code": "invalid_image_url"
           }
         }
-  recorded_at: Sun, 03 Aug 2025 19:27:38 GMT
+  recorded_at: Sat, 09 Aug 2025 12:39:31 GMT
 recorded_with: VCR 6.3.1

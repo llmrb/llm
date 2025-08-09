@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:29:14 GMT
+      - Sat, 09 Aug 2025 12:40:43 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,42 +37,40 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_7004b4187e70990202afe6bf0c9a8b71
+      - req_f56383368a753eaa83b952637a8b8210
       Openai-Processing-Ms:
-      - '16467'
+      - '10408'
       X-Envoy-Upstream-Service-Time:
-      - '16474'
-      X-Envoy-Decorator-Operation:
-      - tasksapi.openai.svc.cluster.local:8081/*
+      - '10420'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=69gSmN0o2XT.XRusRozBvtL4LuPM_qox0S4TqvUXdxU-1754249354-1.0.1.1-YsVbUp0bHUPYchBAphgFzPGq0nmCry4TI_X1l0tFl1l5csg4.VOzgcazOW4tw2CVRr.e22IlswywofWmhWfVOQrKBzUpJPfWz.JVEIInjPU;
-        path=/; expires=Sun, 03-Aug-25 19:59:14 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=HTuM39lb5aasix5aV5Gq9DQsoswKpKJiOc33Bnh0nP0-1754743243-1.0.1.1-iyk36b4LUYQqQWwn44I0nSej1j9Vv6iEAcdAZi4YHGL59OOR1qLXiQwWPvFYdXxsWsp_IVxSLnAqRBGgA5lon2p.BVFaIJoJXO87_Bk8nhA;
+        path=/; expires=Sat, 09-Aug-25 13:10:43 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=zApEyoG2SK2VJZn2JQ3YCzr0_xtbdLGfiTyN33.FhmQ-1754249354500-0.0.1.1-604800000;
+      - _cfuvid=pkxdzQ.Fgw688W17zJP8RxhPXwqGglMep56HmIzNhOU-1754743243486-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9698389938c2a49c-GRU
+      - 96c752958c61f260-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "created": 1754249354,
+          "created": 1754743243,
           "data": [
             {
-              "revised_prompt": "A golden retriever, wearing a blue astronaut suit with a vizor on its helmet open, sits on the seat of a detailed vintage silver rocket. The rocket is soaring up through a dark blue sky filled with twinkling stars and is leaving a trail of white smoke behind it. Through the star-streaked window of the rocket, we can see the gray moon, cratered and luminescent. The dog looks excited, its eyes sparkling with anticipation, and its mouth open as if it were barking with excitement. This imaginative scene blends the realms of the whimsical and the scientific.",
+              "revised_prompt": "An adventurous scene, where we have a playful, brown dog with a wagging tail, donning a bright blue astronaut's helmet. It is situated on top of a red and grey rocket that's blasting towards the moon. The rocket's flames are a mix of yellow and orange, illuminating the vast black cosmic space. The luminous moon looks like a gigantic cheese wheel in the distance, basked in ethereal moonlight, with several tiny white stars glistening brightly around it. This visual presents a fascinating blend of science fiction and pet fantasy adventure.",
               "url": "https://openai.com/generated/image.png"
             }
           ]
         }
-  recorded_at: Sun, 03 Aug 2025 19:28:53 GMT
+  recorded_at: Sat, 09 Aug 2025 12:40:33 GMT
 recorded_with: VCR 6.3.1

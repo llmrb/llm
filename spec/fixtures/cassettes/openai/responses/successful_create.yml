@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 03 Aug 2025 19:30:04 GMT
+      - Sat, 09 Aug 2025 12:41:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,11 +39,11 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29973'
+      - '22944'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 54ms
+      - 14.11s
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
@@ -51,38 +51,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_35bb2c97ebbcf738333279d6158d91d3
+      - req_652197b2cae1be7587ff10965153c6ac
       Openai-Processing-Ms:
-      - '649'
+      - '1131'
       X-Envoy-Upstream-Service-Time:
-      - '657'
-      X-Envoy-Decorator-Operation:
-      - tasksapi.openai.svc.cluster.local:8081/*
+      - '1138'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=I7LtN6o.idlb5OY4ExLW7YE9jT6hJU6mppZEC7rFkc0-1754249404-1.0.1.1-0aOkNB.aAYaXl83ohd9Nqu9v5NVf6cQ.J9UDCUyYkKcTv1U5icNee7q1YzGoTjYaE0P1uwXhnD_9lONQdlGcrniWcH4nHLkpjRh5Tj6oEKw;
-        path=/; expires=Sun, 03-Aug-25 20:00:04 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=1mY6wgexR3GZMIyA020UVucc4LRTKOVL5WJhqrDp9WQ-1754743286-1.0.1.1-qLpjUG9DpyTRq2GgmbdRa7x6WcZhnnf0TKi.5zPVqNHCyb8gpjN7LvliLi3Ff22CP8.HTSLBOWXyn208rRiqArKTEvazlC.pPflgwhwRWd8;
+        path=/; expires=Sat, 09-Aug-25 13:11:26 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=JohUNF7vTpWyBaCqdLgyaYMRVnPbouAYrpC_i87wdug-1754249404837-0.0.1.1-604800000;
+      - _cfuvid=Nh3E8BRZFpZfO_byHFW.3y.LLLKYjDGFzriGyAr.M8g-1754743286222-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 96983a36cb7152d2-GRU
+      - 96c753d78c7a02f8-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_688fb8bc1778819b924484bcf21643dc0e4dbebfaa1511ee",
+          "id": "resp_689741f4ffa081949e29cebec802e74002132663e2eac54f",
           "object": "response",
-          "created_at": 1754249404,
+          "created_at": 1754743285,
           "status": "completed",
           "background": false,
           "error": null,
@@ -93,7 +91,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_688fb8bc7074819bb887daa18aa7fec90e4dbebfaa1511ee",
+              "id": "msg_689741f5d5148194b78e9d809de29b6b02132663e2eac54f",
               "type": "message",
               "status": "completed",
               "content": [
@@ -121,7 +119,8 @@ http_interactions:
           "text": {
             "format": {
               "type": "text"
-            }
+            },
+            "verbosity": "medium"
           },
           "tool_choice": "auto",
           "tools": [],
@@ -142,5 +141,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Sun, 03 Aug 2025 19:29:43 GMT
+  recorded_at: Sat, 09 Aug 2025 12:41:16 GMT
 recorded_with: VCR 6.3.1
