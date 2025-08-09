@@ -32,6 +32,9 @@ module LLM::OpenAI::Format
       case content
       when URI
         [{type: :image_url, image_url: {url: content.to_s}}]
+      when File
+        content.close unless content.closed?
+        format_content(LLM.File(content.path))
       when LLM::File
         format_file(content)
       when LLM::Response

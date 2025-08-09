@@ -47,6 +47,9 @@ module LLM::Anthropic::Format
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
       when URI
         [{type: :image, source: {type: "url", url: content.to_s}}]
+      when File
+        content.close unless content.closed?
+        format_content(LLM.File(content.path))
       when LLM::File
         if content.image?
           [{type: :image, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]

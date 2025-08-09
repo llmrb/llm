@@ -28,6 +28,9 @@ module LLM::Ollama::Format
 
     def format_content(content)
       case content
+      when File
+        content.close unless content.closed?
+        format_content(LLM.File(content.path))
       when LLM::File
         if content.image?
           {content: "This message has an image associated with it", images: [content.to_b64]}

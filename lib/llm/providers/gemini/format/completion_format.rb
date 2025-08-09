@@ -32,6 +32,9 @@ module LLM::Gemini::Format
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
       when LLM::Response
         format_response(content)
+      when File
+        content.close unless content.closed?
+        format_content(LLM.File(content.path))
       when LLM::File
         file = content
         [{inline_data: {mime_type: file.mime_type, data: file.to_b64}}]
