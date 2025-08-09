@@ -99,10 +99,10 @@ require "llm"
 llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
 msgs = bot.chat do |prompt|
-  prompt.system File.read("./share/llm/prompts/system.txt")
-  prompt.user "Tell me the answer to 5 + 15"
-  prompt.user "Tell me the answer to (5 + 15) * 2"
-  prompt.user "Tell me the answer to ((5 + 15) * 2) / 10"
+  prompt.system "Your task is to answer all user queries"
+  prompt.user ["Tell me about this URL", URI("https://en.wikipedia.org/example.png")]
+  prompt.user ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
+  prompt.user "Is the URL and image similar to each other?"
 end
 
 # At this point, we execute a single request
@@ -117,27 +117,23 @@ msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
 > [docs/](docs/STREAMING.md#scopes) for more details.
 
 The following example streams the messages in a conversation
-as they are generated in real-time. This feature can be useful
-when you want to stream a conversation in real time, or when you
-want to avoid potential read timeouts during the generation of a
-response.
-
-The `stream` option can be set to an IO object, or the value `true`
-to enable streaming &ndash; and at the end of the request, `bot.chat`
-returns the same response as the non-streaming version which allows
-you to process a response in the same way:
+as they are generated in real-time. The `stream` option can
+be set to an IO object, or the value `true` to enable streaming
+&ndash; and at the end of the request, `bot.chat` returns the
+same response as the non-streaming version which allows you
+to process a response in the same way:
 
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm)
+llm  = LLM.openai(key: ENV["KEY"])
+bot  = LLM::Bot.new(llm)
 bot.chat(stream: $stdout) do |prompt|
-  prompt.system "You are my math assistant."
-  prompt.user "Tell me the answer to 5 + 15"
-  prompt.user "Tell me the answer to (5 + 15) * 2"
-  prompt.user "Tell me the answer to ((5 + 15) * 2) / 10"
+  prompt.system "Your task is to answer all user queries"
+  prompt.user ["Tell me about this URL", URI("https://en.wikipedia.org/example.png")]
+  prompt.user ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
+  prompt.user "Is the URL and image similar to each other?"
 end.to_a
 ```
 
@@ -196,11 +192,7 @@ The
 method returns an array of functions that can be called after sending a message and
 it will only be populated if the LLM detects a function should be called. Each function
 corresponds to an element in the "tools" array. The array is emptied after a function call,
-and potentially repopulated on the next message.
-
-The following example defines an agent that can run system commands based on natural language,
-and it is only intended to be a fun demo of tool calling - it is not recommended to run
-arbitrary commands from a LLM without sanitizing the input first :) Without further ado:
+and potentially repopulated on the next message:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -233,6 +225,60 @@ bot.chat bot.functions.map(&:call) # report return value to the LLM
 ##
 # {stderr: "", stdout: "Thu May  1 10:01:02 UTC 2025"}
 # {stderr: "", stdout: "FreeBSD"}
+```
+
+### Files
+
+#### Create
+
+The OpenAI and Gemini providers provide a Files API where a client can upload files
+that can be referenced from a prompt, and with other APIs as well. The following
+example uses the OpenAI provider to describe the contents of a PDF file after
+it has been uploaded. The file (a specialized instance of
+[LLM::Response](https://0x1eef.github.io/x/llm.rb/LLM/Response.html)
+) is given as part of a prompt that is understood by llm.rb:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+bot = LLM::Bot.new(llm)
+file = llm.files.create(file: "/books/goodread.pdf")
+bot.chat(["Tell me about this file", file])
+bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+```
+
+### Prompts
+
+#### Multimodal
+
+It is generally a given that an LLM will understand text but they can also
+understand and generate other types of media as well: audio, images, video,
+and even URLs. The object given as a prompt in llm.rb can be a string to
+represent text, a URI object to represent a URL, an LLM::Response object
+to represent a file stored with the LLM, and so on. These are objects you
+can throw at the prompt and have them be understood automatically.
+
+A prompt can also have multiple parts, and in that case, an array is given
+as a prompt. Each element is considered to part of the prompt:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+bot = LLM::Bot.new(llm)
+
+bot.chat ["Tell me about this URL", URI("https://example.com/path/to/image.png")]
+[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
+
+file = llm.files.create(file: "/books/goodread.pdf")
+bot.chat ["Tell me about this PDF", file]
+[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
+
+bot.chat ["Tell me about this image", LLM.File("/images/nemothefish.png")]
+[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 ### Audio
@@ -360,60 +406,6 @@ res.urls.each.with_index do |url, index|
   FileUtils.mv OpenURI.open_uri(url).path,
                File.join(Dir.home, "catvariation#{index}.png")
 end
-```
-
-### Files
-
-#### Create
-
-The OpenAI and Gemini providers provide a Files API where a client can upload files
-that can be referenced from a prompt, and with other APIs as well. The following
-example uses the OpenAI provider to describe the contents of a PDF file after
-it has been uploaded. The file (a specialized instance of
-[LLM::Response](https://0x1eef.github.io/x/llm.rb/LLM/Response.html)
-) is given as part of a prompt that is understood by llm.rb:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm)
-file = llm.files.create(file: "/books/goodread.pdf")
-bot.chat(["Tell me about this file", file])
-bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
-```
-
-### Prompts
-
-#### Multimodal
-
-It is generally a given that an LLM will understand text but they can also
-understand and generate other types of media as well: audio, images, video,
-and even URLs. The object given as a prompt in llm.rb can be a string to
-represent text, a URI object to represent a URL, an LLM::Response object
-to represent a file stored with the LLM, and so on. These are objects you
-can throw at the prompt and have them be understood automatically.
-
-A prompt can also have multiple parts, and in that case, an array is given
-as a prompt. Each element is considered to part of the prompt:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm)
-
-bot.chat ["Tell me about this URL", URI("https://example.com/path/to/image.png")]
-[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
-
-file = llm.files.create(file: "/books/goodread.pdf")
-bot.chat ["Tell me about this PDF", file]
-[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
-
-bot.chat ["Tell me about this image", LLM.File("/images/nemothefish.png")]
-[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 ### Embeddings
