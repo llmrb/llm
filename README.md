@@ -277,7 +277,7 @@ file = llm.files.create(file: "/books/goodread.pdf")
 bot.chat ["Tell me about this PDF", file]
 [bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
 
-bot.chat ["Tell me about this image", LLM.File("/images/nemothefish.png")]
+bot.chat ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
 [bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 

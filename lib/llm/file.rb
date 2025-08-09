@@ -75,12 +75,16 @@ class LLM::File
 end
 
 ##
-# @param [String] path
-#  The path to a file
+# @param [String, File, LLM::Response] obj
+#  The path to the file, or an existing file reference
 # @return [LLM::File]
-def LLM.File(path)
-  case path
-  when LLM::File, LLM::Response then path
-  else LLM::File.new(path)
+def LLM.File(obj)
+  case obj
+  when File
+    obj.close unless obj.closed?
+    LLM.File(obj.path)
+  when LLM::File, LLM::Response then obj
+  when String then LLM::File.new(obj)
+  else raise TypeError, "don't know how to handle #{obj.class} objects"
   end
 end
