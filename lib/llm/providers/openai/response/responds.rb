@@ -2,7 +2,6 @@
 
 module LLM::OpenAI::Response
   module Responds
-
     def outputs = [format_message]
     def choices = body.output
     def tools = output.select { _1.type == "function_call" }

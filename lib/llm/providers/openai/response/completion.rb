@@ -16,7 +16,7 @@ module LLM::OpenAI::Response
       end
     end
     alias_method :messages, :choices
-    
+
     def model = body.model
     def prompt_tokens = body.usage&.prompt_tokens
     def completion_tokens = body.usage&.completion_tokens

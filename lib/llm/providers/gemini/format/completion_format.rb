@@ -59,8 +59,8 @@ module LLM::Gemini::Format
     end
 
     def prompt_error!(object)
-        raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
-                                "is not supported by the Gemini API"
+      raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
+                              "is not supported by the Gemini API"
     end
 
     def message = @message
