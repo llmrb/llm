@@ -78,7 +78,7 @@ is made before sending a request to the LLM:
 #!/usr/bin/env ruby
 require "llm"
 
-llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
+llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
 url  = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
 msgs = bot.chat do |prompt|
@@ -110,7 +110,7 @@ to process a response in the same way:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(key: ENV["OPENAI_SECRET"])
+llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
 bot.chat(stream: $stdout) do |prompt|
