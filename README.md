@@ -78,13 +78,14 @@ is made before sending a request to the LLM:
 #!/usr/bin/env ruby
 require "llm"
 
-llm  = LLM.openai(key: ENV["KEY"])
+llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
 bot  = LLM::Bot.new(llm)
+url  = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
 msgs = bot.chat do |prompt|
   prompt.system "Your task is to answer all user queries"
-  prompt.user ["Tell me about this URL", URI("https://en.wikipedia.org/example.png")]
-  prompt.user ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
-  prompt.user "Is the URL and image similar to each other?"
+  prompt.user ["Tell me about this URL", URI(url)]
+  prompt.user ["Tell me about this pdf", File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "r")]
+  prompt.user "Is the URL and PDF similar to each other?"
 end
 
 # At this point, we execute a single request
@@ -109,13 +110,14 @@ to process a response in the same way:
 #!/usr/bin/env ruby
 require "llm"
 
-llm  = LLM.openai(key: ENV["KEY"])
-bot  = LLM::Bot.new(llm)
+llm = LLM.openai(key: ENV["OPENAI_SECRET"])
+bot = LLM::Bot.new(llm)
+url = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "Your task is to answer all user queries"
-  prompt.user ["Tell me about this URL", URI("https://en.wikipedia.org/example.png")]
-  prompt.user ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
-  prompt.user "Is the URL and image similar to each other?"
+  prompt.user ["Tell me about this URL", URI(url)]
+  prompt.user ["Tell me about this pdf", File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "r")]
+  prompt.user "Is the URL and PDF similar to each other?"
 end.to_a
 ```
 
