@@ -366,14 +366,12 @@ end
 
 #### Create
 
-Most LLM providers provide a Files API where you can upload files
-that can be referenced from a prompt and llm.rb has first-class support
-for this feature. The following example uses the OpenAI provider to describe
-the contents of a PDF file after it has been uploaded. The file (an instance
-of [LLM::Response](https://0x1eef.github.io/x/llm.rb/LLM/Response/File.html))
-is passed directly to the chat method, and generally any object a prompt supports
-can be given to the chat method:
-
+The OpenAI and Gemini providers provide a Files API where a client can upload files
+that can be referenced from a prompt, and with other APIs as well. The following
+example uses the OpenAI provider to describe the contents of a PDF file after
+it has been uploaded. The file (a specialized instance of
+[LLM::Response](https://0x1eef.github.io/x/llm.rb/LLM/Response.html)
+) is given as part of a prompt that is understood by llm.rb:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -381,30 +379,24 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
-file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
-bot.chat(file)
-bot.chat("What is this file about?")
+file = llm.files.create(file: "/books/goodread.pdf")
+bot.chat(["Tell me about this file", file])
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
-
-##
-# [assistant] This file is about OpenBSD, a free and open-source Unix-like operating system
-#             based on the Berkeley Software Distribution (BSD). It is known for its
-#             emphasis on security, code correctness, and code simplicity. The file
-#             contains information about the features, installation, and usage of OpenBSD.
 ```
 
 ### Prompts
 
 #### Multimodal
 
-Generally all providers accept text prompts but some providers can
-also understand URLs, and various file types (eg images, audio, video,
-etc). The llm.rb approach to multimodal prompts is to let you pass `URI`
-objects to describe links, `LLM::File`, and `LLM::Response` objects
-to describe files, `String` objects to describe text blobs, or an array
-of the aforementioned objects to describe multiple objects in a single
-prompt. Each object is a first class citizen that can be passed directly
-to a prompt:
+It is generally a given that an LLM will understand text but they can also
+understand and generate other types of media as well: audio, images, video,
+and even URLs. The object given as a prompt in llm.rb can be a string to
+represent text, a URI object to represent a URL, an LLM::Response object
+to represent a file stored with the LLM, and so on. These are objects you
+can throw at the prompt and have them be understood automatically.
+
+A prompt can also have multiple parts, and in that case, an array is given
+as a prompt. Each element is considered to part of the prompt:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -413,18 +405,15 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 
-bot.chat [URI("https://example.com/path/to/image.png"), "Describe the image in the link"]
-bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+bot.chat ["Tell me about this URL", URI("https://example.com/path/to/image.png")]
+[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
 
-file = llm.files.create(file: "/documents/openbsd_is_awesome.pdf")
-bot.chat [file, "What is this file about?"]
-bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+file = llm.files.create(file: "/books/goodread.pdf")
+bot.chat ["Tell me about this PDF", file]
+[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
 
-bot.chat [LLM.File("/images/puffy.png"), "What is this image about?"]
-bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
-
-bot.chat [LLM.File("/images/beastie.png"), "What is this image about?"]
-bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+bot.chat ["Tell me about this image", LLM.File("/images/nemothefish.png")]
+[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 ### Embeddings
