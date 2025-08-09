@@ -29,24 +29,6 @@ images, files, and JSON Schema generation.
 - 🔌 Retrieve models dynamically for introspection and selection
 - 🧱 Includes support for OpenAI's responses, moderations, and vector stores APIs
 
-## Demos
-
-> The
-> [llmrb/llm-shell](https://github.com/llmrb/llm-shell)
-> project is built with llm.rb and its demos have been
-> included to provide a better idea of what llm.rb
-> is capable of.
-
-<details>
-  <summary><b>1. An introduction to tool calls</b></summary>
-  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/toolcalls_v2.gif">
-</details>
-
-<details>
-  <summary><b>2. Add files as conversation context</b></summary>
-  <img src="https://github.com/llmrb/llm/raw/main/share/llm-shell/examples/files-runtime_v2.gif">
-</details>
-
 ## Examples
 
 ### Providers
