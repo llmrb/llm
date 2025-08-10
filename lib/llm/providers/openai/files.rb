@@ -14,19 +14,8 @@ class LLM::OpenAI
   #
   #   llm = LLM.openai(ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
-  #   file = llm.files.create file: "/documents/freebsd.pdf"
-  #   bot.chat(file)
-  #   bot.chat("Describe the document")
-  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
-  #
-  # @example example #2
-  #   #!/usr/bin/env ruby
-  #   require "llm"
-  #
-  #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm)
-  #   file = llm.files.create file: "/documents/openbsd.pdf"
-  #   bot.chat(["Describe the document I sent to you", file])
+  #   file = llm.files.create file: "/books/goodread.pdf"
+  #   bot.chat ["Tell me about this PDF", file]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
     require_relative "response/file"

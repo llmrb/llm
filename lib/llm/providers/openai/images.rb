@@ -2,12 +2,12 @@
 
 class LLM::OpenAI
   ##
-  # The {LLM::OpenAI::Images LLM::OpenAI::Images} class provides an images
-  # object for interacting with [OpenAI's images API](https://platform.openai.com/docs/api-reference/images).
+  # The {LLM::OpenAI::Images LLM::OpenAI::Images} class provides an interface
+  # for [OpenAI's images API](https://platform.openai.com/docs/api-reference/images).
   # OpenAI supports multiple response formats: temporary URLs, or binary strings
   # encoded in base64. The default is to return temporary URLs.
   #
-  # @example example #1
+  # @example Temporary URLs
   #   #!/usr/bin/env ruby
   #   require "llm"
   #   require "open-uri"
@@ -18,7 +18,7 @@ class LLM::OpenAI
   #   FileUtils.mv OpenURI.open_uri(res.urls[0]).path,
   #                "rocket.png"
   #
-  # @example example #2
+  # @example Binary strings
   #   #!/usr/bin/env ruby
   #   require "llm"
   #

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 ##
-# The {LLM::Function LLM::Function} class represents a
-# local function that can be called by an LLM.
+# The {LLM::Function LLM::Function} class represents a local
+# function that can be called by an LLM.
 #
 # @example example #1
 #   LLM.function(:system) do |fn|

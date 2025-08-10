@@ -16,17 +16,7 @@ module LLM
   #
   #   llm = LLM.gemini(ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
-  #   bot.chat LLM.File("/images/capybara.png")
-  #   bot.chat "Describe the image"
-  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
-  #
-  # @example example #2
-  #   #!/usr/bin/env ruby
-  #   require "llm"
-  #
-  #   llm = LLM.gemini(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm)
-  #   bot.chat ["Describe the image", LLM::File("/images/capybara.png")]
+  #   bot.chat ["Tell me about this photo", File.open("/images/capybara.jpg", "rb")]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Gemini < Provider
     require_relative "gemini/response/embedding"

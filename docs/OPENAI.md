@@ -29,10 +29,10 @@ require "llm"
 llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
 msgs = bot.respond do |prompt|
-  prompt.developer File.read("./share/llm/prompts/system.txt")
-  prompt.user "Tell me the answer to 5 + 15"
-  prompt.user "Tell me the answer to (5 + 15) * 2"
-  prompt.user "Tell me the answer to ((5 + 15) * 2) / 10"
+  prompt.developer "Your task is to answer all user queries"
+  prompt.user ["Tell me about this URL", URI(url)]
+  prompt.user ["Tell me about this pdf", File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "r")]
+  prompt.user "Is the URL and PDF similar to each other?"
 end
 
 # At this point, we execute a single request

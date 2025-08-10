@@ -20,19 +20,7 @@ class LLM::Gemini
   #   llm = LLM.gemini(ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
   #   file = llm.files.create file: "/audio/haiku.mp3"
-  #   bot.chat(file)
-  #   bot.chat("Describe the audio file I sent to you")
-  #   bot.chat("The audio file is the first message I sent to you.")
-  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
-  #
-  # @example example #2
-  #   #!/usr/bin/env ruby
-  #   require "llm"
-  #
-  #   llm = LLM.gemini(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm)
-  #   file = llm.files.create file: "/audio/haiku.mp3"
-  #   bot.chat(["Describe the audio file I sent to you", file])
+  #   bot.chat ["Tell me about this file", file]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
     require_relative "response/file"

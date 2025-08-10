@@ -2,36 +2,17 @@
 
 class LLM::OpenAI
   ##
-  # The {LLM::OpenAI::Responses LLM::OpenAI::Responses} class provides a responses
-  # object for interacting with [OpenAI's response API](https://platform.openai.com/docs/guides/conversation-state?api-mode=responses).
-  # The responses API is similar to the chat completions API but it can maintain
-  # conversation state across multiple requests. This is useful when you want to
-  # save bandwidth and/or not maintain the message thread by yourself.
+  # The {LLM::OpenAI::Responses LLM::OpenAI::Responses} class provides
+  # an interface for [OpenAI's response API](https://platform.openai.com/docs/guides/conversation-state?api-mode=responses).
   #
   # @example example #1
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
   #   llm = LLM.openai(ENV["KEY"])
-  #   res1 = llm.responses.create "Your task is to help me with math", role: :developer
-  #   res2 = llm.responses.create "5 + 5  = ?", role: :user, previous_response_id: res1.id
-  #   [res1,res2].each { llm.responses.delete(_1) }
-  #
-  # @example example #2
-  #   #!/usr/bin/env ruby
-  #   require "llm"
-  #
-  #   llm  = LLM.openai(ENV["KEY"])
-  #   file = llm.files.create file: "/images/hat.png"
-  #   res  = llm.responses.create ["Describe the image", file]
-  #
-  # @example example #3
-  #   #!/usr/bin/env ruby
-  #   require "llm"
-  #
-  #   llm  = LLM.openai(ENV["KEY"])
-  #   file = llm.files.create file: "/documents/freebsd.pdf"
-  #   res  = llm.responses.create ["Describe the document, file]
+  #   res1 = llm.responses.create "Your task is to answer the user's questions", role: :developer
+  #   res2 = llm.responses.create "5 + 5 = X ?", role: :user, previous_response_id: res1.id
+  #   [res1, res2].each { llm.responses.delete(_1) }
   class Responses
     require_relative "response/responds"
     include Format
