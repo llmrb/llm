@@ -3,33 +3,26 @@
 module LLM
   ##
   # {LLM::Bot LLM::Bot} provides an object that can maintain a
-  # a conversation. A conversation can use the chat completions API
+  # conversation. A conversation can use the chat completions API
   # that all LLM providers support or the responses API that currently
   # only OpenAI supports.
   #
-  # @example example #1
+  # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm  = LLM.openai(ENV["KEY"])
+  #   llm  = LLM.openai(key: ENV["KEY"])
   #   bot  = LLM::Bot.new(llm)
+  #   url  = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
   #   msgs = bot.chat do |prompt|
-  #     prompt.user "What programming language should I learn next ?"
-  #     prompt.user "Can you recommend a good book ?"
-  #     prompt.user "Can you suggest a fun project to practice ?"
-  #   end
-  #   msgs.each { print "[#{_1.role}]", _1.content, "\n" }
+  #            prompt.system "Your task is to answer all user queries"
+  #            prompt.user ["Tell me about this URL", URI(url)]
+  #            prompt.user ["Tell me about this pdf", File.open("freebsd_book.pdf", "rb")]
+  #            prompt.user "Is the URL and PDF similar to each other?"
+  #          end
   #
-  # @example example #2
-  #   #!/usr/bin/env ruby
-  #   require "llm"
-  #
-  #   llm = LLM.openai(ENV["KEY"])
-  #   bot = LLM::Bot.new(llm)
-  #   bot.chat "What programming language should I learn next ?", role: :user
-  #   bot.chat "Can you recommend a good book ?", role: :user
-  #   bot.chat "Can you suggest a fun project to practice ?", role: :user
-  #   bot.messages.each { print "[#{_1.role}]", _1.content, "\n" }
+  #   # At this point, we execute a single request
+  #   msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
   class Bot
     require_relative "bot/prompt/completion"
     require_relative "bot/prompt/respond"
