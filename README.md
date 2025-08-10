@@ -24,10 +24,13 @@ images, files, and JSON Schema generation.
 - 📎 File uploads and prompt-aware file interaction
 - 💡 Multimodal prompts (text, images, PDFs, URLs, files)
 
-#### Miscellaneous
+#### Embeddings
 - 🧮 Text embeddings and vector support
-- 🔌 Retrieve models dynamically for introspection and selection
-- 🧱 Includes support for OpenAI's responses, moderations, and vector stores APIs
+- 🧱 Includes support for OpenAI's vector stores API
+
+#### Miscellaneous
+- 📜 Model management and selection
+- 🔧 Includes support for OpenAI's responses, moderations, and vector stores APIs
 
 ## Examples
 
