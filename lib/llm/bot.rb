@@ -15,11 +15,11 @@ module LLM
   #   bot  = LLM::Bot.new(llm)
   #   url  = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
   #   msgs = bot.chat do |prompt|
-  #            prompt.system "Your task is to answer all user queries"
-  #            prompt.user ["Tell me about this URL", URI(url)]
-  #            prompt.user ["Tell me about this pdf", File.open("freebsd_book.pdf", "rb")]
-  #            prompt.user "Is the URL and PDF similar to each other?"
-  #          end
+  #     prompt.system "Your task is to answer all user queries"
+  #     prompt.user ["Tell me about this URL", URI(url)]
+  #     prompt.user ["Tell me about this pdf", File.open("freebsd_book.pdf", "rb")]
+  #     prompt.user "Is the URL and PDF similar to each other?"
+  #   end
   #
   #   # At this point, we execute a single request
   #   msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
