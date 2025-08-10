@@ -31,7 +31,7 @@ bot  = LLM::Bot.new(llm)
 msgs = bot.respond do |prompt|
   prompt.developer "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
-  prompt.user ["Tell me about this pdf", File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "r")]
+  prompt.user ["Tell me about this pdf", File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "rb")]
   prompt.user "Is the URL and PDF similar to each other?"
 end
 
