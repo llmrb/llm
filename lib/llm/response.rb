@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module LLM
+  ##
+  # {LLM::Response LLM::Response} encapsulates a response
+  # from an LLM provider. It is returned by all methods
+  # that make requests to a provider, and sometimes extended
+  # with provider-specific functionality.
   class Response
     require "json"
 
