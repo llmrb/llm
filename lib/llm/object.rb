@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 ##
-# The {LLM::Object LLM::Object} class encapsulates a Hash object, and it
-# allows a consumer to get and set Hash keys via regular methods. It is
+# The {LLM::Object LLM::Object} class encapsulates a Hash object. It is
 # similar in spirit to OpenStruct, and it was introduced after OpenStruct
-# became a bundled gem (and not a default gem) in Ruby 3.5.
+# became a bundled gem rather than a default gem in Ruby 3.5.
 class LLM::Object < BasicObject
   require_relative "object/builder"
   require_relative "object/kernel"
