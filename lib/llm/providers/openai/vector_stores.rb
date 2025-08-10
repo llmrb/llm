@@ -2,9 +2,8 @@
 
 class LLM::OpenAI
   ##
-  # The {LLM::OpenAI::VectorStore LLM::OpenAI::VectorStore} class provides
-  # an interface to OpenAI's vector stores API
-  # @see https://platform.openai.com/docs/api-reference/vector_stores/create OpenAI docs
+  # The {LLM::OpenAI::VectorStores LLM::OpenAI::VectorStores} class provides
+  # an interface for [OpenAI's vector stores API](https://platform.openai.com/docs/api-reference/vector_stores/create)
   class VectorStores
     ##
     # @param [LLM::Provider] provider
