@@ -3,7 +3,16 @@
 module LLM
   ##
   # The OpenAI class implements a provider for
-  # [OpenAI](https://platform.openai.com/)
+  # [OpenAI](https://platform.openai.com/).
+  #
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.openai(key: ENV["KEY"])
+  #   bot = LLM::Bot.new(llm)
+  #   bot.chat ["Tell me about this photo", File.open("/images/capybara.jpg", "rb")]
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class OpenAI < Provider
     require_relative "openai/response/embedding"
     require_relative "openai/response/completion"

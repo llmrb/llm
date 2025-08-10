@@ -3,7 +3,16 @@
 module LLM
   ##
   # The Anthropic class implements a provider for
-  # [Anthropic](https://www.anthropic.com)
+  # [Anthropic](https://www.anthropic.com).
+  #
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.anthropic(key: ENV["KEY"])
+  #   bot = LLM::Bot.new(llm)
+  #   bot.chat ["Tell me about this photo", File.open("/images/dog.jpg", "rb")]
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Anthropic < Provider
     require_relative "anthropic/response/completion"
     require_relative "anthropic/format"

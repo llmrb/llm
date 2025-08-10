@@ -6,8 +6,17 @@ module LLM
   ##
   # The DeepSeek class implements a provider for
   # [DeepSeek](https://deepseek.com)
-  # through its OpenAI-compatible API provided via
+  # through its OpenAI-compatible API available via
   # their [web platform](https://platform.deepseek.com).
+  #
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.deepseek(key: ENV["KEY"])
+  #   bot = LLM::Bot.new(llm)
+  #   bot.chat ["Tell me about this photo", File.open("/images/cat.jpg", "rb")]
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class DeepSeek < OpenAI
     require_relative "deepseek/format"
     include DeepSeek::Format

@@ -2,21 +2,18 @@
 
 module LLM
   ##
-  # The Ollama class implements a provider for [Ollama](https://ollama.ai/).
-  #
-  # This provider supports a wide range of models, it is relatively
-  # straight forward to run on your own hardware, and includes multi-modal
-  # models that can process images and text. See the example for a demonstration
-  # of a multi-modal model by the name `llava`
+  # The Ollama class implements a provider for [Ollama](https://ollama.ai/) &ndash;
+  # and the provider supports a wide range of models. It is straight forward
+  # to run on your own hardware, and there are a number of multi-modal models
+  # that can process both images and text.
   #
   # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.ollama(nil)
+  #   llm = LLM.ollama(key: nil)
   #   bot = LLM::Bot.new(llm, model: "llava")
-  #   bot.chat LLM::File("/images/capybara.png")
-  #   bot.chat "Describe the image"
+  #   bot.chat ["Tell me about this image", File.open("/images/parrot.png", "rb")]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Ollama < Provider
     require_relative "ollama/response/embedding"
@@ -42,7 +39,7 @@ module LLM
     # @param model (see LLM::Provider#embed)
     # @param params (see LLM::Provider#embed)
     # @raise (see LLM::Provider#request)
-    # @return (see LLM::Provider#embed)
+    # @return [LLM::Response]
     def embed(input, model: default_model, **params)
       params   = {model:}.merge!(params)
       req      = Net::HTTP::Post.new("/v1/embeddings", headers)
@@ -60,7 +57,7 @@ module LLM
     # @raise (see LLM::Provider#request)
     # @raise [LLM::PromptError]
     #  When given an object a provider does not understand
-    # @return (see LLM::Provider#complete)
+    # @return [LLM::Response]
     def complete(prompt, params = {})
       params = {role: :user, model: default_model, stream: true}.merge!(params)
       params = [params, {format: params[:schema]}, format_tools(params)].inject({}, &:merge!).compact

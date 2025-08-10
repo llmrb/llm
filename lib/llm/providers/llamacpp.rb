@@ -7,7 +7,18 @@ module LLM
   # The LlamaCpp class implements a provider for
   # [llama.cpp](https://github.com/ggml-org/llama.cpp)
   # through the OpenAI-compatible API provided by the
-  # llama-server binary.
+  # llama-server binary. Similar to the ollama provider,
+  # this provider supports a wide range of models and
+  # is straightforward to run on your own hardware.
+  #
+  # @example
+  #   #!/usr/bin/env ruby
+  #   require "llm"
+  #
+  #   llm = LLM.llamacpp(key: nil)
+  #   bot = LLM::Bot.new(llm)
+  #   bot.chat ["Tell me about this photo", File.open("/images/pony.jpg", "rb")]
+  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class LlamaCpp < OpenAI
     ##
     # @param (see LLM::Provider#initialize)

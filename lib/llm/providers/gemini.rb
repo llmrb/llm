@@ -3,20 +3,19 @@
 module LLM
   ##
   # The Gemini class implements a provider for
-  # [Gemini](https://ai.google.dev/).
+  # [Gemini](https://ai.google.dev/). The Gemini provider
+  # can accept multiple inputs (text, images, audio, and video).
+  # The inputs can be provided inline via the prompt for files
+  # under 20MB or via the Gemini Files API for files
+  # that are over 20MB.
   #
-  # The Gemini provider can accept multiple inputs (text, images,
-  # audio, and video). The inputs can be provided inline via the
-  # prompt for files under 20MB or via the Gemini Files API for
-  # files that are over 20MB
-  #
-  # @example example #1
+  # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.gemini(ENV["KEY"])
+  #   llm = LLM.gemini(key: ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
-  #   bot.chat ["Tell me about this photo", File.open("/images/capybara.jpg", "rb")]
+  #   bot.chat ["Tell me about this photo", File.open("/images/horse.jpg", "rb")]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Gemini < Provider
     require_relative "gemini/response/embedding"
@@ -45,7 +44,7 @@ module LLM
     # @param model (see LLM::Provider#embed)
     # @param params (see LLM::Provider#embed)
     # @raise (see LLM::Provider#request)
-    # @return (see LLM::Provider#embed)
+    # @return [LLM::Response]
     def embed(input, model: "text-embedding-004", **params)
       model = model.respond_to?(:id) ? model.id : model
       path = ["/v1beta/models/#{model}", "embedContent?key=#{@key}"].join(":")
@@ -64,7 +63,7 @@ module LLM
     # @raise (see LLM::Provider#request)
     # @raise [LLM::PromptError]
     #  When given an object a provider does not understand
-    # @return (see LLM::Provider#complete)
+    # @return [LLM::Response]
     def complete(prompt, params = {})
       params = {role: :user, model: default_model}.merge!(params)
       params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
@@ -83,6 +82,7 @@ module LLM
     ##
     # Provides an interface to Gemini's audio API
     # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs
+    # @return [LLM::Gemini::Audio]
     def audio
       LLM::Gemini::Audio.new(self)
     end
@@ -98,6 +98,7 @@ module LLM
     ##
     # Provides an interface to Gemini's file management API
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
+    # @return [LLM::Gemini::Files]
     def files
       LLM::Gemini::Files.new(self)
     end
@@ -105,6 +106,7 @@ module LLM
     ##
     # Provides an interface to Gemini's models API
     # @see https://ai.google.dev/gemini-api/docs/models Gemini docs
+    # @return [LLM::Gemini::Models]
     def models
       LLM::Gemini::Models.new(self)
     end
