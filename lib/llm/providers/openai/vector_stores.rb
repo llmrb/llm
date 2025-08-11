@@ -96,6 +96,89 @@ class LLM::OpenAI
       LLM::Response.new(res)
     end
 
+    ##
+    # List all files in a vector store
+    # @param [String, #id] vector The ID of the vector store
+    # @param [Hash] params Other parameters (see OpenAI docs)
+    # @raise (see LLM::Provider#request)
+    # @return [LLM::Response]
+    # @see https://platform.openai.com/docs/api-reference/vector_stores_files/listFiles OpenAI docs
+    def all_files(vector:, **params)
+      vector_id = vector.respond_to?(:id) ? vector.id : vector
+      query = URI.encode_www_form(params)
+      req = Net::HTTP::Get.new("/v1/vector_stores/#{vector_id}/files?#{query}", headers)
+      res = execute(request: req)
+      LLM::Response.new(res)
+    end
+
+    ##
+    # Add a file to a vector store
+    # @param [String, #id] vector The ID of the vector store
+    # @param [String, #id] file The ID of the file to add
+    # @param [Hash] attributes Attributes to associate with the file (optional)
+    # @param [Hash] params Other parameters (see OpenAI docs)
+    # @raise (see LLM::Provider#request)
+    # @return [LLM::Response]
+    # @see https://platform.openai.com/docs/api-reference/vector_stores_files/createFile OpenAI docs
+    def add_file(vector:, file:, attributes: nil, **params)
+      vector_id = vector.respond_to?(:id) ? vector.id : vector
+      file_id = file.respond_to?(:id) ? file.id : file
+      req = Net::HTTP::Post.new("/v1/vector_stores/#{vector_id}/files", headers)
+      req.body = JSON.dump(params.merge({file_id:, attributes:}).compact)
+      res = execute(request: req)
+      LLM::Response.new(res)
+    end
+    alias_method :create_file, :add_file
+
+    ##
+    # Update a file in a vector store
+    # @param [String, #id] vector The ID of the vector store
+    # @param [String, #id] file The ID of the file to update
+    # @param [Hash] attributes Attributes to associate with the file
+    # @param [Hash] params Other parameters (see OpenAI docs)
+    # @raise (see LLM::Provider#request)
+    # @return [LLM::Response]
+    # @see https://platform.openai.com/docs/api-reference/vector_stores_files/updateAttributes OpenAI docs
+    def update_file(vector:, file:, attributes:, **params)
+      vector_id = vector.respond_to?(:id) ? vector.id : vector
+      file_id = file.respond_to?(:id) ? file.id : file
+      req = Net::HTTP::Post.new("/v1/vector_stores/#{vector_id}/files/#{file_id}", headers)
+      req.body = JSON.dump(params.merge({attributes:}).compact)
+      res = execute(request: req)
+      LLM::Response.new(res)
+    end
+
+    ##
+    # Get a file from a vector store
+    # @param [String, #id] vector The ID of the vector store
+    # @param [String, #id] file The ID of the file to retrieve
+    # @raise (see LLM::Provider#request)
+    # @return [LLM::Response]
+    # @see https://platform.openai.com/docs/api-reference/vector_stores_files/getFile OpenAI docs
+    def get_file(vector:, file:, **params)
+      vector_id = vector.respond_to?(:id) ? vector.id : vector
+      file_id = file.respond_to?(:id) ? file.id : file
+      query = URI.encode_www_form(params)
+      req = Net::HTTP::Get.new("/v1/vector_stores/#{vector_id}/files/#{file_id}?#{query}", headers)
+      res = execute(request: req)
+      LLM::Response.new(res)
+    end
+
+    ##
+    # Delete a file from a vector store
+    # @param [String, #id] vector The ID of the vector store
+    # @param [String, #id] file The ID of the file to delete
+    # @raise (see LLM::Provider#request)
+    # @return [LLM::Response]
+    # @see https://platform.openai.com/docs/api-reference/vector_stores_files/deleteFile OpenAI docs
+    def delete_file(vector:, file:)
+      vector_id = vector.respond_to?(:id) ? vector.id : vector
+      file_id = file.respond_to?(:id) ? file.id : file
+      req = Net::HTTP::Delete.new("/v1/vector_stores/#{vector_id}/files/#{file_id}", headers)
+      res = execute(request: req)
+      LLM::Response.new(res)
+    end
+
     private
 
     [:headers, :execute, :set_body_stream].each do |m|
