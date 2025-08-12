@@ -162,4 +162,70 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
       )
     end
   end
+
+  context "when given a successful 'add file' operation",
+          vcr: {cassette_name: "openai/vector_stores/successful_add_file"} do
+    let(:store) { provider.vector_stores.create(name: "test store") }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
+    subject { provider.vector_stores.add_file(vector: store, file:) }
+
+    after do
+      provider.vector_stores.delete(vector: store)
+      provider.files.delete(file:)
+    end
+
+    it "is successful" do
+      is_expected.to be_ok
+    end
+
+    it "returns the file" do
+      is_expected.to have_attributes(
+        "id" => instance_of(String),
+      )
+    end
+  end
+
+  context "when given a successful 'get file' operation",
+          vcr: {cassette_name: "openai/vector_stores/successful_get_file"} do
+    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
+    subject { provider.vector_stores.get_file(vector: store, file:) }
+
+    after do
+      provider.vector_stores.delete(vector: store)
+      provider.files.delete(file:)
+    end
+
+    it "is successful" do
+      is_expected.to be_ok
+    end
+
+    it "returns the file" do
+      is_expected.to have_attributes(
+        "id" => file.id
+      )
+    end
+  end
+
+  context "when given a successful 'delete file' operation",
+          vcr: {cassette_name: "openai/vector_stores/successful_delete_file"} do
+    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
+    subject { provider.vector_stores.delete_file(vector: store, file:) }
+
+    after do
+      provider.vector_stores.delete(vector: store)
+      provider.files.delete(file:)
+    end
+
+    it "is successful" do
+      is_expected.to be_ok
+    end
+
+    it "returns deleted status" do
+      is_expected.to have_attributes(
+        "deleted" => true
+      )
+    end
+  end
 end
