@@ -469,6 +469,13 @@ over or doesn't cover at all. The API reference is available at
 The [docs/](docs/) directory contains some additional documentation that
 didn't quite make it into the README.
 
+## See also
+
+* [llm-shell](https://github.com/llmrb/llm-shell) &ndash; a shell that uses llm.rb to
+  provide a command-line interface to LLMs.
+* [llm-rag](https://github.com/llmrb/llm-rag) &ndash; an example of how to build
+  retrieval-augmented generation (RAG) applications with llm.rb.
+
 ## Install
 
 llm.rb can be installed via rubygems.org:
