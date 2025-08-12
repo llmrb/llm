@@ -466,15 +466,15 @@ over or doesn't cover at all. The API reference is available at
 
 ### Guides
 
-The [docs/](docs/) directory contains some additional documentation that
-didn't quite make it into the README.
+* [An introduction to RAG with llm.rb](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
+  a blog post that implements the RAG pattern in 32 lines of Ruby code
+* [docs/](docs/) &ndash; the docs directory contains additional guides
+
 
 ## See also
 
 * [llm-shell](https://github.com/llmrb/llm-shell) &ndash; a shell that uses llm.rb to
   provide a command-line interface to LLMs.
-* [llm-rag](https://github.com/llmrb/llm-rag) &ndash; an example of how to build
-  retrieval-augmented generation (RAG) applications with llm.rb.
 
 ## Install
 
