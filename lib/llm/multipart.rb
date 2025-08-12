@@ -4,7 +4,6 @@
 ##
 # @private
 class LLM::Multipart
-  require "llm"
   require "securerandom"
 
   ##
