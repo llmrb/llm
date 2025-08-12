@@ -180,7 +180,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
     it "returns the file" do
       is_expected.to have_attributes(
-        "id" => instance_of(String),
+        "id" => instance_of(String)
       )
     end
   end
