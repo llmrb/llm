@@ -49,7 +49,7 @@ RSpec.describe "LLM::OpenAI::Images" do
         vcr: {cassette_name: "openai/images/successful_variation"} do
     subject(:response) do
       provider.images.create_variation(
-        image: LLM::File("spec/fixtures/images/bluebook.png"),
+        image: "spec/fixtures/images/bluebook.png",
         n: 5
       )
     end
@@ -71,7 +71,7 @@ RSpec.describe "LLM::OpenAI::Images" do
         vcr: {cassette_name: "openai/images/successful_edit"} do
     subject(:response) do
       provider.images.edit(
-        image: LLM::File("spec/fixtures/images/bluebook.png"),
+        image: "spec/fixtures/images/bluebook.png",
         prompt: "Add white background"
       )
     end

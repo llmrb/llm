@@ -56,7 +56,7 @@ class LLM::Gemini
     # Edit an image
     # @example
     #   llm = LLM.gemini(key: ENV["KEY"])
-    #   res = llm.images.edit image: LLM::File("cat.png"), prompt: "Add a hat to the cat"
+    #   res = llm.images.edit image: "cat.png", prompt: "Add a hat to the cat"
     #   IO.copy_stream res.images[0], "hatoncat.png"
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
     # @param [String, LLM::File] image The image to edit

@@ -66,7 +66,7 @@ RSpec.describe "LLM::OpenAI: completions" do
 
   context "when asked to describe an audio file",
           vcr: {cassette_name: "openai/completions/describe_pdf_document"} do
-    let(:file) { LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf") }
+    let(:file) { File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "rb") }
     let(:response) do
       openai.complete([
         "This PDF document describes sysctl nodes on FreeBSD",

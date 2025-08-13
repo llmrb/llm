@@ -83,7 +83,7 @@ RSpec.describe "LLM::Anthropic: completions" do
         file
       ], role: :user)
     end
-    let(:file) { LLM::File("spec/fixtures/images/bluebook.png") }
+    let(:file) { File.open("spec/fixtures/images/bluebook.png", "rb") }
 
     it "describes the image" do
       is_expected.to eq("yes")
@@ -92,7 +92,7 @@ RSpec.describe "LLM::Anthropic: completions" do
 
   context "when given a PDF document",
           vcr: {cassette_name: "anthropic/completions/successful_response_file_pdf"} do
-    let(:file) { LLM::File("spec/fixtures/documents/freebsd.sysctl.pdf") }
+    let(:file) { File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "rb") }
     let(:response) do
       anthropic.complete([
         "This PDF document describes sysctl nodes on FreeBSD",

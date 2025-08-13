@@ -23,7 +23,7 @@ RSpec.describe "LLM::Gemini::Images" do
         vcr: {cassette_name: "gemini/images/successful_edit", match_requests_on: [:method]} do
     subject(:response) do
       provider.images.edit(
-        image: LLM::File("spec/fixtures/images/bluebook.png"),
+        image: "spec/fixtures/images/bluebook.png",
         prompt: "Book is floating in the clouds"
       )
     end

@@ -90,8 +90,8 @@ RSpec.describe "LLM::OpenAI::Files" do
           vcr: {cassette_name: "openai/files/successful_all"} do
     let!(:files) do
       [
-        provider.files.create(file: LLM::File("spec/fixtures/documents/haiku1.txt")),
-        provider.files.create(file: LLM::File("spec/fixtures/documents/haiku2.txt"))
+        provider.files.create(file: "spec/fixtures/documents/haiku1.txt"),
+        provider.files.create(file: "spec/fixtures/documents/haiku2.txt")
       ]
     end
     subject(:filelist) { provider.files.all }

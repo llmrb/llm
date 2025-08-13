@@ -23,7 +23,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
         vcr: {cassette_name: "openai/audio/successful_transcription"} do
     subject(:response) do
       provider.audio.create_transcription(
-        file: LLM::File("spec/fixtures/audio/rocket.mp3")
+        file: "spec/fixtures/audio/rocket.mp3"
       )
     rescue => ex
       puts ex.response.body
@@ -42,7 +42,7 @@ RSpec.describe "LLM::OpenAI::Audio" do
         vcr: {cassette_name: "openai/audio/successful_translation"} do
     subject(:response) do
       provider.audio.create_translation(
-        file: LLM::File("spec/fixtures/audio/bismillah.mp3")
+        file: "spec/fixtures/audio/bismillah.mp3"
       )
     end
 
