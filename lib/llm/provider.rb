@@ -52,7 +52,7 @@ class LLM::Provider
   ##
   # Provides an interface to the chat completions API
   # @example
-  #   llm = LLM.openai(ENV["KEY"])
+  #   llm = LLM.openai(key: ENV["KEY"])
   #   messages = [{role: "system", content: "Your task is to answer all of my questions"}]
   #   res = llm.complete("5 + 2 ?", messages:)
   #   print "[#{res.choices[0].role}]", res.choices[0].content, "\n"

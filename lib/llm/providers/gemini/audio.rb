@@ -8,7 +8,7 @@ class LLM::Gemini
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.gemini(ENV["KEY"])
+  #   llm = LLM.gemini(key: ENV["KEY"])
   #   res = llm.audio.create_transcription(input: "/audio/rocket.mp3")
   #   res.text # => "A dog on a rocket to the moon"
   class Audio
@@ -30,7 +30,7 @@ class LLM::Gemini
     ##
     # Create an audio transcription
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.audio.create_transcription(file: "/audio/rocket.mp3")
     #   res.text # => "A dog on a rocket to the moon"
     # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs
@@ -52,7 +52,7 @@ class LLM::Gemini
     # Create an audio translation (in English)
     # @example
     #   # Arabic => English
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.audio.create_translation(file: "/audio/bismillah.mp3")
     #   res.text # => "In the name of Allah, the Beneficent, the Merciful."
     # @see https://ai.google.dev/gemini-api/docs/audio Gemini docs

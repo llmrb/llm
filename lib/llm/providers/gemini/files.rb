@@ -17,9 +17,9 @@ class LLM::Gemini
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.gemini(ENV["KEY"])
+  #   llm = LLM.gemini(key: ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
-  #   file = llm.files.create file: "/audio/haiku.mp3"
+  #   file = llm.files.create(file: "/audio/haiku.mp3")
   #   bot.chat ["Tell me about this file", file]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
@@ -36,7 +36,7 @@ class LLM::Gemini
     ##
     # List all files
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.files.all
     #   res.each do |file|
     #     print "name: ", file.name, "\n"
@@ -55,8 +55,8 @@ class LLM::Gemini
     ##
     # Create a file
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
-    #   res = llm.files.create file: "/audio/haiku.mp3"
+    #   llm = LLM.gemini(key: ENV["KEY"])
+    #   res = llm.files.create(file: "/audio/haiku.mp3")
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [String, LLM::File] file The file
     # @param [Hash] params Other parameters (see Gemini docs)
@@ -78,7 +78,7 @@ class LLM::Gemini
     ##
     # Get a file
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.files.get(file: "files/1234567890")
     #   print "name: ", res.name, "\n"
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
@@ -97,7 +97,7 @@ class LLM::Gemini
     ##
     # Delete a file
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.files.delete(file: "files/1234567890")
     # @see https://ai.google.dev/gemini-api/docs/files Gemini docs
     # @param [#name, String] file The file to delete

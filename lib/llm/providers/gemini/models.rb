@@ -11,7 +11,7 @@ class LLM::Gemini
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.gemini(ENV["KEY"])
+  #   llm = LLM.gemini(key: ENV["KEY"])
   #   res = llm.models.all
   #   res.each do |model|
   #     print "id: ", model.id, "\n"
@@ -30,7 +30,7 @@ class LLM::Gemini
     ##
     # List all models
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.models.all
     #   res.each do |model|
     #     print "id: ", model.id, "\n"

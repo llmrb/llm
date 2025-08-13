@@ -12,7 +12,7 @@ class LLM::OpenAI
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.openai(ENV["KEY"])
+  #   llm = LLM.openai(key: ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
   #   file = llm.files.create file: "/books/goodread.pdf"
   #   bot.chat ["Tell me about this PDF", file]
@@ -31,7 +31,7 @@ class LLM::OpenAI
     ##
     # List all files
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.files.all
     #   res.each do |file|
     #     print "id: ", file.id, "\n"
@@ -50,7 +50,7 @@ class LLM::OpenAI
     ##
     # Create a file
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.files.create file: "/documents/haiku.txt"
     # @see https://platform.openai.com/docs/api-reference/files/create OpenAI docs
     # @param [File, LLM::File, String] file The file
@@ -70,7 +70,7 @@ class LLM::OpenAI
     ##
     # Get a file
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.files.get(file: "file-1234567890")
     #   print "id: ", res.id, "\n"
     # @see https://platform.openai.com/docs/api-reference/files/get OpenAI docs
@@ -89,7 +89,7 @@ class LLM::OpenAI
     ##
     # Download the content of a file
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.files.download(file: "file-1234567890")
     #   File.binwrite "haiku1.txt", res.file.read
     #   print res.file.read, "\n"
@@ -110,7 +110,7 @@ class LLM::OpenAI
     ##
     # Delete a file
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.files.delete(file: "file-1234567890")
     #   print res.deleted, "\n"
     # @see https://platform.openai.com/docs/api-reference/files/delete OpenAI docs

@@ -11,7 +11,7 @@ class LLM::OpenAI
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.openai(ENV["KEY"])
+  #   llm = LLM.openai(key: ENV["KEY"])
   #   res = llm.models.all
   #   res.each do |model|
   #     print "id: ", model.id, "\n"
@@ -28,7 +28,7 @@ class LLM::OpenAI
     ##
     # List all models
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.models.all
     #   res.each do |model|
     #     print "id: ", model.id, "\n"

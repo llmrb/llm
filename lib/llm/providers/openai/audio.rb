@@ -5,7 +5,7 @@ class LLM::OpenAI
   # The {LLM::OpenAI::Audio LLM::OpenAI::Audio} class provides an audio
   # object for interacting with [OpenAI's audio API](https://platform.openai.com/docs/api-reference/audio/createSpeech).
   # @example
-  #   llm = LLM.openai(ENV["KEY"])
+  #   llm = LLM.openai(key: ENV["KEY"])
   #   res = llm.audio.create_speech(input: "A dog on a rocket to the moon")
   #   IO.copy_stream res.audio, "rocket.mp3"
   class Audio
@@ -20,7 +20,7 @@ class LLM::OpenAI
     ##
     # Create an audio track
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.images.create_speech(input: "A dog on a rocket to the moon")
     #   File.binwrite("rocket.mp3", res.audio.string)
     # @see https://platform.openai.com/docs/api-reference/audio/createSpeech OpenAI docs
@@ -42,7 +42,7 @@ class LLM::OpenAI
     ##
     # Create an audio transcription
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.audio.create_transcription(file: "/audio/rocket.mp3")
     #   res.text # => "A dog on a rocket to the moon"
     # @see https://platform.openai.com/docs/api-reference/audio/createTranscription OpenAI docs
@@ -64,7 +64,7 @@ class LLM::OpenAI
     # Create an audio translation (in English)
     # @example
     #   # Arabic => English
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.audio.create_translation(file: "/audio/bismillah.mp3")
     #   res.text # => "In the name of Allah, the Beneficent, the Merciful."
     # @see https://platform.openai.com/docs/api-reference/audio/createTranslation OpenAI docs

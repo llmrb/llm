@@ -58,7 +58,7 @@ class LLM::OpenAI
     ##
     # Create image variations
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.images.create_variation(image: "/images/hat.png", n: 5)
     #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/createVariation OpenAI docs
@@ -80,7 +80,7 @@ class LLM::OpenAI
     ##
     # Edit an image
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.images.edit(image: "/images/hat.png", prompt: "A cat wearing this hat")
     #   p res.urls
     # @see https://platform.openai.com/docs/api-reference/images/createEdit OpenAI docs

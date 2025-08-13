@@ -11,7 +11,7 @@ class LLM::Anthropic
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.anthropic(ENV["KEY"])
+  #   llm = LLM.anthropic(key: ENV["KEY"])
   #   res = llm.models.all
   #   res.each do |model|
   #     print "id: ", model.id, "\n"
@@ -28,7 +28,7 @@ class LLM::Anthropic
     ##
     # List all models
     # @example
-    #   llm = LLM.anthropic(ENV["KEY"])
+    #   llm = LLM.anthropic(key: ENV["KEY"])
     #   res = llm.models.all
     #   res.each do |model|
     #     print "id: ", model.id, "\n"

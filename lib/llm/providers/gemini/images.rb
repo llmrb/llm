@@ -11,7 +11,7 @@ class LLM::Gemini
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.gemini(ENV["KEY"])
+  #   llm = LLM.gemini(key: ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
   #   IO.copy_stream res.images[0], "rocket.png"
   class Images
@@ -29,7 +29,7 @@ class LLM::Gemini
     ##
     # Create an image
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.images.create prompt: "A dog on a rocket to the moon"
     #   IO.copy_stream res.images[0], "rocket.png"
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
@@ -55,7 +55,7 @@ class LLM::Gemini
     ##
     # Edit an image
     # @example
-    #   llm = LLM.gemini(ENV["KEY"])
+    #   llm = LLM.gemini(key: ENV["KEY"])
     #   res = llm.images.edit image: LLM::File("cat.png"), prompt: "Add a hat to the cat"
     #   IO.copy_stream res.images[0], "hatoncat.png"
     # @see https://ai.google.dev/gemini-api/docs/image-generation Gemini docs
