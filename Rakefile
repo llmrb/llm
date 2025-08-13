@@ -33,4 +33,17 @@ namespace :spec do
   end
 end
 
+desc "Start a console with all providers loaded"
+task :console do
+  require "llm"
+  require "dotenv"
+  Dotenv.load
+  openai = LLM.openai(key: ENV["OPENAI_SECRET"])
+  gemini = LLM.gemini(key: ENV["GEMINI_SECRET"])
+  anthropic = LLM.anthropic(key: ENV["ANTHROPIC_SECRET"])
+  deepseek = LLM.deepseek(key: ENV["DEEPSEEK_SECRET"])
+  xai = LLM.xai(key: ENV["XAI_SECRET"])
+  binding.irb
+end
+
 task default: %i[spec rubocop]
