@@ -165,7 +165,7 @@ require "llm"
 ##
 # Objects
 llm = LLM.openai(key: ENV["KEY"])
-schema = llm.schema.object(answer: llm.schema.integer.required)
+schema = llm.schema.object(probability: llm.schema.integer.required)
 bot = LLM::Bot.new(llm, schema:)
 bot.chat "Does the earth orbit the sun?", role: :user
 bot.messages.find(&:assistant?).content! # => {probability: 1}
@@ -273,7 +273,7 @@ to represent a file stored with the LLM, and so on. These are objects you
 can throw at the prompt and have them be understood automatically.
 
 A prompt can also have multiple parts, and in that case, an array is given
-as a prompt. Each element is considered to part of the prompt:
+as a prompt. Each element is considered to be part of the prompt:
 
 ```ruby
 #!/usr/bin/env ruby
