@@ -32,7 +32,7 @@ audio, images, files, and JSON Schema generation.
 - 📜 Model management and selection
 - 🔧 Includes support for OpenAI's responses, moderations, and vector stores APIs
 
-## Features matrix
+## Matrix
 
 While the Features section above gives you the high-level picture, the table below
 breaks things down by provider, so you can see exactly what’s supported where.
