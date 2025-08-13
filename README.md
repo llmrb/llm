@@ -32,6 +32,30 @@ audio, images, files, and JSON Schema generation.
 - 📜 Model management and selection
 - 🔧 Includes support for OpenAI's responses, moderations, and vector stores APIs
 
+## Features matrix
+
+While the Features section above gives you the high-level picture, the table below
+breaks things down by provider, so you can see exactly what’s supported where.
+
+
+| Feature / Provider                  | OpenAI | Anthropic | Gemini | DeepSeek | xAI (Grok) | Ollama | LlamaCpp |
+|--------------------------------------|:------:|:---------:|:------:|:--------:|:----------:|:------:|:--------:|
+| **Chat Completions**                 | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **Streaming**                        | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **Tool Calling**                     | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **JSON Schema / Structured Output**  | ✅     | ❌        | ✅     | ❌       | ✅         | ✅*    | ✅*      |
+| **Audio (TTS / Transcribe / Translate)** | ✅  | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
+| **Image Generation & Editing**       | ✅     | ❌        | ✅     | ❌       | ✅         | ❌     | ❌       |
+| **File Uploads**                     | ✅     | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
+| **Multimodal Prompts** *(text+image)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
+| **Vector Stores (RAG)**               | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
+| **Moderations**                      | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
+| **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
+
+\* JSON Schema support in Ollama/LlamaCpp depends on the model, not the API.
+
+
 ## Examples
 
 ### Providers
