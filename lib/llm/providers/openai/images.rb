@@ -13,7 +13,7 @@ class LLM::OpenAI
   #   require "open-uri"
   #   require "fileutils"
   #
-  #   llm = LLM.openai(ENV["KEY"])
+  #   llm = LLM.openai(key: ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon"
   #   FileUtils.mv OpenURI.open_uri(res.urls[0]).path,
   #                "rocket.png"
@@ -22,7 +22,7 @@ class LLM::OpenAI
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.openai(ENV["KEY"])
+  #   llm = LLM.openai(key: ENV["KEY"])
   #   res = llm.images.create prompt: "A dog on a rocket to the moon",
   #                           response_format: "b64_json"
   #   IO.copy_stream res.images[0], "rocket.png"
@@ -39,9 +39,9 @@ class LLM::OpenAI
     ##
     # Create an image
     # @example
-    #   llm = LLM.openai(ENV["KEY"])
+    #   llm = LLM.openai(key: ENV["KEY"])
     #   res = llm.images.create prompt: "A dog on a rocket to the moon"
-    #   p res.urls
+    #   res.urls.each { print _1, "\n" }
     # @see https://platform.openai.com/docs/api-reference/images/create OpenAI docs
     # @param [String] prompt The prompt
     # @param [String] model The model to use
