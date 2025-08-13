@@ -9,7 +9,7 @@ RSpec.shared_examples "LLM::Bot: files" do |dirname, options = {}|
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
 
     let(:params) { super().merge!({}) }
-    let(:image) { LLM.File("spec/fixtures/images/bluebook.png") }
+    let(:image) { "spec/fixtures/images/bluebook.png" }
     let(:prompt) do
       [
         "Could the image be a book ?",
