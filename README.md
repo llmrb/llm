@@ -50,6 +50,7 @@ breaks things down by provider, so you can see exactly what’s supported where.
 | **Multimodal Prompts** *(text+image)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
 | **Vector Stores (RAG)**               | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
+| **Responses**                        | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
 | **Moderations**                      | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
 | **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
 
