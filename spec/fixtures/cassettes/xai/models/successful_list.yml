@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.x.ai/v1/models
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 13 Aug 2025 21:05:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - "*"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96eb2c4069cd1b1d-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"grok-2-1212","created":1737331200,"object":"model","owned_by":"xai"},{"id":"grok-2-vision-1212","created":1733961600,"object":"model","owned_by":"xai"},{"id":"grok-3","created":1743724800,"object":"model","owned_by":"xai"},{"id":"grok-3-fast","created":1743724800,"object":"model","owned_by":"xai"},{"id":"grok-3-mini","created":1743724800,"object":"model","owned_by":"xai"},{"id":"grok-3-mini-fast","created":1743724800,"object":"model","owned_by":"xai"},{"id":"grok-4-0709","created":1752019200,"object":"model","owned_by":"xai"},{"id":"grok-2-image-1212","created":1736726400,"object":"model","owned_by":"xai"}],"object":"list"}'
+  recorded_at: Wed, 13 Aug 2025 21:05:29 GMT
+recorded_with: VCR 6.3.1
