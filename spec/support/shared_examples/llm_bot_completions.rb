@@ -41,6 +41,10 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
     it "returns nil when an index is out of bounds" do
       expect(messages[5]).to be_nil
     end
+
+    it "provides the 'last' message" do
+      expect(messages.last).to eq(messages.to_a[-1])
+    end
   end
 
   context "when given a prompt that is not recognized" do

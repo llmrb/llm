@@ -48,6 +48,13 @@ module LLM
     end
 
     ##
+    # Returns the last message in the buffer
+    # @return [LLM::Message, nil]
+    def last
+      to_a[-1]
+    end
+
+    ##
     # @param [[LLM::Message, Hash]] item
     #  A message and its parameters
     # @return [void]
