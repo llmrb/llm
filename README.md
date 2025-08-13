@@ -49,10 +49,11 @@ breaks things down by provider, so you can see exactly what’s supported where.
 | **File Uploads**                     | ✅     | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
 | **Multimodal Prompts** *(text+image)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
+| **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
 | **Vector Stores (RAG)**               | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
 | **Responses**                        | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
 | **Moderations**                      | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
-| **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
 
 \* JSON Schema support in Ollama/LlamaCpp depends on the model, not the API.
 
