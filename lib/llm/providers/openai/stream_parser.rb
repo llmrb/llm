@@ -52,6 +52,7 @@ class LLM::OpenAI
                 target[key] = value
               end
             else
+              @io << value if @io.respond_to?(:<<)
               target[key] = value
             end
           end

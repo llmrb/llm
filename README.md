@@ -1,9 +1,9 @@
 ## About
 
 llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
-includes OpenAI, Gemini, Anthropic, DeepSeek, Ollama, and LlamaCpp. The
-toolkit includes full support for chat, streaming, tool calling, audio,
-images, files, and JSON Schema generation.
+includes OpenAI, Gemini, Anthropic, xAI (grok), DeepSeek, Ollama, and
+LlamaCpp. The toolkit includes full support for chat, streaming, tool calling,
+audio, images, files, and JSON Schema generation.
 
 ## Features
 
@@ -52,6 +52,7 @@ require "llm"
 llm = LLM.openai(key: "yourapikey")
 llm = LLM.gemini(key: "yourapikey")
 llm = LLM.anthropic(key: "yourapikey")
+llm = LLM.xai(key: "yourapikey")
 llm = LLM.deepseek(key: "yourapikey")
 
 ##

@@ -70,6 +70,15 @@ module LLM
   end
 
   ##
+  # @param key (see LLM::XAI#initialize)
+  # @param host (see LLM::XAI#initialize)
+  # @return (see LLM::XAI#initialize)
+  def xai(**)
+    require_relative "llm/providers/xai" unless defined?(LLM::XAI)
+    LLM::XAI.new(**)
+  end
+
+  ##
   # Define a function
   # @example
   #   LLM.function(:system) do |fn|

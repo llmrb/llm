@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.x.ai/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Does
+        the earth orbit the sun?"}]}],"model":"grok-4-0709","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"probability":{"type":"integer"}},"required":["probability"]}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 13 Aug 2025 03:43:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Zero-Data-Retention:
+      - 'false'
+      X-Request-Id:
+      - 00-6886fc522e16e366b583cf3a62a1ac03-3da63fdb000106af-01
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - "*"
+      Cf-Cache-Status:
+      - DYNAMIC
+      Strict-Transport-Security:
+      - max-age=31536000
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96e53546aa1caefc-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"291ba7a8-6628-2eb5-f970-41de2b53ebc0","object":"chat.completion","created":1755056605,"model":"grok-4-0709","choices":[{"index":0,"message":{"role":"assistant","content":"
+        {\"probability\":100}","refusal":null},"finish_reason":"stop"}],"usage":{"prompt_tokens":68,"completion_tokens":5,"total_tokens":405,"prompt_tokens_details":{"text_tokens":68,"audio_tokens":0,"image_tokens":0,"cached_tokens":12},"completion_tokens_details":{"reasoning_tokens":332,"audio_tokens":0,"accepted_prediction_tokens":0,"rejected_prediction_tokens":0},"num_sources_used":0},"system_fingerprint":"fp_893a7d47fd"}'
+  recorded_at: Wed, 13 Aug 2025 03:43:12 GMT
+recorded_with: VCR 6.3.1

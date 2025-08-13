@@ -4,26 +4,24 @@ require_relative "openai" unless defined?(LLM::OpenAI)
 
 module LLM
   ##
-  # The LlamaCpp class implements a provider for
-  # [llama.cpp](https://github.com/ggml-org/llama.cpp)
-  # through the OpenAI-compatible API provided by the
-  # llama-server binary. Similar to the ollama provider,
-  # this provider supports a wide range of models and
-  # is straightforward to run on your own hardware.
+  # The XAI class implements a provider for [xAI](https://docs.x.ai).
   #
   # @example
   #   #!/usr/bin/env ruby
   #   require "llm"
   #
-  #   llm = LLM.llamacpp(key: nil)
+  #   llm = LLM.xai(key: ENV["KEY"])
   #   bot = LLM::Bot.new(llm)
-  #   bot.chat ["Tell me about this photo", File.open("/images/frog.jpg", "rb")]
+  #   bot.chat ["Tell me about this photo", File.open("/images/crow.jpg", "rb")]
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
-  class LlamaCpp < OpenAI
+  class XAI < OpenAI
+    require_relative "xai/images"
+
     ##
-    # @param (see LLM::Provider#initialize)
-    # @return [LLM::LlamaCpp]
-    def initialize(host: "localhost", port: 8080, ssl: false, **)
+    # @param [String] host A regional host or the default ("api.x.ai")
+    # @param key (see LLM::Provider#initialize)
+    # @see https://docs.x.ai/docs/key-information/regions Regional endpoints
+    def initialize(host: "api.x.ai", **)
       super
     end
 
@@ -34,9 +32,9 @@ module LLM
     end
 
     ##
-    # @raise [NotImplementedError]
+    # @return [LLM::XAI::Images]
     def images
-      raise NotImplementedError
+      LLM::XAI::Images.new(self)
     end
 
     ##
@@ -65,10 +63,10 @@ module LLM
 
     ##
     # Returns the default model for chat completions
-    # @see https://ollama.com/library/qwen3 qwen3
+    # #see https://docs.x.ai/docs/models grok-4-0709
     # @return [String]
     def default_model
-      "qwen3"
+      "grok-4-0709"
     end
   end
 end
