@@ -32,6 +32,10 @@ module LLM
   RateLimitError = Class.new(ResponseError)
 
   ##
+  # HTTPServerError
+  ServerError = Class.new(ResponseError)
+
+  ##
   # When an given an input object that is not understood
   FormatError = Class.new(Error)
 

@@ -22,6 +22,8 @@ class LLM::OpenAI
     #  Raises a subclass of {LLM::Error LLM::Error}
     def raise_error!
       case res
+      when Net::HTTPServerError
+        raise LLM::ServerError.new { _1.response = res }, "Server error"
       when Net::HTTPUnauthorized
         raise LLM::UnauthorizedError.new { _1.response = res }, "Authentication error"
       when Net::HTTPTooManyRequests

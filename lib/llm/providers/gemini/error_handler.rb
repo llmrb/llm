@@ -22,6 +22,8 @@ class LLM::Gemini
     #  Raises a subclass of {LLM::Error LLM::Error}
     def raise_error!
       case res
+      when Net::HTTPServerError
+        raise LLM::ServerError.new { _1.response = res }, "Server error"
       when Net::HTTPBadRequest
         reason = body.dig("error", "details", 0, "reason")
         if reason == "API_KEY_INVALID"
