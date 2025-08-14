@@ -5,14 +5,14 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
     {vcr: {cassette_name: "#{dirname}/chat/#{basename}"}.merge(options)}
   end
 
-  shared_examples "system function" do
+  shared_examples "system" do |request|
     let(:params) { {tools: [tool]} }
     let(:returns) { bot.messages.select(&:tool_return?) }
 
     before do
       bot.chat do |prompt|
-        prompt.user "You are a bot that can run UNIX system commands"
-        prompt.user "Hey, run the 'date' command"
+        prompt.user "You are a bot that can run UNIX commands"
+        prompt.user(request)
       end
     end
 
@@ -35,6 +35,43 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
     end
   end
 
+  shared_examples "system: multiple" do |request|
+    let(:tool) do
+      LLM.function(:system) do |fn|
+        fn.description "Run a shell command"
+        fn.params do |schema|
+          schema.object(command: schema.string.required)
+        end
+        fn.define do |command:|
+          ro, wo = IO.pipe
+          re, we = IO.pipe
+          Process.wait Process.spawn(command, out: wo, err: we)
+          [wo,we].each(&:close)
+          {stderr: re.read, stdout: ro.read}
+        end
+      end
+    end
+    let(:params) { {tools: [tool]} }
+    let(:returns) { bot.messages.select(&:tool_return?) }
+
+    before do
+      bot.chat do |prompt|
+        prompt.user "You are a bot that can run UNIX commands"
+        prompt.user(request)
+      end
+    end
+
+    it "calls the functions" do
+      i = 0
+      until bot.functions.empty?
+        raise "Too many iterations, something is wrong" if i == 3
+        bot.chat bot.functions.map(&:call)
+        i += 1
+      end
+      expect(bot.functions).to be_empty
+    end
+  end
+
   context "with a block", vcr.call("llm_function_block") do
     let(:tool) do
       LLM.function(:system) do |fn|
@@ -43,7 +80,7 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
         fn.define { |command:| {success: Kernel.system(command)} }
       end
     end
-    include_examples "system function"
+    include_examples "system", "What is the date?"
   end
 
   context "with a class", vcr.call("llm_function_class") do
@@ -61,11 +98,18 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
         end
       end
     end
-    include_examples "system function"
+    include_examples "system", "What is the date?"
+  end
+
+  context "with multiple calls", vcr.call("llm_function_multiple") do
+    include_examples "system: multiple",
+                     "Can you run the date command ? " \
+                     "Can you run the pwd command ? " \
+                     "Can you run the whoami command ?"
   end
 
   context "with an empty array", vcr.call("llm_function_empty_array") do
-    before { bot.chat("Hello! Nice to meet you", role: :user) }
+    before { bot.chat("Hi", role: :user) }
     let(:params) { {} }
 
     it "does not raise an error" do

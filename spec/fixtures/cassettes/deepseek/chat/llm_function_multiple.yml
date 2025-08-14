@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.deepseek.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
+        commands"},{"role":"user","content":"Can you run the date command ? Can you
+        run the pwd command ? Can you run the whoami command ?"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 14 Aug 2025 07:06:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - 4ba610f90fd0445ec0b2defb59cd5382
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96ee9bab7aa86270-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"d0e07aef-2112-4af4-b17a-c9f2adb03c57","object":"chat.completion","created":1755155171,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_0_7bfd355f-ba16-4afd-be93-e20934709897","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"date\"}"}},{"index":1,"id":"call_1_47a7b90a-6461-4a1e-8e68-42fac208246a","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"pwd\"}"}},{"index":2,"id":"call_2_ce28edb9-3b30-4539-a3b8-a297b66593fd","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"whoami\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":129,"completion_tokens":54,"total_tokens":183,"prompt_tokens_details":{"cached_tokens":64},"prompt_cache_hit_tokens":64,"prompt_cache_miss_tokens":65},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
+  recorded_at: Thu, 14 Aug 2025 07:05:56 GMT
+- request:
+    method: post
+    uri: https://api.deepseek.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
+        commands"},{"role":"user","content":"Can you run the date command ? Can you
+        run the pwd command ? Can you run the whoami command ?"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_7bfd355f-ba16-4afd-be93-e20934709897","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"date\"}"}},{"index":1,"id":"call_1_47a7b90a-6461-4a1e-8e68-42fac208246a","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"pwd\"}"}},{"index":2,"id":"call_2_ce28edb9-3b30-4539-a3b8-a297b66593fd","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"whoami\"}"}}]},{"role":"tool","tool_call_id":"call_0_7bfd355f-ba16-4afd-be93-e20934709897","content":"{\"stderr\":\"\",\"stdout\":\"Thu
+        Aug 14 07:05:56 UTC 2025\\n\"}"},{"role":"tool","tool_call_id":"call_1_47a7b90a-6461-4a1e-8e68-42fac208246a","content":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"},{"role":"tool","tool_call_id":"call_2_ce28edb9-3b30-4539-a3b8-a297b66593fd","content":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 14 Aug 2025 07:06:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - origin, access-control-request-method, access-control-request-headers
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ds-Trace-Id:
+      - 78a2a5b9c9deec29e9331e5f04ef2f98
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96ee9bd598b45e0f-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"71750c28-5888-4a7a-a7c9-655a35279f61","object":"chat.completion","created":1755155178,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"Here
+        are the results of the commands:\n\n1. **Date**: `Thu Aug 14 07:05:56 UTC
+        2025`\n2. **Current Directory (pwd)**: `/home/developer/p/git.home.network/0x1eef/ruby/llm.rb`\n3.
+        **Current User (whoami)**: `developer`"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":261,"completion_tokens":75,"total_tokens":336,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":133},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
+  recorded_at: Thu, 14 Aug 2025 07:06:04 GMT
+recorded_with: VCR 6.3.1

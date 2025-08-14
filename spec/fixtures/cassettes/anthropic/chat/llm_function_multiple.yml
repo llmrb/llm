@@ -1,0 +1,175 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"Can
+        you run the date command ? Can you run the pwd command ? Can you run the whoami
+        command ?"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Run
+        a shell command","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - TOKEN
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 14 Aug 2025 07:06:07 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-08-14T07:06:06Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-08-14T07:06:07Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-08-14T07:06:06Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-08-14T07:06:06Z'
+      Request-Id:
+      - req_011CS7BJSxNfwyw283KbcSp7
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 89796e02-61da-4a75-b7ee-c55929f0d748
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96ee9b83ebfda535-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_01VXVnKdL9982FxLRyVWDdd3","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"I''ll
+        run those three UNIX commands for you."},{"type":"tool_use","id":"toolu_01SDUGbxPiPvQv1hsfFUkkcM","name":"system","input":{"command":"date"}},{"type":"tool_use","id":"toolu_01EStTWQV8w2Li89aGn1z42U","name":"system","input":{"command":"pwd"}},{"type":"tool_use","id":"toolu_017F3Be6gjBPbwEdciqcfmfh","name":"system","input":{"command":"whoami"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":403,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":132,"service_tier":"standard"}}'
+  recorded_at: Thu, 14 Aug 2025 07:05:45 GMT
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"Can
+        you run the date command ? Can you run the pwd command ? Can you run the whoami
+        command ?"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01SDUGbxPiPvQv1hsfFUkkcM","name":"system","input":{"command":"date"}},{"type":"tool_use","id":"toolu_01EStTWQV8w2Li89aGn1z42U","name":"system","input":{"command":"pwd"}},{"type":"tool_use","id":"toolu_017F3Be6gjBPbwEdciqcfmfh","name":"system","input":{"command":"whoami"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01SDUGbxPiPvQv1hsfFUkkcM","content":[{"type":"text","text":"{\"stderr\":\"\",\"stdout\":\"Thu
+        Aug 14 07:05:45 UTC 2025\\n\"}"}]},{"type":"tool_result","tool_use_id":"toolu_01EStTWQV8w2Li89aGn1z42U","content":[{"type":"text","text":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"}]},{"type":"tool_result","tool_use_id":"toolu_017F3Be6gjBPbwEdciqcfmfh","content":[{"type":"text","text":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}]}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Run
+        a shell command","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - TOKEN
+      Anthropic-Version:
+      - '2023-06-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 14 Aug 2025 07:06:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Anthropic-Ratelimit-Input-Tokens-Limit:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Remaining:
+      - '30000'
+      Anthropic-Ratelimit-Input-Tokens-Reset:
+      - '2025-08-14T07:06:08Z'
+      Anthropic-Ratelimit-Output-Tokens-Limit:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Remaining:
+      - '8000'
+      Anthropic-Ratelimit-Output-Tokens-Reset:
+      - '2025-08-14T07:06:11Z'
+      Anthropic-Ratelimit-Requests-Limit:
+      - '50'
+      Anthropic-Ratelimit-Requests-Remaining:
+      - '49'
+      Anthropic-Ratelimit-Requests-Reset:
+      - '2025-08-14T07:06:08Z'
+      Anthropic-Ratelimit-Tokens-Limit:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Remaining:
+      - '38000'
+      Anthropic-Ratelimit-Tokens-Reset:
+      - '2025-08-14T07:06:08Z'
+      Request-Id:
+      - req_011CS7BJd7ovzCVFusDKccHx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Anthropic-Organization-Id:
+      - 89796e02-61da-4a75-b7ee-c55929f0d748
+      Via:
+      - 1.1 google
+      Cf-Cache-Status:
+      - DYNAMIC
+      X-Robots-Tag:
+      - none
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 96ee9b92ccce00c0-GRU
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"msg_012gA2mqq4sqcGZ2UQTG2wnn","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"I
+        successfully ran the three UNIX commands you requested:\n\n1. **`date`** -
+        Shows the current date and time:\n   ```\n   Thu Aug 14 07:05:45 UTC 2025\n   ```\n\n2.
+        **`pwd`** - Shows the current working directory:\n   ```\n   /home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n   ```\n\n3.
+        **`whoami`** - Shows the current username:\n   ```\n   developer\n   ```\n\nThe
+        system is running as user \"developer\" in the directory \"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\"
+        on Thursday, August 14, 2025 at 07:05:45 UTC."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":674,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":185,"service_tier":"standard"}}'
+  recorded_at: Thu, 14 Aug 2025 07:05:48 GMT
+recorded_with: VCR 6.3.1
