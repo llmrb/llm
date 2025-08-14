@@ -39,7 +39,7 @@ class LLM::XAI
     # @param [Hash] params Other parameters (see xAI docs)
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response]
-    def create(model: "grok-2-image-1212", **)
+    def create(prompt:, model: "grok-2-image-1212", **params)
       super
     end
 
