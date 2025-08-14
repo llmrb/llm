@@ -49,7 +49,7 @@ breaks things down by provider, so you can see exactly what’s supported where.
 | **File Uploads**                     | ✅     | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
 | **Multimodal Prompts** *(text+image)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
-| **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **Models API**                       g| ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
 | **Vector Stores (RAG)**               | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
 | **Responses**                        | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
