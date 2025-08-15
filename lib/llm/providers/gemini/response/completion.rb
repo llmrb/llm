@@ -28,5 +28,7 @@ module LLM::Gemini::Response
         LLM::Object.new(function)
       end
     end
+
+    def candidates = body.candidates || []
   end
 end
