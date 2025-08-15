@@ -7,11 +7,8 @@ class LLM::Mime
   # Lookup a mime type
   # @return [String, nil]
   def self.[](key)
-    if key.respond_to?(:path)
-      types[File.extname(key.path)]
-    else
-      types[key]
-    end
+    key = key.respond_to?(:path) ? File.extname(key.path) : key
+    types[key] || "application/octet-stream"
   end
 
   ##
@@ -48,7 +45,10 @@ class LLM::Mime
 
       # Documents
       ".pdf" => "application/pdf",
-      ".txt" => "text/plain"
+      ".txt" => "text/plain",
+      ".md" => "text/markdown",
+      ".markdown" => "text/markdown",
+      ".mkd" => "text/markdown",
     }
   end
 end

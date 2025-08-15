@@ -48,6 +48,27 @@ RSpec.describe "LLM::OpenAI::Files" do
     end
   end
 
+  context "when given a successful create operation (readme.md)",
+          vcr: {cassette_name: "openai/files/successful_create_readme"} do
+    subject(:file) { provider.files.create(file: "spec/fixtures/documents/readme.md") }
+
+    it "is successful" do
+      expect(file).to be_instance_of(LLM::Response)
+    ensure
+      provider.files.delete(file:)
+    end
+
+    it "returns a file object" do
+      expect(file).to have_attributes(
+        id: instance_of(String),
+        filename: "readme.md",
+        purpose: "assistants"
+      )
+    ensure
+      provider.files.delete(file:)
+    end
+  end
+
   context "when given a successful delete operation (haiku3.txt)",
           vcr: {cassette_name: "openai/files/successful_delete_haiku3"} do
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku3.txt") }
