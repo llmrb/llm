@@ -58,7 +58,7 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
 
   context "when given a prompt that is an empty array" do
     before { bot.chat([]) }
-    subject(:messages) { bot.messages.to_a }
+    subject(:messages) { bot.messages}
 
     it "is a noop" do
       expect(messages).to be_empty

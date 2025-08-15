@@ -80,6 +80,13 @@ module LLM
       "completed_count=#{@completed.size} pending_count=#{@pending.size}>"
     end
 
+    ##
+    # Returns true when the buffer is empty
+    # @return [Boolean]
+    def empty?
+      @pending.empty? and @completed.empty?
+    end
+
     private
 
     def empty!
