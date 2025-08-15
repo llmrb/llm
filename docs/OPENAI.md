@@ -32,7 +32,7 @@ url  = "https://commons.wikimedia.org/wiki/File:Burg_Hochosterwitz_Westseite_02a
 msgs = bot.respond do |prompt|
   prompt.developer "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
-  prompt.user ["Tell me about this pdf", File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "rb")]
+  prompt.user ["Tell me about this pdf", File.open("handbook.pdf", "rb")]
   prompt.user "Is the URL and PDF similar to each other?"
 end
 
@@ -78,7 +78,7 @@ See also: [LLM::OpenAI::VectorStores](https://0x1eef.github.io/x/llm.rb/LLM/Open
 #!/usr/bin/env ruby
 require "llm"
 
-pdfs = ["spec/fixtures/documents/freebsd.sysctl.pdf"]
+pdfs = ["handbook.pdf"]
 llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
 files = pdfs.map { llm.files.create(file: _1) }
 store = llm.vector_stores.create(name: "PDF Store", file_ids: files.map(&:id))
