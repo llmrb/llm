@@ -115,7 +115,7 @@ msgs = bot.chat do |prompt|
   prompt.system "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
   prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
-  prompt.user "Is the URL and PDF similar to each other?"
+  prompt.user "Are the URL and PDF similar to each other?"
 end
 
 # At this point, we execute a single request
@@ -147,7 +147,7 @@ bot.chat(stream: $stdout) do |prompt|
   prompt.system "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
   prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
-  prompt.user "Is the URL and PDF similar to each other?"
+  prompt.user "Are the URL and PDF similar to each other?"
 end.to_a
 ```
 
