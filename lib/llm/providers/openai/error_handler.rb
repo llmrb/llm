@@ -29,8 +29,18 @@ class LLM::OpenAI
       when Net::HTTPTooManyRequests
         raise LLM::RateLimitError.new { _1.response = res }, "Too many requests"
       else
-        raise LLM::ResponseError.new { _1.response = res }, "Unexpected response"
+        error = body["error"] || {}
+        case error["type"]
+        when "server_error" then raise LLM::ServerError.new { _1.response = res }, error["message"]
+        else raise LLM::ResponseError.new { _1.response = res }, error["message"] || "Unexpected response"
+        end
       end
+    end
+
+    private
+
+    def body
+      @body ||= JSON.parse(res.body)
     end
   end
 end
