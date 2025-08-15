@@ -114,7 +114,7 @@ url  = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
 msgs = bot.chat do |prompt|
   prompt.system "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
-  prompt.user ["Tell me about this pdf", File.open("handbook.pdf", "rb")]
+  prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
   prompt.user "Is the URL and PDF similar to each other?"
 end
 
@@ -146,7 +146,7 @@ url = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
-  prompt.user ["Tell me about this pdf", File.open("handbook.pdf", "rb")]
+  prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
   prompt.user "Is the URL and PDF similar to each other?"
 end.to_a
 ```
