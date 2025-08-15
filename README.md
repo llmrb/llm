@@ -22,7 +22,7 @@ audio, images, files, and structured outputs (JSON Schema).
 - 🗣️ Text-to-speech, transcription, and translation
 - 🖼️ Image generation, editing, and variation support
 - 📎 File uploads and prompt-aware file interaction
-- 💡 Multimodal prompts (text, images, PDFs, URLs, files)
+- 💡 Multimodal prompts (text, documents, audio, images, videos, URLs, etc)
 
 #### Embeddings
 - 🧮 Text embeddings and vector support
@@ -47,7 +47,7 @@ breaks things down by provider, so you can see exactly what’s supported where.
 | **Audio (TTS / Transcribe / Translate)** | ✅  | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
 | **Image Generation & Editing**       | ✅     | ❌        | ✅     | ❌       | ✅         | ❌     | ❌       |
 | **File Uploads**                     | ✅     | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
-| **Multimodal Prompts** *(text, image, video, URLs, etc)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **Multimodal Prompts** *(text, documents, audio, images, videos, URLs, etc)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
 | **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
