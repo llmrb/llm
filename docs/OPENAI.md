@@ -28,7 +28,7 @@ require "llm"
 
 llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
-url  = "https://commons.wikimedia.org/wiki/File:Burg_Hochosterwitz_Westseite_02a.jpg"
+url  = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
 msgs = bot.respond do |prompt|
   prompt.developer "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]

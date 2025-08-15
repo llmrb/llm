@@ -110,7 +110,7 @@ require "llm"
 
 llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
-url  = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
+url  = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
 msgs = bot.chat do |prompt|
   prompt.system "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
@@ -142,7 +142,7 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
-url = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cognac_glass.jpg/500px-Cognac_glass.jpg"
+url = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "Your task is to answer all user queries"
   prompt.user ["Tell me about this URL", URI(url)]
