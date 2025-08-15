@@ -55,7 +55,7 @@ module LLM
     end
 
     ##
-    # @param [[LLM::Message, Hash]] item
+    # @param [[LLM::Message, Hash, Symbol]] item
     #  A message and its parameters
     # @return [void]
     def <<(item)

@@ -12,8 +12,12 @@ class LLM::Bot
     # @param [Hash] params
     # @return [void]
     def async_response(prompt, params = {})
-      role = params.delete(:role)
-      @messages << [LLM::Message.new(role, prompt), @params.merge(params), :respond]
+      if Array === prompt and prompt.empty?
+        @messages
+      else
+        role = params.delete(:role)
+        @messages << [LLM::Message.new(role, prompt), @params.merge(params), :respond]
+      end
     end
 
     ##
@@ -22,8 +26,12 @@ class LLM::Bot
     # @param [Hash] params
     # @return [void]
     def async_completion(prompt, params = {})
-      role = params.delete(:role)
-      @messages.push [LLM::Message.new(role, prompt), @params.merge(params), :complete]
+      if Array === prompt and prompt.empty?
+        @messages
+      else
+        role = params.delete(:role)
+        @messages << [LLM::Message.new(role, prompt), @params.merge(params), :complete]
+      end
     end
   end
 end
