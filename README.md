@@ -259,7 +259,7 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 file = llm.files.create(file: "/books/goodread.pdf")
-bot.chat(["Tell me about this file", file])
+bot.chat ["Tell me about this file", file]
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
