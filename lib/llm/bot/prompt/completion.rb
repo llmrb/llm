@@ -27,5 +27,23 @@ module LLM::Bot::Prompt
       params = defaults.merge(params)
       bot.chat prompt, params.merge(role: :user)
     end
+
+    ##
+    # @param [String] prompt
+    # @param [Hash] params (see LLM::Provider#complete)
+    # @return [LLM::Bot]
+    def assistant(prompt, params = {})
+      params = defaults.merge(params)
+      bot.chat prompt, params.merge(role: :assistant)
+    end
+
+    ##
+    # @param [String] prompt
+    # @param [Hash] params (see LLM::Provider#complete)
+    # @return [LLM::Bot]
+    def model(prompt, params = {})
+      params = defaults.merge(params)
+      bot.chat prompt, params.merge(role: :model)
+    end
   end
 end
