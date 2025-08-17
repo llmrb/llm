@@ -10,7 +10,7 @@ audio, images, files, and structured outputs (JSON Schema).
 #### General
 - ✅ A single unified interface for multiple providers
 - 📦 Zero dependencies outside Ruby's standard library
-- 🚀 Efficient API design that minimizes the number of requests made
+- 🚀 Smart API design that minimizes the number of requests made
 
 #### Chat, Agents
 - 🧠 Stateless and stateful chat via completions and responses API
