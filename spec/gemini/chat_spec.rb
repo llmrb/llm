@@ -23,7 +23,7 @@ RSpec.describe "LLM::Bot: gemini" do
     include_examples "LLM::Bot: files", :gemini, match_requests_on: [:method]
   end
 
-  context JSON::Schema do
+  context LLM::Schema do
     include_examples "LLM::Bot: schema", :gemini, match_requests_on: [:method]
   end
 end

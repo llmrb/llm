@@ -198,9 +198,9 @@ class LLM::Provider
 
   ##
   # Returns an object that can generate a JSON schema
-  # @return [JSON::Schema]
+  # @return [LLM::Schema]
   def schema
-    @schema ||= JSON::Schema.new
+    @schema ||= LLM::Schema.new
   end
 
   ##

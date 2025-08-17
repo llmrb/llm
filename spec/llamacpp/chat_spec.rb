@@ -42,7 +42,7 @@ RSpec.describe "LLM::Bot: llamacpp" do
     include_examples "LLM::Bot: functions", :llamacpp
   end
 
-  context JSON::Schema do
+  context LLM::Schema do
     include_examples "LLM::Bot: schema", :llamacpp
   end
 end

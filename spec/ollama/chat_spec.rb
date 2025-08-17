@@ -19,7 +19,7 @@ RSpec.describe "LLM::Bot: ollama" do
     include_examples "LLM::Bot: functions", :ollama
   end
 
-  context JSON::Schema do
+  context LLM::Schema do
     include_examples "LLM::Bot: schema", :ollama
   end
 end

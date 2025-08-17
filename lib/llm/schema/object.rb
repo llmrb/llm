@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class JSON::Schema
+class LLM::Schema
   ##
-  # The {JSON::Schema::Object JSON::Schema::Object} class represents an
+  # The {LLM::Schema::Object LLM::Schema::Object} class represents an
   # object value in a JSON schema. It is a subclass of
-  # {JSON::Schema::Leaf JSON::Schema::Leaf} and provides methods that
+  # {LLM::Schema::Leaf LLM::Schema::Leaf} and provides methods that
   # can act as constraints.
   class Object < Leaf
     def initialize(properties)

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class JSON::Schema
+class LLM::Schema
   ##
-  # The {JSON::Schema::Leaf JSON::Schema::Leaf} class is the
+  # The {LLM::Schema::Leaf LLM::Schema::Leaf} class is the
   # superclass of all values that can appear in a JSON schema.
-  # See the instance methods of {JSON::Schema JSON::Schema} for
-  # an example of how to create instances of {JSON::Schema::Leaf JSON::Schema::Leaf}
+  # See the instance methods of {LLM::Schema LLM::Schema} for
+  # an example of how to create instances of {LLM::Schema::Leaf LLM::Schema::Leaf}
   # through its subclasses.
   class Leaf
     def initialize
@@ -19,7 +19,7 @@ class JSON::Schema
     ##
     # Set the description of a leaf
     # @param [String] str The description
-    # @return [JSON::Schema::Leaf]
+    # @return [LLM::Schema::Leaf]
     def description(str)
       tap { @description = str }
     end
@@ -27,7 +27,7 @@ class JSON::Schema
     ##
     # Set the default value of a leaf
     # @param [Object] value The default value
-    # @return [JSON::Schema::Leaf]
+    # @return [LLM::Schema::Leaf]
     def default(value)
       tap { @default = value }
     end
@@ -36,7 +36,7 @@ class JSON::Schema
     # Set the allowed values of a leaf
     # @see https://tour.json-schema.org/content/02-Primitive-Types/07-Enumerated-Values-II Enumerated Values
     # @param [Array] values The allowed values
-    # @return [JSON::Schema::Leaf]
+    # @return [LLM::Schema::Leaf]
     def enum(*values)
       tap { @enum = values }
     end
@@ -45,14 +45,14 @@ class JSON::Schema
     # Set the value of a leaf to be a constant value
     # @see https://tour.json-schema.org/content/02-Primitive-Types/08-Defining-Constant-Values Constant Values
     # @param [Object] value The constant value
-    # @return [JSON::Schema::Leaf]
+    # @return [LLM::Schema::Leaf]
     def const(value)
       tap { @const = value }
     end
 
     ##
     # Denote a leaf as required
-    # @return [JSON::Schema::Leaf]
+    # @return [LLM::Schema::Leaf]
     def required
       tap { @required = true }
     end

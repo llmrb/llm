@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-class JSON::Schema
+class LLM::Schema
   ##
-  # The {JSON::Schema::String JSON::Schema::String} class represents a
+  # The {LLM::Schema::String LLM::Schema::String} class represents a
   # string value in a JSON schema. It is a subclass of
-  # {JSON::Schema::Leaf JSON::Schema::Leaf} and provides methods that
+  # {LLM::Schema::Leaf LLM::Schema::Leaf} and provides methods that
   # can act as constraints.
   class String < Leaf
     ##
     # Constrain the string to a minimum length
     # @param [Integer] i The minimum length
-    # @return [JSON::Schema::String] Returns self
+    # @return [LLM::Schema::String] Returns self
     def min(i)
       tap { @minimum = i }
     end
@@ -18,7 +18,7 @@ class JSON::Schema
     ##
     # Constrain the string to a maximum length
     # @param [Integer] i The maximum length
-    # @return [JSON::Schema::String] Returns self
+    # @return [LLM::Schema::String] Returns self
     def max(i)
       tap { @maximum = i }
     end

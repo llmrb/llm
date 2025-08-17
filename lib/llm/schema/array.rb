@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class JSON::Schema
+class LLM::Schema
   ##
-  # The {JSON::Schema::Array JSON::Schema::Array} class represents an
+  # The {LLM::Schema::Array LLM::Schema::Array} class represents an
   # array value in a JSON schema. It is a subclass of
-  # {JSON::Schema::Leaf JSON::Schema::Leaf} and provides methods that
+  # {LLM::Schema::Leaf LLM::Schema::Leaf} and provides methods that
   # can act as constraints.
   class Array < Leaf
     def initialize(items)

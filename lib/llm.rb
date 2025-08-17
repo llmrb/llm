@@ -2,7 +2,7 @@
 
 module LLM
   require "stringio"
-  require_relative "llm/json/schema"
+  require_relative "llm/schema"
   require_relative "llm/object"
   require_relative "llm/version"
   require_relative "llm/utils"

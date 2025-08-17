@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
-module JSON
-end unless defined?(JSON)
-
 ##
-# The {JSON::Schema JSON::Schema} class represents a JSON schema,
+# The {LLM::Schema LLM::Schema} class represents a JSON schema,
 # and provides methods that let you describe and produce a schema
 # that can be used in various contexts that include the validation
 # and generation of JSON data.
@@ -13,14 +10,14 @@ end unless defined?(JSON)
 # @see https://tour.json-schema.org/ JSON Schema Tour
 #
 # @example
-#  schema = JSON::Schema.new
+#  schema = LLM::Schema.new
 #  schema.object({
 #    name: schema.string.enum("John", "Jane").required,
 #    age: schema.integer.required,
 #    hobbies: schema.array(schema.string, schema.null).required,
 #    address: schema.object({street: schema.string}).required,
 #  })
-class JSON::Schema
+class LLM::Schema
   require_relative "schema/version"
   require_relative "schema/leaf"
   require_relative "schema/object"
@@ -34,7 +31,7 @@ class JSON::Schema
   ##
   # Returns an object
   # @param [Hash] properties A hash of properties
-  # @return [JSON::Schema::Object]
+  # @return [LLM::Schema::Object]
   def object(properties)
     Object.new(properties)
   end
@@ -42,42 +39,42 @@ class JSON::Schema
   ##
   # Returns an array
   # @param [Array] items An array of items
-  # @return [JSON::Schema::Array]
+  # @return [LLM::Schema::Array]
   def array(*items)
     Array.new(*items)
   end
 
   ##
   # Returns a string
-  # @return [JSON::Schema::String]
+  # @return [LLM::Schema::String]
   def string
     String.new
   end
 
   ##
   # Returns a number
-  # @return [JSON::Schema::Number] a number
+  # @return [LLM::Schema::Number] a number
   def number
     Number.new
   end
 
   ##
   # Returns an integer
-  # @return [JSON::Schema::Integer]
+  # @return [LLM::Schema::Integer]
   def integer
     Integer.new
   end
 
   ##
   # Returns a boolean
-  # @return [JSON::Schema::Boolean]
+  # @return [LLM::Schema::Boolean]
   def boolean
     Boolean.new
   end
 
   ##
   # Returns null
-  # @return [JSON::Schema::Null]
+  # @return [LLM::Schema::Null]
   def null
     Null.new
   end

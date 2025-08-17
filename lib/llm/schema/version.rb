@@ -3,6 +3,6 @@
 module JSON
 end unless defined?(JSON)
 
-class JSON::Schema
+class LLM::Schema
   VERSION = "0.1.0"
 end

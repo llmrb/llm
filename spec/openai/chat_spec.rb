@@ -23,7 +23,7 @@ RSpec.describe "LLM::Bot: openai" do
     include_examples "LLM::Bot: files", :openai
   end
 
-  context JSON::Schema do
+  context LLM::Schema do
     include_examples "LLM::Bot: schema", :openai
   end
 end

@@ -53,7 +53,7 @@ class LLM::Function
   # @yieldparam [LLM::Function] self The function object
   def initialize(name, &b)
     @name = name
-    @schema = JSON::Schema.new
+    @schema = LLM::Schema.new
     @called = false
     @cancelled = false
     yield(self)
@@ -72,7 +72,7 @@ class LLM::Function
   end
 
   ##
-  # @yieldparam [JSON::Schema] schema The schema object
+  # @yieldparam [LLM::Schema] schema The schema object
   # @return [void]
   def params
     @params = yield(@schema)
