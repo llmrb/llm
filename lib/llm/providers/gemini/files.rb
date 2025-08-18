@@ -24,6 +24,7 @@ class LLM::Gemini
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Files
     require_relative "response/file"
+    require_relative "response/files"
 
     ##
     # Returns a new Files object
@@ -49,7 +50,7 @@ class LLM::Gemini
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/files?#{query}", headers)
       res = execute(request: req)
-      LLM::Response.new(res)
+      LLM::Response.new(res).extend(LLM::Gemini::Response::Files)
     end
 
     ##
