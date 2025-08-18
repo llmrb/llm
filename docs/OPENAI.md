@@ -92,7 +92,7 @@ puts "Vector store is online"
 
 puts "Search the vector store"
 res = llm.vector_stores.search(vector: store, query: "What is FreeBSD?")
-chunks = res.data.flat_map { _1["content"] }
+chunks = res.flat_map { _1["content"] }
 puts "Found #{chunks.size} chunks"
 files.each { llm.files.delete(file: _1) }
 llm.vector_stores.delete(vector: store)

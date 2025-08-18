@@ -5,6 +5,8 @@ class LLM::OpenAI
   # The {LLM::OpenAI::VectorStores LLM::OpenAI::VectorStores} class provides
   # an interface for [OpenAI's vector stores API](https://platform.openai.com/docs/api-reference/vector_stores/create)
   class VectorStores
+    require_relative "response/enumerable"
+
     ##
     # @param [LLM::Provider] provider
     #  An OpenAI provider
@@ -20,7 +22,7 @@ class LLM::OpenAI
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/vector_stores?#{query}", headers)
       res = execute(request: req)
-      LLM::Response.new(res)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Enumerable)
     end
 
     ##
@@ -93,7 +95,7 @@ class LLM::OpenAI
       req = Net::HTTP::Post.new("/v1/vector_stores/#{vector_id}/search", headers)
       req.body = JSON.dump(params.merge({query:}).compact)
       res = execute(request: req)
-      LLM::Response.new(res)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Enumerable)
     end
 
     ##
@@ -108,7 +110,7 @@ class LLM::OpenAI
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/vector_stores/#{vector_id}/files?#{query}", headers)
       res = execute(request: req)
-      LLM::Response.new(res)
+      LLM::Response.new(res).extend(LLM::OpenAI::Response::Enumerable)
     end
 
     ##
