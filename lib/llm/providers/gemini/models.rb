@@ -17,6 +17,7 @@ class LLM::Gemini
   #     print "id: ", model.id, "\n"
   #   end
   class Models
+    require_relative "response/models"
     include LLM::Utils
 
     ##
@@ -43,7 +44,7 @@ class LLM::Gemini
       query = URI.encode_www_form(params.merge!(key: key))
       req = Net::HTTP::Get.new("/v1beta/models?#{query}", headers)
       res = execute(request: req)
-      LLM::Response.new(res)
+      LLM::Response.new(res).extend(LLM::Gemini::Response::Models)
     end
 
     private
