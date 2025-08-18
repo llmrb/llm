@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class LLM::Anthropic
+  require_relative "response/enumerable"
   ##
   # The {LLM::Anthropic::Models LLM::Anthropic::Models} class provides a model
   # object for interacting with [Anthropic's models API](https://platform.anthropic.com/docs/api-reference/models/list).
@@ -41,7 +42,7 @@ class LLM::Anthropic
       query = URI.encode_www_form(params)
       req = Net::HTTP::Get.new("/v1/models?#{query}", headers)
       res = execute(request: req)
-      LLM::Response.new(res)
+      LLM::Response.new(res).extend(LLM::Anthropic::Response::Enumerable)
     end
 
     private
