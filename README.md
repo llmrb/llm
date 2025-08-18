@@ -494,7 +494,7 @@ over or doesn't cover at all. The API reference is available at
 ### Guides
 
 * [An introduction to RAG with llm.rb](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
-  a blog post that implements the RAG pattern in 32 lines of Ruby code
+  a blog post that implements the RAG pattern
 * [Age estimation with llm.rb](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
   a blog post that implements an age estimation tool
 * [docs/](docs/) &ndash; the docs directory contains additional guides
