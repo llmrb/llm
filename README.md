@@ -477,7 +477,7 @@ end
 ##
 # Select a model
 model = llm.models.all.find { |m| m.id == "gpt-3.5-turbo" }
-bot = LLM::Bot.new(llm, model:)
+bot = LLM::Bot.new(llm, model: model.id)
 bot.chat "Hello #{model.id} :)"
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
