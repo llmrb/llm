@@ -18,6 +18,7 @@ module LLM
     require_relative "anthropic/format"
     require_relative "anthropic/error_handler"
     require_relative "anthropic/stream_parser"
+    require_relative "anthropic/files"
     require_relative "anthropic/models"
     include Format
 
@@ -61,6 +62,14 @@ module LLM
     end
 
     ##
+    # Provides an interface to Anthropic's files API
+    # @see https://docs.anthropic.com/en/docs/build-with-claude/files Anthropic docs
+    # @return [LLM::Anthropic::Files]
+    def files
+      LLM::Anthropic::Files.new(self)
+    end
+
+    ##
     # @return (see LLM::Provider#assistant_role)
     def assistant_role
       "assistant"
@@ -80,7 +89,8 @@ module LLM
       (@headers || {}).merge(
         "Content-Type" => "application/json",
         "x-api-key" => @key,
-        "anthropic-version" => "2023-06-01"
+        "anthropic-version" => "2023-06-01",
+        "anthropic-beta" => "files-api-2025-04-14"
       )
     end
 

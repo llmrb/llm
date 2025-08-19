@@ -60,6 +60,12 @@ module LLM::Anthropic::Format
                                   "is not an image or PDF, and therefore not supported by the " \
                                   "Anthropic API"
         end
+      when LLM::Response
+        if content.file?
+          [{type: content.file_type, source: {type: :file, file_id: content.id}}]
+        else
+          prompt_error!(content)
+        end
       when String
         [{type: :text, text: content}]
       when LLM::Message
@@ -67,9 +73,13 @@ module LLM::Anthropic::Format
       when LLM::Function::Return
         [{type: "tool_result", tool_use_id: content.id, content: [{type: :text, text: JSON.dump(content.value)}]}]
       else
-        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                "is not supported by the Anthropic API"
+        prompt_error!(content)
       end
+    end
+
+    def prompt_error!(content)
+      raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                              "is not supported by the Anthropic API"
     end
 
     def message = @message
