@@ -46,7 +46,7 @@ breaks things down by provider, so you can see exactly what’s supported where.
 | **JSON Schema / Structured Output**  | ✅     | ❌        | ✅     | ❌       | ✅         | ✅*    | ✅*      |
 | **Audio (TTS / Transcribe / Translate)** | ✅  | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
 | **Image Generation & Editing**       | ✅     | ❌        | ✅     | ❌       | ✅         | ❌     | ❌       |
-| **File Uploads**                     | ✅     | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
+| **Files API**                        | ✅     | ✅        | ✅     | ❌       | ❌         | ❌     | ❌       |
 | **Multimodal Prompts** *(text, documents, audio, images, videos, URLs, etc)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
 | **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
