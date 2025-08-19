@@ -44,12 +44,12 @@ breaks things down by provider, so you can see exactly what’s supported where.
 | **Streaming**                        | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Tool Calling**                     | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **JSON Schema / Structured Output**  | ✅     | ❌        | ✅     | ❌       | ✅         | ✅*    | ✅*      |
+| **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
+| **Multimodal Prompts** *(text, documents, audio, images, videos, URLs, etc)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
+| **Files API**                        | ✅     | ✅        | ✅     | ❌       | ❌         | ❌     | ❌       |
+| **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Audio (TTS / Transcribe / Translate)** | ✅  | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
 | **Image Generation & Editing**       | ✅     | ❌        | ✅     | ❌       | ✅         | ❌     | ❌       |
-| **Files API**                        | ✅     | ✅        | ✅     | ❌       | ❌         | ❌     | ❌       |
-| **Multimodal Prompts** *(text, documents, audio, images, videos, URLs, etc)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
-| **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
-| **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
 | **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
 | **Vector Stores (RAG)**               | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
 | **Responses**                        | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
