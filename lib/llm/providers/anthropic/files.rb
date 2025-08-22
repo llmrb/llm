@@ -119,9 +119,27 @@ class LLM::Anthropic
     end
 
     ##
-    # @raise [NotImplementedError]
+    # Download the contents of a file
+    # @note
+    #   You can only download files that were created by the code
+    #   execution tool. Files that you uploaded cannot be downloaded.
+    # @example
+    #   llm = LLM.anthropic(key: ENV["KEY"])
+    #   res = llm.files.download(file: "file-1234567890")
+    #   File.binwrite "program.c", res.file.read
+    #   print res.file.read, "\n"
+    # @see https://docs.anthropic.com/en/docs/build-with-claude/files Anthropic docs
+    # @param [#id, #to_s] file The file ID
+    # @param [Hash] params Other parameters (see Anthropic docs)
+    # @raise (see LLM::Provider#request)
+    # @return [LLM::Response]
     def download(file:, **params)
-      raise NotImplementedError, "This feature is not yet implemented by llm.rb"
+      query = URI.encode_www_form(params)
+      file_id = file.respond_to?(:id) ? file.id : file
+      req = Net::HTTP::Get.new("/v1/files/#{file_id}/content?#{query}", headers)
+      io = StringIO.new("".b)
+      res = execute(request: req) { |res| res.read_body { |chunk| io << chunk } }
+      LLM::Response.new(res).tap { _1.define_singleton_method(:file) { io } }
     end
 
     private

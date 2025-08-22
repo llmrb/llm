@@ -284,7 +284,8 @@ class LLM::Provider
         parser&.free
       end
     else
-      client.request(request, &b)
+      b ? client.request(request) { (Net::HTTPSuccess === _1) ? b.call(_1) : _1 } :
+          client.request(request)
     end
     handle_response(res)
   end
