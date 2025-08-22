@@ -497,10 +497,12 @@ over or doesn't cover at all. The API reference is available at
 
 ### Guides
 
-* [An introduction to RAG with llm.rb](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
+* [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
   a blog post that implements the RAG pattern
-* [Age estimation with llm.rb](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
+* [How to estimate the age in a person in a photo](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
   a blog post that implements an age estimation tool
+* [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
+  a blog post that implements image editing with Gemini
 * [docs/](docs/) &ndash; the docs directory contains additional guides
 
 
