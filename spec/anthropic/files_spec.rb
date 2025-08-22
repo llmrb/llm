@@ -103,6 +103,29 @@ RSpec.describe "LLM::Anthropic::Files" do
     end
   end
 
+    context "when given a successful 'retrieve metadata' operation (haiku4.txt)",
+          vcr: {cassette_name: "anthropic/files/successful_retrieve_metadata_haiku4"} do
+    let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku4.txt") }
+    subject { provider.files.retrieve_metadata(file:) }
+
+    it "is successful" do
+      is_expected.to be_instance_of(LLM::Response)
+    ensure
+      provider.files.delete(file:)
+    end
+
+    it "returns metadata" do
+      is_expected.to have_attributes(
+        id: instance_of(String),
+        filename: "haiku4.txt",
+        mime_type: "text/plain"
+      )
+    ensure
+      provider.files.delete(file:)
+    end
+  end
+
+
   context "when given a successful all operation",
           vcr: {cassette_name: "anthropic/files/successful_all"} do
     let!(:files) do

@@ -82,6 +82,26 @@ class LLM::Anthropic
     end
 
     ##
+    # Retrieve file metadata
+    # @example
+    #   llm = LLM.anthropic(key: ENV["KEY"])
+    #   res = llm.files.get_metadata(file: "file-1234567890")
+    #   print "id: ", res.id, "\n"
+    # @see https://docs.anthropic.com/en/docs/build-with-claude/files
+    # @param [#id, #to_s] file The file ID
+    # @param [Hash] params Other parameters - if any (see Anthropic docs)
+    # @raise (see LLM::Provider#request)
+    # @return [LLM::Response]
+    def get_metadata(file:, **params)
+      query = URI.encode_www_form(params)
+      file_id = file.respond_to?(:id) ? file.id : file
+      req = Net::HTTP::Get.new("/v1/files/#{file_id}?#{query}", headers)
+      res = execute(request: req)
+      LLM::Response.new(res).extend(LLM::Anthropic::Response::File)
+    end
+    alias_method :retrieve_metadata, :get_metadata
+
+    ##
     # Delete a file
     # @example
     #   llm = LLM.anthropic(key: ENV["KEY"])
@@ -103,13 +123,6 @@ class LLM::Anthropic
     def download(file:, **params)
       raise NotImplementedError, "This feature is not yet implemented by llm.rb"
     end
-
-    ##
-    # @raise [NotImplementedError]
-    def get_metadata(file:)
-      raise NotImplementedError, "This feature is not yet implemented by llm.rb"
-    end
-    alias_method :retrieve_metadata, :get_metadata
 
     private
 
