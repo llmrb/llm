@@ -171,10 +171,10 @@ require "llm"
 ##
 # Objects
 llm = LLM.openai(key: ENV["KEY"])
-schema = llm.schema.object(probability: llm.schema.integer.required)
+schema = llm.schema.object(probability: llm.schema.number.required)
 bot = LLM::Bot.new(llm, schema:)
 bot.chat "Does the earth orbit the sun?", role: :user
-bot.messages.find(&:assistant?).content! # => {probability: 1}
+bot.messages.find(&:assistant?).content! # => {probability: 1.0}
 
 ##
 # Enums
