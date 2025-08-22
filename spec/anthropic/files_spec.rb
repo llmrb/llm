@@ -103,8 +103,8 @@ RSpec.describe "LLM::Anthropic::Files" do
     end
   end
 
-    context "when given a successful 'retrieve metadata' operation (haiku4.txt)",
-          vcr: {cassette_name: "anthropic/files/successful_retrieve_metadata_haiku4"} do
+  context "when given a successful 'retrieve metadata' operation (haiku4.txt)",
+        vcr: {cassette_name: "anthropic/files/successful_retrieve_metadata_haiku4"} do
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku4.txt") }
     subject { provider.files.retrieve_metadata(file:) }
 
@@ -124,7 +124,6 @@ RSpec.describe "LLM::Anthropic::Files" do
       provider.files.delete(file:)
     end
   end
-
 
   context "when given a successful all operation",
           vcr: {cassette_name: "anthropic/files/successful_all"} do
