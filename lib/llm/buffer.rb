@@ -87,6 +87,20 @@ module LLM
       @pending.empty? and @completed.empty?
     end
 
+    ##
+    # @example
+    #   llm = LLM.openai(key: ENV["KEY"])
+    #   bot = LLM::Bot.new(llm, stream: $stdout)
+    #   bot.chat "Hello", role: :user
+    #   bot.messages.drain
+    # @note
+    #   This method is especially useful when using the streaming API.
+    # Drains the buffer and returns all messages as an array
+    # @return [Array<LLM::Message>]
+    def drain
+      to_a
+    end
+
     private
 
     def empty!

@@ -38,13 +38,19 @@ end.to_a
 * **Conversation-level** <br>
 There are three different ways to use the streaming API. It can be
 configured for the length of a conversation by passing the `stream`
-through [`LLM::Bot#initialize`](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#initialize-instance_method):
+through [`LLM::Bot#initialize`](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#initialize-instance_method).
+Note that in this case, we call
+[`LLM::Buffer#drain`](https://0x1eef.github.io/x/llm.rb/LLM/Buffer.html#drain-instance_method)
+to start the request:
+
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
+bot.chat "Hello", role: :user
+bot.messages.drain
 ```
 
 * **Block-level** <br>
@@ -53,6 +59,7 @@ The streaming API can be enabled for the duration of a block given to the
 method by passing the `stream` option to the
 [chat](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#chat-instance_method)
 method:
+
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
@@ -61,14 +68,17 @@ llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "You are my math assistant."
-  # ..
-end
+  prompt.user "Tell me the answer to 5 + 15"
+end.to_a
 ```
 
 * **Single request** <br>
 The streaming API can also be enabled for a single request by passing the
 `stream` option to the [chat](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#chat-instance_method)
-method without a block:
+method without a block. Note that in this case, we call
+[`LLM::Buffer#drain`](https://0x1eef.github.io/x/llm.rb/LLM/Buffer.html#drain-instance_method)
+to start the request:
+
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
@@ -76,4 +86,6 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 bot.chat "You are my math assistant.", role: :system, stream: $stdout
+bot.chat "Tell me the answer to 5 + 15", role: :user
+bot.messages.drain
 ```
