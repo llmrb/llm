@@ -8,7 +8,7 @@ RSpec.describe LLM::Buffer do
   let(:buffer) { bot.messages }
 
   context "when given request-level parameters" do
-    let(:params) { {model: "gpt-4.1", stream: true} }
+    let(:params) { {model: llm.default_model, stream: true} }
     let(:res) { LLM::Object.from_hash(choices: []) }
 
     it "persists parameters between method calls" do
