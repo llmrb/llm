@@ -26,7 +26,7 @@ class LLM::File
   # @return [String]
   #  Returns the MIME type of the file
   def mime_type
-    LLM::Mime[File.extname(path)]
+    LLM::Mime[path]
   end
 
   ##

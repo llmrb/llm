@@ -3,12 +3,16 @@
 ##
 # @private
 class LLM::Mime
+  EXTNAME = /\A\.[a-zA-Z0-9]+\z/
+  private_constant :EXTNAME
+
   ##
   # Lookup a mime type
   # @return [String, nil]
   def self.[](key)
-    key = key.respond_to?(:path) ? File.extname(key.path) : key
-    types[key] || "application/octet-stream"
+    key = key.respond_to?(:path) ? key.path : key
+    extname = (key =~ EXTNAME) ? key : File.extname(key)
+    types[extname] || "application/octet-stream"
   end
 
   ##
