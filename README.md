@@ -9,14 +9,16 @@ The library provides a common, uniform interface for all the providers and
 features it supports, in addition to provider-specific features as well. Keep
 reading to find out more.
 
-## Demo
+## Quick start
+
+#### Demo
 
 <details>
   <summary>Play</summary>
   <img src="share/llm-shell/examples/demo.gif/">
 </details>
 
-## Guides
+#### Guides
 
 * [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
   a blog post that implements the RAG pattern
@@ -24,7 +26,7 @@ reading to find out more.
   a blog post that implements an age estimation tool
 * [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
   a blog post that implements image editing with Gemini
-  
+
 ## Features
 
 #### General
