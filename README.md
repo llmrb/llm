@@ -16,6 +16,15 @@ reading to find out more.
   <img src="share/llm-shell/examples/demo.gif/">
 </details>
 
+## Guides
+
+* [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
+  a blog post that implements the RAG pattern
+* [How to estimate the age of a person in a photo](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
+  a blog post that implements an age estimation tool
+* [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
+  a blog post that implements image editing with Gemini
+  
 ## Features
 
 #### General
