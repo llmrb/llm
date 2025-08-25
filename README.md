@@ -9,6 +9,13 @@ The library provides a common, uniform interface for all the providers and
 features it supports, in addition to provider-specific features as well. Keep
 reading to find out more.
 
+## Demo
+
+<details>
+  <summary>Play</summary>
+  <img src="share/llm-shell/examples/demo.gif/">
+</details>
+
 ## Features
 
 #### General
