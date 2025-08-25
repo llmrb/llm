@@ -31,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 25 Aug 2025 00:16:04 GMT
+      - Mon, 25 Aug 2025 01:13:46 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1732
+      - gfet4t7; dur=1502
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,7 +61,7 @@ http_interactions:
                         "command": "date"
                       }
                     },
-                    "thoughtSignature": "CuwBAVSoXO6ZxGRb892wfcqVlRg9xHC7Ho2LuRkFPUnoL+K55Oulk37pmk4rHLvWsz+ED0YqViISmNs+f7UQIJspSvChUUS2qxZePTHO9zEENjxhSXSn5vORlv6MEDA5bXIf1W4b00/Zbfp2h/2hQN8Tt2Xqf1MEUkTJ3yX8r4V2lAoAwdDIEnNZZYg96irM7CO87SMaB1WNek8IryVSwqSvnMYkP4mbL6NA0hUcHSvlOrgfwgqcv28JeZuquGymtEiSM1FXsTY4W8lnNY0yMRFfjrVf+1NZj+sUFDia0nB4DS5kCQcC5klynWaeCm4="
+                    "thoughtSignature": "CsgBAVSoXO5eGjDhRmftemE9fU5RNV2Hw9/svLlLHhS0eOk/uJwBseMybGpOBWktLuzPAh5WSAQRGkR4FQPCGmYmUxQTPNsSWofMBvGoRo73S6/Aa3+swvXXBQX8tmS2sbgy9SgQDd5gI0F8Mddy9K/YffgDeT0FIx2qlBSW07JzxTMxd5kP2GdQpi3KT8ZQAoEcVaBjdBDUgdzcmc6hHw/4W+SnNppLS/xe8BFvhua6E50wJY2XV2Zii2EZR7jaVAhjYKpGsMg5AdU="
                   }
                 ],
                 "role": "model"
@@ -73,26 +73,26 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 49,
             "candidatesTokenCount": 13,
-            "totalTokenCount": 110,
+            "totalTokenCount": 102,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 49
               }
             ],
-            "thoughtsTokenCount": 48
+            "thoughtsTokenCount": 40
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "RKuraLmJJP6tz7IP67GZ0A4"
+          "responseId": "yriraNa7CvaMmtkPtp3H8AU"
         }
-  recorded_at: Mon, 25 Aug 2025 00:15:16 GMT
+  recorded_at: Mon, 25 Aug 2025 01:12:57 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":\"2025-08-24\"}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
@@ -117,7 +117,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 25 Aug 2025 00:16:05 GMT
+      - Mon, 25 Aug 2025 01:13:47 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -127,7 +127,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=735
+      - gfet4t7; dur=725
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -141,7 +141,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "I need to know the date! The previous command did not return the output of the date. Can you please tell me the exact output?\n"
+                    "text": "It looks like the date is August 24, 2025.\n"
                   }
                 ],
                 "role": "model"
@@ -151,18 +151,18 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 69,
-            "candidatesTokenCount": 28,
-            "totalTokenCount": 97,
+            "promptTokenCount": 78,
+            "candidatesTokenCount": 17,
+            "totalTokenCount": 95,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 69
+                "tokenCount": 78
               }
             ]
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "RauraPT3GtCJz7IP2PLviAs"
+          "responseId": "y7iraNF5sIfPsg_2_7y5Aw"
         }
-  recorded_at: Mon, 25 Aug 2025 00:15:17 GMT
+  recorded_at: Mon, 25 Aug 2025 01:12:58 GMT
 recorded_with: VCR 6.3.1

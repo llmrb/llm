@@ -5,13 +5,13 @@ http_interactions:
     uri: https://api.openai.com/v1/files
     body:
       encoding: ASCII-8BIT
-      string: "--BOUNDARY__65c577743b0840b02f03e5606ffcd01f\r\nContent-Disposition:
+      string: "--BOUNDARY__99355e84bf1b451a6e2c672cd006572b\r\nContent-Disposition:
         form-data; name=\"file\";filename=\"haiku2.txt\"\r\nContent-Type: text/plain\r\n\r\nMorning
-        dew clings tight,\npetals stretch to greet the\nday begins in peace.\n\r\n--BOUNDARY__65c577743b0840b02f03e5606ffcd01f\r\nContent-Disposition:
-        form-data; name=\"purpose\"\r\n\r\nassistants\r\n--BOUNDARY__65c577743b0840b02f03e5606ffcd01f--\r\n"
+        dew clings tight,\npetals stretch to greet the\nday begins in peace.\n\r\n--BOUNDARY__99355e84bf1b451a6e2c672cd006572b\r\nContent-Disposition:
+        form-data; name=\"purpose\"\r\n\r\nassistants\r\n--BOUNDARY__99355e84bf1b451a6e2c672cd006572b--\r\n"
     headers:
       Content-Type:
-      - multipart/form-data; boundary=BOUNDARY__65c577743b0840b02f03e5606ffcd01f
+      - multipart/form-data; boundary=BOUNDARY__99355e84bf1b451a6e2c672cd006572b
       Authorization:
       - Bearer TOKEN
       Accept-Encoding:
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 00:17:48 GMT
+      - Mon, 25 Aug 2025 01:15:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,9 +36,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Request-Id:
-      - req_8de9e485d12cde19881b5304a310f9cd
+      - req_91d8376604159a49d388c2a4f1e75e42
       Openai-Processing-Ms:
-      - '524'
+      - '305'
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
@@ -48,23 +48,23 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Envoy-Upstream-Service-Time:
-      - '533'
+      - '316'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=qeakU7B0bMToXc0hEC9L9QCDxiqX1W3MQlI3TIv8dCQ-1756081068-1.0.1.1-BnyNVyHUjvEfb3NAXOn.jenFdnjEem2mggkKkY5oN4Yu0AIztAP3GS.w2KUW3DqwDm9UBpU440Da7EsH4BKNfZAWx1cC_F6el2Ji8wByul8;
-        path=/; expires=Mon, 25-Aug-25 00:47:48 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=FZRhMp8uDbMyeGaRXmlMhfJe5HFYxA1b1tgWnpsmTmU-1756084506-1.0.1.1-FuD5xlIpQe95NEUvGLu0zkAbGiHXUcsqn6l6F8CX.TLg3JsiP3MEDxl0VACIvB7n1wUP6RVEzEYFy9TIwJ5ZryTsD4naX5Q3WE_pcPacAjc;
+        path=/; expires=Mon, 25-Aug-25 01:45:06 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=PH1fhlQJkd0Bal4KtKUyhjLIx0sKwRlJmJInkz3p5qw-1756081068436-0.0.1.1-604800000;
+      - _cfuvid=An5C6839Z4qLVcmdEYQ3BK4jUZ5vezwdieBXMYTC85E-1756084506988-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9746e8915fd2e2ab-GIG
+      - 97473c85ae45f1b4-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -72,19 +72,19 @@ http_interactions:
       string: |
         {
           "object": "file",
-          "id": "file-NaGG3d4UYLSPBZoeS1Pn89",
+          "id": "file-V1fUYSn6APChT25WstMAhK",
           "purpose": "assistants",
           "filename": "haiku2.txt",
           "bytes": 75,
-          "created_at": 1756081067,
+          "created_at": 1756084506,
           "expires_at": null,
           "status": "processed",
           "status_details": null
         }
-  recorded_at: Mon, 25 Aug 2025 00:16:59 GMT
+  recorded_at: Mon, 25 Aug 2025 01:14:18 GMT
 - request:
     method: delete
-    uri: https://api.openai.com/v1/files/file-NaGG3d4UYLSPBZoeS1Pn89
+    uri: https://api.openai.com/v1/files/file-V1fUYSn6APChT25WstMAhK
     body:
       encoding: US-ASCII
       string: ''
@@ -105,7 +105,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 00:17:49 GMT
+      - Mon, 25 Aug 2025 01:15:07 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -113,9 +113,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Request-Id:
-      - req_5ca25dccf8a22cf59b00c2e847446320
+      - req_45d910c5dd739523a4b7dbda32a650d4
       Openai-Processing-Ms:
-      - '341'
+      - '275'
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
@@ -125,23 +125,23 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Envoy-Upstream-Service-Time:
-      - '345'
+      - '280'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=8OtDB_ZnN5IdyZ_jL0SSjqn_qEbJAAFniJzxrcgWG_8-1756081069-1.0.1.1-nB92Pkb0NPzceEzQO7BGeUu5vOBlhkySqrHf4HC9OkYwceN7xlhnUUKePH0k8iW.lnRSr4Q1pZIOi2bf3Izyijop06IoqkEM.jdl7YgxQMA;
-        path=/; expires=Mon, 25-Aug-25 00:47:49 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=mzaGzjnr35QBJ83W0pg.R7XejqFhnIsQ.C1sHwx5X4I-1756084507-1.0.1.1-2Cl_aiev0mGndJHWiEefFMjLkuzHEAg6EtDIzEecloneZpRo_G3YEX_8m_ZttLJih5oEzsWUPCd90Cisi8hb1wOHBp8Y648Bm7f.n37xzwA;
+        path=/; expires=Mon, 25-Aug-25 01:45:07 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=NxXeZjFDRLUhqVEV4n9xHAlV2hID_0AaPqWN_TWmX.o-1756081069032-0.0.1.1-604800000;
+      - _cfuvid=TLhQVxc6800bqDYB97RTfnHfmLaIiGEtES2wzrFybKo-1756084507483-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9746e896197ce2d0-GIG
+      - 97473c891896e2a6-GIG
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -150,7 +150,7 @@ http_interactions:
         {
           "object": "file",
           "deleted": true,
-          "id": "file-NaGG3d4UYLSPBZoeS1Pn89"
+          "id": "file-V1fUYSn6APChT25WstMAhK"
         }
-  recorded_at: Mon, 25 Aug 2025 00:17:00 GMT
+  recorded_at: Mon, 25 Aug 2025 01:14:18 GMT
 recorded_with: VCR 6.3.1

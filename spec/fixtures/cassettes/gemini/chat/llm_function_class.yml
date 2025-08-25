@@ -31,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 25 Aug 2025 00:16:07 GMT
+      - Mon, 25 Aug 2025 01:13:48 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1719
+      - gfet4t7; dur=1765
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,7 +61,7 @@ http_interactions:
                         "command": "date"
                       }
                     },
-                    "thoughtSignature": "CpwCAVSoXO5KP5rW3X6XYdng5uMD1ep1TXW6uqo6piJT27PFjrIOuRQXTeQo7h0rtnLWGupOQhuYnbqpHP+FN2P5mFkP2FI3JdrETLkk2zEf+ZcpHvxCI3U+ofNmkw2f7+a4rOmI5fBST0twf0g/H2ITVdvxQRrdOaP0FRZZ9unsZWGvjHl514ZeBagaMyed7A+UaakeRKEiuC1IBzD5tmofjehKzq5doGAV0d4ng+8XD8/hOg+wlBXwgInjVsL0c+lLjW/QVvfrsfzBrhMK98JveMXd5foMmnn76O1XHFUwoaNEfqrZQY4OBK1wxwPLdQ3KU/I6m4nxelE37UkpI84nnEjw98+Aku2g06wGsPlfhznifRj+vuFs1mprrvU="
+                    "thoughtSignature": "CrwDAVSoXO5ywg7Y4O/NgrFukEqpXoSv3GOZUOTjFEVwC0jWQ1tHrJF0rrGqq9oai72tkeXtL2nCaW+ps1UwOqN79SNwBcRONhW28rzewRIleK2cwC2872Kg7myeIR606mV7Kxn9cAdW/IAq3M3WNoxK0lmFu19L7zikknKMYC/y47vcfNztOH0Q5PUQxifwrO6nAHA1ine76NEMPpl1AeVUBO2Do0DEV0uWdfsdoIgeAidACOSpZ0WAWQ9bkP0g6XOWxfGw89iQjeMtmjPeV9l5m9beioV4X6B7QhstWeSLq6yRaG42g81PdUaK4sTUvRSu3Rp4qmFQK3uoU6X0OCLmQfzPUfIqdq8/vD8lTNIx2YE/Ki3JQNo+qw2lb6AxeJdZC7xDMS5ts1k9uSU2UkfGbev0f1nECPPCTvvR7+tpE2Iec34HXDT2cxaUI1OAOoT4xCkYb3vS0aNvO5HAHg9q1WI+ziqXXHgjQgC/FL2mIU/Y3Rw8SKiJodaCyst8U2tspHvG97XCsFWr3SpeWEFb8AUCl+vVkLyjsBcodp5XELPEPj9s3okebySql8Yzeex752ns5LMy1O48h001"
                   }
                 ],
                 "role": "model"
@@ -73,26 +73,26 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 49,
             "candidatesTokenCount": 13,
-            "totalTokenCount": 120,
+            "totalTokenCount": 160,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 49
               }
             ],
-            "thoughtsTokenCount": 58
+            "thoughtsTokenCount": 98
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "R6uraOW3EpW3qtsPuZe-8QU"
+          "responseId": "zLiraMLgN7OcqtsPuqKd0QQ"
         }
-  recorded_at: Mon, 25 Aug 2025 00:15:18 GMT
+  recorded_at: Mon, 25 Aug 2025 01:13:00 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":\"2025-08-24\"}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
@@ -117,7 +117,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 25 Aug 2025 00:16:08 GMT
+      - Mon, 25 Aug 2025 01:13:50 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -127,7 +127,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1385
+      - gfet4t7; dur=1354
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -141,7 +141,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "I'm sorry, I don't see the date in the output you provided. Can you please provide the actual output of the command?"
+                    "text": "The date is August 24, 2025."
                   }
                 ],
                 "role": "model"
@@ -151,18 +151,18 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 69,
-            "candidatesTokenCount": 29,
-            "totalTokenCount": 98,
+            "promptTokenCount": 78,
+            "candidatesTokenCount": 14,
+            "totalTokenCount": 92,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 69
+                "tokenCount": 78
               }
             ]
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "SKuraJf2MLmtz7IP0_-BoAM"
+          "responseId": "zriraJOIG_uMmtkPjP7egA8"
         }
-  recorded_at: Mon, 25 Aug 2025 00:15:20 GMT
+  recorded_at: Mon, 25 Aug 2025 01:13:01 GMT
 recorded_with: VCR 6.3.1

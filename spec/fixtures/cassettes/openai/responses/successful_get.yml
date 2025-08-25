@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 00:19:22 GMT
+      - Mon, 25 Aug 2025 01:11:47 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -51,36 +51,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_3ae9740b83d7bfb17b65f151890dba14
+      - req_075aeae4069067779e6ee773bd965193
       Openai-Processing-Ms:
-      - '633'
+      - '742'
       X-Envoy-Upstream-Service-Time:
-      - '638'
+      - '747'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=MpRORSN0bk9JDdnHEwkTkWavElthRiP73K7XSLmXaEY-1756081162-1.0.1.1-PDMyKZPwt8mMC2UjlE93wh6GyO4CdUL3WC_k30uX0pQrxgChjn58ZjXWP2fM4thbZscrgRwpYdmP2G8EVx5v4COYMB4bcQV7ns.Q8OgNJw8;
-        path=/; expires=Mon, 25-Aug-25 00:49:22 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=KpsvSvud8uNfgg611HmKuTwVmXIsK962xJN1NkohvRQ-1756084307-1.0.1.1-IRXjuWRGA2IgSefzLwLjUu537HKsCT5ooesZJya54MInSpw0iI_9nU12EGvgZJBBRVJ8kYNaZgcbn.tSV52U9oLar4aPdNAxU.7Ny4aV3Aw;
+        path=/; expires=Mon, 25-Aug-25 01:41:47 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Q23mKsDsfC_ogQ2awsUrQ4NnTVriJCMcgMg4UfFXrBg-1756081162754-0.0.1.1-604800000;
+      - _cfuvid=IWslK8PmNf2sld9qXnHYN3BKJhej14Hr4mI8lsoSutQ-1756084307510-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9746eadc1ec1e12d-GIG
+      - 974737a27be5f20f-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68abac0a0ddc8193b45d1553c73db3710abf231886432f0b",
+          "id": "resp_68abb852b2c08195aac356aa38c02f8107dbd7772cce7882",
           "object": "response",
-          "created_at": 1756081162,
+          "created_at": 1756084306,
           "status": "completed",
           "background": false,
           "error": null,
@@ -91,7 +91,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_68abac0a5fc88193af83cb508422a3140abf231886432f0b",
+              "id": "msg_68abb85338cc81959d3b8ee32184615907dbd7772cce7882",
               "type": "message",
               "status": "completed",
               "content": [
@@ -99,7 +99,7 @@ http_interactions:
                   "type": "output_text",
                   "annotations": [],
                   "logprobs": [],
-                  "text": "Hello! How can I assist you today? \ud83d\ude0a"
+                  "text": "Hello! How can I help you today? \ud83d\ude0a"
                 }
               ],
               "role": "assistant"
@@ -141,10 +141,10 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Mon, 25 Aug 2025 00:18:34 GMT
+  recorded_at: Mon, 25 Aug 2025 01:10:58 GMT
 - request:
     method: get
-    uri: https://api.openai.com/v1/responses/resp_68abac0a0ddc8193b45d1553c73db3710abf231886432f0b
+    uri: https://api.openai.com/v1/responses/resp_68abb852b2c08195aac356aa38c02f8107dbd7772cce7882
     body:
       encoding: US-ASCII
       string: ''
@@ -165,7 +165,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 00:19:23 GMT
+      - Mon, 25 Aug 2025 01:11:47 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -179,36 +179,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_8a477809df9e48a588282800be62f7e6
+      - req_76ce92e9164421a4fe7d291cba4a840d
       Openai-Processing-Ms:
-      - '135'
+      - '190'
       X-Envoy-Upstream-Service-Time:
-      - '138'
+      - '194'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=.ubVsU5WHnzhBxeD79Y6ze54fFqTt_hRrKu_Pk7f7lc-1756081163-1.0.1.1-6Y2n2uAbN1cAjYPJ2fMwzKiQqNdM94bHNKTIr9QC5hmSF2cjlUqzigXoBcu.5lPENuNLgrQ3LTvhpHTHfSlTVjIZY3jnRCVlkkrGZJ6.erA;
-        path=/; expires=Mon, 25-Aug-25 00:49:23 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=meKsb5bV7YGr3s1YMhUBRq7oNa03o6zHultDxewNZPM-1756084307-1.0.1.1-rj.PL0nwrgpXgjlcL39il65ed4C4JFRuJBxo7ffzsNPdVDXEwMi_4pAlqfxopEQ3CUSruXL.Wd9KGIU_4yfnkEn74QGoPM3w1VW1ATsxbc4;
+        path=/; expires=Mon, 25-Aug-25 01:41:47 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=G9W5TGj_m5BRK2St6TQPEVjCzEh1bHhcxOTd6PB9joM-1756081163198-0.0.1.1-604800000;
+      - _cfuvid=h2XGHwI.emYK8jmsldEsR816Elaybeel2coyK93trzY-1756084307948-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 9746eae3a8bc6473-GIG
+      - 974737aa4dfda469-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68abac0a0ddc8193b45d1553c73db3710abf231886432f0b",
+          "id": "resp_68abb852b2c08195aac356aa38c02f8107dbd7772cce7882",
           "object": "response",
-          "created_at": 1756081162,
+          "created_at": 1756084306,
           "status": "completed",
           "background": false,
           "error": null,
@@ -219,7 +219,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_68abac0a5fc88193af83cb508422a3140abf231886432f0b",
+              "id": "msg_68abb85338cc81959d3b8ee32184615907dbd7772cce7882",
               "type": "message",
               "status": "completed",
               "content": [
@@ -227,7 +227,7 @@ http_interactions:
                   "type": "output_text",
                   "annotations": [],
                   "logprobs": [],
-                  "text": "Hello! How can I assist you today? \ud83d\ude0a"
+                  "text": "Hello! How can I help you today? \ud83d\ude0a"
                 }
               ],
               "role": "assistant"
@@ -269,5 +269,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Mon, 25 Aug 2025 00:18:34 GMT
+  recorded_at: Mon, 25 Aug 2025 01:10:59 GMT
 recorded_with: VCR 6.3.1

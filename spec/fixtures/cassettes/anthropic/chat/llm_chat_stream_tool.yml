@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 00:13:57 GMT
+      - Mon, 25 Aug 2025 01:11:55 GMT
       Content-Type:
       - text/event-stream; charset=utf-8
       Transfer-Encoding:
@@ -40,7 +40,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9746e2eb4900a51d-GRU
+      - 974737d4f851af14-GRU
       Cache-Control:
       - no-cache
       Anthropic-Ratelimit-Input-Tokens-Limit:
@@ -48,33 +48,33 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-25T00:13:56Z'
+      - '2025-08-25T01:11:54Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-25T00:13:56Z'
+      - '2025-08-25T01:11:54Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-25T00:13:57Z'
+      - '2025-08-25T01:11:55Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-25T00:13:56Z'
+      - '2025-08-25T01:11:54Z'
       Request-Id:
-      - req_011CSTTmghZCqLPSxgk8Y8WV
+      - req_011CSTYC4dZ98wskoJZNq5s4
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '790'
+      - '1259'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -87,13 +87,13 @@ http_interactions:
       encoding: UTF-8
       string: |+
         event: message_start
-        data: {"type":"message_start","message":{"id":"msg_01CiSg5ep8L8saPUpNwWkfk6","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":391,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":8,"service_tier":"standard"}}       }
+        data: {"type":"message_start","message":{"id":"msg_01LuWXjtLT39cFtGPxdJVEXf","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":391,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":8,"service_tier":"standard"}} }
 
         event: content_block_start
         data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""} }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"I'll run the 'date'"}        }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"I'll run the 'date'"} }
 
         event: content_block_delta
         data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" command for you."}  }
@@ -102,36 +102,39 @@ http_interactions:
         data: {"type": "ping"}
 
         event: content_block_stop
-        data: {"type":"content_block_stop","index":0             }
+        data: {"type":"content_block_stop","index":0   }
 
         event: ping
         data: {"type": "ping"}
 
         event: content_block_start
-        data: {"type":"content_block_start","index":1,"content_block":{"type":"tool_use","id":"toolu_01UiYr8cTQYigfLgriKk5YmK","name":"system","input":{}}      }
+        data: {"type":"content_block_start","index":1,"content_block":{"type":"tool_use","id":"toolu_015xjdPRb99MFgdDQGn1TCYe","name":"system","input":{}}          }
 
         event: ping
         data: {"type": "ping"}
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":1,"delta":{"type":"input_json_delta","partial_json":""}             }
+        data: {"type":"content_block_delta","index":1,"delta":{"type":"input_json_delta","partial_json":""}        }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":1,"delta":{"type":"input_json_delta","partial_json":"{\"command"}      }
+        data: {"type":"content_block_delta","index":1,"delta":{"type":"input_json_delta","partial_json":"{\"co"} }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":1,"delta":{"type":"input_json_delta","partial_json":"\": \"date\"}"}             }
+        data: {"type":"content_block_delta","index":1,"delta":{"type":"input_json_delta","partial_json":"mmand\": \"da"}    }
+
+        event: content_block_delta
+        data: {"type":"content_block_delta","index":1,"delta":{"type":"input_json_delta","partial_json":"te\"}"}     }
 
         event: content_block_stop
-        data: {"type":"content_block_stop","index":1        }
+        data: {"type":"content_block_stop","index":1               }
 
         event: message_delta
-        data: {"type":"message_delta","delta":{"stop_reason":"tool_use","stop_sequence":null},"usage":{"input_tokens":391,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":64} }
+        data: {"type":"message_delta","delta":{"stop_reason":"tool_use","stop_sequence":null},"usage":{"input_tokens":391,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":64}      }
 
         event: message_stop
-        data: {"type":"message_stop"              }
+        data: {"type":"message_stop"            }
 
-  recorded_at: Mon, 25 Aug 2025 00:13:09 GMT
+  recorded_at: Mon, 25 Aug 2025 01:11:07 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -139,7 +142,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
         a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01UiYr8cTQYigfLgriKk5YmK","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01UiYr8cTQYigfLgriKk5YmK","content":[{"type":"text","text":"{\"success\":true}"}]}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
+        run the ''date'' command"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_015xjdPRb99MFgdDQGn1TCYe","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_015xjdPRb99MFgdDQGn1TCYe","content":[{"type":"text","text":"{\"success\":true}"}]}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
         system commands","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}],"stream":true}'
     headers:
       Content-Type:
@@ -164,7 +167,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 00:13:59 GMT
+      - Mon, 25 Aug 2025 01:11:57 GMT
       Content-Type:
       - text/event-stream; charset=utf-8
       Transfer-Encoding:
@@ -172,7 +175,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 9746e2f59b731abb-GRU
+      - 974737e19bc12550-GRU
       Cache-Control:
       - no-cache
       Anthropic-Ratelimit-Input-Tokens-Limit:
@@ -180,33 +183,33 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-25T00:13:58Z'
+      - '2025-08-25T01:11:57Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-25T00:13:58Z'
+      - '2025-08-25T01:11:56Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-25T00:13:59Z'
+      - '2025-08-25T01:11:57Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-25T00:13:58Z'
+      - '2025-08-25T01:11:56Z'
       Request-Id:
-      - req_011CSTTmoy7kTe559Yo3BS13
+      - req_011CSTYCDFirGrZUZMqT6hF8
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '1016'
+      - '1116'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -219,59 +222,44 @@ http_interactions:
       encoding: UTF-8
       string: |+
         event: message_start
-        data: {"type":"message_start","message":{"id":"msg_01UbTxNux2t8Jd7rebXosXcw","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":459,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":2,"service_tier":"standard"}}       }
+        data: {"type":"message_start","message":{"id":"msg_01PgHpH4mQpuKdZeHxSYnbjn","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":459,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":1,"service_tier":"standard"}} }
 
         event: content_block_start
-        data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}  }
+        data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}      }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"The `"}               }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"I"}  }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"date` command has been executed successfully."}         }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"'ve successfully execute"}          }
 
         event: ping
         data: {"type": "ping"}
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" This command typically displays the current date and time on"}      }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"d the `date` command for you."}             }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" the system. However, I notice that the output"}      }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" This command displays the current system"}           }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" isn't shown in the response. If"}           }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" date and time."}        }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" you need to see the actual date and time output"}    }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" The command ran without"}               }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":", you might need to check your system"}   }
-
-        event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"'s configuration or run"} }
-
-        event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" the command in your"}               }
-
-        event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" local terminal to see the formatte"} }
-
-        event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"d date and time display"}   }
-
-        event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"."}       }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" any errors."}}
 
         event: content_block_stop
-        data: {"type":"content_block_stop","index":0  }
+        data: {"type":"content_block_stop","index":0      }
 
         event: message_delta
-        data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"input_tokens":459,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":78}       }
+        data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"input_tokens":459,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":32}           }
 
         event: message_stop
-        data: {"type":"message_stop"   }
+        data: {"type":"message_stop"              }
 
-  recorded_at: Mon, 25 Aug 2025 00:13:12 GMT
+  recorded_at: Mon, 25 Aug 2025 01:11:10 GMT
 recorded_with: VCR 6.3.1
 ...
