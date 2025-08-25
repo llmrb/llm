@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
-        a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
+        is the date?"}]}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 12:39:27 GMT
+      - Mon, 25 Aug 2025 00:17:31 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,13 +40,13 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '515'
+      - '381'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '534'
+      - '399'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -54,20 +54,20 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29978'
+      - '29982'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 44ms
+      - 36ms
       X-Request-Id:
-      - req_63ee6f4b0e9f4a939b2f9f87a22761b3
+      - req_959531bea67848f887a1882542793b62
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=0SVNafVY27.natUBg89rwW6VvQFzE2sSxMwhpmuEew4-1754743167-1.0.1.1-pBdOcVfGeVXmVoJikAsUp06BEIo18aNwvKVoSZYM16s6Skz1GbrNIT0u67BZFzv1eHQiKc5NkidpmzAn4Tz.wwOp0lBBiiNXQ6P.6dD4k9k;
-        path=/; expires=Sat, 09-Aug-25 13:09:27 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=o6Udr8Bla6_qnE5CF9WIftyq81tc30eyf.OGqCvrQFs-1756081051-1.0.1.1-xlCyMaBGfY6u2YmHTBdA_REQtm3imnAoc2yJQXwjbjtcIsuOuI6tST6znCUyX7k2Fz_sjVexQvmGHzfZ8gCTBarEqd73Y8ryoONCCsItHEs;
+        path=/; expires=Mon, 25-Aug-25 00:47:31 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=15XfmeggDrKhaXV0DwYYHQQCO.taF2P8WgTu7M5LPYU-1754743167824-0.0.1.1-604800000;
+      - _cfuvid=ZjWcjD7ZZMtwR0WPXuEffA4bjEhm5I27fIRNi2CkWH8-1756081051574-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -76,16 +76,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 96c750f99b340176-GRU
+      - 9746e828eb286cc5-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-C2d95I4wsY8CkMoeR7FFlz0bHiVIj",
+          "id": "chatcmpl-C8FBrJ9aMWM0VaGYyhPYl7IqKBzbt",
           "object": "chat.completion",
-          "created": 1754743167,
+          "created": 1756081051,
           "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
@@ -95,7 +95,7 @@ http_interactions:
                 "content": null,
                 "tool_calls": [
                   {
-                    "id": "call_lWS1wh87aw5U4O71u8Mfe8pf",
+                    "id": "call_Mqo6Fu5DonPIBPkJ2ptCkCWc",
                     "type": "function",
                     "function": {
                       "name": "system",
@@ -111,9 +111,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 62,
+            "prompt_tokens": 58,
             "completion_tokens": 13,
-            "total_tokens": 75,
+            "total_tokens": 71,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -126,17 +126,17 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_799e4ca3f1"
+          "system_fingerprint": "fp_62bb2e3c55"
         }
-  recorded_at: Sat, 09 Aug 2025 12:39:18 GMT
+  recorded_at: Mon, 25 Aug 2025 00:16:43 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
-        a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]},{"role":"assistant","content":null,"tool_calls":[{"id":"call_lWS1wh87aw5U4O71u8Mfe8pf","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},{"role":"tool","tool_call_id":"call_lWS1wh87aw5U4O71u8Mfe8pf","content":"{\"success\":true}"}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
+        is the date?"}]},{"role":"assistant","content":null,"tool_calls":[{"id":"call_Mqo6Fu5DonPIBPkJ2ptCkCWc","type":"function","function":{"name":"system","arguments":"{\"command\":\"date\"}"}}]},{"role":"tool","tool_call_id":"call_Mqo6Fu5DonPIBPkJ2ptCkCWc","content":"{\"success\":true}"}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -157,7 +157,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 12:39:28 GMT
+      - Mon, 25 Aug 2025 00:17:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -169,13 +169,13 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '762'
+      - '575'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '777'
+      - '589'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -183,20 +183,20 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29972'
+      - '29976'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 56ms
+      - 48ms
       X-Request-Id:
-      - req_b19cff9d4fcc4e589f17fd7a4819f137
+      - req_7f1bad5fa62a4c28928c651306b03d5c
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=U8wd8sG_498OBgCIqqaG3y6Kg_aAMmVEfWgkXSp4Q10-1754743168-1.0.1.1-sSibNelR0UWc7cuw9ssPfhDpVZkmPu30elcnb0DWE_qTeQgwChxgxtRXF.n5BVPB4Ebxh4DV4r80TlIhl9vWHCp6cJQXTTNEsdZC81zpyLo;
-        path=/; expires=Sat, 09-Aug-25 13:09:28 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=lLz2jaJ47t1kTsd4cXzU4N1nuUnSA0L7R0iPM2SW5xM-1756081052-1.0.1.1-cv39QdxKgXVObuzW7YPMczCmxD3AvWbuafb79se6l_J5Acr51r6Bf3o44qwVlyEZMicXtW6C38r_7K2O1.dn4UPBOG9HRF6NXqt.yGfM_Do;
+        path=/; expires=Mon, 25-Aug-25 00:47:32 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=AGkHqUrSZShjNFUhrMlGGry1WWU9S6NRFxFnIrbYYjw-1754743168853-0.0.1.1-604800000;
+      - _cfuvid=Rp70dVfFgnlzzjNhBKVVtME2XIhHuzS.imWdnHdvJxA-1756081052403-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -205,23 +205,23 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 96c750ff582ace20-GRU
+      - 9746e82cabc5f1b4-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-C2d96a3M5zflNHCrOCc8FC4vcL9iC",
+          "id": "chatcmpl-C8FBrBNPQT4VO6ofUbwPYuLkOtgaV",
           "object": "chat.completion",
-          "created": 1754743168,
+          "created": 1756081051,
           "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "The date command was executed successfully. If you'd like to see the output or need additional date or time information, let me know!",
+                "content": "I can check the current date by running the UNIX date command. Would you like me to display it for you?",
                 "refusal": null,
                 "annotations": []
               },
@@ -230,9 +230,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 87,
-            "completion_tokens": 27,
-            "total_tokens": 114,
+            "prompt_tokens": 83,
+            "completion_tokens": 24,
+            "total_tokens": 107,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -245,7 +245,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_799e4ca3f1"
+          "system_fingerprint": "fp_62bb2e3c55"
         }
-  recorded_at: Sat, 09 Aug 2025 12:39:19 GMT
+  recorded_at: Mon, 25 Aug 2025 00:16:43 GMT
 recorded_with: VCR 6.3.1

@@ -31,13 +31,13 @@ http_interactions:
       Content-Type:
       - text/plain; charset=utf-8
       X-Guploader-Uploadid:
-      - ABgVH88K1JWRArjaqzK9wEJ-l6GTxG_CmNnw865rt_QyuYKWYE7N1mpO09-a8QhfAUP9loVfFtkhLedsO3P9E81YrEz4oRkukE6zF0HbusFcxg
+      - ABgVH89-EXKehBA9JcF8dKWXcCOmcOKny63o7AnKQjhc2fzZdistkdiyUx-WpDulLVl9lPvWBPu3yvZqn_8AEOIK64AwMCua3sF1BLPe3tqvHw
       X-Goog-Upload-Status:
       - active
       X-Goog-Upload-Url:
-      - https://generativelanguage.googleapis.com/upload/v1beta/files?key=TOKEN&upload_id=ABgVH88K1JWRArjaqzK9wEJ-l6GTxG_CmNnw865rt_QyuYKWYE7N1mpO09-a8QhfAUP9loVfFtkhLedsO3P9E81YrEz4oRkukE6zF0HbusFcxg&upload_protocol=resumable
+      - https://generativelanguage.googleapis.com/upload/v1beta/files?key=TOKEN&upload_id=ABgVH89-EXKehBA9JcF8dKWXcCOmcOKny63o7AnKQjhc2fzZdistkdiyUx-WpDulLVl9lPvWBPu3yvZqn_8AEOIK64AwMCua3sF1BLPe3tqvHw&upload_protocol=resumable
       X-Goog-Upload-Control-Url:
-      - https://generativelanguage.googleapis.com/upload/v1beta/files?key=TOKEN&upload_id=ABgVH88K1JWRArjaqzK9wEJ-l6GTxG_CmNnw865rt_QyuYKWYE7N1mpO09-a8QhfAUP9loVfFtkhLedsO3P9E81YrEz4oRkukE6zF0HbusFcxg&upload_protocol=resumable
+      - https://generativelanguage.googleapis.com/upload/v1beta/files?key=TOKEN&upload_id=ABgVH89-EXKehBA9JcF8dKWXcCOmcOKny63o7AnKQjhc2fzZdistkdiyUx-WpDulLVl9lPvWBPu3yvZqn_8AEOIK64AwMCua3sF1BLPe3tqvHw&upload_protocol=resumable
       X-Goog-Upload-Chunk-Granularity:
       - '8388608'
       X-Goog-Upload-Header-X-Google-Esf-Cloud-Client-Params:
@@ -46,7 +46,7 @@ http_interactions:
       X-Goog-Upload-Header-X-Google-Session-Info:
       - GgQYECgLIAE6IxIhZ2VuZXJhdGl2ZWxhbmd1YWdlLmdvb2dsZWFwaXMuY29t
       X-Goog-Upload-Header-X-Google-Backends:
-      - unix:/tmp/esfbackend.1754608806.929982.2649457
+      - unix:/tmp/esfbackend.1755955217.375517.3501885
       X-Goog-Upload-Header-Content-Type:
       - application/json; charset=UTF-8
       X-Goog-Upload-Header-X-Google-Security-Signals:
@@ -56,11 +56,11 @@ http_interactions:
       - Referer
       - X-Origin
       X-Goog-Upload-Header-X-Google-Gfe-Backend-Request-Cost:
-      - '30.1971'
+      - '14.9054'
       Content-Length:
       - '0'
       Date:
-      - Sat, 09 Aug 2025 12:38:45 GMT
+      - Mon, 25 Aug 2025 00:16:51 GMT
       Server:
       - UploadServer
       Alt-Svc:
@@ -68,10 +68,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Sat, 09 Aug 2025 12:38:35 GMT
+  recorded_at: Mon, 25 Aug 2025 00:16:02 GMT
 - request:
     method: post
-    uri: https://generativelanguage.googleapis.com/upload/v1beta/files?key=TOKEN&upload_id=ABgVH88K1JWRArjaqzK9wEJ-l6GTxG_CmNnw865rt_QyuYKWYE7N1mpO09-a8QhfAUP9loVfFtkhLedsO3P9E81YrEz4oRkukE6zF0HbusFcxg&upload_protocol=resumable
+    uri: https://generativelanguage.googleapis.com/upload/v1beta/files?key=TOKEN&upload_id=ABgVH89-EXKehBA9JcF8dKWXcCOmcOKny63o7AnKQjhc2fzZdistkdiyUx-WpDulLVl9lPvWBPu3yvZqn_8AEOIK64AwMCua3sF1BLPe3tqvHw&upload_protocol=resumable
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -97,7 +97,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       X-Guploader-Uploadid:
-      - ABgVH88K1JWRArjaqzK9wEJ-l6GTxG_CmNnw865rt_QyuYKWYE7N1mpO09-a8QhfAUP9loVfFtkhLedsO3P9E81YrEz4oRkukE6zF0HbusFcxg
+      - ABgVH89-EXKehBA9JcF8dKWXcCOmcOKny63o7AnKQjhc2fzZdistkdiyUx-WpDulLVl9lPvWBPu3yvZqn_8AEOIK64AwMCua3sF1BLPe3tqvHw
       X-Goog-Upload-Status:
       - final
       Vary:
@@ -107,7 +107,7 @@ http_interactions:
       Content-Length:
       - '545'
       Date:
-      - Sat, 09 Aug 2025 12:38:46 GMT
+      - Mon, 25 Aug 2025 00:16:53 GMT
       Server:
       - UploadServer
       Alt-Svc:
@@ -117,20 +117,20 @@ http_interactions:
       string: |
         {
           "file": {
-            "name": "files/gzd6m2ucohil",
+            "name": "files/ghhnd464pxnx",
             "displayName": "alhamdullilah.mp3",
             "mimeType": "audio/mpeg",
             "sizeBytes": "173278",
-            "createTime": "2025-08-09T12:38:46.591430Z",
-            "updateTime": "2025-08-09T12:38:46.591430Z",
-            "expirationTime": "2025-08-11T12:38:46.442900422Z",
+            "createTime": "2025-08-25T00:16:52.888810Z",
+            "updateTime": "2025-08-25T00:16:52.888810Z",
+            "expirationTime": "2025-08-27T00:16:52.623462018Z",
             "sha256Hash": "YTVmNDYyY2I4YzFiNjM2YWNjYWQ0OGFlMjRmN2JjNmRlMWY2MDFiNDc1ZDRiYjYyMjBhNGU5YjQ3Yjg2YzRhNw==",
-            "uri": "https://generativelanguage.googleapis.com/v1beta/files/gzd6m2ucohil",
+            "uri": "https://generativelanguage.googleapis.com/v1beta/files/ghhnd464pxnx",
             "state": "ACTIVE",
             "source": "UPLOADED"
           }
         }
-  recorded_at: Sat, 09 Aug 2025 12:38:36 GMT
+  recorded_at: Mon, 25 Aug 2025 00:16:04 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
@@ -138,7 +138,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Translate the contents
         of the audio file into English"},{"text":"Provide no other content except
-        the translation"},{"file_data":{"mime_type":"audio/mpeg","file_uri":"https://generativelanguage.googleapis.com/v1beta/files/gzd6m2ucohil"}}]}]}'
+        the translation"},{"file_data":{"mime_type":"audio/mpeg","file_uri":"https://generativelanguage.googleapis.com/v1beta/files/ghhnd464pxnx"}}]}]}'
     headers:
       Content-Type:
       - application/json
@@ -162,7 +162,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 09 Aug 2025 12:38:48 GMT
+      - Mon, 25 Aug 2025 00:16:55 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -172,7 +172,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1293
+      - gfet4t7; dur=2403
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -198,7 +198,7 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 197,
             "candidatesTokenCount": 12,
-            "totalTokenCount": 233,
+            "totalTokenCount": 266,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
@@ -209,15 +209,15 @@ http_interactions:
                 "tokenCount": 180
               }
             ],
-            "thoughtsTokenCount": 24
+            "thoughtsTokenCount": 57
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "WEGXaPveAbmG6dkP94DTsQo"
+          "responseId": "d6uraLnhHLHTz7IPpsjkgQ0"
         }
-  recorded_at: Sat, 09 Aug 2025 12:38:38 GMT
+  recorded_at: Mon, 25 Aug 2025 00:16:07 GMT
 - request:
     method: delete
-    uri: https://generativelanguage.googleapis.com/v1beta/files/gzd6m2ucohil?key=TOKEN
+    uri: https://generativelanguage.googleapis.com/v1beta/files/ghhnd464pxnx?key=TOKEN
     body:
       encoding: US-ASCII
       string: ''
@@ -242,7 +242,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 09 Aug 2025 12:38:49 GMT
+      - Mon, 25 Aug 2025 00:16:57 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -252,7 +252,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1253
+      - gfet4t7; dur=1473
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -260,5 +260,5 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: "{}\n"
-  recorded_at: Sat, 09 Aug 2025 12:38:39 GMT
+  recorded_at: Mon, 25 Aug 2025 00:16:08 GMT
 recorded_with: VCR 6.3.1

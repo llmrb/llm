@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
-        a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
+        is the date?"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
         system commands","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}'
     headers:
       Content-Type:
@@ -16,6 +16,8 @@ http_interactions:
       - TOKEN
       Anthropic-Version:
       - '2023-06-01'
+      Anthropic-Beta:
+      - files-api-2025-04-14
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -30,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 12:36:39 GMT
+      - Mon, 25 Aug 2025 00:32:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,31 +44,33 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-09T12:36:39Z'
+      - '2025-08-25T00:32:05Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-09T12:36:39Z'
+      - '2025-08-25T00:32:06Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-09T12:36:38Z'
+      - '2025-08-25T00:32:05Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-09T12:36:39Z'
+      - '2025-08-25T00:32:05Z'
       Request-Id:
-      - req_011CRx9TpBZGvYHRqhjDD4Hc
+      - req_011CSTV9t3uojdpnsCdfd9FV
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
+      X-Envoy-Upstream-Service-Time:
+      - '1903'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -76,20 +80,20 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 96c74cd4d813028b-GRU
+      - 9746fd7b0de6a4b6-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01DnK7Xgc1Q2mi9kM8mq4rS7","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"I''ll
-        run the ''date'' command for you."},{"type":"tool_use","id":"toolu_01RiBrZ8Y7gnzUHbg875Kc2Y","name":"system","input":{"command":"date"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":391,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":64,"service_tier":"standard"}}'
-  recorded_at: Sat, 09 Aug 2025 12:36:29 GMT
+      string: '{"id":"msg_01MXJeqEtmEzWuTxQrfuuhyL","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"I''ll
+        check the current date for you using the `date` command."},{"type":"tool_use","id":"toolu_019BrHmQe5ukwr77KUeBueMW","name":"system","input":{"command":"date"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":386,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":67,"service_tier":"standard"}}'
+  recorded_at: Mon, 25 Aug 2025 00:31:17 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
-        a bot that can run UNIX system commands"}]},{"role":"user","content":[{"type":"text","text":"Hey,
-        run the ''date'' command"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01RiBrZ8Y7gnzUHbg875Kc2Y","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01RiBrZ8Y7gnzUHbg875Kc2Y","content":[{"type":"text","text":"{\"success\":true}"}]}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
+        is the date?"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_019BrHmQe5ukwr77KUeBueMW","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_019BrHmQe5ukwr77KUeBueMW","content":[{"type":"text","text":"{\"success\":\"2025-08-24\"}"}]}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
         system commands","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}'
     headers:
       Content-Type:
@@ -98,6 +102,8 @@ http_interactions:
       - TOKEN
       Anthropic-Version:
       - '2023-06-01'
+      Anthropic-Beta:
+      - files-api-2025-04-14
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -112,7 +118,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 12:36:41 GMT
+      - Mon, 25 Aug 2025 00:32:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -124,31 +130,33 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-09T12:36:40Z'
+      - '2025-08-25T00:32:08Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-09T12:36:41Z'
+      - '2025-08-25T00:32:08Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-09T12:36:40Z'
+      - '2025-08-25T00:32:07Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-09T12:36:40Z'
+      - '2025-08-25T00:32:08Z'
       Request-Id:
-      - req_011CRx9TygZJFxJGSfVQoWxE
+      - req_011CSTVA39MjqURFEN1YyT4n
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
+      X-Envoy-Upstream-Service-Time:
+      - '1683'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -158,11 +166,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 96c74ce36a9ecccb-GRU
+      - 9746fd8859a78a4f-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01Aj38CzFDc6Qtt9wwsJDtK5","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"The
-        `date` command has been executed successfully! This command typically displays
-        the current date and time on Unix systems. The command ran without any errors."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":459,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":33,"service_tier":"standard"}}'
-  recorded_at: Sat, 09 Aug 2025 12:36:31 GMT
+      string: '{"id":"msg_01H53XTNNDRC7Ys9L1XqKcSv","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"The
+        current date is August 24, 2025."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":460,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":15,"service_tier":"standard"}}'
+  recorded_at: Mon, 25 Aug 2025 00:31:19 GMT
 recorded_with: VCR 6.3.1

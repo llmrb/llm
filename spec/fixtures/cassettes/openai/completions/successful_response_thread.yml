@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 12:39:34 GMT
+      - Mon, 25 Aug 2025 00:17:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,13 +41,13 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '338'
+      - '284'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '353'
+      - '300'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -61,14 +61,14 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 96ms
       X-Request-Id:
-      - req_fdd57f4df6074f67825ffb348669081a
+      - req_dfec7ba9d8f044b1bd792ffc134b3950
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=bslsh_wg3TBuLimbQhEoMSizNAu2EoGl5r6DO0q7nL0-1754743174-1.0.1.1-ZaFaSLBvOoghnBhhj.jJ6TM1lR6EpPxacySS9sZOlg3FmJlR_a45L4Ty9Qpq8w7J9Kc4z9i9UjgzTbck1yl8cxay6nbHTr1QwR5D2skTKeI;
-        path=/; expires=Sat, 09-Aug-25 13:09:34 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=tK2vBWdL39q9tfcUBnurUlf_7luAMzpAcL.DxzwVR80-1756081059-1.0.1.1-rSz9B3utta0z75GXPdQAZiFijlq4SOABmfUHGnZjOpCZlxUL1cnn2bk_zi7QpxchZiB8ZQF82CzPSCVZd_kfHvVkV3thGWTtSIVoDgrVASA;
+        path=/; expires=Mon, 25-Aug-25 00:47:39 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=_TKATLCGYQYIYvNwoasrngxvZ_akk8mEHLCZoea5UgA-1754743174603-0.0.1.1-604800000;
+      - _cfuvid=EW20UnnD9wPhLGva9_gYDS1OY0GCLJNOc91cfjQVXhM-1756081059170-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -77,23 +77,23 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 96c75125da0c2684-GRU
+      - 9746e858b96be12e-GIG
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-C2d9Cg2So9nqY4pJxWTCpaTmOn2l5",
+          "id": "chatcmpl-C8FBykvr6KTn0RvPgZnYAoRDLtvTZ",
           "object": "chat.completion",
-          "created": 1754743174,
+          "created": 1756081058,
           "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "My name is Pablo and I am 25 years old",
+                "content": "My name is Pablo and I am 25 years old.",
                 "refusal": null,
                 "annotations": []
               },
@@ -103,8 +103,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 64,
-            "completion_tokens": 11,
-            "total_tokens": 75,
+            "completion_tokens": 12,
+            "total_tokens": 76,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -117,7 +117,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_799e4ca3f1"
+          "system_fingerprint": "fp_3502f4eb73"
         }
-  recorded_at: Sat, 09 Aug 2025 12:39:24 GMT
+  recorded_at: Mon, 25 Aug 2025 00:16:50 GMT
 recorded_with: VCR 6.3.1

@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 14 Aug 2025 07:06:11 GMT
+      - Mon, 25 Aug 2025 00:15:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,24 +40,29 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 4ba610f90fd0445ec0b2defb59cd5382
+      - 363c9c482f9783d8afc2d7e9d7a9b50b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Cf-Cache-Status:
       - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=HiTuEMdItOL9q6pufB92lWnFsBz.fy0wJXjPNBsnjHU-1756080937-1.0.1.1-LrfTh246MckGGHuHh3rPkf7heG0B_Lhy9jEZ.8_zQwV7SNdrbwuFBd_OUfDaILJSFHXKoiJ0aT4cJYBdrLjDHe9tV47vrRrJHE3PSV6Ktfg;
+        path=/; expires=Mon, 25-Aug-25 00:45:37 GMT; domain=.deepseek.com; HttpOnly;
+        Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 96ee9bab7aa86270-GRU
+      - 9746e55afdf24adf-MIA
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"d0e07aef-2112-4af4-b17a-c9f2adb03c57","object":"chat.completion","created":1755155171,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"","tool_calls":[{"index":0,"id":"call_0_7bfd355f-ba16-4afd-be93-e20934709897","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"date\"}"}},{"index":1,"id":"call_1_47a7b90a-6461-4a1e-8e68-42fac208246a","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"pwd\"}"}},{"index":2,"id":"call_2_ce28edb9-3b30-4539-a3b8-a297b66593fd","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"whoami\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":129,"completion_tokens":54,"total_tokens":183,"prompt_tokens_details":{"cached_tokens":64},"prompt_cache_hit_tokens":64,"prompt_cache_miss_tokens":65},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
-  recorded_at: Thu, 14 Aug 2025 07:05:56 GMT
+      string: '{"id":"0c093b70-9f27-4b5b-9243-617d990c3965","object":"chat.completion","created":1756080936,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"I''ll
+        run those three UNIX commands for you:","tool_calls":[{"index":0,"id":"call_0_77245e84-8de8-4ce2-89d9-91386d147566","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"date\"}"}},{"index":1,"id":"call_1_fc5bc698-8e10-43b7-9349-300d6e01379d","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"pwd\"}"}},{"index":2,"id":"call_2_3f7e738f-e5f1-4477-9e6f-2ca80c8523b4","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"whoami\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":175,"completion_tokens":44,"total_tokens":219,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":175},"system_fingerprint":"fp_feb633d1f5_prod0820_fp8_kvcache"}'
+  recorded_at: Mon, 25 Aug 2025 00:14:53 GMT
 - request:
     method: post
     uri: https://api.deepseek.com/v1/chat/completions
@@ -65,11 +70,11 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
         commands"},{"role":"user","content":"Can you run the date command ? Can you
-        run the pwd command ? Can you run the whoami command ?"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_7bfd355f-ba16-4afd-be93-e20934709897","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"date\"}"}},{"index":1,"id":"call_1_47a7b90a-6461-4a1e-8e68-42fac208246a","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"pwd\"}"}},{"index":2,"id":"call_2_ce28edb9-3b30-4539-a3b8-a297b66593fd","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"whoami\"}"}}]},{"role":"tool","tool_call_id":"call_0_7bfd355f-ba16-4afd-be93-e20934709897","content":"{\"stderr\":\"\",\"stdout\":\"Thu
-        Aug 14 07:05:56 UTC 2025\\n\"}"},{"role":"tool","tool_call_id":"call_1_47a7b90a-6461-4a1e-8e68-42fac208246a","content":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"},{"role":"tool","tool_call_id":"call_2_ce28edb9-3b30-4539-a3b8-a297b66593fd","content":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+        run the pwd command ? Can you run the whoami command ?"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_77245e84-8de8-4ce2-89d9-91386d147566","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"date\"}"}},{"index":1,"id":"call_1_fc5bc698-8e10-43b7-9349-300d6e01379d","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"pwd\"}"}},{"index":2,"id":"call_2_3f7e738f-e5f1-4477-9e6f-2ca80c8523b4","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"whoami\"}"}}]},{"role":"tool","tool_call_id":"call_0_77245e84-8de8-4ce2-89d9-91386d147566","content":"{\"stderr\":\"\",\"stdout\":\"Mon
+        Aug 25 00:14:53 UTC 2025\\n\"}"},{"role":"tool","tool_call_id":"call_1_fc5bc698-8e10-43b7-9349-300d6e01379d","content":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"},{"role":"tool","tool_call_id":"call_2_3f7e738f-e5f1-4477-9e6f-2ca80c8523b4","content":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
         a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -90,7 +95,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 14 Aug 2025 07:06:18 GMT
+      - Mon, 25 Aug 2025 00:15:42 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -102,22 +107,26 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 78a2a5b9c9deec29e9331e5f04ef2f98
+      - 2685a2980a66b8ef7c623530556da325
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Cf-Cache-Status:
       - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=X6tCWVMAAC6IdnBm_hWCrE8pK94L5X_.YJ4VvIO05yY-1756080942-1.0.1.1-U.Q8LM_OnNTECP3wJxM5Q_q8d6ASOAW45vC8v5fz7aqZCoBSsZJvrgsV9MB9FDYanTUSs00CmMG7730zz.rDsrkW0.pg918niEvLMHXnYMI;
+        path=/; expires=Mon, 25-Aug-25 00:45:42 GMT; domain=.deepseek.com; HttpOnly;
+        Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 96ee9bd598b45e0f-GRU
+      - 9746e580b8741d34-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"71750c28-5888-4a7a-a7c9-655a35279f61","object":"chat.completion","created":1755155178,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"Here
-        are the results of the commands:\n\n1. **Date**: `Thu Aug 14 07:05:56 UTC
-        2025`\n2. **Current Directory (pwd)**: `/home/developer/p/git.home.network/0x1eef/ruby/llm.rb`\n3.
-        **Current User (whoami)**: `developer`"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":261,"completion_tokens":75,"total_tokens":336,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":133},"system_fingerprint":"fp_8802369eaa_prod0623_fp8_kvcache"}'
-  recorded_at: Thu, 14 Aug 2025 07:06:04 GMT
+      string: '{"id":"53965a72-48e0-4242-9461-699b2351be02","object":"chat.completion","created":1756080942,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"Here
+        are the results of the commands you requested:\n\n1. **date**: Mon Aug 25
+        00:14:53 UTC 2025\n2. **pwd**: /home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n3.
+        **whoami**: developer\n\nAll commands executed successfully!"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":283,"completion_tokens":72,"total_tokens":355,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":155},"system_fingerprint":"fp_feb633d1f5_prod0820_fp8_kvcache"}'
+  recorded_at: Mon, 25 Aug 2025 00:14:59 GMT
 recorded_with: VCR 6.3.1

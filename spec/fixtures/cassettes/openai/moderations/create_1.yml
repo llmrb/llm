@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 12:41:24 GMT
+      - Mon, 25 Aug 2025 00:19:19 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,34 +37,34 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_6945dbc746360ea992468a164b48d0b7
+      - req_d84d2e30e9df7d4dcab075312e08e32e
       Openai-Processing-Ms:
-      - '236'
+      - '120'
       X-Envoy-Upstream-Service-Time:
-      - '242'
+      - '125'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=txmaGJ8sdOUA2Ngl1EDYDjnem5A33DJ1y1o8xFiVrcY-1754743284-1.0.1.1-oqIXQ9AMXJqKWlIxirJymX3xl7k4aDOQZ67GehYGuw.9UXGjHLwGztCDuXlVksRxM76JBxAIUO6vIQWTwcRrOQBj312BJKZ815h8pso9fDw;
-        path=/; expires=Sat, 09-Aug-25 13:11:24 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=vbWipp3We3_FnPnz5d43E2KOQ0_dFcWxfrzo4iN5RYA-1756081159-1.0.1.1-3ViI7EkITim5jpMbbP3wZIHZteEqc98UUbOOthfQZfROqHGBs048FYaSDH9hokPxe28W6DkvPDwcJ72ESolO7nAouZzxtH4pE4K8w99AwfU;
+        path=/; expires=Mon, 25-Aug-25 00:49:19 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=ESTYiquMd2VtAFK4.1dld0QTKlPpwVQqYj7Zjc2I8jg-1754743284262-0.0.1.1-604800000;
+      - _cfuvid=jBtCDfa1aGmuhCs62V5Gwi.aM21_6VL3pSEq3oFaXZs-1756081159913-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 96c753d40873c618-GRU
+      - 9746eacf6b26e10d-GIG
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "modr-5554",
+          "id": "modr-5075",
           "model": "omni-moderation-latest",
           "results": [
             {
@@ -85,7 +85,7 @@ http_interactions:
                 "violence/graphic": false
               },
               "category_scores": {
-                "harassment": 0.7922938252487682,
+                "harassment": 0.7922938252487683,
                 "harassment/threatening": 0.0007552556355312161,
                 "sexual": 0.00007916296072837432,
                 "hate": 0.0012054329305849758,
@@ -143,5 +143,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Sat, 09 Aug 2025 12:41:14 GMT
+  recorded_at: Mon, 25 Aug 2025 00:18:31 GMT
 recorded_with: VCR 6.3.1

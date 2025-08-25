@@ -6,8 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
-        ''date'' command"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
@@ -32,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 09 Aug 2025 12:38:02 GMT
+      - Mon, 25 Aug 2025 00:16:07 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1505
+      - gfet4t7; dur=1719
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -62,7 +61,7 @@ http_interactions:
                         "command": "date"
                       }
                     },
-                    "thoughtSignature": "CuUBAVSoXO7HTXOX1oKoxGeqplY9RYS2D3O4hKQbZa0PPwbyLBQ+7XvBnNtqn9LhV6DEyLKmocFNSTQQcREv6AAje7kPKBwuMk+3yrqrrrrb/0veuAE3S5HktdJ1IgPVWDPoWL+jxmfU0jZSjmb26ntoflaGrnZbW5MimM41JFiqqnXPHXaljdJFvl+FIT8LBQzU3M3X0rgoLWJyvoPRIm+pSfd9/N9IiIOM9aRn0QJNX4XmqR3IxMJ40mqdpXXUXyBCfgPlTXBpp8jqHrpeXnlM5OCjglbU6jLJz0Egj4lQXFDIlxIkPg=="
+                    "thoughtSignature": "CpwCAVSoXO5KP5rW3X6XYdng5uMD1ep1TXW6uqo6piJT27PFjrIOuRQXTeQo7h0rtnLWGupOQhuYnbqpHP+FN2P5mFkP2FI3JdrETLkk2zEf+ZcpHvxCI3U+ofNmkw2f7+a4rOmI5fBST0twf0g/H2ITVdvxQRrdOaP0FRZZ9unsZWGvjHl514ZeBagaMyed7A+UaakeRKEiuC1IBzD5tmofjehKzq5doGAV0d4ng+8XD8/hOg+wlBXwgInjVsL0c+lLjW/QVvfrsfzBrhMK98JveMXd5foMmnn76O1XHFUwoaNEfqrZQY4OBK1wxwPLdQ3KU/I6m4nxelE37UkpI84nnEjw98+Aku2g06wGsPlfhznifRj+vuFs1mprrvU="
                   }
                 ],
                 "role": "model"
@@ -72,29 +71,28 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 53,
+            "promptTokenCount": 49,
             "candidatesTokenCount": 13,
-            "totalTokenCount": 112,
+            "totalTokenCount": 120,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 53
+                "tokenCount": 49
               }
             ],
-            "thoughtsTokenCount": 46
+            "thoughtsTokenCount": 58
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "KkGXaPPaPP-UmtkPvMHOuQ8"
+          "responseId": "R6uraOW3EpW3qtsPuZe-8QU"
         }
-  recorded_at: Sat, 09 Aug 2025 12:37:53 GMT
+  recorded_at: Mon, 25 Aug 2025 00:15:18 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
-        ''date'' command"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
@@ -119,7 +117,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Sat, 09 Aug 2025 12:38:08 GMT
+      - Mon, 25 Aug 2025 00:16:08 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -129,7 +127,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=5038
+      - gfet4t7; dur=1385
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -143,8 +141,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "The `date` command was executed successfully. Do you have any other commands you'd like me to run?",
-                    "thoughtSignature": "CoQaAVSoXO7/UfqjxIb8quW2G29PpwUszJ6BcZpJQj0x44cq2VCJdXkByTaDM1iGtedSTt/d5PRl4mqWcOGtoDHH8Q4j82wJCqjwshXr+BB+IEkhftA+t2bBRU2LSBWRGYsVkCn3BHVu32HyyC2AWEp7UQxGjo2EFBl/fDGxZ6MuH/07I1n4sAPv6F2TpkZ+SzeVOfobYxaXc6TJc7/HNv+wNZIZC+maZ2MijTyAkgfEXra6/pGev9Px+geIlbsJupDk+Z7f/gAVouPhc3QkgnizIje4es21iWGYH09otW0hjsDohs0JL13BSlzXcJwtHF0ics8L236v9sHArrifg5yJZB5ED1zkU4grcPUaiW+U795umu+nRHuY+gKjR5hRtBrK20AYJS8ZMkXoCKA1QDmEjLZSD1Ww6RBbbYDuQGo/hkDwu8PeWzSZiJvgIr75rj2bCNSIcE17DSlQ3rPA3M5H8laupM7qnA7haMzhK6sAArwsfEPGzP+myTOfIny0uiZfpuzSEB00IDrdcxoQUybMVm+avx0/ZV2Y+9wRj0EG5QbNH0SjYp2hIHj9oUVs7CwguQC8cbwAWb4aKgEUuJRyvu0hJud4v1SvHxT1AkfPfOAJuqC+F0xTpV3+ksECm+elh1eJzmmpcR8x9BmzZO/NNs0tKWvkBsYmecl66dwNmFvShvjtfVAN9JwUZ84ASnhkNlEg1WM+4i5pEDOtZF+2Fp7D5JDN0rXXMK+FaAhhNGNqJzan4LmKEPspQklX/xu8yMdWOVfdlU58Q7srjtrslaZg/WKCIhGLzEuNW3U1QmyogHhXgojsyu5vYzcvZvATBwxa9ljC6v9975M8ZH+oJrFPbJyzmGLjz97hwsEiGOQxJLoVuel73nNALj3zbC3ES9lQJeb7/TA3T1zpA6GATSRtZsPRcXPRxwi85evgg7oCpdrSa4WuJ67+j1+YguBb2c/t7wLBayNXzfhvoqpzALBLX3zvcyQi69yYTa8wP3GdTnJuWMyLfHHoNuWKFQ5yFGXzkG4UH3u3nC58YgEvSu+xovHRSpm6Vdp0i/sVDu9bU7Mnk72c2rL2ehe+A23PSQIwIIEdD1/tJn6Mrp6wPCO061QLXdqcSKrvrM0eO9khjD/JXiCYTR2VmA1A/oyEdvsxqwL1erl7nXkmYqIn1K15xSNCKsW+x2yVLvCv0WHCZcYWz3yhIrqWHLGr0ttuSNfPxO67v23OlVdBUnkU3iYiykAY1iJASXuY/EcQcvYNWwU0Ut423y4PAyFlEyNXBgwXhlAMWFcfseC+lD/n4fzhJVvhdpBtgeEkgO3iFosJ+GyNUvMjFB2jwqt/TzFCeGWZo83S4Hx/EOyBck/ngGIDYutF/yqQSL4IElOPIZxnuLjeP8QD3XkPDDrNWE/FCnKoH9YkXerwXp2LMBtYnLxOuuO6kPJ2doYAoTcF+CrzyxYSsAaa8ap+effPjmRhuBIVMSE4IUneow/0MH5hYyvnQunnYwjpkMy57gQ35fvxUB60V6eMLsYUotjZRKp0soYUsogcfmI9I7mVMihq6iX1YIIdkTHAA0ZaJvCCU2540tVlj1zmsWzZBOAdv4hJqJef0QyF9jpfLmQGHl3N0rhrd5R0OT9e6HBWNq9YuCkvcvIB3++PAT4qG9n2gYuU1TPvlU2NkTLTOmaZJM6GU7DD66gAZ82xuSLIRH+RAChxh6IFE/0vfbTGoHKvSe2dpWiu6gZhXVPAvIqJpf1Vyo4GHM9Pli4E0Bdk3ceJ4Cbjiujdc3Svpp76T5QCw30W2ZD8Kc3t8KMR2dDVhRUIQMdJbCB6KvXk4b7NCg+9jJI2CQehJNpxF+aY36ox+0Nlfvh4s1QNLVVQFNQaMjttTOaG44v8yPYah6/9a1NQZ04KK+DR7s+xIhh4Nnx5biWIZQTe+tAk70Z9pjTPCq7lqKDTt4cA6IIMzmPIuATAGmWdrwNAK2ECrgIzQbHeMBCEEbcYVHZMNBu9khROpnmpXgBVZIH2VmJb7cXobSuu2O/bILl//LXipPPe+O82Wut8C4r0Xu06etr+o2ek7bLlg5t4A7D8P8D8OxQi0TYn7Rk0LZ7F57YGOT20M8JyEjXuiojhZyOxs3yK7gCGTkOqaoSMji4LwVEkmObngUdHZtwDxfE88wc9acGsMMMwJP9clZdG5ZbB55xqlwzht9GyGaZ84G34GWrOSaXCFYaVlGrp1D5RMYWrwqgJCR7HLC39TLMHke99D9cRCE+rZzVh32sCyZGGKFHTfin3dlgsz8Z7oMvqf1k8Ssy08J4BriF2alhenVkX7yFE7Ec4kKgc3ezbwIqrPJSuVTOMK8dRYBBFjR0ckf6fT2Gg6s/65Z3mllN/r5LI6+BpgQJwlfd+Q4xv2jPsoiNNVQG/IAEpw61X7luQFZTwlGZfoGlXZx2t8ZtETp1jWeKxpzT1AXpbVZ7xRIKr6T2HYGnLWgbyeUulZUx7KR8yGFXo2TJtU5aANQm42Gfpr/PSyxIApsVmBLXA4Kd2Eq8in2mmOLlrvh/V7Wy9CS3X2nm2Tx/MSyU9vQv8rEEz17hzUZC5hWdVZpfNRb+h34JxWKOxFJxIZWV0nvcpVyV/zKnm2RNTo8BHLFb+Nd5iFdSiPGifAllxpu1St43hpC3FNGvYJE7dt6nQo8KNV1qPkvB6AWXnxUhIOfG/LzEXI7l1A1ktAHkTdV3xVHqi4iOsyeXuKkY081SXv9/8er5bQdCvvFqeVtrKAi7aWnWaIbrdiLxiA9ncJbDPDMk2OAmX+hqom28hz1dYljMblZqjxGs0WfdfVr8xSGqEXIrNfurRbLCcDnP3OMwRlt7kA9GJlYrgkXxFYxFQhxuaAolBlSAKnapX8iBNyy9J9tBo/egUsj3yuzixy6b/O3k03T8fkqGiZ3Rzp9a0DkebbwxD1ppGTEEdElxyw6cLDvlNXzSoNE6sMXSH8dYf3AkKGv+qjWdXA5574n+Y2pPLzMb3LyVxzkV3xmjQSxJ0pLca3g1rXW9DXInPPZsjwTS+RtSkIvOUIoRpJpn1bflsCkTu/HcC6Dklnq8MZ4GcJppiiXEGk4ChXDkQzt0Mv/Z9jucyT7b7ogf/DO5q0+JhfUYzLYjNCi/mUiJF2BYVmvx6OuMrl0IWpPeiaai5Cbj54GY7qxpu3XM3SVzXngfk6b1G4Z/RWTUZB/pEiaKN6GOsVrMf1NPnaVP6fMcN3bvN9TU0TyUANNjag/+oMiHusW29Fsdse1tWBnudi96ToEVdYBkLLkMYgjGtlsYLUNhEhc9pervypC80mU/C5jISe4MDmqcDS63pRofTH/x92SnRd/lQbDbomBIeYmWHUoRH2Cw/G8aHMvURBHr9PTvShbCwaxvXO4VcR+Ua4RrF+V2Iz1jqEaudypTdG5tVFNn2KyVkFhfC7LmnbgukUbjElWNtv8W3+j8tjn7p0DIxiZtXu/rohc+u0bvoKCCwX2VTJzTfTM6pgsnf1rk1dgyRTpX0EJ/YV9lPQ2oO6YtoKnj7ZvP13Y3xlKHOSPbad4gxjETBpRRGX2kb2AKd9Eq6y6heZiOCzDKUYmIG4Ul4BRNiaTOqjeZRdACKlSjhivAazzXshW3L8NYENHr+q+Z3ws9t5QKkl+N5yUsqFP8r1u115vIssK/EM3WlbxMItSWl0/3xXYWTE3T6xgzb2cr5uBQt4oXkqBlDhJnyh24B5PgNU2KIdNqQ7Y5yATPN7/ED836RAJ9qjgSoDG1bbruNOHDalN9BygSdkWe9umE40Wp7Db0d/EKz94P0Rw3h5WyhDO7DlWoVG28ov/F/N8BRIsnCw3Zjy5d/6njrSZhi090sgCA/IyDD0Lv2hbwBwL/1Zn4iu6MfUvX91XiE9a+YHBz1PvmLRnM/FXyngtfaknkXWptEDXxKVPyh2+6zMdK1uc3ARYhqx9EQkY7vbpSJhzD7EUMMW+gccpO1V2u4jx7GrRmsYCOVPyM4zaAuEEBgolybBdc4PpMlkhBhQdCNYe0D+jJngu/kiLHuxcUqlkyvA+nvxbxRLW6XRsYtcedXX1qoHpdqSMzk/ueH5PJPMFdJ3+Go1WqT01lut5wt3ngTX547feJygVxKmMp5EGpSdAcBrtfg0hMAs6FSEv8b8B/3UgTycHM8EXNpeuWIxmwyr83mcb4F9NZ2kazpSNC6FtRWT7h0HTVZvxXjRqeD3mNUuH+C0/9Y/oehPDN2VfMQMl4ZuhECsfXa86+I6T4eurI5IyKxLdaWdw+lZTgANjXBH3THqrUe3D28oFgShYBwS9/3Pwl9sgZJMqHLl0aHtkarbp+zcofmEWJ1FYJxx78AvAA8Xni29HkgO0u3LwWpODlM3KJvZjmlVyvaiPrnq54b81l7mlpWlzVBkngTTVUsj6G2IMAABvVjqfrr2BRWA/tnGfBDvjk64SaxMqY="
+                    "text": "I'm sorry, I don't see the date in the output you provided. Can you please provide the actual output of the command?"
                   }
                 ],
                 "role": "model"
@@ -154,19 +151,18 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 73,
-            "candidatesTokenCount": 23,
-            "totalTokenCount": 909,
+            "promptTokenCount": 69,
+            "candidatesTokenCount": 29,
+            "totalTokenCount": 98,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 73
+                "tokenCount": 69
               }
-            ],
-            "thoughtsTokenCount": 813
+            ]
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "MEGXaPaNCdaqqtsP0YOXqAo"
+          "responseId": "SKuraJf2MLmtz7IP0_-BoAM"
         }
-  recorded_at: Sat, 09 Aug 2025 12:37:58 GMT
+  recorded_at: Mon, 25 Aug 2025 00:15:20 GMT
 recorded_with: VCR 6.3.1

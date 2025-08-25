@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.deepseek.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":"Hello! Nice to meet you"}],"model":"deepseek-chat"}'
+      string: '{"messages":[{"role":"user","content":"Hi"}],"model":"deepseek-chat"}'
     headers:
       Content-Type:
       - application/json
@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 09 Aug 2025 12:37:41 GMT
+      - Mon, 25 Aug 2025 00:15:49 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,7 +37,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 8bac6f507fb521b370cc085035b74ea3
+      - 33755ff3bd711a5ff952f78c4f1c3d0e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -45,16 +45,16 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Zw80QiUH7a_iIwMZkIgR_uyTHQ.Z9MggvIg1m.jdNU4-1754743061-1.0.1.1-oG.mwWZxG31a897w4yu11AfCsxIrUKGbsNdR55r3brG4mjyl1sDFxrB9Xmhd3WvYbGeocSbNCkgXJ_G8iRJZIU9y.Xi6Q4EYuwFDQ1yTgOs;
-        path=/; expires=Sat, 09-Aug-25 13:07:41 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=gMIIAyfRzBlf9Hx1ImyNuzghh4GUOVoky9PCADS4ssc-1756080949-1.0.1.1-9714JbkwOXSx67K19fWjsswWu930ZbBBrsHG.EXKdjFvXiMxDDRWt7ukc9j2LN_haxK2HlTHiA8E4fXP1hWnXUkDd7ajqIUZwiM5LAZAIII;
+        path=/; expires=Mon, 25-Aug-25 00:45:49 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 96c74e610c8e00e6-GRU
+      - 9746e5a8c82a7464-MIA
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJpZCI6IjdiOGQ0NDQzLTAxOTAtNGJlZi05NDU4LWZjYzYzM2YyZjI5YSIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NTQ3NDMwNjAsIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiSGVsbG8hIE5pY2UgdG8gbWVldCB5b3UgdG9vISDwn5iKIEhvdyBjYW4gSSBhc3Npc3QgeW91IHRvZGF5PyJ9LCJsb2dwcm9icyI6bnVsbCwiZmluaXNoX3JlYXNvbiI6InN0b3AifV0sInVzYWdlIjp7InByb21wdF90b2tlbnMiOjksImNvbXBsZXRpb25fdG9rZW5zIjoxNywidG90YWxfdG9rZW5zIjoyNiwicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjp7ImNhY2hlZF90b2tlbnMiOjB9LCJwcm9tcHRfY2FjaGVfaGl0X3Rva2VucyI6MCwicHJvbXB0X2NhY2hlX21pc3NfdG9rZW5zIjo5fSwic3lzdGVtX2ZpbmdlcnByaW50IjoiZnBfODgwMjM2OWVhYV9wcm9kMDYyM19mcDhfa3ZjYWNoZSJ9
-  recorded_at: Sat, 09 Aug 2025 12:37:35 GMT
+        eyJpZCI6Ijc2NjJlYWFlLWM3MDEtNGYyZS05ZjRmLTczNWEyOTA3NWFhZiIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NTYwODA5NDksIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiSGkhIEhvdyBjYW4gSSBoZWxwIHlvdSB0b2RheT8g8J+YiiJ9LCJsb2dwcm9icyI6bnVsbCwiZmluaXNoX3JlYXNvbiI6InN0b3AifV0sInVzYWdlIjp7InByb21wdF90b2tlbnMiOjUsImNvbXBsZXRpb25fdG9rZW5zIjoxMSwidG90YWxfdG9rZW5zIjoxNiwicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjp7ImNhY2hlZF90b2tlbnMiOjB9LCJwcm9tcHRfY2FjaGVfaGl0X3Rva2VucyI6MCwicHJvbXB0X2NhY2hlX21pc3NfdG9rZW5zIjo1fSwic3lzdGVtX2ZpbmdlcnByaW50IjoiZnBfZmViNjMzZDFmNV9wcm9kMDgyMF9mcDhfa3ZjYWNoZSJ9
+  recorded_at: Mon, 25 Aug 2025 00:15:03 GMT
 recorded_with: VCR 6.3.1

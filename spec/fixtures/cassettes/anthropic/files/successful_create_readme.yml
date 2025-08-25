@@ -5,12 +5,12 @@ http_interactions:
     uri: https://api.anthropic.com/v1/files
     body:
       encoding: ASCII-8BIT
-      string: "--BOUNDARY__ccc849978bd2bac61ff25b02f8f63c35\r\nContent-Disposition:
+      string: "--BOUNDARY__cbd8ae0d279522a70a4767252bbce73a\r\nContent-Disposition:
         form-data; name=\"file\";filename=\"readme.md\"\r\nContent-Type: text/markdown\r\n\r\n##
-        About\n\nHello world\n\r\n--BOUNDARY__ccc849978bd2bac61ff25b02f8f63c35--\r\n"
+        About\n\nHello world\n\r\n--BOUNDARY__cbd8ae0d279522a70a4767252bbce73a--\r\n"
     headers:
       Content-Type:
-      - multipart/form-data; boundary=BOUNDARY__ccc849978bd2bac61ff25b02f8f63c35
+      - multipart/form-data; boundary=BOUNDARY__cbd8ae0d279522a70a4767252bbce73a
       X-Api-Key:
       - TOKEN
       Anthropic-Version:
@@ -31,7 +31,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 19 Aug 2025 08:58:54 GMT
+      - Mon, 25 Aug 2025 00:14:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,13 +39,13 @@ http_interactions:
       Connection:
       - keep-alive
       Request-Id:
-      - req_011CSGnx3xC3ywLxaqsQwPfA
+      - req_011CSTTpkfmEQqEdMCrite5U
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '321'
+      - '294'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -55,14 +55,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 971873aa9a0a0139-GRU
+      - 9746e3ef9901a44b-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"type":"file","id":"file_011CSGnx45e69MsAoUTfETuT","size_bytes":22,"created_at":"2025-08-19T08:58:54.610000Z","filename":"readme.md","mime_type":"text/markdown","downloadable":false}'
-  recorded_at: Tue, 19 Aug 2025 08:58:20 GMT
+      string: '{"type":"file","id":"file_011CSTTpkrS1KCSMSfamad5x","size_bytes":22,"created_at":"2025-08-25T00:14:38.149000Z","filename":"readme.md","mime_type":"text/markdown","downloadable":false}'
+  recorded_at: Mon, 25 Aug 2025 00:13:50 GMT
 - request:
     method: delete
-    uri: https://api.anthropic.com/v1/files/file_011CSGnx45e69MsAoUTfETuT
+    uri: https://api.anthropic.com/v1/files/file_011CSTTpkrS1KCSMSfamad5x
     body:
       encoding: US-ASCII
       string: ''
@@ -87,7 +87,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 19 Aug 2025 08:58:55 GMT
+      - Mon, 25 Aug 2025 00:14:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -95,13 +95,13 @@ http_interactions:
       Connection:
       - keep-alive
       Request-Id:
-      - req_011CSGnx8DRNqHZUYzrQdAQf
+      - req_011CSTTpoHmdW979GWa8wM56
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '315'
+      - '395'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -111,9 +111,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 971873ae7e3600dd-GRU
+      - 9746e3f38a51f1e1-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"file_011CSGnx45e69MsAoUTfETuT","type":"file_deleted"}'
-  recorded_at: Tue, 19 Aug 2025 08:58:21 GMT
+      string: '{"id":"file_011CSTTpkrS1KCSMSfamad5x","type":"file_deleted"}'
+  recorded_at: Mon, 25 Aug 2025 00:13:50 GMT
 recorded_with: VCR 6.3.1
