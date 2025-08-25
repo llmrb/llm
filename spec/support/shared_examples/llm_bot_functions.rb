@@ -17,19 +17,19 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
     end
 
     it "calls the function" do
-      expect(Kernel).to receive(:system).with("date").and_return(true)
+      expect(Kernel).to receive(:system).with("date").and_return("2025-08-24")
       bot.chat bot.functions[0].call
       expect(bot.functions).to be_empty
     end
 
     it "calls the function" do
-      expect(Kernel).to receive(:system).with("date").and_return(true)
+      expect(Kernel).to receive(:system).with("date").and_return("2025-08-24")
       bot.chat bot.functions.map(&:call)
       expect(bot.functions).to be_empty
     end
 
     it "includes a message with a return value" do
-      allow(Kernel).to receive(:system).with("date").and_return(true)
+      allow(Kernel).to receive(:system).with("date").and_return("2025-08-24")
       bot.chat bot.functions.map(&:call)
       expect(returns.size).to be(1)
     end
