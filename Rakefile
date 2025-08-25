@@ -22,7 +22,8 @@ namespace :spec do
 
   desc "Run remote tests"
   task :remote do
-    specs = Dir["spec/{#{remotes.join(",")}}/**/*.rb"].shuffle
+    paths = ["spec/readme_spec.rb", "spec/{#{remotes.join(",")}}/**/*.rb"]
+    specs = Dir[*paths].shuffle
     sh "bundle exec rspec #{specs.join(' ')}"
   end
 
