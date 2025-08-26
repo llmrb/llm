@@ -27,6 +27,11 @@ reading to find out more.
 * [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
   a blog post that implements image editing with Gemini
 
+#### Ecosystem
+
+* [llm-shell](https://github.com/llmrb/llm-shell) &ndash; is a developer-oriented console for Large Language Model communication
+* [llm-spell](https://github.com/llmrb/llm-spell) &ndash; is a library and command-line utility that can correct spelling mistakes with a Large Language Model
+
 ## Features
 
 #### General
