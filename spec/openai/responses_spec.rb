@@ -66,4 +66,28 @@ RSpec.describe "LLM::OpenAI::Responses" do
       )
     end
   end
+
+  context "when given a function call",
+          vcr: {cassette_name: "openai/responses/function_call"} do
+    let(:bot) { LLM::Bot.new(provider, tools: [tool]) }
+    let(:tool) do
+      LLM.function(:system) do |fn|
+        fn.description "Runs system commands"
+        fn.params { _1.object(command: _1.string.description("The command to run").required) }
+        fn.define { |command:| {success: Kernel.system(command)} }
+      end
+    end
+
+    before do
+      allow(Kernel).to receive(:system).and_return("2024-01-01")
+    end
+
+    it "calls a function" do
+      bot.respond "You are a bot that can run UNIX commands", role: :system
+      bot.respond "What is the date?", role: :user
+      expect(bot.functions).not_to be_empty
+      bot.respond bot.functions.map(&:call)
+      expect(bot.functions).to be_empty
+    end
+  end
 end

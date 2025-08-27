@@ -1,0 +1,327 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"input":[{"role":"system","content":[{"type":"input_text","text":"You
+        are a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"input_text","text":"What
+        is the date?"}]}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"description":"The
+        command to run","type":"string"}},"required":["command"],"additionalProperties":false},"strict":true}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Aug 2025 19:16:32 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit-Requests:
+      - '500'
+      X-Ratelimit-Limit-Tokens:
+      - '30000'
+      X-Ratelimit-Remaining-Requests:
+      - '499'
+      X-Ratelimit-Remaining-Tokens:
+      - '29725'
+      X-Ratelimit-Reset-Requests:
+      - 120ms
+      X-Ratelimit-Reset-Tokens:
+      - 550ms
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
+      X-Request-Id:
+      - req_688fdbb100a93c4df1f12cf69b69abaa
+      Openai-Processing-Ms:
+      - '716'
+      X-Envoy-Upstream-Service-Time:
+      - '718'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=cUBCM5fiZ8B1JGUgwSWtvTg0MTPjK18lsinIq7wsykA-1756322192-1.0.1.1-ZjW9PhQ_HGODTzK1pijPV04ghgSeijacsZ6GRWYmA0cRLxLk3hANK0drSpW6n8FkCDrTQhLE8OrBt_USqSh7rboS1Dwxnb5.qBTaMu8Bl2A;
+        path=/; expires=Wed, 27-Aug-25 19:46:32 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=nGqRd8TydXgQyZi8JqRsramePz5tCG6LJVVIf0YyITE-1756322192959-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 975de7641bd21abc-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "resp_68af59902c788197bbc6a8431bdf136a0bf6f5264e44ff28",
+          "object": "response",
+          "created_at": 1756322192,
+          "status": "completed",
+          "background": false,
+          "error": null,
+          "incomplete_details": null,
+          "instructions": null,
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-4.1-2025-04-14",
+          "output": [
+            {
+              "id": "fc_68af5990b5d88197b0171afaa0b30a470bf6f5264e44ff28",
+              "type": "function_call",
+              "status": "completed",
+              "arguments": "{\"command\":\"date\"}",
+              "call_id": "call_pWUv82AFbbfKYfmvJZxhy7bY",
+              "name": "system"
+            }
+          ],
+          "parallel_tool_calls": true,
+          "previous_response_id": null,
+          "prompt_cache_key": null,
+          "reasoning": {
+            "effort": null,
+            "summary": null
+          },
+          "safety_identifier": null,
+          "service_tier": "default",
+          "store": true,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tools": [
+            {
+              "type": "function",
+              "description": "Runs system commands",
+              "name": "system",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "command": {
+                    "description": "The command to run",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "command"
+                ],
+                "additionalProperties": false
+              },
+              "strict": true
+            }
+          ],
+          "top_logprobs": 0,
+          "top_p": 1.0,
+          "truncation": "disabled",
+          "usage": {
+            "input_tokens": 58,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 14,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 72
+          },
+          "user": null,
+          "metadata": {}
+        }
+  recorded_at: Wed, 27 Aug 2025 19:16:27 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"input":[{"type":"function_call_output","call_id":"call_pWUv82AFbbfKYfmvJZxhy7bY","output":"{\"success\":\"2024-01-01\"}"}],"model":"gpt-4.1","previous_response_id":"resp_68af59902c788197bbc6a8431bdf136a0bf6f5264e44ff28","tools":[{"type":"function","name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"description":"The
+        command to run","type":"string"}},"required":["command"],"additionalProperties":false},"strict":true}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Aug 2025 19:16:34 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit-Requests:
+      - '500'
+      X-Ratelimit-Limit-Tokens:
+      - '30000'
+      X-Ratelimit-Remaining-Requests:
+      - '499'
+      X-Ratelimit-Remaining-Tokens:
+      - '29694'
+      X-Ratelimit-Reset-Requests:
+      - 120ms
+      X-Ratelimit-Reset-Tokens:
+      - 612ms
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
+      X-Request-Id:
+      - req_f30016030752ffc8b9039c60673767ef
+      Openai-Processing-Ms:
+      - '885'
+      X-Envoy-Upstream-Service-Time:
+      - '888'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=w3E48w62TR80yrTFOarggV2n5a_z8IZ179tA7FPPJyg-1756322194-1.0.1.1-vHun2jyZTGf7kmKB3S789CxhFYP_A1oQos8dFfv6PAdxpA58cqXdSijQlCitYojic3pc.FTsQnTvhnpduuTysWKMTeVH5Xp90_NVkYkaR9U;
+        path=/; expires=Wed, 27-Aug-25 19:46:34 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=Qo2gL52jW1kNm.9z2njUC.SYL6hbqEMQADDGZV3TH5w-1756322194947-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 975de76aa8590170-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "resp_68af5991d3408197b5b48f55663f7c230bf6f5264e44ff28",
+          "object": "response",
+          "created_at": 1756322193,
+          "status": "completed",
+          "background": false,
+          "error": null,
+          "incomplete_details": null,
+          "instructions": null,
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-4.1-2025-04-14",
+          "output": [
+            {
+              "id": "msg_68af599272448197b463c8baf3b5aa0f0bf6f5264e44ff28",
+              "type": "message",
+              "status": "completed",
+              "content": [
+                {
+                  "type": "output_text",
+                  "annotations": [],
+                  "logprobs": [],
+                  "text": "The date is 2024-01-01."
+                }
+              ],
+              "role": "assistant"
+            }
+          ],
+          "parallel_tool_calls": true,
+          "previous_response_id": "resp_68af59902c788197bbc6a8431bdf136a0bf6f5264e44ff28",
+          "prompt_cache_key": null,
+          "reasoning": {
+            "effort": null,
+            "summary": null
+          },
+          "safety_identifier": null,
+          "service_tier": "default",
+          "store": true,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tools": [
+            {
+              "type": "function",
+              "description": "Runs system commands",
+              "name": "system",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "command": {
+                    "description": "The command to run",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "command"
+                ],
+                "additionalProperties": false
+              },
+              "strict": true
+            }
+          ],
+          "top_logprobs": 0,
+          "top_p": 1.0,
+          "truncation": "disabled",
+          "usage": {
+            "input_tokens": 89,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 13,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 102
+          },
+          "user": null,
+          "metadata": {}
+        }
+  recorded_at: Wed, 27 Aug 2025 19:16:29 GMT
+recorded_with: VCR 6.3.1
