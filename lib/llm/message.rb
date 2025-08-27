@@ -118,6 +118,9 @@ module LLM
     end
 
     ##
+    # @note
+    #  This method returns a response for assistant messages,
+    #  and it returns nil for non-assistant messages
     # @return [LLM::Response, nil]
     #  Returns the response associated with the message, or nil
     def response
