@@ -29,8 +29,8 @@ reading to find out more.
 
 #### Ecosystem
 
-* [llm-shell](https://github.com/llmrb/llm-shell) &ndash; is a developer-oriented console for Large Language Model communication
-* [llm-spell](https://github.com/llmrb/llm-spell) &ndash; is a utility that can correct spelling mistakes with a Large Language Model
+* [llm-shell](https://github.com/llmrb/llm-shell) &ndash; a developer-oriented console for Large Language Model communication
+* [llm-spell](https://github.com/llmrb/llm-spell) &ndash; a utility that can correct spelling mistakes with a Large Language Model
 
 ## Features
 
