@@ -134,19 +134,19 @@ class LLM::Function
 
   ##
   # @return [Hash]
-  def format(provider, context = nil)
+  def format(provider)
     case provider.class.to_s
     when "LLM::Gemini"
       {name: @name, description: @description, parameters: @params}.compact
     when "LLM::Anthropic"
       {name: @name, description: @description, input_schema: @params}.compact
     else
-      format_openai(provider, context)
+      format_openai(provider)
     end
   end
 
-  def format_openai(provider, context)
-    case context.class.to_s
+  def format_openai(provider)
+    case provider.class.to_s
     when "LLM::OpenAI::Responses"
       {
         type: "function", name: @name, description: @description,

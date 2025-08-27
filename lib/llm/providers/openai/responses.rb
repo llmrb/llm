@@ -36,7 +36,7 @@ class LLM::OpenAI
     # @return [LLM::Response]
     def create(prompt, params = {})
       params = {role: :user, model: @provider.default_model}.merge!(params)
-      params = [params, format_schema(params), format_tools(params, self)].inject({}, &:merge!).compact
+      params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
       role = params.delete(:role)
       req = Net::HTTP::Post.new("/v1/responses", headers)
       messages = [*(params.delete(:input) || []), LLM::Message.new(role, prompt)]
@@ -75,9 +75,7 @@ class LLM::OpenAI
 
     private
 
-    [:headers, :execute,
-     :set_body_stream, :format_schema,
-     :format_tools].each do |m|
+    [:headers, :execute, :set_body_stream].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
 
