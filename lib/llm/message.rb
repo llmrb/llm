@@ -118,6 +118,13 @@ module LLM
     end
 
     ##
+    # @return [LLM::Response, nil]
+    #  Returns the response associated with the message, or nil
+    def response
+      extra[:response]
+    end
+
+    ##
     # Returns a string representation of the message
     # @return [String]
     def inspect
