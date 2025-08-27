@@ -80,5 +80,13 @@ class LLM::OpenAI
      :format_tools].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
+
+    def format_schema(params)
+      return {} unless params && params[:schema]
+      schema = params.delete(:schema)
+      schema = schema.to_h.merge(additionalProperties: false)
+      name = "JSONSchema"
+      {text: {format: {type: "json_schema", name:, schema:}}}
+    end
   end
 end

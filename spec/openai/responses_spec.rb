@@ -48,4 +48,22 @@ RSpec.describe "LLM::OpenAI::Responses" do
       )
     end
   end
+
+  context "when given a json schema",
+          vcr: {cassette_name: "openai/responses/json_schema"} do
+    subject do
+      schema = provider.schema.object(answer: provider.schema.string.required)
+      provider.responses.create("What is the capital of France?", role: :user, schema:)
+    end
+
+    it "is successful" do
+      is_expected.to be_instance_of(LLM::Response)
+    end
+
+    it "has outputs" do
+      is_expected.to have_attributes(
+        outputs: [have_attributes(content: /Paris/)]
+      )
+    end
+  end
 end
