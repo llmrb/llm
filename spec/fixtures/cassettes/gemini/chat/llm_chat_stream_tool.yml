@@ -36,7 +36,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 25 Aug 2025 01:13:42 GMT
+      - Wed, 27 Aug 2025 19:39:40 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -46,19 +46,19 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=774
+      - gfet4t7; dur=879
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
       string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"functionCall\":
         {\"name\": \"system\",\"args\": {\"command\": \"date\"}},\"thoughtSignature\":
-        \"CikBVKhc7mHzcooMX6P3nSTf2fCbKGnbB9eZD28SJG4QMKQ++YeaN3N3jgpnAVSoXO5eIq88/14nukNRFZ2tXXe5u2vlYPh8HBPzvg4KhZFEZvFPXvaStej4B3AjvxNvQsKW6unAi89eplQLNukyb0mcvJcorPRg+/TbcwtAsmFRUFKL9hKTajiYova7wDzat4LCJQp7AVSoXO6y+EUzL8K3fG93FxsdjVmWmahNlxgtulzpatLK94F4gsObtkaK2uOwoTqU1s++Grn7Atk1LpYuRAiDSV9kpUaNSr92ImEpNgtbZ6HVoh5sD3q/xc4DP2htNI7ObN+qX1RKjJVKiqn5v+ihFMwMeDZHPg5eSRlI\"}],\"role\":
+        \"CiQBVKhc7g8Du7z2U6JytUiX9Esb4X27mX77YNS0e4V7CwtFqTkKXwFUqFzujNI4RhsoggqqdH/tcv08MnApMPI3Zf58sDhwLo4ICjcBPJfW4OIL+5dpgomm6ghqMnzENpZU91QVnSMBn2qaFc8/UVYXYc42PWqrgcLE7AvWPslZhNz5BMKrCq0BAVSoXO7AE3oBS9yDQ7mghSZvhzaBc7s4NH+Ly3batK/shlQyxYSm4djbT++QRGDx8uG86QabU64b82YlRJbS4mo2gU+LsfbC9PbnfSA1Nyr73psj+LiT000v4rmkZXjc5+Tfpp0gs9ow09KtNHzhZw2/Ahk7N+W3ONaTaiALWMLut71PMz182Zh4xrcSkIQog7XpPi/4oo3E1IHB7wyrlyHD3JOp8PT7BKZkFJc=\"}],\"role\":
         \"model\"},\"finishReason\": \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\":
-        53,\"candidatesTokenCount\": 13,\"totalTokenCount\": 109,\"promptTokensDetails\":
-        [{\"modality\": \"TEXT\",\"tokenCount\": 53}],\"thoughtsTokenCount\": 43},\"modelVersion\":
-        \"gemini-2.5-flash\",\"responseId\": \"xriraLOEKbinmtkP-4bsmQ0\"}\r\n\r\n"
-  recorded_at: Mon, 25 Aug 2025 01:12:54 GMT
+        53,\"candidatesTokenCount\": 13,\"totalTokenCount\": 120,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 53}],\"thoughtsTokenCount\": 54},\"modelVersion\":
+        \"gemini-2.5-flash\",\"responseId\": \"-16vaMT_LseFz7IPhrL1wQI\"}\r\n\r\n"
+  recorded_at: Wed, 27 Aug 2025 19:39:34 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse&key=TOKEN
@@ -95,7 +95,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Mon, 25 Aug 2025 01:13:44 GMT
+      - Wed, 27 Aug 2025 19:39:40 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -105,24 +105,26 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1034
+      - gfet4t7; dur=451
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
-      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"It\"}],\"role\":
-        \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
-        1,\"totalTokenCount\": 74,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"yLiraKD1B6iKqtsP9u23qA4\"}\r\n\r\ndata:
-        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \" seems like the
-        command was executed successfully, but I did not receive the output. Did the\"}],\"role\":
-        \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
-        19,\"totalTokenCount\": 92,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"yLiraKD1B6iKqtsP9u23qA4\"}\r\n\r\ndata:
-        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \" 'date' command
-        provide the current date and time?\"}],\"role\": \"model\"},\"finishReason\":
-        \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
-        30,\"totalTokenCount\": 103,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"yLiraKD1B6iKqtsP9u23qA4\"}\r\n\r\n"
-  recorded_at: Mon, 25 Aug 2025 01:12:56 GMT
+      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"What
+        do\"}],\"role\": \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\":
+        73,\"candidatesTokenCount\": 2,\"totalTokenCount\": 75,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\":
+        \"_F6vaJfZK6aez7IP3Mmh8Q4\"}\r\n\r\ndata: {\"candidates\": [{\"content\":
+        {\"parts\": [{\"text\": \" you mean by {\\\"success\\\":true}? I did not ask
+        for that in the\"}],\"role\": \"model\"},\"index\": 0}],\"usageMetadata\":
+        {\"promptTokenCount\": 73,\"candidatesTokenCount\": 18,\"totalTokenCount\":
+        91,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\": 73}]},\"modelVersion\":
+        \"gemini-2.5-flash\",\"responseId\": \"_F6vaJfZK6aez7IP3Mmh8Q4\"}\r\n\r\ndata:
+        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \" prompt. I asked
+        for the output of the 'date' command. I need to get the actual output of the
+        command in order to continue.\"}],\"role\": \"model\"},\"finishReason\": \"STOP\",\"index\":
+        0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
+        47,\"totalTokenCount\": 120,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"_F6vaJfZK6aez7IP3Mmh8Q4\"}\r\n\r\n"
+  recorded_at: Wed, 27 Aug 2025 19:39:35 GMT
 recorded_with: VCR 6.3.1

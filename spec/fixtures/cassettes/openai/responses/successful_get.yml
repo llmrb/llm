@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 01:11:47 GMT
+      - Wed, 27 Aug 2025 19:34:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,11 +39,11 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29973'
+      - '22875'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 54ms
+      - 14.249s
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
@@ -51,36 +51,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_075aeae4069067779e6ee773bd965193
+      - req_3863cc7f3383173e4645568d7f856ee1
       Openai-Processing-Ms:
-      - '742'
+      - '868'
       X-Envoy-Upstream-Service-Time:
-      - '747'
+      - '883'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=KpsvSvud8uNfgg611HmKuTwVmXIsK962xJN1NkohvRQ-1756084307-1.0.1.1-IRXjuWRGA2IgSefzLwLjUu537HKsCT5ooesZJya54MInSpw0iI_9nU12EGvgZJBBRVJ8kYNaZgcbn.tSV52U9oLar4aPdNAxU.7Ny4aV3Aw;
-        path=/; expires=Mon, 25-Aug-25 01:41:47 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=_Zuxf3m4kvJHXgdz86m2nL9V3UL5yVHRilVgMD7.15g-1756323269-1.0.1.1-8jEfS8GIJ.pFvfj8BGEk1JZX3SVyolDaDPQ9UQWQzmIUht8RYTcQzjPnGORMc1irqT9XyoZgx9yGCfkFvAgLSRt2zPZ53TwzD_xewQdXo8Y;
+        path=/; expires=Wed, 27-Aug-25 20:04:29 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=IWslK8PmNf2sld9qXnHYN3BKJhej14Hr4mI8lsoSutQ-1756084307510-0.0.1.1-604800000;
+      - _cfuvid=jzAMyNndj2.zkKrpR0GHMTThOpoQVTxYH9fD3hTbUaQ-1756323269762-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 974737a27be5f20f-GRU
+      - 975e01ac1dd9028b-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68abb852b2c08195aac356aa38c02f8107dbd7772cce7882",
+          "id": "resp_68af5dc4d2048195b9a8b017586c712204e5f6c1e2492389",
           "object": "response",
-          "created_at": 1756084306,
+          "created_at": 1756323268,
           "status": "completed",
           "background": false,
           "error": null,
@@ -91,7 +91,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_68abb85338cc81959d3b8ee32184615907dbd7772cce7882",
+              "id": "msg_68af5dc567488195a4000c96b0f2167904e5f6c1e2492389",
               "type": "message",
               "status": "completed",
               "content": [
@@ -141,10 +141,10 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Mon, 25 Aug 2025 01:10:58 GMT
+  recorded_at: Wed, 27 Aug 2025 19:34:23 GMT
 - request:
     method: get
-    uri: https://api.openai.com/v1/responses/resp_68abb852b2c08195aac356aa38c02f8107dbd7772cce7882
+    uri: https://api.openai.com/v1/responses/resp_68af5dc4d2048195b9a8b017586c712204e5f6c1e2492389
     body:
       encoding: US-ASCII
       string: ''
@@ -165,7 +165,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 01:11:47 GMT
+      - Wed, 27 Aug 2025 19:34:30 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -179,36 +179,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_76ce92e9164421a4fe7d291cba4a840d
+      - req_40a201e2074c5ca3f7c31137e99446d5
       Openai-Processing-Ms:
-      - '190'
+      - '106'
       X-Envoy-Upstream-Service-Time:
-      - '194'
+      - '109'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=meKsb5bV7YGr3s1YMhUBRq7oNa03o6zHultDxewNZPM-1756084307-1.0.1.1-rj.PL0nwrgpXgjlcL39il65ed4C4JFRuJBxo7ffzsNPdVDXEwMi_4pAlqfxopEQ3CUSruXL.Wd9KGIU_4yfnkEn74QGoPM3w1VW1ATsxbc4;
-        path=/; expires=Mon, 25-Aug-25 01:41:47 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=3M7aoqwUcehhavZ5M61m8ulkiTS_AVEXE3H8hvq0RqY-1756323270-1.0.1.1-JcyrPpWbgki4mz7C3p2KTNjtXFfHV4XdfmTMVLWpIUbybfbKetq3L5CNqqWyvOaq4XHvz6Pkw_zr68ujBIanJE1mLe5QbUu7WwSr6nlsX4E;
+        path=/; expires=Wed, 27-Aug-25 20:04:30 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=h2XGHwI.emYK8jmsldEsR816Elaybeel2coyK93trzY-1756084307948-0.0.1.1-604800000;
+      - _cfuvid=ooEykLYHWmGe2nfFjO7nA1xpt4sAelXSR8n6HyLdaGY-1756323270844-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 974737aa4dfda469-GRU
+      - 975e01b4be9efd60-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68abb852b2c08195aac356aa38c02f8107dbd7772cce7882",
+          "id": "resp_68af5dc4d2048195b9a8b017586c712204e5f6c1e2492389",
           "object": "response",
-          "created_at": 1756084306,
+          "created_at": 1756323268,
           "status": "completed",
           "background": false,
           "error": null,
@@ -219,7 +219,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_68abb85338cc81959d3b8ee32184615907dbd7772cce7882",
+              "id": "msg_68af5dc567488195a4000c96b0f2167904e5f6c1e2492389",
               "type": "message",
               "status": "completed",
               "content": [
@@ -269,5 +269,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Mon, 25 Aug 2025 01:10:59 GMT
+  recorded_at: Wed, 27 Aug 2025 19:34:24 GMT
 recorded_with: VCR 6.3.1

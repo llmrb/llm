@@ -34,7 +34,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Aug 2025 01:11:53 GMT
+      - Wed, 27 Aug 2025 19:33:10 GMT
       Content-Type:
       - text/event-stream; charset=utf-8
       Transfer-Encoding:
@@ -42,7 +42,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 974737c9d981572a-GRU
+      - 975dffbbfbc5af0e-GRU
       Cache-Control:
       - no-cache
       Anthropic-Ratelimit-Input-Tokens-Limit:
@@ -50,33 +50,33 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-25T01:11:52Z'
+      - '2025-08-27T19:33:09Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-25T01:11:52Z'
+      - '2025-08-27T19:33:09Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-25T01:11:53Z'
+      - '2025-08-27T19:33:10Z'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-25T01:11:52Z'
+      - '2025-08-27T19:33:09Z'
       Request-Id:
-      - req_011CSTYBvzRPUx5ucTNieMe2
+      - req_011CSYmnYfG83imLF3evPbsd
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '1063'
+      - '1428'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -89,32 +89,23 @@ http_interactions:
       encoding: UTF-8
       string: |+
         event: message_start
-        data: {"type":"message_start","message":{"id":"msg_011p2mt3MheRBdH4PqaaK3cM","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":1,"service_tier":"standard"}}         }
+        data: {"type":"message_start","message":{"id":"msg_01MFB11JFKnrZCW5JJJhKgJ6","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":1,"service_tier":"standard"}}  }
 
         event: content_block_start
         data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}           }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"5\n10\n12"}       }
-
-        event: ping
-        data: {"type": "ping"}
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"5\n10\n12"}   }
 
         event: content_block_stop
-        data: {"type":"content_block_stop","index":0        }
-
-        event: ping
-        data: {"type": "ping"}
-
-        event: ping
-        data: {"type": "ping"}
+        data: {"type":"content_block_stop","index":0          }
 
         event: message_delta
-        data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":9}   }
+        data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":9}        }
 
         event: message_stop
-        data: {"type":"message_stop"        }
+        data: {"type":"message_stop"               }
 
-  recorded_at: Mon, 25 Aug 2025 01:11:05 GMT
+  recorded_at: Wed, 27 Aug 2025 19:33:05 GMT
 recorded_with: VCR 6.3.1
 ...

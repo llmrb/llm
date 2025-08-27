@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 25 Aug 2025 01:13:52 GMT
+      - Wed, 27 Aug 2025 19:39:46 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1840
+      - gfet4t7; dur=1076
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -62,7 +62,7 @@ http_interactions:
                         "command": "date"
                       }
                     },
-                    "thoughtSignature": "CuICAVSoXO5OrNZVTg7vQHZxSAJsiSCzWbL8OS0sqSM+zFYJJJXPOhv2vwyZCnUlsKfqV4K1oj3CdpEigsp84HXO1nEQFyHHvThGsovyzp6yeo/u75Lwaxlk1EhBlQxN59Z+HzPXiWhwFoN5FBson1Nqa/AQBXD3+Naql4aC/fGHp2//DqkgjXewObuzm98+anrMsOw0z2KWgjIrOCTBPrar45K6VwKx6KOtU+5kicycIZZmrz60M9OUQcqIB43fd5iYSgd26xPEV4wLYjNELkLPG/pghrzu76BaJ2vSR/1KGg/XI6fWUxVhupV/JXigzAhqohQu8Kug/q6beGQwL+mp6kFsJ4oEB2jL7Z1CCbLVaoGJKq8NbJi2h1J6kbW3glLMwM+xrhPhMvY3nd4aCPOZrNVf3iaHDVZkXXpsJwCXswxMok0qjJp8KtK0iWsyOGs2JO897KoGjoZnTAhedFl4vhEV"
+                    "thoughtSignature": "CqoCAVSoXO4runp+066QRINhjF1BhEkoept1yUX5H3aHivPl6BYL3xaUCrV0G9vWQkzeVPE8DxtBDCX6aOJTzDUnx1VSEi/WPwkSKW0tbJTESWVF5BX13cft/S+GkNTe1NAIAamvkiNqAVaCIdX8S/esR9KkEGwUHPY3jxI05quYbafaY1881bRpAIcMig7qn6vD2LuBryEzrft7wBf+ceKbUERMRBvek4EdqnzUnuVborDpg1cOU/o3Rqbj+aGQb/V5vZE+xHd9X0DPWaRM2Dz+OB2DU7kw+PDCfld8V0hAOhr3S4wwZ4hHJJKppANVMPNiGmgHIIzNITLUHijNWNOu69lWjeP/FuO++mILzxSMyZ63FR2ySuedB1g8QST+b6oO9TBKikwpDOxQrA=="
                   },
                   {
                     "functionCall": {
@@ -90,19 +90,19 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 67,
             "candidatesTokenCount": 40,
-            "totalTokenCount": 189,
+            "totalTokenCount": 178,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 67
               }
             ],
-            "thoughtsTokenCount": 82
+            "thoughtsTokenCount": 71
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "0LiraI3OGeHg8QGt9o3BBg"
+          "responseId": "Al-vaKHsHvXmqtsPw5SlmA4"
         }
-  recorded_at: Mon, 25 Aug 2025 01:13:03 GMT
+  recorded_at: Wed, 27 Aug 2025 19:39:40 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
@@ -110,8 +110,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
         run UNIX commands"}]},{"role":"user","parts":[{"text":"Can you run the date
-        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}},{"functionCall":{"name":"system","args":{"command":"pwd"}}},{"functionCall":{"name":"system","args":{"command":"whoami"}}}]},{"role":"user","parts":[{"text":"{\"stderr\":\"\",\"stdout\":\"Mon
-        Aug 25 01:13:03 UTC 2025\\n\"}"},{"text":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"},{"text":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Run
+        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}},{"functionCall":{"name":"system","args":{"command":"pwd"}}},{"functionCall":{"name":"system","args":{"command":"whoami"}}}]},{"role":"user","parts":[{"text":"{\"stderr\":\"\",\"stdout\":\"Wed
+        Aug 27 19:39:40 UTC 2025\\n\"}"},{"text":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"},{"text":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Run
         a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
     headers:
       Content-Type:
@@ -136,7 +136,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 25 Aug 2025 01:13:53 GMT
+      - Wed, 27 Aug 2025 19:39:47 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -146,7 +146,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=925
+      - gfet4t7; dur=976
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -160,7 +160,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "The date is Monday, August 25, 2025 at 01:13:03 UTC. Your current directory is `/home/developer/p/git.home.network/0x1eef/ruby/llm.rb` and you are logged in as `developer`."
+                    "text": "The date is Wed Aug 27 19:39:40 UTC 2025. Your current directory is /home/developer/p/git.home.network/0x1eef/ruby/llm.rb, and you are logged in as developer."
                   }
                 ],
                 "role": "model"
@@ -171,8 +171,8 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 179,
-            "candidatesTokenCount": 66,
-            "totalTokenCount": 245,
+            "candidatesTokenCount": 62,
+            "totalTokenCount": 241,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
@@ -181,7 +181,7 @@ http_interactions:
             ]
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "0biraL23HOS-qtsPnPbp8A4"
+          "responseId": "A1-vaI-bJNWCmtkPzouPqQI"
         }
-  recorded_at: Mon, 25 Aug 2025 01:13:04 GMT
+  recorded_at: Wed, 27 Aug 2025 19:39:41 GMT
 recorded_with: VCR 6.3.1

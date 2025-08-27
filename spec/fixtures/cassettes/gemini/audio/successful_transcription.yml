@@ -31,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Mon, 25 Aug 2025 01:16:20 GMT
+      - Wed, 27 Aug 2025 19:33:40 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1570
+      - gfet4t7; dur=1016
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,7 +61,7 @@ http_interactions:
                 "role": "model"
               },
               "finishReason": "STOP",
-              "avgLogprobs": -9.5504464115947482e-05
+              "avgLogprobs": -9.54565592110157e-05
             }
           ],
           "usageMetadata": {
@@ -70,12 +70,12 @@ http_interactions:
             "totalTokenCount": 57,
             "promptTokensDetails": [
               {
-                "modality": "TEXT",
-                "tokenCount": 22
-              },
-              {
                 "modality": "AUDIO",
                 "tokenCount": 25
+              },
+              {
+                "modality": "TEXT",
+                "tokenCount": 22
               }
             ],
             "candidatesTokensDetails": [
@@ -86,7 +86,7 @@ http_interactions:
             ]
           },
           "modelVersion": "gemini-1.5-flash",
-          "responseId": "Y7mraJixN9OIz7IPt_aXyA0"
+          "responseId": "lF2vaNaGE4zWz7IPxtGX4A4"
         }
-  recorded_at: Mon, 25 Aug 2025 01:15:31 GMT
+  recorded_at: Wed, 27 Aug 2025 19:33:35 GMT
 recorded_with: VCR 6.3.1
