@@ -155,7 +155,7 @@ class LLM::Function
     else
       {
         type: "function", name: @name,
-        function: { name: @name, description: @description, parameters: @params }
+        function: {name: @name, description: @description, parameters: @params}
       }.compact
     end
   end
