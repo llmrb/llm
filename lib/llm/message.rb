@@ -136,6 +136,24 @@ module LLM
       "content=#{content.inspect}>"
     end
 
+    ##
+    # @note
+    #  This method returns token usage for assistant messages,
+    #  and it returns an empty object for non-assistant messages
+    # Returns token usage statistics
+    # @return [LLM::Object]
+    def token_usage
+      if response
+        LLM::Object.from_hash({
+          input_tokens: response.prompt_tokens || 0,
+          output_tokens: response.completion_tokens || 0,
+          total_tokens: response.total_tokens || 0
+        })
+      else
+        LLM::Object.from_hash({})
+      end
+    end
+
     private
 
     def tool_calls
