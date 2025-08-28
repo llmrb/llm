@@ -143,7 +143,7 @@ module LLM
     # Returns token usage statistics
     # @return [LLM::Object]
     def token_usage
-      if response
+      @token_usage ||= if response
         LLM::Object.from_hash({
           input_tokens: response.prompt_tokens || 0,
           output_tokens: response.completion_tokens || 0,
