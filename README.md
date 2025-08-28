@@ -5,10 +5,6 @@ includes OpenAI, Gemini, Anthropic, xAI (grok), DeepSeek, Ollama, and
 LlamaCpp. The toolkit includes full support for chat, streaming, tool calling,
 audio, images, files, and structured outputs (JSON Schema).
 
-The library provides a common, uniform interface for all the providers and
-features it supports, in addition to provider-specific features as well. Keep
-reading to find out more.
-
 ## Quick start
 
 #### Demo
