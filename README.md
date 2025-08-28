@@ -524,12 +524,6 @@ over or doesn't cover at all. The API reference is available at
   a blog post that implements image editing with Gemini
 * [docs/](docs/) &ndash; the docs directory contains additional guides
 
-
-## See also
-
-* [llm-shell](https://github.com/llmrb/llm-shell) &ndash; a shell that uses llm.rb to
-  provide a command-line interface to LLMs.
-
 ## Install
 
 llm.rb can be installed via rubygems.org:
