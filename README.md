@@ -134,15 +134,14 @@ require "llm"
 llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
 url  = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
-msgs = bot.chat do |prompt|
-  prompt.system "Your task is to answer all user queries"
-  prompt.user ["Tell me about this URL", URI(url)]
-  prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
-  prompt.user "Are the URL and PDF similar to each other?"
-end
+
+bot.chat "Your task is to answer all user queries", role: :system
+bot.chat ["Tell me about this URL", URI(url)], role: :user
+bot.chat ["Tell me about this PDF", File.open("handbook.pdf", "rb")], role: :user
+bot.chat "Are the URL and PDF similar to each other?", role: :user
 
 # At this point, we execute a single request
-msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
+bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 #### Streaming

@@ -29,15 +29,14 @@ require "llm"
 llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
 url  = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
-msgs = bot.respond do |prompt|
-  prompt.developer "Your task is to answer all user queries"
-  prompt.user ["Tell me about this URL", URI(url)]
-  prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
-  prompt.user "Are the URL and PDF similar to each other?"
-end
+
+bot.respond "Your task is to answer all user queries", role: :developer
+bot.respond ["Tell me about this URL", URI(url)], role: :user
+bot.respond ["Tell me about this PDF", File.open("handbook.pdf", "rb")], role: :user
+bot.respond "Are the URL and PDF similar to each other?", role: :user
 
 # At this point, we execute a single request
-msgs.each { print "[#{_1.role}] ", _1.content, "\n" }
+bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 #### Moderations
