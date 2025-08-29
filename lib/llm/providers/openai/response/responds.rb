@@ -2,16 +2,22 @@
 
 module LLM::OpenAI::Response
   module Responds
+    def model = body.model
     def response_id = respond_to?(:response) ? response["id"] : id
-    def outputs = [format_message]
-    def choices = body.output
-    def tools = output.select { _1.type == "function_call" }
+    def choices = [format_message]
+
+    ##
+    # Returns the aggregated text content from the response outputs.
+    # @return [String]
+    def output_text
+      choices.find(&:assistant?).content || ""
+    end
 
     private
 
     def format_message
       message = LLM::Message.new("assistant", +"", {response: self, tool_calls: []})
-      choices.each.with_index do |choice, index|
+      output.each.with_index do |choice, index|
         if choice.type == "function_call"
           message.extra[:tool_calls] << format_tool(choice)
         elsif choice.content

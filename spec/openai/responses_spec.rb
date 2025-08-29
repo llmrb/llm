@@ -16,7 +16,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
     it "has outputs" do
       is_expected.to have_attributes(
-        outputs: [instance_of(LLM::Message)]
+        choices: [instance_of(LLM::Message)]
       )
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
     it "has outputs" do
       is_expected.to have_attributes(
-        outputs: [instance_of(LLM::Message)]
+        choices: [instance_of(LLM::Message)]
       )
     end
   end
@@ -62,7 +62,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
     it "has outputs" do
       is_expected.to have_attributes(
-        outputs: [have_attributes(content: /Paris/)]
+        choices: [have_attributes(content: /Paris/)]
       )
     end
   end
@@ -109,7 +109,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
     it "has outputs" do
       is_expected.to have_attributes(
-        outputs: [have_attributes(content: include("relativity"))]
+        choices: [have_attributes(content: include("relativity"))]
       )
     end
 
