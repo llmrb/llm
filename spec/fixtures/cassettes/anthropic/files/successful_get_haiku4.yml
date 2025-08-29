@@ -5,13 +5,13 @@ http_interactions:
     uri: https://api.anthropic.com/v1/files
     body:
       encoding: ASCII-8BIT
-      string: "--BOUNDARY__b06a053558a02a3167982c41ca7e1b39\r\nContent-Disposition:
+      string: "--BOUNDARY__4c5f19941ba410b6952045c081963f93\r\nContent-Disposition:
         form-data; name=\"file\";filename=\"haiku4.txt\"\r\nContent-Type: text/plain\r\n\r\nCold
         wind through the trees\nLeaves fall in a silent dance\nGray skies stretch
-        above\n\r\n--BOUNDARY__b06a053558a02a3167982c41ca7e1b39--\r\n"
+        above\n\r\n--BOUNDARY__4c5f19941ba410b6952045c081963f93--\r\n"
     headers:
       Content-Type:
-      - multipart/form-data; boundary=BOUNDARY__b06a053558a02a3167982c41ca7e1b39
+      - multipart/form-data; boundary=BOUNDARY__4c5f19941ba410b6952045c081963f93
       X-Api-Key:
       - TOKEN
       Anthropic-Version:
@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:39:12 GMT
+      - Fri, 29 Aug 2025 16:48:18 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,13 +40,13 @@ http_interactions:
       Connection:
       - keep-alive
       Request-Id:
-      - req_011CSYnFGdbnn3c7JJtqLGUB
+      - req_011CScLqF1obTSZkU4UPqQuG
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '285'
+      - '294'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -56,14 +56,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e0895cee5a44b-GRU
+      - 976d88feee89a426-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"type":"file","id":"file_011CSYnFGo2xqCTibZDgbkS5","size_bytes":83,"created_at":"2025-08-27T19:39:11.766000Z","filename":"haiku4.txt","mime_type":"text/plain","downloadable":false}'
-  recorded_at: Wed, 27 Aug 2025 19:39:06 GMT
+      string: '{"type":"file","id":"file_011CScLqFBjKetAomAwBfjqq","size_bytes":83,"created_at":"2025-08-29T16:48:17.866000Z","filename":"haiku4.txt","mime_type":"text/plain","downloadable":false}'
+  recorded_at: Fri, 29 Aug 2025 16:48:07 GMT
 - request:
     method: get
-    uri: https://api.anthropic.com/v1/files/file_011CSYnFGo2xqCTibZDgbkS5
+    uri: https://api.anthropic.com/v1/files/file_011CScLqFBjKetAomAwBfjqq
     body:
       encoding: US-ASCII
       string: ''
@@ -88,7 +88,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:39:12 GMT
+      - Fri, 29 Aug 2025 16:48:18 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -96,13 +96,13 @@ http_interactions:
       Connection:
       - keep-alive
       Request-Id:
-      - req_011CSYnFKGcDMsd2Qwr3SAEJ
+      - req_011CScLqHYMeTSz1D4igjUZV
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '77'
+      - '148'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -112,14 +112,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e08997a65a496-GRU
+      - 976d89029827f204-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"type":"file","id":"file_011CSYnFGo2xqCTibZDgbkS5","size_bytes":83,"created_at":"2025-08-27T19:39:11.766000Z","filename":"haiku4.txt","mime_type":"text/plain","downloadable":false}'
-  recorded_at: Wed, 27 Aug 2025 19:39:06 GMT
+      string: '{"type":"file","id":"file_011CScLqFBjKetAomAwBfjqq","size_bytes":83,"created_at":"2025-08-29T16:48:17.866000Z","filename":"haiku4.txt","mime_type":"text/plain","downloadable":false}'
+  recorded_at: Fri, 29 Aug 2025 16:48:08 GMT
 - request:
     method: delete
-    uri: https://api.anthropic.com/v1/files/file_011CSYnFGo2xqCTibZDgbkS5
+    uri: https://api.anthropic.com/v1/files/file_011CScLqFBjKetAomAwBfjqq
     body:
       encoding: US-ASCII
       string: ''
@@ -144,7 +144,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:39:13 GMT
+      - Fri, 29 Aug 2025 16:48:19 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -152,13 +152,13 @@ http_interactions:
       Connection:
       - keep-alive
       Request-Id:
-      - req_011CSYnFLuaMizJL2wxwrMMH
+      - req_011CScLqKUwDVamFTk4tA29h
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '284'
+      - '310'
       Via:
       - 1.1 google
       Cf-Cache-Status:
@@ -168,9 +168,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e089c0be6a4c2-GRU
+      - 976d89057e4aa4cb-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"file_011CSYnFGo2xqCTibZDgbkS5","type":"file_deleted"}'
-  recorded_at: Wed, 27 Aug 2025 19:39:07 GMT
+      string: '{"id":"file_011CScLqFBjKetAomAwBfjqq","type":"file_deleted"}'
+  recorded_at: Fri, 29 Aug 2025 16:48:08 GMT
 recorded_with: VCR 6.3.1

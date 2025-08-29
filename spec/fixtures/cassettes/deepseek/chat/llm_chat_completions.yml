@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:34:39 GMT
+      - Fri, 29 Aug 2025 16:52:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,7 +41,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 70c3c11a52cd2e177d1ecb16ca8d3254
+      - 9487ce2291aa65a2f1d84be2446fbe45
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -49,15 +49,15 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=9bfmULWNr3jJVsFSqmer9amCBnPF7G1e09cjXDJVSpQ-1756323279-1.0.1.1-pcXbNevZwrp4Pp5lYmhYlVGHPEEfUvFY5t0gB8NZnOQ48RW5fA1c60330gZM_iKluNMvc2FlfbuzymR0dcG8UE.YTMwnTcDnYO5t2HYxQb4;
-        path=/; expires=Wed, 27-Aug-25 20:04:39 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=5O.Ui4Sf8_Tx5VTPg.O7wHW4JUxJNHzpV_ElWypd1RQ-1756486347-1.0.1.1-FCg1o5s0XFLGbcsH0z5ew8mNCwODfmShvrTSlQfMvTYDpOlNu5ZJlpVyRUk846GPytEJoAHU0J0de5eO7C0Q6kW97SbNG0Q_2N8XCiJJNsI;
+        path=/; expires=Fri, 29-Aug-25 17:22:27 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e01ee3aa9af8f-GRU
+      - 976d8f1328461b29-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"1410a8b6-6e71-42b8-bc0c-7537be761842","object":"chat.completion","created":1756323279,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"5\n10\n12"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":62,"completion_tokens":5,"total_tokens":67,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":62},"system_fingerprint":"fp_feb633d1f5_prod0820_fp8_kvcache"}'
-  recorded_at: Wed, 27 Aug 2025 19:34:36 GMT
+      string: '{"id":"96990eac-72a1-4905-928b-bfacd6155f7a","object":"chat.completion","created":1756486346,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"5\n10\n12"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":62,"completion_tokens":5,"total_tokens":67,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":62},"system_fingerprint":"fp_feb633d1f5_prod0820_fp8_kvcache"}'
+  recorded_at: Fri, 29 Aug 2025 16:52:19 GMT
 recorded_with: VCR 6.3.1

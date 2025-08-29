@@ -5,13 +5,13 @@ http_interactions:
     uri: https://api.openai.com/v1/files
     body:
       encoding: ASCII-8BIT
-      string: "--BOUNDARY__52956166727cf3906f45a3bce2954e1b\r\nContent-Disposition:
+      string: "--BOUNDARY__6552294e29821b49bf88285485e942af\r\nContent-Disposition:
         form-data; name=\"file\";filename=\"haiku3.txt\"\r\nContent-Type: text/plain\r\n\r\nMoonlight
-        on the waves,\na lone heron takes to flight --\nnight exhales gently.\n\r\n--BOUNDARY__52956166727cf3906f45a3bce2954e1b\r\nContent-Disposition:
-        form-data; name=\"purpose\"\r\n\r\nassistants\r\n--BOUNDARY__52956166727cf3906f45a3bce2954e1b--\r\n"
+        on the waves,\na lone heron takes to flight --\nnight exhales gently.\n\r\n--BOUNDARY__6552294e29821b49bf88285485e942af\r\nContent-Disposition:
+        form-data; name=\"purpose\"\r\n\r\nassistants\r\n--BOUNDARY__6552294e29821b49bf88285485e942af--\r\n"
     headers:
       Content-Type:
-      - multipart/form-data; boundary=BOUNDARY__52956166727cf3906f45a3bce2954e1b
+      - multipart/form-data; boundary=BOUNDARY__6552294e29821b49bf88285485e942af
       Authorization:
       - Bearer TOKEN
       Accept-Encoding:
@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:36:18 GMT
+      - Fri, 29 Aug 2025 16:50:25 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -36,9 +36,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Request-Id:
-      - req_a53c4c853b6db0c5b8217f1d111a78eb
+      - req_8086adecfb253b385b201791df8ad0d2
       Openai-Processing-Ms:
-      - '3607'
+      - '548'
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
@@ -48,23 +48,23 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Envoy-Upstream-Service-Time:
-      - '4436'
+      - '610'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=MAITyU8ZZYIOBUTb5SWNdRMez5OhIzwntjLYd19Pk9w-1756323378-1.0.1.1-WUBOhFT4g59gHS7uwzXftGcQ9WEsNeP9bNPAkloCoUHnWyy8gircJxV1Vw0vgCi3MsaNzzAW7u82hC60IZ36f0zQsi89wxLYMn_60S15tls;
-        path=/; expires=Wed, 27-Aug-25 20:06:18 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Nx9lgXgYB8wsaPB4lW0vyUhVpT_rbwRN_f3_24dJXg0-1756486225-1.0.1.1-tkMLU4NVNb4.7AhSbCC8IlLEVcERReshdf0EpqLzRpwzR7.m1LnvaY_Sn.3h2d5VBIssEhksIOshFNdCq.Yv7Pmm.H1apofskfPGr26YdBU;
+        path=/; expires=Fri, 29-Aug-25 17:20:25 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Hy6gQ9NQrmqWe17XqM07TBKLyIU4iRUhtO.DFTYRp98-1756323378397-0.0.1.1-604800000;
+      - _cfuvid=IEUG9XkiGrGQIGhfvLsKFHPdLPpojzLDV11jKRjFNI0-1756486225638-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e043cffb977c0-GRU
+      - 976d8c194b2b77c4-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -72,19 +72,19 @@ http_interactions:
       string: |
         {
           "object": "file",
-          "id": "file-DhMTAG7RFEYGBQYAvDTHAY",
+          "id": "file-S4NqvcnH1DK2xkAqKKJdYS",
           "purpose": "assistants",
           "filename": "haiku3.txt",
           "bytes": 78,
-          "created_at": 1756323374,
+          "created_at": 1756486225,
           "expires_at": null,
           "status": "processed",
           "status_details": null
         }
-  recorded_at: Wed, 27 Aug 2025 19:36:12 GMT
+  recorded_at: Fri, 29 Aug 2025 16:50:15 GMT
 - request:
     method: delete
-    uri: https://api.openai.com/v1/files/file-DhMTAG7RFEYGBQYAvDTHAY
+    uri: https://api.openai.com/v1/files/file-S4NqvcnH1DK2xkAqKKJdYS
     body:
       encoding: US-ASCII
       string: ''
@@ -105,7 +105,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:36:19 GMT
+      - Fri, 29 Aug 2025 16:50:26 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -113,9 +113,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Request-Id:
-      - req_0507ab4df1a3b2feb095d2191bbb83bb
+      - req_ac522326d0bc9767b63abc186dd4ab2c
       Openai-Processing-Ms:
-      - '378'
+      - '354'
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
@@ -125,23 +125,23 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Envoy-Upstream-Service-Time:
-      - '750'
+      - '363'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=1fCvfTTBgxeavVQGUCpuf43nRR_T67ZYVDi0pn4r2iY-1756323379-1.0.1.1-EQtX8uc_CkkUjf6HFAVd6Zfpu7JAjd9LxfjK6oVnO2V3Cme13HCgmmtVBObMP_5rd5ID6VgQ7f_OTKs8W9INX1DDNNg_EEbU9GB723j_gnE;
-        path=/; expires=Wed, 27-Aug-25 20:06:19 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=UXjeQhoTaBEGP4rJ2tds5vTleLDpOG1ebxsFzsemySc-1756486226-1.0.1.1-6BkGHfzstOtk1gL8p8UU23VZb7dLA0tREYjKw4LZp9wWOWnpByUDSKVRsWo20YnbgwyIdARVuYn0HV5quAHw9SSeQDPuPVJuxiwcVV.YTM8;
+        path=/; expires=Fri, 29-Aug-25 17:20:26 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Azqa07AqTmHAtPaCSx_q4iQ31tkqnObUY_dWPefg7dI-1756323379444-0.0.1.1-604800000;
+      - _cfuvid=N3lz.nKu3at5xNvW09Gnro2yBsj6Z4jFOzF7wH7NPG8-1756486226301-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e045bbce3a18b-GRU
+      - 976d8c1ee99700c5-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -150,7 +150,7 @@ http_interactions:
         {
           "object": "file",
           "deleted": true,
-          "id": "file-DhMTAG7RFEYGBQYAvDTHAY"
+          "id": "file-S4NqvcnH1DK2xkAqKKJdYS"
         }
-  recorded_at: Wed, 27 Aug 2025 19:36:13 GMT
+  recorded_at: Fri, 29 Aug 2025 16:50:15 GMT
 recorded_with: VCR 6.3.1

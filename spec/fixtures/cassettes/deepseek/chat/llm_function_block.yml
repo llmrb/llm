@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:35:00 GMT
+      - Fri, 29 Aug 2025 16:52:43 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 07ee2605d1a9a53afaf2d77f89f6b7af
+      - 24b64d922f8e3a5dc2b29fc35b68d10e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -47,27 +47,27 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=78FcReg8Lum6507eQeU7hcHDgCuoPQCyBNroFUHoDBU-1756323300-1.0.1.1-ilyn40JOtIbkxESRDnYmBStSVfyl5AUlMMGGOcvGvrcWxdd.lgg4zgfcw1H8xQpSFr.a0_fNQnD6_m8TQrSsOYbmdgVj2TVydYr3Mv_uKJE;
-        path=/; expires=Wed, 27-Aug-25 20:05:00 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=zOeCVTJfzIqV2weyHYFT4zTgSY7C8TVBGel91tKTKp4-1756486363-1.0.1.1-UXqIBJP9tVI433t10YLKjh8aS0J3KRN8TBKjq9zLhy.zqUSSXW.8u01hR7mKZNWR4GiLXoklRvONBNQDmy9CsssSd1SUa4SOhO9wxCgFAvI;
+        path=/; expires=Fri, 29-Aug-25 17:22:43 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e0273ae8d52ee-GRU
+      - 976d8f7c0f738828-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"32c28294-6f7a-4500-9530-3abd7128947b","object":"chat.completion","created":1756323300,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"I''ll
-        run the `date` command to get the current date and time.","tool_calls":[{"index":0,"id":"call_0_e5f44c47-7bd0-405a-94b3-689d7c147e8d","type":"function","function":{"name":"system","arguments":"{\"command\":
+      string: '{"id":"16402443-8e19-4908-824d-f580da33a94f","object":"chat.completion","created":1756486363,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"I''ll
+        check the current date for you by running the `date` command.","tool_calls":[{"index":0,"id":"call_0_ded1841a-abea-4cec-adfa-f67fa50fdc2c","type":"function","function":{"name":"system","arguments":"{\"command\":
         \"date\"}"}}]},"logprobs":null,"finish_reason":"tool_calls"}],"usage":{"prompt_tokens":156,"completion_tokens":28,"total_tokens":184,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":28},"system_fingerprint":"fp_feb633d1f5_prod0820_fp8_kvcache"}'
-  recorded_at: Wed, 27 Aug 2025 19:34:59 GMT
+  recorded_at: Fri, 29 Aug 2025 16:52:37 GMT
 - request:
     method: post
     uri: https://api.deepseek.com/v1/chat/completions
     body:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":"You are a bot that can run UNIX
-        commands"},{"role":"user","content":"What is the date?"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_e5f44c47-7bd0-405a-94b3-689d7c147e8d","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"date\"}"}}]},{"role":"tool","tool_call_id":"call_0_e5f44c47-7bd0-405a-94b3-689d7c147e8d","content":"{\"success\":\"2025-08-24\"}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        commands"},{"role":"user","content":"What is the date?"},{"role":"assistant","content":null,"tool_calls":[{"index":0,"id":"call_0_ded1841a-abea-4cec-adfa-f67fa50fdc2c","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"date\"}"}}]},{"role":"tool","tool_call_id":"call_0_ded1841a-abea-4cec-adfa-f67fa50fdc2c","content":"{\"success\":\"2025-08-24\"}"}],"model":"deepseek-chat","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
         system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -88,7 +88,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:35:05 GMT
+      - Fri, 29 Aug 2025 16:52:48 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -100,7 +100,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - a452f8138d503ea035e0d5eade9af81b
+      - ba2c737e9b2c324d9e200a8df6920680
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -108,16 +108,16 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=umBGLdzs5F25SjCiCJXHWVdDYtyva3z2QJntM2bRA4o-1756323305-1.0.1.1-C7adD.EqkbPdvanD0xqiLYTdc1v8m1kuvuvUGR8JdGdqw9LVS2iOCTDal6snenb2mCbpbfSz6OrCYkRNcpPBe02ztTb2YwNsV1enhf6U9Eg;
-        path=/; expires=Wed, 27-Aug-25 20:05:05 GMT; domain=.deepseek.com; HttpOnly;
+      - __cf_bm=4HH9xWXzvl5dOagHRkXxq2OOoXI7ERE6R65W4wUtcYI-1756486368-1.0.1.1-o2GM7yuInl1bq1PQGjpweEzAuE9mQV8A3Tn5Jvj8yKopZgLysaMFGDVpgavwGsbzRBPLN9QuPuIJ5lXp_1Ooaz4ugOYTXuiv4n36QLjmxZE;
+        path=/; expires=Fri, 29-Aug-25 17:22:48 GMT; domain=.deepseek.com; HttpOnly;
         Secure; SameSite=None
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e02912fde64a8-GIG
+      - 976d8f9899e26ead-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"3691af58-7e22-4f14-9860-d6ba8cd38b5e","object":"chat.completion","created":1756323305,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"The
+      string: '{"id":"0e2cb1b0-1624-4ed2-9e10-47a1f5ba3f95","object":"chat.completion","created":1756486368,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"The
         current date is August 24, 2025."},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":181,"completion_tokens":12,"total_tokens":193,"prompt_tokens_details":{"cached_tokens":128},"prompt_cache_hit_tokens":128,"prompt_cache_miss_tokens":53},"system_fingerprint":"fp_feb633d1f5_prod0820_fp8_kvcache"}'
-  recorded_at: Wed, 27 Aug 2025 19:35:03 GMT
+  recorded_at: Fri, 29 Aug 2025 16:52:41 GMT
 recorded_with: VCR 6.3.1

@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:35:40 GMT
+      - Fri, 29 Aug 2025 16:48:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -58,36 +58,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_868f485f900c39fad60ea051121f61e1
+      - req_6ab0a25b0e9e38cf5a45986c2a9ff21f
       Openai-Processing-Ms:
-      - '1605'
+      - '1063'
       X-Envoy-Upstream-Service-Time:
-      - '1611'
+      - '1068'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Vt.lfBp8rCiwDwu.r98JqDuWEQOk.KNEvLGGpJqamHA-1756323340-1.0.1.1-l0OHi3_CNv6H3wNRPi.9xUaav7jwmkirGy5km5_ASS9vXAW25Au6nsrVj2NI3ueZ4JAXgxwRVjP3WnmeNzYPWioc4Cc9wXGyTztf.B1_aCQ;
-        path=/; expires=Wed, 27-Aug-25 20:05:40 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=DVG3j4vJINeiO4j5lEar3egr2BMNfmVGkrM7YCufGWE-1756486088-1.0.1.1-5K6.p8bQY0zsX_DJqZtkfJ8yUwDFtE1_RGQsJ9jn0iRRQff3AYLT5AmCLFt.tba2YXr0Lt6tByTXAZwpHLDuifBX5tCkwsX5g40vrlsq_Y8;
+        path=/; expires=Fri, 29-Aug-25 17:18:08 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=vyyoKd6seSthFshJMe2ij31Idkzl1e7nS6AfbiE.d1I-1756323340136-0.0.1.1-604800000;
+      - _cfuvid=5VDoegXMM8_WWlmq1AE4xDwvp3ZPgtQ_cSPWhWYYn.Y-1756486088442-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e0360a81a9ddf-GRU
+      - 976d88bb29176ea4-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68af5e0a748c8193b41155d11d6f75a50451082720359b84",
+          "id": "resp_68b1d9c74f688197a37042fe8690c467071653f1d309a182",
           "object": "response",
-          "created_at": 1756323338,
+          "created_at": 1756486087,
           "status": "completed",
           "background": false,
           "error": null,
@@ -98,7 +98,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_68af5e0b127c819393dea1ccefe68ea00451082720359b84",
+              "id": "msg_68b1d9c7c3bc8197ac3c2e401a0c27e4071653f1d309a182",
               "type": "message",
               "status": "completed",
               "content": [
@@ -106,7 +106,7 @@ http_interactions:
                   "type": "output_text",
                   "annotations": [],
                   "logprobs": [],
-                  "text": "The answer to 5 + 15 is 20.\nThe answer to (5 + 15) * 2 is 40.\nThe answer to ((5 + 15) * 2) / 10 is 4."
+                  "text": "The answer to 5 + 15 is 20.\n\nThe answer to (5 + 15) * 2 is 40.\n\nThe answer to ((5 + 15) * 2) / 10 is 4."
                 }
               ],
               "role": "assistant"
@@ -148,5 +148,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Wed, 27 Aug 2025 19:35:34 GMT
+  recorded_at: Fri, 29 Aug 2025 16:47:57 GMT
 recorded_with: VCR 6.3.1

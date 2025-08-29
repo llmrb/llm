@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Aug 2025 19:35:35 GMT
+      - Fri, 29 Aug 2025 16:53:19 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,25 +33,25 @@ http_interactions:
       Openai-Version:
       - '2020-10-01'
       X-Request-Id:
-      - 779021ec98a0985e1eea2a4a72f53709
+      - bd3cfcb0e4c832e7210b41dd016a0982
       Openai-Processing-Ms:
-      - '306'
+      - '468'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=X2AC4BkHReOSAAYf_u7u_xVmeCWqcnYVt9Xj0Xf1dg4-1756323335-1.0.1.1-gPkZpL0Dlysi421TGOXLc1gepo6wNho5asQBxbGBcuG_nCBQ_h6arrpU0frOlVdJct5Vwn6bKz7ArulS3.ql2inlJqjnVdC5QKoLdHDxL5I;
-        path=/; expires=Wed, 27-Aug-25 20:05:35 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=zo.gBcRH2VGOlxqZNa1jXBzltnfpzE.n3sLavOZqAew-1756486399-1.0.1.1-u80wOZVNJtoz8eliIFwHJGbe8EHOJ6LymlMtbtVJxKmMU7TGo_PeWP43097dZZABQUn3uAFKElXrXJV2lh9u5rvm2vm6RiQpUEfRQcCBepY;
+        path=/; expires=Fri, 29-Aug-25 17:23:19 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=hw_6DyXc7BifI1LSvKgkFQQ_h6xCM_DbKvGLtDUb4OE-1756323335936-0.0.1.1-604800000;
+      - _cfuvid=iHU0NnfYaOMllIWAyNbvB5.yjSLY_GWTFL8KQFPr7qQ-1756486399977-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 975e034e990cd985-GRU
+      - 976d90573b0757e6-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -79,33 +79,33 @@ http_interactions:
               "owned_by": "openai"
             },
             {
+              "id": "gpt-audio",
+              "object": "model",
+              "created": 1756339249,
+              "owned_by": "system"
+            },
+            {
               "id": "gpt-5-nano",
               "object": "model",
               "created": 1754426384,
               "owned_by": "system"
             },
             {
-              "id": "gpt-5",
+              "id": "gpt-audio-2025-08-28",
               "object": "model",
-              "created": 1754425777,
+              "created": 1756256146,
               "owned_by": "system"
             },
             {
-              "id": "gpt-5-mini-2025-08-07",
+              "id": "gpt-realtime",
               "object": "model",
-              "created": 1754425867,
+              "created": 1756271701,
               "owned_by": "system"
             },
             {
-              "id": "gpt-5-mini",
+              "id": "gpt-realtime-2025-08-28",
               "object": "model",
-              "created": 1754425928,
-              "owned_by": "system"
-            },
-            {
-              "id": "gpt-5-nano-2025-08-07",
-              "object": "model",
-              "created": 1754426303,
+              "created": 1756271773,
               "owned_by": "system"
             },
             {
@@ -529,6 +529,30 @@ http_interactions:
               "owned_by": "system"
             },
             {
+              "id": "gpt-5",
+              "object": "model",
+              "created": 1754425777,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-mini-2025-08-07",
+              "object": "model",
+              "created": 1754425867,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-mini",
+              "object": "model",
+              "created": 1754425928,
+              "owned_by": "system"
+            },
+            {
+              "id": "gpt-5-nano-2025-08-07",
+              "object": "model",
+              "created": 1754426303,
+              "owned_by": "system"
+            },
+            {
               "id": "gpt-3.5-turbo-16k",
               "object": "model",
               "created": 1683758102,
@@ -554,5 +578,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Wed, 27 Aug 2025 19:35:30 GMT
+  recorded_at: Fri, 29 Aug 2025 16:53:09 GMT
 recorded_with: VCR 6.3.1
