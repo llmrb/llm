@@ -147,7 +147,7 @@ RSpec.describe "LLM::OpenAI::Responses" do
 
     context "with the contents of the message" do
       subject { bot.messages.find(&:assistant?) }
-      it { is_expected.to have_attributes(role: %r_(assistant|model)_, content: %r_5\s*\n10\s*\n12\s*_ ) }
+      it { is_expected.to have_attributes(role: %r_(assistant|model)_, content: %r_5\s*\n10\s*\n12\s*_) }
     end
   end
 
