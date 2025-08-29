@@ -69,7 +69,7 @@ class LLM::Gemini
       req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       image = LLM.File(image)
       body  = JSON.dump({
-        contents: [{parts: [{text: prompt}, format.format_content(image)]}],
+        contents: [{parts: [{text: system_prompt}, {text: prompt}, format.format_content(image)]}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
       }.merge!(params)).b
       set_body_stream(req, StringIO.new(body))
@@ -96,10 +96,14 @@ class LLM::Gemini
 
     def system_prompt
       <<~PROMPT
-        Your task is to generate one or more image(s) from
-        text I will provide to you. Your response *MUST* include
-        at least one image, and your response *MUST NOT* include
-        any text or other content.
+        ## Context
+        Your task is to generate one or more image(s).
+        The user will provide you with text, and/or image(s).
+
+        ## Instructions
+        1. The model *MUST* generate image(s) based on the input(s).
+        2. The model *MUST* generate image(s).
+        3. The model *MUST NOT* generate anything else.
       PROMPT
     end
 
