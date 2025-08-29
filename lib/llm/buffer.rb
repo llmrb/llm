@@ -135,7 +135,7 @@ module LLM
       params = [
         *oldparams,
         params.merge(input: messages),
-        @response ? {previous_response_id: @response.id} : {}
+        @response ? {previous_response_id: @response.response_id} : {}
       ].inject({}, &:merge!)
       @response = @provider.responses.create(message.content, params.merge(role:))
       @completed.concat([*pendings, message, *@response.outputs[0]])

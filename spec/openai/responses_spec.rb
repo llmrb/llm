@@ -118,4 +118,60 @@ RSpec.describe "LLM::OpenAI::Responses" do
       expect(stream.string).to include("relativity")
     end
   end
+
+  context "when given a chat bot and an IO stream for responses",
+          vcr: {cassette_name: "openai/responses/bot_text_stream"} do
+    let(:params) { {stream:} }
+    let(:stream) { StringIO.new }
+    let(:bot) { LLM::Bot.new(provider, params) }
+    let(:system_prompt) do
+      "Keep your answers short and concise, and provide three answers to the three questions. " \
+      "There should be one answer per line. " \
+      "An answer should be a number, for example: 5. " \
+      "Nothing else"
+    end
+
+    before do
+      bot.respond do |prompt|
+        prompt.user system_prompt
+        prompt.user "What is 3+2 ?"
+        prompt.user "What is 5+5 ?"
+        prompt.user "What is 5+7 ?"
+      end.to_a
+    end
+
+    context "with the contents of the IO" do
+      subject { stream.string }
+      it { is_expected.to match(%r_5\s*\n10\s*\n12\s*_) }
+    end
+
+    context "with the contents of the message" do
+      subject { bot.messages.find(&:assistant?) }
+      it { is_expected.to have_attributes(role: %r_(assistant|model)_, content: %r_5\s*\n10\s*\n12\s*_ ) }
+    end
+  end
+
+  context "when given a chat bot and a tool stream for responses",
+          vcr: {cassette_name: "openai/responses/bot_tool_stream"} do
+    let(:params) { {stream: true, tools: [tool]} }
+    let(:bot) { LLM::Bot.new(provider, params) }
+    let(:tool) do
+      LLM.function(:system) do |fn|
+        fn.description "Runs system commands"
+        fn.params { _1.object(command: _1.string.required) }
+        fn.define { |command:| {success: Kernel.system(command)} }
+      end
+    end
+
+    before do
+      bot.respond("You are a bot that can run UNIX system commands", role: :user)
+      bot.respond("Hey, run the 'date' command", role: :user)
+    end
+
+    it "calls the function(s)" do
+      expect(Kernel).to receive(:system).with("date").and_return("2024-01-01")
+      bot.respond bot.functions.map(&:call)
+      expect(bot.functions).to be_empty
+    end
+  end
 end

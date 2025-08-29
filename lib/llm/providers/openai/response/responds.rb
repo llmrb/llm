@@ -2,6 +2,7 @@
 
 module LLM::OpenAI::Response
   module Responds
+    def response_id = respond_to?(:response) ? response["id"] : id
     def outputs = [format_message]
     def choices = body.output
     def tools = output.select { _1.type == "function_call" }
