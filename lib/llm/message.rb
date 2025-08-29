@@ -128,22 +128,13 @@ module LLM
     end
 
     ##
-    # Returns a string representation of the message
-    # @return [String]
-    def inspect
-      "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
-      "tool_call=#{tool_calls.any?} role=#{role.inspect} " \
-      "content=#{content.inspect}>"
-    end
-
-    ##
     # @note
     #  This method returns token usage for assistant messages,
     #  and it returns an empty object for non-assistant messages
     # Returns token usage statistics
     # @return [LLM::Object]
-    def token_usage
-      @token_usage ||= if response
+    def usage
+      @usage ||= if response
         LLM::Object.from_hash({
           input_tokens: response.prompt_tokens || 0,
           output_tokens: response.completion_tokens || 0,
@@ -152,6 +143,16 @@ module LLM
       else
         LLM::Object.from_hash({})
       end
+    end
+    alias_method :token_usage, :usage
+
+    ##
+    # Returns a string representation of the message
+    # @return [String]
+    def inspect
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
+      "tool_call=#{tool_calls.any?} role=#{role.inspect} " \
+      "content=#{content.inspect}>"
     end
 
     private
