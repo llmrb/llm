@@ -90,4 +90,32 @@ RSpec.describe "LLM::OpenAI::Responses" do
       expect(bot.functions).to be_empty
     end
   end
+
+  context "when given text streaming",
+          vcr: {cassette_name: "openai/responses/text_streaming"} do
+    let(:stream) { StringIO.new }
+
+    subject do
+      provider.responses.create(
+        "Explain the theory of relativity in simple terms.",
+        role: :user,
+        stream:
+      )
+    end
+
+    it "is successful" do
+      is_expected.to be_instance_of(LLM::Response)
+    end
+
+    it "has outputs" do
+      is_expected.to have_attributes(
+        outputs: [have_attributes(content: include("relativity"))]
+      )
+    end
+
+    it "streams text" do
+      is_expected
+      expect(stream.string).to include("relativity")
+    end
+  end
 end
