@@ -13,8 +13,9 @@ module LLM::Gemini::Response
     def format_choices
       candidates.map.with_index do |choice, index|
         choice = LLM::Object.from_hash(choice)
-        content = choice.content
-        role, parts = content.role, content.parts
+        content = choice.content || LLM::Object.new
+        role = content.role || "model"
+        parts = content.parts || [{"text" => choice.finishReason}]
         text  = parts.filter_map { _1["text"] }.join
         tools = parts.filter_map { _1["functionCall"] }
         extra = {index:, response: self, tool_calls: format_tool_calls(tools), original_tool_calls: tools}

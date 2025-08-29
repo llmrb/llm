@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
-        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
     headers:
       Content-Type:
       - application/json
@@ -31,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Aug 2025 16:49:37 GMT
+      - Fri, 29 Aug 2025 19:43:15 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1520
+      - gfet4t7; dur=895
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -61,7 +61,7 @@ http_interactions:
                         "command": "date"
                       }
                     },
-                    "thoughtSignature": "CvQBAVSoXO4+ZRDfrRvS5ZPyYypVirIK55phc8N0O3ZuYw8Q+rOm9sHRon/3tM9OEJ9RAnlUhtOkweN6dC1eCjVqf34lkTmaEGAgL0Sm0qYi06zMug8SBT4VGhKvRP1ig2eH4cYeI8Qm7lb+Rkgj5yUu0NRk7FEtEQFJplcXMfzRp5u5j/q/HW2LHnlxtlE31e359M+XVsRyVeJTxbCQ6a1IQwOPiWiDiS6gNCz2dtb+3l0ljIa4siLxaJFCha/cGrORXPNCbhs+Op9ddL8vIPboGG0oohxb2AIDcZELYFFjnQaoiS8ExyrCGUBtq05y01ctSXy6Kg=="
+                    "thoughtSignature": "CsIBAVSoXO7+0FoA9MOCySUnMsNdoeWJi2f1CITiy7sKINL7to6ecSJoWiHXObdriVYKeeRpb0MqDX0AD4qKxIZAVniXSg81pm9ilE+rTGHaaRxIv0cFpns5/fgPSgmzqFWB/Dlt8rdOS8D+dnz+mmHXpJC3eeHBKKuSIDKuGH4BIB801bNHePP6WtKu22HK3rtS5Nzc4hkC/fPhWVXWo44nhrkFudy/W1CXLKV7zfrO2jXWgnt+x4fE5kqcBX/x2uCyAzE="
                   }
                 ],
                 "role": "model"
@@ -73,27 +73,27 @@ http_interactions:
           "usageMetadata": {
             "promptTokenCount": 49,
             "candidatesTokenCount": 13,
-            "totalTokenCount": 113,
+            "totalTokenCount": 99,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 49
               }
             ],
-            "thoughtsTokenCount": 51
+            "thoughtsTokenCount": 37
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "IdqxaK4E9fiq2w_WzuyIDA"
+          "responseId": "0wKyaO3iNOCLmtkPrq6G-Qs"
         }
-  recorded_at: Fri, 29 Aug 2025 16:49:26 GMT
+  recorded_at: Fri, 29 Aug 2025 19:43:05 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":\"2025-08-24\"}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
-        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"What is the date?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"success":"2025-08-24"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
     headers:
       Content-Type:
       - application/json
@@ -117,7 +117,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Aug 2025 16:49:38 GMT
+      - Fri, 29 Aug 2025 19:43:16 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -127,7 +127,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1278
+      - gfet4t7; dur=755
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -141,7 +141,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "The date is August 24, 2025.\n"
+                    "text": "The date is August 24, 2025."
                   }
                 ],
                 "role": "model"
@@ -151,18 +151,18 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 78,
+            "promptTokenCount": 84,
             "candidatesTokenCount": 14,
-            "totalTokenCount": 92,
+            "totalTokenCount": 98,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 78
+                "tokenCount": 84
               }
             ]
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "ItqxaKaMGPTbqtsPgbqguAg"
+          "responseId": "1AKyaN_dN6LPz7IPnvKToA4"
         }
-  recorded_at: Fri, 29 Aug 2025 16:49:27 GMT
+  recorded_at: Fri, 29 Aug 2025 19:43:06 GMT
 recorded_with: VCR 6.3.1

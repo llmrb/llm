@@ -43,7 +43,7 @@ module LLM::Gemini::Format
       when LLM::Message
         format_content(content.content)
       when LLM::Function::Return
-        [{text: JSON.dump(content.value)}]
+        [{functionResponse: {name: content.name, response: content.value}}]
       else
         prompt_error!(content)
       end

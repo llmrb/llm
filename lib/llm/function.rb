@@ -30,7 +30,7 @@
 #     fn.register(System)
 #   end
 class LLM::Function
-  class Return < Struct.new(:id, :value)
+  class Return < Struct.new(:id, :name, :value)
   end
 
   ##
@@ -92,7 +92,7 @@ class LLM::Function
   # @return [LLM::Function::Return] The result of the function call
   def call
     runner = ((Class === @runner) ? @runner.new : @runner)
-    Return.new(id, runner.call(**arguments))
+    Return.new(id, name, runner.call(**arguments))
   ensure
     @called = true
   end
@@ -106,7 +106,7 @@ class LLM::Function
   #   bot.chat bot.functions.map(&:cancel)
   # @return [LLM::Function::Return]
   def cancel(reason: "function call cancelled")
-    Return.new(id, {cancelled: true, reason:})
+    Return.new(id, name, {cancelled: true, reason:})
   ensure
     @cancelled = true
   end
