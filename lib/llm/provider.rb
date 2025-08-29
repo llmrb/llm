@@ -268,7 +268,7 @@ class LLM::Provider
   # @raise [SystemCallError]
   #  When there is a network error at the operating system level
   # @return [Net::HTTPResponse]
-  def execute(request:, stream: nil, &b)
+  def execute(request:, stream: nil, stream_parser: self.stream_parser, &b)
     res = if stream
       client.request(request) do |res|
         handler = event_handler.new stream_parser.new(stream)
