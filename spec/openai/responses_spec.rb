@@ -65,6 +65,14 @@ RSpec.describe "LLM::OpenAI::Responses" do
         choices: [have_attributes(content: /Paris/)]
       )
     end
+
+    it "has token usage" do
+      is_expected.to have_attributes(
+        prompt_tokens: be_a(Integer),
+        completion_tokens: be_a(Integer),
+        total_tokens: be_a(Integer)
+      )
+    end
   end
 
   context "when given a function call",

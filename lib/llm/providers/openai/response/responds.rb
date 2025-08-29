@@ -6,6 +6,10 @@ module LLM::OpenAI::Response
     def response_id = respond_to?(:response) ? response["id"] : id
     def choices = [format_message]
 
+    def prompt_tokens = body.usage&.input_tokens
+    def completion_tokens = body.usage&.output_tokens
+    def total_tokens = body.usage&.total_tokens
+
     ##
     # Returns the aggregated text content from the response outputs.
     # @return [String]
