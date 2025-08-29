@@ -7,8 +7,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
         run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
-        ''date'' command"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
-        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+        ''date'' command"}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
     headers:
       Content-Type:
       - application/json
@@ -36,7 +36,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 29 Aug 2025 16:49:34 GMT
+      - Fri, 29 Aug 2025 19:53:16 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -46,19 +46,19 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=818
+      - gfet4t7; dur=804
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
       string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"functionCall\":
         {\"name\": \"system\",\"args\": {\"command\": \"date\"}},\"thoughtSignature\":
-        \"CikBVKhc7q3+da0INAlX5VludT0berT+E3jDP1xUG8I9vq4LIJXHZXgGLQpnAVSoXO5MzlDCs//U16Eu7DRxUj7CQn+u5exVzYKIcIQutbenYApU7eACFOeinzbU8AyL2IMFeQZkbtCpKds0IiNJrfJ3pDgI3/fGrGhWkaS+E7GW5uFGsi5wifvH2lLGNBrQF0f2owp7AVSoXO5P2sy1nkp6dB9NUXDfZ0jvrFWc01jtuUPMQo8c2NH1VvYz5fRDHAgQl3lzmfMpFywsanrBHCjjXXTWqQsqC+bJSyGrmH9ye9SsuIhA/l6QuN3e3Zm/p7fQo245SeS4dD9eJsyphP9jzs3oeBNj2Q3cNjunDwVt\"}],\"role\":
+        \"CikBVKhc7sLTnUvniYq2iDW20kA7tscE43ivsu6iLRP9NTQYYfF4KaahYgpnAVSoXO7f5ZVJ4Ub6vKm87xK6LJaVqknohi/M9iIwWMH7ODx6NBxJuzmWE2cucc98Rdv6dzfFCZgFwxCpFUFIbOFjxCZU2tRHOSWXApubIyInIWdNU2aYjFoM8Kv4cGRsFF8PrMx8NAp8AVSoXO6oQ9CTY5P5VLoAsHpAonrcepZd+f/pqORY06nDbFB5dX+C/MJCrnjT/Tjjmk5xWTbqAuRy+CNK+9oQ+LRmjraS1tSmG8getx9L9P6rUtUbozHWDZklTvPwm4X5IENKNXW15++ELD0YxoLBdtXLx/sDSp91cMVjHQ==\"}],\"role\":
         \"model\"},\"finishReason\": \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\":
-        53,\"candidatesTokenCount\": 13,\"totalTokenCount\": 109,\"promptTokensDetails\":
-        [{\"modality\": \"TEXT\",\"tokenCount\": 53}],\"thoughtsTokenCount\": 43},\"modelVersion\":
-        \"gemini-2.5-flash\",\"responseId\": \"HtqxaLDqDb_xqtsP7vaTmAo\"}\r\n\r\n"
-  recorded_at: Fri, 29 Aug 2025 16:49:24 GMT
+        53,\"candidatesTokenCount\": 13,\"totalTokenCount\": 112,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 53}],\"thoughtsTokenCount\": 46},\"modelVersion\":
+        \"gemini-2.5-flash\",\"responseId\": \"LAWyaM2BDcO4mtkP5smpiAw\"}\r\n\r\n"
+  recorded_at: Fri, 29 Aug 2025 19:53:05 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse&key=TOKEN
@@ -66,8 +66,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
         run UNIX system commands"}]},{"role":"user","parts":[{"text":"Hey, run the
-        ''date'' command"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"text":"{\"success\":true}"}]}],"tools":{"functionDeclarations":[{"name":"system","description":"Runs
-        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}}'
+        ''date'' command"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"success":true}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
     headers:
       Content-Type:
       - application/json
@@ -95,7 +95,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 29 Aug 2025 16:49:35 GMT
+      - Fri, 29 Aug 2025 19:53:17 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -105,25 +105,19 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=482
+      - gfet4t7; dur=973
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
-      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"Can
-        you please\"}],\"role\": \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\":
-        73,\"candidatesTokenCount\": 3,\"totalTokenCount\": 76,\"promptTokensDetails\":
-        [{\"modality\": \"TEXT\",\"tokenCount\": 73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\":
-        \"H9qxaPSGCPTbqtsPgbqguAg\"}\r\n\r\ndata: {\"candidates\": [{\"content\":
-        {\"parts\": [{\"text\": \" provide the actual output of the `date` command?
-        The JSON you provided indicates success,\"}],\"role\": \"model\"},\"index\":
-        0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
-        21,\"totalTokenCount\": 94,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"H9qxaPSGCPTbqtsPgbqguAg\"}\r\n\r\ndata:
-        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \" but I need the
-        content of the output to answer your request.\\n\"}],\"role\": \"model\"},\"finishReason\":
-        \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 73,\"candidatesTokenCount\":
-        34,\"totalTokenCount\": 107,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        73}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"H9qxaPSGCPTbqtsPgbqguAg\"}\r\n\r\n"
-  recorded_at: Fri, 29 Aug 2025 16:49:24 GMT
+      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"Okay\"}],\"role\":
+        \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 78,\"candidatesTokenCount\":
+        1,\"totalTokenCount\": 79,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        78}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"LQWyaLqxLazPz7IPv6fDyQ4\"}\r\n\r\ndata:
+        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \", I ran the `date`
+        command. \\n\"}],\"role\": \"model\"},\"finishReason\": \"STOP\",\"index\":
+        0}],\"usageMetadata\": {\"promptTokenCount\": 78,\"candidatesTokenCount\":
+        10,\"totalTokenCount\": 88,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
+        78}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"LQWyaLqxLazPz7IPv6fDyQ4\"}\r\n\r\n"
+  recorded_at: Fri, 29 Aug 2025 19:53:07 GMT
 recorded_with: VCR 6.3.1

@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Aug 2025 19:43:19 GMT
+      - Fri, 29 Aug 2025 19:55:19 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=818
+      - gfet4t7; dur=1230
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -62,23 +62,7 @@ http_interactions:
                         "command": "date"
                       }
                     },
-                    "thoughtSignature": "CpkCAVSoXO5c78lHR+w3sQtP5JwSsoFyUBXh9V9aIk7dTud7c4Oa6g6+C7BPgkk3bY4CbT73EcVZZ/zqxmtaKbIKhYywqUHZgAOzuX3rjjKoe9GWiyjIEoZAPOsREN+uUx7XFawUb/woyaHJ2CLIgmF463DNMrV16Sk18avanhITnkGx7DrelbIt/CK3C+wjOfGSnEG3f6+Q142Rc9HffSTGsptdJiLbDuUyUkcj5iAQ1FN3o2+E8Vz+QCfjvwg7NoJtrAC2opz2Ru3QvW0rPt8HPK3+qL7UgvY9JLeZXTi0ky97gBEyp+2A30iwWjvqGXxJ9sOqOsaiMvIcvR5BrEnS8z/fD2DoZJzJMbcRL5ULkVnYTXxtOeHIJ5U="
-                  },
-                  {
-                    "functionCall": {
-                      "name": "system",
-                      "args": {
-                        "command": "pwd"
-                      }
-                    }
-                  },
-                  {
-                    "functionCall": {
-                      "name": "system",
-                      "args": {
-                        "command": "whoami"
-                      }
-                    }
+                    "thoughtSignature": "Cp8CAVSoXO7GvlBq00PkqETfkZvGDhRV2AT9WQ1UMTatIaX4LcbNbQmdamqNKuEAASD6EOEscYNAL+Y1MacLv8oy1sh/vNdJ0HLksP5vSaeZOX4YA/pPvJScCp2TdlMLBnDAgHjAxJD/D9S6RBM/OdmMMGNr52faL0nYL0sNN82C+CreuDqvjbVSiUicK6tJmunBAwvcqdNiogR4siqRvFh0WU3XD9TI5borTHC/iXF7qYX194HmlNo9rxF6zFWbPs1NcBvuCAGvheXSlZAd4pghWcA+gBshtBKe31lfcswn+J7ak1mZuCNkN4gWljRCnDQFdltBu0ukc4YpK+U/R3dlpkBNZ48hTfrEOFnuskYuK9qWN1XP3Nx3ZoURnFZJuWAKIgFUqFzuDPeQ+Pm+CGlQOiMVrJ4G1JCkV/LyCDTwx94DFOMKKAFUqFzu5DQbXsuvBxV46hp6MfDAQkiV1eo3sL9xTHBDkWE3o+/MibYKTwFUqFzu6Gv/X+1/qDV2LmUVEaHA+rsBtzLKBpptg2oqR2UhVmRBNdO5EHC/iHZlPtNlzvHC2d44sW4r74Wx4MejfKhkiFHvrwxclhDQPy4="
                   }
                 ],
                 "role": "model"
@@ -89,20 +73,20 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 67,
-            "candidatesTokenCount": 40,
-            "totalTokenCount": 172,
+            "candidatesTokenCount": 13,
+            "totalTokenCount": 162,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 67
               }
             ],
-            "thoughtsTokenCount": 65
+            "thoughtsTokenCount": 82
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "1wKyaOyjNu6aqtsPsbe3yA8"
+          "responseId": "pwWyaL_gIIDYqtsPs8iRqQw"
         }
-  recorded_at: Fri, 29 Aug 2025 19:43:09 GMT
+  recorded_at: Fri, 29 Aug 2025 19:55:08 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
@@ -110,8 +94,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
         run UNIX commands"}]},{"role":"user","parts":[{"text":"Can you run the date
-        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}},{"functionCall":{"name":"system","args":{"command":"pwd"}}},{"functionCall":{"name":"system","args":{"command":"whoami"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
-        Aug 29 19:43:09 UTC 2025\n"}}},{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n"}}},{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"developer\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
+        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
+        Aug 29 19:55:08 UTC 2025\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
         a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
     headers:
       Content-Type:
@@ -136,7 +120,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Aug 2025 19:43:20 GMT
+      - Fri, 29 Aug 2025 19:55:20 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -146,7 +130,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=583
+      - gfet4t7; dur=537
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -160,7 +144,12 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "Fri Aug 29 19:43:09 UTC 2025\n/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\ndeveloper"
+                    "functionCall": {
+                      "name": "system",
+                      "args": {
+                        "command": "pwd"
+                      }
+                    }
                   }
                 ],
                 "role": "model"
@@ -170,18 +159,202 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 202,
-            "candidatesTokenCount": 48,
-            "totalTokenCount": 250,
+            "promptTokenCount": 118,
+            "candidatesTokenCount": 13,
+            "totalTokenCount": 131,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 202
+                "tokenCount": 118
               }
             ]
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "2AKyaJ2yLdqeqtsP7620sQQ"
+          "responseId": "qAWyaOqBFLjwqtsP3PuC4Q8"
         }
-  recorded_at: Fri, 29 Aug 2025 19:43:10 GMT
+  recorded_at: Fri, 29 Aug 2025 19:55:09 GMT
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"Can you run the date
+        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
+        Aug 29 19:55:08 UTC 2025\n"}}}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"pwd"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
+        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 29 Aug 2025 19:55:21 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=531
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "functionCall": {
+                      "name": "system",
+                      "args": {
+                        "command": "whoami"
+                      }
+                    }
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 173,
+            "candidatesTokenCount": 14,
+            "totalTokenCount": 187,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 173
+              }
+            ]
+          },
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "qQWyaOavB9HoqtsP4qKhyA0"
+        }
+  recorded_at: Fri, 29 Aug 2025 19:55:10 GMT
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
+        run UNIX commands"}]},{"role":"user","parts":[{"text":"Can you run the date
+        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
+        Aug 29 19:55:08 UTC 2025\n"}}}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"pwd"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n"}}}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"whoami"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"developer\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
+        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Fri, 29 Aug 2025 19:55:24 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=3210
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "The `date` command output is:\n",
+                    "thoughtSignature": "CsQDAVSoXO4XznJlkGuIcw/qQrg5Pciwq6yfIyAxdlegDsJhXWInMNkJnVNP74MWd/FT+VmCSEs10mLhH3+DyPtu9II/WUnM/US9aD6lgxD343fU6pj/aWsqpft9XL7dEfJjRkDTjFhM7OEw5AjY0wrDUyzs03q/148QXlRFa7hsjOzxdaFcVCZj8U3CtyLFdL33TVpZExCZjZyRz56bkjQny87x/Em2qcCfXo2lB7iHR7mHbKfJyOvJl+yEA4iXlLuUhJuvJvGM8GLkOQhpwUm/pbQyRw9TUfxPbHB8qtJKMHqhVVD8iwm6nbmYvkHLcbdITvNl5EO/sgIaq0i5Kn/0zYhAFmoToHdLU8ImNSdRzSCZ9M8CiQMIN1J99APFvsAHxRu3J9hxMnPkgFuaK5KS61xSAU/zF/zCXNgPrXKQh0Pc9hMko+U6xMleQZCkx9Dy+jYyg2ffiiWx5pAH7fAXfjPWXCm3bMPp+AHrxC9xwbJD6+8VoVdqr5t+GHvInU25aisSrc1BeNYcyK6zKM025Dh4C99aNtIQgCQXAaWNtM30F+xAyNOov6kp1R3QtKRZSmYBHjX7LVQ39cunmTe4krrAbDU="
+                  },
+                  {
+                    "text": "```\nFri Aug 29 19:55:08 UTC 2025\n```"
+                  },
+                  {
+                    "text": "\nThe `pwd` command output is:\n"
+                  },
+                  {
+                    "text": "```\n/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n```"
+                  },
+                  {
+                    "text": "\nThe `whoami` command output is:\n"
+                  },
+                  {
+                    "text": "```\ndeveloper\n```"
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 206,
+            "candidatesTokenCount": 90,
+            "totalTokenCount": 433,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 206
+              }
+            ],
+            "thoughtsTokenCount": 137
+          },
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "rAWyaM65IK3nqtsP0aeUqAE"
+        }
+  recorded_at: Fri, 29 Aug 2025 19:55:13 GMT
 recorded_with: VCR 6.3.1
