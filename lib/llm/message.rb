@@ -129,6 +129,16 @@ module LLM
 
     ##
     # @note
+    #  This method might return annotations for assistant messages,
+    #  and it returns an empty array for non-assistant messages
+    # Returns annotations associated with the message
+    # @return [Array<LLM::Object>]
+    def annotations
+      @annotations ||= LLM::Object.from_hash(extra["annotations"] || [])
+    end
+
+    ##
+    # @note
     #  This method returns token usage for assistant messages,
     #  and it returns an empty object for non-assistant messages
     # Returns token usage statistics

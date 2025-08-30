@@ -5,6 +5,7 @@ module LLM::OpenAI::Response
     def model = body.model
     def response_id = respond_to?(:response) ? response["id"] : id
     def choices = [format_message]
+    def annotations = choices[0].annotations
 
     def prompt_tokens = body.usage&.input_tokens
     def completion_tokens = body.usage&.output_tokens
@@ -28,6 +29,8 @@ module LLM::OpenAI::Response
           choice.content.each do |c|
             next unless c["type"] == "output_text"
             message.content << c["text"] << "\n"
+            next unless c["annotations"]
+            message.extra["annotations"] = [*message.extra["annotations"], *c["annotations"]]
           end
         end
       end

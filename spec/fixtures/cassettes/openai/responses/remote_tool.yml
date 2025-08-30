@@ -1,0 +1,183 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"input":[{"role":"user","content":[{"type":"input_text","text":"What
+        was a positive news story from today?"}]}],"model":"gpt-4.1","tools":[{"type":"web_search"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 30 Aug 2025 18:57:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit-Requests:
+      - '500'
+      X-Ratelimit-Limit-Tokens:
+      - '30000'
+      X-Ratelimit-Remaining-Requests:
+      - '499'
+      X-Ratelimit-Remaining-Tokens:
+      - '29671'
+      X-Ratelimit-Reset-Requests:
+      - 120ms
+      X-Ratelimit-Reset-Tokens:
+      - 658ms
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
+      X-Request-Id:
+      - req_71a2f23e319616127b5da6bc22cbd86c
+      Openai-Processing-Ms:
+      - '7390'
+      X-Envoy-Upstream-Service-Time:
+      - '7393'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=fWAm.bW1SnSS_GSlRkEIOYxwADWNBf8MEKTdpWMTZEQ-1756580249-1.0.1.1-Omqsir_XD3XcZrb_v657_KEDbj3MEi2fmPk1kW8uJtlCnPIH3brS3bmoNpHzGHVXw5iQ38pqjDvYz3s3GInZCFCFkncu6VLKRXjnFABffaA;
+        path=/; expires=Sat, 30-Aug-25 19:27:29 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=BZ1.5LkQxHhKYlgxCR1iCeg9OlWRDJ6PhHvXHf.XXy4-1756580249684-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9776836dae51a454-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "resp_68b34992383481949a26eb1c49ec52f806a0606a6adaaf8c",
+          "object": "response",
+          "created_at": 1756580242,
+          "status": "completed",
+          "background": false,
+          "error": null,
+          "incomplete_details": null,
+          "instructions": null,
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-4.1-2025-04-14",
+          "output": [
+            {
+              "id": "ws_68b3499354388194bf78ede25fa6b7ea06a0606a6adaaf8c",
+              "type": "web_search_call",
+              "status": "completed",
+              "action": {
+                "type": "search",
+                "query": "positive news story today"
+              }
+            },
+            {
+              "id": "msg_68b349976fe08194882f97bfebf37e5406a0606a6adaaf8c",
+              "type": "message",
+              "status": "completed",
+              "content": [
+                {
+                  "type": "output_text",
+                  "annotations": [
+                    {
+                      "type": "url_citation",
+                      "end_index": 719,
+                      "start_index": 609,
+                      "title": "Good News This Week: August 30, 2025 - Mangroves, Violins, & Corals",
+                      "url": "https://www.goodgoodgood.co/articles/good-news-this-week-august-30-2025?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 1084,
+                      "start_index": 974,
+                      "title": "Good News This Week: August 30, 2025 - Mangroves, Violins, & Corals",
+                      "url": "https://www.goodgoodgood.co/articles/good-news-this-week-august-30-2025?utm_source=openai"
+                    }
+                  ],
+                  "logprobs": [],
+                  "text": "Here\u2019s a highly positive news story from **August 30, 2025**, that stands out for its global significance and uplifting impact:\n\nBotswana \u2014 once severely affected by HIV \u2014 has achieved a remarkable public health milestone. Although the country had some of the world\u2019s highest rates of mother-to-child HIV transmission in the early 2000s, today that rate has dropped to **under 1%**, equating to **fewer than 100 HIV-positive infants born each year**. This remarkable transformation is credited to dedicated political commitment, investments in scientific infrastructure, and extensive public health education.([goodgoodgood.co](https://www.goodgoodgood.co/articles/good-news-this-week-august-30-2025?utm_source=openai))\n\nMoreover, Botswana has become the **first high-burden country** to earn **World Health Organization Gold Tier status** for eliminating mother-to-child HIV transmission as a public health threat\u2014a testament to its extraordinary public health achievement.([goodgoodgood.co](https://www.goodgoodgood.co/articles/good-news-this-week-august-30-2025?utm_source=openai))\n\nWhy this matters:\n\n- It represents a **dramatic reversal** of an urgent health crisis, with mother-to-child HIV transmission rates falling from a staggering **20\u201340%** to under 1% over just two decades.\n- Botswana\u2019s success offers a **blueprint for other countries** facing similar challenges, showing what sustained investment and political will can achieve.\n- The WHO recognition not only honors Botswana's efforts but also sets a **global standard** for public health targets.\n\nThis story demonstrates the life-changing power of sustained, focused efforts in public health. Let me know if you\u2019d like to explore more positive stories from today or this week!"
+                }
+              ],
+              "role": "assistant"
+            }
+          ],
+          "parallel_tool_calls": true,
+          "previous_response_id": null,
+          "prompt_cache_key": null,
+          "reasoning": {
+            "effort": null,
+            "summary": null
+          },
+          "safety_identifier": null,
+          "service_tier": "default",
+          "store": true,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tools": [
+            {
+              "type": "web_search",
+              "filters": null,
+              "search_context_size": "medium",
+              "user_location": {
+                "type": "approximate",
+                "city": null,
+                "country": "US",
+                "region": null,
+                "timezone": null
+              }
+            }
+          ],
+          "top_logprobs": 0,
+          "top_p": 1.0,
+          "truncation": "disabled",
+          "usage": {
+            "input_tokens": 17116,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 354,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 17470
+          },
+          "user": null,
+          "metadata": {}
+        }
+  recorded_at: Sat, 30 Aug 2025 18:57:16 GMT
+recorded_with: VCR 6.3.1

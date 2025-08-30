@@ -14,8 +14,11 @@
 #### Responses
 
 [OpenAI's responses API](https://platform.openai.com/docs/guides/conversation-state?api-mode=responses)
-is similar to the chat completions API, but unlike the chat completions API it
-can maintain conversation state for you.
+is an alternative to the standard chat completions API and it has a number
+of advantages over the standard chat completions API. Perhaps most notably,
+it maintains message state on OpenAI's servers by default but that's not all.
+It also provides access to remote tools, such as web search and file search tools,
+and more.
 
 The following example stores message state on OpenAI's servers &ndash;
 and in turn a client can avoid maintaining state manually as well as avoid sending
@@ -37,6 +40,18 @@ bot.respond "Are the URL and PDF similar to each other?", role: :user
 
 # At this point, we execute a single request
 bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+```
+
+The next example performs a web search with OpenAI's web search tool &ndash;
+and this is done on top of the responses API:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+res = llm.responses.create("Summarize today's news", tools: [{type: "web_search"]}])
+print "[assistant] ", res.ouput_text, "\n"
 ```
 
 #### Moderations

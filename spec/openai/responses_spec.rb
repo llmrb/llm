@@ -182,4 +182,20 @@ RSpec.describe "LLM::OpenAI::Responses" do
       expect(bot.functions).to be_empty
     end
   end
+
+  context "when given the web search tool",
+          vcr: {cassette_name: "openai/responses/remote_tool"} do
+    subject(:create_response) do
+      provider.responses.create(
+        "What was a positive news story from today?",
+        params.merge(role: :user)
+      )
+    end
+    let(:params) { {tools: [{type: "web_search"}]} }
+
+    it "performs a web search" do
+      res = create_response
+      expect(res.annotations).not_to be_empty
+    end
+  end
 end
