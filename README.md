@@ -116,7 +116,7 @@ llm = LLM.llamacpp(key: nil)
 
 > This example uses the stateless chat completions API that all
 > providers support. A similar example for OpenAI's stateful
-> responses API is available in the [docs/](docs/OPENAI.md#responses)
+> responses API is available in the [docs/](https://0x1eef.github.io/x/llm.rb/file.OPENAI.html#responses)
 > directory.
 
 The following example creates an instance of
@@ -149,7 +149,8 @@ bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 > There Is More Than One Way To Do It (TIMTOWTDI) when you are
 > using llm.rb &ndash; and this is especially true when it
 > comes to streaming. See the streaming documentation in
-> [docs/](docs/STREAMING.md#scopes) for more details.
+> [docs/](https://0x1eef.github.io/x/llm.rb/file.STREAMING.html#scopes)
+> for more details.
 
 The following example streams the messages in a conversation
 as they are generated in real-time. The `stream` option can

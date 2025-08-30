@@ -2,11 +2,8 @@
 
 ### Contents
 
-* [API](#api)
-  * [Introduction](#introduction)
-  * [Scopes](#scopes)
-
-### API
+* [Introduction](#introduction)
+* [Scopes](#scopes)
 
 #### Introduction
 

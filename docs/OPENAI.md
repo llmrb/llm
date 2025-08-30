@@ -2,14 +2,10 @@
 
 ### Contents
 
-* [API](#api)
-  * [Responses](#responses)
-  * [Moderations](#moderations)
-  * [Vector Stores](#vector_stores)
-* [Headers](#headers)
-  * [Project, Organization](#project-organization)
-
-### API
+* [Responses](#responses)
+* [Moderations](#moderations)
+* [Vector Stores](#vector_stores)
+* [Headers: Project, Organization](#headers)
 
 #### Responses
 
@@ -22,8 +18,7 @@ and more.
 
 The following example stores message state on OpenAI's servers &ndash;
 and in turn a client can avoid maintaining state manually as well as avoid sending
-the entire conversation on each turn in a conversation. See also:
-[LLM::OpenAI::Responses](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Responses.html).
+the entire conversation on each turn in a conversation:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -60,8 +55,7 @@ print "[assistant] ", res.ouput_text, "\n"
 offers a service that can determine if a piece of text, or an image URL
 is considered harmful or not &ndash; across multiple categories. The interface
 is similar to the one provided by the official OpenAI Python and JavaScript
-libraries.
-See also: [LLM::OpenAI::Moderations](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/Moderations.html):
+libraries:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -85,8 +79,7 @@ print "category scores: ", mod.scores, "\n"
 [OpenAI's Vector Stores API](https://platform.openai.com/docs/api-reference/vector_stores/create)
 offers a vector database as a managed service. It allows a client to store a set
 of files, which are automatically indexed and made searchable through vector
-queries, with the option to apply filters to refine the results.
-See also: [LLM::OpenAI::VectorStores](https://0x1eef.github.io/x/llm.rb/LLM/OpenAI/VectorStores.html).
+queries, with the option to apply filters to refine the results:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -120,10 +113,9 @@ llm.vector_stores.delete(vector: store)
 ```
 
 
-### Headers
+#### Headers
 
 #### Project, Organization
-
 
 The
 [`LLM::Provider#with`](https://0x1eef.github.io/x/llm.rb/LLM/Provider.html#with-instance_method)
