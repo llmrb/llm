@@ -89,12 +89,7 @@ pdfs = ["handbook.pdf"]
 llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
 files = pdfs.map { llm.files.create(file: _1) }
 store = llm.vector_stores.create(name: "PDF Store", file_ids: files.map(&:id))
-
-while store.status != "completed"
-  puts "Wait for vector store to come online"
-  store = llm.vector_stores.get(vector: store)
-  sleep 5
-end
+store = llm.vector_stores.poll(vector: store)
 puts "Vector store is online"
 
 puts "Search the vector store"
@@ -105,8 +100,6 @@ files.each { llm.files.delete(file: _1) }
 llm.vector_stores.delete(vector: store)
 
 ##
-# Wait for vector store to come online
-# Wait for vector store to come online
 # Vector store is online
 # Search the vector store
 # Found 10 chunks
