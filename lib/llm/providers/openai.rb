@@ -162,6 +162,15 @@ module LLM
       }
     end
 
+    ##
+    # A convenience method for performing a web search using the
+    # Web Search tool.
+    # @param query [String] The search query.
+    # @return [LLM::Response] The response from the LLM provider.
+    def web_search(query:)
+      responses.create(query, store: false, tools: [tools[:web_search]])
+    end
+
     private
 
     def headers

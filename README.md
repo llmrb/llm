@@ -287,7 +287,22 @@ OpenAI provider to execute Python code on OpenAI's servers:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-res = llm.responses.create "Summarize today's news", tools: [llm.tool(:web_search)]
+res = llm.responses.create "Run: 'print("hello world")'", tools: [llm.tool(:code_interpreter)]
+print res.output_text, "\n"
+```
+
+#### Web Search
+
+A common tool among all providers is the ability to perform a web search, and
+the following example uses the OpenAI provider to search the web using the
+Web Search tool. This can also be done with the Anthropic and Gemini providers:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+res = llm.web_search(query: "summarize today's news")
 print res.output_text, "\n"
 ```
 

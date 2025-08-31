@@ -24,7 +24,7 @@ class LLM::Anthropic
     def format_tools(params)
       return {} unless params and params[:tools]&.any?
       tools = params[:tools]
-      {tools: tools.map { _1.format(self) }}
+      {tools: tools.map { _1.respond_to?(:format) ? _1.format(self) : _1.to_h }}
     end
   end
 end

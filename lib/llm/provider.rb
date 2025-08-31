@@ -244,6 +244,16 @@ class LLM::Provider
     LLM::Tool.new(name, options, self)
   end
 
+  ##
+  # Provides a web search capability
+  # @param [String] query The search query
+  # @raise [NotImplementedError]
+  #  When the method is not implemented by a subclass
+  # @return [LLM::Response]
+  def web_search(query:)
+    raise NotImplementedError
+  end
+
   private
 
   attr_reader :client

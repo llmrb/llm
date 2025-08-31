@@ -140,6 +140,15 @@ module LLM
       }
     end
 
+    ##
+    # A convenience method for performing a web search using the
+    # Google Search tool.
+    # @param query [String] The search query.
+    # @return [LLM::Response] The response from the LLM provider.
+    def web_search(query:)
+      complete(query, tools: [tool(:google_search)])
+    end
+
     private
 
     def headers
