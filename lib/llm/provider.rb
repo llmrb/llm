@@ -217,6 +217,33 @@ class LLM::Provider
     tap { (@headers ||= {}).merge!(headers) }
   end
 
+  ##
+  # @note
+  #  This method might be outdated, and the {LLM::Provider#tool LLM::Provider#tool}
+  #  method can be used if a tool is not found here.
+  # Returns all known tools provided by a provider.
+  # @return [String => LLM::Tool]
+  def tools
+    {}
+  end
+
+  ##
+  # @note
+  #   OpenAI, Anthropic, and Gemini provide platform-tools for things
+  #   like web search, and more.
+  # Returns a tool provided by a provider.
+  # @example
+  #   llm   = LLM.openai(key: ENV["KEY"])
+  #   tools = [llm.tool(:web_search)]
+  #   res   = llm.responses.create("Summarize today's news", tools:)
+  #   print res.output_text, "\n"
+  # @param [String, Symbol] name The name of the tool
+  # @param [Hash] options Configuration options for the tool
+  # @return [LLM::Tool]
+  def tool(name, options = {})
+    LLM::Tool.new(name, options, self)
+  end
+
   private
 
   attr_reader :client

@@ -146,6 +146,22 @@ module LLM
       "gpt-4.1"
     end
 
+    ##
+    # @note
+    #  This method includes certain tools that require configuration
+    #  through a set of options that are easier to set through the
+    #  {LLM::Provider#tool LLM::Provider#tool} method.
+    # @return (see LLM::Provider#tools)
+    def tools
+      {
+        web_search: tool(:web_search),
+        file_search: tool(:file_search),
+        image_generation: tool(:image_generation),
+        code_interpreter: tool(:code_interpreter),
+        computer_use: tool(:computer_use)
+      }
+    end
+
     private
 
     def headers
