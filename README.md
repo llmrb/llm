@@ -269,6 +269,28 @@ bot.chat bot.functions.map(&:call) # report return value to the LLM
 # {stderr: "", stdout: "FreeBSD"}
 ```
 
+#### Tools
+
+The
+[LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
+class can define a local function that can be called by a provider on your behalf,
+and the
+[LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html)
+class represents a tool that is defined and implemented by a provider, and we can
+request that the provider call the tool on our behalf. That's the primary difference
+between a function implemented locally and a tool implemented by a provider. The
+available tools depend on the provider, and the following example uses the
+OpenAI provider to execute Python code on OpenAI's servers:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+res = llm.responses.create "Summarize today's news", tools: [llm.tool(:web_search)]
+print res.output_text, "\n"
+```
+
 ### Files
 
 #### Create

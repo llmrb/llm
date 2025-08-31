@@ -125,6 +125,21 @@ module LLM
       "gemini-2.5-flash"
     end
 
+    ##
+    # @note
+    #  This method includes certain tools that require configuration
+    #  through a set of options that are easier to set through the
+    #  {LLM::Provider#tool LLM::Provider#tool} method.
+    # @see https://ai.google.dev/gemini-api/docs/google-search Gemini docs
+    # @return (see LLM::Provider#tools)
+    def tools
+      {
+        google_search: tool(:google_search),
+        code_execution: tool(:code_execution),
+        url_context: tool(:url_context)
+      }
+    end
+
     private
 
     def headers

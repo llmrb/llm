@@ -45,7 +45,7 @@ and this is done on top of the responses API:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-res = llm.responses.create("Summarize today's news", tools: [{type: "web_search"]}])
+res = llm.responses.create("Summarize today's news", tools: [llm.tool(:web_search)])
 print "[assistant] ", res.ouput_text, "\n"
 ```
 
