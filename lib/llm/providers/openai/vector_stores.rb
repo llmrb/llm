@@ -3,7 +3,16 @@
 class LLM::OpenAI
   ##
   # The {LLM::OpenAI::VectorStores LLM::OpenAI::VectorStores} class provides
-  # an interface for [OpenAI's vector stores API](https://platform.openai.com/docs/api-reference/vector_stores/create)
+  # an interface for [OpenAI's vector stores API](https://platform.openai.com/docs/api-reference/vector_stores/create).
+  #
+  # @example
+  #  llm = LLM.openai(key: ENV["OPENAI_SECRET"])
+  #  files = %w(foo.pdf bar.pdf).map { llm.files.create(file: _1) }
+  #  store = llm.vector_stores.create(name: "PDF Store", file_ids: files.map(&:id))
+  #  store = llm.vector_stores.poll(vector: store)
+  #  print "[-] store is ready", "\n"
+  #  chunks = llm.vector_stores.search(vector: store, query: "What is Ruby?")
+  #  chunks.each { |chunk| puts chunk }
   class VectorStores
     require_relative "response/enumerable"
     PollError = Class.new(LLM::Error)
