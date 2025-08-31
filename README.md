@@ -11,7 +11,7 @@ audio, images, files, and structured outputs (JSON Schema).
 
 <details>
   <summary>Play</summary>
-  <img src="share/llm-shell/examples/demo.gif/">
+  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
 </details>
 
 #### Guides
