@@ -6,6 +6,7 @@ class LLM::OpenAI
   # an interface for [OpenAI's vector stores API](https://platform.openai.com/docs/api-reference/vector_stores/create)
   class VectorStores
     require_relative "response/enumerable"
+    PollError = Class.new(LLM::Error)
 
     ##
     # @param [LLM::Provider] provider
@@ -179,6 +180,27 @@ class LLM::OpenAI
       req = Net::HTTP::Delete.new("/v1/vector_stores/#{vector_id}/files/#{file_id}", headers)
       res = execute(request: req)
       LLM::Response.new(res)
+    end
+
+    ##
+    # Poll a vector store until its status is "completed"
+    # @param [String, #id] vector The ID of the vector store
+    # @param [Integer] attempts The current number of attempts (default: 0)
+    # @param [Integer] max The maximum number of iterations (default: 50)
+    # @raise [LLM::PollError] When the maximum number of iterations is reached
+    # @return [LLM::Response]
+    def poll(vector:, attempts: 0, max: 50)
+      if attempts == max
+        raise LLM::PollError, "vector store '#{vector.id}' has status '#{vector.status}' after #{max} attempts"
+      elsif vector.status == "expired"
+        raise LLM::PollError, "vector store '#{vector.id}' has expired"
+      elsif vector.status != "completed"
+        vector = get(vector:)
+        sleep(0.1 * (2**attempts))
+        poll(vector:, attempts: attempts + 1, max:)
+      else
+        vector
+      end
     end
 
     private
