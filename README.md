@@ -10,8 +10,13 @@ audio, images, files, and structured outputs (JSON Schema).
 #### Demo
 
 <details>
-  <summary>Play</summary>
+  <summary>Pair programmer</summary>
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
+</details>
+
+<details>
+  <summary>Review by Gemini</summary>
+  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/gemini.png?raw=true" alt="Gemini review" />
 </details>
 
 #### Guides
