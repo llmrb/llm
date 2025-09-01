@@ -16,8 +16,9 @@ audio, images, files, and structured outputs (JSON Schema).
 
 #### Reviews
 
-I supplied Gemini and DeepSeek with the contents of [lib/](lib/) and [README.md](README.md).
-This was their feedback.
+I supplied both Gemini and DeepSeek with the contents of [lib/](lib/)
+and [README.md](README.md) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
+Their feedback was way more positive than I could have imagined 😅
 
 <details>
   <summary>Review by Gemini</summary>
