@@ -16,6 +16,7 @@ module LLM
   class OpenAI < Provider
     require_relative "openai/response/embedding"
     require_relative "openai/response/completion"
+    require_relative "openai/response/web_search"
     require_relative "openai/error_handler"
     require_relative "openai/format"
     require_relative "openai/stream_parser"
@@ -164,11 +165,17 @@ module LLM
 
     ##
     # A convenience method for performing a web search using the
-    # Web Search tool.
+    # OpenAI web search tool.
+    # @example
+    #   llm = LLM.openai(key: ENV["KEY"])
+    #   res = llm.web_search(query: "summarize today's news")
+    #   res.search_results.each { |item| print item.title, ": ", item.url, "\n" }
     # @param query [String] The search query.
     # @return [LLM::Response] The response from the LLM provider.
     def web_search(query:)
-      responses.create(query, store: false, tools: [tools[:web_search]])
+      responses
+        .create(query, store: false, tools: [tools[:web_search]])
+        .extend(LLM::OpenAI::Response::WebSearch)
     end
 
     private

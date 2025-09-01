@@ -20,6 +20,7 @@ module LLM
   class Gemini < Provider
     require_relative "gemini/response/embedding"
     require_relative "gemini/response/completion"
+    require_relative "gemini/response/web_search"
     require_relative "gemini/error_handler"
     require_relative "gemini/format"
     require_relative "gemini/stream_parser"
@@ -147,6 +148,7 @@ module LLM
     # @return [LLM::Response] The response from the LLM provider.
     def web_search(query:)
       complete(query, tools: [tools[:google_search]])
+        .extend(LLM::Gemini::Response::WebSearch)
     end
 
     private

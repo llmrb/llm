@@ -69,6 +69,12 @@ class LLM::Object < BasicObject
     to_h.dig(...)
   end
 
+  ##
+  # @return [Hash]
+  def slice(...)
+    to_h.slice(...)
+  end
+
   private
 
   def method_missing(m, *args, &b)
