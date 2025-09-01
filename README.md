@@ -19,6 +19,11 @@ audio, images, files, and structured outputs (JSON Schema).
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/gemini.png?raw=true" alt="Gemini review" />
 </details>
 
+<details>
+  <summary>Review by DeepSeek</summary>
+  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/deepseek.png?raw=true" alt="DeepSeek review" />
+</details>
+
 #### Guides
 
 * [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
