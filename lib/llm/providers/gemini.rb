@@ -146,7 +146,7 @@ module LLM
     # @param query [String] The search query.
     # @return [LLM::Response] The response from the LLM provider.
     def web_search(query:)
-      complete(query, tools: [tool(:google_search)])
+      complete(query, tools: [tools[:google_search]])
     end
 
     private
