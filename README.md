@@ -19,9 +19,10 @@ with the help of AI. Similar-ish to GitHub Copilot but for the terminal.
 
 #### Reviews
 
-I supplied both Gemini and DeepSeek with the contents of [lib/](lib/)
-and [README.md](README.md) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
-Their feedback was way more positive than I could have imagined 😅
+I supplied both Gemini and DeepSeek with the contents of [lib/](https://github.com/llmrb/llm/tree/main/lib)
+and [README.md](https://github.com/llmrb/llm#readme) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
+Their feedback was way more positive than I could have imagined 😅 These are genuine responses though, with no
+special prompting or engineering. I just provided them with the source code and asked for their opinion.
 
 <details>
   <summary>Review by Gemini</summary>
