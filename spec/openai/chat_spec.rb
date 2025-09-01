@@ -5,9 +5,14 @@ require "setup"
 RSpec.describe "LLM::Bot: openai" do
   let(:described_class) { LLM::Bot }
   let(:provider) { LLM.openai(key:) }
+  let(:llm) { provider }
   let(:key) { ENV["OPENAI_SECRET"] || "TOKEN" }
   let(:bot) { described_class.new(provider, params) }
   let(:params) { {} }
+
+  context LLM do
+    include_examples "LLM: web search", :openai
+  end
 
   context LLM::Bot do
     include_examples "LLM::Bot: completions", :openai

@@ -24,7 +24,7 @@ class LLM::Tool < Struct.new(:name, :options, :provider)
   def to_h
     case provider.class.to_s
     when "LLM::Anthropic" then options.merge("name" => name.to_s)
-    when "LLM::Gemini" then options.merge("name" => name.to_s)
+    when "LLM::Gemini" then {name => options}
     else options.merge("type" => name.to_s)
     end
   end

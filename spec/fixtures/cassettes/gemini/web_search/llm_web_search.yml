@@ -1,0 +1,408 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"Summarize today''s news"}]}],"tools":[{"google_search":{}},{"functionDeclarations":[]}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Mon, 01 Sep 2025 00:52:26 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=11098
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "Here's a summary of today's news for September 1, 2025:\n\n**National and Political Developments:**\n\n*   In India, an FIR has been registered against TMC MP Mahua Moitra for alleged \"objectionable\" remarks made against Union Home Minister Amit Shah. Prime Minister Narendra Modi addressed the India-Japan Economic Forum in Tokyo, emphasizing stronger bilateral economic ties. PM Modi also met with Myanmar's acting President and military chief, Senior General Min Aung Hlaing. The Election Commission in India has issued notices to nearly 3 lakh people in Bihar due to doubtful citizenship status. White House adviser Peter Navarro has accused India of facilitating Russian oil money laundering, leading to increased tensions. India is expected to experience a wetter September, with the India Meteorological Department (IMD) warning of potential flash floods and landslides in states like Uttarakhand, south Haryana, Delhi, and north Rajasthan. More than 7,000 corruption cases probed by the CBI are pending trial in courts, with 379 cases pending for over 20 years. In the Philippines, school and government office suspensions were implemented in the NCR and some provinces due to heavy rains. Sec. Vince Dizon was appointed as the new DPWH Secretary after Sec. Bonoan's resignation was accepted by President Bongbong Marcos.\n\n**International Affairs:**\n\n*   Nepal's Prime Minister has opposed India-China trade via Lipulekh ahead of the SCO summit. Russian President Vladimir Putin arrived in China's Tianjin for a security summit. An Israeli airstrike reportedly killed the Houthi rebel Prime Minister in Sanaa. Thousands protested the Israeli siege of Gaza near the Venice Film Festival. Russia claimed its units destroyed 21 Ukrainian drones in the south and southwest. Thailand's Prime Minister Paetongtarn Shinawatra was removed by the court over ethical misconduct, leading to new political turmoil. Pope Leo XIV renewed his invitation for Christians worldwide to unite on September 1 to celebrate the World Day of Prayer for the Care of Creation, with the theme \"Seeds of Peace and Hope,\" also marking the 10th anniversary of Pope Francis instituting the World Day of Prayer for the Care of Creation.\n\n**Sports News:**\n\n*   Indian shuttlers Satwiksairaj Rankireddy and Chirag Shetty secured a bronze medal at the World Championships in men's doubles after a defeat against China's Chen and Liu. Rahul Dravid has stepped down as the head coach of Rajasthan Royals. In the PKL 12, UP Yoddhas defeated Telugu Titans 40-35. In the Hockey Asia Cup 2025, India survived a late scare to beat Japan 3-2, securing the top spot in Pool A. Neeraj Chopra finished second in the Diamond League Finals for javelin throw. Ashwin has signed up for the ILT20 auction after announcing his IPL retirement. Southland won the Ranfurly Shield from Waikato with a 25-10 victory.\n\n**Economic and Other News:**\n\n*   The number of houses for sale in New Zealand has increased by approximately 9% year-on-year, indicating growing seller confidence. Regional airlines in New Zealand will have access to up to $30 million in government loans to prevent further route cuts. Auckland Airport is clearing a backlog of passengers following wild weather disruptions, with more bumpy weather anticipated in spring. Freight train trips have significantly increased."
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0,
+              "groundingMetadata": {
+                "searchEntryPoint": {
+                  "renderedContent": "\u003cstyle\u003e\n.container {\n  align-items: center;\n  border-radius: 8px;\n  display: flex;\n  font-family: Google Sans, Roboto, sans-serif;\n  font-size: 14px;\n  line-height: 20px;\n  padding: 8px 12px;\n}\n.chip {\n  display: inline-block;\n  border: solid 1px;\n  border-radius: 16px;\n  min-width: 14px;\n  padding: 5px 16px;\n  text-align: center;\n  user-select: none;\n  margin: 0 8px;\n  -webkit-tap-highlight-color: transparent;\n}\n.carousel {\n  overflow: auto;\n  scrollbar-width: none;\n  white-space: nowrap;\n  margin-right: -12px;\n}\n.headline {\n  display: flex;\n  margin-right: 4px;\n}\n.gradient-container {\n  position: relative;\n}\n.gradient {\n  position: absolute;\n  transform: translate(3px, -9px);\n  height: 36px;\n  width: 9px;\n}\n@media (prefers-color-scheme: light) {\n  .container {\n    background-color: #fafafa;\n    box-shadow: 0 0 0 1px #0000000f;\n  }\n  .headline-label {\n    color: #1f1f1f;\n  }\n  .chip {\n    background-color: #ffffff;\n    border-color: #d2d2d2;\n    color: #5e5e5e;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #f2f2f2;\n  }\n  .chip:focus {\n    background-color: #f2f2f2;\n  }\n  .chip:active {\n    background-color: #d8d8d8;\n    border-color: #b6b6b6;\n  }\n  .logo-dark {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);\n  }\n}\n@media (prefers-color-scheme: dark) {\n  .container {\n    background-color: #1f1f1f;\n    box-shadow: 0 0 0 1px #ffffff26;\n  }\n  .headline-label {\n    color: #fff;\n  }\n  .chip {\n    background-color: #2c2c2c;\n    border-color: #3c4043;\n    color: #fff;\n    text-decoration: none;\n  }\n  .chip:hover {\n    background-color: #353536;\n  }\n  .chip:focus {\n    background-color: #353536;\n  }\n  .chip:active {\n    background-color: #464849;\n    border-color: #53575b;\n  }\n  .logo-light {\n    display: none;\n  }\n  .gradient {\n    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);\n  }\n}\n\u003c/style\u003e\n\u003cdiv class=\"container\"\u003e\n  \u003cdiv class=\"headline\"\u003e\n    \u003csvg class=\"logo-light\" width=\"18\" height=\"18\" viewBox=\"9 9 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z\" fill=\"#4285F4\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z\" fill=\"#34A853\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z\" fill=\"#FBBC05\"/\u003e\n      \u003cpath fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z\" fill=\"#EA4335\"/\u003e\n    \u003c/svg\u003e\n    \u003csvg class=\"logo-dark\" width=\"18\" height=\"18\" viewBox=\"0 0 48 48\" xmlns=\"http://www.w3.org/2000/svg\"\u003e\n      \u003ccircle cx=\"24\" cy=\"23\" fill=\"#FFF\" r=\"22\"/\u003e\n      \u003cpath d=\"M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z\" fill=\"#4285F4\"/\u003e\n      \u003cpath d=\"M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z\" fill=\"#34A853\"/\u003e\n      \u003cpath d=\"M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z\" fill=\"#FBBC05\"/\u003e\n      \u003cpath d=\"M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z\" fill=\"#EA4335\"/\u003e\n    \u003c/svg\u003e\n    \u003cdiv class=\"gradient-container\"\u003e\u003cdiv class=\"gradient\"\u003e\u003c/div\u003e\u003c/div\u003e\n  \u003c/div\u003e\n  \u003cdiv class=\"carousel\"\u003e\n    \u003ca class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8073y0C-6vlcWIa85wmhRxcy8H2xWi48V-w2rLKLjAnsDt-68yRfPgX1cpBgllJvzeWysgDC9Wdq6EmaIjY0HzgMAwH5DwIej-qQvjfZXyMOY5tlbKOCOTN73u2R5pXItmESpM5E9qfxzvnvxcGR-Mv0IgWrtbY_qwI9OhJbx2BWEaBST1fRIvUSM8dxT8URXCTqvFuI8Wm4d8AGQXX_-epY=\"\u003etop headlines September 1, 2025\u003c/a\u003e\n    \u003ca class=\"chip\" href=\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFTooiHJiK3hYWdGop4C1Myh955aT_hbhqoTkEu7ZUk-NqIn29C_vvdIDQjeZ7u7MrmH_TFazPH7uLy94OIezaUaWSnS5cC_SSSgiy81GAfUg6vSnL9azPnV3pBeEKuAVrr1FbPadHzipPIqbrZ6vECrDQ9-nSPDtzjs5PCBKNHtBX1PHNJK59GAA6FTh-kNEgn4SYLjFShbww=\"\u003enews September 1, 2025\u003c/a\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n"
+                },
+                "groundingChunks": [
+                  {
+                    "web": {
+                      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGtcyCPp2i-l7xOe4kvFaxl6K-h7qhTmEUcvGU37FV2bpUMLqDE6tR9BQ4__JoShYmNEoJ-P4f9ENSYeLtmdtpNAAAZCo7JORDO0mbNWSLv0fizvd3EnU34YAmznP86gHvKzINHBWxCBWfwr0zISlwW998kFELGV3jI2_xp1rvhykErFNeKVU9u8ZmJHKMQ1WVL9xUH2y88eN84Kyq1plXPXVFtoWSie0epdg3gX_0tCwx7xGBry8GdkQgZ8_ExbfpoDocdxCj5tIqezOnQ6HIg4O_oxEF6k3QD4hjKSjvb58c1KaNU9s8=",
+                      "title": "economictimes.com"
+                    }
+                  },
+                  {
+                    "web": {
+                      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH-hsXcnvEm7eQkJC61fU8Kn76GPuyex949uAOVM_w-4sinqspeugBmR1HUNC0fWiEvCo-1qa-w7ANJDOOzRIi-kQ8E9tQwXKdoAtTTIc5TqGySoK-M4fzO9575JJBo18z6SKcu7e1v67sdl0EiotSfk5pmyJMaKKj2XlyVUuizjgVp4TBzXpEypbOG5quwrCDrhwyq_sZ8trCPM863u6btRBUaMditWnE7RwhOJmg7hpFMWH0nStgVz_gwcOoOI_ATlR_7Y0I-mF9B6wdiUQLnt6GXKH_0Q1_lTJyiZwJ7HE2xujsqEzWInlrHzbMyMzWr13LjfC56fk9lhm_P4Jy6UNRNdZs=",
+                      "title": "jagranjosh.com"
+                    }
+                  },
+                  {
+                    "web": {
+                      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEI-xcFF-Ksqb6XCbUGgOLL1KEukvETIoxTyle7u2syGaiUD8vlatDcJwKrJB2A_BCfll0XT0MS3GqhBskgF6NSNyIXJFfpr5BGm08WwY4sWz_dgPZW4CDiKVDZItYTUPQHj1Sc9ZwVa4ozh_mZJEi0kBD6zTg16GqMIGiGKfFRM9bXvVmfOXsD1im7rqQpJZEVXkhiEOA744JXA_g0kkGmbcH6gLWusbjNIY_fjBlGj_VlfovgIM8RWjtIeMtO1lw_InSLN-0eh8mJFD_HnR8remO6",
+                      "title": "indiatoday.in"
+                    }
+                  },
+                  {
+                    "web": {
+                      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEuRnmtLKaWQIo2wTEeSBWZF-yxAxTtGKIk2641hV2NGdubg6hqZ2qTnIZqJlRkkxm9LPh-YZlut7LTFxSFbI4uZB9o_U9x6GrDCfN_SEMQPREmd_Su9gpdFxDTZhwU9LqNKSbY5f4=",
+                      "title": "youtube.com"
+                    }
+                  },
+                  {
+                    "web": {
+                      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE7Vlk3YTxA47m-3mLet-vSAmczFMPKJ6t892LaFtYjiBLV8ANT01XmYMQgXiPcx3-dCAtA8VQaYrkAvDsUYRiUxNakEFjFa3_zph-wmZIsXTs7HCIE2QP-DgJER4hHq7WI63p-n2RRTcVzrLN-6QdGlJBVCz1n2bgv3WZar4_19DDOOE84cPxyVP34sfW-VmVhWb1ViYRQT9sejFueVj8p_Q==",
+                      "title": "vaticannews.va"
+                    }
+                  },
+                  {
+                    "web": {
+                      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHF5KbSNTHWcZabCaFRv4kcdHN8pltoYDmu5ZSJIpGLRDcHHdqdrmbrBRd0L2WgV0lnoBs2yS6TbJCDWz5suQoBtdsOq1-KQDj53rakItyJYvW4zw4J7unR4wSpibwCF-bHdlNsRrUmtMs5qBeZxqLZ_SZJ5rq71YFFv_sMFw==",
+                      "title": "1news.co.nz"
+                    }
+                  }
+                ],
+                "groundingSupports": [
+                  {
+                    "segment": {
+                      "startIndex": 99,
+                      "endIndex": 247,
+                      "text": "*   In India, an FIR has been registered against TMC MP Mahua Moitra for alleged \"objectionable\" remarks made against Union Home Minister Amit Shah."
+                    },
+                    "groundingChunkIndices": [
+                      0
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 248,
+                      "endIndex": 373,
+                      "text": "Prime Minister Narendra Modi addressed the India-Japan Economic Forum in Tokyo, emphasizing stronger bilateral economic ties."
+                    },
+                    "groundingChunkIndices": [
+                      1
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 374,
+                      "endIndex": 474,
+                      "text": "PM Modi also met with Myanmar's acting President and military chief, Senior General Min Aung Hlaing."
+                    },
+                    "groundingChunkIndices": [
+                      0
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 475,
+                      "endIndex": 595,
+                      "text": "The Election Commission in India has issued notices to nearly 3 lakh people in Bihar due to doubtful citizenship status."
+                    },
+                    "groundingChunkIndices": [
+                      1
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 596,
+                      "endIndex": 724,
+                      "text": "White House adviser Peter Navarro has accused India of facilitating Russian oil money laundering, leading to increased tensions."
+                    },
+                    "groundingChunkIndices": [
+                      1
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 725,
+                      "endIndex": 943,
+                      "text": "India is expected to experience a wetter September, with the India Meteorological Department (IMD) warning of potential flash floods and landslides in states like Uttarakhand, south Haryana, Delhi, and north Rajasthan."
+                    },
+                    "groundingChunkIndices": [
+                      0,
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 944,
+                      "endIndex": 1065,
+                      "text": "More than 7,000 corruption cases probed by the CBI are pending trial in courts, with 379 cases pending for over 20 years."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1066,
+                      "endIndex": 1193,
+                      "text": "In the Philippines, school and government office suspensions were implemented in the NCR and some provinces due to heavy rains."
+                    },
+                    "groundingChunkIndices": [
+                      3
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1262,
+                      "endIndex": 1325,
+                      "text": "Bonoan's resignation was accepted by President Bongbong Marcos."
+                    },
+                    "groundingChunkIndices": [
+                      3
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1355,
+                      "endIndex": 1449,
+                      "text": "*   Nepal's Prime Minister has opposed India-China trade via Lipulekh ahead of the SCO summit."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1450,
+                      "endIndex": 1532,
+                      "text": "Russian President Vladimir Putin arrived in China's Tianjin for a security summit."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1533,
+                      "endIndex": 1613,
+                      "text": "An Israeli airstrike reportedly killed the Houthi rebel Prime Minister in Sanaa."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1614,
+                      "endIndex": 1690,
+                      "text": "Thousands protested the Israeli siege of Gaza near the Venice Film Festival."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1691,
+                      "endIndex": 1773,
+                      "text": "Russia claimed its units destroyed 21 Ukrainian drones in the south and southwest."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1774,
+                      "endIndex": 1906,
+                      "text": "Thailand's Prime Minister Paetongtarn Shinawatra was removed by the court over ethical misconduct, leading to new political turmoil."
+                    },
+                    "groundingChunkIndices": [
+                      1
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 1907,
+                      "endIndex": 2208,
+                      "text": "Pope Leo XIV renewed his invitation for Christians worldwide to unite on September 1 to celebrate the World Day of Prayer for the Care of Creation, with the theme \"Seeds of Peace and Hope,\" also marking the 10th anniversary of Pope Francis instituting the World Day of Prayer for the Care of Creation."
+                    },
+                    "groundingChunkIndices": [
+                      4
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2228,
+                      "endIndex": 2402,
+                      "text": "*   Indian shuttlers Satwiksairaj Rankireddy and Chirag Shetty secured a bronze medal at the World Championships in men's doubles after a defeat against China's Chen and Liu."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2403,
+                      "endIndex": 2471,
+                      "text": "Rahul Dravid has stepped down as the head coach of Rajasthan Royals."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2472,
+                      "endIndex": 2527,
+                      "text": "In the PKL 12, UP Yoddhas defeated Telugu Titans 40-35."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2528,
+                      "endIndex": 2636,
+                      "text": "In the Hockey Asia Cup 2025, India survived a late scare to beat Japan 3-2, securing the top spot in Pool A."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2637,
+                      "endIndex": 2714,
+                      "text": "Neeraj Chopra finished second in the Diamond League Finals for javelin throw."
+                    },
+                    "groundingChunkIndices": [
+                      1
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2715,
+                      "endIndex": 2794,
+                      "text": "Ashwin has signed up for the ILT20 auction after announcing his IPL retirement."
+                    },
+                    "groundingChunkIndices": [
+                      2
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2795,
+                      "endIndex": 2863,
+                      "text": "Southland won the Ranfurly Shield from Waikato with a 25-10 victory."
+                    },
+                    "groundingChunkIndices": [
+                      5
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 2895,
+                      "endIndex": 3029,
+                      "text": "*   The number of houses for sale in New Zealand has increased by approximately 9% year-on-year, indicating growing seller confidence."
+                    },
+                    "groundingChunkIndices": [
+                      5
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 3030,
+                      "endIndex": 3151,
+                      "text": "Regional airlines in New Zealand will have access to up to $30 million in government loans to prevent further route cuts."
+                    },
+                    "groundingChunkIndices": [
+                      5
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 3152,
+                      "endIndex": 3287,
+                      "text": "Auckland Airport is clearing a backlog of passengers following wild weather disruptions, with more bumpy weather anticipated in spring."
+                    },
+                    "groundingChunkIndices": [
+                      5
+                    ]
+                  },
+                  {
+                    "segment": {
+                      "startIndex": 3288,
+                      "endIndex": 3337,
+                      "text": "Freight train trips have significantly increased."
+                    },
+                    "groundingChunkIndices": [
+                      0
+                    ]
+                  }
+                ],
+                "webSearchQueries": [
+                  "news September 1, 2025",
+                  "top headlines September 1, 2025"
+                ]
+              }
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 7,
+            "candidatesTokenCount": 741,
+            "totalTokenCount": 1032,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 7
+              }
+            ],
+            "toolUsePromptTokenCount": 114,
+            "toolUsePromptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 114
+              }
+            ],
+            "thoughtsTokenCount": 170
+          },
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "Su60aPCQKs_Vz7IPnZyS8AI"
+        }
+  recorded_at: Mon, 01 Sep 2025 00:52:10 GMT
+recorded_with: VCR 6.3.1
