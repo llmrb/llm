@@ -9,6 +9,9 @@ audio, images, files, and structured outputs (JSON Schema).
 
 #### Demo
 
+This cool demo writes a new [llm-shell](https://github.com/llmrb/llm-shell#readme) command
+with the help of AI. Similar-ish to GitHub Copilot but for the terminal:
+
 <details>
   <summary>Pair programmer</summary>
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
