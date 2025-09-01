@@ -1,0 +1,295 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/responses
+    body:
+      encoding: UTF-8
+      string: '{"input":[{"role":"user","content":[{"type":"input_text","text":"Summarize
+        today''s news"}]}],"model":"gpt-4.1","store":false,"tools":[{"type":"web_search"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 01 Sep 2025 00:50:50 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Limit-Requests:
+      - '500'
+      X-Ratelimit-Limit-Tokens:
+      - '30000'
+      X-Ratelimit-Remaining-Requests:
+      - '499'
+      X-Ratelimit-Remaining-Tokens:
+      - '29675'
+      X-Ratelimit-Reset-Requests:
+      - 120ms
+      X-Ratelimit-Reset-Tokens:
+      - 650ms
+      Openai-Version:
+      - '2020-10-01'
+      Openai-Organization:
+      - user-j1pztzt5nogpcsid23u7gskj
+      Openai-Project:
+      - proj_YSiqu4bByPgi6EwPnLiY8irR
+      X-Request-Id:
+      - req_3b2fc2c88b7061c4e78fbaab22cda8a0
+      Openai-Processing-Ms:
+      - '10379'
+      X-Envoy-Upstream-Service-Time:
+      - '10388'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=ZHJkrcMRkdA6OgtXFaLb4GUQ1.QEUvInuT8BLCKu_pM-1756687850-1.0.1.1-Ju5n64PPhACPWljrwU3b9PpcGVRoflfJ_F29uZx.jbuIUSNBVNMomgTZaza19tBKWI0lnpJyxYJjZAUU4DME4abQjPvZK2YbAOjxyPn7hmw;
+        path=/; expires=Mon, 01-Sep-25 01:20:50 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=2Ms5oXM5qwJWrc0KrzO2Wk8nn72GXZ6UTQKiyAFxixA-1756687850742-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9780c656fb670292-GRU
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "resp_68b4ede047b48196a5bbf76e1c5d61fc0f4ddbdb8331f6a3",
+          "object": "response",
+          "created_at": 1756687840,
+          "status": "completed",
+          "background": false,
+          "error": null,
+          "incomplete_details": null,
+          "instructions": null,
+          "max_output_tokens": null,
+          "max_tool_calls": null,
+          "model": "gpt-4.1-2025-04-14",
+          "output": [
+            {
+              "id": "ws_68b4ede0be9881969ec4995cb9ad72140f4ddbdb8331f6a3",
+              "type": "web_search_call",
+              "status": "completed",
+              "action": {
+                "type": "search",
+                "query": "today's top news headlines"
+              }
+            },
+            {
+              "id": "msg_68b4ede3f0188196a2e8bfff5ea353d10f4ddbdb8331f6a3",
+              "type": "message",
+              "status": "completed",
+              "content": [
+                {
+                  "type": "output_text",
+                  "annotations": [
+                    {
+                      "type": "url_citation",
+                      "end_index": 669,
+                      "start_index": 610,
+                      "title": "NBC News - Breaking News & Top Stories - Latest World, US & Local News | NBC News",
+                      "url": "https://www.nbcnews.com/?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 1025,
+                      "start_index": 966,
+                      "title": "CBS News | Breaking news, top stories & today's latest headlines",
+                      "url": "https://www.cbsnews.com/?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 1394,
+                      "start_index": 1325,
+                      "title": "News | Today's latest from Al Jazeera",
+                      "url": "https://www.aljazeera.com/news//?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 1667,
+                      "start_index": 1599,
+                      "title": "News | Today's latest from Al Jazeera",
+                      "url": "https://www.aljazeera.com/news/?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 1953,
+                      "start_index": 1884,
+                      "title": "News | Today's latest from Al Jazeera",
+                      "url": "https://www.aljazeera.com/news//?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 2227,
+                      "start_index": 2158,
+                      "title": "News | Today's latest from Al Jazeera",
+                      "url": "https://www.aljazeera.com/news//?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 2515,
+                      "start_index": 2446,
+                      "title": "News | Today's latest from Al Jazeera",
+                      "url": "https://www.aljazeera.com/news//?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 3135,
+                      "start_index": 2831,
+                      "title": "Labor Day closings and holiday events in Pittsburgh area",
+                      "url": "https://www.wtae.com/article/labor-day-pittsburgh-2025/65834592?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 3135,
+                      "start_index": 2831,
+                      "title": "Labor Day 2025: What\u2019s open and closed on September 1 \u2014 Stock market, banks, grocery stores & more",
+                      "url": "https://m.economictimes.com/news/international/us/labor-day-2025-whats-open-and-closed-on-september-1-stock-market-banks-grocery-stores-more/articleshow/123616012.cms?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 3463,
+                      "start_index": 3368,
+                      "title": "Labor Day closings and holiday events in Pittsburgh area",
+                      "url": "https://www.wtae.com/article/labor-day-pittsburgh-2025/65834592?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 3686,
+                      "start_index": 3591,
+                      "title": "Labor Day closings and holiday events in Pittsburgh area",
+                      "url": "https://www.wtae.com/article/labor-day-pittsburgh-2025/65834592?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 3983,
+                      "start_index": 3910,
+                      "title": "Ukraine News Today: Breaking Updates & Live Coverage - September 1",
+                      "url": "https://www.kyivpost.com/thread/59225?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 4405,
+                      "start_index": 4191,
+                      "title": "School Assembly News Headlines for September 1: Top national, international, business and sports update",
+                      "url": "https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 4747,
+                      "start_index": 4533,
+                      "title": "School Assembly News Headlines for September 1: Top national, international, business and sports update",
+                      "url": "https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 5159,
+                      "start_index": 4945,
+                      "title": "School Assembly News Headlines for September 1: Top national, international, business and sports update",
+                      "url": "https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 5587,
+                      "start_index": 5373,
+                      "title": "School Assembly News Headlines for September 1: Top national, international, business and sports update",
+                      "url": "https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 6017,
+                      "start_index": 5803,
+                      "title": "School Assembly News Headlines for September 1: Top national, international, business and sports update",
+                      "url": "https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 6460,
+                      "start_index": 6246,
+                      "title": "School Assembly News Headlines for September 1: Top national, international, business and sports update",
+                      "url": "https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai"
+                    }
+                  ],
+                  "logprobs": [],
+                  "text": "Here\u2019s a comprehensive summary of today\u2019s major news\u2014Monday, September 1, 2025\u2014across U.S. national headlines, international developments, and regional updates. The information provided below is accurate and current as of today, September 1, 2025.\n\n---\n\n## U.S. National News\n\n- **Severe Wildfires in Southern California**  \n  Unprecedented wildfires have erupted across coastal Los Angeles, fueled by strong winds and dry conditions. The **Eaton Fire** in Pasadena has rapidly spread, engulfing a McDonald\u2019s restaurant and even a Jewish temple in Altadena, prompting mass evacuations and emergency responses. ([nbcnews.com](https://www.nbcnews.com/?utm_source=openai))\n\n- **Tropical Storm Kiko Forms in Pacific, Threatening to Strengthen**  \n  The National Hurricane Center has identified Tropical Storm Kiko in the eastern Pacific. The system is expected to gain strength and could develop into a hurricane later this week, heightening concerns for coastal areas. ([cbsnews.com](https://www.cbsnews.com/?utm_source=openai))\n\n---\n\n## International Headlines\n\n- **Escalating Israeli\u2013Palestinian Conflict and Humanitarian Crisis**  \n  Israeli-led strikes and blockades continue to devastate Gaza, contributing to widespread starvation and civilian casualties. Relief efforts face mounting challenges amid ongoing hostilities. ([aljazeera.com](https://www.aljazeera.com/news//?utm_source=openai))  \n  A large-scale flotilla\u2014the **Global Sumud Flotilla**\u2014has been organized to deliver humanitarian aid by sea to Gaza, seeking to circumvent the soaring restrictions and urgent humanitarian needs there. ([aljazeera.com](https://www.aljazeera.com/news/?utm_source=openai))\n\n- **Africa and Middle East Spotlights**  \n  A deadly crush occurred at a Hindu temple in Haridwar, India, after an overhead power line fell amidst a crowd of worshippers. The incident has sparked national mourning. ([aljazeera.com](https://www.aljazeera.com/news//?utm_source=openai))  \n  In political developments, Sudan\u2019s Rapid Support Forces (RSF) have formed a parallel government amidst ongoing civil unrest, raising concerns about the nation's stability and human rights trajectory. ([aljazeera.com](https://www.aljazeera.com/news//?utm_source=openai))\n\n- **Sports: Nigeria Triumphs in WAFCON 2025**  \n  Nigeria claimed its 10th Women\u2019s Africa Cup of Nations title, coming from behind to defeat Morocco 3\u20132 in Rabat, securing \"Mission X\" with a dramatic comeback finish. ([aljazeera.com](https://www.aljazeera.com/news//?utm_source=openai))\n\n---\n\n## U.S. Regional News & Observances\n\n- **Labor Day Observances Across the U.S.**  \n  As most Americans observe Labor Day today, many services and institutions are affected:\n    - **Municipal and Retail Closures**: Banks, government offices, and numerous retail outlets remain closed or operate reduced hours. ([wtae.com](https://www.wtae.com/article/labor-day-pittsburgh-2025/65834592?utm_source=openai), [m.economictimes.com](https://m.economictimes.com/news/international/us/labor-day-2025-whats-open-and-closed-on-september-1-stock-market-banks-grocery-stores-more/articleshow/123616012.cms?utm_source=openai))  \n    - **Transportation Adjustments**: In Pittsburgh, garbage collection schedules are delayed by one day. Public transit (buses and light rail) runs on Sunday timetables, with service detours due to the downtown Labor Day parade. ([wtae.com](https://www.wtae.com/article/labor-day-pittsburgh-2025/65834592?utm_source=openai))  \n    - **Labor Day Activities**: Parades, such as the one at 10 a.m. in downtown Pittsburgh, serve as community focal points. ([wtae.com](https://www.wtae.com/article/labor-day-pittsburgh-2025/65834592?utm_source=openai))\n\n---\n\n## Global Snapshot\n\n- **Ukraine Situation**  \n  KyivPost continues to offer real-time coverage of developments in Ukraine, tracking the ongoing war, diplomatic efforts, prisoner exchanges, and other critical updates. ([kyivpost.com](https://www.kyivpost.com/thread/59225?utm_source=openai))\n\n- **India\u2013Myanmar Diplomacy and Domestic News**  \n  India\u2019s Prime Minister Narendra Modi held talks with Myanmar\u2019s military leader, Gen. Min Aung Hlaing, furthering diplomatic ties between the two nations. ([m.economictimes.com](https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai))  \n  In Indian politics, lawmaker Mohua Moitra is facing legal action following remarks she made about Home Minister Amit Shah. ([m.economictimes.com](https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai))\n\n- **Bad Weather Warnings in India**  \n  Heavy rains are expected to impact large regions of India today, raising the likelihood of disruption to daily life, transportation, and school assemblies. ([m.economictimes.com](https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai))\n\n- **Political Unrest in Indonesia**  \n  Protests in Indonesia have turned violent, with rioters looting the house of the country\u2019s finance minister\u2014a clear sign of mounting civil dissatisfaction and instability. ([m.economictimes.com](https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai))\n\n---\n\n## Sports & Business Highlights\n\n- **Historic Achievement in Badminton**  \n  The Indian duo **Satwik\u2013Chirag** secured a medal at the World Championships, marking a landmark achievement in the sport for India. ([m.economictimes.com](https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai))\n\n- **Surge in Freight Train Travel**  \n  Data indicates a significant increase in freight train usage, suggesting a revival or shift in goods transport methods\u2014possibly linked to economic adjustments or logistics restructuring. ([m.economictimes.com](https://m.economictimes.com/news/new-updates/school-assembly-news-headlines-for-september-1-top-national-international-business-and-sports-update/articleshow/123615417.cms?utm_source=openai))\n\n---\n\n## Summary Table\n\n| Category                  | Highlights |\n|---------------------------|------------|\n| U.S. National              | Wildfires in L.A., Tropical Storm Kiko forms |\n| International              | Gaza crisis, Sumud flotilla, Haridwar tragedy, RSF government in Sudan, Nigeria\u2019s WAFCON victory |\n| U.S. Regional (Labor Day) | Service closures, Pittsburgh events, transport changes |\n| India & Asia               | Modi\u2013Myanmar meeting, Moitra legal action, monsoon rains, Indonesian unrest |\n| Sports & Business          | Satwik\u2013Chirag medal, freight train travel spike |\n\n---\n\nLet me know if you'd like further-detail on any of these topics\u2014such as evacuation updates in California, specifics of the Gaza aid efforts, or the presidential visit in Asia. Happy to go deeper."
+                }
+              ],
+              "role": "assistant"
+            }
+          ],
+          "parallel_tool_calls": true,
+          "previous_response_id": null,
+          "prompt_cache_key": null,
+          "reasoning": {
+            "effort": null,
+            "summary": null
+          },
+          "safety_identifier": null,
+          "service_tier": "default",
+          "store": false,
+          "temperature": 1.0,
+          "text": {
+            "format": {
+              "type": "text"
+            },
+            "verbosity": "medium"
+          },
+          "tool_choice": "auto",
+          "tools": [
+            {
+              "type": "web_search",
+              "filters": null,
+              "search_context_size": "medium",
+              "user_location": {
+                "type": "approximate",
+                "city": null,
+                "country": "US",
+                "region": null,
+                "timezone": null
+              }
+            }
+          ],
+          "top_logprobs": 0,
+          "top_p": 1.0,
+          "truncation": "disabled",
+          "usage": {
+            "input_tokens": 17198,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 1322,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 18520
+          },
+          "user": null,
+          "metadata": {}
+        }
+  recorded_at: Mon, 01 Sep 2025 00:50:34 GMT
+recorded_with: VCR 6.3.1
