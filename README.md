@@ -14,6 +14,11 @@ audio, images, files, and structured outputs (JSON Schema).
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
 </details>
 
+#### Reviews
+
+I supplied Gemini and DeepSeek with the contents of [lib/](lib/) and [README.md](README.md).
+This was their feedback.
+
 <details>
   <summary>Review by Gemini</summary>
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/gemini.png?raw=true" alt="Gemini review" />
