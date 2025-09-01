@@ -18,6 +18,7 @@ module LLM
   require_relative "llm/function"
   require_relative "llm/eventstream"
   require_relative "llm/eventhandler"
+  require_relative "llm/tool"
 
   module_function
 
@@ -38,7 +39,7 @@ module LLM
   end
 
   ##
-  # @param (see LLM::Provider#initialize)
+  # @param key (see LLM::Provider#initialize)
   # @return (see LLM::Ollama#initialize)
   def ollama(key: nil, **)
     require_relative "llm/providers/ollama" unless defined?(LLM::Ollama)
@@ -79,7 +80,7 @@ module LLM
   end
 
   ##
-  # Define a function
+  # Define or get a function
   # @example
   #   LLM.function(:system) do |fn|
   #     fn.description "Run system command"
@@ -94,7 +95,11 @@ module LLM
   # @param [Proc] b The block to define the function
   # @return [LLM::Function] The function object
   def function(name, &b)
-    functions[name.to_s] = LLM::Function.new(name, &b)
+    if block_given?
+      functions[name.to_s] = LLM::Function.new(name, &b)
+    else
+      functions[name.to_s]
+    end
   end
 
   ##

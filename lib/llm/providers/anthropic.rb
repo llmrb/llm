@@ -83,6 +83,21 @@ module LLM
       "claude-sonnet-4-20250514"
     end
 
+    ##
+    # @note
+    #  This method includes certain tools that require configuration
+    #  through a set of options that are easier to set through the
+    #  {LLM::Provider#tool LLM::Provider#tool} method.
+    # @see https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-search-tool Anthropic docs
+    # @return (see LLM::Provider#tools)
+    def tools
+      {
+        bash: tool(:bash, type: "bash_20250124"),
+        web_search: tool(:web_search, type: "web_search_20250305", max_uses: 5),
+        text_editor: tool(:str_replace_based_edit_tool, type: "text_editor_20250728", max_characters: 10_000)
+      }
+    end
+
     private
 
     def headers
