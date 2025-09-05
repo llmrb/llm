@@ -54,6 +54,7 @@ special prompting or engineering. I just provided them with the source code and 
 - ✅ A single unified interface for multiple providers
 - 📦 Zero dependencies outside Ruby's standard library
 - 🚀 Smart API design that minimizes the number of requests made
+- ♻️ Optional: per-provider, process-wide connection pool via net-http-persistent
 
 #### Chat, Agents
 - 🧠 Stateless and stateful chat via completions and responses API
@@ -128,6 +129,23 @@ llm = LLM.deepseek(key: "yourapikey")
 # local providers
 llm = LLM.ollama(key: nil)
 llm = LLM.llamacpp(key: nil)
+```
+
+#### Persistence
+
+The llm.rb library can maintain a process-wide connection pool
+for each provider that is instantiated. This feature can improve
+performance but it is optional, the implementation depends on
+[net-http-persistent](https://github.com/dbrain/net-http-persistent),
+and the gem should be installed separately.
+
+```ruby
+#!/usr/bin/env ruby
+
+require "llm"
+llm = LLM.openai(key: ENV["KEY"], persistent: true)
+res = llm.responses.create "Hello world"
+llm.responses.create "Adios", last_response_id: res.response_id
 ```
 
 ### Conversations
