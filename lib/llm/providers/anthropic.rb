@@ -15,6 +15,7 @@ module LLM
   #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
   class Anthropic < Provider
     require_relative "anthropic/response/completion"
+    require_relative "anthropic/response/web_search"
     require_relative "anthropic/format"
     require_relative "anthropic/error_handler"
     require_relative "anthropic/stream_parser"
@@ -101,10 +102,15 @@ module LLM
     ##
     # A convenience method for performing a web search using the
     # Anthropic web search tool.
+    # @example
+    #   llm = LLM.anthropic(key: ENV["KEY"])
+    #   res = llm.web_search(query: "summarize today's news")
+    #   res.search_results.each { |item| print item.title, ": ", item.url, "\n" }
     # @param query [String] The search query.
     # @return [LLM::Response] The response from the LLM provider.
     def web_search(query:)
       complete(query, tools: [tools[:web_search]])
+        .extend(LLM::Anthropic::Response::WebSearch)
     end
 
     private
