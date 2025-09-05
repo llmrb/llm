@@ -7,6 +7,13 @@
 # @abstract
 class LLM::Provider
   require "net/http"
+  @@clients = {}
+  @@mutex = Mutex.new
+
+  ##
+  # @api private
+  def self.clients = @@clients
+  def self.mutex = @@mutex
 
   ##
   # @param [String, nil] key
@@ -19,11 +26,15 @@ class LLM::Provider
   #  The number of seconds to wait for a response
   # @param [Boolean] ssl
   #  Whether to use SSL for the connection
-  def initialize(key:, host:, port: 443, timeout: 60, ssl: true)
+  # @param [Boolean] persistent
+  #  Whether to use a persistent connection.
+  #  Requires the net-http-persistent gem.
+  def initialize(key:, host:, port: 443, timeout: 60, ssl: true, persistent: false)
     @key = key
-    @client = Net::HTTP.new(host, port)
-    @client.use_ssl = ssl
-    @client.read_timeout = timeout
+    @host = host
+    @port = port
+    @client = persistent ? persist!(host, port, timeout, ssl) : transient!(host, port, timeout, ssl)
+    @base_uri = URI("#{ssl ? "https" : "http"}://#{host}:#{port}/")
   end
 
   ##
@@ -256,7 +267,7 @@ class LLM::Provider
 
   private
 
-  attr_reader :client
+  attr_reader :client, :base_uri, :host, :port
 
   ##
   # The headers to include with a request
@@ -306,8 +317,9 @@ class LLM::Provider
   #  When there is a network error at the operating system level
   # @return [Net::HTTPResponse]
   def execute(request:, stream: nil, stream_parser: self.stream_parser, &b)
+    args = (Net::HTTP === client) ? [request] : [URI.join(base_uri, request.path), request]
     res = if stream
-      client.request(request) do |res|
+      client.request(*args) do |res|
         handler = event_handler.new stream_parser.new(stream)
         parser = LLM::EventStream::Parser.new
         parser.register(handler)
@@ -321,8 +333,8 @@ class LLM::Provider
         parser&.free
       end
     else
-      b ? client.request(request) { (Net::HTTPSuccess === _1) ? b.call(_1) : _1 } :
-          client.request(request)
+      b ? client.request(*args) { (Net::HTTPSuccess === _1) ? b.call(_1) : _1 } :
+          client.request(*args)
     end
     handle_response(res)
   end
@@ -349,4 +361,33 @@ class LLM::Provider
     req.body_stream = io
     req["transfer-encoding"] = "chunked" unless req["content-length"]
   end
+
+  ##
+  # @api private
+  def persist!(host, port, timeout, ssl)
+    mutex.synchronize do
+      if clients[host]
+        clients[host]
+      else
+        require "net/http/persistent" unless defined?(Net::HTTP::Persistent)
+        client = Net::HTTP::Persistent.new(name: self.class.name)
+        client.read_timeout = timeout
+        clients[host] = client
+      end
+    end
+  end
+
+  ##
+  # @api private
+  def transient!(host, port, timeout, ssl)
+    client = Net::HTTP.new(host, port)
+    client.read_timeout = timeout
+    client.use_ssl = ssl
+    client
+  end
+
+  ##
+  # @api private
+  def clients = self.class.clients
+  def mutex = self.class.mutex
 end

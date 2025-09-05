@@ -284,7 +284,7 @@ bot.chat bot.functions.map(&:call) # report return value to the LLM
 # {stderr: "", stdout: "FreeBSD"}
 ```
 
-#### Tools
+#### Provider
 
 The
 [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)

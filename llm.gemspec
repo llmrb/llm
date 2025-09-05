@@ -40,4 +40,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "standard", "~> 1.50"
   spec.add_development_dependency "vcr", "~> 6.0"
   spec.add_development_dependency "dotenv", "~> 2.8"
+  spec.add_development_dependency "net-http-persistent", "~> 4.0"
 end
