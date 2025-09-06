@@ -42,6 +42,8 @@ special prompting or engineering. I just provided them with the source code and 
   a blog post that implements an age estimation tool
 * [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
   a blog post that implements image editing with Gemini
+* [Fast sailing with persistent connections](https://0x1eef.github.io/posts/persistent-connections-with-llm.rb/) &ndash;
+  a blog post that optimizes performance with a thread-safe connection pool
 
 #### Ecosystem
 
