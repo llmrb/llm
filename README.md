@@ -17,11 +17,6 @@ with the help of AI. Similar-ish to GitHub Copilot but for the terminal.
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
 </details>
 
-#### Reviews
-
-I asked both Gemini and DeepSeek to review llm.rb for insight and fun.
-Jump to the [end of the readme](#reviews) to see their feedback.
-
 #### Guides
 
 * [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
@@ -570,7 +565,7 @@ bot.chat "Hello #{model.id} :)"
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
-#### Reviews
+## Reviews
 
 I supplied both Gemini and DeepSeek with the contents of [lib/](https://github.com/llmrb/llm/tree/main/lib)
 and [README.md](https://github.com/llmrb/llm#readme) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
