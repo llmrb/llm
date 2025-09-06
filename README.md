@@ -137,7 +137,7 @@ The llm.rb library can maintain a process-wide connection pool
 for each provider that is instantiated. This feature can improve
 performance but it is optional, the implementation depends on
 [net-http-persistent](https://github.com/dbrain/net-http-persistent),
-and the gem should be installed separately.
+and the gem should be installed separately:
 
 ```ruby
 #!/usr/bin/env ruby

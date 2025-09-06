@@ -7,12 +7,18 @@
 # @abstract
 class LLM::Provider
   require "net/http"
+  require_relative "client"
+  include LLM::Client
+
   @@clients = {}
   @@mutex = Mutex.new
 
   ##
   # @api private
   def self.clients = @@clients
+
+  ##
+  # @api private
   def self.mutex = @@mutex
 
   ##
@@ -33,7 +39,9 @@ class LLM::Provider
     @key = key
     @host = host
     @port = port
-    @client = persistent ? persist!(host, port, timeout, ssl) : transient!(host, port, timeout, ssl)
+    @timeout = timeout
+    @ssl = ssl
+    @client = persistent ? persistent_client : transient_client
     @base_uri = URI("#{ssl ? "https" : "http"}://#{host}:#{port}/")
   end
 
@@ -267,7 +275,7 @@ class LLM::Provider
 
   private
 
-  attr_reader :client, :base_uri, :host, :port
+  attr_reader :client, :base_uri, :host, :port, :timeout, :ssl
 
   ##
   # The headers to include with a request
@@ -364,30 +372,8 @@ class LLM::Provider
 
   ##
   # @api private
-  def persist!(host, port, timeout, ssl)
-    mutex.synchronize do
-      if clients[host]
-        clients[host]
-      else
-        require "net/http/persistent" unless defined?(Net::HTTP::Persistent)
-        client = Net::HTTP::Persistent.new(name: self.class.name)
-        client.read_timeout = timeout
-        clients[host] = client
-      end
-    end
-  end
-
-  ##
-  # @api private
-  def transient!(host, port, timeout, ssl)
-    client = Net::HTTP.new(host, port)
-    client.read_timeout = timeout
-    client.use_ssl = ssl
-    client
-  end
-
-  ##
-  # @api private
   def clients = self.class.clients
+  ##
+  # @api private
   def mutex = self.class.mutex
 end
