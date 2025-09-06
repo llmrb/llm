@@ -127,8 +127,8 @@ and the gem should be installed separately:
 
 ```ruby
 #!/usr/bin/env ruby
-
 require "llm"
+
 llm = LLM.openai(key: ENV["KEY"], persistent: true)
 res = llm.responses.create "Hello world"
 llm.responses.create "Adios", last_response_id: res.response_id
