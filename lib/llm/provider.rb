@@ -369,11 +369,4 @@ class LLM::Provider
     req.body_stream = io
     req["transfer-encoding"] = "chunked" unless req["content-length"]
   end
-
-  ##
-  # @api private
-  def clients = self.class.clients
-  ##
-  # @api private
-  def mutex = self.class.mutex
 end
