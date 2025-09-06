@@ -19,20 +19,8 @@ with the help of AI. Similar-ish to GitHub Copilot but for the terminal.
 
 #### Reviews
 
-I supplied both Gemini and DeepSeek with the contents of [lib/](https://github.com/llmrb/llm/tree/main/lib)
-and [README.md](https://github.com/llmrb/llm#readme) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
-Their feedback was way more positive than I could have imagined 😅 These are genuine responses though, with no
-special prompting or engineering. I just provided them with the source code and asked for their opinion.
-
-<details>
-  <summary>Review by Gemini</summary>
-  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/gemini.png?raw=true" alt="Gemini review" />
-</details>
-
-<details>
-  <summary>Review by DeepSeek</summary>
-  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/deepseek.png?raw=true" alt="DeepSeek review" />
-</details>
+I asked both Gemini and DeepSeek to review llm.rb for insight and fun.
+Jump to the [end of the readme](#reviews) to see their feedback.
 
 #### Guides
 
@@ -581,6 +569,23 @@ bot = LLM::Bot.new(llm, model: model.id)
 bot.chat "Hello #{model.id} :)"
 bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
+
+#### Reviews
+
+I supplied both Gemini and DeepSeek with the contents of [lib/](https://github.com/llmrb/llm/tree/main/lib)
+and [README.md](https://github.com/llmrb/llm#readme) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
+Their feedback was way more positive than I could have imagined 😅 These are genuine responses though, with no
+special prompting or engineering. I just provided them with the source code and asked for their opinion.
+
+<details>
+  <summary>Review by Gemini</summary>
+  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/gemini.png?raw=true" alt="Gemini review" />
+</details>
+
+<details>
+  <summary>Review by DeepSeek</summary>
+  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/deepseek.png?raw=true" alt="DeepSeek review" />
+</details>
 
 ## Documentation
 
