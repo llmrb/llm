@@ -14,7 +14,7 @@ with the help of [llm.rb](https://github.com/llmrb/llm#readme). <br> Similar-ish
 GitHub Copilot but for the terminal.
 
 <details>
-  <summary>Pair programmer</summary>
+  <summary>Start demo</summary>
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
 </details>
 
