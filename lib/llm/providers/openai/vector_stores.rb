@@ -8,8 +8,7 @@ class LLM::OpenAI
   # @example
   #  llm = LLM.openai(key: ENV["OPENAI_SECRET"])
   #  files = %w(foo.pdf bar.pdf).map { llm.files.create(file: _1) }
-  #  store = llm.vector_stores.create(name: "PDF Store", file_ids: files.map(&:id))
-  #  store = llm.vector_stores.poll(vector: store)
+  #  store = llm.vector_stores.create_and_poll(name: "PDF Store", file_ids: files.map(&:id))
   #  print "[-] store is ready", "\n"
   #  chunks = llm.vector_stores.search(vector: store, query: "What is Ruby?")
   #  chunks.each { |chunk| puts chunk }
@@ -48,6 +47,14 @@ class LLM::OpenAI
       req.body = JSON.dump(params.merge({name:, file_ids:}).compact)
       res = execute(request: req)
       LLM::Response.new(res)
+    end
+
+    ##
+    # Create a vector store and poll until its status is "completed"
+    # @param (see LLM::OpenAI::VectorStores#create)
+    # @return (see LLM::OpenAI::VectorStores#poll)
+    def create_and_poll(...)
+      poll(vector: create(...))
     end
 
     ##

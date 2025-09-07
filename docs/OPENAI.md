@@ -88,8 +88,7 @@ require "llm"
 pdfs = ["handbook.pdf"]
 llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
 files = pdfs.map { llm.files.create(file: _1) }
-store = llm.vector_stores.create(name: "PDF Store", file_ids: files.map(&:id))
-store = llm.vector_stores.poll(vector: store)
+store = llm.vector_stores.create_and_poll(name: "PDF Store", file_ids: files.map(&:id))
 puts "Vector store is online"
 
 puts "Search the vector store"
