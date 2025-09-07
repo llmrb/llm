@@ -34,6 +34,26 @@ GitHub Copilot but for the terminal.
 * [llm-shell](https://github.com/llmrb/llm-shell) &ndash; a developer-oriented console for Large Language Model communication
 * [llm-spell](https://github.com/llmrb/llm-spell) &ndash; a utility that can correct spelling mistakes with a Large Language Model
 
+#### Show code
+
+A simple chatbot that maintains a conversation and streams
+responses in real-time:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+bot = LLM::Bot.new(llm, stream: $stdout)
+loop do
+  print "> "
+  input = $stdin.gets&.chomp || break
+  bot.chat input, role: :user
+  bot.messages.drain
+  print "\n"
+end
+```
+
 ## Features
 
 #### General
