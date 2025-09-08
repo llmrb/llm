@@ -48,7 +48,7 @@ bot = LLM::Bot.new(llm, stream: $stdout)
 loop do
   print "> "
   input = $stdin.gets&.chomp || break
-  bot.chat(input).drain
+  bot.chat(input).flush
   print "\n"
 end
 ```

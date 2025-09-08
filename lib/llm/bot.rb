@@ -134,5 +134,6 @@ module LLM
     def drain
       messages.drain
     end
+    alias_method :flush, :drain
   end
 end

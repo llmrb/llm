@@ -101,6 +101,7 @@ module LLM
     def drain
       to_a
     end
+    alias_method :flush, :drain
 
     private
 
