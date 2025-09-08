@@ -123,5 +123,16 @@ module LLM
         .flat_map(&:functions)
         .select(&:pending?)
     end
+
+    ##
+    # @example
+    #   llm = LLM.openai(key: ENV["KEY"])
+    #   bot = LLM::Bot.new(llm, stream: $stdout)
+    #   bot.chat("Hello", role: :user).drain
+    # Drains the buffer and returns all messages as an array
+    # @return [Array<LLM::Message>]
+    def drain
+      messages.drain
+    end
   end
 end

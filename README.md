@@ -48,8 +48,7 @@ bot = LLM::Bot.new(llm, stream: $stdout)
 loop do
   print "> "
   input = $stdin.gets&.chomp || break
-  bot.chat input, role: :user
-  bot.messages.drain
+  bot.chat(input).drain
   print "\n"
 end
 ```

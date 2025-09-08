@@ -93,6 +93,7 @@ module LLM
     #   bot = LLM::Bot.new(llm, stream: $stdout)
     #   bot.chat "Hello", role: :user
     #   bot.messages.drain
+    # @see LLM::Bot#drain
     # @note
     #   This method is especially useful when using the streaming API.
     # Drains the buffer and returns all messages as an array
