@@ -92,7 +92,7 @@ module LLM
     #   llm = LLM.openai(key: ENV["KEY"])
     #   bot = LLM::Bot.new(llm, stream: $stdout)
     #   bot.chat "Hello", role: :user
-    #   bot.messages.drain
+    #   bot.messages.flush
     # @see LLM::Bot#drain
     # @note
     #   This method is especially useful when using the streaming API.

@@ -216,7 +216,7 @@ bot.chat(stream: $stdout) do |prompt|
   prompt.user ["Tell me about this URL", URI(url)]
   prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
   prompt.user "Are the URL and PDF similar to each other?"
-end.to_a
+end.flush
 ```
 
 ### Schema

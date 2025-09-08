@@ -37,7 +37,7 @@ There are three different ways to use the streaming API. It can be
 configured for the length of a conversation by passing the `stream`
 through [`LLM::Bot#initialize`](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#initialize-instance_method).
 Note that in this case, we call
-[`LLM::Buffer#drain`](https://0x1eef.github.io/x/llm.rb/LLM/Buffer.html#drain-instance_method)
+[`LLM::Bot#flush`](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#drain-instance_method)
 to start the request:
 
 ```ruby
@@ -46,8 +46,7 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
-bot.chat "Hello", role: :user
-bot.messages.drain
+bot.chat("Hello", role: :user).flush
 ```
 
 * **Block-level** <br>
@@ -66,14 +65,14 @@ bot = LLM::Bot.new(llm)
 bot.chat(stream: $stdout) do |prompt|
   prompt.system "You are my math assistant."
   prompt.user "Tell me the answer to 5 + 15"
-end.to_a
+end.flush
 ```
 
 * **Single request** <br>
 The streaming API can also be enabled for a single request by passing the
 `stream` option to the [chat](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#chat-instance_method)
 method without a block. Note that in this case, we call
-[`LLM::Buffer#drain`](https://0x1eef.github.io/x/llm.rb/LLM/Buffer.html#drain-instance_method)
+[`LLM::Buffer#flush`](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#drain-instance_method)
 to start the request:
 
 ```ruby
@@ -83,6 +82,5 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 bot.chat "You are my math assistant.", role: :system, stream: $stdout
-bot.chat "Tell me the answer to 5 + 15", role: :user
-bot.messages.drain
+bot.chat("Tell me the answer to 5 + 15", role: :user).flush
 ```

@@ -128,7 +128,7 @@ module LLM
     # @example
     #   llm = LLM.openai(key: ENV["KEY"])
     #   bot = LLM::Bot.new(llm, stream: $stdout)
-    #   bot.chat("Hello", role: :user).drain
+    #   bot.chat("Hello", role: :user).flush
     # Drains the buffer and returns all messages as an array
     # @return [Array<LLM::Message>]
     def drain
