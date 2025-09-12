@@ -42,7 +42,7 @@ class LLM::Gemini
     #  might unexpectedly receive a purely textual response. This is due to how
     #  Gemini implements image generation under the hood.
     # @return [LLM::Response]
-    def create(prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
+    def create(prompt:, model: "gemini-2.5-flash-image-preview", **params)
       req  = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       body = JSON.dump({
         contents: [{parts: [{text: create_prompt}, {text: prompt}]}],
@@ -67,7 +67,7 @@ class LLM::Gemini
     # @raise [LLM::NoImageError] when no images are returned
     # @note (see LLM::Gemini::Images#create)
     # @return [LLM::Response]
-    def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
+    def edit(image:, prompt:, model: "gemini-2.5-flash-image-preview", **params)
       req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
       image = LLM.File(image)
       body  = JSON.dump({
