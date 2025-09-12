@@ -36,6 +36,7 @@ class LLM::Gemini
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
+    # @raise [LLM::NoImageError] when no images are returned
     # @note
     #  The prompt should make it clear you want to generate an image, or you
     #  might unexpectedly receive a purely textual response. This is due to how
@@ -49,7 +50,7 @@ class LLM::Gemini
       }.merge!(params))
       req.body = body
       res = execute(request: req)
-      LLM::Response.new(res).extend(LLM::Gemini::Response::Image)
+      validate LLM::Response.new(res).extend(LLM::Gemini::Response::Image)
     end
 
     ##
@@ -63,6 +64,7 @@ class LLM::Gemini
     # @param [String] prompt The prompt
     # @param [Hash] params Other parameters (see Gemini docs)
     # @raise (see LLM::Provider#request)
+    # @raise [LLM::NoImageError] when no images are returned
     # @note (see LLM::Gemini::Images#create)
     # @return [LLM::Response]
     def edit(image:, prompt:, model: "gemini-2.0-flash-exp-image-generation", **params)
@@ -74,7 +76,7 @@ class LLM::Gemini
       }.merge!(params)).b
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req)
-      LLM::Response.new(res).extend(LLM::Gemini::Response::Image)
+      validate LLM::Response.new(res).extend(LLM::Gemini::Response::Image)
     end
 
     ##
@@ -117,6 +119,11 @@ class LLM::Gemini
         2. The model *MUST NOT* generate a new image.
         3. The model *MUST NOT* generate anything else.
       PROMPT
+    end
+
+    def validate(res)
+      return res unless res.images.empty?
+      raise LLM::NoImageError.new { _1.response = res.res }, "no images found in response"
     end
 
     [:headers, :execute, :set_body_stream].each do |m|
