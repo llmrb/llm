@@ -27,7 +27,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Aug 2025 19:54:27 GMT
+      - Fri, 12 Sep 2025 16:19:11 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=826
+      - gfet4t7; dur=47
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -456,7 +456,8 @@ http_interactions:
               "outputTokenLimit": 8192,
               "supportedGenerationMethods": [
                 "generateContent",
-                "countTokens"
+                "countTokens",
+                "batchGenerateContent"
               ],
               "temperature": 1,
               "topP": 0.95,
@@ -767,7 +768,7 @@ http_interactions:
             {
               "name": "models/gemini-2.5-flash-image-preview",
               "version": "2.0",
-              "displayName": "Gemini 2.5 Flash Image Preview",
+              "displayName": "Nano Banana",
               "description": "Gemini 2.5 Flash Preview Image",
               "inputTokenLimit": 32768,
               "outputTokenLimit": 8192,
@@ -778,7 +779,7 @@ http_interactions:
               "temperature": 1,
               "topP": 0.95,
               "topK": 64,
-              "maxTemperature": 2
+              "maxTemperature": 1
             },
             {
               "name": "models/embedding-001",
@@ -838,7 +839,8 @@ http_interactions:
               "supportedGenerationMethods": [
                 "embedContent",
                 "countTextTokens",
-                "countTokens"
+                "countTokens",
+                "asyncBatchEmbedContent"
               ]
             },
             {
@@ -869,5 +871,5 @@ http_interactions:
           ],
           "nextPageToken": "Ch5tb2RlbHMvaW1hZ2VuLTMuMC1nZW5lcmF0ZS0wMDI="
         }
-  recorded_at: Fri, 29 Aug 2025 19:54:17 GMT
+  recorded_at: Fri, 12 Sep 2025 16:18:59 GMT
 recorded_with: VCR 6.3.1

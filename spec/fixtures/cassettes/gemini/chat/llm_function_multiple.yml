@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Aug 2025 19:55:19 GMT
+      - Fri, 12 Sep 2025 16:18:12 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1230
+      - gfet4t7; dur=811
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -62,87 +62,8 @@ http_interactions:
                         "command": "date"
                       }
                     },
-                    "thoughtSignature": "Cp8CAVSoXO7GvlBq00PkqETfkZvGDhRV2AT9WQ1UMTatIaX4LcbNbQmdamqNKuEAASD6EOEscYNAL+Y1MacLv8oy1sh/vNdJ0HLksP5vSaeZOX4YA/pPvJScCp2TdlMLBnDAgHjAxJD/D9S6RBM/OdmMMGNr52faL0nYL0sNN82C+CreuDqvjbVSiUicK6tJmunBAwvcqdNiogR4siqRvFh0WU3XD9TI5borTHC/iXF7qYX194HmlNo9rxF6zFWbPs1NcBvuCAGvheXSlZAd4pghWcA+gBshtBKe31lfcswn+J7ak1mZuCNkN4gWljRCnDQFdltBu0ukc4YpK+U/R3dlpkBNZ48hTfrEOFnuskYuK9qWN1XP3Nx3ZoURnFZJuWAKIgFUqFzuDPeQ+Pm+CGlQOiMVrJ4G1JCkV/LyCDTwx94DFOMKKAFUqFzu5DQbXsuvBxV46hp6MfDAQkiV1eo3sL9xTHBDkWE3o+/MibYKTwFUqFzu6Gv/X+1/qDV2LmUVEaHA+rsBtzLKBpptg2oqR2UhVmRBNdO5EHC/iHZlPtNlzvHC2d44sW4r74Wx4MejfKhkiFHvrwxclhDQPy4="
-                  }
-                ],
-                "role": "model"
-              },
-              "finishReason": "STOP",
-              "index": 0
-            }
-          ],
-          "usageMetadata": {
-            "promptTokenCount": 67,
-            "candidatesTokenCount": 13,
-            "totalTokenCount": 162,
-            "promptTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 67
-              }
-            ],
-            "thoughtsTokenCount": 82
-          },
-          "modelVersion": "gemini-2.5-flash",
-          "responseId": "pwWyaL_gIIDYqtsPs8iRqQw"
-        }
-  recorded_at: Fri, 29 Aug 2025 19:55:08 GMT
-- request:
-    method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
-    body:
-      encoding: UTF-8
-      string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX commands"}]},{"role":"user","parts":[{"text":"Can you run the date
-        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
-        Aug 29 19:55:08 UTC 2025\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
-        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
-    headers:
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Transfer-Encoding:
-      - chunked
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Vary:
-      - Origin
-      - Referer
-      - X-Origin
-      Date:
-      - Fri, 29 Aug 2025 19:55:20 GMT
-      Server:
-      - scaffolding on HTTPServer2
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      Server-Timing:
-      - gfet4t7; dur=537
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-          "candidates": [
-            {
-              "content": {
-                "parts": [
+                    "thoughtSignature": "Ct8CAdHtim82oIZ4lOk186g7/Vm+D7VvikhGV4XZljg1kRRpDeuGcQH61xYPFZtnr1bO3nUMXITNZu0JlcOFiv7Fy0pjY6MJJnO91KCvU9Jb/DET29nayoAasdT3+XbDbsFD88yzK+pkHUuILjFGrdec7ioy7m/bklM1oDFnY2fwhJTFpnf0xnyP+OVXyCBytstyFs+zKxHwS/vSpKYsAKpRvoK5t7klwpn4r/Gum46QzauRWj1AHr8MmSBjftCtc522t+akcOFT9po3AumIC47hi1tvsIM8JhAoXBQZZacC2NJLcMm0SiS1l+Om3YchViqoSy9ZGFlw2suDibLl3Hv+vMqtQvQxHg90JWwdBBEJDp09k4iLfKBpPNaUDaDB2XUkNs1yNj7S2lABXXhLbpuvsDtkWybn/n4c3b6fYDitDih5wrhxJMYmckWhs2/Ajjcg0kDPXVSoTlxufA2RrtzV"
+                  },
                   {
                     "functionCall": {
                       "name": "system",
@@ -150,85 +71,7 @@ http_interactions:
                         "command": "pwd"
                       }
                     }
-                  }
-                ],
-                "role": "model"
-              },
-              "finishReason": "STOP",
-              "index": 0
-            }
-          ],
-          "usageMetadata": {
-            "promptTokenCount": 118,
-            "candidatesTokenCount": 13,
-            "totalTokenCount": 131,
-            "promptTokensDetails": [
-              {
-                "modality": "TEXT",
-                "tokenCount": 118
-              }
-            ]
-          },
-          "modelVersion": "gemini-2.5-flash",
-          "responseId": "qAWyaOqBFLjwqtsP3PuC4Q8"
-        }
-  recorded_at: Fri, 29 Aug 2025 19:55:09 GMT
-- request:
-    method: post
-    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
-    body:
-      encoding: UTF-8
-      string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
-        run UNIX commands"}]},{"role":"user","parts":[{"text":"Can you run the date
-        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
-        Aug 29 19:55:08 UTC 2025\n"}}}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"pwd"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
-        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
-    headers:
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Transfer-Encoding:
-      - chunked
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=UTF-8
-      Vary:
-      - Origin
-      - Referer
-      - X-Origin
-      Date:
-      - Fri, 29 Aug 2025 19:55:21 GMT
-      Server:
-      - scaffolding on HTTPServer2
-      X-Xss-Protection:
-      - '0'
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Content-Type-Options:
-      - nosniff
-      Server-Timing:
-      - gfet4t7; dur=531
-      Alt-Svc:
-      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-          "candidates": [
-            {
-              "content": {
-                "parts": [
+                  },
                   {
                     "functionCall": {
                       "name": "system",
@@ -245,20 +88,21 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 173,
-            "candidatesTokenCount": 14,
-            "totalTokenCount": 187,
+            "promptTokenCount": 67,
+            "candidatesTokenCount": 40,
+            "totalTokenCount": 184,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 173
+                "tokenCount": 67
               }
-            ]
+            ],
+            "thoughtsTokenCount": 77
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "qQWyaOavB9HoqtsP4qKhyA0"
+          "responseId": "xEfEaPfqLoOVjMcPy8m92QE"
         }
-  recorded_at: Fri, 29 Aug 2025 19:55:10 GMT
+  recorded_at: Fri, 12 Sep 2025 16:18:00 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
@@ -266,8 +110,8 @@ http_interactions:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"You are a bot that can
         run UNIX commands"}]},{"role":"user","parts":[{"text":"Can you run the date
-        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
-        Aug 29 19:55:08 UTC 2025\n"}}}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"pwd"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n"}}}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"whoami"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"developer\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
+        command ? Can you run the pwd command ? Can you run the whoami command ?"}]},{"role":"model","parts":[{"functionCall":{"name":"system","args":{"command":"date"}}},{"functionCall":{"name":"system","args":{"command":"pwd"}}},{"functionCall":{"name":"system","args":{"command":"whoami"}}}]},{"role":"user","parts":[{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"Fri
+        Sep 12 16:18:00 -00 2025\n"}}},{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n"}}},{"functionResponse":{"name":"system","response":{"stderr":"","stdout":"developer\n"}}}]}],"tools":[{"functionDeclarations":[{"name":"system","description":"Run
         a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}]}'
     headers:
       Content-Type:
@@ -292,7 +136,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 29 Aug 2025 19:55:24 GMT
+      - Fri, 12 Sep 2025 16:18:13 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -302,7 +146,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=3210
+      - gfet4t7; dur=453
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -316,23 +160,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "The `date` command output is:\n",
-                    "thoughtSignature": "CsQDAVSoXO4XznJlkGuIcw/qQrg5Pciwq6yfIyAxdlegDsJhXWInMNkJnVNP74MWd/FT+VmCSEs10mLhH3+DyPtu9II/WUnM/US9aD6lgxD343fU6pj/aWsqpft9XL7dEfJjRkDTjFhM7OEw5AjY0wrDUyzs03q/148QXlRFa7hsjOzxdaFcVCZj8U3CtyLFdL33TVpZExCZjZyRz56bkjQny87x/Em2qcCfXo2lB7iHR7mHbKfJyOvJl+yEA4iXlLuUhJuvJvGM8GLkOQhpwUm/pbQyRw9TUfxPbHB8qtJKMHqhVVD8iwm6nbmYvkHLcbdITvNl5EO/sgIaq0i5Kn/0zYhAFmoToHdLU8ImNSdRzSCZ9M8CiQMIN1J99APFvsAHxRu3J9hxMnPkgFuaK5KS61xSAU/zF/zCXNgPrXKQh0Pc9hMko+U6xMleQZCkx9Dy+jYyg2ffiiWx5pAH7fAXfjPWXCm3bMPp+AHrxC9xwbJD6+8VoVdqr5t+GHvInU25aisSrc1BeNYcyK6zKM025Dh4C99aNtIQgCQXAaWNtM30F+xAyNOov6kp1R3QtKRZSmYBHjX7LVQ39cunmTe4krrAbDU="
-                  },
-                  {
-                    "text": "```\nFri Aug 29 19:55:08 UTC 2025\n```"
-                  },
-                  {
-                    "text": "\nThe `pwd` command output is:\n"
-                  },
-                  {
-                    "text": "```\n/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n```"
-                  },
-                  {
-                    "text": "\nThe `whoami` command output is:\n"
-                  },
-                  {
-                    "text": "```\ndeveloper\n```"
+                    "text": "Fri Sep 12 16:18:00 -00 2025\n/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\ndeveloper"
                   }
                 ],
                 "role": "model"
@@ -342,19 +170,18 @@ http_interactions:
             }
           ],
           "usageMetadata": {
-            "promptTokenCount": 206,
-            "candidatesTokenCount": 90,
-            "totalTokenCount": 433,
+            "promptTokenCount": 204,
+            "candidatesTokenCount": 50,
+            "totalTokenCount": 254,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
-                "tokenCount": 206
+                "tokenCount": 204
               }
-            ],
-            "thoughtsTokenCount": 137
+            ]
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "rAWyaM65IK3nqtsP0aeUqAE"
+          "responseId": "xUfEaPnQLvmK-sAPsf6G4AM"
         }
-  recorded_at: Fri, 29 Aug 2025 19:55:13 GMT
+  recorded_at: Fri, 12 Sep 2025 16:18:01 GMT
 recorded_with: VCR 6.3.1

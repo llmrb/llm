@@ -36,7 +36,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 29 Aug 2025 19:53:16 GMT
+      - Fri, 12 Sep 2025 16:18:03 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -46,19 +46,19 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=804
+      - gfet4t7; dur=895
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
       string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"functionCall\":
         {\"name\": \"system\",\"args\": {\"command\": \"date\"}},\"thoughtSignature\":
-        \"CikBVKhc7sLTnUvniYq2iDW20kA7tscE43ivsu6iLRP9NTQYYfF4KaahYgpnAVSoXO7f5ZVJ4Ub6vKm87xK6LJaVqknohi/M9iIwWMH7ODx6NBxJuzmWE2cucc98Rdv6dzfFCZgFwxCpFUFIbOFjxCZU2tRHOSWXApubIyInIWdNU2aYjFoM8Kv4cGRsFF8PrMx8NAp8AVSoXO6oQ9CTY5P5VLoAsHpAonrcepZd+f/pqORY06nDbFB5dX+C/MJCrnjT/Tjjmk5xWTbqAuRy+CNK+9oQ+LRmjraS1tSmG8getx9L9P6rUtUbozHWDZklTvPwm4X5IENKNXW15++ELD0YxoLBdtXLx/sDSp91cMVjHQ==\"}],\"role\":
+        \"CikB0e2Kb13Pe9PHeXPUPVHvTGdm0+NxuAn7DvsjNdCxWoSUJoIZWBNjXQpcAdHtim9AsekynVTo3UAcaYcSQmW9/JZ9F/8vMC9E2EJmHpqQzEeZUX3lrUd4+OixZeN8iRKZvTdp7FJUIxOG1CmRzSbFAukYyrn/hBEMghvizfic3mzC587aPkEKsAEB0e2Kb7t5STQjuytNfWBohrVKoTzqf9upOJZuqdkdyWVKTTD+D1wj+aHMx0gZwj/btScflPF2MFCCKlCXJNhZj37EcAKpardS0Vb+qm/DdQE9hNcgGHi4r0Lg5n+EMdh21mym5EIdyn4cw1Y/71yorbyKcTvOEYglOCLYV4euGqZYIOcWJBC2cQFKvOy9MPZsFTJem1ClD3cDGXGOHFTC98sBcWzX3Uvzg2qeoPu5fA==\"}],\"role\":
         \"model\"},\"finishReason\": \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\":
-        53,\"candidatesTokenCount\": 13,\"totalTokenCount\": 112,\"promptTokensDetails\":
-        [{\"modality\": \"TEXT\",\"tokenCount\": 53}],\"thoughtsTokenCount\": 46},\"modelVersion\":
-        \"gemini-2.5-flash\",\"responseId\": \"LAWyaM2BDcO4mtkP5smpiAw\"}\r\n\r\n"
-  recorded_at: Fri, 29 Aug 2025 19:53:05 GMT
+        53,\"candidatesTokenCount\": 13,\"totalTokenCount\": 122,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 53}],\"thoughtsTokenCount\": 56},\"modelVersion\":
+        \"gemini-2.5-flash\",\"responseId\": \"u0fEaNevBoXO_uMPo965oAM\"}\r\n\r\n"
+  recorded_at: Fri, 12 Sep 2025 16:17:50 GMT
 - request:
     method: post
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?alt=sse&key=TOKEN
@@ -95,7 +95,7 @@ http_interactions:
       Transfer-Encoding:
       - chunked
       Date:
-      - Fri, 29 Aug 2025 19:53:17 GMT
+      - Fri, 12 Sep 2025 16:18:04 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -105,19 +105,19 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=973
+      - gfet4t7; dur=826
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
     body:
       encoding: UTF-8
-      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"Okay\"}],\"role\":
-        \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 78,\"candidatesTokenCount\":
-        1,\"totalTokenCount\": 79,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        78}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"LQWyaLqxLazPz7IPv6fDyQ4\"}\r\n\r\ndata:
-        {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \", I ran the `date`
-        command. \\n\"}],\"role\": \"model\"},\"finishReason\": \"STOP\",\"index\":
-        0}],\"usageMetadata\": {\"promptTokenCount\": 78,\"candidatesTokenCount\":
+      string: "data: {\"candidates\": [{\"content\": {\"parts\": [{\"text\": \"I ran
+        the \"}],\"role\": \"model\"},\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\":
+        78,\"candidatesTokenCount\": 3,\"totalTokenCount\": 81,\"promptTokensDetails\":
+        [{\"modality\": \"TEXT\",\"tokenCount\": 78}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\":
+        \"vEfEaLa_N83SjMcPiO-Q-QE\"}\r\n\r\ndata: {\"candidates\": [{\"content\":
+        {\"parts\": [{\"text\": \"`date` command for you.\\n\"}],\"role\": \"model\"},\"finishReason\":
+        \"STOP\",\"index\": 0}],\"usageMetadata\": {\"promptTokenCount\": 78,\"candidatesTokenCount\":
         10,\"totalTokenCount\": 88,\"promptTokensDetails\": [{\"modality\": \"TEXT\",\"tokenCount\":
-        78}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"LQWyaLqxLazPz7IPv6fDyQ4\"}\r\n\r\n"
-  recorded_at: Fri, 29 Aug 2025 19:53:07 GMT
+        78}]},\"modelVersion\": \"gemini-2.5-flash\",\"responseId\": \"vEfEaLa_N83SjMcPiO-Q-QE\"}\r\n\r\n"
+  recorded_at: Fri, 12 Sep 2025 16:17:52 GMT
 recorded_with: VCR 6.3.1
