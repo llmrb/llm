@@ -22,5 +22,10 @@ module LLM::Gemini::Response
     #  will always return an empty array.
     # @return [Array<String>]
     def urls = []
+
+    ##
+    # Returns one or more candidates, or an empty array
+    # @return [Array<Hash>]
+    def candidates = body.candidates || []
   end
 end
