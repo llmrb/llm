@@ -65,12 +65,20 @@ module LLM
     alias_method :push, :<<
 
     ##
-    # @param [Integer, #to_i] index
+    # @param [Integer, Range, #to_i] index
     #  The message index
     # @return [LLM::Message, nil]
     #  Returns a message, or nil
     def [](index)
-      @completed[index.to_i] || to_a[index.to_i]
+      if index.respond_to?(:to_i)
+        @completed[index.to_i] || to_a[index.to_i]
+      elsif Range === index
+        slice = @completed[index]
+        invalidate = slice.nil? || slice.size < index.size
+        invalidate ? to_a[index] : slice
+      else
+        raise TypeError, "index must be an Integer or Range"
+      end
     end
 
     ##
