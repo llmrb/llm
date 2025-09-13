@@ -5,8 +5,8 @@ module LLM::Anthropic::Response
     def choices = format_choices
     def role = body.role
     def model = body.model
-    def prompt_tokens = body.usage&.input_tokens || 0
-    def completion_tokens = body.usage&.output_tokens || 0
+    def prompt_tokens = body.usage["input_tokens"] || 0
+    def completion_tokens = body.usage["output_tokens"] || 0
     def total_tokens = prompt_tokens + completion_tokens
 
     private

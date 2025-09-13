@@ -33,6 +33,13 @@ RSpec.shared_examples "LLM::Bot: text stream" do |dirname, options = {}|
       subject { bot.messages.find(&:assistant?) }
       it { is_expected.to have_attributes(role: %r_(assistant|model)_, content: %r_5\s*\n10\s*\n12\s*_ ) }
     end
+
+    context "with usage" do
+      subject(:usage) { bot.messages.find(&:assistant?)&.usage }
+      it { expect(usage.input_tokens).to be > 0 }
+      it { expect(usage.output_tokens).to be > 0 }
+      it { expect(usage.total_tokens).to be > 0 }
+    end
   end
 end
 

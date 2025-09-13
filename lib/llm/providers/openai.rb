@@ -68,6 +68,7 @@ module LLM
       params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true
+      params[:stream_options] = {include_usage: true}.merge!(params[:stream_options] || {}) if params[:stream]
       req = Net::HTTP::Post.new("/v1/chat/completions", headers)
       messages = [*(params.delete(:messages) || []), Message.new(role, prompt)]
       body = JSON.dump({messages: format(messages, :complete).flatten}.merge!(params))
