@@ -135,5 +135,16 @@ module LLM
       messages.drain
     end
     alias_method :flush, :drain
+
+    ##
+    # Returns token usage for the conversation
+    # @note
+    # This method returns token usage for the latest
+    # assistant message, and it returns an empty object
+    # if there are no assistant messages
+    # @return [LLM::Object]
+    def usage
+      messages.find(&:assistant?)&.usage || LLM::Object.from_hash({})
+    end
   end
 end
