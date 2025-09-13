@@ -20,13 +20,15 @@ module LLM
   require_relative "llm/eventhandler"
   require_relative "llm/tool"
 
+  @mutex = Mutex.new
+
   module_function
 
   ##
   # @param (see LLM::Provider#initialize)
   # @return (see LLM::Anthropic#initialize)
   def anthropic(**)
-    require_relative "llm/providers/anthropic" unless defined?(LLM::Anthropic)
+    @mutex.synchronize { require_relative "llm/providers/anthropic" unless defined?(LLM::Anthropic) }
     LLM::Anthropic.new(**)
   end
 
@@ -34,7 +36,7 @@ module LLM
   # @param (see LLM::Provider#initialize)
   # @return (see LLM::Gemini#initialize)
   def gemini(**)
-    require_relative "llm/providers/gemini" unless defined?(LLM::Gemini)
+    @mutex.synchronize { require_relative "llm/providers/gemini" unless defined?(LLM::Gemini) }
     LLM::Gemini.new(**)
   end
 
@@ -42,7 +44,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::Ollama#initialize)
   def ollama(key: nil, **)
-    require_relative "llm/providers/ollama" unless defined?(LLM::Ollama)
+    @mutex.synchronize { require_relative "llm/providers/ollama" unless defined?(LLM::Ollama) }
     LLM::Ollama.new(key:, **)
   end
 
@@ -50,7 +52,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::LlamaCpp#initialize)
   def llamacpp(key: nil, **)
-    require_relative "llm/providers/llamacpp" unless defined?(LLM::LlamaCpp)
+    @mutex.synchronize { require_relative "llm/providers/llamacpp" unless defined?(LLM::LlamaCpp) }
     LLM::LlamaCpp.new(key:, **)
   end
 
@@ -58,7 +60,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::DeepSeek#initialize)
   def deepseek(**)
-    require_relative "llm/providers/deepseek" unless defined?(LLM::DeepSeek)
+    @mutex.synchronize { require_relative "llm/providers/deepseek" unless defined?(LLM::DeepSeek) }
     LLM::DeepSeek.new(**)
   end
 
@@ -66,7 +68,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::OpenAI#initialize)
   def openai(**)
-    require_relative "llm/providers/openai" unless defined?(LLM::OpenAI)
+    @mutex.synchronize { require_relative "llm/providers/openai" unless defined?(LLM::OpenAI) }
     LLM::OpenAI.new(**)
   end
 
@@ -75,7 +77,7 @@ module LLM
   # @param host (see LLM::XAI#initialize)
   # @return (see LLM::XAI#initialize)
   def xai(**)
-    require_relative "llm/providers/xai" unless defined?(LLM::XAI)
+    @mutex.synchronize { require_relative "llm/providers/xai" unless defined?(LLM::XAI) }
     LLM::XAI.new(**)
   end
 
