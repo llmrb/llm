@@ -48,10 +48,12 @@ module LLM
     end
 
     ##
-    # Returns the last message in the buffer
-    # @return [LLM::Message, nil]
-    def last
-      to_a[-1]
+    # Returns the last message(s) in the buffer
+    # @param [Integer, nil] n
+    #  The number of messages to return
+    # @return [LLM::Message, Array<LLM::Message>, nil]
+    def last(n = nil)
+      n.nil? ? to_a.last : to_a.last(n)
     end
 
     ##
@@ -65,20 +67,12 @@ module LLM
     alias_method :push, :<<
 
     ##
-    # @param [Integer, Range, #to_i] index
+    # @param [Integer, Range] index
     #  The message index
     # @return [LLM::Message, nil]
     #  Returns a message, or nil
     def [](index)
-      if index.respond_to?(:to_i)
-        @completed[index.to_i] || to_a[index.to_i]
-      elsif Range === index
-        slice = @completed[index]
-        invalidate = slice.nil? || slice.size < index.size
-        invalidate ? to_a[index] : slice
-      else
-        raise TypeError, "index must be an Integer or Range"
-      end
+      to_a[index]
     end
 
     ##
