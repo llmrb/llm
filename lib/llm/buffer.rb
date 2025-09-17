@@ -53,7 +53,11 @@ module LLM
     #  The number of messages to return
     # @return [LLM::Message, Array<LLM::Message>, nil]
     def last(n = nil)
-      n.nil? ? to_a.last : to_a.last(n)
+      if @pending.empty?
+        n.nil? ? @completed.last : @completed.last(n)
+      else
+        n.nil? ? to_a.last : to_a.last(n)
+      end
     end
 
     ##
@@ -72,7 +76,16 @@ module LLM
     # @return [LLM::Message, nil]
     #  Returns a message, or nil
     def [](index)
-      to_a[index]
+      if @pending.empty?
+        if Range === index
+          slice = @completed[index]
+          (slice.nil? || slice.size < index.size) ? to_a[index] : slice
+        else
+          @completed[index]
+        end
+      else
+        to_a[index]
+      end
     end
 
     ##
