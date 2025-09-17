@@ -20,7 +20,11 @@ module LLM
   require_relative "llm/eventhandler"
   require_relative "llm/tool"
 
-  @mutex = Mutex.new
+  @mutexes = {
+    require: Mutex.new,
+    functions: Mutex.new,
+    clients: Mutex.new
+  }
 
   module_function
 
@@ -28,7 +32,7 @@ module LLM
   # @param (see LLM::Provider#initialize)
   # @return (see LLM::Anthropic#initialize)
   def anthropic(**)
-    @mutex.synchronize { require_relative "llm/providers/anthropic" unless defined?(LLM::Anthropic) }
+    lock(:require) { require_relative "llm/providers/anthropic" unless defined?(LLM::Anthropic) }
     LLM::Anthropic.new(**)
   end
 
@@ -36,7 +40,7 @@ module LLM
   # @param (see LLM::Provider#initialize)
   # @return (see LLM::Gemini#initialize)
   def gemini(**)
-    @mutex.synchronize { require_relative "llm/providers/gemini" unless defined?(LLM::Gemini) }
+    lock(:require) { require_relative "llm/providers/gemini" unless defined?(LLM::Gemini) }
     LLM::Gemini.new(**)
   end
 
@@ -44,7 +48,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::Ollama#initialize)
   def ollama(key: nil, **)
-    @mutex.synchronize { require_relative "llm/providers/ollama" unless defined?(LLM::Ollama) }
+    lock(:require) { require_relative "llm/providers/ollama" unless defined?(LLM::Ollama) }
     LLM::Ollama.new(key:, **)
   end
 
@@ -52,7 +56,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::LlamaCpp#initialize)
   def llamacpp(key: nil, **)
-    @mutex.synchronize { require_relative "llm/providers/llamacpp" unless defined?(LLM::LlamaCpp) }
+    lock(:require) { require_relative "llm/providers/llamacpp" unless defined?(LLM::LlamaCpp) }
     LLM::LlamaCpp.new(key:, **)
   end
 
@@ -60,7 +64,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::DeepSeek#initialize)
   def deepseek(**)
-    @mutex.synchronize { require_relative "llm/providers/deepseek" unless defined?(LLM::DeepSeek) }
+    lock(:require) { require_relative "llm/providers/deepseek" unless defined?(LLM::DeepSeek) }
     LLM::DeepSeek.new(**)
   end
 
@@ -68,7 +72,7 @@ module LLM
   # @param key (see LLM::Provider#initialize)
   # @return (see LLM::OpenAI#initialize)
   def openai(**)
-    @mutex.synchronize { require_relative "llm/providers/openai" unless defined?(LLM::OpenAI) }
+    lock(:require) { require_relative "llm/providers/openai" unless defined?(LLM::OpenAI) }
     LLM::OpenAI.new(**)
   end
 
@@ -77,7 +81,7 @@ module LLM
   # @param host (see LLM::XAI#initialize)
   # @return (see LLM::XAI#initialize)
   def xai(**)
-    @mutex.synchronize { require_relative "llm/providers/xai" unless defined?(LLM::XAI) }
+    lock(:require) { require_relative "llm/providers/xai" unless defined?(LLM::XAI) }
     LLM::XAI.new(**)
   end
 
@@ -97,10 +101,12 @@ module LLM
   # @param [Proc] b The block to define the function
   # @return [LLM::Function] The function object
   def function(name, &b)
-    if block_given?
-      functions[name.to_s] = LLM::Function.new(name, &b)
-    else
-      functions[name.to_s]
+    lock(:functions) do
+      if block_given?
+        functions[name.to_s] = LLM::Function.new(name, &b)
+      else
+        functions[name.to_s]
+      end
     end
   end
 
@@ -110,4 +116,12 @@ module LLM
   def functions
     @functions ||= {}
   end
+  private_class_method :functions
+
+  ##
+  # Provides a thread-safe lock
+  # @param [Symbol] name The name of the lock
+  # @param [Proc] & The block to execute within the lock
+  # @return [void]
+  def lock(name, &) = @mutexes[name].synchronize(&)
 end

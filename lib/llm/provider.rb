@@ -11,15 +11,10 @@ class LLM::Provider
   include LLM::Client
 
   @@clients = {}
-  @@mutex = Mutex.new
 
   ##
   # @api private
   def self.clients = @@clients
-
-  ##
-  # @api private
-  def self.mutex = @@mutex
 
   ##
   # @param [String, nil] key

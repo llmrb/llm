@@ -9,7 +9,7 @@ module LLM
     ##
     # @api private
     def persistent_client
-      mutex.synchronize do
+      LLM.lock(:clients) do
         if clients[client_id]
           clients[client_id]
         else
