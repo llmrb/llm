@@ -22,7 +22,7 @@ class LLM::Ollama
     # @param [Hash] params
     # @return [Hash]
     def format_tools(tools)
-      return {} unless tools and tools&.any?
+      return {} unless tools&.any?
       {tools: tools.map { _1.format(self) }}
     end
   end

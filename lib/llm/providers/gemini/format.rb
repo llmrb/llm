@@ -31,7 +31,7 @@ class LLM::Gemini
     # @param [Hash] params
     # @return [Hash]
     def format_tools(tools)
-      return {} unless tools and tools&.any?
+      return {} unless tools&.any?
       platform, functions = [tools.grep(LLM::ServerTool), tools.grep(LLM::Function)]
       {tools: [*platform, {functionDeclarations: functions.map { _1.format(self) }}]}
     end
