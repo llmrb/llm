@@ -6,6 +6,7 @@
 #
 # @example example #1
 #   LLM.function(:system) do |fn|
+#     fn.name "system"
 #     fn.description "Runs system commands"
 #     fn.params do |schema|
 #       schema.object(command: schema.string.required)
@@ -16,18 +17,16 @@
 #   end
 #
 # @example example #2
-#   class System
+#   class System < LLM::Tool
+#     name "system"
+#     description "Runs system commands"
+#     params do |schema|
+#       schema.object(command: schema.string.required)
+#     end
+#
 #     def call(command:)
 #       {success: Kernel.system(command)}
 #     end
-#   end
-#
-#   LLM.function(:system) do |fn|
-#     fn.description "Runs system commands"
-#     fn.params do |schema|
-#       schema.object(command: schema.string.required)
-#     end
-#     fn.register(System)
 #   end
 class LLM::Function
   class Return < Struct.new(:id, :name, :value)
@@ -60,7 +59,19 @@ class LLM::Function
   end
 
   ##
-  # Set the function description
+  # Set (or get) the function name
+  # @param [String] name The function name
+  # @return [void]
+  def name(name = nil)
+    if name
+      @name = name.to_s
+    else
+      @name
+    end
+  end
+
+  ##
+  # Set (or get) the function description
   # @param [String] desc The function description
   # @return [void]
   def description(desc = nil)
@@ -72,10 +83,15 @@ class LLM::Function
   end
 
   ##
+  # Set (or get) the function parameters
   # @yieldparam [LLM::Schema] schema The schema object
   # @return [void]
   def params
-    @params = yield(@schema)
+    if block_given?
+      @params = yield(@schema)
+    else
+      @params
+    end
   end
 
   ##

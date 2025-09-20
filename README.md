@@ -274,7 +274,10 @@ The
 method returns an array of functions that can be called after sending a message and
 it will only be populated if the LLM detects a function should be called. Each function
 corresponds to an element in the "tools" array. The array is emptied after a function call,
-and potentially repopulated on the next message:
+and potentially repopulated on the next message.
+
+> **Note** It's also possible to define a tool / function as a class that
+> inherits from [LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html)
 
 ```ruby
 #!/usr/bin/env ruby
@@ -309,13 +312,15 @@ bot.chat bot.functions.map(&:call) # report return value to the LLM
 # {stderr: "", stdout: "FreeBSD"}
 ```
 
-#### Provider
+#### Server Tools
 
 The
 [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
-class can define a local function that can be called by a provider on your behalf,
-and the
+and
 [LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html)
+classes can define a local function or tool that can be called by
+a provider on your behalf, and the
+[LLM::ServerTool](https://0x1eef.github.io/x/llm.rb/LLM/ServerTool.html)
 class represents a tool that is defined and implemented by a provider, and we can
 request that the provider call the tool on our behalf. That's the primary difference
 between a function implemented locally and a tool implemented by a provider. The
@@ -327,7 +332,7 @@ OpenAI provider to execute Python code on OpenAI's servers:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-res = llm.responses.create "Run: 'print(\"hello world\")'", tools: [llm.tool(:code_interpreter)]
+res = llm.responses.create "Run: 'print(\"hello world\")'", tools: [llm.server_tool(:code_interpreter)]
 print res.output_text, "\n"
 ```
 

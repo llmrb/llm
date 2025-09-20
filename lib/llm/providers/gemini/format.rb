@@ -33,7 +33,7 @@ class LLM::Gemini
     def format_tools(params)
       return {} unless params and params[:tools]&.any?
       tools = params.delete(:tools)
-      platform, functions = [tools.grep(LLM::Tool), tools.grep(LLM::Function)]
+      platform, functions = [tools.grep(LLM::ServerTool), tools.grep(LLM::Function)]
       {tools: [*platform, {functionDeclarations: functions.map { _1.format(self) }}]}
     end
   end

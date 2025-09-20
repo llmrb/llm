@@ -152,15 +152,15 @@ module LLM
     # @note
     #  This method includes certain tools that require configuration
     #  through a set of options that are easier to set through the
-    #  {LLM::Provider#tool LLM::Provider#tool} method.
-    # @return (see LLM::Provider#tools)
-    def tools
+    #  {LLM::Provider#server_tool LLM::Provider#server_tool} method.
+    # @return (see LLM::Provider#server_tools)
+    def server_tools
       {
-        web_search: tool(:web_search),
-        file_search: tool(:file_search),
-        image_generation: tool(:image_generation),
-        code_interpreter: tool(:code_interpreter),
-        computer_use: tool(:computer_use)
+        web_search: server_tool(:web_search),
+        file_search: server_tool(:file_search),
+        image_generation: server_tool(:image_generation),
+        code_interpreter: server_tool(:code_interpreter),
+        computer_use: server_tool(:computer_use)
       }
     end
 

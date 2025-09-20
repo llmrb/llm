@@ -130,14 +130,14 @@ module LLM
     # @note
     #  This method includes certain tools that require configuration
     #  through a set of options that are easier to set through the
-    #  {LLM::Provider#tool LLM::Provider#tool} method.
+    #  {LLM::Provider#server_tool LLM::Provider#server_tool} method.
     # @see https://ai.google.dev/gemini-api/docs/google-search Gemini docs
-    # @return (see LLM::Provider#tools)
-    def tools
+    # @return (see LLM::Provider#server_tools)
+    def server_tools
       {
-        google_search: tool(:google_search),
-        code_execution: tool(:code_execution),
-        url_context: tool(:url_context)
+        google_search: server_tool(:google_search),
+        code_execution: server_tool(:code_execution),
+        url_context: server_tool(:url_context)
       }
     end
 

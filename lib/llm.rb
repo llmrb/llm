@@ -19,11 +19,12 @@ module LLM
   require_relative "llm/eventstream"
   require_relative "llm/eventhandler"
   require_relative "llm/tool"
+  require_relative "llm/server_tool"
 
-  @mutexes = {
-    require: Mutex.new,
-    functions: Mutex.new,
-    clients: Mutex.new
+  @monitors = {
+    require: Monitor.new,
+    functions: Monitor.new,
+    clients: Monitor.new
   }
 
   module_function
@@ -123,5 +124,5 @@ module LLM
   # @param [Symbol] name The name of the lock
   # @param [Proc] & The block to execute within the lock
   # @return [void]
-  def lock(name, &) = @mutexes[name].synchronize(&)
+  def lock(name, &) = @monitors[name].synchronize(&)
 end
