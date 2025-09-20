@@ -261,23 +261,28 @@ bot.messages.find(&:assistant?).content! # => {answers: [5, 10, 11]}
 
 ### Tools
 
-#### Functions
+#### Introduction
 
 All providers support a powerful feature known as tool calling, and although
 it is a little complex to understand at first, it can be powerful for building
-agents. The following example demonstrates how we can define a local function
-(which happens to be a tool), and a provider (such as OpenAI) can then detect
-when we should call the function.
+agents. There are three main interfaces to understand: [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html),
+[LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html), and
+[LLM::ServerTool](https://0x1eef.github.io/x/llm.rb/LLM/ServerTool.html).
+
+
+#### LLM::Function
+
+The following example demonstrates [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
+and how it can define a local function (which happens to be a tool), and how
+a provider (such as OpenAI) can then detect when we should call the function.
 
 The
 [LLM::Bot#functions](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#functions-instance_method)
 method returns an array of functions that can be called after sending a message and
 it will only be populated if the LLM detects a function should be called. Each function
 corresponds to an element in the "tools" array. The array is emptied after a function call,
-and potentially repopulated on the next message.
+and potentially repopulated on the next message:
 
-> **Note** It's also possible to define a tool / function as a class that
-> inherits from [LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html)
 
 ```ruby
 #!/usr/bin/env ruby
@@ -299,6 +304,52 @@ tool = LLM.function(:system) do |fn|
 end
 
 bot = LLM::Bot.new(llm, tools: [tool])
+bot.chat "Your task is to run shell commands via a tool.", role: :system
+
+bot.chat "What is the current date?", role: :user
+bot.chat bot.functions.map(&:call) # report return value to the LLM
+
+bot.chat "What operating system am I running? (short version please!)", role: :user
+bot.chat bot.functions.map(&:call) # report return value to the LLM
+
+##
+# {stderr: "", stdout: "Thu May  1 10:01:02 UTC 2025"}
+# {stderr: "", stdout: "FreeBSD"}
+```
+
+#### LLM::Tool
+
+The [LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html) class can be used
+to implement a [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
+as a class. Under the hood, a subclass of [LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html)
+wraps an instance of [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
+and delegates to it.
+
+The choice between [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
+and [LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html) is often a matter of
+preference but each carry their own benefits. For example, [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
+has the benefit of being a closure that has access to its surrounding context and
+sometimes that is useful:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+class System < LLM::Tool
+  name "system"
+  description "Run a shell command"
+  params { |schema| schema.object(command: schema.string.required) }
+
+  def call(command:)
+    ro, wo = IO.pipe
+    re, we = IO.pipe
+    Process.wait Process.spawn(command, out: wo, err: we)
+    [wo,we].each(&:close)
+    {stderr: re.read, stdout: ro.read}
+  end
+end
+
+bot = LLM::Bot.new(llm, tools: [LLM.function(:system)])
 bot.chat "Your task is to run shell commands via a tool.", role: :system
 
 bot.chat "What is the current date?", role: :user
