@@ -98,16 +98,27 @@ module LLM
   #       system(command)
   #     end
   #   end
-  # @param [Symbol] name The name of the function
+  # @param [Symbol] key The function name / key
   # @param [Proc] b The block to define the function
   # @return [LLM::Function] The function object
-  def function(name, &b)
+  def function(key, &b)
     lock(:functions) do
       if block_given?
-        functions[name.to_s] = LLM::Function.new(name, &b)
+        functions[key.to_s] = LLM::Function.new(key, &b)
       else
-        functions[name.to_s]
+        functions[key.to_s]
       end
+    end
+  end
+
+  ##
+  # Find a function by name
+  # @param [String] name The function name
+  # @return [LLM::Function, nil]
+  def find_function_by_name(name)
+    lock(:functions) do
+      functions.each_value { return _1.dup if _1.name.to_s == name.to_s   }
+      nil
     end
   end
 
