@@ -28,6 +28,8 @@ GitHub Copilot but for the terminal.
   a blog post that implements image editing with Gemini
 * [Fast sailing with persistent connections](https://0x1eef.github.io/posts/persistent-connections-with-llm.rb/) &ndash;
   a blog post that optimizes performance with a thread-safe connection pool
+* [How to build agents (with llm.rb)](https://0x1eef.github.io/posts/how-to-build-agents-with-llm.rb/) &ndash;
+  a blog post that implements agentic behavior via tools
 
 #### Ecosystem
 
