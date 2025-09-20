@@ -349,7 +349,7 @@ class System < LLM::Tool
   end
 end
 
-bot = LLM::Bot.new(llm, tools: [LLM.function(:system)])
+bot = LLM::Bot.new(llm, tools: [System])
 bot.chat "Your task is to run shell commands via a tool.", role: :system
 
 bot.chat "What is the current date?", role: :user

@@ -59,7 +59,7 @@ class LLM::Tool
   ##
   # @api private
   def self.function
-    @function ||= LLM::Function.new(name.to_s)
+    @function ||= LLM::Function.new(self)
   end
 
   ##
