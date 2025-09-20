@@ -383,7 +383,8 @@ OpenAI provider to execute Python code on OpenAI's servers:
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-res = llm.responses.create "Run: 'print(\"hello world\")'", tools: [llm.server_tool(:code_interpreter)]
+res = llm.responses.create "Run: 'print(\"hello world\")'",
+                            tools: [llm.server_tool(:code_interpreter)]
 print res.output_text, "\n"
 ```
 
