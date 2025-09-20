@@ -85,14 +85,10 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
 
   context "with a class", vcr.call("llm_function_class") do
     let(:tool) do
-      LLM.function(:system) do |fn|
-        fn.description "Runs system commands"
-        fn.params { _1.object(command: _1.string.required) }
-        fn.register(klass)
-      end
-    end
-    let(:klass) do
-      Class.new do
+      Class.new(LLM::Tool) do
+        name "system"
+        description "Runs system commands"
+        params { _1.object(command: _1.string.required) }
         def call(command:)
           {success: Kernel.system(command)}
         end

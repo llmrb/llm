@@ -25,7 +25,7 @@ class LLM::Tool
   def self.inherited(klass)
     LLM.lock(:inherited) do
       klass.instance_eval { @__monitor ||= Monitor.new }
-      function.register(klass)
+      klass.function.register(klass)
     end
   end
 
