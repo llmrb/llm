@@ -21,11 +21,9 @@ module LLM
   require_relative "llm/tool"
   require_relative "llm/server_tool"
 
-  @monitors = {
-    require: Monitor.new,
-    tools: Monitor.new,
-    clients: Monitor.new
-  }
+  ##
+  # Thread-safe monitors for different contexts
+  @monitors = { require: Monitor.new, clients: Monitor.new, inherited: Monitor.new }
 
   module_function
 

@@ -23,7 +23,12 @@ class LLM::Tool
   # @param [Class] klass The subclass
   # @return [void]
   def self.inherited(klass)
-    function.register(klass)
+    LLM.lock(:inherited) do
+      unless klass.instance_variable_defined?(:@__monitor)
+        klass.instance_variable_set(:@__monitor, Monitor.new)
+        function.register(klass)
+      end
+    end
   end
 
   ##
@@ -67,6 +72,6 @@ class LLM::Tool
   ##
   # @api private
   def self.lock(&)
-    LLM.lock(:tools, &)
+    @__monitor.synchronize(&)
   end
 end
