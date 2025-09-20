@@ -287,6 +287,8 @@ agents. There are three main interfaces to understand: [LLM::Function](https://0
 The following example demonstrates [LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
 and how it can define a local function (which happens to be a tool), and how
 a provider (such as OpenAI) can then detect when we should call the function.
+Its most notable feature is that it can act as a closure and has access to
+its surrounding scope, which can be useful in some situations.
 
 The
 [LLM::Bot#functions](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#functions-instance_method)
