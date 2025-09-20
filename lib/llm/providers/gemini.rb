@@ -67,7 +67,7 @@ module LLM
     # @return [LLM::Response]
     def complete(prompt, params = {})
       params = {role: :user, model: default_model}.merge!(params)
-      tools  = params.delete(:tools)
+      tools  = resolve_tools(params.delete(:tools))
       params = [params, format_schema(params), format_tools(tools)].inject({}, &:merge!).compact
       role, model, stream = [:role, :model, :stream].map { params.delete(_1) }
       action = stream ? "streamGenerateContent?key=#{@key}&alt=sse" : "generateContent?key=#{@key}"

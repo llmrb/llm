@@ -364,4 +364,23 @@ class LLM::Provider
     req.body_stream = io
     req["transfer-encoding"] = "chunked" unless req["content-length"]
   end
+
+  ##
+  # Resolves tools to their function representations
+  # @param [Array<LLM::Function, LLM::Tool>] tools
+  #  The tools to map
+  # @raise [TypeError]
+  #  When a tool is not recognized
+  # @return [Array<LLM::Function>]
+  def resolve_tools(tools)
+    (tools || []).map do |tool|
+      if tool.respond_to?(:function)
+        tool.function
+      elsif [LLM::Function, LLM::ServerTool, Hash].any? { _1 === tool }
+        tool
+      else
+        raise TypeError, "#{tool.class} given as a tool but it is not recognized"
+      end
+    end
+  end
 end

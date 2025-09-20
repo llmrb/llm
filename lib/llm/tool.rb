@@ -59,7 +59,9 @@ class LLM::Tool
   ##
   # @api private
   def self.function
-    @function ||= LLM::Function.new(self)
+    lock do
+      @function ||= LLM::Function.new(self)
+    end
   end
 
   ##

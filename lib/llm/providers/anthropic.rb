@@ -43,7 +43,7 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, params = {})
       params = {role: :user, model: default_model, max_tokens: 1024}.merge!(params)
-      tools  = params.delete(:tools)
+      tools  = resolve_tools(params.delete(:tools))
       params = [params, format_tools(tools)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true

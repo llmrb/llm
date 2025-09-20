@@ -37,7 +37,7 @@ class LLM::OpenAI
     # @return [LLM::Response]
     def create(prompt, params = {})
       params = {role: :user, model: @provider.default_model}.merge!(params)
-      tools  = params.delete(:tools)
+      tools  = resolve_tools(params.delete(:tools))
       params = [params, format_schema(params), format_tools(tools)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true
@@ -80,7 +80,7 @@ class LLM::OpenAI
 
     private
 
-    [:headers, :execute, :set_body_stream].each do |m|
+    [:headers, :execute, :set_body_stream, :resolve_tools].each do |m|
       define_method(m) { |*args, **kwargs, &b| @provider.send(m, *args, **kwargs, &b) }
     end
 

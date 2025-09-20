@@ -155,6 +155,18 @@ res3 = llm.responses.create "message 3", previous_response_id: res2.response_id
 print res3.output_text, "\n"
 ```
 
+#### Thread Safety
+
+The llm.rb library is thread-safe and can be used in a multi-threaded
+environments but it is important to keep in mind that the
+[LLM::Provider](https://0x1eef.github.io/x/llm.rb/LLM/Provider.html)
+and
+[LLM::Bot](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html)
+classes should be instantiated once per thread, and not shared
+between threads. Generally the library tries to avoid global or
+shared state but where it exists reentrant locks are used to
+ensure thread-safety.
+
 ### Conversations
 
 #### Completions
