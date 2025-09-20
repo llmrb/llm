@@ -23,7 +23,7 @@ module LLM
 
   ##
   # Thread-safe monitors for different contexts
-  @monitors = { require: Monitor.new, clients: Monitor.new, inherited: Monitor.new }
+  @monitors = {require: Monitor.new, clients: Monitor.new, inherited: Monitor.new}
 
   module_function
 
