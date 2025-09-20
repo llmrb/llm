@@ -175,7 +175,7 @@ module LLM
     # @return [LLM::Response] The response from the LLM provider.
     def web_search(query:)
       responses
-        .create(query, store: false, tools: [tools[:web_search]])
+        .create(query, store: false, tools: [server_tools[:web_search]])
         .extend(LLM::OpenAI::Response::WebSearch)
     end
 
