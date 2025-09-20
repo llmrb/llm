@@ -65,7 +65,8 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, params = {})
       params = {role: :user, model: default_model}.merge!(params)
-      params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
+      tools  = params.delete(:tools)
+      params = [params, format_schema(params), format_tools(tools)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true
       params[:stream_options] = {include_usage: true}.merge!(params[:stream_options] || {}) if params[:stream]
@@ -74,7 +75,9 @@ module LLM
       body = JSON.dump({messages: format(messages, :complete).flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      LLM::Response.new(res).extend(LLM::OpenAI::Response::Completion)
+      LLM::Response.new(res)
+        .extend(LLM::OpenAI::Response::Completion)
+        .extend(Module.new { define_method(:__tools__) { tools } })
     end
 
     ##

@@ -60,7 +60,8 @@ module LLM
     # @return [LLM::Response]
     def complete(prompt, params = {})
       params = {role: :user, model: default_model, stream: true}.merge!(params)
-      params = [params, {format: params[:schema]}, format_tools(params)].inject({}, &:merge!).compact
+      tools  = params.delete(:tools)
+      params = [params, {format: params[:schema]}, format_tools(tools)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true
       req = Net::HTTP::Post.new("/api/chat", headers)
@@ -68,7 +69,9 @@ module LLM
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      LLM::Response.new(res).extend(LLM::Ollama::Response::Completion)
+      LLM::Response.new(res)
+        .extend(LLM::Ollama::Response::Completion)
+        .extend(Module.new { define_method(:__tools__) { tools } })
     end
 
     ##

@@ -20,8 +20,7 @@ class LLM::DeepSeek
     ##
     # @param [Hash] params
     # @return [Hash]
-    def format_tools(params)
-      tools = params.delete(:tools)
+    def format_tools(tools)
       (tools.nil? || tools.empty?) ? {} : {tools: tools.map { _1.format(self) }}
     end
   end

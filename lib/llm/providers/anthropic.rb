@@ -43,7 +43,8 @@ module LLM
     # @return (see LLM::Provider#complete)
     def complete(prompt, params = {})
       params = {role: :user, model: default_model, max_tokens: 1024}.merge!(params)
-      params = [params, format_tools(params)].inject({}, &:merge!).compact
+      tools  = params.delete(:tools)
+      params = [params, format_tools(tools)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true
       req = Net::HTTP::Post.new("/v1/messages", headers)
@@ -51,7 +52,9 @@ module LLM
       body = JSON.dump({messages: [format(messages)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      LLM::Response.new(res).extend(LLM::Anthropic::Response::Completion)
+      LLM::Response.new(res)
+        .extend(LLM::Anthropic::Response::Completion)
+        .extend(Module.new { define_method(:__tools__) { tools } })
     end
 
     ##

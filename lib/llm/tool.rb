@@ -20,10 +20,10 @@
 class LLM::Tool
   ##
   # Registers the tool as a function when inherited
-  # @param [Class] klass The class that inherits from LLM::Tool
+  # @param [Class] klass The subclass
   # @return [void]
   def self.inherited(klass)
-    LLM.function(klass) { _1.register(klass) }
+    function.register(klass)
   end
 
   ##
@@ -59,12 +59,12 @@ class LLM::Tool
   ##
   # @api private
   def self.function
-    LLM.function(self)
+    @function ||= LLM::Function.new(name.to_s)
   end
 
   ##
   # @api private
   def self.lock(&)
-    LLM.lock(:functions, &)
+    LLM.lock(:tools, &)
   end
 end

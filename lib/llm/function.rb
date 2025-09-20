@@ -33,14 +33,6 @@ class LLM::Function
   end
 
   ##
-  # Find a function by name
-  # @param [String] name The function name
-  # @return [LLM::Function, nil]
-  def self.find_by(name:)
-    LLM.find_function_by_name(name)
-  end
-
-  ##
   # Returns the function ID
   # @return [String, nil]
   attr_accessor :id
@@ -58,7 +50,7 @@ class LLM::Function
     @schema = LLM::Schema.new
     @called = false
     @cancelled = false
-    yield(self)
+    yield(self) if block_given?
   end
 
   ##

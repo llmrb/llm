@@ -61,7 +61,7 @@ module LLM
     # @return [Array<LLM::Function>]
     def functions
       @functions ||= tool_calls.map do |fn|
-        function = LLM::Function.find_by(name: fn.name)
+        function = tools.find { _1.name.to_s == fn["name"] }
         function.tap { _1.id = fn.id }
         function.tap { _1.arguments = fn.arguments }
       end
@@ -169,6 +169,10 @@ module LLM
 
     def tool_calls
       @tool_calls ||= LLM::Object.from_hash(@extra[:tool_calls] || [])
+    end
+
+    def tools
+      response.__tools__ || []
     end
   end
 end

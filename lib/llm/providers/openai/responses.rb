@@ -37,7 +37,8 @@ class LLM::OpenAI
     # @return [LLM::Response]
     def create(prompt, params = {})
       params = {role: :user, model: @provider.default_model}.merge!(params)
-      params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
+      tools  = params.delete(:tools)
+      params = [params, format_schema(params), format_tools(tools)].inject({}, &:merge!).compact
       role, stream = params.delete(:role), params.delete(:stream)
       params[:stream] = true if stream.respond_to?(:<<) || stream == true
       req = Net::HTTP::Post.new("/v1/responses", headers)
@@ -45,7 +46,9 @@ class LLM::OpenAI
       body = JSON.dump({input: [format(messages, :response)].flatten}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:, stream_parser:)
-      LLM::Response.new(res).extend(LLM::OpenAI::Response::Responds)
+      LLM::Response.new(res)
+        .extend(LLM::OpenAI::Response::Responds)
+        .extend(Module.new { define_method(:__tools__) { tools } })
     end
 
     ##

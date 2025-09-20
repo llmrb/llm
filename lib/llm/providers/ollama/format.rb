@@ -21,9 +21,8 @@ class LLM::Ollama
     ##
     # @param [Hash] params
     # @return [Hash]
-    def format_tools(params)
-      return {} unless params and params[:tools]&.any?
-      tools = params[:tools]
+    def format_tools(tools)
+      return {} unless tools and tools&.any?
       {tools: tools.map { _1.format(self) }}
     end
   end

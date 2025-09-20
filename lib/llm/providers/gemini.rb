@@ -67,7 +67,8 @@ module LLM
     # @return [LLM::Response]
     def complete(prompt, params = {})
       params = {role: :user, model: default_model}.merge!(params)
-      params = [params, format_schema(params), format_tools(params)].inject({}, &:merge!).compact
+      tools  = params.delete(:tools)
+      params = [params, format_schema(params), format_tools(tools)].inject({}, &:merge!).compact
       role, model, stream = [:role, :model, :stream].map { params.delete(_1) }
       action = stream ? "streamGenerateContent?key=#{@key}&alt=sse" : "generateContent?key=#{@key}"
       model.respond_to?(:id) ? model.id : model
@@ -77,7 +78,9 @@ module LLM
       body = JSON.dump({contents: format(messages)}.merge!(params))
       set_body_stream(req, StringIO.new(body))
       res = execute(request: req, stream:)
-      LLM::Response.new(res).extend(LLM::Gemini::Response::Completion)
+      LLM::Response.new(res)
+        .extend(LLM::Gemini::Response::Completion)
+        .extend(Module.new { define_method(:__tools__) { tools } })
     end
 
     ##

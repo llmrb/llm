@@ -43,8 +43,7 @@ class LLM::OpenAI
     ##
     # @param [Hash] params
     # @return [Hash]
-    def format_tools(params)
-      tools = params.delete(:tools)
+    def format_tools(tools)
       if tools.nil? || tools.empty?
         {}
       else

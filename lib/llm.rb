@@ -23,7 +23,7 @@ module LLM
 
   @monitors = {
     require: Monitor.new,
-    functions: Monitor.new,
+    tools: Monitor.new,
     clients: Monitor.new
   }
 
@@ -87,7 +87,7 @@ module LLM
   end
 
   ##
-  # Define or get a function
+  # Define a function
   # @example
   #   LLM.function(:system) do |fn|
   #     fn.description "Run system command"
@@ -102,33 +102,8 @@ module LLM
   # @param [Proc] b The block to define the function
   # @return [LLM::Function] The function object
   def function(key, &b)
-    lock(:functions) do
-      if block_given?
-        functions[key.to_s] = LLM::Function.new(key, &b)
-      else
-        functions[key.to_s]
-      end
-    end
+    LLM::Function.new(key, &b)
   end
-
-  ##
-  # Find a function by name
-  # @param [String] name The function name
-  # @return [LLM::Function, nil]
-  def find_function_by_name(name)
-    lock(:functions) do
-      functions.each_value { return _1.dup if _1.name.to_s == name.to_s   }
-      nil
-    end
-  end
-
-  ##
-  # Returns all known functions
-  # @return [Hash<String,LLM::Function>]
-  def functions
-    @functions ||= {}
-  end
-  private_class_method :functions
 
   ##
   # Provides a thread-safe lock
