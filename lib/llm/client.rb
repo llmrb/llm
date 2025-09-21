@@ -32,6 +32,5 @@ module LLM
 
     def client_id = "#{host}:#{port}:#{timeout}:#{ssl}"
     def clients = self.class.clients
-    def mutex = self.class.mutex
   end
 end

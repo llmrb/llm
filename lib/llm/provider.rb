@@ -88,10 +88,7 @@ class LLM::Provider
   end
 
   ##
-  # Starts a new lazy chat powered by the chat completions API
-  # @note
-  #  This method creates a lazy version of a
-  #  {LLM::Bot LLM::Bot} object.
+  # Starts a new chat powered by the chat completions API
   # @param prompt (see LLM::Provider#complete)
   # @param params (see LLM::Provider#complete)
   # @return [LLM::Bot]
@@ -100,44 +97,14 @@ class LLM::Provider
     LLM::Bot.new(self, params).chat(prompt, role:)
   end
 
-  ##
-  # Starts a new chat powered by the chat completions API
-  # @note
-  #  This method creates a non-lazy version of a
-  #  {LLM::Bot LLM::Bot} object.
-  # @param prompt (see LLM::Provider#complete)
-  # @param params (see LLM::Provider#complete)
-  # @raise (see LLM::Provider#complete)
-  # @return [LLM::Bot]
-  def chat!(prompt, params = {})
-    role = params.delete(:role)
-    LLM::Bot.new(self, params).chat(prompt, role:)
-  end
 
   ##
-  # Starts a new lazy chat powered by the responses API
-  # @note
-  #  This method creates a lazy variant of a
-  #  {LLM::Bot LLM::Bot} object.
+  # Starts a new chat powered by the responses API
   # @param prompt (see LLM::Provider#complete)
   # @param params (see LLM::Provider#complete)
   # @raise (see LLM::Provider#complete)
   # @return [LLM::Bot]
   def respond(prompt, params = {})
-    role = params.delete(:role)
-    LLM::Bot.new(self, params).respond(prompt, role:)
-  end
-
-  ##
-  # Starts a new chat powered by the responses API
-  # @note
-  #  This method creates a non-lazy variant of a
-  #  {LLM::Bot LLM::Bot} object.
-  # @param prompt (see LLM::Provider#complete)
-  # @param params (see LLM::Provider#complete)
-  # @raise (see LLM::Provider#complete)
-  # @return [LLM::Bot]
-  def respond!(prompt, params = {})
     role = params.delete(:role)
     LLM::Bot.new(self, params).respond(prompt, role:)
   end
