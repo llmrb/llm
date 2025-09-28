@@ -1,8 +1,8 @@
-> **Maintenance Notice** <br>
+> **⚠️ Maintenance Mode ⚠️** <br>
 > Please note that the primary author of llm.rb is pivoting away from
 > Ruby and towards [Golang](https://golang.org) for future projects.
 > Although llm.rb will be maintained for the foreseeable future it is not
-> where my primary interests lie anymore. Thanks for understanding.
+> where my primary interests are anymore. Thanks for understanding.
 
 ## About
 
