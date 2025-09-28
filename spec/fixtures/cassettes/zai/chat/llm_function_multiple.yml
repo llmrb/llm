@@ -1,0 +1,185 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.z.ai/api/paas/v4/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"Can
+        you run the date command ? Can you run the pwd command ? Can you run the whoami
+        command ?"}]}],"model":"glm-4.5-flash","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Sep 2025 09:58:14 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - acw_tc=0bc1a9c917590534899632688e08923d9be3a6eecccd540a8f964ea6128180;path=/;HttpOnly;Max-Age=1800
+      Server:
+      - ZenZGA/2.4
+      Vary:
+      - Accept-Encoding
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - Access-Control-Request-Method
+      - Origin
+      - Origin
+      X-Log-Id:
+      - 20250928175810d594f2035ef144b4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":"\nI''ll
+        run those three UNIX commands for you.\n","reasoning_content":"\nThe user
+        is asking me to run three UNIX commands:\n1. date - to show the current date
+        and time\n2. pwd - to show the current working directory\n3. whoami - to show
+        the current user\n\nI have access to a system function that can run shell
+        commands, so I can run these commands. I''ll run them one by one.","role":"assistant","tool_calls":[{"function":{"arguments":"{\"command\":
+        \"date\"}","name":"system"},"id":"call_-8297617501049295598","index":0,"type":"function"}]}}],"created":1759053494,"id":"20250928175810d594f2035ef144b4","model":"glm-4.5-flash","request_id":"20250928175810d594f2035ef144b4","usage":{"completion_tokens":127,"prompt_tokens":187,"prompt_tokens_details":{"cached_tokens":43},"total_tokens":314}}'
+  recorded_at: Sun, 28 Sep 2025 09:58:00 GMT
+- request:
+    method: post
+    uri: https://api.z.ai/api/paas/v4/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"Can
+        you run the date command ? Can you run the pwd command ? Can you run the whoami
+        command ?"}]},{"role":"assistant","content":null,"tool_calls":[{"function":{"arguments":"{\"command\":
+        \"date\"}","name":"system"},"id":"call_-8297617501049295598","index":0,"type":"function"}]},{"role":"tool","tool_call_id":"call_-8297617501049295598","content":"{\"stderr\":\"\",\"stdout\":\"Sun
+        Sep 28 09:58:00 -00 2025\\n\"}"}],"model":"glm-4.5-flash","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Sep 2025 09:58:17 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - acw_tc=0bc1a98117590534954105889e5f46eb6a526c05dc769070eda0cdc421904e;path=/;HttpOnly;Max-Age=1800
+      Server:
+      - ZenZGA/2.4
+      Vary:
+      - Accept-Encoding
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - Access-Control-Request-Method
+      - Origin
+      - Origin
+      X-Log-Id:
+      - 2025092817581562047ca8f2184f9e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":"\n","reasoning_content":"\nThe
+        user asked me to run three commands: date, pwd, and whoami. I''ve successfully
+        run the date command and got the output. Now I need to run the pwd command.","role":"assistant","tool_calls":[{"function":{"arguments":"{\"command\":
+        \"pwd\"}","name":"system"},"id":"call_-8297577300154539720","index":0,"type":"function"}]}}],"created":1759053497,"id":"2025092817581562047ca8f2184f9e","model":"glm-4.5-flash","request_id":"2025092817581562047ca8f2184f9e","usage":{"completion_tokens":55,"prompt_tokens":231,"prompt_tokens_details":{"cached_tokens":189},"total_tokens":286}}'
+  recorded_at: Sun, 28 Sep 2025 09:58:04 GMT
+- request:
+    method: post
+    uri: https://api.z.ai/api/paas/v4/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"Can
+        you run the date command ? Can you run the pwd command ? Can you run the whoami
+        command ?"}]},{"role":"assistant","content":null,"tool_calls":[{"function":{"arguments":"{\"command\":
+        \"date\"}","name":"system"},"id":"call_-8297617501049295598","index":0,"type":"function"}]},{"role":"tool","tool_call_id":"call_-8297617501049295598","content":"{\"stderr\":\"\",\"stdout\":\"Sun
+        Sep 28 09:58:00 -00 2025\\n\"}"},{"role":"assistant","content":null,"tool_calls":[{"function":{"arguments":"{\"command\":
+        \"pwd\"}","name":"system"},"id":"call_-8297577300154539720","index":0,"type":"function"}]},{"role":"tool","tool_call_id":"call_-8297577300154539720","content":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"}],"model":"glm-4.5-flash","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+        a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Sep 2025 09:58:20 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - acw_tc=ac11000117590534990991736e25b55b30eb617f4fe194b0ba2559851309d2;path=/;HttpOnly;Max-Age=1800
+      Server:
+      - ZenZGA/2.4
+      Vary:
+      - Accept-Encoding
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - Access-Control-Request-Method
+      - Origin
+      - Origin
+      X-Log-Id:
+      - 202509281758191573f8912b1f4cba
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":"\n","role":"assistant","tool_calls":[{"function":{"arguments":"{}","name":"system"},"id":"call_-8297643786250179259","index":0,"type":"function"}]}}],"created":1759053500,"id":"202509281758191573f8912b1f4cba","model":"glm-4.5-flash","request_id":"202509281758191573f8912b1f4cba","usage":{"completion_tokens":18,"prompt_tokens":279,"prompt_tokens_details":{"cached_tokens":233},"total_tokens":297}}'
+  recorded_at: Sun, 28 Sep 2025 09:58:06 GMT
+recorded_with: VCR 6.3.1

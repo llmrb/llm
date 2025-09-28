@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.z.ai/api/paas/v4/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
+        is the date?"}]}],"model":"glm-4.5-flash","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Sep 2025 09:58:04 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - acw_tc=0bc1a9c917590534767344028e0898d2bff59ad2d2692b357bfb7d80325420;path=/;HttpOnly;Max-Age=1800
+      Server:
+      - ZenZGA/2.4
+      Vary:
+      - Accept-Encoding
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - Access-Control-Request-Method
+      - Origin
+      - Origin
+      X-Log-Id:
+      - 20250928175756f68716309c894741
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":"\n\n","reasoning_content":"The
+        user is asking for the date, which is a common UNIX command. I should use
+        the `date` command to get the current date and time.","role":"assistant","tool_calls":[{"function":{"arguments":"{\"command\":
+        \"date\"}","name":"system"},"id":"call_-8297627431014060697","index":0,"type":"function"}]}}],"created":1759053484,"id":"20250928175756f68716309c894741","model":"glm-4.5-flash","request_id":"20250928175756f68716309c894741","usage":{"completion_tokens":48,"prompt_tokens":169,"prompt_tokens_details":{"cached_tokens":43},"total_tokens":217}}'
+  recorded_at: Sun, 28 Sep 2025 09:57:50 GMT
+- request:
+    method: post
+    uri: https://api.z.ai/api/paas/v4/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
+        is the date?"}]},{"role":"assistant","content":null,"tool_calls":[{"function":{"arguments":"{\"command\":
+        \"date\"}","name":"system"},"id":"call_-8297627431014060697","index":0,"type":"function"}]},{"role":"tool","tool_call_id":"call_-8297627431014060697","content":"{\"success\":\"2025-08-24\"}"}],"model":"glm-4.5-flash","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Runs
+        system commands","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Sep 2025 09:58:08 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - acw_tc=ac11000117590534860285958e03e0a6f6968a73dba864eaf4150a67c91f4d;path=/;HttpOnly;Max-Age=1800
+      Server:
+      - ZenZGA/2.4
+      Vary:
+      - Accept-Encoding
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - Access-Control-Request-Method
+      - Origin
+      - Origin
+      X-Log-Id:
+      - 2025092817580604ab3028f5794e68
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: '{"choices":[{"finish_reason":"stop","index":0,"message":{"content":"\nThe
+        current date is **2025-08-24**.","reasoning_content":"\nThe system command
+        `date` returned \"2025-08-24\", which appears to be the current date. I should
+        provide this information to the user in a clear and helpful way.","role":"assistant"}}],"created":1759053488,"id":"2025092817580604ab3028f5794e68","model":"glm-4.5-flash","request_id":"2025092817580604ab3028f5794e68","usage":{"completion_tokens":56,"prompt_tokens":201,"prompt_tokens_details":{"cached_tokens":43},"total_tokens":257}}'
+  recorded_at: Sun, 28 Sep 2025 09:57:55 GMT
+recorded_with: VCR 6.3.1

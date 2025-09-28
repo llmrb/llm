@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.z.ai/api/paas/v4/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Keep
+        your answers short and concise, and provide three answers to the three questionsThere
+        should be one answer per lineAn answer should be a number, for example: 5Nothing
+        else"}]},{"role":"user","content":[{"type":"text","text":"What is 3+2 ?"}]},{"role":"user","content":[{"type":"text","text":"What
+        is 5+5 ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+7
+        ?"}]}],"model":"glm-4.5-flash"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Sep 2025 09:57:24 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - acw_tc=ac11000117590534354751303e25c673c6a96c106b19090a4b645c7907a397;path=/;HttpOnly;Max-Age=1800
+      Server:
+      - ZenZGA/2.4
+      Vary:
+      - Accept-Encoding
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - Access-Control-Request-Method
+      - Origin
+      - Origin
+      X-Log-Id:
+      - 202509281757157fbb07942c654993
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjaG9pY2VzIjpbeyJmaW5pc2hfcmVhc29uIjoic3RvcCIsImluZGV4IjowLCJtZXNzYWdlIjp7ImNvbnRlbnQiOiI1XG4xMFxuMTIiLCJyZWFzb25pbmdfY29udGVudCI6IlxuRmlyc3QsIHRoZSB1c2VyIGhhcyBnaXZlbiBtZSBzcGVjaWZpYyBpbnN0cnVjdGlvbnM6IFwiS2VlcCB5b3VyIGFuc3dlcnMgc2hvcnQgYW5kIGNvbmNpc2UsIGFuZCBwcm92aWRlIHRocmVlIGFuc3dlcnMgdG8gdGhlIHRocmVlIHF1ZXN0aW9ucy4gVGhlcmUgc2hvdWxkIGJlIG9uZSBhbnN3ZXIgcGVyIGxpbmUuIEFuIGFuc3dlciBzaG91bGQgYmUgYSBudW1iZXIsIGZvciBleGFtcGxlOiA1LiBOb3RoaW5nIGVsc2UuXCJcblxuVGhlIHVzZXIgdGhlbiBhc2tzIHRocmVlIHF1ZXN0aW9uczpcblxuMS4gXCJXaGF0IGlzIDMrMiA/XCJcblxuMi4gXCJXaGF0IGlzIDUrNSA/XCJcblxuMy4gXCJXaGF0IGlzIDUrNyA/XCJcblxuSSBuZWVkIHRvIHByb3ZpZGUgdGhyZWUgYW5zd2Vycywgb25lIGZvciBlYWNoIHF1ZXN0aW9uLCBhbmQgZWFjaCBhbnN3ZXIgc2hvdWxkIGJlIGEgc2luZ2xlIG51bWJlci4gTm8gYWRkaXRpb25hbCB0ZXh0LCBubyBleHBsYW5hdGlvbnPigJRqdXN0IHRoZSBudW1iZXIgb24gZWFjaCBsaW5lLlxuXG5Ob3csIGxldCdzIGNhbGN1bGF0ZSBlYWNoIG9uZTpcblxuLSBGb3IgXCJXaGF0IGlzIDMrMiA/XCIsIDMgKyAyID0gNS5cblxuLSBGb3IgXCJXaGF0IGlzIDUrNSA/XCIsIDUgKyA1ID0gMTAuXG5cbi0gRm9yIFwiV2hhdCBpcyA1KzcgP1wiLCA1ICsgNyA9IDEyLlxuXG5TbywgdGhlIGFuc3dlcnMgc2hvdWxkIGJlIDUsIDEwLCBhbmQgMTIgcmVzcGVjdGl2ZWx5LlxuXG5JIG11c3QgcHJlc2VudCB0aGVtIG9uZSBwZXIgbGluZSwgd2l0aCBub3RoaW5nIGVsc2UuIFNvLCB0aGUgb3V0cHV0IHNob3VsZCBsb29rIGxpa2U6XG5cbjVcblxuMTBcblxuMTJcblxuRmluYWxseSwgZW5zdXJlIHRoYXQgSSdtIGZvbGxvd2luZyB0aGUgZm9ybWF0IHN0cmljdGx5OiBubyBleHRyYSBzcGFjZXMsIG5vIGxhYmVscywganVzdCB0aGUgbnVtYmVycy4iLCJyb2xlIjoiYXNzaXN0YW50In19XSwiY3JlYXRlZCI6MTc1OTA1MzQ0NCwiaWQiOiIyMDI1MDkyODE3NTcxNTdmYmIwNzk0MmM2NTQ5OTMiLCJtb2RlbCI6ImdsbS00LjUtZmxhc2giLCJyZXF1ZXN0X2lkIjoiMjAyNTA5MjgxNzU3MTU3ZmJiMDc5NDJjNjU0OTkzIiwidXNhZ2UiOnsiY29tcGxldGlvbl90b2tlbnMiOjI2NSwicHJvbXB0X3Rva2VucyI6NjgsInByb21wdF90b2tlbnNfZGV0YWlscyI6eyJjYWNoZWRfdG9rZW5zIjo2fSwidG90YWxfdG9rZW5zIjozMzN9fQ==
+  recorded_at: Sun, 28 Sep 2025 09:57:11 GMT
+recorded_with: VCR 6.3.1

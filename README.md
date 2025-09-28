@@ -1,9 +1,9 @@
 ## About
 
 llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
-includes OpenAI, Gemini, Anthropic, xAI (Grok), DeepSeek, Ollama, and
-LlamaCpp. The toolkit includes full support for chat, streaming, tool calling,
-audio, images, files, and structured outputs (JSON Schema).
+includes OpenAI, Gemini, Anthropic, xAI (Grok), [zAI](https://z.ai), DeepSeek,
+Ollama, and LlamaCpp. The toolkit includes full support for chat, streaming,
+tool calling, audio, images, files, and structured outputs (JSON Schema).
 
 ## Quick start
 
@@ -89,22 +89,22 @@ While the Features section above gives you the high-level picture, the table bel
 breaks things down by provider, so you can see exactly what’s supported where.
 
 
-| Feature / Provider                  | OpenAI | Anthropic | Gemini | DeepSeek | xAI (Grok) | Ollama | LlamaCpp |
-|--------------------------------------|:------:|:---------:|:------:|:--------:|:----------:|:------:|:--------:|
-| **Chat Completions**                 | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
-| **Streaming**                        | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
-| **Tool Calling**                     | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
-| **JSON Schema / Structured Output**  | ✅     | ❌        | ✅     | ❌       | ✅         | ✅*    | ✅*      |
-| **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ✅     | ✅       |
-| **Multimodal Prompts** *(text, documents, audio, images, videos, URLs, etc)* | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
-| **Files API**                        | ✅     | ✅        | ✅     | ❌       | ❌         | ❌     | ❌       |
-| **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅       |
-| **Audio (TTS / Transcribe / Translate)** | ✅  | ❌        | ✅     | ❌       | ❌         | ❌     | ❌       |
-| **Image Generation & Editing**       | ✅     | ❌        | ✅     | ❌       | ✅         | ❌     | ❌       |
-| **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ✅     | ✅       |
-| **Vector Stores (RAG)**               | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
-| **Responses**                        | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
-| **Moderations**                      | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌       |
+| Feature / Provider                  | OpenAI | Anthropic | Gemini | DeepSeek | xAI (Grok) | zAI    | Ollama | LlamaCpp |
+|--------------------------------------|:------:|:---------:|:------:|:--------:|:----------:|:------:|:------:|:--------:|
+| **Chat Completions**                 | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅     | ✅       |
+| **Streaming**                        | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅     | ✅       |
+| **Tool Calling**                     | ✅     | ✅        | ✅     | ✅       | ✅         | ✅     | ✅     | ✅       |
+| **JSON Schema / Structured Output**  | ✅     | ❌        | ✅     | ❌       | ✅         | ❌     | ✅*    | ✅*      |
+| **Embeddings**                       | ✅     | ✅        | ✅     | ✅       | ❌         | ❌     | ✅     | ✅       |
+| **Multimodal Prompts** *(text, documents, audio, images, videos, URLs, etc)* | ✅     | ✅        | ✅     | ✅       | ✅         | ❌     | ✅     | ✅       |
+| **Files API**                        | ✅     | ✅        | ✅     | ❌       | ❌         | ❌     | ❌     | ❌       |
+| **Models API**                       | ✅     | ✅        | ✅     | ✅       | ✅         | ❌     | ✅     | ✅       |
+| **Audio (TTS / Transcribe / Translate)** | ✅  | ❌        | ✅     | ❌       | ❌         | ❌     | ❌     | ❌       |
+| **Image Generation & Editing**       | ✅     | ❌        | ✅     | ❌       | ✅         | ❌     | ❌     | ❌       |
+| **Local Model Support**              | ❌     | ❌        | ❌     | ❌       | ❌         | ❌     | ✅     | ✅       |
+| **Vector Stores (RAG)**               | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌     | ❌       |
+| **Responses**                        | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌     | ❌       |
+| **Moderations**                      | ✅     | ❌        | ❌     | ❌       | ❌         | ❌     | ❌     | ❌       |
 
 \* JSON Schema support in Ollama/LlamaCpp depends on the model, not the API.
 
