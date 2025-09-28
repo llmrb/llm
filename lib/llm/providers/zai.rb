@@ -11,14 +11,12 @@ module LLM
   #   require "llm"
   #
   #   llm = LLM.zai(key: ENV["KEY"])
-  #   bot = LLM::Bot.new(llm)
-  #   bot.chat ["Tell me about this photo", File.open("/images/crow.jpg", "rb")]
-  #   bot.messages.select(&:assistant?).each { print "[#{_1.role}]", _1.content, "\n" }
+  #   bot = LLM::Bot.new(llm, stream: $stdout)
+  #   bot.chat("Greetings Robot", role: :user).flush
   class ZAI < OpenAI
     ##
-    # @param [String] host A regional host or the default ("api.x.ai")
+    # @param [String] host A regional host or the default ("api.z.ai")
     # @param key (see LLM::Provider#initialize)
-    # @see https://docs.x.ai/docs/key-information/regions Regional endpoints
     def initialize(host: "api.z.ai", **)
       super
     end
