@@ -85,6 +85,15 @@ module LLM
   end
 
   ##
+  # @param key (see LLM::ZAI#initialize)
+  # @param host (see LLM::ZAI#initialize)
+  # @return (see LLM::ZAI#initialize)
+  def zai(**)
+    lock(:require) { require_relative "llm/providers/zai" unless defined?(LLM::ZAI) }
+    LLM::ZAI.new(**)
+  end
+
+  ##
   # Define a function
   # @example
   #   LLM.function(:system) do |fn|

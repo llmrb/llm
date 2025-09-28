@@ -97,7 +97,6 @@ class LLM::Provider
     LLM::Bot.new(self, params).chat(prompt, role:)
   end
 
-
   ##
   # Starts a new chat powered by the responses API
   # @param prompt (see LLM::Provider#complete)
