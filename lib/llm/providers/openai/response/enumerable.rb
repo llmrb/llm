@@ -7,5 +7,9 @@ module LLM::OpenAI::Response
       return enum_for(:each) unless block_given?
       data.each { yield(_1) }
     end
+
+    def empty?
+      data.empty?
+    end
   end
 end
