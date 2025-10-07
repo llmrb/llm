@@ -232,7 +232,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
   context "when given a 'search' operation that returns no results",
           vcr: {cassette_name: "openai/vector_stores/successful_search_no_results"} do
     let(:store) { provider.vector_stores.create(name: "test store") }
-    subject { provider.vector_stores.search(vector: store, query: "nonexistent query") }
+    subject(:chunks) { provider.vector_stores.search(vector: store, query: "nonexistent query") }
     after { provider.vector_stores.delete(vector: store) }
 
     it "is successful" do
@@ -241,6 +241,10 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
     it "is empty" do
       is_expected.to be_empty
+    end
+
+    it "has size zero" do
+      expect(chunks.size).to be_zero
     end
   end
 end

@@ -8,8 +8,16 @@ module LLM::OpenAI::Response
       data.each { yield(_1) }
     end
 
+    ##
+    # @return [Boolean]
     def empty?
       data.empty?
+    end
+
+    ##
+    # @return [Integer]
+    def size
+      data.size
     end
   end
 end
