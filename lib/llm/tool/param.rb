@@ -2,7 +2,7 @@
 
 class LLM::Tool
   ##
-  # The {LLM::Tool::Param LLM::Tool::Param} class extends the
+  # The {LLM::Tool::Param LLM::Tool::Param} module extends the
   # {LLM::Tool LLM::Tool} class with a "param" method that can
   # define a parameter for simple types. For complex types, use
   # {LLM::Tool.params LLM::Tool.params} instead.
