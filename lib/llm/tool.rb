@@ -29,6 +29,7 @@ class LLM::Tool
     LLM.lock(:inherited) do
       klass.instance_eval { @__monitor ||= Monitor.new }
       klass.function.register(klass)
+      super(klass) if defined?(super)
     end
   end
 
