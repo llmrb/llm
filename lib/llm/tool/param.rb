@@ -49,11 +49,14 @@ class LLM::Tool
       extend self
 
       def resolve(type)
-        case type
-        when String then :string
-        when Integer then :integer
-        when Float then :number
-        else type
+        if type == String
+          :string
+        elsif type == Integer
+          :integer
+        elsif type == Float
+          :number
+        else
+          type
         end
       end
 
