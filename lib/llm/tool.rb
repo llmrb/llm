@@ -18,6 +18,9 @@
 #     end
 #   end
 class LLM::Tool
+  require_relative "tool/param"
+  extend LLM::Tool::Param
+
   ##
   # Registers the tool as a function when inherited
   # @param [Class] klass The subclass
