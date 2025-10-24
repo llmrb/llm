@@ -38,7 +38,7 @@ class LLM::Tool
   # @return [String]
   def self.name(name = nil)
     lock do
-      function.tap { _1.name(name) }
+      name ? function.name(name) : function.name
     end
   end
 
@@ -48,7 +48,7 @@ class LLM::Tool
   # @return [String]
   def self.description(desc = nil)
     lock do
-      function.tap { _1.description(desc) }
+      desc ? function.description(desc) : function.description
     end
   end
 
