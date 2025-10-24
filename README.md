@@ -18,19 +18,6 @@ GitHub Copilot but for the terminal.
   <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
 </details>
 
-#### Guides
-
-* [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
-  a blog post that implements the RAG pattern
-* [How to estimate the age of a person in a photo](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
-  a blog post that implements an age estimation tool
-* [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
-  a blog post that implements image editing with Gemini
-* [Fast sailing with persistent connections](https://0x1eef.github.io/posts/persistent-connections-with-llm.rb/) &ndash;
-  a blog post that optimizes performance with a thread-safe connection pool
-* [How to build agents (with llm.rb)](https://0x1eef.github.io/posts/how-to-build-agents-with-llm.rb/) &ndash;
-  a blog post that implements agentic behavior via tools
-
 #### Ecosystem
 
 * [llm-shell](https://github.com/llmrb/llm-shell) &ndash; a developer-oriented console for Large Language Model communication
@@ -678,6 +665,19 @@ special prompting or engineering. I just provided them with the source code and 
 </details>
 
 ## Documentation
+
+### Guides
+
+* [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
+  a blog post that implements the RAG pattern
+* [How to estimate the age of a person in a photo](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
+  a blog post that implements an age estimation tool
+* [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
+  a blog post that implements image editing with Gemini
+* [Fast sailing with persistent connections](https://0x1eef.github.io/posts/persistent-connections-with-llm.rb/) &ndash;
+  a blog post that optimizes performance with a thread-safe connection pool
+* [How to build agents (with llm.rb)](https://0x1eef.github.io/posts/how-to-build-agents-with-llm.rb/) &ndash;
+  a blog post that implements agentic behavior via tools
 
 ### API
 
