@@ -7,6 +7,8 @@ class LLM::Schema
   # {LLM::Schema::Leaf LLM::Schema::Leaf} and provides methods that
   # can act as constraints.
   class Object < Leaf
+    attr_reader :properties
+
     def initialize(properties)
       @properties = properties
     end
@@ -15,13 +17,22 @@ class LLM::Schema
       super.merge!({type: "object", properties:, required:})
     end
 
+    ##
+    # @raise [TypeError]
+    #  When given an object other than Object
+    # @return [LLM::Schema::Object]
+    #  Returns self
+    def merge!(other)
+      raise TypeError unless self.class === self
+      @properties.merge!(other.properties)
+      self
+    end
+
     def to_json(options = {})
       to_h.to_json(options)
     end
 
     private
-
-    attr_reader :properties
 
     def required
       @properties.filter_map {  _2.required? ? _1 : nil }

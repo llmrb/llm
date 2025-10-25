@@ -83,7 +83,11 @@ class LLM::Function
   # @return [void]
   def params
     if block_given?
-      @params = yield(@schema)
+      if @params
+        @params.merge!(yield(@schema))
+      else
+        @params = yield(@schema)
+      end
     else
       @params
     end
