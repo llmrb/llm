@@ -7,12 +7,20 @@ class LLM::Schema
   # {LLM::Schema::Leaf LLM::Schema::Leaf} and provides methods that
   # can act as constraints.
   class Object < Leaf
+    ##
+    # @return [Hash]
     attr_reader :properties
 
+    ##
+    # @param params [Hash]
+    #  A hash of properties
+    # @return [LLM::Schema::Object]
     def initialize(properties)
       @properties = properties
     end
 
+    ##
+    # @return [Hash]
     def to_h
       super.merge!({type: "object", properties:, required:})
     end
@@ -23,11 +31,13 @@ class LLM::Schema
     # @return [LLM::Schema::Object]
     #  Returns self
     def merge!(other)
-      raise TypeError unless self.class === self
+      raise TypeError, "expected #{self.class} but got #{other.class}" unless self.class === other
       @properties.merge!(other.properties)
       self
     end
 
+    ##
+    # @return [String]
     def to_json(options = {})
       to_h.to_json(options)
     end
