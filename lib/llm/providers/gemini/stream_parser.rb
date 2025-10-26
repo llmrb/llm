@@ -95,7 +95,7 @@ class LLM::Gemini
 
     def merge_function_call!(parts, delta)
       last_existing_part = parts.last
-      if last_existing_part && last_existing_part.functionCall
+      if last_existing_part&.functionCall
         last_existing_part.functionCall = LLM::Object.from_hash(
           last_existing_part.functionCall.to_h.merge(delta.functionCall.to_h)
         )
