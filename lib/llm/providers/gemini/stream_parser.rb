@@ -40,59 +40,67 @@ class LLM::Gemini
       end
     end
 
-    def merge_candidates!(new_candidates_list)
-      new_candidates_list.each do |new_candidate_delta|
-        index = new_candidate_delta.index
+    def merge_candidates!(deltas)
+      deltas.each do |delta|
+        index = delta.index
         @body.candidates[index] ||= LLM::Object.from_hash({content: {parts: []}})
-        existing_candidate = @body.candidates[index]
-        new_candidate_delta.each do |key, value|
+        candidate = @body.candidates[index]
+        delta.each do |key, value|
           if key.to_s == "content"
-            merge_candidate_content!(existing_candidate.content, value) if value
+            merge_candidate_content!(candidate.content, value) if value
           else
-            existing_candidate[key] = value # Overwrite other fields
+            candidate[key] = value # Overwrite other fields
           end
         end
       end
     end
 
-    def merge_candidate_content!(existing_content, new_content_delta)
-      new_content_delta.each do |key, value|
+    def merge_candidate_content!(content, delta)
+      delta.each do |key, value|
         if key.to_s == "parts"
-          existing_content.parts ||= []
-          merge_content_parts!(existing_content.parts, value) if value
+          content.parts ||= []
+          merge_content_parts!(content.parts, value) if value
         else
-          existing_content[key] = value
+          content[key] = value
         end
       end
     end
 
-    def merge_content_parts!(existing_parts, new_parts_delta)
-      new_parts_delta.each do |new_part_delta|
-        if new_part_delta.text
-          last_existing_part = existing_parts.last
-          if last_existing_part&.text
-            last_existing_part.text << new_part_delta.text
-            @io << new_part_delta.text if @io.respond_to?(:<<)
-          else
-            existing_parts << new_part_delta
-            @io << new_part_delta.text if @io.respond_to?(:<<)
-          end
-        elsif new_part_delta.functionCall
-          last_existing_part = existing_parts.last
-          if last_existing_part && last_existing_part.functionCall
-            last_existing_part.functionCall = LLM::Object.from_hash(
-              last_existing_part.functionCall.to_h.merge(new_part_delta.functionCall.to_h)
-            )
-          else
-            existing_parts << new_part_delta
-          end
-        elsif new_part_delta.inlineData
-          existing_parts << new_part_delta
-        elsif new_part_delta.functionResponse
-          existing_parts << new_part_delta
-        elsif new_part_delta.fileData
-          existing_parts << new_part_delta
+    def merge_content_parts!(parts, deltas)
+      deltas.each do |delta|
+        if delta.text
+          merge_text!(parts, delta)
+        elsif delta.functionCall
+          merge_function_call!(parts, delta)
+        elsif delta.inlineData
+          parts << delta
+        elsif delta.functionResponse
+          parts << delta
+        elsif delta.fileData
+          parts << delta
         end
+      end
+    end
+
+    def merge_text!(parts, delta)
+      last_existing_part = parts.last
+      if last_existing_part&.text
+        last_existing_part.text << delta.text
+        @io << delta.text if @io.respond_to?(:<<)
+      else
+        parts << delta
+        @io << delta.text if @io.respond_to?(:<<)
+      end
+    end
+
+    def merge_function_call!(parts, delta)
+      last_existing_part = parts.last
+      if last_existing_part && last_existing_part.functionCall
+        last_existing_part.functionCall = LLM::Object.from_hash(
+          last_existing_part.functionCall.to_h.merge(delta.functionCall.to_h)
+        )
+      else
+        parts << delta
       end
     end
   end
