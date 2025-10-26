@@ -341,7 +341,7 @@ require "llm"
 class System < LLM::Tool
   name "system"
   description "Run a shell command"
-  params { |schema| schema.object(command: schema.string.required) }
+  param :command, String, "The command to execute", required: true
 
   def call(command:)
     ro, wo = IO.pipe
