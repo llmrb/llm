@@ -78,6 +78,19 @@ class LLM::Gemini
             @io << new_part_delta.text if @io.respond_to?(:<<)
           end
         elsif new_part_delta.functionCall
+          last_existing_part = existing_parts.last
+          if last_existing_part && last_existing_part.functionCall
+            last_existing_part.functionCall = LLM::Object.from_hash(
+              last_existing_part.functionCall.to_h.merge(new_part_delta.functionCall.to_h)
+            )
+          else
+            existing_parts << new_part_delta
+          end
+        elsif new_part_delta.inlineData
+          existing_parts << new_part_delta
+        elsif new_part_delta.functionResponse
+          existing_parts << new_part_delta
+        elsif new_part_delta.fileData
           existing_parts << new_part_delta
         end
       end
