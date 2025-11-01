@@ -63,7 +63,6 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
     end
 
     it "calls the functions" do
-      pending if dirname == :zai
       i = 0
       until bot.functions.empty?
         raise "Too many iterations, something is wrong" if i == 3
