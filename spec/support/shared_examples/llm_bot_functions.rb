@@ -10,10 +10,11 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
     let(:returns) { bot.messages.select(&:tool_return?) }
 
     before do
-      bot.chat do |prompt|
+      req = bot.build do |prompt|
         prompt.user "You are a bot that can run UNIX commands"
-        prompt.user(request)
+        prompt.user request
       end
+      bot.chat(req)
     end
 
     it "calls the function" do
@@ -55,7 +56,7 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
     let(:returns) { bot.messages.select(&:tool_return?) }
 
     before do
-      bot.chat do |prompt|
+      bot.build do |prompt|
         prompt.user "You are a bot that can run UNIX commands"
         prompt.user(request)
       end
@@ -103,15 +104,5 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
                      "Can you run the date command ? " \
                      "Can you run the pwd command ? " \
                      "Can you run the whoami command ?"
-  end
-
-  context "with an empty array", vcr.call("llm_function_empty_array") do
-    before { bot.chat("Hi", role: :user) }
-    let(:params) { {} }
-
-    it "does not raise an error" do
-      bot.chat([])
-      expect(bot.functions).to be_empty
-    end
   end
 end

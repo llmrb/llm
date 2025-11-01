@@ -16,12 +16,13 @@ RSpec.shared_examples "LLM::Bot: text stream" do |dirname, options = {}|
     end
 
     before do
-      bot.chat do |prompt|
+      req = bot.build do |prompt|
         prompt.user system_prompt
         prompt.user "What is 3+2 ?"
         prompt.user "What is 5+5 ?"
         prompt.user "What is 5+7 ?"
-      end.to_a
+      end
+      bot.chat(req)
     end
 
     context "with the contents of the IO" do
@@ -58,8 +59,11 @@ RSpec.shared_examples "LLM::Bot: tool stream" do |dirname, options = {}|
       end
     end
     before do
-      bot.chat("You are a bot that can run UNIX system commands", role: :user)
-      bot.chat("Hey, run the 'date' command", role: :user)
+      req = bot.build do |bot|
+        bot.user "You are a bot that can run UNIX system commands"
+        bot.user "Hey, run the 'date' command"
+      end
+      bot.chat(req)
     end
 
     it "calls the function(s)" do

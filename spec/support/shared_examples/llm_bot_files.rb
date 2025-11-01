@@ -32,7 +32,10 @@ RSpec.shared_examples "LLM::Bot: files" do |dirname, options = {}|
 
     context "when given as individual messages" do
       before do
-        prompt.each { bot.chat(_1, role: :user) }
+        req = bot.build do |p|
+          prompt.each { p.chat(_1, role: :user) }
+        end
+        bot.chat(req)
       end
 
       it "affirms the image description" do

@@ -166,9 +166,12 @@ RSpec.describe "LLM::Anthropic::Files" do
     let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
 
     before do
-      bot.chat(file)
-      bot.chat("Is this PDF document about FreeBSD?")
-      bot.chat("Answer with yes or no. Nothing else.")
+      req = bot.build do |prompt|
+        prompt.user(file)
+        prompt.user('Is this PDF document about FreeBSD?')
+        prompt.user("Answer with yes or no. Nothing else.")
+      end
+      bot.chat(req)
     end
 
     it "describes the document" do
