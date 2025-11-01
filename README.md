@@ -51,7 +51,7 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
-req = llm.build do |prompt|
+req = bot.build do |prompt|
   prompt.chat "Your task is to asset the user", role: :system
   prompt.chat "Hello. Can you assist me?", role: :user
 end
