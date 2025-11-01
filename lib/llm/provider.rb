@@ -234,6 +234,10 @@ class LLM::Provider
     raise NotImplementedError
   end
 
+  def build(&)
+    Builder.new(&).tap(&:call)
+  end
+
   private
 
   attr_reader :client, :base_uri, :host, :port, :timeout, :ssl

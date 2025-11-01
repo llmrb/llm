@@ -37,9 +37,26 @@ bot = LLM::Bot.new(llm, stream: $stdout)
 loop do
   print "> "
   input = $stdin.gets&.chomp || break
-  bot.chat(input).flush
-  print "\n"
+  res = bot.chat(input)
+  print "\n" # The streamed content would already be printed to $stdout
 end
+```
+
+We can send multiple messages at the same time by building a chain
+of messages:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["KEY"])
+bot = LLM::Bot.new(llm)
+req = llm.build do |prompt|
+  prompt.chat "Your task is to asset the user", role: :system
+  prompt.chat "Hello. Can you assist me?", role: :user
+end
+res = bot.chat(req)
+res.choices.each { print "[#{_1.role}]", _1.message, "\n" }
 ```
 
 ## Features
@@ -47,7 +64,7 @@ end
 #### General
 - ✅ A single unified interface for multiple providers
 - 📦 Zero dependencies outside Ruby's standard library
-- 🚀 Smart API design that minimizes the number of requests made
+- 🚀 Simple, composable API
 - ♻️ Optional: per-provider, process-wide connection pool via net-http-persistent
 
 #### Chat, Agents
@@ -160,18 +177,13 @@ ensure thread-safety.
 
 #### Completions
 
-> This example uses the stateless chat completions API that all
-> providers support. A similar example for OpenAI's stateful
-> responses API is available in the [docs/](https://0x1eef.github.io/x/llm.rb/file.OPENAI.html#responses)
-> directory.
-
 The following example creates an instance of
 [LLM::Bot](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html)
-and enters into a conversation where messages are buffered and
-sent to the provider on-demand. The implementation is designed to
-buffer messages by waiting until an attempt to iterate over
-[LLM::Bot#messages](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#messages-instance_method)
-is made before sending a request to the LLM:
+and enters into a conversation where each call to "bot.chat" immediately
+sends a request to the provider, updates the conversation history, and
+returns an [LLM::Response](https://0x1eef.github.io/x/llm.rb/LLM/Response.html).
+The full conversation history is automatically included in
+each subsequent request:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -186,38 +198,29 @@ bot.chat ["Tell me about this URL", URI(url)], role: :user
 bot.chat ["Tell me about this PDF", File.open("handbook.pdf", "rb")], role: :user
 bot.chat "Are the URL and PDF similar to each other?", role: :user
 
-# At this point, we execute a single request
 bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 #### Streaming
 
-> There Is More Than One Way To Do It (TIMTOWTDI) when you are
-> using llm.rb &ndash; and this is especially true when it
-> comes to streaming. See the streaming documentation in
-> [docs/](https://0x1eef.github.io/x/llm.rb/file.STREAMING.html#scopes)
-> for more details.
-
 The following example streams the messages in a conversation
 as they are generated in real-time. The `stream` option can
-be set to an IO object, or the value `true` to enable streaming
-&ndash; and at the end of the request, `bot.chat` returns the
-same response as the non-streaming version which allows you
-to process a response in the same way:
+be set to an IO object, or the value `true` to enable streaming.
+When streaming, the `bot.chat` method will block until the entire
+stream is received. At the end, it returns the `LLM::Response` object
+containing the full aggregated content.
 
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm)
-url = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
-bot.chat(stream: $stdout) do |prompt|
-  prompt.system "Your task is to answer all user queries"
-  prompt.user ["Tell me about this URL", URI(url)]
-  prompt.user ["Tell me about this PDF", File.open("handbook.pdf", "rb")]
-  prompt.user "Are the URL and PDF similar to each other?"
-end.flush
+bot = LLM::Bot.new(llm, stream: $stdout)
+
+bot.chat "Your task is to answer all user queries", role: :system
+bot.chat ["Tell me about this URL", URI("https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg")], role: :user
+bot.chat ["Tell me about this PDF", File.open("handbook.pdf", "rb")], role: :user
+bot.chat "Are the URL and PDF similar to each other?", role: :user
 ```
 
 ### Schema
@@ -233,31 +236,28 @@ an LLM should emit, and the LLM will abide by the schema:
 #!/usr/bin/env ruby
 require "llm"
 
+llm = LLM.openai(key: ENV["KEY"])
+
 ##
 # Objects
-llm = LLM.openai(key: ENV["KEY"])
 schema = llm.schema.object(probability: llm.schema.number.required)
 bot = LLM::Bot.new(llm, schema:)
 bot.chat "Does the earth orbit the sun?", role: :user
-bot.messages.find(&:assistant?).content! # => {probability: 1.0}
+puts bot.messages.find(&:assistant?).content! # => {probability: 1.0}
 
 ##
 # Enums
 schema = llm.schema.object(fruit: llm.schema.string.enum("Apple", "Orange", "Pineapple"))
-bot = LLM::Bot.new(llm, schema:)
-bot.chat "Your favorite fruit is Pineapple", role: :system
+bot = LLM::Bot.new(llm, schema:) :system
 bot.chat "What fruit is your favorite?", role: :user
-bot.messages.find(&:assistant?).content! # => {fruit: "Pineapple"}
+puts bot.messages.find(&:assistant?).content! # => {fruit: "Pineapple"}
 
 ##
 # Arrays
 schema = llm.schema.object(answers: llm.schema.array(llm.schema.integer.required))
 bot = LLM::Bot.new(llm, schema:)
-bot.chat "Answer all of my questions", role: :system
-bot.chat "Tell me the answer to ((5 + 5) / 2)", role: :user
-bot.chat "Tell me the answer to ((5 + 5) / 2) * 2", role: :user
 bot.chat "Tell me the answer to ((5 + 5) / 2) * 2 + 1", role: :user
-bot.messages.find(&:assistant?).content! # => {answers: [5, 10, 11]}
+puts bot.messages.find(&:assistant?).content! # => {answers: [11]}
 ```
 
 ### Tools
@@ -281,11 +281,9 @@ its surrounding scope, which can be useful in some situations.
 
 The
 [LLM::Bot#functions](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#functions-instance_method)
-method returns an array of functions that can be called after sending a message and
-it will only be populated if the LLM detects a function should be called. Each function
-corresponds to an element in the "tools" array. The array is emptied after a function call,
-and potentially repopulated on the next message:
-
+method returns an array of functions that can be called after a `chat` interaction
+if the LLM detects a function should be called. You would then typically call these
+functions and send their results back to the LLM in a subsequent `chat` call.
 
 ```ruby
 #!/usr/bin/env ruby
@@ -350,8 +348,9 @@ class System < LLM::Tool
     [wo,we].each(&:close)
     {stderr: re.read, stdout: ro.read}
   end
-end
+}
 
+llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, tools: [System])
 bot.chat "Your task is to run shell commands via a tool.", role: :system
 
@@ -387,7 +386,7 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 res = llm.responses.create "Run: 'print(\"hello world\")'",
-                            tools: [llm.server_tool(:code_interpreter)]
+                                tools: [llm.server_tool(:code_interpreter)]
 print res.output_text, "\n"
 ```
 
@@ -424,8 +423,8 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 file = llm.files.create(file: "/books/goodread.pdf")
-bot.chat ["Tell me about this file", file]
-bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+res = bot.chat ["Tell me about this file", file]
+res.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 ### Prompts
@@ -449,15 +448,15 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 
-bot.chat ["Tell me about this URL", URI("https://example.com/path/to/image.png")]
-[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
+res1 = bot.chat ["Tell me about this URL", URI("https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg")]
+res1.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 file = llm.files.create(file: "/books/goodread.pdf")
-bot.chat ["Tell me about this PDF", file]
-[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
+res2 = bot.chat ["Tell me about this PDF", file]
+res2.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
 
-bot.chat ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
-[bot.messages.find(&:assistant?)].each { print "[#{_1.role}] ", _1.content, "\n" }
+res3 = bot.chat ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
+res3.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 ### Audio
@@ -643,8 +642,8 @@ end
 # Select a model
 model = llm.models.all.find { |m| m.id == "gpt-3.5-turbo" }
 bot = LLM::Bot.new(llm, model: model.id)
-bot.chat "Hello #{model.id} :)"
-bot.messages.select(&:assistant?).each { print "[#{_1.role}] ", _1.content, "\n" }
+res = bot.chat "Hello #{model.id} :)"
+res.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
 ```
 
 ## Reviews
