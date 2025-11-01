@@ -150,9 +150,12 @@ RSpec.describe "LLM::OpenAI::Files" do
     let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
 
     before do
-      bot.respond(file)
-      bot.respond("Is this PDF document about FreeBSD?")
-      bot.respond("Answer with yes or no. Nothing else.")
+      req = bot.build do |prompt|
+        prompt.user(file)
+        prompt.user("Is this PDF document about FreeBSD?")
+        prompt.user("Answer with yes or no. Nothing else.")
+      end
+      bot.respond(req)
     end
 
     it "describes the document" do
@@ -190,9 +193,12 @@ RSpec.describe "LLM::OpenAI::Files" do
     let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
 
     before do
-      bot.chat(file)
-      bot.chat("Is this PDF document about FreeBSD?")
-      bot.chat("Answer with yes or no. Nothing else.")
+      req = bot.build do |prompt|
+        prompt.chat(file)
+        prompt.chat("Is this PDF document about FreeBSD?")
+        prompt.chat("Answer with yes or no. Nothing else.")
+      end
+      bot.chat(req)
     end
 
     it "describes the document" do
