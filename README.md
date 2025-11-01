@@ -52,8 +52,8 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 req = bot.build do |prompt|
-  prompt.chat "Your task is to asset the user", role: :system
-  prompt.chat "Hello. Can you assist me?", role: :user
+  prompt.system "Your task is to asset the user"
+  prompt.user "Hello. Can you assist me?"
 end
 res = bot.chat(req)
 res.choices.each { print "[#{_1.role}]", _1.message, "\n" }
