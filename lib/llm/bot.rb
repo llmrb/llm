@@ -57,7 +57,7 @@ module LLM
     #   puts response.choices[0].content
     def chat(prompt, params = {})
       prompt, params, messages = fetch(prompt, params)
-      params = params.merge(messages: [@messages, *messages])
+      params = params.merge(messages: [*@messages.to_a, *messages])
       params = @params.merge(params)
       res = @provider.complete(prompt, params)
       @messages.concat [LLM::Message.new(params[:role] || :user, prompt)]
@@ -82,7 +82,7 @@ module LLM
     def respond(prompt, params = {})
       prompt, params, messages = fetch(prompt, params)
       res_id = @messages.find(&:assistant?)&.response.id
-      params = params.merge(previous_response_id: res_id)
+      params = params.merge(previous_response_id: res_id, messages:)
       params = @params.merge(params)
       res = @provider.responses.create(prompt, params)
       @messages.concat [LLM::Message.new(params[:role] || :user, prompt)]
@@ -120,14 +120,26 @@ module LLM
       @messages.find(&:assistant?)&.usage || LLM::Object.from_hash({})
     end
 
+    ##
+    # Build a prompt
+    # @example
+    # req = bot.build do |prompt|
+    #   prompt.system "Your task is to assist the user"
+    #   prompt.user "Hello, can you assist me?"
+    # end
+    # bot.chat(req)
+    def build(&)
+      LLM::Builder.new(&).tap(&:call)
+    end
+
     private
 
     def fetch(prompt, params)
       return [prompt, params, []] unless LLM::Builder === prompt
       messages = prompt.to_a
-      prompt = messages.unshift
+      prompt = messages.shift
       params.merge!(role: prompt.role)
-      [prompt, params, messages]
+      [prompt.content, params, messages]
     end
   end
 end

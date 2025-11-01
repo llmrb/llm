@@ -13,20 +13,49 @@
   #   end
   #   res = bot.chat(req)
   class LLM::Builder
+    ##
+    # @param [Proc] b
+    #  Evaluator block
     def initialize(&b)
       @buffer = []
-      @b = &b
+      @b = b
     end
 
+    ##
+    # @return [void]
     def call
       @b.call(self)
     end
 
-    def chat(content, role:)
+    ##
+    # @param [String] content
+    #  The message
+    # @param [Symbol] role
+    #  The role (eg user, system)
+    # @return [void]
+    def chat(content, role: :user)
       @buffer << LLM::Message.new(role, content)
     end
 
+    ##
+    # @param [String] content
+    #  The message content
+    # @return [void]
+    def user(content)
+      chat(content, role: :user)
+    end
+
+    ##
+    # @param [String] content
+    #  The message content
+    # @return [void]
+    def system(content)
+      chat(content, role: :system)
+    end
+
+    ##
+    # @return [Array]
     def to_a
-      @buffer
+      @buffer.dup
     end
   end

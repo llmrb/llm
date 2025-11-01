@@ -16,6 +16,14 @@ module LLM
     end
 
     ##
+    # Append an array
+    # @param [Array<LLM::Message>] ary
+    #  The array to append
+    def concat(ary)
+      @messages.concat(ary)
+    end
+
+    ##
     # @yield [LLM::Message]
     #  Yields each message in the conversation thread
     # @return [void]
