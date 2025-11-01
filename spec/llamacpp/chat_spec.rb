@@ -17,8 +17,6 @@ RSpec.describe "LLM::Bot: llamacpp" do
       include_examples "LLM::Bot: text stream", :llamacpp
 
       context "when tool calls are not supported", vcr.call("llm_chat_stream_tool") do
-        before { bot.chat "Run the tool" }
-
         let(:params) { {stream: true, tools: [tool]} }
         let(:tool) do
           LLM.function(:system) do |fn|
@@ -29,7 +27,7 @@ RSpec.describe "LLM::Bot: llamacpp" do
         end
 
         it "emits an error" do
-          bot.messages.to_a
+          bot.chat "Run the tool"
           expect(false).to be_true
         rescue => ex
           expect(ex.message).to match(/Cannot use tools with stream/)

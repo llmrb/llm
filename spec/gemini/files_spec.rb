@@ -59,12 +59,15 @@ RSpec.describe "LLM::Gemini::Files" do
     after { provider.files.delete(file:) }
 
     before do
-      bot.chat "Hello"
-      bot.chat "I want to ask you a question"
-      bot.chat "Can the following audio file be translated as:"
-      bot.chat "In the name of Allah, The Most Compassionate, The Most Merciful"
-      bot.chat "Answer with yes or no. Nothing else. Thank you."
-      bot.chat file
+      req = bot.build do |prompt|
+        prompt.chat "Hello"
+        prompt.chat "I want to ask you a question"
+        prompt.chat "Can the following audio file be translated as:"
+        prompt.chat "In the name of Allah, The Most Compassionate, The Most Merciful"
+        prompt.chat "Answer with yes or no. Nothing else. Thank you."
+        prompt.chat file
+      end
+      bot.chat(req)
     end
 
     it "translates the audio clip" do
