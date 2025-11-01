@@ -208,7 +208,7 @@ as they are generated in real-time. The `stream` option can
 be set to an IO object, or the value `true` to enable streaming.
 When streaming, the `bot.chat` method will block until the entire
 stream is received. At the end, it returns the `LLM::Response` object
-containing the full aggregated content.
+containing the full aggregated content:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -283,7 +283,7 @@ The
 [LLM::Bot#functions](https://0x1eef.github.io/x/llm.rb/LLM/Bot.html#functions-instance_method)
 method returns an array of functions that can be called after a `chat` interaction
 if the LLM detects a function should be called. You would then typically call these
-functions and send their results back to the LLM in a subsequent `chat` call.
+functions and send their results back to the LLM in a subsequent `chat` call:
 
 ```ruby
 #!/usr/bin/env ruby
