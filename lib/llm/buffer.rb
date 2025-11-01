@@ -3,8 +3,7 @@
 module LLM
   ##
   # {LLM::Buffer LLM::Buffer} provides an Enumerable object that
-  # yields each message in a conversation on-demand, and only sends
-  # a request to the LLM when a response is needed.
+  # tracks messages in a conversation thread.
   class Buffer
     include Enumerable
 
@@ -13,19 +12,24 @@ module LLM
     # @return [LLM::Buffer]
     def initialize(provider)
       @provider = provider
-      @pending = []
-      @completed = []
+      @messages = []
+    end
+
+    ##
+    # Append an array
+    # @param [Array<LLM::Message>] ary
+    #  The array to append
+    def concat(ary)
+      @messages.concat(ary)
     end
 
     ##
     # @yield [LLM::Message]
     #  Yields each message in the conversation thread
-    # @raise (see LLM::Provider#complete)
     # @return [void]
     def each(...)
       if block_given?
-        empty! unless @pending.empty?
-        @completed.each { yield(_1) }
+        @messages.each { yield(_1) }
       else
         enum_for(:each, ...)
       end
@@ -53,19 +57,15 @@ module LLM
     #  The number of messages to return
     # @return [LLM::Message, Array<LLM::Message>, nil]
     def last(n = nil)
-      if @pending.empty?
-        n.nil? ? @completed.last : @completed.last(n)
-      else
-        n.nil? ? to_a.last : to_a.last(n)
-      end
+      n.nil? ? @messages.last : @messages.last(n)
     end
 
     ##
-    # @param [[LLM::Message, Hash, Symbol]] item
-    #  A message and its parameters
+    # @param [[LLM::Message]] item
+    #  A message to add to the buffer
     # @return [void]
     def <<(item)
-      @pending << item
+      @messages << item
       self
     end
     alias_method :push, :<<
@@ -76,87 +76,21 @@ module LLM
     # @return [LLM::Message, nil]
     #  Returns a message, or nil
     def [](index)
-      if @pending.empty?
-        if Range === index
-          slice = @completed[index]
-          (slice.nil? || slice.size < index.size) ? to_a[index] : slice
-        else
-          @completed[index]
-        end
-      else
-        to_a[index]
-      end
+      @messages[index]
     end
 
     ##
     # @return [String]
     def inspect
       "#<#{self.class.name}:0x#{object_id.to_s(16)} " \
-      "completed_count=#{@completed.size} pending_count=#{@pending.size}>"
+      "message_count=#{@messages.size}>"
     end
 
     ##
     # Returns true when the buffer is empty
     # @return [Boolean]
     def empty?
-      @pending.empty? and @completed.empty?
-    end
-
-    ##
-    # @example
-    #   llm = LLM.openai(key: ENV["KEY"])
-    #   bot = LLM::Bot.new(llm, stream: $stdout)
-    #   bot.chat "Hello", role: :user
-    #   bot.messages.flush
-    # @see LLM::Bot#drain
-    # @note
-    #   This method is especially useful when using the streaming API.
-    # Drains the buffer and returns all messages as an array
-    # @return [Array<LLM::Message>]
-    def drain
-      to_a
-    end
-    alias_method :flush, :drain
-
-    private
-
-    def empty!
-      message, params, method = @pending.pop
-      if method == :complete
-        complete!(message, params)
-      elsif method == :respond
-        respond!(message, params)
-      else
-        raise LLM::Error, "Unknown method: #{method}"
-      end
-    end
-
-    def complete!(message, params)
-      oldparams = @pending.map { _1[1] }
-      pendings  = @pending.map { _1[0] }
-      messages  = [*@completed, *pendings]
-      role = message.role
-      completion = @provider.complete(
-        message.content,
-        [*oldparams, params.merge(role:, messages:)].inject({}, &:merge!)
-      )
-      @completed.concat([*pendings, message, *completion.choices[0]])
-      @pending.clear
-    end
-
-    def respond!(message, params)
-      oldparams = @pending.map { _1[1] }
-      pendings  = @pending.map { _1[0] }
-      messages  = [*pendings]
-      role = message.role
-      params = [
-        *oldparams,
-        params.merge(input: messages),
-        @response ? {previous_response_id: @response.response_id} : {}
-      ].inject({}, &:merge!)
-      @response = @provider.responses.create(message.content, params.merge(role:))
-      @completed.concat([*pendings, message, *@response.choices[0]])
-      @pending.clear
+      @messages.empty?
     end
   end
 end

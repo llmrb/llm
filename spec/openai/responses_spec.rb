@@ -91,8 +91,11 @@ RSpec.describe "LLM::OpenAI::Responses" do
     end
 
     it "calls a function" do
-      bot.respond "You are a bot that can run UNIX commands", role: :system
-      bot.respond "What is the date?", role: :user
+      req = bot.build do |prompt|
+        prompt.system "You are a bot that can run UNIX commands"
+        prompt.user "What is the date?"
+      end
+      bot.respond(req)
       expect(bot.functions).not_to be_empty
       bot.respond bot.functions.map(&:call)
       expect(bot.functions).to be_empty
@@ -140,12 +143,13 @@ RSpec.describe "LLM::OpenAI::Responses" do
     end
 
     before do
-      bot.respond do |prompt|
+      req = bot.build do |prompt|
         prompt.user system_prompt
         prompt.user "What is 3+2 ?"
         prompt.user "What is 5+5 ?"
         prompt.user "What is 5+7 ?"
-      end.to_a
+      end
+      bot.respond(req)
     end
 
     context "with the contents of the IO" do
@@ -172,8 +176,11 @@ RSpec.describe "LLM::OpenAI::Responses" do
     end
 
     before do
-      bot.respond("You are a bot that can run UNIX system commands", role: :user)
-      bot.respond("Hey, run the 'date' command", role: :user)
+      req = bot.build do |prompt|
+        prompt.user("You are a bot that can run UNIX system commands")
+        prompt.user("Hey, run the 'date' command")
+      end
+      bot.respond(req)
     end
 
     it "calls the function(s)" do

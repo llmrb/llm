@@ -30,8 +30,11 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     subject { bot.messages.find(&:assistant?).content!  }
 
     before do
-      bot.chat "Your favorite fruit is pineapple", role: :user
-      bot.chat "What fruit is your favorite?", role: :user
+      req = bot.build do |prompt|
+        prompt.chat "Your favorite fruit is pineapple", role: :user
+        prompt.chat "What fruit is your favorite?", role: :user
+      end
+      bot.chat(req)
     end
 
     it "returns the favorite fruit" do
@@ -47,9 +50,12 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     subject { bot.messages.find(&:assistant?).content! }
 
     before do
-      bot.chat "Answer all of my questions", role: :user
-      bot.chat "Tell me the answer to 5 + 5", role: :user
-      bot.chat "Tell me the answer to 5 + 7", role: :user
+      req = bot.build do |prompt|
+        prompt.chat "Answer all of my questions", role: :user
+        prompt.chat "Tell me the answer to 5 + 5", role: :user
+        prompt.chat "Tell me the answer to 5 + 7", role: :user
+      end
+      bot.chat(req)
     end
 
     it "returns the answers" do

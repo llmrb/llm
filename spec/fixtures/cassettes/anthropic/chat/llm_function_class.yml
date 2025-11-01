@@ -5,9 +5,9 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
-        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
-        is the date?"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"What
+        is the date?"}]},{"role":"user","content":[{"type":"text","text":"You are
+        a bot that can run UNIX commands"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
         system commands","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}'
     headers:
       Content-Type:
@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Aug 2025 16:52:14 GMT
+      - Sat, 01 Nov 2025 20:33:52 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,35 +44,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-29T16:52:14Z'
+      - '2025-11-01T20:33:52Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-29T16:52:15Z'
+      - '2025-11-01T20:33:53Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-29T16:52:14Z'
+      - '2025-11-01T20:33:51Z'
+      Retry-After:
+      - '8'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-29T16:52:14Z'
+      - '2025-11-01T20:33:52Z'
       Request-Id:
-      - req_011CScM8ZpsKfoAo8pJ9yXvc
+      - req_011CUhooQ3Knu1gzu27DwjtJ
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '1861'
-      Via:
-      - 1.1 google
+      - '2303'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -80,12 +80,12 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 976d8ebbcaf8011b-GRU
+      - 997e2b622eaaa438-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01B1Wm35hjKx1oKdxKETs1ce","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"I''ll
-        check the current date for you using the date command."},{"type":"tool_use","id":"toolu_01JoEusdTksGvqm4E2PHUfq8","name":"system","input":{"command":"date"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":386,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":65,"service_tier":"standard"}}'
-  recorded_at: Fri, 29 Aug 2025 16:52:04 GMT
+      string: '{"model":"claude-sonnet-4-20250514","id":"msg_01S6HxSJdAm2aPY5UvfbmZfv","type":"message","role":"assistant","content":[{"type":"text","text":"I''ll
+        check the current date for you using the date command."},{"type":"tool_use","id":"toolu_01QvjdDoCvdBDq4o9QUZeZyi","name":"system","input":{"command":"date"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":386,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":65,"service_tier":"standard"}}'
+  recorded_at: Sat, 01 Nov 2025 20:33:51 GMT
 - request:
     method: post
     uri: https://api.anthropic.com/v1/messages
@@ -93,7 +93,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
         a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"What
-        is the date?"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01JoEusdTksGvqm4E2PHUfq8","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01JoEusdTksGvqm4E2PHUfq8","content":[{"type":"text","text":"{\"success\":\"2025-08-24\"}"}]}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
+        is the date?"}]},{"role":"assistant","content":[{"type":"tool_use","id":"toolu_01QvjdDoCvdBDq4o9QUZeZyi","name":"system","input":{"command":"date"}}]},{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_01QvjdDoCvdBDq4o9QUZeZyi","content":[{"type":"text","text":"{\"success\":\"2025-08-24\"}"}]}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"tools":[{"name":"system","description":"Runs
         system commands","input_schema":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}]}'
     headers:
       Content-Type:
@@ -118,7 +118,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Aug 2025 16:52:16 GMT
+      - Sat, 01 Nov 2025 20:33:54 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -130,35 +130,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-29T16:52:16Z'
+      - '2025-11-01T20:33:55Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-29T16:52:16Z'
+      - '2025-11-01T20:33:54Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-29T16:52:16Z'
+      - '2025-11-01T20:33:54Z'
+      Retry-After:
+      - '6'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-29T16:52:16Z'
+      - '2025-11-01T20:33:54Z'
       Request-Id:
-      - req_011CScM8jDRZNt5BBwuywsM7
+      - req_011CUhooanjrpAUjx5RnfPvu
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '1635'
-      Via:
-      - 1.1 google
+      - '1853'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -166,10 +166,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 976d8ec8ca5b8781-GRU
+      - 997e2b71eb00f1c7-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01VTrq6xQaPkaECrT6d5KrgM","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"The
-        current date is **August 24, 2025**."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":460,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":16,"service_tier":"standard"}}'
-  recorded_at: Fri, 29 Aug 2025 16:52:06 GMT
+      string: '{"model":"claude-sonnet-4-20250514","id":"msg_01QayooT9azSZ9v3mpqLvo9S","type":"message","role":"assistant","content":[{"type":"text","text":"The
+        current date is August 24, 2025."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":460,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":15,"service_tier":"standard"}}'
+  recorded_at: Sat, 01 Nov 2025 20:33:53 GMT
 recorded_with: VCR 6.3.1

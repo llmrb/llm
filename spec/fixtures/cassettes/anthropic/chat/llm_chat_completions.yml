@@ -5,12 +5,12 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Keep
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"What
+        is 3+2 ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+5
+        ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+7 ?"}]},{"role":"user","content":[{"type":"text","text":"Keep
         your answers short and concise, and provide three answers to the three questionsThere
         should be one answer per lineAn answer should be a number, for example: 5Nothing
-        else"}]},{"role":"user","content":[{"type":"text","text":"What is 3+2 ?"}]},{"role":"user","content":[{"type":"text","text":"What
-        is 5+5 ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+7
-        ?"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024}'
+        else"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024}'
     headers:
       Content-Type:
       - application/json
@@ -34,7 +34,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Aug 2025 16:52:00 GMT
+      - Sat, 01 Nov 2025 20:31:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -46,35 +46,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-29T16:52:00Z'
+      - '2025-11-01T20:31:27Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-29T16:52:00Z'
+      - '2025-11-01T20:31:27Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-29T16:52:00Z'
+      - '2025-11-01T20:31:26Z'
+      Retry-After:
+      - '33'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-29T16:52:00Z'
+      - '2025-11-01T20:31:27Z'
       Request-Id:
-      - req_011CScM7aL6ndvyqZz1k94Qj
+      - req_011CUhocj51TnNkUwytLZUSo
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '1256'
-      Via:
-      - 1.1 google
+      - '1751'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -82,9 +82,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 976d8e67caa66b18-GRU
+      - 997e27d95fff1b2e-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01HzHvN1mkNK3FYz7auZpN7c","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"5\n10\n12"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":73,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":9,"service_tier":"standard"}}'
-  recorded_at: Fri, 29 Aug 2025 16:51:50 GMT
+      string: '{"model":"claude-sonnet-4-20250514","id":"msg_012FCxxJ7fxjvXsZZKae5Jep","type":"message","role":"assistant","content":[{"type":"text","text":"5\n10\n12"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":73,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":9,"service_tier":"standard"}}'
+  recorded_at: Sat, 01 Nov 2025 20:31:26 GMT
 recorded_with: VCR 6.3.1

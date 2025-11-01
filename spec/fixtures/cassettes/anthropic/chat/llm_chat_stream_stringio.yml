@@ -5,12 +5,12 @@ http_interactions:
     uri: https://api.anthropic.com/v1/messages
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Keep
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"What
+        is 3+2 ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+5
+        ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+7 ?"}]},{"role":"user","content":[{"type":"text","text":"Keep
         your answers short and concise, and provide three answers to the three questions.
         There should be one answer per line. An answer should be a number, for example:
-        5. Nothing else"}]},{"role":"user","content":[{"type":"text","text":"What
-        is 3+2 ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+5
-        ?"}]},{"role":"user","content":[{"type":"text","text":"What is 5+7 ?"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"stream":true}'
+        5. Nothing else"}]}],"model":"claude-sonnet-4-20250514","max_tokens":1024,"stream":true}'
     headers:
       Content-Type:
       - application/json
@@ -34,7 +34,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 13 Sep 2025 19:32:24 GMT
+      - Sat, 01 Nov 2025 20:31:31 GMT
       Content-Type:
       - text/event-stream; charset=utf-8
       Transfer-Encoding:
@@ -42,7 +42,7 @@ http_interactions:
       Connection:
       - keep-alive
       Cf-Ray:
-      - 97ea11fd8ee14568-GRU
+      - 997e27e5aa194fa6-GRU
       Cache-Control:
       - no-cache
       Anthropic-Ratelimit-Input-Tokens-Limit:
@@ -50,35 +50,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-09-13T19:32:23Z'
+      - '2025-11-01T20:31:27Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-09-13T19:32:23Z'
+      - '2025-11-01T20:31:27Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-09-13T19:32:24Z'
+      - '2025-11-01T20:31:28Z'
+      Retry-After:
+      - '34'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-09-13T19:32:23Z'
+      - '2025-11-01T20:31:27Z'
       Request-Id:
-      - req_011CT6xUjciyegFq49YoJYt2
+      - req_011CUhocsUGzgYvHf275p7eG
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '1253'
-      Via:
-      - 1.1 google
+      - '3496'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -89,23 +89,23 @@ http_interactions:
       encoding: UTF-8
       string: |+
         event: message_start
-        data: {"type":"message_start","message":{"id":"msg_01GBChcwVS9DUDD9Roz89A9H","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":1,"service_tier":"standard"}}             }
+        data: {"type":"message_start","message":{"model":"claude-sonnet-4-20250514","id":"msg_013B1AP8wrM9hzHxL8C57Z2z","type":"message","role":"assistant","content":[],"stop_reason":null,"stop_sequence":null,"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":1,"service_tier":"standard"}}    }
 
         event: content_block_start
-        data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}               }
+        data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}             }
 
         event: content_block_delta
-        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"5\n10\n12"}             }
+        data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"5\n10\n12"} }
 
         event: content_block_stop
-        data: {"type":"content_block_stop","index":0               }
+        data: {"type":"content_block_stop","index":0}
 
         event: message_delta
         data: {"type":"message_delta","delta":{"stop_reason":"end_turn","stop_sequence":null},"usage":{"input_tokens":74,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":9}             }
 
         event: message_stop
-        data: {"type":"message_stop"  }
+        data: {"type":"message_stop"             }
 
-  recorded_at: Sat, 13 Sep 2025 19:32:09 GMT
+  recorded_at: Sat, 01 Nov 2025 20:31:30 GMT
 recorded_with: VCR 6.3.1
 ...

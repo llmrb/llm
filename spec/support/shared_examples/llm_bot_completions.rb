@@ -6,7 +6,7 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
   end
 
   context "when given a thread of messages", vcr.call("llm_chat_completions") do
-    let(:prompt) do
+    let(:system_prompt) do
       "Keep your answers short and concise, and provide three answers to the three questions" \
       "There should be one answer per line" \
       "An answer should be a number, for example: 5" \
@@ -17,10 +17,13 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
     let(:message) { messages.to_a[-1] }
 
     before do
-      bot.chat prompt
-      bot.chat "What is 3+2 ?"
-      bot.chat "What is 5+5 ?"
-      bot.chat "What is 5+7 ?"
+      req = bot.build do |prompt|
+        prompt.chat system_prompt
+        prompt.chat "What is 3+2 ?"
+        prompt.chat "What is 5+5 ?"
+        prompt.chat "What is 5+7 ?"
+      end
+      bot.chat(req)
     end
 
     it "provides a response" do
@@ -48,20 +51,8 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
   end
 
   context "when given a prompt that is not recognized" do
-    before { bot.chat(Object.new) }
-    subject(:messages) { bot.messages.to_a }
-
     it "raises an error" do
-      expect { messages }.to raise_error(LLM::PromptError)
-    end
-  end
-
-  context "when given a prompt that is an empty array" do
-    before { bot.chat([]) }
-    subject(:messages) { bot.messages}
-
-    it "is a noop" do
-      expect(messages).to be_empty
+      expect { bot.chat(Object.new) }.to raise_error(LLM::PromptError)
     end
   end
 end

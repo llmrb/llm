@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Aug 2025 16:52:26 GMT
+      - Sat, 01 Nov 2025 21:14:41 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,35 +44,35 @@ http_interactions:
       Anthropic-Ratelimit-Input-Tokens-Remaining:
       - '30000'
       Anthropic-Ratelimit-Input-Tokens-Reset:
-      - '2025-08-29T16:52:26Z'
+      - '2025-11-01T21:14:41Z'
       Anthropic-Ratelimit-Output-Tokens-Limit:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Remaining:
       - '8000'
       Anthropic-Ratelimit-Output-Tokens-Reset:
-      - '2025-08-29T16:52:26Z'
+      - '2025-11-01T21:14:41Z'
       Anthropic-Ratelimit-Requests-Limit:
       - '50'
       Anthropic-Ratelimit-Requests-Remaining:
       - '49'
       Anthropic-Ratelimit-Requests-Reset:
-      - '2025-08-29T16:52:26Z'
+      - '2025-11-01T21:14:41Z'
+      Retry-After:
+      - '19'
       Anthropic-Ratelimit-Tokens-Limit:
       - '38000'
       Anthropic-Ratelimit-Tokens-Remaining:
       - '38000'
       Anthropic-Ratelimit-Tokens-Reset:
-      - '2025-08-29T16:52:26Z'
+      - '2025-11-01T21:14:41Z'
       Request-Id:
-      - req_011CScM9VB6kEafKQUuB4gr6
+      - req_011CUhruybCcsJSAEDNAkLmg
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '1227'
-      Via:
-      - 1.1 google
+      - '1685'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -80,9 +80,9 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 976d8f09cce94fa6-GRU
+      - 997e6730ccc16239-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"msg_01QKpR9ZExWsjZMJtzaTPLoE","type":"message","role":"assistant","model":"claude-sonnet-4-20250514","content":[{"type":"text","text":"Yes"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":45,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":4,"service_tier":"standard"}}'
-  recorded_at: Fri, 29 Aug 2025 16:52:16 GMT
+      string: '{"model":"claude-sonnet-4-20250514","id":"msg_01AbRx2e9yCsc5rTd6K598b4","type":"message","role":"assistant","content":[{"type":"text","text":"Yes"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":45,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"cache_creation":{"ephemeral_5m_input_tokens":0,"ephemeral_1h_input_tokens":0},"output_tokens":4,"service_tier":"standard"}}'
+  recorded_at: Sat, 01 Nov 2025 21:14:40 GMT
 recorded_with: VCR 6.3.1
