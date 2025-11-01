@@ -168,7 +168,7 @@ RSpec.describe "LLM::Anthropic::Files" do
     before do
       req = bot.build do |prompt|
         prompt.user(file)
-        prompt.user('Is this PDF document about FreeBSD?')
+        prompt.user("Is this PDF document about FreeBSD?")
         prompt.user("Answer with yes or no. Nothing else.")
       end
       bot.chat(req)
