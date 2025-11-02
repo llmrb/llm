@@ -45,24 +45,28 @@ module LLM::Anthropic::Format
         content.empty? ? throw(:abort, nil) : [content]
       when Array
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
-      when URI
-        [{type: :image, source: {type: "url", url: content.to_s}}]
-      when File
-        content.close unless content.closed?
-        format_content(LLM.File(content.path))
-      when LLM::File
-        if content.image?
-          [{type: :image, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]
-        elsif content.pdf?
-          [{type: :document, source: {type: "base64", media_type: content.mime_type, data: content.to_b64}}]
-        else
-          raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                  "is not an image or PDF, and therefore not supported by the " \
-                                  "Anthropic API"
-        end
-      when LLM::Response
-        if content.file?
-          [{type: content.file_type, source: {type: :file, file_id: content.id}}]
+      when LLM::Object
+        case content.kind
+        when :image_url
+          [{type: :image, source: {type: "url", url: content.value.to_s}}]
+        when :local_file
+          file = content.value
+          if file.image?
+            [{type: :image, source: {type: "base64", media_type: file.mime_type, data: file.to_b64}}]
+          elsif file.pdf?
+            [{type: :document, source: {type: "base64", media_type: file.mime_type, data: file.to_b64}}]
+          else
+            raise LLM::PromptError, "The given object (an instance of #{file.class}) " \
+                                    "is not an image or PDF, and therefore not supported by the " \
+                                    "Anthropic API for local files"
+          end
+        when :remote_file
+          file = content.value
+          if file.file?
+            [{type: file.file_type, source: {type: :file, file_id: file.id}}]
+          else
+            prompt_error!(file)
+          end
         else
           prompt_error!(content)
         end
@@ -72,7 +76,6 @@ module LLM::Anthropic::Format
         format_content(content.content)
       when LLM::Function::Return
         [{type: "tool_result", tool_use_id: content.id, content: [{type: :text, text: JSON.dump(content.value)}]}]
-      else
         prompt_error!(content)
       end
     end

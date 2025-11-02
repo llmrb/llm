@@ -30,15 +30,16 @@ module LLM::OpenAI::Format
 
     def format_content(content)
       case content
-      when URI
-        [{type: :image_url, image_url: {url: content.to_s}}]
-      when File
-        content.close unless content.closed?
-        format_content(LLM.File(content.path))
-      when LLM::File
-        format_file(content)
-      when LLM::Response
-        content.file? ? [{type: :file, file: {file_id: content.id}}] : prompt_error!(content)
+      when LLM::Object
+        case content.kind
+        when :image_url
+          [{type: :image_url, image_url: {url: content.value}}]
+        when :local_file
+          format_file(content.value)
+        when :remote_file
+          file = content.value
+          file.file? ? [{type: :file, file: {file_id: file.id}}] : prompt_error!(file)
+        end
       when String
         [{type: :text, text: content.to_s}]
       when LLM::Message

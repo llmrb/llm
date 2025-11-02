@@ -4,6 +4,9 @@ module LLM::OpenAI::Format
   ##
   # @private
   class RespondFormat
+    ##
+    # @param [LLM::Message] message
+    #  The message to format
     def initialize(message)
       @message = message
     end
@@ -22,6 +25,18 @@ module LLM::OpenAI::Format
 
     def format_content(content)
       case content
+      when LLM::Object
+        case content.kind
+        when :image_url
+          [{type: :image_url, image_url: {url: content.value.to_s}}]
+        when :remote_file
+          format_file(content.value)
+        when :local_file
+          raise LLM::PromptError, "Local files are not directly supported for output formatting " \
+                                  "in OpenAI's respond_format. Please use uploaded remote files."
+        else
+          prompt_error!(content)
+        end
       when LLM::Response
         content.file? ? format_file(content) : prompt_error!(content)
       when String

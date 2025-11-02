@@ -30,29 +30,29 @@ module LLM::Gemini::Format
       case content
       when Array
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
-      when LLM::Response
-        format_response(content)
-      when File
-        content.close unless content.closed?
-        format_content(LLM.File(content.path))
-      when LLM::File
-        file = content
-        [{inline_data: {mime_type: file.mime_type, data: file.to_b64}}]
+      when LLM::Object
+        case content.kind
+        when :image_url
+          [{file_data: {mime_type: "image/*", file_uri: content.value.to_s}}]
+        when :local_file
+          file = content.value
+          [{inline_data: {mime_type: file.mime_type, data: file.to_b64}}]
+        when :remote_file
+          file = content.value
+          if file.file?
+            [{file_data: {mime_type: file.mime_type, file_uri: file.uri}}]
+          else
+            prompt_error!(file)
+          end
+        else
+          prompt_error!(content)
+        end
       when String
         [{text: content}]
       when LLM::Message
         format_content(content.content)
       when LLM::Function::Return
         [{functionResponse: {name: content.name, response: content.value}}]
-      else
-        prompt_error!(content)
-      end
-    end
-
-    def format_response(response)
-      if response.file?
-        file = response
-        [{file_data: {mime_type: file.mime_type, file_uri: file.uri}}]
       else
         prompt_error!(content)
       end

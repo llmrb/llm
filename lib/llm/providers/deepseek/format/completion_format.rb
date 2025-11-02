@@ -30,6 +30,10 @@ module LLM::DeepSeek::Format
 
     def format_content(content)
       case content
+      when LLM::Object
+        raise LLM::PromptError, "The DeepSeek chat completions API does not support " \
+                                "multimodal inputs like images or files but I was given " \
+                                "an LLM::Object with kind #{content.kind})"
       when String
         content.to_s
       when LLM::Message
