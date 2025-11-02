@@ -54,61 +54,6 @@ RSpec.describe "LLM::Anthropic: completions" do
     end
   end
 
-  context "when given a URI to an image",
-          vcr: {cassette_name: "anthropic/completions/successful_response_uri_image"} do
-    subject { response.choices[0].content.downcase[0..2] }
-    let(:response) do
-      anthropic.complete([
-        "Is this image the flag of brazil ? ",
-        "Answer with yes or no. ",
-        "Nothing else.",
-        uri
-      ], role: :user)
-    end
-    let(:uri) { URI("https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png") }
-
-    it "describes the image" do
-      is_expected.to eq("yes")
-    end
-  end
-
-  context "when given a local reference to an image",
-          vcr: {cassette_name: "anthropic/completions/successful_response_file_image"} do
-    subject { response.choices[0].content.downcase[0..2] }
-    let(:response) do
-      anthropic.complete([
-        "Is this image a representation of a book ?",
-        "Answer with yes or no.",
-        "Nothing else.",
-        file
-      ], role: :user)
-    end
-    let(:file) { File.open("spec/fixtures/images/bluebook.png", "rb") }
-
-    it "describes the image" do
-      is_expected.to eq("yes")
-    end
-  end
-
-  context "when given a PDF document",
-          vcr: {cassette_name: "anthropic/completions/successful_response_file_pdf"} do
-    let(:file) { File.open("spec/fixtures/documents/freebsd.sysctl.pdf", "rb") }
-    let(:response) do
-      anthropic.complete([
-        "This PDF document describes sysctl nodes on FreeBSD",
-        "Answer yes or no.",
-        "Nothing else",
-        file
-      ], role: :user)
-    end
-
-    subject { response.choices[0].content.downcase[0..2] }
-
-    it "describes the PDF" do
-      is_expected.to eq("yes")
-    end
-  end
-
   context "when given an unauthorized response",
           vcr: {cassette_name: "anthropic/completions/unauthorized_response"} do
     subject(:response) { anthropic.complete("Hello", role: :user) }

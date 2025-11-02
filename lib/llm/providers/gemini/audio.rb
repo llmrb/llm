@@ -43,7 +43,7 @@ class LLM::Gemini
       res = @provider.complete [
         "Your task is to transcribe the contents of an audio file",
         "Your response should include the transcription, and nothing else",
-        LLM.File(file)
+        LLM::Object.from_hash(value: LLM.File(file), kind: :local_file)
       ], params.merge(role: :user, model:)
       res.tap { _1.define_singleton_method(:text) { choices[0].content } }
     end
@@ -65,7 +65,7 @@ class LLM::Gemini
       res = @provider.complete [
         "Your task is to translate the contents of an audio file into English",
         "Your response should include the translation, and nothing else",
-        LLM.File(file)
+        LLM::Object.from_hash(value: LLM.File(file), kind: :local_file)
       ], params.merge(role: :user, model:)
       res.tap { _1.define_singleton_method(:text) { choices[0].content } }
     end

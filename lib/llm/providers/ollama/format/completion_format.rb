@@ -12,7 +12,7 @@ module LLM::Ollama::Format
     end
 
     ##
-    # Returns the message for the Ollama chat completions API
+    # Formats the message for the Ollama chat completions API
     # @return [Hash]
     def format
       catch(:abort) do
@@ -28,16 +28,24 @@ module LLM::Ollama::Format
 
     def format_content(content)
       case content
-      when File
-        content.close unless content.closed?
-        format_content(LLM.File(content.path))
-      when LLM::File
-        if content.image?
-          {content: "This message has an image associated with it", images: [content.to_b64]}
+      when LLM::Object
+        case content.kind
+        when :image_url
+          raise LLM::PromptError, "Ollama API does not directly support image URLs. Images must be provided as base64 encoded data."
+        when :local_file
+          file = content.value
+          if file.image?
+            {content: "This message has an image associated with it", images: [file.to_b64]}
+          else
+            raise LLM::PromptError, "The given local file (an instance of #{file.class}) " \
+                                    "is not an image, and therefore not supported by the " \
+                                    "Ollama API for local files"
+          end
+        when :remote_file
+          raise LLM::PromptError, "Ollama API does not directly support remote file references. Images must be provided as base64 encoded data."
         else
-          raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                  "is not an image, and therefore not supported by the " \
-                                  "Ollama API"
+          raise LLM::PromptError, "The given object (an instance of #{content.class} with kind #{content.kind}) " \
+                                  "is not supported by the Ollama API"
         end
       when String
         {content:}
