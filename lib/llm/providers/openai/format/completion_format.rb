@@ -94,8 +94,13 @@ module LLM::OpenAI::Format
     end
 
     def prompt_error!(content)
-      raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                              "is not supported by the OpenAI chat completions API."
+      if LLM::Object === content
+        raise LLM::PromptError, "The given LLM::Object with kind '#{content.kind}' is not " \
+                                "supported by the OpenAI chat completions API."
+      else
+        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                "is not supported by the OpenAI chat completions API."
+      end
     end
 
     def message = @message

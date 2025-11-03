@@ -90,9 +90,12 @@ module LLM::Anthropic::Format
       [{type: file.file_type, source: {type: :file, file_id: file.id}}]
     end
 
-    def prompt_error!(content, context = "")
-      raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                              "is not supported by the Anthropic API. #{context}"
+    def prompt_error!(content)
+      if LLM::Object === content
+      else
+        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                "is not supported by the Anthropic API."
+      end
     end
 
     def message = @message

@@ -123,11 +123,11 @@ module LLM
     ##
     # Build a prompt
     # @example
-    # req = bot.build do |prompt|
-    #   prompt.system "Your task is to assist the user"
-    #   prompt.user "Hello, can you assist me?"
-    # end
-    # bot.chat(req)
+    #   prompt = bot.build_prompt do
+    #     it.system "Your task is to assist the user"
+    #     it.user "Hello, can you assist me?"
+    #   end
+    #   bot.chat(prompt)
     def build(&)
       LLM::Builder.new(&).tap(&:call)
     end

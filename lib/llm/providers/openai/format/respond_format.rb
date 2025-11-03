@@ -32,8 +32,7 @@ module LLM::OpenAI::Format
         when :remote_file
           format_file(content.value)
         when :local_file
-          raise LLM::PromptError, "Local files are not directly supported for output formatting " \
-                                  "in OpenAI's respond_format. Please use uploaded remote files."
+          raise LLM::PromptError, "Local files are not supported by OpenAI's Responses API"
         else
           prompt_error!(content)
         end
@@ -77,8 +76,13 @@ module LLM::OpenAI::Format
     end
 
     def prompt_error!(content)
-      raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                              "is not supported by the OpenAI responses API"
+      if LLM::Object === content
+        raise LLM::PromptError, "The given LLM::Object with kind '#{content.kind}' is not " \
+                                "supported by the OpenAI responses API."
+      else
+        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                "is not supported by the OpenAI responses API"
+      end
     end
     def message = @message
     def content = message.content

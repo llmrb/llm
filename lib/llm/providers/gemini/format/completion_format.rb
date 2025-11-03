@@ -30,8 +30,6 @@ module LLM::Gemini::Format
       case content
       when Array
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
-      when LLM::Object
-        format_object(content)
       when String
         [{text: content}]
       when LLM::Response
@@ -40,6 +38,8 @@ module LLM::Gemini::Format
         format_content(content.content)
       when LLM::Function::Return
         [{functionResponse: {name: content.name, response: content.value}}]
+      when LLM::Object
+        format_object(content)
       else
         prompt_error!(content)
       end
@@ -65,8 +65,13 @@ module LLM::Gemini::Format
     end
 
     def prompt_error!(object)
-      raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
-                              "is not supported by the Gemini API"
+      if LLM::Object === object
+        raise LLM::PromptError, "The given LLM::Object with kind '#{content.kind}' is not " \
+                                "supported by the Gemini API"
+      else
+        raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
+                                "is not supported by the Gemini API"
+      end
     end
 
     def message = @message
