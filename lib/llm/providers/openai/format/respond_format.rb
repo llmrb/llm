@@ -25,6 +25,10 @@ module LLM::OpenAI::Format
 
     def format_content(content)
       case content
+      when String
+        [{type: :input_text, text: content.to_s}]
+      when LLM::Response then format_remote_file(content)
+      when LLM::Message then format_content(content.content)
       when LLM::Object
         case content.kind
         when :image_url then [{type: :image_url, image_url: {url: content.value.to_s}}]
@@ -32,12 +36,6 @@ module LLM::OpenAI::Format
         when :local_file then prompt_error!(content)
         else prompt_error!(content)
         end
-      when LLM::Response
-        content.file? ? format_file(content) : prompt_error!(content)
-      when String
-        [{type: :input_text, text: content.to_s}]
-      when LLM::Message
-        format_content(content.content)
       else
         prompt_error!(content)
       end
@@ -63,6 +61,7 @@ module LLM::OpenAI::Format
     end
 
     def format_remote_file(content)
+      prompt_error!(content) unless content.file?
       file = LLM::File(content.filename)
       if file.image?
         [{type: :input_image, file_id: content.id}]
