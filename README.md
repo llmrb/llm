@@ -448,15 +448,23 @@ res.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 #### Multimodal
 
-It is generally a given that an LLM will understand text but they can also
-understand and generate other types of media as well: audio, images, video,
-and even URLs. The object given as a prompt in llm.rb can be a string to
-represent text, a URI object to represent a URL, an LLM::Response object
-to represent a file stored with the LLM, and so on. These are objects you
-can throw at the prompt and have them be understood automatically.
+While LLMs inherently understand text, they can also process and
+generate other types of media such as audio, images, video, and
+even URLs. To provide these multimodal inputs to the LLM, llm.rb
+uses explicit tagging methods on the `LLM::Bot` instance.
+These methods wrap your input into a special `LLM::Object`,
+clearly indicating its type and intent to the underlying LLM
+provider.
 
-A prompt can also have multiple parts, and in that case, an array is given
-as a prompt. Each element is considered to be part of the prompt:
+For instance, to specify an image URL, you would use
+`bot.image_url`. For a local file, `bot.local_file`. For an
+already uploaded file managed by the LLM provider's Files API,
+`bot.remote_file`. This approach ensures clarity and allows
+llm.rb to correctly format the input for each provider's
+specific requirements.
+
+An array can be used for a prompt with multiple parts, where each
+element contributes to the overall input:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -465,7 +473,7 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 
-res1 = bot.chat ["Tell me about this URL", bot.image_url("https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg")]
+res1 = bot.chat ["Tell me about this URL", bot.image_url("...")]
 res1.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
 
 file = llm.files.create(file: "/book.pdf")
