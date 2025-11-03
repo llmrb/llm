@@ -69,7 +69,7 @@ class LLM::Gemini
     # @return [LLM::Response]
     def edit(image:, prompt:, model: "gemini-2.5-flash-image-preview", **params)
       req   = Net::HTTP::Post.new("/v1beta/models/#{model}:generateContent?key=#{key}", headers)
-      image = LLM.File(image)
+      image = LLM::Object.from_hash(value: LLM.File(image), kind: :local_file)
       body  = JSON.dump({
         contents: [{parts: [{text: edit_prompt}, {text: prompt}, format.format_content(image)]}],
         generationConfig: {responseModalities: ["TEXT", "IMAGE"]}
