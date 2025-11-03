@@ -131,6 +131,7 @@ module LLM
     def build(&)
       LLM::Builder.new(&).tap(&:call)
     end
+    alias_method :build_prompt, :build
 
     ##
     # Recongize an object as a URL to an image
