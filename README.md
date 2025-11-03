@@ -46,7 +46,7 @@ prompt = bot.build_prompt do
 end
 
 bot.chat(prompt)
-bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 #### Analysis
@@ -208,14 +208,14 @@ llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
 url  = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
-prompt = bot.build do
-  _1.system "Your task is to answer all user queries"
-  _1.user ["Tell me about this URL", bot.image_url(url)]
-  _1.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
+prompt = bot.build_prompt do
+  it.system "Your task is to answer all user queries"
+  it.user ["Tell me about this URL", bot.image_url(url)]
+  it.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
 end
 
 bot.chat(prompt)
-bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 #### Streaming
@@ -441,7 +441,7 @@ llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 file = llm.files.create(file: "/book.pdf")
 res = bot.chat ["Tell me about this file", file]
-res.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ### Prompts
@@ -474,14 +474,14 @@ llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 
 res1 = bot.chat ["Tell me about this URL", bot.image_url("...")]
-res1.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res1.choices.each { print "[#{it.role}] ", it.content, "\n" }
 
 file = llm.files.create(file: "/book.pdf")
 res2 = bot.chat ["Tell me about this PDF", bot.remote_file(file)]
-res2.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res2.choices.each { print "[#{it.role}] ", it.content, "\n" }
 
 res3 = bot.chat ["Tell me about this image", bot.local_file("/puffy.png")]
-res3.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res3.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ### Audio
@@ -668,7 +668,7 @@ end
 model = llm.models.all.find { |m| m.id == "gpt-3.5-turbo" }
 bot = LLM::Bot.new(llm, model: model.id)
 res = bot.chat "Hello #{model.id} :)"
-res.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ## Reviews
