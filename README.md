@@ -55,6 +55,7 @@ We can perform age estimation given a photo and return a response
 with structured outputs:
 
 ```ruby
+#!/usr/bin/env ruby
 require "llm"
 
 llm = LLM.openai(key: ENV["OPENAI_SECRET"])
