@@ -233,11 +233,15 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
+url = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
 
-bot.chat "Your task is to answer all user queries", role: :system
-bot.chat ["Tell me about this URL", bot.image_url("https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg")], role: :user
-bot.chat ["Tell me about this PDF", bot.local_file("handbook.pdf", "rb")], role: :user
-bot.chat "Are the URL and PDF similar to each other?", role: :user
+prompt = bot.build_prompt do
+  it.system "Your task is to answer all user queries"
+  it.user ["Tell me about this URL", bot.image_url(url)]
+  it.user ["Tell me about the PDF", bot.local_file("handbook.pdf")]
+end
+
+bot.chat(prompt)
 ```
 
 ### Schema
