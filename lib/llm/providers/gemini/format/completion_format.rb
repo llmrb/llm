@@ -60,7 +60,7 @@ module LLM::Gemini::Format
     end
 
     def format_remote_file(file)
-      return prompt_error(file) unless file.file?
+      return prompt_error!(file) unless file.file?
       [{file_data: {mime_type: file.mime_type, file_uri: file.uri}}]
     end
 
