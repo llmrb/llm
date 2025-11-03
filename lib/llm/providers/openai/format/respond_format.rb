@@ -27,14 +27,10 @@ module LLM::OpenAI::Format
       case content
       when LLM::Object
         case content.kind
-        when :image_url
-          [{type: :image_url, image_url: {url: content.value.to_s}}]
-        when :remote_file
-          format_file(content.value)
-        when :local_file
-          raise LLM::PromptError, "Local files are not supported by OpenAI's Responses API"
-        else
-          prompt_error!(content)
+        when :image_url then [{type: :image_url, image_url: {url: content.value.to_s}}]
+        when :remote_file then format_remote_file(content.value)
+        when :local_file then prompt_error!(content)
+        else prompt_error!(content)
         end
       when LLM::Response
         content.file? ? format_file(content) : prompt_error!(content)
@@ -66,7 +62,7 @@ module LLM::OpenAI::Format
       end
     end
 
-    def format_file(content)
+    def format_remote_file(content)
       file = LLM::File(content.filename)
       if file.image?
         [{type: :input_image, file_id: content.id}]
@@ -84,6 +80,7 @@ module LLM::OpenAI::Format
                                 "is not supported by the OpenAI responses API"
       end
     end
+
     def message = @message
     def content = message.content
     def returns = content.grep(LLM::Function::Return)
