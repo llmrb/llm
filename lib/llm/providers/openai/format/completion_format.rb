@@ -28,40 +28,6 @@ module LLM::OpenAI::Format
 
     private
 
-    def format_content(content)
-      case content
-      when LLM::Object
-        case content.kind
-        when :image_url
-          [{type: :image_url, image_url: {url: content.value}}]
-        when :local_file
-          format_file(content.value)
-        when :remote_file
-          file = content.value
-          file.file? ? [{type: :file, file: {file_id: file.id}}] : prompt_error!(file)
-        else
-          prompt_error!(content)
-        end
-      when String
-        [{type: :text, text: content.to_s}]
-      when LLM::Message
-        format_content(content.content)
-      when LLM::Function::Return
-        throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
-      else
-        prompt_error!(content)
-      end
-    end
-
-    def format_file(content)
-      file = content
-      if file.image?
-        [{type: :image_url, image_url: {url: file.to_data_uri}}]
-      else
-        [{type: :file, file: {filename: file.basename, file_data: file.to_data_uri}}]
-      end
-    end
-
     def format_message
       case content
       when Array
@@ -81,9 +47,53 @@ module LLM::OpenAI::Format
       end
     end
 
+    def format_content(content)
+      case content
+      when LLM::Object
+        format_object(content)
+      when String
+        [{type: :text, text: content.to_s}]
+      when LLM::Message
+        format_content(content.content)
+      when LLM::Function::Return
+        throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
+      else
+        prompt_error!(content)
+      end
+    end
+
+    def format_object(object)
+      case object.kind
+      when :image_url
+        [{type: :image_url, image_url: {url: object.value}}]
+      when :local_file
+        format_local_file(object.value)
+      when :remote_file
+        format_remote_file(object.value)
+      else
+        prompt_error!(object, "Unsupported LLM::Object kind: #{object.kind}")
+      end
+    end
+
+    def format_local_file(file)
+      if file.image?
+        [{type: :image_url, image_url: {url: file.to_data_uri}}]
+      else
+        [{type: :file, file: {filename: file.basename, file_data: file.to_data_uri}}]
+      end
+    end
+
+    def format_remote_file(file)
+      if file.file?
+        [{type: :file, file: {file_id: file.id}}]
+      else
+        prompt_error!(file)
+      end
+    end
+
     def prompt_error!(content)
       raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                              "is not supported by the OpenAI chat completions API"
+                              "is not supported by the OpenAI chat completions API."
     end
 
     def message = @message
