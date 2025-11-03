@@ -71,7 +71,7 @@ module LLM::OpenAI::Format
       when :remote_file
         format_remote_file(object.value)
       else
-        prompt_error!(object, "Unsupported LLM::Object kind: #{object.kind}")
+        prompt_error!(object)
       end
     end
 
