@@ -194,7 +194,7 @@ RSpec.describe "LLM::OpenAI::Files" do
 
     before do
       req = bot.build do |prompt|
-        prompt.chat(file)
+        prompt.chat(bot.remote_file(file))
         prompt.chat("Is this PDF document about FreeBSD?")
         prompt.chat("Answer with yes or no. Nothing else.")
       end
@@ -218,7 +218,7 @@ RSpec.describe "LLM::OpenAI::Files" do
       bot.chat([
         "Is this PDF document about FreeBSD?",
         "Answer with yes or no. Nothing else.",
-        file
+        bot.remote_file(file)
       ])
     end
 

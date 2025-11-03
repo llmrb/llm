@@ -53,6 +53,8 @@ module LLM::OpenAI::Format
         format_object(content)
       when String
         [{type: :text, text: content.to_s}]
+      when LLM::Response
+        format_remote_file(content)
       when LLM::Message
         format_content(content.content)
       when LLM::Function::Return
