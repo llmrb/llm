@@ -39,10 +39,10 @@ llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
 url  = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
-prompt = bot.build do
-  _1.system "Your task is to answer all user queries"
-  _1.user ["Tell me about this URL", bot.image_url(url)]
-  _1.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
+prompt = bot.build_prompt do
+  it.system "Your task is to answer all user queries"
+  it.user ["Tell me about this URL", bot.image_url(url)]
+  it.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
 end
 
 bot.chat(prompt)
