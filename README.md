@@ -369,7 +369,7 @@ class System < LLM::Tool
     [wo,we].each(&:close)
     {stderr: re.read, stdout: ro.read}
   end
-}
+end
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, tools: [System])
