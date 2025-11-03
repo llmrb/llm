@@ -36,9 +36,10 @@ module LLM::DeepSeek::Format
         format_content(content.content)
       when LLM::Function::Return
         throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
+      when LLM::Object
+        prompt_error!(content)
       else
-        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                "is not supported by the DeepSeek chat completions API"
+        prompt_error!(content)
       end
     end
 
@@ -58,6 +59,16 @@ module LLM::DeepSeek::Format
         returns.map { {role: "tool", tool_call_id: _1.id, content: JSON.dump(_1.value)} }
       else
         {role: message.role, content: content.flat_map { format_content(_1) }}
+      end
+    end
+
+    def prompt_error!(object)
+      if LLM::Object === object
+        raise LLM::PromptError, "The given LLM::Object with kind '#{content.kind}' is not " \
+                                "supported by the DeepSeek API"
+      else
+        raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
+                                "is not supported by the DeepSeek API"
       end
     end
 

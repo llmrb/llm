@@ -12,7 +12,7 @@ module LLM::Ollama::Format
     end
 
     ##
-    # Returns the message for the Ollama chat completions API
+    # Formats the message for the Ollama chat completions API
     # @return [Hash]
     def format
       catch(:abort) do
@@ -28,26 +28,16 @@ module LLM::Ollama::Format
 
     def format_content(content)
       case content
-      when File
-        content.close unless content.closed?
-        format_content(LLM.File(content.path))
-      when LLM::File
-        if content.image?
-          {content: "This message has an image associated with it", images: [content.to_b64]}
-        else
-          raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                  "is not an image, and therefore not supported by the " \
-                                  "Ollama API"
-        end
       when String
         {content:}
       when LLM::Message
         format_content(content.content)
       when LLM::Function::Return
         throw(:abort, {role: "tool", tool_call_id: content.id, content: JSON.dump(content.value)})
+      when LLM::Object
+        format_object(content)
       else
-        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                                "is not supported by the Ollama API"
+        prompt_error!(content)
       end
     end
 
@@ -67,6 +57,35 @@ module LLM::Ollama::Format
         returns.map { {role: "tool", tool_call_id: _1.id, content: JSON.dump(_1.value)} }
       else
         content.flat_map { {role: message.role}.merge(format_content(_1)) }
+      end
+    end
+
+    def format_object(object)
+      case object.kind
+      when :local_file then format_local_file(object.value)
+      when :remote_file then prompt_error!(object)
+      when :image_url then prompt_error!(object)
+      else prompt_error!(object)
+      end
+    end
+
+    def format_local_file(file)
+      if file.image?
+        {content: "This message has an image associated with it", images: [file.to_b64]}
+      else
+        raise LLM::PromptError, "The given local file (an instance of #{file.class}) " \
+                                "is not an image, and therefore not supported by the " \
+                                "Ollama API"
+      end
+    end
+
+    def prompt_error!(object)
+      if LLM::Object === object
+        raise LLM::PromptError, "The given LLM::Object with kind '#{content.kind}' is not " \
+                                "supported by the Ollama API"
+      else
+        raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
+                                "is not supported by the Ollama API"
       end
     end
 

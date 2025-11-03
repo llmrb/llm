@@ -123,13 +123,44 @@ module LLM
     ##
     # Build a prompt
     # @example
-    # req = bot.build do |prompt|
-    #   prompt.system "Your task is to assist the user"
-    #   prompt.user "Hello, can you assist me?"
-    # end
-    # bot.chat(req)
+    #   prompt = bot.build_prompt do
+    #     it.system "Your task is to assist the user"
+    #     it.user "Hello, can you assist me?"
+    #   end
+    #   bot.chat(prompt)
     def build(&)
       LLM::Builder.new(&).tap(&:call)
+    end
+    alias_method :build_prompt, :build
+
+    ##
+    # Recongize an object as a URL to an image
+    # @param [String] url
+    #  The URL
+    # @return [LLM::Object]
+    #  Returns a tagged object
+    def image_url(url)
+      LLM::Object.from_hash(value: url, kind: :image_url)
+    end
+
+    ##
+    # Recongize an object as a local file
+    # @param [String] path
+    #  The path
+    # @return [LLM::Object]
+    #  Returns a tagged object
+    def local_file(path)
+      LLM::Object.from_hash(value: LLM.File(path), kind: :local_file)
+    end
+
+    ##
+    # Reconginize an object as a remote file
+    # @param [LLM::Response] res
+    #  The response
+    # @return [LLM::Object]
+    #  Returns a tagged object
+    def remote_file(res)
+      LLM::Object.from_hash(value: res, kind: :remote_file)
     end
 
     private

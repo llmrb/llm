@@ -7,11 +7,11 @@
 # @example
 #   llm = LLM.openai(key: ENV["KEY"])
 #   bot = LLM::Bot.new(llm)
-#   req = bot.build do |prompt|
-#     prompt.system "Your task is to assist the user"
-#     prompt.user "Hello. Can you assist me?"
+#   prompt = bot.build_prompt do
+#     it.system "Your task is to assist the user"
+#     it.user "Hello. Can you assist me?"
 #   end
-#   res = bot.chat(req)
+#   res = bot.chat(prompt)
 class LLM::Builder
   ##
   # @param [Proc] b

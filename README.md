@@ -7,23 +7,7 @@ tool calling, audio, images, files, and structured outputs (JSON Schema).
 
 ## Quick start
 
-#### Demo
-
-This cool demo writes a new [llm-shell](https://github.com/llmrb/llm-shell#readme) command
-with the help of [llm.rb](https://github.com/llmrb/llm#readme). <br> Similar-ish to
-GitHub Copilot but for the terminal.
-
-<details>
-  <summary>Start demo</summary>
-  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/demo.gif?raw=true" alt="llm-shell demo" />
-</details>
-
-#### Ecosystem
-
-* [llm-shell](https://github.com/llmrb/llm-shell) &ndash; a developer-oriented console for Large Language Model communication
-* [llm-spell](https://github.com/llmrb/llm-spell) &ndash; a utility that can correct spelling mistakes with a Large Language Model
-
-#### Show code
+#### REPL
 
 A simple chatbot that maintains a conversation and streams
 responses in real-time:
@@ -38,9 +22,11 @@ loop do
   print "> "
   input = $stdin.gets&.chomp || break
   res = bot.chat(input)
-  print "\n" # The streamed content would already be printed to $stdout
+  print "\n"
 end
 ```
+
+#### Build
 
 We can send multiple messages at the same time by building a chain
 of messages:
@@ -49,14 +35,43 @@ of messages:
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm)
-req = bot.build do |prompt|
-  prompt.system "Your task is to assist the user"
-  prompt.user "Hello. Can you assist me?"
+llm  = LLM.openai(key: ENV["KEY"])
+bot  = LLM::Bot.new(llm)
+url  = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
+
+prompt = bot.build_prompt do
+  it.system "Your task is to answer all user queries"
+  it.user ["Tell me about this URL", bot.image_url(url)]
+  it.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
 end
-res = bot.chat(req)
-res.choices.each { print "[#{_1.role}]", _1.message, "\n" }
+
+bot.chat(prompt)
+bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
+```
+
+#### Analysis
+
+We can perform age estimation given a photo and return a response
+with structured outputs:
+
+```ruby
+require "llm"
+
+llm = LLM.openai(key: ENV["OPENAI_SECRET"])
+schema = llm.schema.object(
+  age: llm.schema.integer.required.description("The age of the person in a photo"),
+  confidence: llm.schema.number.required.description("Model confidence (0.0 to 1.0)"),
+  notes: llm.schema.string.required.description("Model notes or caveats")
+)
+
+img = llm.images.create(prompt: "A man in his 30s")
+bot = LLM::Bot.new(llm, schema:)
+res = bot.chat bot.image_url(img.urls[0])
+body = res.choices.find(&:assistant?).content!
+
+print "age: ", body["age"], "\n"
+print "confidence: ", body["confidence"], "\n"
+print "notes: ", body["notes"], "\n"
 ```
 
 ## Features
@@ -191,14 +206,16 @@ require "llm"
 
 llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm)
-url  = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
+url  = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
-bot.chat "Your task is to answer all user queries", role: :system
-bot.chat ["Tell me about this URL", URI(url)], role: :user
-bot.chat ["Tell me about this PDF", File.open("handbook.pdf", "rb")], role: :user
-bot.chat "Are the URL and PDF similar to each other?", role: :user
+prompt = bot.build_prompt do
+  it.system "Your task is to answer all user queries"
+  it.user ["Tell me about this URL", bot.image_url(url)]
+  it.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
+end
 
-bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }
+bot.chat(prompt)
+bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 #### Streaming
@@ -216,11 +233,15 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
+url = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
 
-bot.chat "Your task is to answer all user queries", role: :system
-bot.chat ["Tell me about this URL", URI("https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg")], role: :user
-bot.chat ["Tell me about this PDF", File.open("handbook.pdf", "rb")], role: :user
-bot.chat "Are the URL and PDF similar to each other?", role: :user
+prompt = bot.build_prompt do
+  it.system "Your task is to answer all user queries"
+  it.user ["Tell me about this URL", bot.image_url(url)]
+  it.user ["Tell me about the PDF", bot.local_file("handbook.pdf")]
+end
+
+bot.chat(prompt)
 ```
 
 ### Schema
@@ -422,24 +443,32 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
-file = llm.files.create(file: "/books/goodread.pdf")
+file = llm.files.create(file: "/book.pdf")
 res = bot.chat ["Tell me about this file", file]
-res.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ### Prompts
 
 #### Multimodal
 
-It is generally a given that an LLM will understand text but they can also
-understand and generate other types of media as well: audio, images, video,
-and even URLs. The object given as a prompt in llm.rb can be a string to
-represent text, a URI object to represent a URL, an LLM::Response object
-to represent a file stored with the LLM, and so on. These are objects you
-can throw at the prompt and have them be understood automatically.
+While LLMs inherently understand text, they can also process and
+generate other types of media such as audio, images, video, and
+even URLs. To provide these multimodal inputs to the LLM, llm.rb
+uses explicit tagging methods on the `LLM::Bot` instance.
+These methods wrap your input into a special `LLM::Object`,
+clearly indicating its type and intent to the underlying LLM
+provider.
 
-A prompt can also have multiple parts, and in that case, an array is given
-as a prompt. Each element is considered to be part of the prompt:
+For instance, to specify an image URL, you would use
+`bot.image_url`. For a local file, `bot.local_file`. For an
+already uploaded file managed by the LLM provider's Files API,
+`bot.remote_file`. This approach ensures clarity and allows
+llm.rb to correctly format the input for each provider's
+specific requirements.
+
+An array can be used for a prompt with multiple parts, where each
+element contributes to the overall input:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -448,15 +477,15 @@ require "llm"
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 
-res1 = bot.chat ["Tell me about this URL", URI("https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg")]
-res1.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res1 = bot.chat ["Tell me about this URL", bot.image_url("...")]
+res1.choices.each { print "[#{it.role}] ", it.content, "\n" }
 
-file = llm.files.create(file: "/books/goodread.pdf")
-res2 = bot.chat ["Tell me about this PDF", file]
-res2.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+file = llm.files.create(file: "/book.pdf")
+res2 = bot.chat ["Tell me about this PDF", bot.remote_file(file)]
+res2.choices.each { print "[#{it.role}] ", it.content, "\n" }
 
-res3 = bot.chat ["Tell me about this image", File.open("/images/nemothefish.png", "r")]
-res3.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res3 = bot.chat ["Tell me about this image", bot.local_file("/puffy.png")]
+res3.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ### Audio
@@ -643,7 +672,7 @@ end
 model = llm.models.all.find { |m| m.id == "gpt-3.5-turbo" }
 bot = LLM::Bot.new(llm, model: model.id)
 res = bot.chat "Hello #{model.id} :)"
-res.choices.each { print "[#{_1.role}] ", _1.content, "\n" }
+res.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ## Reviews

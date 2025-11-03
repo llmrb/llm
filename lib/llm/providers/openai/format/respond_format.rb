@@ -4,6 +4,9 @@ module LLM::OpenAI::Format
   ##
   # @private
   class RespondFormat
+    ##
+    # @param [LLM::Message] message
+    #  The message to format
     def initialize(message)
       @message = message
     end
@@ -22,12 +25,17 @@ module LLM::OpenAI::Format
 
     def format_content(content)
       case content
-      when LLM::Response
-        content.file? ? format_file(content) : prompt_error!(content)
       when String
         [{type: :input_text, text: content.to_s}]
-      when LLM::Message
-        format_content(content.content)
+      when LLM::Response then format_remote_file(content)
+      when LLM::Message then format_content(content.content)
+      when LLM::Object
+        case content.kind
+        when :image_url then [{type: :image_url, image_url: {url: content.value.to_s}}]
+        when :remote_file then format_remote_file(content.value)
+        when :local_file then prompt_error!(content)
+        else prompt_error!(content)
+        end
       else
         prompt_error!(content)
       end
@@ -52,7 +60,8 @@ module LLM::OpenAI::Format
       end
     end
 
-    def format_file(content)
+    def format_remote_file(content)
+      prompt_error!(content) unless content.file?
       file = LLM::File(content.filename)
       if file.image?
         [{type: :input_image, file_id: content.id}]
@@ -62,9 +71,15 @@ module LLM::OpenAI::Format
     end
 
     def prompt_error!(content)
-      raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
-                              "is not supported by the OpenAI responses API"
+      if LLM::Object === content
+        raise LLM::PromptError, "The given LLM::Object with kind '#{content.kind}' is not " \
+                                "supported by the OpenAI responses API."
+      else
+        raise LLM::PromptError, "The given object (an instance of #{content.class}) " \
+                                "is not supported by the OpenAI responses API"
+      end
     end
+
     def message = @message
     def content = message.content
     def returns = content.grep(LLM::Function::Return)

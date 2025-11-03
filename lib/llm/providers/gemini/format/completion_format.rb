@@ -30,37 +30,48 @@ module LLM::Gemini::Format
       case content
       when Array
         content.empty? ? throw(:abort, nil) : content.flat_map { format_content(_1) }
-      when LLM::Response
-        format_response(content)
-      when File
-        content.close unless content.closed?
-        format_content(LLM.File(content.path))
-      when LLM::File
-        file = content
-        [{inline_data: {mime_type: file.mime_type, data: file.to_b64}}]
       when String
         [{text: content}]
+      when LLM::Response
+        format_remote_file(content)
       when LLM::Message
         format_content(content.content)
       when LLM::Function::Return
         [{functionResponse: {name: content.name, response: content.value}}]
+      when LLM::Object
+        format_object(content)
       else
         prompt_error!(content)
       end
     end
 
-    def format_response(response)
-      if response.file?
-        file = response
-        [{file_data: {mime_type: file.mime_type, file_uri: file.uri}}]
+    def format_object(object)
+      case object.kind
+      when :image_url
+        [{file_data: {mime_type: "image/*", file_uri: object.value.to_s}}]
+      when :local_file
+        file = object.value
+        [{inline_data: {mime_type: file.mime_type, data: file.to_b64}}]
+      when :remote_file
+        format_remote_file(object.value)
       else
-        prompt_error!(content)
+        prompt_error!(object)
       end
+    end
+
+    def format_remote_file(file)
+      return prompt_error!(file) unless file.file?
+      [{file_data: {mime_type: file.mime_type, file_uri: file.uri}}]
     end
 
     def prompt_error!(object)
-      raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
-                              "is not supported by the Gemini API"
+      if LLM::Object === object
+        raise LLM::PromptError, "The given LLM::Object with kind '#{content.kind}' is not " \
+                                "supported by the Gemini API"
+      else
+        raise LLM::PromptError, "The given object (an instance of #{object.class}) " \
+                                "is not supported by the Gemini API"
+      end
     end
 
     def message = @message
