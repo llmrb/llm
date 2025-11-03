@@ -39,6 +39,8 @@ module LLM::OpenAI::Format
         when :remote_file
           file = content.value
           file.file? ? [{type: :file, file: {file_id: file.id}}] : prompt_error!(file)
+        else
+          prompt_error!(content)
         end
       when String
         [{type: :text, text: content.to_s}]
