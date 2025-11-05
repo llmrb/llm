@@ -388,46 +388,6 @@ bot.chat bot.functions.map(&:call) # report return value to the LLM
 # {stderr: "", stdout: "FreeBSD"}
 ```
 
-#### Server Tools
-
-The
-[LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
-and
-[LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html)
-classes can define a local function or tool that can be called by
-a provider on your behalf, and the
-[LLM::ServerTool](https://0x1eef.github.io/x/llm.rb/LLM/ServerTool.html)
-class represents a tool that is defined and implemented by a provider, and we can
-request that the provider call the tool on our behalf. That's the primary difference
-between a function implemented locally and a tool implemented by a provider. The
-available tools depend on the provider, and the following example uses the
-OpenAI provider to execute Python code on OpenAI's servers:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.openai(key: ENV["KEY"])
-res = llm.responses.create "Run: 'print(\"hello world\")'",
-                                tools: [llm.server_tool(:code_interpreter)]
-print res.output_text, "\n"
-```
-
-#### Web Search
-
-A common tool among all providers is the ability to perform a web search, and
-the following example uses the OpenAI provider to search the web using the
-Web Search tool. This can also be done with the Anthropic and Gemini providers:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.openai(key: ENV["KEY"])
-res = llm.web_search(query: "summarize today's news")
-print res.output_text, "\n"
-```
-
 ### Files
 
 #### Create
