@@ -235,7 +235,7 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
-url = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
+url = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
 prompt = bot.build_prompt do
   it.system "Your task is to answer all user queries"
