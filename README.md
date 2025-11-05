@@ -150,6 +150,7 @@ llm = LLM.openai(key: "yourapikey")
 llm = LLM.gemini(key: "yourapikey")
 llm = LLM.anthropic(key: "yourapikey")
 llm = LLM.xai(key: "yourapikey")
+llm = LLM.zai(key: "yourapikey)
 llm = LLM.deepseek(key: "yourapikey")
 
 ##
