@@ -677,45 +677,6 @@ res = bot.chat "Hello #{model.id} :)"
 res.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
-## Reviews
-
-I supplied both Gemini and DeepSeek with the contents of [lib/](https://github.com/llmrb/llm/tree/main/lib)
-and [README.md](https://github.com/llmrb/llm#readme) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
-Their feedback was way more positive than I could have imagined 😅 These are genuine responses though, with no
-special prompting or engineering. I just provided them with the source code and asked for their opinion.
-
-<details>
-  <summary>Review by Gemini</summary>
-  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/gemini.png?raw=true" alt="Gemini review" />
-</details>
-
-<details>
-  <summary>Review by DeepSeek</summary>
-  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/deepseek.png?raw=true" alt="DeepSeek review" />
-</details>
-
-## Documentation
-
-### Guides
-
-* [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
-  a blog post that implements the RAG pattern
-* [How to estimate the age of a person in a photo](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
-  a blog post that implements an age estimation tool
-* [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
-  a blog post that implements image editing with Gemini
-* [Fast sailing with persistent connections](https://0x1eef.github.io/posts/persistent-connections-with-llm.rb/) &ndash;
-  a blog post that optimizes performance with a thread-safe connection pool
-* [How to build agents (with llm.rb)](https://0x1eef.github.io/posts/how-to-build-agents-with-llm.rb/) &ndash;
-  a blog post that implements agentic behavior via tools
-
-### API
-
-The README tries to provide a high-level overview of the library. For everything
-else there's the API reference. It covers classes and methods that the README glances
-over or doesn't cover at all. The API reference is available at
-[0x1eef.github.io/x/llm.rb](https://0x1eef.github.io/x/llm.rb).
-
 ## Install
 
 llm.rb can be installed via rubygems.org:
