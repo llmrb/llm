@@ -5,10 +5,10 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
-        a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"Can
-        you run the date command ? Can you run the pwd command ? Can you run the whoami
-        command ?"}]}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Can you
+        run the date command ? Can you run the pwd command ? Can you run the whoami
+        command ?"}]},{"role":"user","content":[{"type":"text","text":"You are a bot
+        that can run UNIX commands"}]}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
         a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -29,7 +29,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 06 Sep 2025 20:11:56 GMT
+      - Thu, 06 Nov 2025 03:37:40 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -41,13 +41,13 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '682'
+      - '971'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '687'
+      - '985'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -61,14 +61,16 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 74ms
       X-Request-Id:
-      - req_4614e83b3e9e4e02b0a3af4fbde2dd62
+      - req_10daeca1038e40b6b58f5d2db92433b5
+      X-Openai-Proxy-Wasm:
+      - v0.1
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=HmxMOVRQwrwRSCrXAOZ4M96Yw9C_NBvzyAiiueWOQBQ-1757189516-1.0.1.1-w57aM5oW89F9TzUEIlScKVpbrB9vNApZeL0OoKd1c8cDljSsiejV_kPOlr_vwk22335R_heN.K1CjtCc9rlUAE7W_809BNfSRQjpTSuoQiU;
-        path=/; expires=Sat, 06-Sep-25 20:41:56 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=wPwWVtr8jr7j2KJwsVMKXzZMj1aqZRH8lVArpvpti1Q-1762400260-1.0.1.1-OP3obfe0NjT1WgD.XpAma8r3onhbKcwNHJBBWsl3PNvvyT_dn7ry0y4S8GqFOFuE2PEzG_2izgwy3cqq5STk_x84OzG2ama_oLDQALFaDqI;
+        path=/; expires=Thu, 06-Nov-25 04:07:40 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=JnQwSkA3MgRyUtNIm8zaeXyTRdVK8f7Adp09i74Zw8M-1757189516905-0.0.1.1-604800000;
+      - _cfuvid=Gnj4Bi1vJtHZVYkfezW0Y_ze9aX6gDpP_tg.YWZvZX4-1762400260079-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -77,16 +79,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 97b09e4b3baaddeb-GRU
+      - 99a18db27e6697d0-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-CCtYKH4DLy3D3DkxUreCvyI4R55F5",
+          "id": "chatcmpl-CYl6Z18b9nLeskuLTSqn6LGoDX8VQ",
           "object": "chat.completion",
-          "created": 1757189516,
+          "created": 1762400259,
           "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
@@ -96,7 +98,7 @@ http_interactions:
                 "content": null,
                 "tool_calls": [
                   {
-                    "id": "call_vOPYHOKCvuKAxlAACUGACjcD",
+                    "id": "call_Du2XGqUquoIG9ysRQPYjuN3d",
                     "type": "function",
                     "function": {
                       "name": "system",
@@ -104,7 +106,7 @@ http_interactions:
                     }
                   },
                   {
-                    "id": "call_PvmQCIQDqDWDFFNu3nPkonFA",
+                    "id": "call_R1hl23tEYhDkHScYvdC4OFQH",
                     "type": "function",
                     "function": {
                       "name": "system",
@@ -112,7 +114,7 @@ http_interactions:
                     }
                   },
                   {
-                    "id": "call_S4wrXtoN4OFL7r3q2uJV7aC0",
+                    "id": "call_pKQIf5jri8MgYZQby4JLbbE8",
                     "type": "function",
                     "function": {
                       "name": "system",
@@ -143,9 +145,9 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_3502f4eb73"
+          "system_fingerprint": "fp_d38c7f4fa7"
         }
-  recorded_at: Sat, 06 Sep 2025 20:11:26 GMT
+  recorded_at: Thu, 06 Nov 2025 03:37:27 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -154,11 +156,11 @@ http_interactions:
       string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You are
         a bot that can run UNIX commands"}]},{"role":"user","content":[{"type":"text","text":"Can
         you run the date command ? Can you run the pwd command ? Can you run the whoami
-        command ?"}]},{"role":"assistant","content":null,"tool_calls":[{"id":"call_vOPYHOKCvuKAxlAACUGACjcD","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"date\"}"}},{"id":"call_PvmQCIQDqDWDFFNu3nPkonFA","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"pwd\"}"}},{"id":"call_S4wrXtoN4OFL7r3q2uJV7aC0","type":"function","function":{"name":"system","arguments":"{\"command\":
-        \"whoami\"}"}}]},{"role":"tool","tool_call_id":"call_vOPYHOKCvuKAxlAACUGACjcD","content":"{\"stderr\":\"\",\"stdout\":\"Sat
-        Sep  6 20:11:26 UTC 2025\\n\"}"},{"role":"tool","tool_call_id":"call_PvmQCIQDqDWDFFNu3nPkonFA","content":"{\"stderr\":\"\",\"stdout\":\"/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"},{"role":"tool","tool_call_id":"call_S4wrXtoN4OFL7r3q2uJV7aC0","content":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
+        command ?"}]},{"role":"assistant","content":null,"tool_calls":[{"id":"call_Du2XGqUquoIG9ysRQPYjuN3d","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"date\"}"}},{"id":"call_R1hl23tEYhDkHScYvdC4OFQH","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"pwd\"}"}},{"id":"call_pKQIf5jri8MgYZQby4JLbbE8","type":"function","function":{"name":"system","arguments":"{\"command\":
+        \"whoami\"}"}}]},{"role":"tool","tool_call_id":"call_Du2XGqUquoIG9ysRQPYjuN3d","content":"{\"stderr\":\"\",\"stdout\":\"Thu
+        Nov  6 00:37:27 -03 2025\\n\"}"},{"role":"tool","tool_call_id":"call_R1hl23tEYhDkHScYvdC4OFQH","content":"{\"stderr\":\"\",\"stdout\":\"/usr/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\\n\"}"},{"role":"tool","tool_call_id":"call_pKQIf5jri8MgYZQby4JLbbE8","content":"{\"stderr\":\"\",\"stdout\":\"developer\\n\"}"}],"model":"gpt-4.1","tools":[{"type":"function","name":"system","function":{"name":"system","description":"Run
         a shell command","parameters":{"type":"object","properties":{"command":{"type":"string"}},"required":["command"]}}}]}'
     headers:
       Content-Type:
@@ -179,7 +181,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 06 Sep 2025 20:11:58 GMT
+      - Thu, 06 Nov 2025 03:37:42 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -191,13 +193,13 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '874'
+      - '1766'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '878'
+      - '1783'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -205,20 +207,22 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '499'
       X-Ratelimit-Remaining-Tokens:
-      - '29917'
+      - '29916'
       X-Ratelimit-Reset-Requests:
       - 120ms
       X-Ratelimit-Reset-Tokens:
-      - 166ms
+      - 168ms
       X-Request-Id:
-      - req_f83ab9892ace4461839cca8549ee806b
+      - req_e7fb0f980d0d4c66b1b0cc47dd652f1f
+      X-Openai-Proxy-Wasm:
+      - v0.1
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=U5lsqsPUovAgBSFHZItGcPmx3u4kdeRKTyQdQVkd1zQ-1757189518-1.0.1.1-FtRW.VTvSBklEZskW7hWHGldJlIUaCcLOvC.ZgsnZgk5lk_QruvLsnxN2sdxRQWgWLNmkqgdjIamv4GFeRTPQ3Ox2XbZY1EhCXf_HIB5gFo;
-        path=/; expires=Sat, 06-Sep-25 20:41:58 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=ekl4XwIchQ2rNkVNOf2FoGSKWdl8T4Rpv8iQb8QNI.8-1762400262-1.0.1.1-pQ0w1VM8mHaR_wJ99n3.WgwJiXWiDVu3OOyoZl7hppicrA48UsOmLtB0Ixh6FHN5.qk5RRX7DwCWxokILEsb7SszjwTjA9MdkTLYU_FY4CY;
+        path=/; expires=Thu, 06-Nov-25 04:07:42 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=Z4n0Fo6.o8j369LQkSo1WyK9DOtcjn.WL.Ch8scg354-1757189518695-0.0.1.1-604800000;
+      - _cfuvid=S2cNqOVUN5I2EM5PCJ6P.4O1Z7cvFrLbKKMzlJliQ24-1762400262100-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -227,23 +231,23 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 97b09e526c40f19b-GRU
+      - 99a18db9ead7028e-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-CCtYLz0QyVUldDoP8BrYH0UUyV7S1",
+          "id": "chatcmpl-CYl6aBQOogNxsYQBy8gO8xFmVybWe",
           "object": "chat.completion",
-          "created": 1757189517,
+          "created": 1762400260,
           "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "Here are the results of the commands you requested:\n\n- date: Sat Sep  6 20:11:26 UTC 2025\n- pwd: /home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n- whoami: developer\n\nLet me know if you want to run more commands!",
+                "content": "Here are the results of the commands you requested:\n\n- date: Thu Nov  6 00:37:27 -03 2025\n- pwd: /usr/home/developer/p/git.home.network/0x1eef/ruby/llm.rb\n- whoami: developer\n\nLet me know if you need to run any more commands!",
                 "refusal": null,
                 "annotations": []
               },
@@ -252,9 +256,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 208,
-            "completion_tokens": 70,
-            "total_tokens": 278,
+            "prompt_tokens": 210,
+            "completion_tokens": 73,
+            "total_tokens": 283,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -267,7 +271,7 @@ http_interactions:
             }
           },
           "service_tier": "default",
-          "system_fingerprint": "fp_3502f4eb73"
+          "system_fingerprint": "fp_d38c7f4fa7"
         }
-  recorded_at: Sat, 06 Sep 2025 20:11:28 GMT
+  recorded_at: Thu, 06 Nov 2025 03:37:29 GMT
 recorded_with: VCR 6.3.1

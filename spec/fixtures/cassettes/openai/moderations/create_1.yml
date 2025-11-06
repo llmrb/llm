@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 06 Sep 2025 20:13:50 GMT
+      - Thu, 06 Nov 2025 03:39:25 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,36 +37,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_284b95042c00db3195281feab151d85c
+      - req_4092f2ace26841f98a2544bdf0527317
       Openai-Processing-Ms:
-      - '113'
+      - '187'
       X-Envoy-Upstream-Service-Time:
-      - '119'
+      - '196'
       X-Openai-Proxy-Wasm:
       - v0.1
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=a0IqKWfRHgt5hXtd_GqlIhfuLq4CD1JRl7khK3KnDeU-1757189630-1.0.1.1-V3drcIoUa9LneVaSgHOW7WNic8wJeYqZ0DSOzFRJ1zWC94IpyruWxYCPJhC_l3OnaLz8c4oMVnD0JEAf4jIKkOsx.wc.b7ABM2oAvKesukY;
-        path=/; expires=Sat, 06-Sep-25 20:43:50 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=JmqgHlzUPRRko6CZTUKizsL6hrPhmuri5oPKbjNK9nU-1762400365-1.0.1.1-kkHyNXLmZxHMVyuuHH0YkEZZpkgPMvavKm5or1KpwNVbbEgqIlkfm1pImM.ErjHT0MBafdgu47A7.WdpT.8CkoKJAuTRiFPA7cDP1uNLHLs;
+        path=/; expires=Thu, 06-Nov-25 04:09:25 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=k_ZrHMPe9KheY5CeEBKdqWGULwvZcrDiAc1IH29rI.o-1757189630269-0.0.1.1-604800000;
+      - _cfuvid=HHK1rmogJ8zsAehjy2SfeH2n8Ff._trZnCPyXaPjBpw-1762400365924-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 97b0a1134942f1ef-GRU
+      - 99a1904cbbcb768e-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "modr-9069",
+          "id": "modr-9879",
           "model": "omni-moderation-latest",
           "results": [
             {
@@ -145,5 +145,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Sat, 06 Sep 2025 20:13:19 GMT
+  recorded_at: Thu, 06 Nov 2025 03:39:13 GMT
 recorded_with: VCR 6.3.1

@@ -84,7 +84,7 @@ module LLM
     def respond(prompt, params = {})
       prompt, params, messages = fetch(prompt, params)
       res_id = @messages.find(&:assistant?)&.response&.response_id
-      params = params.merge(previous_response_id: res_id, messages:).compact
+      params = params.merge(previous_response_id: res_id, input: messages).compact
       params = @params.merge(params)
       res = @provider.responses.create(prompt, params)
       @messages.concat [LLM::Message.new(params[:role] || :user, prompt)]

@@ -26,25 +26,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 06 Sep 2025 20:11:47 GMT
+      - Thu, 06 Nov 2025 03:37:32 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      X-Ratelimit-Limit-Requests:
-      - '500'
-      X-Ratelimit-Limit-Tokens:
-      - '30000'
-      X-Ratelimit-Remaining-Requests:
-      - '499'
-      X-Ratelimit-Remaining-Tokens:
-      - '29675'
-      X-Ratelimit-Reset-Requests:
-      - 120ms
-      X-Ratelimit-Reset-Tokens:
-      - 650ms
       Openai-Version:
       - '2020-10-01'
       Openai-Organization:
@@ -52,38 +40,41 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_c9e97be149b49f2b15f097be236b3fde
+      - req_87562287a680472782cd5aa10f23545e
       Openai-Processing-Ms:
-      - '11285'
+      - '9804'
       X-Envoy-Upstream-Service-Time:
-      - '11293'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - '9807'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=pNGi2yd3yoROB9rhaksAwih0mOigxGkDbf172d4vkjk-1757189507-1.0.1.1-b2thRbC.Jh.drpC9Dbu8SNDpZ6FA4qyVJSdkbc9ewl2dMVLbNx8HTtgyEyK9HE_DvlkbKuG6xGJS68fkd56HWueuuSpYMugc.fCPFfJARYY;
-        path=/; expires=Sat, 06-Sep-25 20:41:47 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=tKMIh6Y0BN90Q5ahn2tmSeLrFcXP9JfYGyGV5D_.uSI-1762400252-1.0.1.1-xbNVr6PfVWDWj1yKPBtluXGJoV6sVSl9IIZMOVD9h.ft4b.rOel0wZbzm8aBrOKX.8NZDQk31b1O4eWZonVaHvB2hvny8jwhRBGc2dCQCxo;
+        path=/; expires=Thu, 06-Nov-25 04:07:32 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=bpMUC4JL0.2sOnns.0KIh8POUeNMn7qLGIrtrZ0DsRI-1757189507325-0.0.1.1-604800000;
+      - _cfuvid=S.ha5x7exmaVMgF9zF3sxZIzfku13ZiYzgF4qNrfbaE-1762400252856-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 97b09dc92c4df1a1-GRU
+      - 99a18d4e0841f3bf-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68bc9577f8688195bd93622ac08a393a0d2e71fba89a2817",
+          "id": "resp_08667bc7c9fc556c01690c17f2fc9881948bdc6b163c24b815",
           "object": "response",
-          "created_at": 1757189496,
+          "created_at": 1762400243,
           "status": "completed",
           "background": false,
+          "billing": {
+            "payer": "developer"
+          },
           "error": null,
           "incomplete_details": null,
           "instructions": null,
@@ -92,16 +83,16 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "ws_68bc957922a08195b3aa9b54f468c06c0d2e71fba89a2817",
+              "id": "ws_08667bc7c9fc556c01690c17f3b8988194a7f98b31733c1f68",
               "type": "web_search_call",
               "status": "completed",
               "action": {
                 "type": "search",
-                "query": "top news headlines today"
+                "query": "today's top news headlines"
               }
             },
             {
-              "id": "msg_68bc957e08c0819592a14ca07aceb4370d2e71fba89a2817",
+              "id": "msg_08667bc7c9fc556c01690c17f7d49c8194884a7f5eb620c971",
               "type": "message",
               "status": "completed",
               "content": [
@@ -111,90 +102,76 @@ http_interactions:
                     {
                       "type": "url_citation",
                       "end_index": 709,
-                      "start_index": 594,
-                      "title": "Weekend weather update from FOX Weather: Hawaii declares state of emergency in preparation for Hurricane Kiko",
-                      "url": "https://www.foxweather.com/weather-news/daily-weather-update-september-6-2025?utm_source=openai"
-                    },
-                    {
-                      "type": "url_citation",
-                      "end_index": 1031,
-                      "start_index": 925,
-                      "title": "Surfer dead after mauling by large shark off Australia beach",
-                      "url": "https://www.cbsnews.com/news/australia-beach-sydney-shark-attack-fatal/?utm_source=openai"
-                    },
-                    {
-                      "type": "url_citation",
-                      "end_index": 1455,
-                      "start_index": 1298,
-                      "title": "LIVE: Israel kills 62 today as Gaza aid seekers, \u2018safe zones\u2019 attacked",
-                      "url": "https://www.aljazeera.com/news/liveblog/2025/9/6/live-israel-kills-more-than-50-people-as-gaza-city-endures-deadly-night?utm_source=openai"
-                    },
-                    {
-                      "type": "url_citation",
-                      "end_index": 1791,
-                      "start_index": 1696,
+                      "start_index": 614,
                       "title": "2025 in the United States",
                       "url": "https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 2231,
-                      "start_index": 2073,
+                      "end_index": 1024,
+                      "start_index": 929,
                       "title": "2025 in the United States",
                       "url": "https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 2231,
-                      "start_index": 2073,
-                      "title": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
-                      "url": "https://www.indiatoday.in/?utm_source=openai"
+                      "end_index": 1449,
+                      "start_index": 1351,
+                      "title": "2025 United States elections",
+                      "url": "https://en.wikipedia.org/wiki/2025_United_States_elections?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 2604,
-                      "start_index": 2502,
-                      "title": "Markets News, Sep. 5, 2025: Stocks Slip After Hitting New Highs Following Jobs Report; Treasury Yields Hit 5-Month Low Amid Rate-Cut Hopes",
-                      "url": "https://www.investopedia.com/dow-jones-today-09052025-11804075?utm_source=openai"
+                      "end_index": 2112,
+                      "start_index": 1897,
+                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
+                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 3022,
-                      "start_index": 2937,
-                      "title": "2025 in science",
-                      "url": "https://en.wikipedia.org/wiki/2025_in_science?utm_source=openai"
+                      "end_index": 2654,
+                      "start_index": 2435,
+                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
+                      "url": "https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 3454,
-                      "start_index": 3369,
-                      "title": "2025 in science",
-                      "url": "https://en.wikipedia.org/wiki/2025_in_science?utm_source=openai"
+                      "end_index": 3139,
+                      "start_index": 2920,
+                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
+                      "url": "https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 3837,
-                      "start_index": 3689,
-                      "title": "College football scores: Top 25 rankings, schedule, scores for Week 2",
-                      "url": "https://www.ncaa.com/news/football/article/2025-09-06/college-football-scores-top-25-rankings-schedule-scores-week-2?utm_source=openai"
+                      "end_index": 3627,
+                      "start_index": 3412,
+                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
+                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 4180,
-                      "start_index": 4063,
-                      "title": "Video US Open women's final today",
-                      "url": "https://abcnews.go.com/Entertainment/video/us-open-womens-final-today-125321479?utm_source=openai"
+                      "end_index": 4099,
+                      "start_index": 3884,
+                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
+                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 4571,
-                      "start_index": 4439,
-                      "title": "The HCPFive: Top News for Healthcare Providers from the Week of 08/31",
-                      "url": "https://www.hcplive.com/view/the-hcpfive-top-news-for-healthcare-providers-from-the-week-of-08-31?utm_source=openai"
+                      "end_index": 4633,
+                      "start_index": 4418,
+                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
+                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 5059,
+                      "start_index": 4966,
+                      "title": "2025 in the Philippines",
+                      "url": "https://en.wikipedia.org/wiki/2025_in_the_Philippines?utm_source=openai"
                     }
                   ],
                   "logprobs": [],
-                  "text": "Below is a comprehensive and structured summary of today\u2019s major news\u2014September\u202f6,\u202f2025\u2014highlighted across global developments, U.S. headlines, science, sports, and healthcare. All information is based on today\u2019s reports and sources.\n\n---\n\n##  Global News\n\n- **Hurricane Kiko heads toward Hawaii**  \n  Hawaii\u2019s acting governor has declared a statewide **state of emergency** as Hurricane Kiko, currently a **Category 4** storm, swirls approximately 1,000 miles east of the islands. While forecasters expect significant weakening before landfall, dangerous surf and rip currents remain threats. ([foxweather.com](https://www.foxweather.com/weather-news/daily-weather-update-september-6-2025?utm_source=openai))\n\n- **Fatal shark attack off Sydney beach**  \n  In a rare and tragic ocean incident, a surfer was fatally mauled by a **suspected large shark** at a popular beach near Sydney, Australia, according to police reports. ([cbsnews.com](https://www.cbsnews.com/news/australia-beach-sydney-shark-attack-fatal/?utm_source=openai))\n\n- **Continued violence in Gaza**  \n  In Gaza, **Israel reportedly killed 62 people** today, including at least 37 in Gaza City. The Israeli army also issued warnings for forced evacuations in the northern strip and reportedly targeted aid seekers and \u201csafe zones.\u201d ([aljazeera.com](https://www.aljazeera.com/news/liveblog/2025/9/6/live-israel-kills-more-than-50-people-as-gaza-city-endures-deadly-night?utm_source=openai))\n\n---\n\n##  United States and U.S. News\n\n- **Florida ends vaccine mandates**  \n  On September\u202f4, Florida\u2019s government moved to **eliminate all vaccination mandates**, affecting requirements for measles, polio, chickenpox, and other vaccines. ([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai))\n\n- **\u201cDepartment of War\u201d executive order signed**  \n  On September\u202f5, President Trump signed an executive order formally adopting **\u201cDepartment of War\u201d** as an **unofficial secondary title** for the Department of Defense\u2014though full renaming still requires Congressional approval. ([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai), [indiatoday.in](https://www.indiatoday.in/?utm_source=openai))\n\n- **Mixed market reaction to jobs data**  \n  U.S. markets dipped slightly after hitting new highs earlier in the week. This follows August labor data showing just **22,000 new jobs added**, well below analysts\u2019 expectations, and signaling potential economic softening. ([investopedia.com](https://www.investopedia.com/dow-jones-today-09052025-11804075?utm_source=openai))\n\n---\n\n##  Science & Technology\n\n- **Visceral fat accelerates heart aging**  \n  A study by the U.K.\u2019s Medical Research Council, published today, reveals that **visceral fat** (around internal organs) hardens heart tissue and accelerates aging, while fat in hips and thighs may offer **protective benefits** for women's heart health. ([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_science?utm_source=openai))\n\n- **New CO\u2082-absorbing material from plastic bottles**  \n  Researchers at the University of Copenhagen have developed a material named **BAETA**\u2014derived from recycled plastic bottles\u2014that can capture carbon dioxide effectively from the atmosphere. The process is energy-efficient and scalable, offering both environmental and commercial promise. ([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_science?utm_source=openai))\n\n---\n\n##  Sports\n\n- **College football: Michigan vs. Oklahoma ranked matchup**  \n  In Week\u202f2 of NCAA college football, **No.\u202f15 Michigan** will face **No.\u202f18 Oklahoma**, making it one of the few ranked-versus-ranked games of the day. ([ncaa.com](https://www.ncaa.com/news/football/article/2025-09-06/college-football-scores-top-25-rankings-schedule-scores-week-2?utm_source=openai))\n\n- **US Open Women\u2019s Final underway today**  \n  The **US Open women's final** is scheduled for today in Queens, New York. ESPN analyst Rennae Stubbs joined ABC News Live to discuss what to expect from the championship match. ([abcnews.go.com](https://abcnews.go.com/Entertainment/video/us-open-womens-final-today-125321479?utm_source=openai))\n\n---\n\n##  Healthcare & Society\n\n- **Healthcare industry roundup of the week**  \n  A new healthcare newsletter, \"The HCPFive\", offers updates on breakthroughs including FDA developments and phase\u00a03 clinical trial results from the week ending August\u202f31, 2025. ([hcplive.com](https://www.hcplive.com/view/the-hcpfive-top-news-for-healthcare-providers-from-the-week-of-08-31?utm_source=openai))\n\n---\n\n###  Summary by Category\n\nGlobal: \n- Hurricane Kiko emergency in Hawaii  \n- Fatal shark attack in Sydney  \n- Escalation in Gaza\n\nUnited States: \n- Florida ends vaccine mandates  \n- \u201cDepartment of War\u201d executive order  \n- Markets react to weak jobs data  \n\nScience & Tech: \n- Visceral fat\u2019s heart aging impact  \n- CO\u2082-absorbing BAETA material from plastics  \n\nSports: \n- College football ranked matchup  \n- Women\u2019s US Open final today  \n\nHealthcare: \n- Weekly healthcare developments\n\n---\n\nLet me know if you'd like deeper insights in any area\u2014whether it's politics, the science breakthroughs, US Open details, or implications of the vaccine decision in Florida!"
+                  "text": "Here is a comprehensive summary of the **major news stories from today, Thursday, November 6, 2025**, across U.S. national developments, international events, and key happenings in India and beyond. Precise dates are included to avoid ambiguity.\n\n---\n\n##  United States\n\n\u2022 **Longest-ever Federal Government Shutdown Continues**  \nAs of November 4, 2025, the U.S. federal government shutdown became the longest in history, surpassing the previous record from 2018\u20132019. The shutdown entered its 36th day on November 5, raising severe concerns about disruptions to essential services and programs like SNAP benefits.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai))\n\n\u2022 **UPS Cargo Plane Crash in Kentucky**  \nA tragic aviation accident claimed seven lives and left eleven injured when a UPS Airlines cargo plane crashed near Louisville Muhammad Ali International Airport on November 4.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai))\n\n\u2022 **Democratic Gains in 2025 Off-Year U.S. Elections**  \nHeld on November 4, the off-year elections resulted in Democratic victories in key regions. Democrats flipped the governorship of Virginia, retained New Jersey, and saw gains in state legislatures and ballot measures\u2014highlighting a \u201cblue wave\u201d trend in local politics.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_United_States_elections?utm_source=openai))\n\n---\n\n##  India and Global Highlights\n\n\u2022 **Allegations of Massive Voter Fraud in Haryana, India**  \nOn November 6, Rahul Gandhi accused that approximately 2.5\u202fmillion fake voters were registered in Haryana\u2014equating to one in eight\u2014and highlighted anomalies like the same photo of a Brazilian model appearing 22 times on voter ID cards. The Election Commission and BJP dismissed the claims as baseless, noting no official objections had been filed.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **PM Modi Felicitates Women\u2019s World Cup Champions**  \nIndia\u2019s Prime Minister Narendra Modi hosted the women\u2019s cricket team, celebrating their historic 2025 World Cup victory. The team, led by Harmanpreet Kaur, presented him with a signed \"NAMO 1\" jersey and were hailed as role models for youth fitness and empowerment.([indiatoday.in](https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **Tech Sovereignty: China Mandates Domestic AI Chips**  \nChina announced that all state-funded data centers must now use domestically produced AI chips\u2014reinforcing its push for technological self-reliance and tightening control over strategic chip supply chains.([indiatoday.in](https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **Indian-Origin Politicians Making Headlines Abroad**  \nThe rise of Indian-origin leaders continues globally: Zohran Mamdani was elected mayor in New York City, and similar figures are gaining influence in other U.S. locales, signaling shifting diaspora power dynamics.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **Release of Indian National After 43 Years in U.S. Prison**  \nSubramanyam Vedam (aka \u201cSubu\u201d) was freed after serving 43 years in a U.S. prison for an allegedly wrongful conviction\u2014highlighting systemic issues in immigration and prosecutorial processes.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **France Investigates SHEIN Over Questionable Product Sales**  \nConcerns have emerged in France over SHEIN's planned Paris store, following allegations that it sold illicit items\u2014ranging from weapons to sex dolls. The government has launched a formal probe into the retailer's practices and supply chain compliance.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n---\n\n##  Philippines \u2013 Typhoon Tino Aftermath\n\n\u2022 **State of Calamity Declared Following Typhoon Tino**  \nTyphoon Tino (Kalmaegi) prompted a state of calamity declaration in Cebu City and surrounding areas on November 4. The disaster caused extensive damage, claiming at least 114 lives, injuring 82, and leaving 127 people missing.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_Philippines?utm_source=openai))\n\n---\n\n##  Summary Table of Key Developments\n\n| Region              | Key Event                                                        |\n|---------------------|------------------------------------------------------------------|\n| U.S.                | Longest shutdown on record; UPS crash; Democratic election wins   |\n| India/Global        | Voter fraud accusations; women\u2019s cricket triumph; tech policies; diaspora politics; wrongful conviction release; SHEIN probe |\n| Philippines         | Typhoon-induced calamity and loss of life                        |\n\n---\n\nIf you'd like additional detail on any of these stories\u2014such as frontline coverage of the government shutdown, investigative follow-ups on tech policy, cricket highlights, or updates on the typhoon\u2019s relief efforts\u2014feel free to ask."
                 }
               ],
               "role": "assistant"
@@ -203,6 +180,7 @@ http_interactions:
           "parallel_tool_calls": true,
           "previous_response_id": null,
           "prompt_cache_key": null,
+          "prompt_cache_retention": null,
           "reasoning": {
             "effort": null,
             "summary": null
@@ -236,18 +214,18 @@ http_interactions:
           "top_p": 1.0,
           "truncation": "disabled",
           "usage": {
-            "input_tokens": 17327,
+            "input_tokens": 16766,
             "input_tokens_details": {
               "cached_tokens": 0
             },
-            "output_tokens": 1035,
+            "output_tokens": 1045,
             "output_tokens_details": {
               "reasoning_tokens": 0
             },
-            "total_tokens": 18362
+            "total_tokens": 17811
           },
           "user": null,
           "metadata": {}
         }
-  recorded_at: Sat, 06 Sep 2025 20:11:16 GMT
+  recorded_at: Thu, 06 Nov 2025 03:37:20 GMT
 recorded_with: VCR 6.3.1

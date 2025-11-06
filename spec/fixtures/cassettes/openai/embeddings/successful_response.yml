@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 06 Sep 2025 20:12:11 GMT
+      - Thu, 06 Nov 2025 03:37:48 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -39,7 +39,7 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '73'
+      - '100'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
@@ -47,9 +47,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Via:
-      - envoy-router-5fc584ff8-k7jgw
+      - envoy-router-6fc684964c-fldj8
       X-Envoy-Upstream-Service-Time:
-      - '77'
+      - '462'
       X-Ratelimit-Limit-Requests:
       - '3000'
       X-Ratelimit-Limit-Tokens:
@@ -63,21 +63,23 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 0s
       X-Request-Id:
-      - req_4491a0b312a8460eac2e2672184a4b37
+      - req_ab4172c080bc46efb92efa3fc121dad5
+      X-Openai-Proxy-Wasm:
+      - v0.1
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=i_x3OKxkRsrYMpoiZE1qAlc2h3wi7ev04I1rqeKpQqE-1757189531-1.0.1.1-vhJdkjxIeoU9GK__m14ws0CwkVsHzCQJeR461PJsxWjMhmXUC_SSlR2AOIvuMAT.LzmsMFOjtIM8wkyubmP99z0WmsrYCURI70EPXgnHClI;
-        path=/; expires=Sat, 06-Sep-25 20:42:11 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=HJy9N6O0h6fXa.JjoldFsCKVf1qTFSpXhzAPzaM2gyY-1762400268-1.0.1.1-VgXTWcoAQNbvAPqWlhqqCl6B5Ixu49sgvJyws9bJg.HuOXQe0WkcZK2peLaGEAtRj4OpV_tJBRS4Rg7tky0y4Gd7VCjW_c0_CeHaD.1GdBg;
+        path=/; expires=Thu, 06-Nov-25 04:07:48 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=bHtg83HlH2_Jee0IANZ4rHrN9oHTaRU3gz5NRkomwRw-1757189531156-0.0.1.1-604800000;
+      - _cfuvid=yD14KUr8Ncech7l2Vg2iH.KPq78fUXrrJKD5DfAJiQI-1762400268043-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 97b09ea2486ef233-GRU
+      - 99a18de33cfaa52c-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -1635,5 +1637,5 @@ http_interactions:
             "total_tokens": 3
           }
         }
-  recorded_at: Sat, 06 Sep 2025 20:11:40 GMT
+  recorded_at: Thu, 06 Nov 2025 03:37:36 GMT
 recorded_with: VCR 6.3.1

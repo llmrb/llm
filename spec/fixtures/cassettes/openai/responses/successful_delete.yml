@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 06 Sep 2025 20:13:55 GMT
+      - Thu, 06 Nov 2025 03:39:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -51,38 +51,41 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_d04701d435e9c863f2fd9bdd43816da9
+      - req_72b3c8e4ea1943999569d4d98ae44818
       Openai-Processing-Ms:
-      - '788'
+      - '758'
       X-Envoy-Upstream-Service-Time:
-      - '792'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - '763'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=nJpMBbL.b.unfAgv42AuUAEm7NMuiRTM_s304GtWH2w-1757189635-1.0.1.1-HAVXfFZH6q6ot6zJUQXAzILNhGuwTri3RJa0IIe.wIe2v816JZQtGU4W4X2PrTK1xiLBoROOzRLybRaZh1wPfIP_U_A1m0IQXN1SSPQmFA0;
-        path=/; expires=Sat, 06-Sep-25 20:43:55 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=K9he.JnUnyunRe6pu3JHlrgS5Y2QS0dlv88J73wwHO4-1762400369-1.0.1.1-Fq2HkLUiuvVMFS49nTUbFmph_vXPE519eUaMSAqGzQyBAC4S2j0l4OM87Y698ginq0PtT8WM1jvzB8MsdnWZsvHZJK4hNk11T4_wb.Pin1w;
+        path=/; expires=Thu, 06-Nov-25 04:09:29 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=rwm4Cp9K5nVixtWTeSdAWXH61Hm459qoBoZ9D_FIc1Y-1757189635148-0.0.1.1-604800000;
+      - _cfuvid=CPAwc3eygzQT8nXIA6kaz9mvDY0JluzJlrFVP9y.cRI-1762400369246-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 97b0a12c7938627c-GRU
+      - 99a1905df81c098b-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68bc960223148190904384b19812816c0374485fb9f0315f",
+          "id": "resp_09b4f49de88ba14700690c18706bd88195a75756ac08212aac",
           "object": "response",
-          "created_at": 1757189634,
+          "created_at": 1762400368,
           "status": "completed",
           "background": false,
+          "billing": {
+            "payer": "developer"
+          },
           "error": null,
           "incomplete_details": null,
           "instructions": null,
@@ -91,7 +94,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_68bc9602bcc88190a5c0a2be0dde93f10374485fb9f0315f",
+              "id": "msg_09b4f49de88ba14700690c1870e1d0819593132567ce87d136",
               "type": "message",
               "status": "completed",
               "content": [
@@ -99,7 +102,7 @@ http_interactions:
                   "type": "output_text",
                   "annotations": [],
                   "logprobs": [],
-                  "text": "Hello! How can I help you today?"
+                  "text": "Hello! How can I help you today? \ud83d\ude0a"
                 }
               ],
               "role": "assistant"
@@ -108,6 +111,7 @@ http_interactions:
           "parallel_tool_calls": true,
           "previous_response_id": null,
           "prompt_cache_key": null,
+          "prompt_cache_retention": null,
           "reasoning": {
             "effort": null,
             "summary": null
@@ -132,19 +136,19 @@ http_interactions:
             "input_tokens_details": {
               "cached_tokens": 0
             },
-            "output_tokens": 10,
+            "output_tokens": 11,
             "output_tokens_details": {
               "reasoning_tokens": 0
             },
-            "total_tokens": 18
+            "total_tokens": 19
           },
           "user": null,
           "metadata": {}
         }
-  recorded_at: Sat, 06 Sep 2025 20:13:24 GMT
+  recorded_at: Thu, 06 Nov 2025 03:39:17 GMT
 - request:
     method: delete
-    uri: https://api.openai.com/v1/responses/resp_68bc960223148190904384b19812816c0374485fb9f0315f
+    uri: https://api.openai.com/v1/responses/resp_09b4f49de88ba14700690c18706bd88195a75756ac08212aac
     body:
       encoding: US-ASCII
       string: ''
@@ -165,7 +169,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 06 Sep 2025 20:13:56 GMT
+      - Thu, 06 Nov 2025 03:39:29 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -179,36 +183,36 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_138bbf05a009cd46acee84ec97d5d28e
+      - req_6b77b3dc6c09408d9906c3ecd6d06940
       Openai-Processing-Ms:
-      - '135'
+      - '303'
       X-Envoy-Upstream-Service-Time:
-      - '140'
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - '307'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Tt6FzNjLX0ZG51AS0tYTpPfPJmBr5ebBJYJwdeOyQhg-1757189636-1.0.1.1-czkwlZGRQZEhVhvAg4.vjoEpXqlQbi9UZFdJVtR9luCzUB3PhUqa8XUo037yempmuyDGIu.UWe7uvjqsMdWNTqdjeS40PBV3QmRVyPuNLzk;
-        path=/; expires=Sat, 06-Sep-25 20:43:56 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=REi6yhX8mSSPj0A44JtbIRPjXfcC2CtH2S5T5BlHNkg-1762400369-1.0.1.1-s3c7chwWWQy86Z6PFedm8A0283Z88DxghU4ALorAQU_1D75MY9YSLmrigRrSfB6qz_vjMtLQ4S38taaZ25aW_M_yfgohmsn3v_6A0Fi.sRs;
+        path=/; expires=Thu, 06-Nov-25 04:09:29 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=_OZ6W9o7sk91JEKt3tr.0jH7AXxgiKBoD_vte_Z5mrs-1757189636090-0.0.1.1-604800000;
+      - _cfuvid=g9H3bTaYWfZPwqFlCR2dvSC7vtD9DhgH8QJw5_91_uk-1762400369786-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 97b0a1341fd9a17e-GRU
+      - 99a190642eb9626e-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_68bc960223148190904384b19812816c0374485fb9f0315f",
+          "id": "resp_09b4f49de88ba14700690c18706bd88195a75756ac08212aac",
           "object": "response.deleted",
           "deleted": true
         }
-  recorded_at: Sat, 06 Sep 2025 20:13:25 GMT
+  recorded_at: Thu, 06 Nov 2025 03:39:17 GMT
 recorded_with: VCR 6.3.1

@@ -8,7 +8,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful create operation",
           vcr: {cassette_name: "openai/vector_stores/successful_create"} do
-    subject(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
+    subject(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/readme.md") }
 
     after do
@@ -30,8 +30,8 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful get operation",
           vcr: {cassette_name: "openai/vector_stores/successful_get"} do
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
-    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
     subject { provider.vector_stores.get(vector: store) }
     after do
       provider.vector_stores.delete(vector: store)
@@ -52,8 +52,8 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful delete operation",
           vcr: {cassette_name: "openai/vector_stores/successful_delete"} do
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
-    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
     subject { provider.vector_stores.delete(vector: store) }
     after { provider.files.delete(file:) }
 
@@ -70,8 +70,8 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when givee a successful 'all files' operation",
           vcr: {cassette_name: "openai/vector_stores/successful_all_files"} do
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
-    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
     subject { provider.vector_stores.all_files(vector: store) }
     after do
       provider.vector_stores.delete(vector: store)
@@ -91,7 +91,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful 'add file' operation",
           vcr: {cassette_name: "openai/vector_stores/successful_add_file"} do
-    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file1.id]) }
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file1.id]) }
     let(:file1) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
     let(:file2) { provider.files.create(file: "spec/fixtures/documents/readme.md") }
     subject { provider.vector_stores.add_file(vector: store, file: file2) }
@@ -119,6 +119,11 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
     subject { provider.vector_stores.update_file(vector: store, file:, attributes: {tag: "updated"}) }
 
+    before do
+      store
+      sleep(5)
+    end
+
     after do
       provider.vector_stores.delete(vector: store)
       provider.files.delete(file:)
@@ -138,9 +143,14 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful 'get file' operation",
           vcr: {cassette_name: "openai/vector_stores/successful_get_file"} do
-    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
     subject { provider.vector_stores.get_file(vector: store, file:) }
+
+    before do
+      store
+      sleep(5)
+    end
 
     after do
       provider.vector_stores.delete(vector: store)
