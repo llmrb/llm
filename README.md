@@ -438,8 +438,9 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
+url = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
-res1 = bot.chat ["Tell me about this URL", bot.image_url("...")]
+res1 = bot.chat ["Tell me about this URL", bot.image_url(url)]
 res1.choices.each { print "[#{it.role}] ", it.content, "\n" }
 
 file = llm.files.create(file: "/book.pdf")
