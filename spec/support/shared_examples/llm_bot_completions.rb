@@ -15,16 +15,16 @@ RSpec.shared_examples "LLM::Bot: completions" do |dirname, options = {}|
 
     let(:messages) { bot.messages }
     let(:message) { messages.to_a[-1] }
-
-    before do
-      req = bot.build do |prompt|
-        prompt.chat system_prompt
-        prompt.chat "What is 3+2 ?"
-        prompt.chat "What is 5+5 ?"
-        prompt.chat "What is 5+7 ?"
+    let(:prompt) do
+      bot.build_prompt do
+        _1.chat system_prompt
+        _1.chat "What is 3+2 ?"
+        _1.chat "What is 5+5 ?"
+        _1.chat "What is 5+7 ?"
       end
-      bot.chat(req)
     end
+
+    before { bot.chat(prompt) }
 
     it "provides a response" do
       expect(message).to have_attributes(

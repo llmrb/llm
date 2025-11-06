@@ -1,9 +1,9 @@
 ## About
 
 llm.rb is a zero-dependency Ruby toolkit for Large Language Models that
-includes OpenAI, Gemini, Anthropic, xAI (Grok), [zAI](https://z.ai), DeepSeek,
-Ollama, and LlamaCpp. The toolkit includes full support for chat, streaming,
-tool calling, audio, images, files, and structured outputs (JSON Schema).
+includes OpenAI, Gemini, Anthropic, xAI (Grok), zAI, DeepSeek, Ollama,
+and LlamaCpp. The toolkit includes full support for chat, streaming,
+tool calling, audio, images, files, and structured outputs.
 
 ## Quick start
 
@@ -150,6 +150,7 @@ llm = LLM.openai(key: "yourapikey")
 llm = LLM.gemini(key: "yourapikey")
 llm = LLM.anthropic(key: "yourapikey")
 llm = LLM.xai(key: "yourapikey")
+llm = LLM.zai(key: "yourapikey")
 llm = LLM.deepseek(key: "yourapikey")
 
 ##
@@ -234,7 +235,7 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
-url = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
+url = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
 prompt = bot.build_prompt do
   it.system "Your task is to answer all user queries"
@@ -387,46 +388,6 @@ bot.chat bot.functions.map(&:call) # report return value to the LLM
 # {stderr: "", stdout: "FreeBSD"}
 ```
 
-#### Server Tools
-
-The
-[LLM::Function](https://0x1eef.github.io/x/llm.rb/LLM/Function.html)
-and
-[LLM::Tool](https://0x1eef.github.io/x/llm.rb/LLM/Tool.html)
-classes can define a local function or tool that can be called by
-a provider on your behalf, and the
-[LLM::ServerTool](https://0x1eef.github.io/x/llm.rb/LLM/ServerTool.html)
-class represents a tool that is defined and implemented by a provider, and we can
-request that the provider call the tool on our behalf. That's the primary difference
-between a function implemented locally and a tool implemented by a provider. The
-available tools depend on the provider, and the following example uses the
-OpenAI provider to execute Python code on OpenAI's servers:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.openai(key: ENV["KEY"])
-res = llm.responses.create "Run: 'print(\"hello world\")'",
-                                tools: [llm.server_tool(:code_interpreter)]
-print res.output_text, "\n"
-```
-
-#### Web Search
-
-A common tool among all providers is the ability to perform a web search, and
-the following example uses the OpenAI provider to search the web using the
-Web Search tool. This can also be done with the Anthropic and Gemini providers:
-
-```ruby
-#!/usr/bin/env ruby
-require "llm"
-
-llm = LLM.openai(key: ENV["KEY"])
-res = llm.web_search(query: "summarize today's news")
-print res.output_text, "\n"
-```
-
 ### Files
 
 #### Create
@@ -477,8 +438,9 @@ require "llm"
 
 llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
+url = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
-res1 = bot.chat ["Tell me about this URL", bot.image_url("...")]
+res1 = bot.chat ["Tell me about this URL", bot.image_url(url)]
 res1.choices.each { print "[#{it.role}] ", it.content, "\n" }
 
 file = llm.files.create(file: "/book.pdf")
@@ -675,45 +637,6 @@ bot = LLM::Bot.new(llm, model: model.id)
 res = bot.chat "Hello #{model.id} :)"
 res.choices.each { print "[#{it.role}] ", it.content, "\n" }
 ```
-
-## Reviews
-
-I supplied both Gemini and DeepSeek with the contents of [lib/](https://github.com/llmrb/llm/tree/main/lib)
-and [README.md](https://github.com/llmrb/llm#readme) via [llm-shell](https://github.com/llmrb/llm-shell#readme).
-Their feedback was way more positive than I could have imagined 😅 These are genuine responses though, with no
-special prompting or engineering. I just provided them with the source code and asked for their opinion.
-
-<details>
-  <summary>Review by Gemini</summary>
-  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/gemini.png?raw=true" alt="Gemini review" />
-</details>
-
-<details>
-  <summary>Review by DeepSeek</summary>
-  <img src="https://github.com/llmrb/llm/blob/main/share/llm-shell/examples/deepseek.png?raw=true" alt="DeepSeek review" />
-</details>
-
-## Documentation
-
-### Guides
-
-* [An introduction to RAG](https://0x1eef.github.io/posts/an-introduction-to-rag-with-llm.rb/) &ndash;
-  a blog post that implements the RAG pattern
-* [How to estimate the age of a person in a photo](https://0x1eef.github.io/posts/age-estimation-with-llm.rb/) &ndash;
-  a blog post that implements an age estimation tool
-* [How to edit an image with Gemini](https://0x1eef.github.io/posts/how-to-edit-images-with-gemini/) &ndash;
-  a blog post that implements image editing with Gemini
-* [Fast sailing with persistent connections](https://0x1eef.github.io/posts/persistent-connections-with-llm.rb/) &ndash;
-  a blog post that optimizes performance with a thread-safe connection pool
-* [How to build agents (with llm.rb)](https://0x1eef.github.io/posts/how-to-build-agents-with-llm.rb/) &ndash;
-  a blog post that implements agentic behavior via tools
-
-### API
-
-The README tries to provide a high-level overview of the library. For everything
-else there's the API reference. It covers classes and methods that the README glances
-over or doesn't cover at all. The API reference is available at
-[0x1eef.github.io/x/llm.rb](https://0x1eef.github.io/x/llm.rb).
 
 ## Install
 

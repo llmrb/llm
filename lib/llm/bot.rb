@@ -13,12 +13,14 @@ module LLM
   #
   #   llm  = LLM.openai(key: ENV["KEY"])
   #   bot  = LLM::Bot.new(llm)
-  #   url  = "https://en.wikipedia.org/wiki/Special:FilePath/Cognac_glass.jpg"
+  #   url  = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
   #
-  #   bot.chat "Your task is to answer all user queries", role: :system
-  #   bot.chat ["Tell me about this URL", URI(url)], role: :user
-  #   bot.chat ["Tell me about this PDF", File.open("handbook.pdf", "rb")], role: :user
-  #   bot.chat "Are the URL and PDF similar to each other?", role: :user
+  #   prompt = bot.build_prompt do
+  #     it.system "Your task is to answer all user queries"
+  #     it.user ["Tell me about this URL", bot.image_url(url)]
+  #     it.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
+  #   end
+  #   bot.chat(prompt)
   #
   #   # The full conversation history is in bot.messages
   #   bot.messages.each { print "[#{_1.role}] ", _1.content, "\n" }

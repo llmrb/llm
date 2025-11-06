@@ -148,15 +148,15 @@ RSpec.describe "LLM::OpenAI::Files" do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Bot.new(provider) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
-
-    before do
-      req = bot.build do |prompt|
-        prompt.user(file)
-        prompt.user("Is this PDF document about FreeBSD?")
-        prompt.user("Answer with yes or no. Nothing else.")
+    let(:prompt) do
+      bot.build_prompt do
+        _1.user(file)
+        _1.user("Is this PDF document about FreeBSD?")
+        _1.user("Answer with yes or no. Nothing else.")
       end
-      bot.respond(req)
     end
+
+    before { bot.respond(prompt) }
 
     it "describes the document" do
       is_expected.to eq("yes")
@@ -191,15 +191,15 @@ RSpec.describe "LLM::OpenAI::Files" do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
     let(:bot) { LLM::Bot.new(provider) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
-
-    before do
-      req = bot.build do |prompt|
-        prompt.chat(bot.remote_file(file))
-        prompt.chat("Is this PDF document about FreeBSD?")
-        prompt.chat("Answer with yes or no. Nothing else.")
+    let(:prompt) do
+      bot.build_prompt do
+        _1.chat(bot.remote_file(file))
+        _1.chat("Is this PDF document about FreeBSD?")
+        _1.chat("Answer with yes or no. Nothing else.")
       end
-      bot.chat(req)
     end
+
+    before { bot.chat(prompt) }
 
     it "describes the document" do
       is_expected.to eq("yes")

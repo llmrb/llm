@@ -14,17 +14,17 @@
 #   res = bot.chat(prompt)
 class LLM::Builder
   ##
-  # @param [Proc] b
-  #  Evaluator block
-  def initialize(&b)
+  # @param [Proc] evaluator
+  #  The evaluator
+  def initialize(&evaluator)
     @buffer = []
-    @b = b
+    @evaluator = evaluator
   end
 
   ##
   # @return [void]
   def call
-    @b.call(self)
+    @evaluator.call(self)
   end
 
   ##

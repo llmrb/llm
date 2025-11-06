@@ -85,17 +85,19 @@ RSpec.describe "LLM::OpenAI::Responses" do
         fn.define { |command:| {success: Kernel.system(command)} }
       end
     end
+    let(:prompt) do
+      bot.build_prompt do
+        _1.system "You are a bot that can run UNIX commands"
+        _1.user "What is the date?"
+      end
+    end
 
     before do
       allow(Kernel).to receive(:system).and_return("2024-01-01")
     end
 
     it "calls a function" do
-      req = bot.build do |prompt|
-        prompt.system "You are a bot that can run UNIX commands"
-        prompt.user "What is the date?"
-      end
-      bot.respond(req)
+      bot.respond(prompt)
       expect(bot.functions).not_to be_empty
       bot.respond bot.functions.map(&:call)
       expect(bot.functions).to be_empty
@@ -141,16 +143,16 @@ RSpec.describe "LLM::OpenAI::Responses" do
       "An answer should be a number, for example: 5. " \
       "Nothing else"
     end
-
-    before do
-      req = bot.build do |prompt|
-        prompt.user system_prompt
-        prompt.user "What is 3+2 ?"
-        prompt.user "What is 5+5 ?"
-        prompt.user "What is 5+7 ?"
+    let(:prompt) do
+      bot.build_prompt do
+        _1.user system_prompt
+        _1.user "What is 3+2 ?"
+        _1.user "What is 5+5 ?"
+        _1.user "What is 5+7 ?"
       end
-      bot.respond(req)
     end
+
+    before { bot.respond(prompt) }
 
     context "with the contents of the IO" do
       subject { stream.string }
@@ -174,14 +176,14 @@ RSpec.describe "LLM::OpenAI::Responses" do
         fn.define { |command:| {success: Kernel.system(command)} }
       end
     end
-
-    before do
-      req = bot.build do |prompt|
-        prompt.user("You are a bot that can run UNIX system commands")
-        prompt.user("Hey, run the 'date' command")
+    let(:prompt) do
+      bot.build_prompt do
+        _1.system "You are a bot that can run UNIX commands"
+        _1.user "What is the date?"
       end
-      bot.respond(req)
     end
+
+    before { bot.respond(prompt) }
 
     it "calls the function(s)" do
       expect(Kernel).to receive(:system).with("date").and_return("2024-01-01")

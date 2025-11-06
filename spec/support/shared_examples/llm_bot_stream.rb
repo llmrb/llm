@@ -14,16 +14,16 @@ RSpec.shared_examples "LLM::Bot: text stream" do |dirname, options = {}|
       "An answer should be a number, for example: 5. " \
       "Nothing else"
     end
-
-    before do
-      req = bot.build do |prompt|
-        prompt.user system_prompt
-        prompt.user "What is 3+2 ?"
-        prompt.user "What is 5+5 ?"
-        prompt.user "What is 5+7 ?"
+    let(:prompt) do
+      bot.build_prompt do
+        _1.user system_prompt
+        _1.user "What is 3+2 ?"
+        _1.user "What is 5+5 ?"
+        _1.user "What is 5+7 ?"
       end
-      bot.chat(req)
     end
+
+    before { bot.chat(prompt) }
 
     context "with the contents of the IO" do
       subject { stream.string }
@@ -58,13 +58,14 @@ RSpec.shared_examples "LLM::Bot: tool stream" do |dirname, options = {}|
         fn.define { |command:| {success: Kernel.system(command)} }
       end
     end
-    before do
-      req = bot.build do |bot|
-        bot.user "You are a bot that can run UNIX system commands"
-        bot.user "Hey, run the 'date' command"
+    let(:prompt) do
+      bot.build_prompt do
+        _1.user "You are a bot that can run UNIX system commands"
+        _1.user "Hey, run the 'date' command"
       end
-      bot.chat(req)
     end
+
+    before { bot.chat(prompt) }
 
     it "calls the function(s)" do
       expect(Kernel).to receive(:system).with("date").and_return(true)

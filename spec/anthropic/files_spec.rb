@@ -162,17 +162,18 @@ RSpec.describe "LLM::Anthropic::Files" do
   context "when asked to describe the contents of a file",
           vcr: {cassette_name: "anthropic/files/describe_freebsd.sysctl_3.pdf"} do
     subject { bot.messages.find(&:assistant?).content.downcase[0..2] }
+
     let(:bot) { LLM::Bot.new(provider) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/freebsd.sysctl.pdf") }
-
-    before do
-      req = bot.build do |prompt|
-        prompt.user(file)
-        prompt.user("Is this PDF document about FreeBSD?")
-        prompt.user("Answer with yes or no. Nothing else.")
+    let(:prompt) do
+      bot.build_prompt do
+        _1.user(file)
+        _1.user("Is this PDF document about FreeBSD?")
+        _1.user("Answer with yes or no. Nothing else.")
       end
-      bot.chat(req)
     end
+
+    before { bot.chat(prompt) }
 
     it "describes the document" do
       is_expected.to eq("yes")

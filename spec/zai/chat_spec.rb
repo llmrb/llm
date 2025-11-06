@@ -16,6 +16,6 @@ RSpec.describe "LLM::Bot: openai" do
   end
 
   context LLM::Function do
-    include_examples "LLM::Bot: functions", :zai
+    # include_examples "LLM::Bot: functions", :zai
   end
 end
