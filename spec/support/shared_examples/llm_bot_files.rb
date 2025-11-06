@@ -10,7 +10,7 @@ RSpec.shared_examples "LLM::Bot: files" do |dirname, options = {}|
 
     let(:params) { super().merge!({}) }
     let(:image) { "spec/fixtures/images/bluebook.png" }
-    let(:prompt) do
+    let(:prompts) do
       [
         "Could the image be a book ?",
         "If there is any chance, answer in the affirmative",
@@ -19,11 +19,14 @@ RSpec.shared_examples "LLM::Bot: files" do |dirname, options = {}|
         image
       ]
     end
+    let(:prompt) do
+      bot.build_prompt do |p|
+        prompts.each { p.chat(_1, role: :user) }
+      end
+    end
 
     context "when given as an array of messages" do
-      before do
-        bot.chat(prompt, role: :user)
-      end
+      before { bot.chat(prompts) }
 
       it "affirms the image description" do
         is_expected.to eq("yes")
@@ -31,12 +34,7 @@ RSpec.shared_examples "LLM::Bot: files" do |dirname, options = {}|
     end
 
     context "when given as individual messages" do
-      before do
-        req = bot.build do |p|
-          prompt.each { p.chat(_1, role: :user) }
-        end
-        bot.chat(req)
-      end
+      before { bot.chat(prompt) }
 
       it "affirms the image description" do
         is_expected.to eq("yes")

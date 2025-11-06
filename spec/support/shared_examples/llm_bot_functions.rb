@@ -8,14 +8,14 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
   shared_examples "system" do |request|
     let(:params) { {tools: [tool]} }
     let(:returns) { bot.messages.select(&:tool_return?) }
-
-    before do
-      req = bot.build do |prompt|
-        prompt.user "You are a bot that can run UNIX commands"
-        prompt.user request
+    let(:prompt) do
+      bot.build_prompt do
+        _1.user "You are a bot that can run UNIX commands"
+        _1.user request
       end
-      bot.chat(req)
     end
+
+    before { bot.chat(prompt) }
 
     it "calls the function" do
       expect(Kernel).to receive(:system).with("date").and_return("2025-08-24")
@@ -54,13 +54,14 @@ RSpec.shared_examples "LLM::Bot: functions" do |dirname, options = {}|
     end
     let(:params) { {tools: [tool]} }
     let(:returns) { bot.messages.select(&:tool_return?) }
-
-    before do
-      bot.build do |prompt|
-        prompt.user "You are a bot that can run UNIX commands"
-        prompt.user(request)
+    let(:prompt) do
+      bot.build_prompt do
+        _1.user "You are a bot that can run UNIX commands"
+        _1.user request
       end
     end
+
+    before { bot.chat(prompt) }
 
     it "calls the functions" do
       i = 0

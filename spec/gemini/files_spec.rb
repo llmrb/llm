@@ -54,21 +54,22 @@ RSpec.describe "LLM::Gemini::Files" do
   context "when given a successful translation operation (bismillah.mp3)",
           vcr: {cassette_name: "gemini/files/successful_translation_bismillah", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content.downcase.strip[0..2] }
+
     let(:file) { provider.files.create(file: "spec/fixtures/audio/bismillah.mp3") }
     let(:bot) { LLM::Bot.new(provider) }
-    after { provider.files.delete(file:) }
-
-    before do
-      req = bot.build do |prompt|
-        prompt.chat "Hello"
-        prompt.chat "I want to ask you a question"
-        prompt.chat "Can the following audio file be translated as:"
-        prompt.chat "In the name of Allah, The Most Compassionate, The Most Merciful"
-        prompt.chat "Answer with yes or no. Nothing else. Thank you."
-        prompt.chat file
+    let(:prompt) do
+      bot.build_prompt do
+        _1.chat "Hello"
+        _1.chat "I want to ask you a question"
+        _1.chat "Can the following audio file be translated as:"
+        _1.chat "In the name of Allah, The Most Compassionate, The Most Merciful"
+        _1.chat "Answer with yes or no. Nothing else. Thank you."
+        _1.chat file
       end
-      bot.chat(req)
     end
+
+    after { provider.files.delete(file:) }
+    before { bot.chat(prompt) }
 
     it "translates the audio clip" do
       is_expected.to eq("yes")
@@ -78,8 +79,10 @@ RSpec.describe "LLM::Gemini::Files" do
   context "when given a successful translation operation (alhamdullilah.mp3)",
           vcr: {cassette_name: "gemini/files/successful_translation_alhamdullilah", match_requests_on: [:method]} do
     subject { bot.messages.find(&:assistant?).content }
+
     let(:file) { provider.files.create(file: "spec/fixtures/audio/alhamdullilah.mp3") }
     let(:bot) { LLM::Bot.new(provider) }
+
     after { provider.files.delete(file:) }
 
     before do
