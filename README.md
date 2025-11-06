@@ -33,10 +33,8 @@ We can send multiple messages at once by building a chain of messages:
 #!/usr/bin/env ruby
 require "llm"
 
-llm  = LLM.openai(key: ENV["KEY"])
-bot  = LLM::Bot.new(llm)
-url  = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
-
+llm = LLM.openai(key: ENV["KEY"])
+bot = LLM::Bot.new(llm)
 prompt = bot.build_prompt do
   it.system "Your task is to answer all user queries"
   it.user "What language should I learn next ?"
