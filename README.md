@@ -20,16 +20,14 @@ llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
 loop do
   print "> "
-  input = $stdin.gets&.chomp || break
-  res = bot.chat(input)
+  bot.chat($stdin.gets)
   print "\n"
 end
 ```
 
 #### Build
 
-We can send multiple messages at the same time by building a chain
-of messages:
+We can send multiple messages at once by building a chain of messages:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -41,18 +39,17 @@ url  = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lisc_lipy.jpg"
 
 prompt = bot.build_prompt do
   it.system "Your task is to answer all user queries"
-  it.user ["Tell me about this URL", bot.image_url(url)]
-  it.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
+  it.user "What language should I learn next ?"
 end
 
 bot.chat(prompt)
 bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
-#### Analysis
+#### Images
 
-We can perform age estimation given a photo and return a response
-with structured outputs:
+We can generate an image on the fly and estimate how old the person
+in the image is:
 
 ```ruby
 #!/usr/bin/env ruby

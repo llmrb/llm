@@ -130,10 +130,9 @@ module LLM
     #     it.user "Hello, can you assist me?"
     #   end
     #   bot.chat(prompt)
-    def build(&)
+    def build_prompt(&)
       LLM::Builder.new(&).tap(&:call)
     end
-    alias_method :build_prompt, :build
 
     ##
     # Recongize an object as a URL to an image
