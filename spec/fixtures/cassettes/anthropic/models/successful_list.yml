@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Aug 2025 16:46:43 GMT
+      - Thu, 06 Nov 2025 03:56:46 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -35,15 +35,13 @@ http_interactions:
       Connection:
       - keep-alive
       Request-Id:
-      - req_011CScLiKD8JaVayUDNf8hW7
+      - req_011CUqxp4frsw4ajUCnnHzMy
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Anthropic-Organization-Id:
       - 89796e02-61da-4a75-b7ee-c55929f0d748
       X-Envoy-Upstream-Service-Time:
-      - '20'
-      Via:
-      - 1.1 google
+      - '150'
       Cf-Cache-Status:
       - DYNAMIC
       X-Robots-Tag:
@@ -51,18 +49,18 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 976d86b34f821ac9-GRU
+      - 99a1a9b3bccdf213-GRU
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"model","id":"claude-opus-4-1-20250805","display_name":"Claude
+      string: '{"data":[{"type":"model","id":"claude-haiku-4-5-20251001","display_name":"Claude
+        Haiku 4.5","created_at":"2025-10-15T00:00:00Z"},{"type":"model","id":"claude-sonnet-4-5-20250929","display_name":"Claude
+        Sonnet 4.5","created_at":"2025-09-29T00:00:00Z"},{"type":"model","id":"claude-opus-4-1-20250805","display_name":"Claude
         Opus 4.1","created_at":"2025-08-05T00:00:00Z"},{"type":"model","id":"claude-opus-4-20250514","display_name":"Claude
         Opus 4","created_at":"2025-05-22T00:00:00Z"},{"type":"model","id":"claude-sonnet-4-20250514","display_name":"Claude
         Sonnet 4","created_at":"2025-05-22T00:00:00Z"},{"type":"model","id":"claude-3-7-sonnet-20250219","display_name":"Claude
-        Sonnet 3.7","created_at":"2025-02-24T00:00:00Z"},{"type":"model","id":"claude-3-5-sonnet-20241022","display_name":"Claude
-        Sonnet 3.5 (New)","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-5-haiku-20241022","display_name":"Claude
-        Haiku 3.5","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-5-sonnet-20240620","display_name":"Claude
-        Sonnet 3.5 (Old)","created_at":"2024-06-20T00:00:00Z"},{"type":"model","id":"claude-3-haiku-20240307","display_name":"Claude
+        Sonnet 3.7","created_at":"2025-02-24T00:00:00Z"},{"type":"model","id":"claude-3-5-haiku-20241022","display_name":"Claude
+        Haiku 3.5","created_at":"2024-10-22T00:00:00Z"},{"type":"model","id":"claude-3-haiku-20240307","display_name":"Claude
         Haiku 3","created_at":"2024-03-07T00:00:00Z"},{"type":"model","id":"claude-3-opus-20240229","display_name":"Claude
-        Opus 3","created_at":"2024-02-29T00:00:00Z"}],"has_more":false,"first_id":"claude-opus-4-1-20250805","last_id":"claude-3-opus-20240229"}'
-  recorded_at: Fri, 29 Aug 2025 16:46:33 GMT
+        Opus 3","created_at":"2024-02-29T00:00:00Z"}],"has_more":false,"first_id":"claude-haiku-4-5-20251001","last_id":"claude-3-opus-20240229"}'
+  recorded_at: Thu, 06 Nov 2025 03:56:34 GMT
 recorded_with: VCR 6.3.1
