@@ -42,7 +42,7 @@ class LLM::OpenAI
     # @raise (see LLM::Provider#request)
     # @return [LLM::Response]
     # @see https://platform.openai.com/docs/api-reference/vector_stores/create OpenAI docs
-    def create(name:, file_ids: [], **params)
+    def create(name:, file_ids: nil, **params)
       req = Net::HTTP::Post.new("/v1/vector_stores", headers)
       req.body = JSON.dump(params.merge({name:, file_ids:}).compact)
       res = execute(request: req)
