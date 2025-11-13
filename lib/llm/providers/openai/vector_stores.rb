@@ -151,7 +151,7 @@ class LLM::OpenAI
 
     ##
     # Add a file to a vector store and poll until its status is "completed"
-    # @param (see LLM::OpenAI::VectorStores#create)
+    # @param (see LLM::OpenAI::VectorStores#add_file)
     # @return (see LLM::OpenAI::VectorStores#poll)
     def add_file_and_poll(vector:, file:, **rest)
       poll(vector:, file: add_file(vector:, file:, **rest))

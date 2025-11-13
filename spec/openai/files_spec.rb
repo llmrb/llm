@@ -124,7 +124,7 @@ RSpec.describe "LLM::OpenAI::Files" do
     end
 
     it "returns an array of file objects" do
-      expect(filelist.data[0..1]).to match_array(
+      expect(filelist[0..1]).to match_array(
         [
           have_attributes(
             id: instance_of(String),
