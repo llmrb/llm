@@ -150,6 +150,15 @@ class LLM::OpenAI
     alias_method :create_file, :add_file
 
     ##
+    # Add a file to a vector store and poll until its status is "completed"
+    # @param (see LLM::OpenAI::VectorStores#create)
+    # @return (see LLM::OpenAI::VectorStores#poll)
+    def add_file_and_poll(vector:, file:, **rest)
+      poll(vector:, file: add_file(vector:, file:, **rest))
+    end
+    alias_method :create_file_and_poll, :add_file_and_poll
+
+    ##
     # Update a file in a vector store
     # @param [String, #id] vector The ID of the vector store
     # @param [String, #id] file The ID of the file to update
@@ -199,23 +208,25 @@ class LLM::OpenAI
     end
 
     ##
-    # Poll a vector store until its status is "completed"
+    # Poll a vector store or file until its status is "completed"
     # @param [String, #id] vector The ID of the vector store
+    # @param [String, #id] file The file to poll (optional)
     # @param [Integer] attempts The current number of attempts (default: 0)
     # @param [Integer] max The maximum number of iterations (default: 50)
     # @raise [LLM::PollError] When the maximum number of iterations is reached
     # @return [LLM::Response]
-    def poll(vector:, attempts: 0, max: 50)
+    def poll(vector:, file: nil, attempts: 0, max: 50)
+      target = file || vector
       if attempts == max
-        raise LLM::PollError, "vector store '#{vector.id}' has status '#{vector.status}' after #{max} attempts"
-      elsif vector.status == "expired"
-        raise LLM::PollError, "vector store '#{vector.id}' has expired"
-      elsif vector.status != "completed"
-        vector = get(vector:)
+        raise LLM::PollError, "'#{target.id}' has status '#{target.status}' after #{max} attempts"
+      elsif target.status == "expired"
+        raise LLM::PollError, "#{target.id}' has expired"
+      elsif target.status != "completed"
+        file ? (file = get_file(vector:, file:)) : (vector = get(vector:))
         sleep(0.1 * (2**attempts))
-        poll(vector:, attempts: attempts + 1, max:)
+        poll(vector:, file:, attempts: attempts + 1, max:)
       else
-        vector
+        target
       end
     end
 

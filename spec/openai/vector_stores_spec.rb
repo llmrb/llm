@@ -115,13 +115,12 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful 'update file' operation",
           vcr: {cassette_name: "openai/vector_stores/successful_update_file"} do
-    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store") }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
     subject { provider.vector_stores.update_file(vector: store, file:, attributes: {tag: "updated"}) }
 
     before do
-      store
-      sleep(5)
+      provider.vector_stores.add_file_and_poll(vector: store, file:)
     end
 
     after do
@@ -143,13 +142,13 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful 'get file' operation",
           vcr: {cassette_name: "openai/vector_stores/successful_get_file"} do
-    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store") }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
     subject { provider.vector_stores.get_file(vector: store, file:) }
 
     before do
-      store
-      sleep(5)
+      provider.vector_stores.add_file(vector: store, file:)
+      sleep 0.01 while provider.vector_stores.all_files(vector: store).select { _1.status == "completed" }.empty?
     end
 
     after do
@@ -170,7 +169,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
 
   context "when given a successful 'delete file' operation",
           vcr: {cassette_name: "openai/vector_stores/successful_delete_file"} do
-    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
     let(:file) { provider.files.create(file: "spec/fixtures/documents/haiku1.txt") }
     subject { provider.vector_stores.delete_file(vector: store, file:) }
 
@@ -193,7 +192,7 @@ RSpec.describe "LLM::OpenAI::VectorStores" do
   context "when given a 'search' operation that returns no results",
           vcr: {cassette_name: "openai/vector_stores/successful_search_no_results"} do
     let(:file) { provider.files.create(file: "spec/fixtures/documents/readme.md") }
-    let(:store) { provider.vector_stores.create(name: "test store", file_ids: [file.id]) }
+    let(:store) { provider.vector_stores.create_and_poll(name: "test store", file_ids: [file.id]) }
     subject(:chunks) { provider.vector_stores.search(vector: store, query: "nonexistent query") }
     after do
       provider.vector_stores.delete(vector: store)
