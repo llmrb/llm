@@ -90,5 +90,15 @@ class LLM::Schema
     def to_json(options = {})
       to_h.to_json(options)
     end
+
+    ##
+    # @param [LLM::Schema::Leaf] other
+    #  An object to compare
+    # @return [Boolean]
+    def ==(other)
+      return false unless self.class === other
+      to_h == other.to_h
+    end
+    alias_method :eql?, :==
   end
 end

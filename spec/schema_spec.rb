@@ -28,5 +28,13 @@ RSpec.describe LLM::Schema do
       required_properties.each { expect(schema.object[_1]).to be_required }
       unrequired_properties.each { expect(schema.object[_1]).to_not be_required }
     end
+
+    it "configures an array" do
+      array = schema.object["addresses"]
+      schema = self.schema.schema
+      expect(array).to eq(
+        schema.array([schema.string, schema.integer]).description("addresses description")
+      )
+    end
   end
 end
