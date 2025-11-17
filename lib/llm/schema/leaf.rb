@@ -67,7 +67,7 @@ class LLM::Schema
     end
 
     ##
-    # Denote a leaf as required
+    # Mark a leaf as required
     # @return [LLM::Schema::Leaf]
     def required
       tap { @required = true }
@@ -76,7 +76,20 @@ class LLM::Schema
     ##
     # @return [Boolean]
     def required?
-      !!@required
+      @required
+    end
+
+    ##
+    # Mark a leaf as optional
+    # @return [LLM::Schema::Leaf]
+    def optional
+      tap { @required = false }
+    end
+
+    ##
+    # @return [Boolean]
+    def optional?
+      !@required
     end
 
     ##
