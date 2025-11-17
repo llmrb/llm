@@ -243,12 +243,13 @@ bot.chat(prompt)
 
 ### Schema
 
-#### Structured
+#### Object
 
 All LLM providers except Anthropic and DeepSeek allow a client to describe
 the structure of a response that a LLM emits according to a schema that is
-described by JSON. The schema lets a client describe what JSON object (or value)
-an LLM should emit, and the LLM will abide by the schema:
+described by JSON. The schema lets a client describe what JSON object
+an LLM should emit, and the LLM will abide by the schema to the best of
+its ability:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -276,6 +277,34 @@ schema = llm.schema.object(answers: llm.schema.array(llm.schema.integer.required
 bot = LLM::Bot.new(llm, schema:)
 bot.chat "Tell me the answer to ((5 + 5) / 2) * 2 + 1", role: :user
 puts bot.messages.find(&:assistant?).content! # => {answers: [11]}
+```
+
+#### Class
+
+Other than the object form we saw in the previous example, a class form
+is also supported. Under the hood, it is implemented with the object form
+and the class form primarily exists to provide structure and organization
+that the object form lacks:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+class Player < LLM::Schema
+  property :name, String, "The player's name", required: true
+  property :numbers, Array[Integer], "The player's favorite numbers", required: true
+end
+
+llm = LLM.openai(key: ENV["KEY"])
+bot = LLM::Bot.new(llm, schema: Player.object)
+prompt = bot.build_prompt do
+  it.system "The user's name is Robert and their favorite numbers are 7 and 12"
+  it.user "Tell me about myself"
+end
+
+player = bot.chat(prompt).content!
+puts "name: #{player.name}"
+puts "numbers: #{player.numbers}"
 ```
 
 ### Tools

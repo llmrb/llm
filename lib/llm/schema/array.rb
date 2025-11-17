@@ -7,6 +7,13 @@ class LLM::Schema
   # {LLM::Schema::Leaf LLM::Schema::Leaf} and provides methods that
   # can act as constraints.
   class Array < Leaf
+    ##
+    # Returns an array for the given types
+    # @return [LLM::Schema::Array]
+    def self.[](*types)
+      new(types.map(&:new))
+    end
+
     def initialize(items)
       @items = items
     end
