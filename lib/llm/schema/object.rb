@@ -20,6 +20,20 @@ class LLM::Schema
     end
 
     ##
+    # Get a property
+    # @return [LLM::Schema::Leaf]
+    def [](key)
+      properties[key.to_s]
+    end
+
+    ##
+    # Set a property
+    # @return [void]
+    def []=(key, val)
+      properties[key.to_s] = val
+    end
+
+    ##
     # @return [Hash]
     def to_h
       super.merge!({type: "object", properties:, required:})
@@ -40,6 +54,12 @@ class LLM::Schema
     # @return [String]
     def to_json(options = {})
       to_h.to_json(options)
+    end
+
+    ##
+    # @return [Array<String>]
+    def keys
+      @properties.keys
     end
 
     private

@@ -29,6 +29,63 @@ class LLM::Schema
   require_relative "schema/null"
 
   ##
+  # Configures a monitor for a subclass
+  # @return [void]
+  def self.inherited(klass)
+    LLM.lock(:inherited) do
+      klass.instance_eval { @__monitor = Monitor.new }
+    end
+  end
+
+  ##
+  # @param [String] name
+  #  The property name
+  # @param [Class] type
+  #  The property type
+  # @param [String] description
+  #  The property description
+  # @param [Hash] options
+  #  A hash of options
+  def self.property(name, type, description, options = {})
+    lock do
+      if LLM::Schema::Leaf === type
+        prop = type
+      else
+        target = type.name.split("::").last.downcase
+        prop = schema.public_send(target)
+      end
+      options = {description:}.merge(options)
+      options.each { (_2 == true) ? prop.public_send(_1) : prop.public_send(_1, _2) }
+      object[name] = prop
+    end
+  end
+
+  ##
+  # @api private
+  # @return [LLM::Schema]
+  def self.schema
+    lock do
+      @schema ||= LLM::Schema.new
+    end
+  end
+
+  ##
+  # @api private
+  # @return [LLM::Schema::Object]
+  def self.object
+    lock do
+      @object ||= schema.object({})
+    end
+  end
+
+  ##
+  # @api private
+  def self.lock(&)
+    @__monitor.synchronize(&)
+  end
+  private_class_method :lock
+
+  ##
   # Returns an object
   # @param [Hash] properties A hash of properties
   # @return [LLM::Schema::Object]

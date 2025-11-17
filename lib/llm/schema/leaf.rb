@@ -20,16 +20,24 @@ class LLM::Schema
     # Set the description of a leaf
     # @param [String] str The description
     # @return [LLM::Schema::Leaf]
-    def description(str)
-      tap { @description = str }
+    def description(str = nil)
+      if str.nil?
+        @description
+      else
+        tap { @description = str }
+      end
     end
 
     ##
     # Set the default value of a leaf
     # @param [Object] value The default value
     # @return [LLM::Schema::Leaf]
-    def default(value)
-      tap { @default = value }
+    def default(value = nil)
+      if value.nil?
+        @default
+      else
+        tap { @default = value }
+      end
     end
 
     ##
@@ -38,7 +46,11 @@ class LLM::Schema
     # @param [Array] values The allowed values
     # @return [LLM::Schema::Leaf]
     def enum(*values)
-      tap { @enum = values }
+      if values.empty?
+        @enum
+      else
+        tap { @enum = values }
+      end
     end
 
     ##
@@ -46,8 +58,12 @@ class LLM::Schema
     # @see https://tour.json-schema.org/content/02-Primitive-Types/08-Defining-Constant-Values Constant Values
     # @param [Object] value The constant value
     # @return [LLM::Schema::Leaf]
-    def const(value)
-      tap { @const = value }
+    def const(value = nil)
+      if value.nil?
+        @const
+      else
+        tap { @const = value }
+      end
     end
 
     ##
@@ -55,6 +71,12 @@ class LLM::Schema
     # @return [LLM::Schema::Leaf]
     def required
       tap { @required = true }
+    end
+
+    ##
+    # @return [Boolean]
+    def required?
+      !!@required
     end
 
     ##
@@ -67,12 +89,6 @@ class LLM::Schema
     # @return [String]
     def to_json(options = {})
       to_h.to_json(options)
-    end
-
-    ##
-    # @return [Boolean]
-    def required?
-      @required
     end
   end
 end
