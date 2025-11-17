@@ -290,18 +290,21 @@ that the object form lacks:
 #!/usr/bin/env ruby
 require "llm"
 
-class Schema < LLM::Schema
+class Player < LLM::Schema
   property :name, String, "The player's name", required: true
   property :numbers, Array[Integer], "The player's favorite numbers", required: true
 end
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm, schema: Schema.object)
+bot = LLM::Bot.new(llm, schema: Player.object)
 prompt = bot.build_prompt do
   it.system "The user's name is Robert and their favorite numbers are 7 and 12"
   it.user "Tell me about myself"
 end
-bot.chat(prompt)
+
+player = bot.chat(prompt).content!
+puts "name: #{player.name}"
+puts "numbers: #{player.numbers}"
 ```
 
 ### Tools
