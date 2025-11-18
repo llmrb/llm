@@ -24,6 +24,7 @@ class LLM::Gemini
     def format_schema(params)
       return {} unless params and params[:schema]
       schema = params.delete(:schema)
+      schema = schema.respond_to?(:object) ? schema.object : schema
       {generationConfig: {response_mime_type: "application/json", response_schema: schema}}
     end
 

@@ -296,7 +296,7 @@ class Player < LLM::Schema
 end
 
 llm = LLM.openai(key: ENV["KEY"])
-bot = LLM::Bot.new(llm, schema: Player.object)
+bot = LLM::Bot.new(llm, schema: Player)
 prompt = bot.build_prompt do
   it.system "The user's name is Robert and their favorite numbers are 7 and 12"
   it.user "Tell me about myself"

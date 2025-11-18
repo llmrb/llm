@@ -74,7 +74,7 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     )
     klass = Class.new(LLM::Schema) do
       property :probability, Integer, "The answer's probability", required: true
-    end.object
+    end
     [object, klass].each do |schema|
       include_examples "schema: given an object", schema:
     end
@@ -87,7 +87,7 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     )
     klass = Class.new(LLM::Schema) do
       property :fruit, String, "The favorite fruit", enum: ["apple", "pineapple", "orange"], required: true
-    end.object
+    end
     [object, klass].each do |schema|
       include_examples "schema: given an enum", schema:
     end
@@ -100,7 +100,7 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     )
     klass = Class.new(LLM::Schema) do
       property :answers, LLM::Schema::Array[LLM::Schema::Integer], "The answer to two questions", required: true
-    end.object
+    end
     [object, klass].each do |schema|
       include_examples "schema: given an array", schema:
     end

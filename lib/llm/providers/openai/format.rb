@@ -32,6 +32,7 @@ class LLM::OpenAI
     def format_schema(params)
       return {} unless params and params[:schema]
       schema = params.delete(:schema)
+      schema = schema.respond_to?(:object) ? schema.object : schema
       {
         response_format: {
           type: "json_schema",
