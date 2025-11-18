@@ -5,15 +5,14 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     {vcr: options.merge({cassette_name: "#{dirname}/chat/#{basename}"})}
   end
 
-  let(:params) { {schema:} }
-  let(:llm) { provider }
+  shared_examples "schema: given an object" do |schema:|
+    let(:params) { {schema:} }
+    let(:llm) { provider }
 
-  context "with an object", vcr.call("llm_schema_object") do
-    let(:schema) { llm.schema.object(probability: llm.schema.integer.required) }
     subject { bot.messages.find(&:assistant?).content! }
 
     before do
-      bot.chat "Does the earth orbit the sun?", role: :user
+      bot.chat "Does the earth orbit the sun?"
     end
 
     it "returns the probability" do
@@ -23,17 +22,16 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     end
   end
 
-  context "with an enum", vcr.call("llm_schema_enum") do
+  shared_examples "schema: given an enum" do |schema:|
+    let(:params) { {schema:} }
+    let(:llm) { provider }
+
     subject { bot.messages.find(&:assistant?).content!  }
 
-    let(:schema) { llm.schema.object(fruit:) }
-    let(:fruit) { llm.schema.string.enum(*fruits).required.description("The favorite fruit") }
-    let(:fruits) { ["apple", "pineapple", "orange"] }
-
     let(:prompt) do
-      bot.build_prompt do
-        _1.user "Your favorite fruit is pineapple"
-        _1.user"What fruit is your favorite?"
+      bot.build_prompt do |prompt|
+        prompt.user "Your favorite fruit is pineapple"
+        prompt.user "What fruit is your favorite?"
       end
     end
 
@@ -46,16 +44,17 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
     end
   end
 
-  context "with an array", vcr.call("llm_schema_array") do
+  shared_examples "schema: given an array" do |schema:|
+    let(:params) { {schema:} }
+    let(:llm) { provider }
+
     subject { bot.messages.find(&:assistant?).content! }
 
-    let(:schema) { llm.schema.object(answers:) }
-    let(:answers) { llm.schema.array(llm.schema.integer.required).required.description("The answer to two questions") }
     let(:prompt) do
-      bot.build_prompt do
-        _1.user "Answer all of my questions"
-        _1.user "Tell me the answer to 5 + 5"
-        _1.user "Tell me the answer to 5 + 7"
+      bot.build_prompt do |prompt|
+        prompt.user "Answer all of my questions"
+        prompt.user "Tell me the answer to 5 + 5"
+        prompt.user "Tell me the answer to 5 + 7"
       end
     end
 
@@ -65,6 +64,45 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
       is_expected.to match(
         "answers" => [10, 12]
       )
+    end
+  end
+
+  context "when given an object", vcr.call("llm_schema_object") do
+    schema = LLM::Schema.new
+    object = schema.object(
+      probability: schema.integer.required.description("The answer's probability")
+    )
+    klass = Class.new(LLM::Schema) do
+      property :probability, Integer, "The answer's probability", required: true
+    end.object
+    [object, klass].each do |schema|
+      include_examples "schema: given an object", schema:
+    end
+  end
+
+  context "when given an enum", vcr.call("llm_schema_enum") do
+    schema = LLM::Schema.new
+    object = schema.object(
+      fruit: schema.string.enum("apple", "pineapple", "orange").required.description("The favorite fruit")
+    )
+    klass = Class.new(LLM::Schema) do
+      property :fruit, String, "The favorite fruit", enum: ["apple", "pineapple", "orange"], required: true
+    end.object
+    [object, klass].each do |schema|
+      include_examples "schema: given an enum", schema:
+    end
+  end
+
+  context "when given an array", vcr.call("llm_schema_array") do
+    schema = LLM::Schema.new
+    object = schema.object(
+      answers: schema.array(schema.integer.required).required.description("The answer to two questions")
+    )
+    klass = Class.new(LLM::Schema) do
+      property :answers, LLM::Schema::Array[LLM::Schema::Integer], "The answer to two questions", required: true
+    end.object
+    [object, klass].each do |schema|
+      include_examples "schema: given an array", schema:
     end
   end
 end

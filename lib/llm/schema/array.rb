@@ -11,7 +11,7 @@ class LLM::Schema
     # Returns an array for the given types
     # @return [LLM::Schema::Array]
     def self.[](*types)
-      new(types.map(&:new))
+      new(*types.map(&:new))
     end
 
     def initialize(items)

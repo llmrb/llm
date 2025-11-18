@@ -55,7 +55,7 @@ class LLM::Schema
         prop = schema.public_send(target)
       end
       options = {description:}.merge(options)
-      options.each { (_2 == true) ? prop.public_send(_1) : prop.public_send(_1, _2) }
+      options.each { (_2 == true) ? prop.public_send(_1) : prop.public_send(_1, *_2) }
       object[name] = prop
     end
   end
