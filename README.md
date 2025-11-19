@@ -76,7 +76,7 @@ We can grant the LLM the ability to execute code through tools:
 #!/usr/bin/env ruby
 require "llm"
 
-class System < LLM::Schema
+class System < LLM::Tool
   name "system"
   description "Run a shell command"
   param :command, String, "The command to execute", required: true
@@ -264,7 +264,6 @@ prompt = bot.build_prompt do
   it.user ["Tell me about this URL", bot.image_url(url)]
   it.user ["Tell me about the PDF", bot.local_file("handbook.pdf")]
 end
-
 bot.chat(prompt)
 ```
 
