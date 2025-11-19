@@ -20,7 +20,7 @@ llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, stream: $stdout)
 loop do
   print "> "
-  bot.chat($stdin.gets)
+  bot.chat(gets)
   print "\n"
 end
 ```
@@ -54,18 +54,18 @@ require "llm"
 class Estimation < LLM::Schema
   property :age, Integer, "The age of a person in a photo", required: true
   property :confidence, Number, "Model confidence (0.0 to 1.0)", required: true
-  property :notes, String, "Model notes or caveats", required: true
+  property :notes, String, "Model notes or caveats", optional: true
 end
 
-llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
-bot  = LLM::Bot.new(llm, schema: Estimation)
-img  = llm.images.create(prompt: "A man in his 30s")
-res  = bot.chat bot.image_url(img.urls[0])
-body = res.choices.find(&:assistant?).content!
+llm = LLM.openai(key: ENV["OPENAI_SECRET"])
+bot = LLM::Bot.new(llm, schema: Estimation)
+img = llm.images.create(prompt: "A man in his 30s")
+res = bot.chat bot.image_url(img.urls[0])
+estimation = res.choices.find(&:assistant?).content!
 
-puts "age: #{body["age"]}"
-puts "confidence: #{body["confidence"]}"
-puts "notes: #{body["notes"]}"
+puts "age: #{estimation["age"]}"
+puts "confidence: #{estimation["confidence"]}"
+puts "notes: #{estimation["notes"]}"
 ```
 
 #### Tools
