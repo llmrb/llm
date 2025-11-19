@@ -57,7 +57,7 @@ class Estimation < LLM::Schema
   property :notes, String, "Model notes or caveats", optional: true
 end
 
-llm = LLM.openai(key: ENV["OPENAI_SECRET"])
+llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm, schema: Estimation)
 img = llm.images.create(prompt: "A man in his 30s")
 res = bot.chat bot.image_url(img.urls[0])
@@ -86,11 +86,11 @@ class System < LLM::Tool
   end
 end
 
-llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
+llm  = LLM.openai(key: ENV["KEY"])
 bot  = LLM::Bot.new(llm, tools: [System])
 prompt = bot.build_prompt do
   it.system "Your task is to execute system commands"
-  it.user "Create /home/robert/projects"
+  it.user "mkdir /home/robert/projects"
 end
 bot.chat(prompt)
 bot.chat bot.functions.map(&:call)
