@@ -94,7 +94,7 @@ prompt = bot.build_prompt do
 end
 bot.chat(prompt)
 bot.chat bot.functions.map(&:call)
-bot.select(&:assistant?).each { print "[#{it.role}] ", it.content, "\n" }
+bot.messages.select(&:assistant?).each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ## Features
