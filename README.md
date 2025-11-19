@@ -237,7 +237,6 @@ prompt = bot.build_prompt do
   it.user ["Tell me about this URL", bot.image_url(url)]
   it.user ["Tell me about this PDF", bot.local_file("handbook.pdf")]
 end
-
 bot.chat(prompt)
 bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
 ```
