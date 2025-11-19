@@ -25,7 +25,7 @@ loop do
 end
 ```
 
-#### Build
+#### Prompts
 
 We can send multiple messages at once by building a chain of messages:
 
@@ -39,35 +39,62 @@ prompt = bot.build_prompt do
   it.system "Your task is to answer all user queries"
   it.user "What language should I learn next ?"
 end
-
 bot.chat(prompt)
 bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
-#### Images
+#### Schema
 
-We can generate an image on the fly and estimate how old the person
-in the image is:
+We can instruct the LLM to emit a JSON object according to a schema:
 
 ```ruby
 #!/usr/bin/env ruby
 require "llm"
 
-llm = LLM.openai(key: ENV["OPENAI_SECRET"])
-schema = llm.schema.object(
-  age: llm.schema.integer.required.description("The age of the person in a photo"),
-  confidence: llm.schema.number.required.description("Model confidence (0.0 to 1.0)"),
-  notes: llm.schema.string.required.description("Model notes or caveats")
-)
+class Estimation < LLM::Schema
+  property :age, Integer, "The age of a person in a photo", required: true
+  property :confidence, Number, "Model confidence (0.0 to 1.0)", required: true
+  property :notes, String, "Model notes or caveats", required: true
+end
 
-img = llm.images.create(prompt: "A man in his 30s")
-bot = LLM::Bot.new(llm, schema:)
-res = bot.chat bot.image_url(img.urls[0])
+llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
+bot  = LLM::Bot.new(llm, schema: Estimation)
+img  = llm.images.create(prompt: "A man in his 30s")
+res  = bot.chat bot.image_url(img.urls[0])
 body = res.choices.find(&:assistant?).content!
 
-print "age: ", body["age"], "\n"
-print "confidence: ", body["confidence"], "\n"
-print "notes: ", body["notes"], "\n"
+puts "age: #{body["age"]}"
+puts "confidence: #{body["confidence"]}"
+puts "notes: #{body["notes"]}"
+```
+
+#### Tools
+
+We can grant the LLM the ability to execute code through tools:
+
+```ruby
+#!/usr/bin/env ruby
+require "llm"
+
+class System < LLM::Schema
+  name "system"
+  description "Run a shell command"
+  param :command, String, "The command to execute", required: true
+
+  def call(command:)
+    {success: system(command)}
+  end
+end
+
+llm  = LLM.openai(key: ENV["OPENAI_SECRET"])
+bot  = LLM::Bot.new(llm, tools: [System])
+prompt = bot.build_prompt do
+  it.system "Your task is to execute system commands"
+  it.user "Create /home/robert/projects"
+end
+bot.chat(prompt)
+bot.chat bot.functions.map(&:call)
+bot.select(&:assistant?).each { print "[#{it.role}] ", it.content, "\n" }
 ```
 
 ## Features
