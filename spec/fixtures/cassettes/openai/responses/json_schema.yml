@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 06 Nov 2025 03:39:30 GMT
+      - Wed, 26 Nov 2025 18:27:18 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -52,18 +52,18 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_ced354f5b80f415cbe915505d929e543
+      - req_95514a0e3cd944768872c901e76bef5b
       Openai-Processing-Ms:
-      - '866'
+      - '2164'
       X-Envoy-Upstream-Service-Time:
-      - '872'
+      - '2168'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=9qCOYUh1VHAjU_LP.KGU6A7tJD6f_w_G7a8nN7VOqKw-1762400370-1.0.1.1-NxRXzCfTVxS3OPE9Lv2qgDZ_Sl3V.ZPhw0qh5XFU5jR4RrCB0q5is6KP2mPxoXF7S7KuWJEu2iHU_fiAVMd5UZcI0Pz8qKGBKO3TXzYhxWw;
-        path=/; expires=Thu, 06-Nov-25 04:09:30 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=qWFkYi7l9TtQ4OYixuFK9BLfJHvpyWOl.kiyXlhHrvs-1764181638-1.0.1.1-w3BlWIb6Q4EDFljxddklLNy.6AGe.CGsDkUjWw8CcauWpiI6o4c2t85NpG5KDqPgg8FIbsbzvKNgVmE4BZ_Adt.kZsOV1gxbVFqGT5PiHnw;
+        path=/; expires=Wed, 26-Nov-25 18:57:18 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=UQJyqzChoFckHJkRRXnBAvu5xUqlD4YKnLBJ93H3fwE-1762400370932-0.0.1.1-604800000;
+      - _cfuvid=_v0LoFkVFrdg3OrzWuwoPanw.oZN6.AtaZqaVt6ULKY-1764181638995-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -72,16 +72,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 99a190678a6d8dd8-GRU
+      - 9a4b705d0b79a40b-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_05d50ff60d2d5cb700690c1872043c8197a3bc1e7f25e8debf",
+          "id": "resp_05d41193e9e63b8e0069274684c3a48196b6aef9fc0fecf195",
           "object": "response",
-          "created_at": 1762400370,
+          "created_at": 1764181636,
           "status": "completed",
           "background": false,
           "billing": {
@@ -95,7 +95,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "msg_05d50ff60d2d5cb700690c187288ac8197b63c6e6780a52dd1",
+              "id": "msg_05d41193e9e63b8e00692746851dc08196a09547462b78d2ef",
               "type": "message",
               "status": "completed",
               "content": [
@@ -161,5 +161,5 @@ http_interactions:
           "user": null,
           "metadata": {}
         }
-  recorded_at: Thu, 06 Nov 2025 03:39:18 GMT
+  recorded_at: Wed, 26 Nov 2025 18:26:52 GMT
 recorded_with: VCR 6.3.1

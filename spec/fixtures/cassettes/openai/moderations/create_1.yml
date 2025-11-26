@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 06 Nov 2025 03:39:25 GMT
+      - Wed, 26 Nov 2025 18:27:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,20 +37,20 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_4092f2ace26841f98a2544bdf0527317
+      - req_5289d9a642454a0d97838d1baa27e5c6
       Openai-Processing-Ms:
-      - '187'
+      - '490'
       X-Envoy-Upstream-Service-Time:
-      - '196'
+      - '495'
       X-Openai-Proxy-Wasm:
       - v0.1
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=JmqgHlzUPRRko6CZTUKizsL6hrPhmuri5oPKbjNK9nU-1762400365-1.0.1.1-kkHyNXLmZxHMVyuuHH0YkEZZpkgPMvavKm5or1KpwNVbbEgqIlkfm1pImM.ErjHT0MBafdgu47A7.WdpT.8CkoKJAuTRiFPA7cDP1uNLHLs;
-        path=/; expires=Thu, 06-Nov-25 04:09:25 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=gWGzjWQrNLlkGWlJ_..zMtMa7FlwzXJvv9unMU.D1Hk-1764181628-1.0.1.1-NNw3kwwfuSdf2A04WB6LX_dc_5gjcsbeoAmdOmJafvN6EXKG4XTH52ef3siDkKXo8oJpFarg0ZT14AbmQY2zXKJObdW8wn7HmFt6YROZhN8;
+        path=/; expires=Wed, 26-Nov-25 18:57:08 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=HHK1rmogJ8zsAehjy2SfeH2n8Ff._trZnCPyXaPjBpw-1762400365924-0.0.1.1-604800000;
+      - _cfuvid=woUZn7NPGL8v.hy_PTZHcvO_Q_w2puuwg6cytDH7EoU-1764181628076-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -59,14 +59,14 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 99a1904cbbcb768e-GRU
+      - 9a4b70237f0ff19e-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "modr-9879",
+          "id": "modr-7114",
           "model": "omni-moderation-latest",
           "results": [
             {
@@ -87,19 +87,19 @@ http_interactions:
                 "violence/graphic": false
               },
               "category_scores": {
-                "harassment": 0.7922938252487683,
-                "harassment/threatening": 0.0007552556355312161,
-                "sexual": 0.00007916296072837432,
-                "hate": 0.0012054329305849758,
-                "hate/threatening": 6.962256250138369e-7,
-                "illicit": 0.00002453694805426225,
-                "illicit/violent": 3.7636447180974406e-6,
-                "self-harm/intent": 0.00021384334033892964,
-                "self-harm/instructions": 3.6478537675800286e-6,
-                "self-harm": 0.00046040712342594554,
-                "sexual/minors": 2.355261854303796e-6,
-                "violence": 0.0005411170227538132,
-                "violence/graphic": 4.757645425657629e-6
+                "harassment": 0.8012405238537712,
+                "harassment/threatening": 0.0007684985562636434,
+                "sexual": 0.00008693673928062173,
+                "hate": 0.0012298634801206983,
+                "hate/threatening": 8.939696304799168e-7,
+                "illicit": 0.000025315637215092633,
+                "illicit/violent": 3.944258675190877e-6,
+                "self-harm/intent": 0.00021467682920914668,
+                "self-harm/instructions": 4.1335397768930325e-6,
+                "self-harm": 0.00046285603828612274,
+                "sexual/minors": 2.7535691114583474e-6,
+                "violence": 0.0005508471799444582,
+                "violence/graphic": 4.908661889889002e-6
               },
               "category_applied_input_types": {
                 "harassment": [
@@ -145,5 +145,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Thu, 06 Nov 2025 03:39:13 GMT
+  recorded_at: Wed, 26 Nov 2025 18:26:41 GMT
 recorded_with: VCR 6.3.1

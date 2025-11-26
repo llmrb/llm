@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 06 Nov 2025 03:37:32 GMT
+      - Wed, 26 Nov 2025 18:25:10 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,18 +40,18 @@ http_interactions:
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       X-Request-Id:
-      - req_87562287a680472782cd5aa10f23545e
+      - req_911666a15b704281a05bb9934c8c6866
       Openai-Processing-Ms:
-      - '9804'
+      - '10565'
       X-Envoy-Upstream-Service-Time:
-      - '9807'
+      - '10569'
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=tKMIh6Y0BN90Q5ahn2tmSeLrFcXP9JfYGyGV5D_.uSI-1762400252-1.0.1.1-xbNVr6PfVWDWj1yKPBtluXGJoV6sVSl9IIZMOVD9h.ft4b.rOel0wZbzm8aBrOKX.8NZDQk31b1O4eWZonVaHvB2hvny8jwhRBGc2dCQCxo;
-        path=/; expires=Thu, 06-Nov-25 04:07:32 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=JmMR6GjX6xv7p_6pom.C1eHNbCtsPH7yXxtaghGBMYk-1764181510-1.0.1.1-DBwBseNhthfdDm3YbqrpgSGrX3gl5zNXdmiJ2jEZuZNZQxFi8v.3Eeqxjl9BCwisihA_8SROe9YfU0dZfnaP8LdAdZTs6rhEgWvoO5G99cM;
+        path=/; expires=Wed, 26-Nov-25 18:55:10 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=S.ha5x7exmaVMgF9zF3sxZIzfku13ZiYzgF4qNrfbaE-1762400252856-0.0.1.1-604800000;
+      - _cfuvid=ar3DQdOZjuaa2aUspiyX2UJ5UYsvRJoyDVVZCNuavlE-1764181510721-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -60,16 +60,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 99a18d4e0841f3bf-GRU
+      - 9a4b6d043ea300ed-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "id": "resp_08667bc7c9fc556c01690c17f2fc9881948bdc6b163c24b815",
+          "id": "resp_05c77d2ddb5a4f9b01692745fc184c8196af1756898f49043a",
           "object": "response",
-          "created_at": 1762400243,
+          "created_at": 1764181500,
           "status": "completed",
           "background": false,
           "billing": {
@@ -83,7 +83,7 @@ http_interactions:
           "model": "gpt-4.1-2025-04-14",
           "output": [
             {
-              "id": "ws_08667bc7c9fc556c01690c17f3b8988194a7f98b31733c1f68",
+              "id": "ws_05c77d2ddb5a4f9b01692745fd3e4c8196bbbe851b5f6b2dc1",
               "type": "web_search_call",
               "status": "completed",
               "action": {
@@ -92,7 +92,7 @@ http_interactions:
               }
             },
             {
-              "id": "msg_08667bc7c9fc556c01690c17f7d49c8194884a7f5eb620c971",
+              "id": "msg_05c77d2ddb5a4f9b0169274600438c81969ef8dd0e42fcfb57",
               "type": "message",
               "status": "completed",
               "content": [
@@ -101,77 +101,119 @@ http_interactions:
                   "annotations": [
                     {
                       "type": "url_citation",
-                      "end_index": 709,
-                      "start_index": 614,
-                      "title": "2025 in the United States",
-                      "url": "https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai"
+                      "end_index": 787,
+                      "start_index": 642,
+                      "title": "US extends tariff exclusions related to China tech transfer probe",
+                      "url": "https://www.reuters.com/world/china/us-extends-tariff-exclusions-related-china-tech-transfer-probe-2025-11-26/?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 1024,
-                      "start_index": 929,
-                      "title": "2025 in the United States",
-                      "url": "https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai"
+                      "end_index": 1278,
+                      "start_index": 1103,
+                      "title": "Democratic senator who Trump accused of sedition says he's 'not backing down' amid Pentagon investigation - live",
+                      "url": "https://www.theguardian.com/us-news/live/2025/nov/26/us-politics-latest-news-pete-hegseth-donald-trump-marjorie-taylor-greene-mark-kelly?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 1449,
-                      "start_index": 1351,
-                      "title": "2025 United States elections",
-                      "url": "https://en.wikipedia.org/wiki/2025_United_States_elections?utm_source=openai"
+                      "end_index": 1685,
+                      "start_index": 1510,
+                      "title": "Democratic senator who Trump accused of sedition says he's 'not backing down' amid Pentagon investigation - live",
+                      "url": "https://www.theguardian.com/us-news/live/2025/nov/26/us-politics-latest-news-pete-hegseth-donald-trump-marjorie-taylor-greene-mark-kelly?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 2112,
-                      "start_index": 1897,
-                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
-                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
+                      "end_index": 1976,
+                      "start_index": 1801,
+                      "title": "Democratic senator who Trump accused of sedition says he's 'not backing down' amid Pentagon investigation - live",
+                      "url": "https://www.theguardian.com/us-news/live/2025/nov/26/us-politics-latest-news-pete-hegseth-donald-trump-marjorie-taylor-greene-mark-kelly?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 2654,
-                      "start_index": 2435,
-                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
-                      "url": "https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
+                      "end_index": 2350,
+                      "start_index": 2239,
+                      "title": "Wednesday, November 26, 2025 - KFF Health News",
+                      "url": "https://kffhealthnews.org/morning-briefing/wednesday-november-26-2025/?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 3139,
-                      "start_index": 2920,
-                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
-                      "url": "https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
+                      "end_index": 2589,
+                      "start_index": 2500,
+                      "title": "Headlines for November 26, 2025 | Democracy Now!",
+                      "url": "https://www.democracynow.org/2025/11/26/headlines?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 3627,
-                      "start_index": 3412,
-                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
-                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
+                      "end_index": 3127,
+                      "start_index": 3038,
+                      "title": "Headlines for November 26, 2025 | Democracy Now!",
+                      "url": "https://www.democracynow.org/2025/11/26/headlines?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 4099,
-                      "start_index": 3884,
-                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
-                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
+                      "end_index": 3372,
+                      "start_index": 3283,
+                      "title": "Headlines for November 26, 2025 | Democracy Now!",
+                      "url": "https://www.democracynow.org/2025/11/26/headlines?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 4633,
-                      "start_index": 4418,
-                      "title": "School assembly news headlines today November 6 national world, sports, business news education news updates - India Today",
-                      "url": "https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai"
+                      "end_index": 3622,
+                      "start_index": 3533,
+                      "title": "Headlines for November 26, 2025 | Democracy Now!",
+                      "url": "https://www.democracynow.org/2025/11/26/headlines?utm_source=openai"
                     },
                     {
                       "type": "url_citation",
-                      "end_index": 5059,
-                      "start_index": 4966,
-                      "title": "2025 in the Philippines",
-                      "url": "https://en.wikipedia.org/wiki/2025_in_the_Philippines?utm_source=openai"
+                      "end_index": 3987,
+                      "start_index": 3862,
+                      "title": "International News Briefs for Wednesday, November 26, 2025 - Havana Times",
+                      "url": "https://havanatimes.org/news/international-news-briefs-for-wednesday-november-26-2025/?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 4369,
+                      "start_index": 4244,
+                      "title": "International News Briefs for Wednesday, November 26, 2025 - Havana Times",
+                      "url": "https://havanatimes.org/news/international-news-briefs-for-wednesday-november-26-2025/?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 4654,
+                      "start_index": 4529,
+                      "title": "International News Briefs for Wednesday, November 26, 2025 - Havana Times",
+                      "url": "https://havanatimes.org/news/international-news-briefs-for-wednesday-november-26-2025/?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 5110,
+                      "start_index": 4969,
+                      "title": "5 Things to Know Before the Stock Market Opens",
+                      "url": "https://www.investopedia.com/5-things-to-know-before-the-stock-market-opens-november-26-2025-11857437?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 5490,
+                      "start_index": 5349,
+                      "title": "5 Things to Know Before the Stock Market Opens",
+                      "url": "https://www.investopedia.com/5-things-to-know-before-the-stock-market-opens-november-26-2025-11857437?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 5862,
+                      "start_index": 5749,
+                      "title": "Top Tech News Today, November 26, 2025 - Tech Startups",
+                      "url": "https://techstartups.com/2025/11/26/top-tech-news-today-november-26-2025/?utm_source=openai"
+                    },
+                    {
+                      "type": "url_citation",
+                      "end_index": 6210,
+                      "start_index": 6105,
+                      "title": "November 2025 United Kingdom budget",
+                      "url": "https://en.wikipedia.org/wiki/November_2025_United_Kingdom_budget?utm_source=openai"
                     }
                   ],
                   "logprobs": [],
-                  "text": "Here is a comprehensive summary of the **major news stories from today, Thursday, November 6, 2025**, across U.S. national developments, international events, and key happenings in India and beyond. Precise dates are included to avoid ambiguity.\n\n---\n\n##  United States\n\n\u2022 **Longest-ever Federal Government Shutdown Continues**  \nAs of November 4, 2025, the U.S. federal government shutdown became the longest in history, surpassing the previous record from 2018\u20132019. The shutdown entered its 36th day on November 5, raising severe concerns about disruptions to essential services and programs like SNAP benefits.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai))\n\n\u2022 **UPS Cargo Plane Crash in Kentucky**  \nA tragic aviation accident claimed seven lives and left eleven injured when a UPS Airlines cargo plane crashed near Louisville Muhammad Ali International Airport on November 4.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_United_States?utm_source=openai))\n\n\u2022 **Democratic Gains in 2025 Off-Year U.S. Elections**  \nHeld on November 4, the off-year elections resulted in Democratic victories in key regions. Democrats flipped the governorship of Virginia, retained New Jersey, and saw gains in state legislatures and ballot measures\u2014highlighting a \u201cblue wave\u201d trend in local politics.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_United_States_elections?utm_source=openai))\n\n---\n\n##  India and Global Highlights\n\n\u2022 **Allegations of Massive Voter Fraud in Haryana, India**  \nOn November 6, Rahul Gandhi accused that approximately 2.5\u202fmillion fake voters were registered in Haryana\u2014equating to one in eight\u2014and highlighted anomalies like the same photo of a Brazilian model appearing 22 times on voter ID cards. The Election Commission and BJP dismissed the claims as baseless, noting no official objections had been filed.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **PM Modi Felicitates Women\u2019s World Cup Champions**  \nIndia\u2019s Prime Minister Narendra Modi hosted the women\u2019s cricket team, celebrating their historic 2025 World Cup victory. The team, led by Harmanpreet Kaur, presented him with a signed \"NAMO 1\" jersey and were hailed as role models for youth fitness and empowerment.([indiatoday.in](https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **Tech Sovereignty: China Mandates Domestic AI Chips**  \nChina announced that all state-funded data centers must now use domestically produced AI chips\u2014reinforcing its push for technological self-reliance and tightening control over strategic chip supply chains.([indiatoday.in](https://www.indiatoday.in/amp/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **Indian-Origin Politicians Making Headlines Abroad**  \nThe rise of Indian-origin leaders continues globally: Zohran Mamdani was elected mayor in New York City, and similar figures are gaining influence in other U.S. locales, signaling shifting diaspora power dynamics.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **Release of Indian National After 43 Years in U.S. Prison**  \nSubramanyam Vedam (aka \u201cSubu\u201d) was freed after serving 43 years in a U.S. prison for an allegedly wrongful conviction\u2014highlighting systemic issues in immigration and prosecutorial processes.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n\u2022 **France Investigates SHEIN Over Questionable Product Sales**  \nConcerns have emerged in France over SHEIN's planned Paris store, following allegations that it sold illicit items\u2014ranging from weapons to sex dolls. The government has launched a formal probe into the retailer's practices and supply chain compliance.([indiatoday.in](https://www.indiatoday.in/education-today/news/story/school-assembly-news-headlines-today-november-6-national-world-sports-business-news-education-news-updates-2814333-2025-11-06?utm_source=openai))\n\n---\n\n##  Philippines \u2013 Typhoon Tino Aftermath\n\n\u2022 **State of Calamity Declared Following Typhoon Tino**  \nTyphoon Tino (Kalmaegi) prompted a state of calamity declaration in Cebu City and surrounding areas on November 4. The disaster caused extensive damage, claiming at least 114 lives, injuring 82, and leaving 127 people missing.([en.wikipedia.org](https://en.wikipedia.org/wiki/2025_in_the_Philippines?utm_source=openai))\n\n---\n\n##  Summary Table of Key Developments\n\n| Region              | Key Event                                                        |\n|---------------------|------------------------------------------------------------------|\n| U.S.                | Longest shutdown on record; UPS crash; Democratic election wins   |\n| India/Global        | Voter fraud accusations; women\u2019s cricket triumph; tech policies; diaspora politics; wrongful conviction release; SHEIN probe |\n| Philippines         | Typhoon-induced calamity and loss of life                        |\n\n---\n\nIf you'd like additional detail on any of these stories\u2014such as frontline coverage of the government shutdown, investigative follow-ups on tech policy, cricket highlights, or updates on the typhoon\u2019s relief efforts\u2014feel free to ask."
+                  "text": "Here is a comprehensive and up-to-date summary of today\u2019s most significant news (as of Wednesday, November 26, 2025). Each section is well\u2011cited and covers a range of U.S. and global developments.  \n\n---\n\n## 1. U.S.\u2013China Trade: Tariff Exclusions Extended  \nThe U.S. has extended tariff exclusions linked to its investigation into China's technology transfer and intellectual property practices. Originally set to expire in November 2025, these exclusions will now remain in place until November 2026, following agreement reached between President Trump and Chinese President Xi Jinping. The U.S. Trade Representative confirmed the extension.([reuters.com](https://www.reuters.com/world/china/us-extends-tariff-exclusions-related-china-tech-transfer-probe-2025-11-26/?utm_source=openai))\n\n---\n\n## 2. Political and Legal Developments Involving Trump  \n- A Georgia court has dismissed the final state criminal racketeering case against former President Trump concerning efforts to overturn the 2020 election, with the special prosecutor citing federal jurisdiction and delays as key reasons for dismissal.([theguardian.com](https://www.theguardian.com/us-news/live/2025/nov/26/us-politics-latest-news-pete-hegseth-donald-trump-marjorie-taylor-greene-mark-kelly?utm_source=openai))  \n- In Washington, the FBI is investigating six Democratic members of Congress who released a video urging military personnel to refuse illegal orders; investigations are also underway into Senator Mark Kelly for his participation.([theguardian.com](https://www.theguardian.com/us-news/live/2025/nov/26/us-politics-latest-news-pete-hegseth-donald-trump-marjorie-taylor-greene-mark-kelly?utm_source=openai))  \n- A leaked call suggests Trump aide Steve Witkoff advised Kremlin officials on messaging for Ukraine peace talks.([theguardian.com](https://www.theguardian.com/us-news/live/2025/nov/26/us-politics-latest-news-pete-hegseth-donald-trump-marjorie-taylor-greene-mark-kelly?utm_source=openai))\n\n---\n\n## 3. Domestic Policy and Public Services  \n- **Healthcare**: Medicare will negotiate price reductions on 15 more prescription drugs\u2014including Ozempic, Wegovy, and several cancer treatments\u2014applied under the Inflation Reduction Act\u2019s negotiation framework.([kffhealthnews.org](https://kffhealthnews.org/morning-briefing/wednesday-november-26-2025/?utm_source=openai))  \n- **CDC Appointment**: Louisiana Surgeon General Dr. Ralph Abraham, a known skeptic of COVID-19 vaccines, has been named the CDC\u2019s deputy director.([democracynow.org](https://www.democracynow.org/2025/11/26/headlines?utm_source=openai))\n\n---\n\n## 4. Humanitarian and International Crises  \n- **Gaza Reconstruction Needs**: The U.N. projects Gaza will require over $70 billion in reconstruction funding spread across decades, as the economy has plummeted and life expectancy has dropped sharply. A study from the Max Planck Institute estimates more than 100,000 Palestinians have been killed\u2014higher than official counts. Flooding is worsening conditions, with nearly 2 million displaced.([democracynow.org](https://www.democracynow.org/2025/11/26/headlines?utm_source=openai))  \n- **Nigeria**: All 24 schoolgirls kidnapped in the northwest have been rescued. One escapee recounted her ordeal, emphasizing the chaos and fear endured.([democracynow.org](https://www.democracynow.org/2025/11/26/headlines?utm_source=openai))  \n- **Thailand**: Severe monsoon flooding has claimed 33 lives and displaced over 2 million. Military forces are conducting rescues amid climate-related strain.([democracynow.org](https://www.democracynow.org/2025/11/26/headlines?utm_source=openai))\n\n---\n\n## 5. Immigration and Justice in the U.S.  \n- A federal judge in California ruled that the Trump administration\u2019s practice of indefinite immigrant detention without bond hearings is illegal\u2014potentially freeing thousands to seek bond.([havanatimes.org](https://havanatimes.org/news/international-news-briefs-for-wednesday-november-26-2025/?utm_source=openai))  \n- The Justice Department disclosed that DHS Secretary Kristi Noem personally ordered deportations of Venezuelan men to El Salvador\u2019s notorious CECOT prison, defying court orders. Testimonials have revealed instances of torture and abuse in that facility.([havanatimes.org](https://havanatimes.org/news/international-news-briefs-for-wednesday-november-26-2025/?utm_source=openai))  \n- David Huerta, head of SEIU California, pleaded not guilty to obstructing an ICE raid in Los Angeles. The charge was reduced from a felony to a misdemeanor.([havanatimes.org](https://havanatimes.org/news/international-news-briefs-for-wednesday-november-26-2025/?utm_source=openai))\n\n---\n\n## 6. Stock Market and Economy Highlights  \n- U.S. stock futures are slightly rising, with optimism about possible Federal Reserve interest rate cuts; key indexes ticked upward. Gold surged to $4,170/oz; oil slipped to ~$58/barrel; Bitcoin dropped to around $86,500. The 10-year Treasury yield rose to 4.02%.([investopedia.com](https://www.investopedia.com/5-things-to-know-before-the-stock-market-opens-november-26-2025-11857437?utm_source=openai))  \n- Key corporate movements: Nvidia shares dipped amid speculation Meta might shift to Google\u2019s AI chips; HP unveiled a restructuring plan to cut 6,000 jobs; Urban Outfitters stock soared 15% after strong earnings and early holiday sales.([investopedia.com](https://www.investopedia.com/5-things-to-know-before-the-stock-market-opens-november-26-2025-11857437?utm_source=openai))\n\n---\n\n## 7. Tech Expansion: Nvidia Eyes Israel  \nNvidia is exploring a major expansion in northern Israel to bolster R&D and AI infrastructure in a region known for chip design expertise. The move aligns with broader geopolitical and supply\u2011chain strategies.([techstartups.com](https://techstartups.com/2025/11/26/top-tech-news-today-november-26-2025/?utm_source=openai))\n\n---\n\n## 8. UK Autumn Budget Released  \nChancellor Rachel Reeves delivered the November 26 budget in the UK House of Commons. Details of fiscal measures are not yet widely reported, though this marks a pivotal budget outside the spring cycle.([en.wikipedia.org](https://en.wikipedia.org/wiki/November_2025_United_Kingdom_budget?utm_source=openai))\n\n---\n\n## Summary Table (Key Areas)  \n\n- **U.S.\u2013China Trade**: Tariff exclusions extended to November 2026  \n- **Trump Legal Affairs**: Final Georgia case dropped; FBI probes lawmakers and Kelly; Witkoff\u2019s Kremlin call revealed  \n- **Healthcare**: Medicare drug pricing reforms; controversial CDC leadership appointment  \n- **Global Crises**: Gaza reconstruction, Nigeria rescue, Thai floods  \n- **Immigration**: Bond hearings required; Noem deportation controversy; union leader case ongoing  \n- **Markets**: Positive futures; sector turbulence\u2014tech, retail, restructuring  \n- **Tech**: Nvidia expansion in Israel  \n- **UK**: Autumn budget presented  \n\n---\n\nThis summary reflects critical developments as of **November 26, 2025**. Let me know if you\u2019d like deeper coverage on any topic."
                 }
               ],
               "role": "assistant"
@@ -214,18 +256,18 @@ http_interactions:
           "top_p": 1.0,
           "truncation": "disabled",
           "usage": {
-            "input_tokens": 16766,
+            "input_tokens": 16933,
             "input_tokens_details": {
               "cached_tokens": 0
             },
-            "output_tokens": 1045,
+            "output_tokens": 1334,
             "output_tokens_details": {
               "reasoning_tokens": 0
             },
-            "total_tokens": 17811
+            "total_tokens": 18267
           },
           "user": null,
           "metadata": {}
         }
-  recorded_at: Thu, 06 Nov 2025 03:37:20 GMT
+  recorded_at: Wed, 26 Nov 2025 18:24:44 GMT
 recorded_with: VCR 6.3.1

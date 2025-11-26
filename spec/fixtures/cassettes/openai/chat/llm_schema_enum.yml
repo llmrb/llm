@@ -28,7 +28,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 18 Nov 2025 21:10:44 GMT
+      - Wed, 26 Nov 2025 18:25:27 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -40,13 +40,13 @@ http_interactions:
       Openai-Organization:
       - user-j1pztzt5nogpcsid23u7gskj
       Openai-Processing-Ms:
-      - '251'
+      - '429'
       Openai-Project:
       - proj_YSiqu4bByPgi6EwPnLiY8irR
       Openai-Version:
       - '2020-10-01'
       X-Envoy-Upstream-Service-Time:
-      - '510'
+      - '650'
       X-Ratelimit-Limit-Requests:
       - '500'
       X-Ratelimit-Limit-Tokens:
@@ -60,16 +60,16 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 36ms
       X-Request-Id:
-      - req_5a61b3a7fa3d4f64abbfb1c7aa189531
+      - req_a9d29059732a4a6fbd11cf192ddc6bbe
       X-Openai-Proxy-Wasm:
       - v0.1
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=O2hdQ9PEZtld3fWz_JvOG0soeuWq4wxwTnZdN.VWpXs-1763500244-1.0.1.1-7Y6z43kQxOOLyspKkZ4VhUCGeTvR5BjuQ6CPudEZYuLOA6G2mJBoDErFwHWqRaZ71TIMZx63Xw9Me5ARMtXnBAUGhNZ3AVzhxSheimM4tiQ;
-        path=/; expires=Tue, 18-Nov-25 21:40:44 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=te8IEOtmRCaNxrQyyt5766Mo4vJwaWLCxM9S_zT.7Sc-1764181527-1.0.1.1-sk8f6D5Ky8BbES.1mKPN69f4YPDoLAReHfLHxd7uQVy_0xIvrrjuDhZjEr57_L_FsnkIHNylRhj.FBM1cfqO4clyWmzh.dWrl3XefHxinTE;
+        path=/; expires=Wed, 26-Nov-25 18:55:27 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=fqn1CaHXIFsuly89RcuDkmsEXlY93.RWbhyL9cNcK2I-1763500244528-0.0.1.1-604800000;
+      - _cfuvid=gKHlIjfvZwS76y1jrRrA0T1xRJgRJQyJ7iPoCHbsjD8-1764181527512-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -78,16 +78,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 9a0a74cc2b4bc618-GRU
+      - 9a4b6daadb529aa9-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-CdNGGJL8XrQW8PzpMbmAWP3lmiH9D",
+          "id": "chatcmpl-CgEUhgx2qp21hGfmTN24yx827ieB7",
           "object": "chat.completion",
-          "created": 1763500244,
+          "created": 1764181527,
           "model": "gpt-4.1-2025-04-14",
           "choices": [
             {
@@ -120,128 +120,5 @@ http_interactions:
           "service_tier": "default",
           "system_fingerprint": "fp_433e8c8649"
         }
-  recorded_at: Tue, 18 Nov 2025 21:10:37 GMT
-- request:
-    method: post
-    uri: https://api.openai.com/v1/chat/completions
-    body:
-      encoding: UTF-8
-      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"Your
-        favorite fruit is pineapple"}]},{"role":"user","content":[{"type":"text","text":"What
-        fruit is your favorite?"}]},{"role":"assistant","content":[{"type":"text","text":"{\"fruit\":\"pineapple\"}"}]},{"role":"user","content":[{"type":"text","text":"What
-        fruit is your favorite?"}]},{"role":"user","content":[{"type":"text","text":"Your
-        favorite fruit is pineapple"}]}],"model":"gpt-4.1","response_format":{"type":"json_schema","json_schema":{"name":"JSONSchema","schema":{"type":"object","properties":{"fruit":{"description":"The
-        favorite fruit","enum":["apple","pineapple","orange"],"type":"string"}},"required":["fruit"]}}}}'
-    headers:
-      Content-Type:
-      - application/json
-      Authorization:
-      - Bearer TOKEN
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Transfer-Encoding:
-      - chunked
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Tue, 18 Nov 2025 21:10:45 GMT
-      Content-Type:
-      - application/json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Access-Control-Expose-Headers:
-      - X-Request-ID
-      Openai-Organization:
-      - user-j1pztzt5nogpcsid23u7gskj
-      Openai-Processing-Ms:
-      - '328'
-      Openai-Project:
-      - proj_YSiqu4bByPgi6EwPnLiY8irR
-      Openai-Version:
-      - '2020-10-01'
-      X-Envoy-Upstream-Service-Time:
-      - '353'
-      X-Ratelimit-Limit-Requests:
-      - '500'
-      X-Ratelimit-Limit-Tokens:
-      - '30000'
-      X-Ratelimit-Remaining-Requests:
-      - '499'
-      X-Ratelimit-Remaining-Tokens:
-      - '29958'
-      X-Ratelimit-Reset-Requests:
-      - 120ms
-      X-Ratelimit-Reset-Tokens:
-      - 84ms
-      X-Request-Id:
-      - req_fec1e0b5c2d24cc4a07bb27976042b92
-      X-Openai-Proxy-Wasm:
-      - v0.1
-      Cf-Cache-Status:
-      - DYNAMIC
-      Set-Cookie:
-      - __cf_bm=K9k8N27aXXgIItdmbqr_dWjlqO9fLKnNeWs1rFYVx6Q-1763500245-1.0.1.1-LBoHm1QpH0MSuaCmsF_Ku91Ja5xta0Lbi_rjs4RTnB5_mwIINoPsj1EFKcBQDfz_Qq4G8nkj6rQDz4k0L4i3NbS9pgti3gOK.bOiRDDS710;
-        path=/; expires=Tue, 18-Nov-25 21:40:45 GMT; domain=.api.openai.com; HttpOnly;
-        Secure; SameSite=None
-      - _cfuvid=JYFDwUrVUBrwSmu0zj7uh3sWpheyRb8IkmG_BxkxqoQ-1763500245096-0.0.1.1-604800000;
-        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      Server:
-      - cloudflare
-      Cf-Ray:
-      - 9a0a74d0abbaf1cf-GRU
-      Alt-Svc:
-      - h3=":443"; ma=86400
-    body:
-      encoding: ASCII-8BIT
-      string: |
-        {
-          "id": "chatcmpl-CdNGGiFxBGCmHRZgjwatXgVMTyl7P",
-          "object": "chat.completion",
-          "created": 1763500244,
-          "model": "gpt-4.1-2025-04-14",
-          "choices": [
-            {
-              "index": 0,
-              "message": {
-                "role": "assistant",
-                "content": "{\"fruit\":\"pineapple\"}",
-                "refusal": null,
-                "annotations": []
-              },
-              "logprobs": null,
-              "finish_reason": "stop"
-            }
-          ],
-          "usage": {
-            "prompt_tokens": 101,
-            "completion_tokens": 6,
-            "total_tokens": 107,
-            "prompt_tokens_details": {
-              "cached_tokens": 0,
-              "audio_tokens": 0
-            },
-            "completion_tokens_details": {
-              "reasoning_tokens": 0,
-              "audio_tokens": 0,
-              "accepted_prediction_tokens": 0,
-              "rejected_prediction_tokens": 0
-            }
-          },
-          "service_tier": "default",
-          "system_fingerprint": "fp_433e8c8649"
-        }
-  recorded_at: Tue, 18 Nov 2025 21:10:38 GMT
+  recorded_at: Wed, 26 Nov 2025 18:25:00 GMT
 recorded_with: VCR 6.3.1
