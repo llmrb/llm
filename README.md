@@ -9,8 +9,7 @@ tool calling, audio, images, files, and structured outputs.
 
 #### REPL
 
-A simple chatbot that maintains a conversation and streams
-responses in real-time:
+A simple chatbot that maintains a conversation and streams responses in real-time:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -27,7 +26,7 @@ end
 
 #### Prompts
 
-We can send multiple messages at once by building a chain of messages:
+A prompt builder that produces a chain of messages that can be sent in one request:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -37,7 +36,8 @@ llm = LLM.openai(key: ENV["KEY"])
 bot = LLM::Bot.new(llm)
 prompt = bot.build_prompt do
   it.system "Your task is to answer all user queries"
-  it.user "What language should I learn next ?"
+  it.user "Was 2024 a leap year?"
+  it.user "How many days in a year?"
 end
 bot.chat(prompt)
 bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
@@ -45,7 +45,7 @@ bot.messages.each { print "[#{it.role}] ", it.content, "\n" }
 
 #### Schema
 
-We can instruct the LLM to emit a JSON object according to a schema:
+A bot that instructs the LLM to respond in JSON, and according to the given schema:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -70,7 +70,7 @@ puts "notes: #{estimation["notes"]}"
 
 #### Tools
 
-We can grant the LLM the ability to execute code through tools:
+A bot equipped with a tool that is capable of running system commands:
 
 ```ruby
 #!/usr/bin/env ruby
