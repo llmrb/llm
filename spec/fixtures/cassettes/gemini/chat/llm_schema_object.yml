@@ -6,7 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"contents":[{"role":"user","parts":[{"text":"Does the earth orbit
-        the sun?"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"probability":{"type":"integer"}},"required":["probability"]}}}'
+        the sun?"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"probability":{"description":"The
+        answer''s probability","type":"integer"}},"required":["probability"]}}}'
     headers:
       Content-Type:
       - application/json
@@ -30,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 12 Sep 2025 16:18:20 GMT
+      - Wed, 26 Nov 2025 18:08:24 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -40,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1345
+      - gfet4t7; dur=1903
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -54,7 +55,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "{\"probability\":100}"
+                    "text": "{\"probability\": 100}"
                   }
                 ],
                 "role": "model"
@@ -65,18 +66,99 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 8,
-            "candidatesTokenCount": 7,
-            "totalTokenCount": 174,
+            "candidatesTokenCount": 8,
+            "totalTokenCount": 125,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 8
               }
             ],
-            "thoughtsTokenCount": 159
+            "thoughtsTokenCount": 109
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "zEfEaPKOA8iH-8YP_aWcgQ4"
+          "responseId": "GEInaf_vEN-ez7IPvKe02AY"
         }
-  recorded_at: Fri, 12 Sep 2025 16:18:07 GMT
+  recorded_at: Wed, 26 Nov 2025 18:07:57 GMT
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"Does the earth orbit
+        the sun?"}]},{"role":"model","parts":[{"text":"{\"probability\": 100}"}]},{"role":"user","parts":[{"text":"Does
+        the earth orbit the sun?"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"probability":{"description":"The
+        answer''s probability","type":"integer"}},"required":["probability"]}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 26 Nov 2025 18:08:26 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=1622
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "{\"probability\": 100}"
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 25,
+            "candidatesTokenCount": 8,
+            "totalTokenCount": 89,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 25
+              }
+            ],
+            "thoughtsTokenCount": 56
+          },
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "GUInaaiZPKGEz7IPgMjBwAc"
+        }
+  recorded_at: Wed, 26 Nov 2025 18:07:59 GMT
 recorded_with: VCR 6.3.1

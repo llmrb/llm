@@ -5,8 +5,8 @@ http_interactions:
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
-      string: '{"contents":[{"role":"user","parts":[{"text":"Your favorite fruit is
-        pineapple"}]},{"role":"user","parts":[{"text":"What fruit is your favorite?"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"fruit":{"description":"The
+      string: '{"contents":[{"role":"user","parts":[{"text":"What fruit is your favorite?"}]},{"role":"user","parts":[{"text":"Your
+        favorite fruit is pineapple"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"fruit":{"description":"The
         favorite fruit","enum":["apple","pineapple","orange"],"type":"string"}},"required":["fruit"]}}}'
     headers:
       Content-Type:
@@ -31,7 +31,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 12 Sep 2025 16:18:21 GMT
+      - Wed, 26 Nov 2025 18:08:27 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -41,7 +41,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=1209
+      - gfet4t7; dur=1673
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -55,7 +55,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "{\"fruit\": \"pineapple\"}"
+                    "text": "{\"fruit\":\"pineapple\"}"
                   }
                 ],
                 "role": "model"
@@ -66,18 +66,100 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 13,
-            "candidatesTokenCount": 6,
-            "totalTokenCount": 98,
+            "candidatesTokenCount": 5,
+            "totalTokenCount": 107,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 13
               }
             ],
-            "thoughtsTokenCount": 79
+            "thoughtsTokenCount": 89
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "zUfEaPnIObryjrEPj_C_-Qw"
+          "responseId": "G0Inab30LYTUz7IP-b3Y4Qg"
         }
-  recorded_at: Fri, 12 Sep 2025 16:18:09 GMT
+  recorded_at: Wed, 26 Nov 2025 18:08:01 GMT
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"Your favorite fruit is
+        pineapple"}]},{"role":"user","parts":[{"text":"What fruit is your favorite?"}]},{"role":"model","parts":[{"text":"{\"fruit\":\"pineapple\"}"}]},{"role":"user","parts":[{"text":"What
+        fruit is your favorite?"}]},{"role":"user","parts":[{"text":"Your favorite
+        fruit is pineapple"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"fruit":{"description":"The
+        favorite fruit","enum":["apple","pineapple","orange"],"type":"string"}},"required":["fruit"]}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Transfer-Encoding:
+      - chunked
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Wed, 26 Nov 2025 18:08:28 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=949
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "{\"fruit\":\"pineapple\"}"
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 32,
+            "candidatesTokenCount": 5,
+            "totalTokenCount": 110,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 32
+              }
+            ],
+            "thoughtsTokenCount": 73
+          },
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "HEInaeO_Mri8qtsPkMf52AM"
+        }
+  recorded_at: Wed, 26 Nov 2025 18:08:02 GMT
 recorded_with: VCR 6.3.1

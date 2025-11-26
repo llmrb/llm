@@ -6,64 +6,70 @@ RSpec.shared_examples "LLM::Bot: schema" do |dirname, options = {}|
   end
 
   shared_examples "schema: given an object" do |schema:|
-    let(:params) { {schema:} }
-    let(:llm) { provider }
+    context do
+      let(:params) { {schema:} }
+      let(:llm) { provider }
 
-    subject { bot.messages.find(&:assistant?).content! }
+      subject { bot.messages.find(&:assistant?).content! }
 
-    before do
-      bot.chat "Does the earth orbit the sun?"
-    end
+      before do
+        bot.chat "Does the earth orbit the sun?"
+      end
 
-    it "returns the probability" do
-      is_expected.to match(
-        "probability" => instance_of(Integer)
-      )
+      it "returns the probability" do
+        is_expected.to match(
+          "probability" => instance_of(Integer)
+        )
+      end
     end
   end
 
   shared_examples "schema: given an enum" do |schema:|
-    let(:params) { {schema:} }
-    let(:llm) { provider }
+    context do
+      let(:params) { {schema:} }
+      let(:llm) { provider }
 
-    subject { bot.messages.find(&:assistant?).content!  }
+      subject { bot.messages.find(&:assistant?).content!  }
 
-    let(:prompt) do
-      bot.build_prompt do |prompt|
-        prompt.user "Your favorite fruit is pineapple"
-        prompt.user "What fruit is your favorite?"
+      let(:prompt) do
+        bot.build_prompt do |prompt|
+          prompt.user "Your favorite fruit is pineapple"
+          prompt.user "What fruit is your favorite?"
+        end
       end
-    end
 
-    before { bot.chat(prompt) }
+      before { bot.chat(prompt) }
 
-    it "returns the favorite fruit" do
-      is_expected.to match(
-        "fruit" => "pineapple"
-      )
+      it "returns the favorite fruit" do
+        is_expected.to match(
+          "fruit" => "pineapple"
+        )
+      end
     end
   end
 
   shared_examples "schema: given an array" do |schema:|
-    let(:params) { {schema:} }
-    let(:llm) { provider }
+    context do
+      let(:params) { {schema:} }
+      let(:llm) { provider }
 
-    subject { bot.messages.find(&:assistant?).content! }
+      subject { bot.messages.find(&:assistant?).content! }
 
-    let(:prompt) do
-      bot.build_prompt do |prompt|
-        prompt.user "Answer all of my questions"
-        prompt.user "Tell me the answer to 5 + 5"
-        prompt.user "Tell me the answer to 5 + 7"
+      let(:prompt) do
+        bot.build_prompt do |prompt|
+          prompt.user "Answer all of my questions"
+          prompt.user "Tell me the answer to 5 + 5"
+          prompt.user "Tell me the answer to 5 + 7"
+        end
       end
-    end
 
-    before { bot.chat(prompt) }
+      before { bot.chat(prompt) }
 
-    it "returns the answers" do
-      is_expected.to match(
-        "answers" => [10, 12]
-      )
+      it "returns the answers" do
+        is_expected.to match(
+          "answers" => [10, 12]
+        )
+      end
     end
   end
 

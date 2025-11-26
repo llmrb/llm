@@ -8,10 +8,10 @@ class LLM::Schema
   # can act as constraints.
   class Array < Leaf
     ##
-    # Returns an array for the given types
+    # Returns an array for the given type
     # @return [LLM::Schema::Array]
-    def self.[](*types)
-      new(*types.map(&:new))
+    def self.[](type)
+      new(type.new)
     end
 
     def initialize(items)

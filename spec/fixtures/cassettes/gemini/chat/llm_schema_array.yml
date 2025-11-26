@@ -5,9 +5,9 @@ http_interactions:
     uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=TOKEN
     body:
       encoding: UTF-8
-      string: '{"contents":[{"role":"user","parts":[{"text":"Answer all of my questions"}]},{"role":"user","parts":[{"text":"Tell
-        me the answer to 5 + 5"}]},{"role":"user","parts":[{"text":"Tell me the answer
-        to 5 + 7"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"answers":{"description":"The
+      string: '{"contents":[{"role":"user","parts":[{"text":"Tell me the answer to
+        5 + 5"}]},{"role":"user","parts":[{"text":"Tell me the answer to 5 + 7"}]},{"role":"user","parts":[{"text":"Answer
+        all of my questions"}]}],"generationConfig":{"response_mime_type":"application/json","response_schema":{"type":"object","properties":{"answers":{"description":"The
         answer to two questions","type":"array","items":{"type":"integer"}}},"required":["answers"]}}}'
     headers:
       Content-Type:
@@ -32,7 +32,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Fri, 12 Sep 2025 16:18:23 GMT
+      - Wed, 26 Nov 2025 18:08:17 GMT
       Server:
       - scaffolding on HTTPServer2
       X-Xss-Protection:
@@ -42,7 +42,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Server-Timing:
-      - gfet4t7; dur=946
+      - gfet4t7; dur=1888
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
       Transfer-Encoding:
@@ -56,7 +56,7 @@ http_interactions:
               "content": {
                 "parts": [
                   {
-                    "text": "{\"answers\": [10, 12]}"
+                    "text": "{\"answers\":[10,12]}"
                   }
                 ],
                 "role": "model"
@@ -67,18 +67,18 @@ http_interactions:
           ],
           "usageMetadata": {
             "promptTokenCount": 28,
-            "candidatesTokenCount": 11,
-            "totalTokenCount": 134,
+            "candidatesTokenCount": 9,
+            "totalTokenCount": 150,
             "promptTokensDetails": [
               {
                 "modality": "TEXT",
                 "tokenCount": 28
               }
             ],
-            "thoughtsTokenCount": 95
+            "thoughtsTokenCount": 113
           },
           "modelVersion": "gemini-2.5-flash",
-          "responseId": "z0fEaKaVI5bpjrEP_aflyQY"
+          "responseId": "EUInabmrG5igz7IP7MmTsAk"
         }
-  recorded_at: Fri, 12 Sep 2025 16:18:10 GMT
+  recorded_at: Wed, 26 Nov 2025 18:07:50 GMT
 recorded_with: VCR 6.3.1

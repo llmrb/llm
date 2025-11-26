@@ -15,7 +15,7 @@ RSpec.describe LLM::Schema do
         property :height, LLM::Schema::Number, "height description", required: true
         property :active, LLM::Schema::Boolean, "active description"
         property :location, LLM::Schema::Null, "location description"
-        property :addresses, LLM::Schema::Array[LLM::Schema::String, LLM::Schema::Integer], "addresses description"
+        property :addresses, LLM::Schema::Array[LLM::Schema::String], "addresses description"
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe LLM::Schema do
       array = schema.object["addresses"]
       schema = self.schema.schema
       expect(array).to eq(
-        schema.array([schema.string, schema.integer]).description("addresses description")
+        schema.array(schema.string).description("addresses description")
       )
     end
   end
